@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Development for Software Engineering | USF Senior Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #006747;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #006747;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #006747 0%, #CFC493 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #006747;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Content Sections */
+        section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #006747;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+            color: #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #006747;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #006747;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #006747;
+            margin-bottom: 15px;
+        }
+
+        /* Problem Solution */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        .ps-section h3 {
+            color: #006747;
+            font-size: 1.5rem;
+        }
+
+        .ps-section ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .ps-section li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Metrics Section */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #0066cc15 0%, #0066cc05 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #99c2b5;
+            text-align: center;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            color: #006747;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #006747, #003300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin: 0 auto 20px;
+        }
+
+        .team-member h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .member-role {
+            color: #006747;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .member-email {
+            color: #666;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        .sponsor-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: #006747;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-robot"></i> AIDES
+        </div>
+        <div style="display: flex; gap: 2rem;">
+            <a href="#overview">Overview</a>
+            <a href="#requirements">Requirements</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h1>Agentic Development for Software Engineering</h1>
+        <p>Research, design, and demonstrate how AI agents are transforming the software development lifecycle</p>
+        <div class="cta-buttons">
+            <a href="#overview" class="btn btn-primary">Learn More</a>
+            <a href="https://github.com" class="btn btn-secondary">View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <section id="overview">
+        <h2>Project Overview</h2>
+
+        <div class="problem-solution">
+            <div class="ps-section">
+                <h3><i class="fas fa-exclamation-circle"></i> The Problem</h3>
+                <p>With AI rapidly changing the software engineering landscape, many engineers are unsure how to use it <span class="highlight">safely and effectively</span>.</p>
+                <p style="margin-top: 15px;">Teams lack empirical data and guidance on AI tool selection, implementation risks, and cost-benefit analysis for their specific workflows.</p>
+            </div>
+
+            <div class="ps-section">
+                <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
+                <p>We're building a comprehensive <span class="highlight">framework for AI model comparison</span> that produces quantifiable, reproducible results showing where each AI model excels and where it falls short.</p>
+                <ul>
+                    <li>Evidence-based comparison methodology</li>
+                    <li>Security-conscious evaluation</li>
+                    <li>Cost modeling and analysis</li>
+                    <li>Practical demonstrations</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-top: 50px; margin-bottom: 30px;">Deliverables</h3>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-book"></i></div>
+                <h3>Research Paper</h3>
+                <p>Comprehensive written analysis available in markdown format and published as an HTML microsite via GitHub Pages.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3>Demo Repository</h3>
+                <p>Reproducible demo scripts, configuration files, cost logs, and video walkthroughs hosted on GitHub.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                <h3>Empirical Results</h3>
+                <p>Quantified telemetry and cost analysis showing AI model performance across standardized test scenarios.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="requirements">
+        <h2>Project Requirements & Features</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-cube"></i> Standardized Baseline Application</h3>
+                <p>A full-stack application (UI, API, database) deployed in an isolated testbed environment for evaluating competing agent workflows against consistent architecture.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-cogs"></i> Agent Ecosystem Loop</h3>
+                <p>Implementation of an agentic loop that enables AI agents to research, plan, execute, and iterate autonomously across software engineering tasks.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-shield-alt"></i> Security & Governance</h3>
+                <p>Comprehensive security analysis, governance framework, and best practice enforcement across all evaluated AI implementations.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tachometer-alt"></i> Cost & Performance Metrics</h3>
+                <p>Empirical telemetry collection, cost modeling for token usage, and publishing of reproducible results.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-top: 50px; margin-bottom: 30px;">Evaluation Metrics</h3>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Functionality</div>
+                <div class="metric-value">Code must be functional above all</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Security</div>
+                <div class="metric-value">Enforce industry best practices</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Code Quality</div>
+                <div class="metric-value">Maintainability & refactoring</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Cost Effectiveness</div>
+                <div class="metric-value">Derived token value analysis</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Automation</div>
+                <div class="metric-value">Minimize human intervention</div>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-top: 50px; margin-bottom: 30px;">Test Scenarios</h3>
+        <div class="grid">
+            <div class="card">
+                <h3>Add a Feature</h3>
+                <p>Evaluate how well AI agents handle feature implementation and integration into existing codebases.</p>
+            </div>
+            <div class="card">
+                <h3>Debug an Issue</h3>
+                <p>Test ability to identify, diagnose, and resolve bugs in code.</p>
+            </div>
+            <div class="card">
+                <h3>Refactor Codebase</h3>
+                <p>Assess code modernization, optimization, and architectural improvements.</p>
+            </div>
+            <div class="card">
+                <h3>Prompt Injection</h3>
+                <p>Security evaluation against adversarial inputs and injection attacks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2>Project Team</h2>
+        <p style="text-align: center; margin-bottom: 40px;">USF Department of Computer Science and Engineering</p>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">JB</div>
+                <h4>Joseph Bressani</h4>
+                <div class="member-role">Team Member</div>
+                <div class="member-email">jbressani@usf.edu</div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">BR</div>
+                <h4>Bruno Rocha</h4>
+                <div class="member-role">Team Member</div>
+                <div class="member-email">brunor274@usf.edu</div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">KS</div>
+                <h4>Kapil Srikanth</h4>
+                <div class="member-role">Team Member</div>
+                <div class="member-email">kapilsrikanth@usf.edu</div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">RV</div>
+                <h4>Ross Volenec</h4>
+                <div class="member-role">Team Member</div>
+                <div class="member-email">rvolenec@usf.edu</div>
+            </div>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; margin-top: 40px; text-align: center;">
+            <h3 style="color: #333;">Industry Sponsor</h3>
+            <div class="sponsor-badge">
+                <strong>Microsoft</strong> • Chad Hage, Industry Mentor
+            </div>
+            <p style="margin-top: 15px; color: #666;">
+                <a href="mailto:chad.hage@microsoft.com" style="color: #006747; text-decoration: none;">chad.hage@microsoft.com</a> •
+                <a href="tel:727-424-9557" style="color: #006747; text-decoration: none;">727-424-9557</a>
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get Involved</h2>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">Interested in learning more about agentic development for software engineering? We'd love to hear from you.</p>
+
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 10px;">
+                <h3 style="color: #006747; margin-bottom: 20px;">Connect With Us</h3>
+                <p style="margin-bottom: 20px;">
+                    <strong>Project Lead</strong><br>
+                    Faculty Advisor: Scot Hollingsworth<br>
+                    <a href="mailto:kchriste@usf.edu" style="color: #006747;">kchriste@usf.edu</a>
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+                    <a href="https://github.com" class="btn btn-primary" style="color: #006747;">View Repository</a>
+                    <a href="https://usf.edu" class="btn btn-secondary" style="background: #006747; color: white; border: none;">Visit USF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#overview">Overview</a>
+            <a href="#requirements">Requirements</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="margin-bottom: 20px;">Agentic Development for Software Engineering | USF Senior Capstone Project</p>
+        <p style="opacity: 0.8; font-size: 0.9rem;">University of South Florida • Department of Computer Science and Engineering<br>Tampa, FL 33620</p>
+        <p style="opacity: 0.6; font-size: 0.85rem; margin-top: 20px;">© 2026 All rights reserved. Sponsored by Microsoft.</p>
+    </div>
+</footer>
+</body>
+</html>
