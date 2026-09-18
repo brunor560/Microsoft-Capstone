@@ -1,4 +1,5 @@
 <!--AI Slop will do for now; will work on more tm night (Bruno 9.16)-->
+<!--AI Slop will do for now; will work on more tm night (Bruno 9.16)-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c2c5aa 100%);
             color: #333;
             min-height: 100vh;
         }
@@ -41,6 +42,9 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         header h1 {
@@ -52,6 +56,23 @@
         header p {
             color: #666;
             font-size: 1.1rem;
+        }
+
+        header a {
+            background: #006747;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        header a:hover {
+            background: #006747;
+            transform: translateY(-2px);
         }
 
         /* Prompt Input Section */
@@ -95,7 +116,7 @@
 
         .btn-run {
             padding: 15px 40px;
-            background: linear-gradient(135deg, #006747 0%, #99c2b5  100%);
+            background: linear-gradient(135deg, #006747 0%, #344e41 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -382,6 +403,11 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
             header h1 {
                 font-size: 1.5rem;
             }
@@ -399,8 +425,11 @@
 <body>
 <div class="app-container">
     <header>
-        <h1><i class="fas fa-brain"></i> AI Model Comparison Demo</h1>
-        <p>Run the same prompt across Claude, Gemini, CoPilot, and Codex to compare responses</p>
+        <div>
+            <h1><i class="fas fa-brain"></i> AI Model Comparison Demo</h1>
+            <p>Run the same prompt across Claude, Gemini, CoPilot, and Codex to compare responses</p>
+        </div>
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Project</a>
     </header>
 
     <div class="settings-panel">
