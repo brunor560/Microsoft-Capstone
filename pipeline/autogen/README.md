@@ -36,6 +36,9 @@ Each phase has an executable gate. A phase is not "done" because files exist.
 # Phase 1 — build the sandbox, then verify toolchain + credential air-gap
 docker build -t agentic-eval-sandbox:latest .devcontainer
 ./.venv/bin/python -m harness.verify_sandbox
+
+# Phase 2 — task matrix, ephemeral staging, and app/ integrity
+./.venv/bin/python -m harness.verify_staging
 ```
 
 Docker-dependent tests skip automatically if the image is absent, so the
@@ -64,12 +67,37 @@ Then on the serving machine: `ollama pull qwen3:8b`.
 |---|---|---|
 | 0 | Scaffolding, deps, profile layer | ✅ Gate passed |
 | 0.5 | Model connectivity smoke test | ⏳ Built; awaiting Ollama LAN address |
-| 1 | Air-gapped Docker sandbox | ✅ Gate passed (16 tests) |
-| 2 | Ephemeral staging + task ingestion | ⬜ Not started |
+| 1 | Air-gapped Docker sandbox | ✅ Gate passed |
+| 2 | Ephemeral staging + task ingestion | ✅ Gate passed |
 | 3 | Agent orchestration | ⬜ Not started |
 | 4 | Telemetry | ⬜ Not started |
 | 5 | Scoring harness | ⬜ Not started |
 | 6 | CI/CD bridge (microsite deferred) | ⬜ Not started |
+
+## Version consistency across the team
+
+The graders only ever run **inside the container**, so a teammate's local
+`complexipy` is irrelevant — but that only guarantees consistency if
+everyone's image was built from the current Dockerfile. A stale cached image
+would grade with a different analyser and say nothing.
+
+Three layers guard this:
+
+1. **Pinned** in `.devcontainer/Dockerfile` (`complexipy==3.0.0`, etc.).
+2. **Asserted** by `harness.verify_sandbox`, which reads the *running*
+   image's versions and fails if any differ from `EXPECTED_VERSIONS`.
+3. **Cross-checked** by `test_pinned_versions_match_dockerfile`, so the
+   Dockerfile and the gate cannot silently disagree.
+
+If a teammate sees `FAIL complexipy 3.1.0 != pinned 3.0.0`, the fix is:
+
+```bash
+docker build --no-cache -t agentic-eval-sandbox:latest .devcontainer
+```
+
+Phase 6 will publish the image to `ghcr.io` so the team **pulls one identical
+image** rather than each rebuilding it — that is the real fix; the assertions
+above are the safety net until then.
 
 ## Sandbox notes
 
