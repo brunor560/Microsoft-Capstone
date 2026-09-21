@@ -1,0 +1,68 @@
+# Model provider profiles for the Agentic IDE Evaluation Suite.
+#
+# The agent code is provider-agnostic: it receives a constructed client and
+# never learns which backend is behind it. Select a profile with
+# `run_benchmark.py --model-profile <name>` or via MODEL_PROFILE in .env.
+#
+# Every profile's `label` is stamped into each telemetry artifact so that runs
+# from different backends are never silently compared against one another.
+#
+# Secrets are NEVER written here. `${VAR}` placeholders are resolved from the
+# host .env at load time.
+
+default_profile: local-dev
+
+profiles:
+
+  # ---------------------------------------------------------------------
+  # Plumbing validation only. Ollama exposes an OpenAI-compatible API at
+  # /v1, so the standard OpenAI client works against it unchanged.
+  #
+  # NOT FOR BENCHMARKING. qwen3:8b is a general-purpose model, not the
+  # coder-tuned line; its tool-calling is comparatively weak and it may
+  # stall the agent loop. That is acceptable (and mildly useful) for
+  # exercising the intervention counter.
+  # ---------------------------------------------------------------------
+  local-dev:
+    label: "ollama/qwen3:8b"
+    provider: openai-compatible
+    model: "qwen3:8b"
+    base_url: "${OLLAMA_BASE_URL}"
+    # Ollama requires no auth; the OpenAI client requires a non-empty value.
+    api_key: "ollama"
+    benchmark_valid: false
+
+    # AutoGen v0.4 REQUIRES an explicit model_info for any non-OpenAI model.
+    # Client construction fails outright if this block is missing.
+    model_info:
+      family: "unknown"
+      function_calling: true
+      json_output: true
+      vision: false
+      structured_output: false
+
+    # Qwen3 is a hybrid reasoning model. Thinking mode emits reasoning tokens
+    # before the answer, which would inflate token counts against the 15k
+    # ceiling and make local T scores incomparable to Azure. Disable it.
+    extra_args:
+      chat_template_kwargs:
+        enable_thinking: false
+
+  # ---------------------------------------------------------------------
+  # Real benchmark runs, backed by Azure Student credits.
+  # ---------------------------------------------------------------------
+  azure-prod:
+    label: "azure/${AZURE_OPENAI_DEPLOYMENT}"
+    provider: azure-openai
+    model: "${AZURE_OPENAI_DEPLOYMENT}"
+    azure_endpoint: "${AZURE_OPENAI_ENDPOINT}"
+    azure_deployment: "${AZURE_OPENAI_DEPLOYMENT}"
+    api_version: "${AZURE_OPENAI_API_VERSION}"
+    api_key: "${AZURE_OPENAI_API_KEY}"
+    benchmark_valid: true
+
+# Resource ceilings from the project brief, section 4.
+# Enforced on the host, independent of which profile is active.
+limits:
+  max_consecutive_auto_replies: 5
+  max_total_tokens: 15000

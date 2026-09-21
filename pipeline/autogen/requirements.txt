@@ -1,0 +1,28 @@
+# Agentic IDE Evaluation Suite -- Orchestration Host dependencies
+# Host: macOS, Python 3.11+ (validated against 3.14.4)
+#
+# NOTE: The sandbox container installs its own toolchain (see .devcontainer/).
+# Nothing in this file is ever installed inside the air-gapped sandbox.
+
+# --- AutoGen v0.4+ agent runtime -------------------------------------------
+# autogen-ext[docker] provides DockerCommandLineCodeExecutor.
+autogen-agentchat>=0.4.0
+autogen-ext[docker,openai,azure]>=0.4.0
+
+# --- Model routing ----------------------------------------------------------
+# LiteLLM fronts both the local Ollama profile and the Azure OpenAI profile so
+# that telemetry is captured identically regardless of provider.
+litellm>=1.50.0
+
+# --- Telemetry --------------------------------------------------------------
+opentelemetry-api>=1.27.0
+opentelemetry-sdk>=1.27.0
+
+# --- Support ----------------------------------------------------------------
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+
+# --- Test harness (host-side scoring math) ----------------------------------
+pytest>=8.0.0
+# The AutoGen executor API is async; integration tests need an asyncio runner.
+pytest-asyncio>=0.24.0
