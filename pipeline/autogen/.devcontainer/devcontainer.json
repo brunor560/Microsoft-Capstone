@@ -1,0 +1,20 @@
+{
+  "name": "Agentic Eval Sandbox",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "workspaceFolder": "/workspace",
+
+  // SECURITY: no "remoteEnv" / "containerEnv" credential passthrough.
+  // This container must remain blind to host secrets (brief section 2.2).
+  // Adding an API key here would defeat the IPI exfiltration mitigation.
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# --- Credentials (NEVER commit) --------------------------------------------
+# The orchestration host is the only place real LLM credentials exist.
+.env
+.env.local
+*.key
+
+# --- Python -----------------------------------------------------------------
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# --- Ephemeral run artifacts -------------------------------------------------
+# Staging scratch dirs are created under tempfile; any stray local copy here
+# must never be committed.
+scratch/
+.eval-scratch-*/
+
+# --- Telemetry ----------------------------------------------------------------
+# logs/*.json ARE committed on main (they feed the microsite), but transient
+# raw span dumps are not.
+logs/*.raw.jsonl
+logs/.tmp/
+
+# --- macOS ---------------------------------------------------------------------
+.DS_Store

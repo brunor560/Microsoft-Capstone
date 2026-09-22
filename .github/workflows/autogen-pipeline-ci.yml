@@ -1,0 +1,80 @@
+name: AutoGen Pipeline CI
+
+# Offline test suite for the AutoGen evaluation pipeline.
+#
+# COST: zero. SKIP_LIVE_TESTS=1 skips every test that calls a real model, so
+# this workflow never spends Azure credits. It still runs the Docker-backed
+# grader tests, which is where tool-output parsing regressions surface.
+
+on:
+  push:
+    paths:
+      - 'pipeline/**'
+      - '.github/workflows/autogen-pipeline-ci.yml'
+  pull_request:
+    paths:
+      - 'pipeline/**'
+      - '.github/workflows/autogen-pipeline-ci.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: pipeline/autogen
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # The host targets 3.11+; 3.12 is used here because some
+          # transitive C-extension wheels still lag on the newest release.
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pipeline/autogen/requirements.txt
+
+      - name: Install host dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Verify dependency stack and AutoGen v0.4 API surface
+        run: python -m harness.verify_env
+
+      - name: Build the air-gapped sandbox image
+        run: docker build -t agentic-eval-sandbox:latest .devcontainer
+
+      - name: Verify sandbox toolchain, pinned versions, and credential air-gap
+        env:
+          # Poisoned canaries: the gate asserts these are NOT visible inside
+          # the container. If Docker ever started forwarding the host
+          # environment, this step would fail loudly.
+          AZURE_OPENAI_API_KEY: LEAK-CANARY-CI
+          GITHUB_TOKEN: ghp_LEAKCANARYCI
+        run: python -m harness.verify_sandbox
+
+      - name: Verify ephemeral staging and app/ integrity
+        run: python -m harness.verify_staging
+
+      - name: Verify graders and weighted scoring
+        run: python -m harness.verify_scoring
+
+      - name: Run the offline test suite
+        env:
+          SKIP_LIVE_TESTS: '1'
+        run: python -m pytest -q
+
+      - name: Confirm app/ was not modified
+        working-directory: .
+        run: |
+          if [ -n "$(git status --porcelain app/)" ]; then
+            echo "::error::app/ was modified; it is a shared read-only testbed."
+            git status --porcelain app/
+            exit 1
+          fi
+          echo "app/ is unmodified."
