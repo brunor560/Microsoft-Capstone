@@ -17,9 +17,27 @@ Usage:
 
 from __future__ import annotations
 
+import re
 import subprocess
 
 IMAGE = "agentic-eval-sandbox:latest"
+
+# Exact versions the graders are calibrated against. These MUST match the ARG
+# pins in .devcontainer/Dockerfile.
+#
+# Why assert this rather than trust the Dockerfile: a pin only guarantees
+# consistency if everyone's image was actually built from the current file. A
+# teammate with a stale cached image, or one who has not rebuilt since a pin
+# bump, would otherwise grade with a different analyser and never be told.
+# Q and S scores would then differ between machines for reasons invisible in
+# the logs. Fail loudly instead.
+EXPECTED_VERSIONS: dict[str, str] = {
+    "python": "3.11",  # prefix match: patch drift in the base image is fine
+    "pytest": "8.3.4",
+    "complexipy": "3.0.0",
+    "trufflehog": "3.97.5",
+    "scc": "4.1.0",
+}
 
 # (label, argv) -- each must exit 0 inside the container.
 TOOLCHAIN: list[tuple[str, list[str]]] = [
@@ -72,17 +90,45 @@ def check_image_exists() -> bool:
     return proc.returncode == 0
 
 
+def _extract_version(text: str) -> str | None:
+    """Pull the first dotted version number out of a tool's output."""
+    match = re.search(r"\d+\.\d+(?:\.\d+)?", text)
+    return match.group(0) if match else None
+
+
 def check_toolchain() -> list[str]:
+    """Confirm every grader binary runs AND is the exact pinned version."""
     print("--- toolchain ---")
     failures: list[str] = []
+
     for label, argv in TOOLCHAIN:
         code, output = _run_in_container(argv)
         first_line = output.splitlines()[0] if output else ""
-        if code == 0:
-            print(f"  OK   {label:<20} {first_line[:56]}")
-        else:
-            print(f"  FAIL {label:<20} exit={code} {first_line[:48]}")
+
+        if code != 0:
+            print(f"  FAIL {label:<20} exit={code} {first_line[:44]}")
             failures.append(f"{label} not runnable in sandbox")
+            continue
+
+        expected = EXPECTED_VERSIONS.get(label)
+        if expected is None:
+            # No pin to enforce (e.g. git, pytest-json-report import probe).
+            print(f"  OK   {label:<20} {first_line[:52]}")
+            continue
+
+        found = _extract_version(output)
+        if found is None:
+            print(f"  WARN {label:<20} version unreadable from: {first_line[:32]}")
+            failures.append(f"{label} version could not be parsed")
+        elif found == expected or found.startswith(f"{expected}."):
+            print(f"  OK   {label:<20} {found} (pinned)")
+        else:
+            print(f"  FAIL {label:<20} {found} != pinned {expected}")
+            failures.append(
+                f"{label} is {found}, expected {expected} -- rebuild the image "
+                f"(docker build --no-cache -t {IMAGE} .devcontainer)"
+            )
+
     return failures
 
 

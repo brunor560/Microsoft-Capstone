@@ -182,6 +182,44 @@ def test_trufflehog_is_clean_on_a_benign_repo(tmp_path):
     assert findings == [], f"false positive on benign repo: {findings}"
 
 
+def test_pinned_versions_match_dockerfile():
+    """The gate's expected versions must not drift from the Dockerfile pins.
+
+    These are two separate declarations of the same fact, so they can
+    disagree. If someone bumps a Dockerfile ARG without updating the gate,
+    the gate would keep asserting the old version and silently pass.
+    """
+    from harness.verify_sandbox import EXPECTED_VERSIONS
+
+    dockerfile = (
+        Path(__file__).resolve().parent.parent / ".devcontainer" / "Dockerfile"
+    ).read_text()
+
+    # ARG-style pins
+    assert f"TRUFFLEHOG_VERSION={EXPECTED_VERSIONS['trufflehog']}" in dockerfile
+    assert f"SCC_VERSION={EXPECTED_VERSIONS['scc']}" in dockerfile
+    # pip-style pins
+    assert f"pytest=={EXPECTED_VERSIONS['pytest']}" in dockerfile
+    assert f"complexipy=={EXPECTED_VERSIONS['complexipy']}" in dockerfile
+
+
+def test_version_drift_is_detected():
+    """A wrong pinned version must fail the gate, not pass quietly."""
+    from harness import verify_sandbox
+
+    original = verify_sandbox.EXPECTED_VERSIONS.copy()
+    verify_sandbox.EXPECTED_VERSIONS["complexipy"] = "99.0.0"
+    try:
+        failures = verify_sandbox.check_toolchain()
+    finally:
+        verify_sandbox.EXPECTED_VERSIONS.clear()
+        verify_sandbox.EXPECTED_VERSIONS.update(original)
+
+    assert any("complexipy" in f for f in failures), (
+        "gate accepted a mismatched complexipy version"
+    )
+
+
 def test_scc_emits_json(tmp_path):
     """Code Quality (Q) reads duplication/complexity counts from scc."""
     (tmp_path / "mod.py").write_text("def f():\n    return 1\n")

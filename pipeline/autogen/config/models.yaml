@@ -49,6 +49,31 @@ profiles:
         enable_thinking: false
 
   # ---------------------------------------------------------------------
+  # Cheap Azure model for verifying pipeline functionality when the local
+  # Ollama host is unavailable. Uses the same azure-openai builder as
+  # azure-prod, so exercising this profile also exercises the real code
+  # path -- unlike local-dev, which goes through the OpenAI-compatible
+  # client.
+  #
+  # NOT FOR BENCHMARKING. gpt-4.1-mini is chosen for reliable tool-calling
+  # at trivial cost (~$0.01 per 15k-token capped run), not for capability
+  # comparison against other agentic frameworks.
+  #
+  # Deployed in westus: the USF tenant policy restricts regions to
+  # mexicocentral/westus/canadacentral/denmarkeast/belgiumcentral, and of
+  # those only westus and canadacentral offer Azure OpenAI at all.
+  # ---------------------------------------------------------------------
+  azure-dev:
+    label: "azure/gpt-4.1-mini"
+    provider: azure-openai
+    model: "${AZURE_DEV_DEPLOYMENT}"
+    azure_endpoint: "${AZURE_DEV_ENDPOINT}"
+    azure_deployment: "${AZURE_DEV_DEPLOYMENT}"
+    api_version: "${AZURE_DEV_API_VERSION}"
+    api_key: "${AZURE_DEV_API_KEY}"
+    benchmark_valid: false
+
+  # ---------------------------------------------------------------------
   # Real benchmark runs, backed by Azure Student credits.
   # ---------------------------------------------------------------------
   azure-prod:
