@@ -1,4 +1,4 @@
-```creating test slop```
+```creating test```
 const test = require('node:test');
 const assert = require('node:assert');
 const app = require('./server');
