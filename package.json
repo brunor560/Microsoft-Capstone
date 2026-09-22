@@ -1,10 +1,50 @@
 {
-  "name": "capstone",
+  "name": "agentic-development-capstone",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "USF Senior Capstone - Agentic Development for Software Engineering. Interactive framework for comparing AI model capabilities (Claude, Gemini, CoPilot, Codex) with standardized benchmarks.",
+  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cd baseline && npm start",
+    "dev": "cd baseline && npm run dev",
+    "test": "cd baseline && npm test",
+    "benchmark": "node benchmarks/benchmark-orchestrator.js",
+    "benchmark:watch": "node --watch benchmarks/benchmark-orchestrator.js",
+    "server": "cd baseline && npm start",
+    "setup": "npm install && cd baseline && npm install",
+    "clean": "rm -f benchmarks/results.json benchmarks/results.csv",
+    "export": "cd benchmarks && npm install node-fetch"
   },
-  "private": true
+  "keywords": [
+    "agentic",
+    "ai",
+    "benchmark",
+    "capstone",
+    "usf",
+    "microsoft",
+    "claude",
+    "gemini",
+    "copilot",
+    "codex",
+    "comparison",
+    "software-engineering"
+  ],
+  "author": "USF CIS 4910 Capstone Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brunor560/Microsoft-Capstone"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
 }

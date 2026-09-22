@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="19247e35-caea-40cf-84d4-c9a6a4d4a625" name="Changes" comment="First Model 9.16">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baseline/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baseline/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baseline/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baseline/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/benchmarks/benchmark-orchestrator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/ARCHITECTURE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/INTEGRATION-GUIDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/QUICKSTART.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/README-FILES-GENERATED.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/dist/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/dist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/dist/index.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/data-uri-to-buffer/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/file.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/file.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/from.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/from.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/fetch-blob/streams.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/FormData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/esm.min.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/esm.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/formdata-to-blob.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/formdata.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/formdata-polyfill/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527203617.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527212714.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527213345.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527213411.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527213803.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527214323.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/README_20210527214408.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527203842.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527203947.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527204259.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527204418.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527204756.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527204833.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527211208.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527211248.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527212722.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527212731.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527212746.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527212900.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527213022.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527213822.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527213843.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527213852.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527213910.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527214034.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527214643.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527214654.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/index_20210527214700.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527203733.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527203825.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527204621.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527204913.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527204925.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527205145.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/package_20210527205156.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/test_20210527205603.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/test_20210527205957.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/.history/test_20210527210021.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-domexception/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/@types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/body.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/errors/abort-error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/errors/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/errors/fetch-error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/headers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/utils/get-search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/utils/is-redirect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/utils/is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/utils/multipart-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/node-fetch/src/utils/referrer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/polyfill.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/ponyfill.mjs.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/types/polyfill.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/types/ponyfill.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/types/ts3.6/polyfill.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/types/ts3.6/ponyfill.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/dist/types/tsdoc-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/es2018/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/es6/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/ponyfill/es2018/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/ponyfill/es6/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/web-streams-polyfill/ponyfill/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Capstone.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JSX File" />
+        <option value="tsconfig.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;brunor560&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/brunor560/Microsoft-Capstone&quot;,
+    &quot;accountId&quot;: &quot;4d2e9ee7-73b4-41c8-a1a9-e4c59872f934&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.4553715492662116" />
+      <entry key="MS500" value="3.9792050648287343" />
+      <entry key="S2" value="8.030563770321464" />
+      <entry key="S5" value="10.308279584858383" />
+      <entry key="S10" value="13.573773231691062" />
+      <entry key="S30" value="28.430345174968156" />
+      <entry key="S60" value="39.67444209210996" />
+      <entry key="M2" value="48.01793314252968" />
+      <entry key="M5" value="54.74231631960607" />
+      <entry key="M10" value="60.12494064494233" />
+      <entry key="M15" value="64.25425387946265" />
+      <entry key="M30" value="71.54218198148476" />
+      <entry key="H1" value="77.22166005053212" />
+      <entry key="H2" value="80.80251461607207" />
+      <entry key="H4" value="82.81754268698216" />
+      <entry key="D1" value="84.62401965670455" />
+      <entry key="W1" value="84.94598053012332" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.3790311381610558" />
+      <entry key="MS500" value="3.95265275299895" />
+      <entry key="S2" value="8.018693330662943" />
+      <entry key="S5" value="10.297810428394607" />
+      <entry key="S10" value="13.545377633632306" />
+      <entry key="S30" value="28.380727095260696" />
+      <entry key="S60" value="39.63529602898706" />
+      <entry key="M2" value="47.99320701629068" />
+      <entry key="M5" value="54.73060826798283" />
+      <entry key="M10" value="60.1179463100636" />
+      <entry key="M15" value="64.2489345635592" />
+      <entry key="M30" value="71.53893403455845" />
+      <entry key="H1" value="77.21980774959712" />
+      <entry key="H2" value="80.80151691733039" />
+      <entry key="H4" value="82.81702378458196" />
+      <entry key="D1" value="84.62393018463948" />
+      <entry key="W1" value="84.94596767242592" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JQmfN0VGv8KWqj59djXFhgP3vz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.demo.html.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "C:/Users/Bruno/WebstormProjects/capstone/app/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\app\public" />
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone" />
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\baseline\public" />
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\baseline" />
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\benchmarks" />
+      <recent name="C:\Users\Bruno\WebstormProjects\capstone\docs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10315.144" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19247e35-caea-40cf-84d4-c9a6a4d4a625" name="Changes" comment="" />
+      <created>1789601768209</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789601768209</updated>
+      <workItem from="1789601769222" duration="1927000" />
+      <workItem from="1789603724341" duration="4000" />
+      <workItem from="1789754298195" duration="971000" />
+      <workItem from="1789950532992" duration="2172000" />
+    </task>
+    <task id="LOCAL-00001" summary="First Model 9.16">
+      <option name="closed" value="true" />
+      <created>1789602653213</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789602653213</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First Model 9.16">
+      <option name="closed" value="true" />
+      <created>1789602672658</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789602672658</updated>
+    </task>
+    <task id="LOCAL-00003" summary="First Model 9.16">
+      <option name="closed" value="true" />
+      <created>1789603033249</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789603033249</updated>
+    </task>
+    <task id="LOCAL-00004" summary="First Model 9.16">
+      <option name="closed" value="true" />
+      <created>1789603305322</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789603305322</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First Model 9.16">
+      <option name="closed" value="true" />
+      <created>1789603416161</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1789603416161</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Model 9.16" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Model 9.16" />
+  </component>
+</project>
