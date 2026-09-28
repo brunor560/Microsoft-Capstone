@@ -114,24 +114,41 @@ def test_referee_states_its_scope(tmp_path):
 
 
 def test_referee_refuses_unsupported_framework(tmp_path):
-    """The most dangerous failure mode this guards against.
+    """Repositories with no supported test framework must not be graded.
 
-    pytest collects zero tests from a Node project and reports F = 0 with
-    reliable=True -- indistinguishable from "the agent's code fails every
-    test". Refusing to grade is the only honest outcome.
+    Node projects are now supported through the `node-test` grader, so a
+    package.json can no longer be used to represent an unsupported project.
+
+    This fixture intentionally contains no pytest configuration, Python tests,
+    or package.json so framework detection should return None.
     """
-    (tmp_path / "package.json").write_text('{"scripts": {"test": "node --test"}}')
-    (tmp_path / "server.js").write_text("const x = 1;\n")
-    _git_init(tmp_path)
 
-    verdict = referee(tmp_path)
+    # Create an otherwise valid repository with no supported testing framework.
+    (tmp_path / "README.md").write_text(
+        "# Unsupported benchmark target\n"
+    )
 
+    verdict = referee(
+        tmp_path
+    )
+
+    # Since no supported framework can be detected, the referee must refuse
+    # to invent a score.
     assert verdict["final_score"] is None
-    assert verdict["reliable"] is False
-    assert verdict["dimensions"] == {}
-    assert "no grader available" in verdict["grader_errors"][0]
-    assert "node" in verdict["grader_errors"][0]
 
+    # No trustworthy grading occurred.
+    assert verdict["reliable"] is False
+
+    # An ungraded candidate must never be accepted.
+    assert verdict["accepted"] is False
+
+    assert verdict["dimensions"] == {}
+
+    assert any(
+        "No supported test framework"
+        in error
+        for error in verdict["grader_errors"]
+    )
 
 def test_referee_honours_an_explicit_test_command(tmp_path):
     """An override lets a supported-but-undetected target still be graded."""
