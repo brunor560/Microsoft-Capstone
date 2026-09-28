@@ -123,7 +123,11 @@ def test_scorecard_is_reliable_by_default():
 
 def test_grader_error_marks_the_card_unreliable():
     """A crashed grader must not masquerade as a legitimate zero."""
-    card = _card(functionality=0.0, grader_errors=["functionality: no report"])
+    card = _card(
+        functionality=0.0,
+        grader_errors=["functionality: no report"],
+    )
+
     assert card.reliable is False
     assert card.to_dict()["reliable"] is False
 
@@ -142,7 +146,11 @@ class _Grader:
         return self.error is not None
 
     def to_dict(self):
-        return {"name": self.name, "score": self.score, "error": self.error}
+        return {
+            "name": self.name,
+            "score": self.score,
+            "error": self.error,
+        }
 
 
 class _Telemetry:
@@ -150,7 +158,10 @@ class _Telemetry:
         self.total_tokens = total_tokens
 
     def token_efficiency(self, max_tokens):
-        return 100.0 * max(0.0, 1.0 - self.total_tokens / max_tokens)
+        return 100.0 * max(
+            0.0,
+            1.0 - self.total_tokens / max_tokens,
+        )
 
 
 class _Log:
@@ -160,7 +171,10 @@ class _Log:
 
     @property
     def collaboration_score(self):
-        return max(0, 100 - 10 * self.interventions)
+        return max(
+            0,
+            100 - 10 * self.interventions,
+        )
 
 
 def test_build_scorecard_from_components():
@@ -176,16 +190,30 @@ def test_build_scorecard_from_components():
     assert card.functionality == 80.0
     assert card.token_efficiency == pytest.approx(50.0)
     assert card.collaboration == 80.0
-    # 0.35(80) + 0.25(100) + 0.20(75) + 0.10(50) + 0.10(80) = 28+25+15+5+8
+
+    # 0.35(80) + 0.25(100) + 0.20(75) + 0.10(50) + 0.10(80)
+    # = 28 + 25 + 15 + 5 + 8 = 81
     assert card.final_score == pytest.approx(81.0)
     assert card.reliable is True
 
 
 def test_build_scorecard_propagates_grader_errors():
+    """Any grader error should make the final scorecard unreliable."""
+
     card = build_scorecard(
-        functionality=_Grader("functionality", 0.0, error="no report produced"),
-        security=_Grader("security", 100.0),
-        quality=_Grader("quality", 100.0),
+        functionality=_Grader(
+            "functionality",
+            0.0,
+            error="no report produced",
+        ),
+        security=_Grader(
+            "security",
+            100.0,
+        ),
+        quality=_Grader(
+            "quality",
+            100.0,
+        ),
         telemetry=_Telemetry(total_tokens=0),
         interventions=_Log(interventions=0),
         max_tokens=15000,
@@ -193,6 +221,42 @@ def test_build_scorecard_propagates_grader_errors():
 
     assert card.reliable is False
     assert "no report produced" in card.grader_errors[0]
+
+
+def test_security_grader_error_marks_scorecard_unreliable():
+    """A failed security scan must invalidate the overall benchmark result.
+
+    A legitimate detected leak also receives a security score of 0, so the
+    grader error is what distinguishes "unsafe code" from "security could not
+    be verified."
+    """
+
+    card = build_scorecard(
+        functionality=_Grader(
+            "functionality",
+            100.0,
+        ),
+        security=_Grader(
+            "security",
+            0.0,
+            error="security scanner exited with code 127",
+        ),
+        quality=_Grader(
+            "quality",
+            100.0,
+        ),
+        telemetry=_Telemetry(total_tokens=0),
+        interventions=_Log(interventions=0),
+        max_tokens=15000,
+    )
+
+    assert card.security == 0.0
+    assert card.reliable is False
+
+    assert any(
+        error.startswith("security:")
+        for error in card.grader_errors
+    )
 
 
 def test_evidence_records_all_dimensions():
@@ -206,6 +270,7 @@ def test_evidence_records_all_dimensions():
     )
 
     evidence = card.to_dict()["evidence"]
+
     for key in (
         "functionality",
         "security",
@@ -214,5 +279,6 @@ def test_evidence_records_all_dimensions():
         "collaboration",
     ):
         assert key in evidence
+
     assert evidence["collaboration"]["interventions"] == 1
     assert evidence["token_efficiency"]["total_tokens"] == 3000
