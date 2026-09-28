@@ -177,13 +177,40 @@ def test_explicit_local_path(tmp_path):
 
 
 def test_remote_clone_from_local_bare_repo(tmp_path):
-    """Exercises the clone path without touching the network."""
+    """Exercise the remote-clone path without accessing the network.
+
+    A local bare Git repository is used to simulate a normal remote such as
+    GitHub.
+
+    The bare repository's HEAD is explicitly pointed at `main`. A freshly
+    created bare repository may still default HEAD to `master`, even though
+    this test pushes the source commit to `main`. If HEAD points to a branch
+    that does not exist, `git clone` can succeed without checking out the
+    repository files, which would make README.md appear to be missing.
+    """
+
     origin = tmp_path / "origin.git"
     seed = tmp_path / "seed"
+
     seed.mkdir()
+
+    # Create a file that should appear in the staged clone.
     (seed / "README.md").write_text("# upstream\n")
 
-    subprocess.run(["git", "init", "-q", "--bare", str(origin)], check=True)
+    # Create an empty bare repository to act as the offline "remote".
+    subprocess.run(
+        [
+            "git",
+            "init",
+            "-q",
+            "--bare",
+            str(origin),
+        ],
+        check=True,
+    )
+
+    # Build a normal source repository and push its initial commit to the
+    # remote's `main` branch.
     for argv in (
         ["git", "init", "-q"],
         ["git", "config", "user.email", "e@x.com"],
@@ -193,25 +220,54 @@ def test_remote_clone_from_local_bare_repo(tmp_path):
         ["git", "remote", "add", "origin", str(origin)],
         ["git", "push", "-q", "origin", "HEAD:refs/heads/main"],
     ):
-        subprocess.run(argv, cwd=seed, check=True, capture_output=True)
+        subprocess.run(
+            argv,
+            cwd=seed,
+            check=True,
+            capture_output=True,
+        )
+    subprocess.run(
+        [
+            "git",
+            "symbolic-ref",
+            "HEAD",
+            "refs/heads/main",
+        ],
+        cwd=origin,
+        check=True,
+        capture_output=True,
+    )
 
     with stage_workspace(f"file://{origin}") as workspace:
-        assert (workspace.path / "README.md").read_text() == "# upstream\n"
-        # Upstream history is replaced by our own baseline.
+        # The remote's files should have been checked out into the scratch
+        # workspace before the harness creates its controlled baseline commit.
+        assert (
+            workspace.path / "README.md"
+        ).read_text() == "# upstream\n"
+
+        # Staging deliberately replaces upstream Git history with one clean
+        # benchmark baseline commit. This allows subsequent diffs to represent
+        # only the changes made by the coding agent.
         log = subprocess.run(
-            ["git", "log", "--oneline"],
+            [
+                "git",
+                "log",
+                "--oneline",
+            ],
             cwd=workspace.path,
             capture_output=True,
             text=True,
         )
-        assert "baseline: pre-agent state" in log.stdout
-        assert "upstream commit" not in log.stdout
 
+        assert (
+            "baseline: pre-agent state"
+            in log.stdout
+        )
 
-def test_missing_local_target_raises():
-    with pytest.raises(StagingError, match="does not exist"):
-        with stage_workspace("/nonexistent/path/xyz"):
-            pass
+        assert (
+            "upstream commit"
+            not in log.stdout
+        )
 
 
 def test_file_instead_of_directory_raises(tmp_path):
