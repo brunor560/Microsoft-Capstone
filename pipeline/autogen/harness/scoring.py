@@ -1,15 +1,34 @@
-"""Phase 5: the weighted scoring harness (project brief, section 6).
+"""Phase 5: weighted scoring harness (project brief, section 6).
 
 Final score = 0.35F + 0.25S + 0.20Q + 0.10T + 0.10H
 
-  F -- Functionality  (pytest pass percentage)
-  S -- Security       (binary: any leak => 0)
-  Q -- Code Quality   (four sub-criteria vs baseline)
-  T -- Token Efficiency (from telemetry)
-  H -- Collaboration  (from the intervention log)
+  F -- Functionality
+       Percentage of acceptance tests passed.
 
-T and H are computed on the host from data already captured in Phases 3-4;
-F, S and Q come from graders that run inside the sandbox.
+  S -- Security
+       100 when all required security checks complete successfully and find
+       no leaks.
+       0 when a leak is detected OR when security cannot be verified.
+
+       These two zero-score cases are distinguished by GraderResult.error:
+           leak detected       -> score 0, no grader error
+           scanner/check fails -> score 0, grader error, unreliable scorecard
+
+  Q -- Code Quality
+       Quality criteria compared with the pre-agent baseline where possible.
+
+  T -- Token Efficiency
+       Derived from measured model token usage.
+
+  H -- Collaboration
+       Derived from recorded human interventions.
+
+F, S and Q are measured by sandbox graders. T and H are computed from
+host-side telemetry and intervention records.
+
+A final numeric score may still be produced when a grader fails, but the
+scorecard is marked unreliable through `grader_errors`. Consumers should
+never treat an unreliable scorecard as a valid benchmark result.
 """
 
 from __future__ import annotations
