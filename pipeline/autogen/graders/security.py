@@ -5,17 +5,7 @@ Security is intentionally fail-closed.
 A benchmark receives a security score of 100 only when all security checks
 successfully execute and report no secret findings or forbidden patterns.
 
-The original implementation had an important fail-open behavior:
-
-    TruffleHog crashes / is missing
-        -> produces no JSON findings
-        -> findings == []
-        -> security score = 100
-
-That incorrectly treated "security could not be verified" as "security is
-clean."
-
-This implementation separates three possible outcomes:
+There are three possible outcomes:
 
     1. CLEAN
        All scanners ran successfully and found nothing.
