@@ -39,3 +39,7 @@
 - These results describe one pilot task and do not establish a tool winner.
 - Saved JavaScript files are evidence copies. Their original filenames
   were server.js and test.js; they are not standalone runnable apps.
+
+- The separate leading-zero grading test was validated:
+  reference implementation: 1 passed, 0 failed;
+  preserved original implementation: 0 passed, 1 failed (400 versus 204).
