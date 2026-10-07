@@ -43,15 +43,6 @@ app.put('/api/todos/:id', (req, res) => {
   res.status(200).json(todo);
 });
 
-app.delete('/api/todos/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const index = todos.findIndex(t => t.id === id);
-  if (index === -1) return res.status(404).json({ error: 'Todo not found' });
-
-  todos.splice(index, 1);
-  res.status(204).send();
-});
-
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Baseline app running at http://localhost:${PORT}`);

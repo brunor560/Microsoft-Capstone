@@ -11,25 +11,37 @@ acceptance:
 
 ## Objective
 
-The todo API in `server.js` currently supports listing (`GET /api/todos`) and
-creating (`POST /api/todos`) tasks. Add the ability to delete one.
+Work in app/. The todo API already supports GET, POST, and PUT.
+Implement DELETE /api/todos/:id.
 
-Implement `DELETE /api/todos/:id` with the following behaviour:
+## Requirements
 
-- Deleting an existing todo returns **204** with an empty body.
-- Deleting an id that does not exist returns **404**.
-- A non-numeric id returns **400**.
-- After a successful delete, the todo no longer appears in `GET /api/todos`.
+- A valid ID contains only decimal digits, represents a positive integer,
+  and is within JavaScript's safe-integer range.
+- Invalid IDs return HTTP 400. Examples include abc, 1abc, 1.5, 0,
+  -1, and 9007199254740992.
+- Deleting an existing todo returns HTTP 204 with an empty response body.
+- A valid ID that does not exist returns HTTP 404.
+- After deletion, GET /api/todos must no longer include the deleted todo.
+- Deleting the same ID again returns HTTP 404.
+- Invalid or unsuccessful deletion requests must not change any todos.
+- Successful deletion must leave all other todos unchanged.
+- Preserve existing GET, POST, and PUT behavior.
 
 ## Constraints
 
-- Modify only `server.js` and `test.js`.
-- Do not add new runtime dependencies; `express` is already available.
-- Preserve the existing endpoints' behaviour exactly.
-- Add test cases to `test.js` covering all four behaviours above.
+- Modify only app/server.js and app/test.js.
+- Do not add dependencies or change package files.
+- Preserve the existing tests and add tests covering the requirements.
+- Do not modify the frontend or other application copies.
 
-## Notes
+## Verification and reporting
 
-`test.js` currently has a stray Markdown code fence on its first line
-(` ```creating test slop``` `) that makes the file invalid JavaScript. Fixing
-it is in scope and expected.
+Run npm test from app/.
+
+Report:
+- A summary of the changes.
+- The commands executed and actual test results.
+- Any errors or unresolved problems.
+
+Do not commit or push.
