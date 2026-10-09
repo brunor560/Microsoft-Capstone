@@ -1,2 +1,3 @@
 # Microsoft-Capstone
-CIS 4910 Fall 2026 - Group #3
+# Microsoft 2 - Group #3
+# Branch holds all the neccessary documentation for the project
