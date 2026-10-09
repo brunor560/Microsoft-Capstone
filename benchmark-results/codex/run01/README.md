@@ -62,6 +62,23 @@ The original acceptance grader's SHA256 matched the shared procedure's expected 
 
 `A457CB6ABACD3F46C65DA02579AC09C16EAAB8D4BA7F608A998078A427ABD947`
 
+## Token usage
+
+Token usage was recovered from this run's Codex session log. The log also confirms `gpt-6.1-sol` with low reasoning. Counts are cumulative across model calls, rather than the size of one prompt.
+
+| Category | Tokens |
+|---|---:|
+| Uncached input | 11,951 |
+| Cached input | 100,864 |
+| Input including cached input | 112,815 |
+| Output | 1,527 |
+| Total including cached input | 114,342 |
+| Total excluding cached input | 13,478 |
+
+The log separately reports 13 reasoning output tokens, which are included in output and should not be added again. Cached input is included in the input total. [Machine-readable usage](token-usage.json) preserves the recorded counters and derived uncached totals.
+
+Dollar cost is unavailable, not zero: this session used ChatGPT authentication, and no per-run charge was captured. API rates should not be substituted for subscription usage; see [OpenAI's pricing documentation](https://learn.chatgpt.com/docs/pricing).
+
 ## Scope verification and artifacts
 
 A SHA256 comparison against the saved pre-agent manifest confirmed that only `app/server.js` and `app/test.js` changed, excluding installed `node_modules`. Package files, the task specification, and frontend files were unchanged.

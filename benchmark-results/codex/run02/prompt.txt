@@ -1,0 +1,8 @@
+Read pipeline/tasks/001-add-delete-endpoint.md and complete the task
+exactly as specified.
+
+Work only within this project folder. Do not access parent folders,
+external grading files, reference solutions, or other runs.
+
+Run the required tests and report the actual results.
+Do not commit or push.
