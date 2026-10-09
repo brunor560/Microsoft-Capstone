@@ -1,0 +1,2 @@
+6e366e23e7aef27c687448c1e758dd9b990fb7bf989fd41a388029dd70dec6cb  delete-acceptance.test.cjs
+3c36a27c48a6e7f485280570bc8fae9394cbc63d8283997447c56e2d0da5e7d0  delete-leading-zero.test.cjs
