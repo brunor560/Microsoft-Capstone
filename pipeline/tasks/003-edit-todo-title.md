@@ -80,6 +80,11 @@ This provides a stable way to target a row regardless of its title
 or position. Other styling and internal implementation choices
 are unrestricted within the file constraints.
 
+Title-validation and save-failure errors must appear inside the
+affected todo's list item in an element with role="alert".
+The element must contain a visible, nonempty message explaining
+the error. Exact wording is unrestricted.
+
 ## Constraints
 
 - Modify only:
