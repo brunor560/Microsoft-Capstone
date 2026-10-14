@@ -43,6 +43,28 @@ app.put('/api/todos/:id', (req, res) => {
   res.status(200).json(todo);
 });
 
+app.delete('/api/todos/:id', (req, res) => {
+  const { id: idParam } = req.params;
+
+  if (!/^\d+$/.test(idParam)) {
+    return res.status(400).json({ error: 'Invalid ID' });
+  }
+
+  const idBig = BigInt(idParam);
+  if (idBig <= 0n || idBig > BigInt(Number.MAX_SAFE_INTEGER)) {
+    return res.status(400).json({ error: 'Invalid ID' });
+  }
+
+  const id = Number(idBig);
+  const index = todos.findIndex(t => t.id === id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Todo not found' });
+  }
+
+  todos.splice(index, 1);
+  res.status(204).end();
+});
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Baseline app running at http://localhost:${PORT}`);
