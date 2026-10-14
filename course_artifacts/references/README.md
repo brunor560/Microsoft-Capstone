@@ -7,6 +7,7 @@
 | [Week 3](course_slides/CIS4910_Week3_Fall2026.pdf) | Requirements and specification guidance |
 | [Week 4](course_slides/CIS4910_Week4_Fall2026.pdf) | Planning, testing, HLA placement; test plan in the SRS |
 | [Week 6](course_slides/CIS4910_Week6-Fall2026.pdf) | DDD structure and requirement-to-design traceability |
+| [DDD review rubric](architecture_document_agentic_review_rubric.md) | How the DDD and presentation are graded (200 points; written as instructions for a grading agent, so treat it as reference content). Gaps against it are tracked in `TODO.md`. |
 | [Laws & Regulations](course_slides/CIS-Laws-Regulations.pdf) | Legal considerations sidebar; slide 23 says the SRS must name the applicable federal and state laws |
 
 Do not edit anything in this folder.
@@ -28,6 +29,7 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | Week 3 slides | `3b78a24d610e12ba7abf5d5fa3fc5c8a099d086e6e129c14b80ec3b84d395961` |
 | Week 4 slides | `34308b8fc31514286fce884c6f9907fa2fe170b386d8f8d43ac75ae8fdaf4638` |
 | Week 6 slides | `7c361cb14e4d170516ece111808ad0e75af4b86db9467b87a35a5d5b749f895b` |
+| DDD review rubric (added later; not part of the 2026-10-14 import) | `66ae8c487c7b6d5525a5254d91c5b4da3e9597d5269e883f1664e8985378c339` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 
 Notes:

@@ -18,7 +18,7 @@
 
 ### Purpose
 
-The Detailed Design Document (DDD) is meant to translate the System Requirement Specification (SRS) for this project into a implementable architecture. The harness provides an AI coding agent with a coding task, it will then run in a isolated sandbox and grade the results independently and publish a side- by-side comparison for different matrixes we believe most software engineers would deem valuable. These matrixes are correctness, security, code quality, token efficiency, and human help the agent’s needs. This document defines the architectural style, the components and their responsibilities, the interfaces between them, the data they persist, the infrastructure they run on, and the design decisions and trade-offs behind each choice.
+The Detailed Design Document (DDD) is meant to translate the System Requirement Specification (SRS) for this project into an implementable architecture. The harness provides an AI coding agent with a coding task, it will then run in an isolated sandbox and grade the results independently and publish a side-by-side comparison for different metrics we believe most software engineers would deem valuable. These metrics are correctness, security, code quality, token efficiency, and human help the agent’s needs. This document defines the architectural style, the components and their responsibilities, the interfaces between them, the data they persist, the infrastructure they run on, and the design decisions and trade-offs behind each choice.
 
 ### Sponsor and Context
 
@@ -305,18 +305,18 @@ Files are written to a temporary path, validated, then renamed. Suite files are 
 | Module | Processing | Failure handling | Verification |
 | --- | --- | --- | --- |
 | M01 Contracts | Validate inputs and compute hashes before any run starts | Invalid input stops the run before an ID is assigned | Malformed and out-of-range inputs |
-| M02 Controller | Assign run ID; check turn, time, token, spend, and rate budgets before each step | A finalizer always writes one record; one rerun for infrastructure errors | TC-2.1-x, TC-2.5-x |
+| M02 Controller | Assign run ID; check turn, time, token, spend, and rate budgets before each step | A finalizer always writes one record; one rerun for infrastructure errors | TC-2.1-1 to TC-2.1-3, TC-2.5-1 to TC-2.5-4 |
 | M03 Staging | Copy manifest files only; install from lockfile; record tree hash | Reject .env and links outside the target | TC-1.2-3, TC-1.4-2 |
 | M04 Model adapter | Record every call with latency and usage completeness | Two retries, then infrastructure_error | TC-2.5-3, TC-4.2-3 |
-| M05 Coder loop | Count turns; return output truncated to 2,000 characters; request approval after two failed turns | Approval expires after 180 s; run aborted | TC-2.2-x, TC-2.4-x |
-| M06 Sandbox | Network none, non-root, 2 CPUs, 2 GB, 128 processes, 60 s watchdog | Kill and remove containers on every path | TC-1.1-x to TC-1.4-x |
-| M07 Freezer | Stop agent, snapshot, hash, compare with seed | Out-of-manifest change: failed, total 0 | TC-2.3-x |
-| M08 Evaluation | Run evaluator suites, secret scan, license scan, quality checks | Missing tool or report: infrastructure_error | TC-1.5-x, TC-4.1-x, TC- 4.3-x |
+| M05 Coder loop | Count turns; return output truncated to 2,000 characters; request approval after two failed turns | Approval expires after 180 s; run aborted | TC-2.2-1 to TC-2.2-3, TC-2.4-1 to TC-2.4-4 |
+| M06 Sandbox | Network none, non-root, 2 CPUs, 2 GB, 128 processes, 60 s watchdog | Kill and remove containers on every path | TC-1.1-1 to TC-1.4-3 |
+| M07 Freezer | Stop agent, snapshot, hash, compare with seed | Out-of-manifest change: failed, total 0 | TC-2.3-1, TC-2.3-2 |
+| M08 Evaluation | Run evaluator suites, secret scan, license scan, quality checks | Missing tool or report: infrastructure_error | TC-1.5-1 to TC-1.5-3, TC-4.1-1 to TC-4.1-3, TC-4.3-1 to TC-4.3-3 |
 | M09 Scoring | Apply formulas, zero override, and aggregation | Refuse to score if a required dimension is missing | Formula fixtures |
-| M10 Record writer | Validate and write one record atomically | On failure, block export and publication | TC-4.2-x |
-| M11 Assessment | Define profiles; record each cell with a primary source and evidence index entry; second reviewer | No source: “Not established”; never scored | TC-5.1-x to TC-5.5-x; every cell (36 under the matrix specification's two profiles) |
-| M12 Export and referee | Apply patch onto upstream; grade in CI from base branch | Unsafe history or failed checks: no export | TC-4.5-x |
-| M13 Release builder | Validate and publish records with AI label and metadata | Any failed check keeps the previous release | TC-4.4-x |
+| M10 Record writer | Validate and write one record atomically | On failure, block export and publication | TC-4.2-1 to TC-4.2-5 |
+| M11 Assessment | Define profiles; record each cell with a primary source and evidence index entry; second reviewer | No source: “Not established”; never scored | TC-5.1-1 to TC-5.5-2; every cell (36 under the matrix specification's two profiles) |
+| M12 Export and referee | Apply patch onto upstream; grade in CI from base branch | Unsafe history or failed checks: no export | TC-4.5-1, TC-4.5-2 |
+| M13 Release builder | Validate and publish records with AI label and metadata | Any failed check keeps the previous release | TC-4.4-1 to TC-4.4-4 |
 
 ### Module Design
 
@@ -392,6 +392,38 @@ If any agent lacks token counts, T is dropped and totals are out of 90. Scores a
 
 Task 001 ID rule: accept only digits representing a positive safe integer (01 valid; 0, -1, 1.5, 1abc return 400). parseInt alone is insufficient.
 
+## Requirements Traceability
+
+Each SRS specification is linked to the modules that realize it (from the System Decomposition table), the architecture decisions that bear on it, and the exact SRS test cases. Module links come from this document's System Decomposition table. Decision links are the drafter's reading of what each decision affects; the decision records do not name specifications. None of the links has been independently reviewed. Module status is as reported in System Decomposition; a link does not mean the specification is implemented. The SRS test plan owns the test cases; they are listed here and not repeated.
+
+| SRS spec | Modules | Decisions | SRS test cases |
+| --- | --- | --- | --- |
+| 1.1 Network egress boundary | M06 | None recorded | TC-1.1-1 to TC-1.1-4 |
+| 1.2 Secret isolation | M03 | None recorded | TC-1.2-1 to TC-1.2-3 |
+| 1.3 Resource quotas | M06 | ADR-03 | TC-1.3-1 to TC-1.3-5 |
+| 1.4 Ephemeral sandbox lifecycle | M03, M06 | None recorded | TC-1.4-1 to TC-1.4-3 |
+| 1.5 Fail-closed auditing | M08 | None recorded | TC-1.5-1 to TC-1.5-3 |
+| 2.1 Turn management | M02, M05 | ADR-03 | TC-2.1-1 to TC-2.1-3 |
+| 2.2 Execution feedback loop | M05 | None recorded | TC-2.2-1 to TC-2.2-3 |
+| 2.3 Targeted file patching | M01, M07 | None recorded | TC-2.3-1, TC-2.3-2 |
+| 2.4 Human-in-the-loop escalation | M02, M05 | None recorded | TC-2.4-1 to TC-2.4-4 |
+| 2.5 Cost and rate guardrails | M01, M02, M04 | ADR-03, ADR-08 | TC-2.5-1 to TC-2.5-4 |
+| 3.1 to 3.3 Testbed | No numbered module (see Application servers) | None recorded | TC-3.1-1 to TC-3.3-3 |
+| 4.1 Evaluator-owned acceptance suites | M08 | ADR-04 | TC-4.1-1 to TC-4.1-3 |
+| 4.2 Run telemetry validation | M04, M10 | ADR-06, ADR-08 | TC-4.2-1 to TC-4.2-5 |
+| 4.3 License scan | M08 | None recorded | TC-4.3-1 to TC-4.3-3 |
+| 4.4 Microsite publishing | M13 | ADR-09 | TC-4.4-1 to TC-4.4-4 |
+| 4.5 Trusted-base grading | M12 | ADR-10, ADR-11 | TC-4.5-1, TC-4.5-2 |
+| 5.1 to 5.5 Track A feature matrix | M11 | ADR-13 | TC-5.1-1 to TC-5.5-2 |
+| Test plan scoring formulas | M09 | ADR-07 | Formula fixtures |
+
+Open items in this mapping:
+
+- The SRS refers to non-functional requirements (NFR-L1, NFR-R1, NFR-R2 and the TC-NFR tests) but contains no non-functional requirements section, so none can be mapped to a module here.
+- The SRS test plan lists TC-4.5-3 for grading, but Spec 4.5 defines only TC-4.5-1 and TC-4.5-2.
+- Patterns and rationale are given for the architecture as a whole (Scope of Project Architecture and the decision records), not per specification. They are not repeated per row, to avoid inventing a rationale for each.
+- ADR-01, ADR-02, ADR-05 and ADR-12 are not linked to a specific specification above because the SRS does not name one for them.
+
 ## Architecture Decision Records
 
 | ADR | Decision | Alternative rejected | Status |
@@ -448,6 +480,42 @@ Security is assessed as a property of the pipeline, not the model. Whether a sec
 
 The referee workflow triggers on main, but the default branch is master. It builds graders from the pull request and comments in the same job (E15). The proposed workflow grades with base-branch code in an unprivileged job and publishes from a separate job (Spec 4.5). Legal items L1–L5 in the SRS map to these controls: spend and rate limits (L1), license scanning (L2), container limits (L3), dependency notices (L4), and redacted records with AI labeling (L5).
 
+## Cross-Cutting Concerns
+
+This section gathers existing design content by concern. It adds no new targets; where a figure is missing, it says so. Status labels follow System Decomposition.
+
+| Concern | Design | Status and limits |
+| --- | --- | --- |
+| Observability | Telemetry is event-based and append-only: every stage emits events that are ingested later. The model adapter (M04) records every call with latency and whether usage is complete. The record writer (M10) writes one validated record per run. Each result records its host profile (CPU, RAM, OS, Docker version, image digest). Raw logs stay private; only redacted records enter Git. | Today the runner writes logs/<task>_<run>.json (schema 1) and a CI referee comment. The schema 3 record is proposed. The telemetry overhead target (under 5%) is not measured. No monitoring or alerting service is designed. |
+| Fault tolerance | The controller (M02) always finalizes one record and reruns an infrastructure error once. The model adapter retries twice, then ends the run as infrastructure_error. The sandbox (M06) kills and removes containers on every path. A missing scanner or report is infrastructure_error, not a pass. Records are written to a temporary path, validated, then renamed. A failed release check keeps the previous release. | Today an export error can prevent the record from being written, and the 60 s watchdog and resource limits are not enforced. Both are in the Risks table below. |
+| Configuration management | Model profiles and limits are inputs; secrets come from host environment variables and never from YAML. A proposed campaign manifest fixes the commit, tasks, suite hash, image digest, profile, limits, spend cap, and metric contract. Lockfiles are pinned, CI actions are pinned by commit SHA, and a new task revision, grader version, or model version starts a new cohort. | The campaign manifest and tool profile are proposed. Only azure-prod is benchmark-valid. |
+| Security | See Security Considerations. | Controls are mostly planned, not enforced. |
+
+### Capacity and scaling
+
+The benchmark is 96 runs (4 agents × 8 tasks × 3 runs). At the 120 s active-time limit that is at most 3.2 hours of agent time, excluding grading and reruns. One scored run executes at a time; parallel runs wait until the global Docker patch is removed. The harness runs on the operator's machine (at least 16 GB RAM and 100 GB free disk, assumption A-1) and each sandbox is limited to 2 CPUs, 2 GB RAM, and 128 processes. The planning estimate is 5 MiB per run record, about 480 MiB for 96 runs, and it has not been measured. The design does not scale beyond one operator host: hosting the harness as a service is out of scope (C-1). Latency targets appear in System Size and Performance, and most are not yet measured.
+
+## Risks, Assumptions and Mitigations
+
+Assumptions are listed under Architectural Goals, Constraints and Assumptions (A-1 to A-7). The risks below come from statements already in this document. Mitigations are the proposed designs, not implemented controls.
+
+| Risk | Effect | Mitigation (status) | Validation |
+| --- | --- | --- | --- |
+| Staging does not exclude .env files | Credentials could reach the sandbox (Spec 1.2) | Copy only manifest-listed files; reject .env and external links (proposed) | TC-1.2-3 |
+| Resource limits and the 60 s watchdog are not enforced | Runaway or abusive commands (Spec 1.3) | Per-container limits and watchdog (proposed) | TC-1.3-1 to TC-1.3-5 |
+| Pilot took about 6.5 minutes against a 120 s active-time target | Runs may time out before scoring | Review the limit before scored runs (open decision) | Timed scored runs; none yet |
+| Referee workflow grades code from the pull request and triggers on main, but the default branch is master | Grading could be tampered with | Grade base-branch code in an unprivileged job (proposed, ADR-11) | TC-4.5-1, TC-4.5-2 |
+| Schema v2 cannot record unknown usage or an unscored infrastructure failure | Wrong zeros in scores | Schema v3 (proposed, ADR-06) | TC-4.2-1 to TC-4.2-5 |
+| Graders run in the candidate's tree with a read-write mount | Candidate can alter its own grading | Evaluator-owned suites and a read-only frozen candidate (proposed, ADR-04) | TC-4.1-1 to TC-4.1-3 |
+| Baseline app/ fails its tests while the SRS names it as the clean baseline | Scores measured against a broken baseline | Choose the canonical baseline (open decision) | TC-3.3-1 |
+| Tasks T3 to T8 are not written | The 96-run campaign cannot start as specified | Author the tasks (planned) | Task-suite review |
+| An agent does not report token counts (A-7) | Token score dropped; totals out of 90 | Documented fallback in the metric rules | Formula fixtures |
+| AutoGen is in maintenance mode | Dependency may stop receiving fixes | Isolate behind an adapter and pin (ADR-05) | None yet |
+| Docker shares the host kernel | Sandbox escape | Non-root container, network none, limits [16] | TC-1.1-1 to TC-1.4-3 |
+| The $100 Azure credit is the budget limit (C-3) | Campaign could stop early | Spend cap and per-run token cap (Spec 2.5) | TC-2.5-1 to TC-2.5-4 |
+
+Validation approach: harness verification checks H-0 to H-8 in the SRS test plan, the module verification column in Module Specifications, and the Task 001 pilot as the only measured run so far. A passing mapping or a designed test is not evidence that a control works.
+
 ## References
 
 [1] Microsoft 2 Team 3, “Microsoft-Capstone,” GitHub repository, commit 3589ef5, Oct. 2026. [Online]. Available: https://github.com/brunor560/Microsoft-Capstone
@@ -498,6 +566,68 @@ The referee workflow triggers on main, but the default branch is master. It buil
 
 ## APPENDIX A: Acronyms
 
+| Acronym | Meaning |
+| --- | --- |
+| ADR | Architecture decision record |
+| AI | Artificial intelligence |
+| API | Application programming interface |
+| CI | Continuous integration |
+| CLI | Command-line interface |
+| CPU | Central processing unit |
+| DDD | Detailed Design Document |
+| FERPA | Family Educational Rights and Privacy Act |
+| HLA | High-level architecture |
+| ISO/IEC/IEEE | International Organization for Standardization / International Electrotechnical Commission / Institute of Electrical and Electronics Engineers |
+| JSON | JavaScript Object Notation |
+| LF | Line feed (line-ending character) |
+| MCP | Model Context Protocol |
+| NIST | National Institute of Standards and Technology |
+| OS | Operating system |
+| OWASP | Open Worldwide Application Security Project |
+| RAM | Random-access memory |
+| SDK | Software development kit |
+| SHA | Secure Hash Algorithm (also a Git commit identifier) |
+| SRS | System Requirements Specification |
+| TC | Test case (SRS identifier such as TC-1.2-3) |
+| UI | User interface |
+| URL | Uniform Resource Locator |
+| USF | University of South Florida |
+| VM | Virtual machine |
+| WCAG | Web Content Accessibility Guidelines |
+| YAML | YAML Ain't Markup Language (configuration file format) |
+
 ## APPENDIX B: Glossary of Terms
 
+| Term | Definition |
+| --- | --- |
+| Acceptance suite | Evaluator-owned tests that grade a run; the agent cannot read, modify, skip, or delete them (SRS definition). |
+| Campaign | One benchmark cohort defined by a committed manifest: commit, tasks, suite hash, image digest, profile, limits, spend cap, and metric contract (proposed). |
+| Candidate | The code an agent produces for a task, before and after it is frozen for grading. |
+| Cohort | A set of results that may be compared. A new task revision, grader version, or model version starts a new cohort. |
+| Forbidden action | An attempt to reach the network from the sandbox, to change a file outside the task manifest, or to modify, skip, or delete an acceptance test (SRS definition). |
+| Frozen candidate | A snapshot of the candidate, hashed and compared with the seed, that graders read without changing it (module M07). |
+| Harness | The system this document designs: it runs an agent on a task in a sandbox, grades the result independently, and publishes scores. |
+| Run | One attempt by one agent at one task in a fresh sandbox; it produces one run record. |
+| Run record (RunRecord) | The JSON document describing one run, written once at the end of the run. |
+| Run status | Exactly one of passed, failed, timeout, aborted, infrastructure_error (SRS definition). |
+| Sandbox | The isolated container in which agent-generated code and commands run. |
+| Staging | Copying the task seed into the run workspace before the agent starts (module M03). |
+| Task manifest | The list of files an agent may change for a task. |
+| Testbed | The reference application (web client, REST API, and tests) that agents modify. |
+| Track A | The documentation-only feature assessment of commercial tools (module M11). |
+| Track B | The benchmark of agents run in sandboxes (modules M01 to M10, M12, M13). |
+| Turn | One model response and the commands it triggers. |
+| Watchdog | The host-side timer that kills a sandbox command that runs too long. |
+
 ## APPENDIX C: Documents, type and source
+
+| Document | Type | Source |
+| --- | --- | --- |
+| System Requirements Specification, ver. 1.1 (Sept. 29, 2026) | Requirements | Team 3 [2] |
+| Feature Matrix Specification, ver. 0.2 (Oct. 9, 2026) | Specification | Team 3 repository [4] |
+| Project repository, commit 3589ef5 | Code and artifacts | GitHub [1] |
+| Sponsor meeting transcripts and notes (Sept. 4, Sept. 25, Oct. 2, 2026) | Meeting records | Sponsor and Team 3 [3] |
+| Earlier DDD drafts (ver. 0.1 and 0.2, Oct. 8 and 9, 2026) | Design drafts | Team 3 members [5], [6], [7] |
+| DELETE endpoint pilot procedure (Oct. 7, 2026) | Pilot procedure and results | Team member branch [8] |
+| Team Status Report and Timesheet, Week 3 | Status record | Team 3 repository [9] |
+| Standards, vendor documentation, and research papers | External references | See References [10] to [23] |
