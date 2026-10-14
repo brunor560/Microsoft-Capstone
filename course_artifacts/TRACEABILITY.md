@@ -7,28 +7,40 @@ Identifiers: `SRS:Spec`, `SRS:TC`, `SRS:NFR`, `SRS:F` for the SRS; `DDD:M01–M1
 | SRS specification | DDD design elements | Concern | SRS test IDs found | Status |
 | --- | --- | --- | --- | --- |
 | SRS:Spec 1.1 | M06 | Network boundary | SRS:TC-1.1-1, SRS:TC-1.1-2, SRS:TC-1.1-3, SRS:TC-1.1-4 | Unreviewed |
-| SRS:Spec 1.2 | M03, M04, M06 | Secret isolation | SRS:TC-1.2-1, SRS:TC-1.2-2, SRS:TC-1.2-3 | Unreviewed |
+| SRS:Spec 1.2 | M03 | Secret isolation | SRS:TC-1.2-1, SRS:TC-1.2-2, SRS:TC-1.2-3 | Unreviewed |
 | SRS:Spec 1.3 | M06 | Resource limits | SRS:TC-1.3-1, SRS:TC-1.3-2, SRS:TC-1.3-3, SRS:TC-1.3-4, SRS:TC-1.3-5 | Unreviewed |
 | SRS:Spec 1.4 | M03, M06 | Sandbox lifecycle | SRS:TC-1.4-1, SRS:TC-1.4-2, SRS:TC-1.4-3 | Unreviewed |
 | SRS:Spec 1.5 | M08 | Fail-closed auditing | SRS:TC-1.5-1, SRS:TC-1.5-2, SRS:TC-1.5-3 | Unreviewed |
 | SRS:Spec 2.1 | M02, M05 | Turn/time control | SRS:TC-2.1-1, SRS:TC-2.1-2, SRS:TC-2.1-3 | Unreviewed |
-| SRS:Spec 2.2 | M05, M06 | Execution feedback | SRS:TC-2.2-1, SRS:TC-2.2-2, SRS:TC-2.2-3 | Unreviewed |
+| SRS:Spec 2.2 | M05 | Execution feedback | SRS:TC-2.2-1, SRS:TC-2.2-2, SRS:TC-2.2-3 | Unreviewed |
 | SRS:Spec 2.3 | M01, M07 | File manifest/freeze | SRS:TC-2.3-1, SRS:TC-2.3-2 | Unreviewed |
 | SRS:Spec 2.4 | M02, M05 | Human escalation | SRS:TC-2.4-1, SRS:TC-2.4-2, SRS:TC-2.4-3, SRS:TC-2.4-4 | Unreviewed |
 | SRS:Spec 2.5 | M01, M02, M04 | Cost/rate/provider behavior | SRS:TC-2.5-1, SRS:TC-2.5-2, SRS:TC-2.5-3, SRS:TC-2.5-4 | Unreviewed |
-| SRS:Spec 3.1 | M03, M06 | Baseline application | SRS:TC-3.1-1, SRS:TC-3.1-2, SRS:TC-3.1-3, SRS:TC-3.1-4, SRS:TC-3.1-5 | Unreviewed |
-| SRS:Spec 3.2 | Testbed UI; module mapping pending | Testbed client | SRS:TC-3.2-1, SRS:TC-3.2-2 | Unreviewed |
-| SRS:Spec 3.3 | M03, M08 | Baseline test execution | SRS:TC-3.3-1, SRS:TC-3.3-2, SRS:TC-3.3-3 | Unreviewed |
-| SRS:Spec 4.1 | M07, M08 | Independent suites | SRS:TC-4.1-1, SRS:TC-4.1-2, SRS:TC-4.1-3 | Unreviewed |
+| SRS:Spec 3.1 | None numbered (testbed) | Baseline application | SRS:TC-3.1-1, SRS:TC-3.1-2, SRS:TC-3.1-3, SRS:TC-3.1-4, SRS:TC-3.1-5 | Unreviewed |
+| SRS:Spec 3.2 | None numbered (testbed) | Testbed client | SRS:TC-3.2-1, SRS:TC-3.2-2 | Unreviewed |
+| SRS:Spec 3.3 | None numbered (testbed) | Baseline test execution | SRS:TC-3.3-1, SRS:TC-3.3-2, SRS:TC-3.3-3 | Unreviewed |
+| SRS:Spec 4.1 | M08 | Independent suites | SRS:TC-4.1-1, SRS:TC-4.1-2, SRS:TC-4.1-3 | Unreviewed |
 | SRS:Spec 4.2 | M04, M10 | Telemetry | SRS:TC-4.2-1, SRS:TC-4.2-2, SRS:TC-4.2-3, SRS:TC-4.2-4, SRS:TC-4.2-5 | Unreviewed |
 | SRS:Spec 4.3 | M08 | License scanning | SRS:TC-4.3-1, SRS:TC-4.3-2, SRS:TC-4.3-3 | Unreviewed |
 | SRS:Spec 4.4 | M13 | Static publication | SRS:TC-4.4-1, SRS:TC-4.4-2, SRS:TC-4.4-3, SRS:TC-4.4-4 | Unreviewed |
-| SRS:Spec 4.5 | M12 | Trusted-base CI | SRS:TC-4.5-1, SRS:TC-4.5-2, SRS:TC-4.5-3 | Unreviewed |
+| SRS:Spec 4.5 | M12 | Trusted-base CI | SRS:TC-4.5-1, SRS:TC-4.5-2 | Unreviewed; gap: TC-4.5-3 is cited but not defined |
 | SRS:Spec 5.1 | M11 | Track A profile definition | SRS:TC-5.1-1, SRS:TC-5.1-2 | Unreviewed |
 | SRS:Spec 5.2 | M11 | Track A catalog and status labels | SRS:TC-5.2-1, SRS:TC-5.2-2, SRS:TC-5.2-3 | Unreviewed |
 | SRS:Spec 5.3 | M11 | Track A evidence and cell records | SRS:TC-5.3-1, SRS:TC-5.3-2, SRS:TC-5.3-3 | Unreviewed |
 | SRS:Spec 5.4 | M11 | Track A review and completion | SRS:TC-5.4-1, SRS:TC-5.4-2 | Unreviewed |
 | SRS:Spec 5.5 | M11 | Track A scope boundary and presentation | SRS:TC-5.5-1, SRS:TC-5.5-2 | Unreviewed |
+
+## Mapping notes and gaps found
+
+Module mappings follow the SRS column of the DDD System Decomposition table and the Requirements Traceability table in the DDD. An earlier seed also listed M04 and M06 for Spec 1.2, M06 for Spec 2.2, M03 and M06 for Spec 3.1, M03 and M08 for Spec 3.3, and M07 for Spec 4.1. They were removed because the DDD does not link them; a reviewer should decide whether any belong. The DDD table also links architecture decisions; those links are the drafter's reading and are not copied here.
+
+Gaps found while comparing the SRS Markdown with the original Word file (the original has the same gaps):
+
+- SRS:NFR-L1, NFR-R1, NFR-R2 and the SRS:TC-NFR-* tests (Test Plan H-5 to H-7) are cited, but the SRS has no NFR section, so no design mapping is possible.
+- The SRS glossary and Features text name a requirements traceability matrix that the SRS does not contain.
+- SRS:TC-4.5-3 is cited by Test Plan H-4, but Spec 4.5 defines only TC-4.5-1 and TC-4.5-2. Clause 4.5.3 (120 seconds) therefore has no defined test.
+- Testbed Specs 3.1 to 3.3 have no numbered DDD module.
+- The SRS refers to an Appendix B that does not exist in it.
 
 ## Track A (feature matrix)
 
