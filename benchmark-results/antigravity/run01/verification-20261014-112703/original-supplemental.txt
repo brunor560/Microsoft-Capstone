@@ -1,0 +1,29 @@
+Γ£û Leading-zero ID deletes only its target; zero remains invalid (128.2039ms)
+Γä╣ tests 1
+Γä╣ suites 0
+Γä╣ pass 0
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 507.9527
+
+Γ£û failing tests:
+
+test at ..\..\..\Microsoft-Capstone\benchmark-results\protocol\delete-leading-zero.test.cjs:13:1
+Γ£û Leading-zero ID deletes only its target; zero remains invalid (128.2039ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 204
+  
+      at TestContext.<anonymous> (C:\Users\kapil\OneDrive - University of South Florida\Documents\Fall 2026 Classes\CAI4910\Code Stuff\Microsoft-Capstone\benchmark-results\protocol\delete-leading-zero.test.cjs:55:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 204,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
