@@ -1,0 +1,6 @@
+started_utc=2026-10-14T21:27:24.3034950+00:00
+ended_utc=2026-10-14T21:27:38.6204437+00:00
+elapsed_seconds=14.3105415
+cli_exit=0
+timing_method=Stopwatch from prompt submission to process return; shutdown included
+approval_wait_seconds=0 (never policy)

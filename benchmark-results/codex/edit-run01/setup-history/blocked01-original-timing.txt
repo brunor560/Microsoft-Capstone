@@ -1,0 +1,5 @@
+started_utc=2026-10-14T21:25:55.9009919+00:00
+ended_utc=2026-10-14T21:26:16.1191899+00:00
+elapsed_seconds=20.2140597
+cli_exit=0
+approval_wait_seconds=0 (never policy)
