@@ -1,0 +1,62 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 160.011426
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 44.782579
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 9.713601
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 4 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 26.328725
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id removes an existing todo with 204 and empty body
+ok 5 - DELETE /api/todos/:id removes an existing todo with 204 and empty body
+  ---
+  duration_ms: 70.930671
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 when deleting the same id again
+ok 6 - DELETE /api/todos/:id returns 404 when deleting the same id again
+  ---
+  duration_ms: 14.556015
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for a valid id that does not exist
+ok 7 - DELETE /api/todos/:id returns 404 for a valid id that does not exist
+  ---
+  duration_ms: 8.100664
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for invalid ids and changes nothing
+ok 8 - DELETE /api/todos/:id returns 400 for invalid ids and changes nothing
+  ---
+  duration_ms: 29.00057
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 603.307149
