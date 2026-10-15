@@ -35,6 +35,7 @@ One coding prompt was submitted, with no corrective prompt.
 - Permission mode: manual; eight requests, all approved by the operator.
 - MCP configuration: one connected server was observed; its identity was not recorded in the launch notes.
 - Session ID: `0ec7c179-3f3e-4c02-b4c8-8b824ead3631`.
+- Token usage
 
 The launch-time configuration file lists the underlying model and reasoning
 effort as unknown pending log inspection. The values above reflect the
@@ -58,6 +59,37 @@ before the logged prompt and ends approximately 73 seconds after the final
 response. Session creation precedes the measured attempt and is not used as
 the task start time.
 
+## Token usage and cost
+
+Source: `copilot-events.jsonl`. The eight unique `session.usage_record`
+entries sum to the same coding-model totals as the final
+`session.usage_checkpoint`.
+
+| Coding-model metric (`gpt-6-luna`) | Recorded total |
+| --- | ---: |
+| Model calls | 8 |
+| Input tokens | 188,088 |
+| Output tokens | 6,467 |
+| Input plus output tokens | 194,555 |
+| Cache-read tokens | 157,329 |
+| Cache-write tokens | 30,735 |
+| Other input tokens (input minus cache reads and writes) | 24 |
+| Reasoning tokens, separately reported | 2,902 |
+| Session premium requests | 1 |
+
+Cache reads and writes are included in the input total; do not add them
+again. The reasoning-token field is reported separately here and is not
+added to the input-plus-output total. Input totals accumulate across calls,
+including reused context; they do not represent unique prompt text.
+
+The auxiliary GPT-4o mini session-title call separately reports 254 prompt
+tokens and 13 completion tokens (267 total). It is excluded from the
+coding-model table above.
+
+Dollar cost is unavailable from this evidence. The session records
+`totalNanoAiu: 865106500` and one premium request, but these are retained as
+provider accounting values without conversion to dollars. Per-call `cost`
+fields are not summed as dollar charges.
 ## Assistance and limitations
 
 The operator handled setup, permission approvals, evidence collection, and
