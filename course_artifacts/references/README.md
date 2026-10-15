@@ -2,7 +2,8 @@
 
 | Reference | Role |
 | --- | --- |
-| [Latest DDD baseline PDF](baselines/ddd_2026-10-14.pdf) | DDD supplied October 14, 2026; compare against `sources/ddd.md` |
+| [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); the baseline `sources/ddd.md` was rebuilt from |
+| [Earlier DDD baseline PDF](baselines/ddd_2026-10-14.pdf) | DDD version 1.0 supplied October 14, 2026; the previous `sources/ddd.md` import, kept for comparison |
 | [Week 1](course_slides/CIS4910_Week1_Fall2026.pdf), [Week 2](course_slides/CIS4910_Week2_Fall2026.pdf) | Course context |
 | [Week 3](course_slides/CIS4910_Week3_Fall2026.pdf) | Requirements and specification guidance |
 | [Week 4](course_slides/CIS4910_Week4_Fall2026.pdf) | Planning, testing, HLA placement; test plan in the SRS |
@@ -29,6 +30,7 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | Week 3 slides | `3b78a24d610e12ba7abf5d5fa3fc5c8a099d086e6e129c14b80ec3b84d395961` |
 | Week 4 slides | `34308b8fc31514286fce884c6f9907fa2fe170b386d8f8d43ac75ae8fdaf4638` |
 | Week 6 slides | `7c361cb14e4d170516ece111808ad0e75af4b86db9467b87a35a5d5b749f895b` |
+| DDD v1.4 PDF `ddd_2026-10-15_v1.4.pdf` (added 2026-10-15; not part of the 2026-10-14 import) | `e124eea4415dfc3b7a26a7e89aebe3c1e6d3586ddac694c659615b1390246ed2` |
 | DDD review rubric (added later; not part of the 2026-10-14 import) | `66ae8c487c7b6d5525a5254d91c5b4da3e9597d5269e883f1664e8985378c339` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 
@@ -36,4 +38,4 @@ Notes:
 
 - The SRS Markdown preserves technical content and figures. The original SRS is a previously supplied artifact, not a second editable source.
 - The DDD merges the team's earlier Word drafts (`Microsoft_Capstone_DDD_v0_3`, `KS_Team3_Detailed_Design_Document`, `RV_Detailed_Design_Document_Draft_v0_1`). Those drafts are backed up outside this repository.
-- Imported DDD diagrams are raster images of the HLA, logical, physical, and data views. Recover the Mermaid sources before substantive diagram edits (DOC-003).
+- Imported DDD diagrams are raster images. The current set comes from the v1.4 PDF (HLA, logical, physical, data, four behavioral figures and the referee workflow figure; extracted from the embedded bitmaps, not recreated). The v1.0 images are archived in `sources/assets/ddd-v1.0/`. Recover the Mermaid sources before substantive diagram edits (DOC-003).

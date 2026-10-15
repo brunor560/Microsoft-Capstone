@@ -52,7 +52,7 @@ SRS:F6 is delivered by SRS Requirement 5 and designed as DDD:M11. Harness check 
 | MATRIX:C01–C03, profiles (placeholders) | SRS:Spec 5.1 | M11 | Profile table in `sources/track_a_assessment.md` | Not defined; profile set undecided (see TODO.md) |
 | MATRIX:E01…, evidence index | SRS:Spec 5.3 | M11 | Evidence index in `sources/track_a_assessment.md` | Empty |
 | Reviewer record | SRS:Spec 5.4 | M11 | Review table in `sources/track_a_assessment.md` | Empty |
-| Documentation-only and no-score rules | SRS:Specs 5.2, 5.5 | M11, ADR-13 | Matrix spec; SRS Requirement 5 | Stated in text only |
+| Documentation-only and no-score rules | SRS:Specs 5.2, 5.5 | M11, ADR-14 | Matrix spec; SRS Requirement 5 | Stated in text only |
 | Publication of Track A | None | M13 (I08) not extended | None | Explicit gap: not required unless the team decides |
 
 MATRIX feature IDs (F01–F18) are not the SRS feature IDs (F1–F6). MATRIX:T1–T7 (tool categories) are not the SRS test-plan tasks T1–T8. MATRIX:C01… (profiles) are not DDD constraints C-1 to C-9. MATRIX:E01… (evidence) are not DDD evidence references such as E15.
