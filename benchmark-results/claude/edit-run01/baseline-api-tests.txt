@@ -1,0 +1,201 @@
+TAP version 13
+# Subtest: API-01: title updates trim whitespace and preserve other state
+ok 1 - API-01: title updates trim whitespace and preserve other state
+  ---
+  duration_ms: 98.047191
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: empty string is rejected without changing state
+not ok 2 - API-02/API-03: empty string is rejected without changing state
+  ---
+  duration_ms: 15.403652
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: whitespace is rejected without changing state
+not ok 3 - API-02/API-03: whitespace is rejected without changing state
+  ---
+  duration_ms: 29.980772
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: null is rejected without changing state
+not ok 4 - API-02/API-03: null is rejected without changing state
+  ---
+  duration_ms: 10.036316
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: number is rejected without changing state
+not ok 5 - API-02/API-03: number is rejected without changing state
+  ---
+  duration_ms: 7.951454
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: boolean is rejected without changing state
+not ok 6 - API-02/API-03: boolean is rejected without changing state
+  ---
+  duration_ms: 6.848835
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: object is rejected without changing state
+not ok 7 - API-02/API-03: object is rejected without changing state
+  ---
+  duration_ms: 13.664377
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02/API-03: array is rejected without changing state
+not ok 8 - API-02/API-03: array is rejected without changing state
+  ---
+  duration_ms: 14.561685
+  type: 'test'
+  location: '/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/pilot/claude-edit-run01-evidence/grader-source/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-04: completion-only updates preserve the title and other todos
+ok 9 - API-04: completion-only updates preserve the title and other todos
+  ---
+  duration_ms: 29.562489
+  type: 'test'
+  ...
+# Subtest: API-04: updating a missing todo returns 404 without changing state
+ok 10 - API-04: updating a missing todo returns 404 without changing state
+  ---
+  duration_ms: 10.285965
+  type: 'test'
+  ...
+# Subtest: API-05: blank POST remains rejected without changing state
+ok 11 - API-05: blank POST remains rejected without changing state
+  ---
+  duration_ms: 8.309251
+  type: 'test'
+  ...
+# Subtest: API-05: DELETE retains leading-zero support and repeat behavior
+ok 12 - API-05: DELETE retains leading-zero support and repeat behavior
+  ---
+  duration_ms: 20.287662
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 5
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 453.10329

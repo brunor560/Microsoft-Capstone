@@ -1,0 +1,6 @@
+grader-hashes.csv was computed on Linux from the git-archive export (LF line endings).
+The antigravity-edit-run01 and codex-edit-run01 runs (Windows) published different SHA-256 values.
+Converting each of the 7 exported files from LF to CRLF reproduces their published hashes exactly
+(287170CB..., 884DDD1D..., B61668B2..., C9FE934E..., 08654AD9..., 73630BB9..., 9C3C6CFA...).
+The grader content is identical; the only difference is line endings from Windows git autocrlf conversion.
+Same protocol commit: 02996447e01bb284939d9b1a83c45ab033c22fb9.
