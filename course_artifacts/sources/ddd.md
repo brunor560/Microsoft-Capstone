@@ -46,8 +46,21 @@ Version 1.5 consistency changes:
 - Constraint C-1 no longer mentions an embedded database, which contradicted ADR-09 and Spec 3.1.
 - Sponsor and Context no longer says differences come from the tooling "not the model", because Approach B records a different default model per tool. Approach C fixes the model.
 - Wording and spelling fixes: the Purpose paragraph, Module Processing step 5, the note on tasks T3 to T8, and the last sentence of the High Level Architecture text.
+- Configuration wording: "shipped defaults" is softened to "recorded configuration (shipped defaults where possible)" in Sponsor and Context, the Benchmark Approaches table, C-9, ADR-13 and the traceability and public-welfare rows.
+- A-2 no longer lists an Antigravity CLI. The 120 s active-time limit is kept, and the Antigravity timing risk now says Approach B times are not comparable to it.
+- The two Copilot profiles in the matrix specification are described as placeholders.
+- Schema 3 is described as the working design adopted from Kapil Srikanth's revision; the SRS amendment is on hold. The term unavailable is proposed for measurements that could not be captured.
+- The Physical view records the decision to use separate containers (Figure 3); the evaluator access mechanism is an open point.
 
-Where version 1.4 and the earlier text disagree, version 1.4 is used. Other inconsistencies found inside version 1.4 are kept as written and tracked in the team's task list, not silently fixed: the Antigravity CLI in A-2 against the IDE-only statement in C-6, references (D05, D06, D09, V02 to V05, E15) that are never defined, and the 7-October dates for all four authors in the version history.
+Content adopted from Kapil Srikanth's proposed revision 1.5 (reference PDF `ddd_2026-10-15_kapil_rev1.5-proposed.pdf`, AI-assisted per its Appendix C, not team-approved). This source stays the baseline; only the following were taken, reworded to this document's terminology and kept as proposed:
+
+- Interfaces: request and response shapes, preconditions and error codes for I01 to I09, and the notes on transport, retries, approvals and opaque storage handles.
+- Module Processing: the terminal-treatment column and the closing note on status resolution.
+- Database servers, design and Schemas: the proposed schema 3 run record, the supporting contracts and the call-record rules.
+- Cross-Cutting Concerns: the event fields and redaction approach for observability, the start journal and recovery sweep, and the configuration rules.
+- Not adopted: its ADR numbering (it uses ADR-13 for the documentation-only assessment and ADR-14 for native pilots, the reverse of this document), its Track A and Track B wording, its removal of the pilot results table and the assumptions table, and its demo-planning text. Its physical design (candidate server and evaluator in one container) conflicts with Figure 3 and is not applied.
+
+Where version 1.4 and the earlier text disagree, version 1.4 is used. Other inconsistencies found inside version 1.4 are kept as written and tracked in the team's task list, not silently fixed: references (D05, D06, D09, V02 to V05, E15) that are never defined. Resolved by team decision: A-2 no longer lists an Antigravity CLI (Antigravity is IDE-only, as C-6 says), and version 1.5 is dated October 16, 2026, the soft due date for the course presentation; the earlier history rows keep their original dates.
 
 ## Introduction
 
@@ -57,7 +70,7 @@ The Detailed Design Document (DDD) is meant to translate the System Requirement 
 
 ### Sponsor and Context
 
-The project is sponsored by Microsoft (Chad Hage, Brad Lawrence). The group must decide which AI coding agent to adopt and has no objective, repeatable way to compare the candidates. The initial agents are OpenAI Codex, Anthropic Claude Code, GitHub Copilot, and Google Antigravity. Every agent runs against its shipped default settings, so differences in the results come from the tool and its default model. Approach C fixes the model so that agents can be compared on tooling alone.
+The project is sponsored by Microsoft (Chad Hage, Brad Lawrence). The group must decide which AI coding agent to adopt and has no objective, repeatable way to compare the candidates. The initial agents are OpenAI Codex, Anthropic Claude Code, GitHub Copilot, and Google Antigravity. Every agent runs in a recorded configuration (its shipped defaults unless a deviation is recorded), so differences in the results come from the tool and its model. Approach C fixes the model so that agents can be compared on tooling alone.
 
 ### Scope
 
@@ -88,7 +101,7 @@ Each stakeholder concern below is answered by at least one view or section of th
 
 | Stakeholder | Key concerns | Answered by |
 | --- | --- | --- |
-| Sponsor (Chad Hage, Brad Lawrence) | Which tool pipeline is production-ready; fair, repeatable comparison; security of shipped defaults; weekly demos | Benchmark Approaches; Scenarios view; Security Considerations; C-8, C-9; ADR-01 |
+| Sponsor (Chad Hage, Brad Lawrence) | Which tool pipeline is production-ready; fair, repeatable comparison; security of the recorded configuration; weekly demos | Benchmark Approaches; Scenarios view; Security Considerations; C-8, C-9; ADR-01 |
 | Course instructors and peer reviewers | Rigor, SRS traceability, internal consistency, feasibility | SRS Traceability Matrix; Architecture Decision Records; all views |
 | Team developers | Module responsibilities, interfaces, where code lives, how it is built and tested | Logical view; Interfaces; Development view; Module Specifications |
 | Benchmark operators (team members running pilots) | Repeatable procedure, isolation of the agent, evidence that survives review | Behavioral view (Figures 5 and 8); Physical view; Scenarios view |
@@ -112,7 +125,7 @@ The project compares tools through three approaches that share one evaluator, on
 
 | | A. Feature matrix | B. Native-tool pilots | C. AutoGen harness |
 | --- | --- | --- | --- |
-| Question answered | What each tool documents it can do | How each vendor pipeline performs in its shipped defaults (sponsor’s main question) | How agents perform under identical, enforced limits |
+| Question answered | What each tool documents it can do | How each vendor pipeline performs in its recorded configuration, shipped defaults where possible (sponsor’s main question) | How agents perform under identical, enforced limits |
 | Who drives the agent | No agent; reviewers read documentation | The operator, using the vendor’s own CLI or IDE (Codex CLI, Claude Code, Copilot CLI, Antigravity) | The harness controller (M02) through the model adapter (M04) |
 | Model | Not applicable | Tool’s default selection, recorded per run | Pinned model profile (azure-prod) |
 | Limits enforced by | Not applicable | The tool’s own approvals and sandbox, recorded by the operator | Host-enforced turns, time, tokens and container limits (ADR-03) |
@@ -165,14 +178,14 @@ The architecture is designed to achieve the following goals:
 | C-6 | Each agent must be driven non-interactively | Repeatability Goal | Only tools that meet I09 join the harness; IDE-only tools such as Antigravity stay in Approach B, where every approval is logged |
 | C-7 | USF policy, FERPA and Microsoft usage guardrails apply; sponsor workloads are monitored | Initial Sponsor Meeting | No personal data in results; least-privilege access to Azure; the public microsite contains only redacted, aggregated evidence. |
 | C-8 | Demo expected at every weekly meeting; a video linked in the GitHub issue is acceptable | Sponsor Meeting, Oct. 9th | Runs are scripted as any member can demo them. |
-| C-9 | Tools run in their shipped default configuration; extensions are excluded (e.g. SpecKit) | Sponsor Meeting, Oct. 9th | Record default model, reasoning, and approval modes. |
+| C-9 | Tools run in a recorded configuration, shipped defaults where possible; extensions are excluded (e.g. SpecKit) | Sponsor Meeting, Oct. 9th | Record the exact model, reasoning and approval settings and any deviation from the defaults; do not assume every run used defaults. |
 
 ### Assumptions
 
 | ID | Assumption | If false, then… |
 | --- | --- | --- |
 | A-1 | The operator’s workstation can run the Docker Engine and has a Desktop with at least 16 GB RAM and 100 GB free disk space. | Runs trials sequentially or uses an Azure VM as the operator machine |
-| A-2 | Each agent CLI (Codex CLI, Claude Code, Copilot CLI, and Antigravity CLI) supports a headless mode and either a base-URL override or reports token usage. | Adapter falls back to parsing the agent’s own usage output; result would be flagged for “self-reported usage” |
+| A-2 | Each CLI agent admitted to Approach C (Codex CLI, Claude Code, Copilot CLI) supports a headless mode and either a base-URL override or reports token usage. Antigravity is IDE-only (C-6) and stays in Approach B. | Adapter falls back to parsing the agent’s own usage output; result would be flagged for “self-reported usage” |
 | A-3 | Published results contain no confidential information. | Publisher redaction rules block the publishing step. |
 | A-4 | Model outputs are non-deterministic; N ≥ 3 trials per agent/task give a usable estimate | Increase N for close comparisons; report confidence intervals rather than single runs |
 | A-5 | One member runs each tool end to end with identical task files and prompts | Results are not comparable; rerun from benchmark-start-v1 |
@@ -192,6 +205,7 @@ Portions of this document were prepared with the assistance of generative AI too
 | Logical, physical and data view text; Figures 5–7 | 1.2 | AI-drafted from existing DDD content | Sections of v1.1 | Reviewed, edited and verified by the team against the listed sources |
 | Architecture Description Framework; Benchmark Approaches; revised C-3, C-6, A-2; Figure 8; Development and Scenario views; expanded ADRs and ADR-13; Traceability Matrix; pilot evidence; Appendices A–C | 1.3 | AI-drafted | Results branches and procedures in [1], [8], [24]; SRS [2] | Reviewed, edited and verified by the team against the listed sources |
 | Markdown conversion of version 1.4; merge of version 1.0 additions (see Merge notes); extraction of figures from the version 1.4 PDF; Approach A/B/C terminology and consistency changes | 1.5 | AI-assisted conversion, merge and editing | Version 1.4 PDF; version 1.0 Markdown import | Team review pending |
+| Interfaces I01–I09; Module Processing terminal treatment; schema 3 record and supporting contracts; observability, recovery and configuration text | 1.5 | Drafted by Kapil Srikanth with ChatGPT/Codex (his Appendix C); adapted and merged here with AI assistance | Kapil's proposed revision 1.5 PDF; this document's terminology | Team review pending |
 
 AI coding agents are also the subject of this project: their outputs are evidence to be graded, never trusted inputs. Every agent-written file is preserved, hashed and graded by evaluator-owned suites, and the public site labels agent-generated code as AI-generated (Spec 4.4).
 
@@ -490,7 +504,43 @@ v2 cannot record an unknown token count or an unscored infrastructure failure, s
 - A null token score forces total_max = 90.
 - Per-call tokens must sum to totals; every hash must resolve.
 
-Approach A cells use the fields in the feature matrix specification [4]: 2 configurations × 18 features = 36 cells. “Not established from documentation” is a valid result, not a zero. The set of profiles is not final: the matrix specification names two Copilot profiles and the whitepaper names three tools, so the cell count follows whichever profiles the team defines.
+Schema 3 run record (working design adopted from Kapil Srikanth's revision). It is an amendment candidate to SRS Appendix A (schema 2). The SRS amendment is on hold, so no schema 3 conformance is claimed until it is approved and the schema is versioned and committed. Required fields are always present; nullable fields carry an explanatory reason.
+
+| Field | Type and constraint | Meaning |
+| --- | --- | --- |
+| schema_version, run_id | 3; unique string | Record contract and immutable identity |
+| approach, attempt, phase | B or C; integer ≥ 1; original, correction or infrastructure_retry | Method and attempt identity; Approach C campaign limits attempts to the approved plan |
+| retry_of | run ID or null | Prior attempt; cannot reference itself; same task lineage |
+| campaign_hash, task_hash, profile_hash | SHA-256 strings | Resolve to immutable input definitions |
+| baseline_commit, evaluator_commit, submission_commit | Git object IDs; submission may be null until committed | Reproduce the inputs and the evaluated candidate |
+| status, error | C: five SRS statuses; B: null; typed error or null | Approach B suite outcomes do not impersonate a controlled run status |
+| turn_count | integer ≥ 0 or null | C maximum 5; B unknown requires a reason |
+| timing | Timing object | Wall, active, approval, setup, grading and cleanup durations |
+| usage, cost | Objects with nullable numeric values | Data that could not be captured are null with status unavailable and a reason, never zero; provenance required |
+| human_involvement | Counts and event references | Approvals, rejected requests and corrective prompts, separately |
+| candidate, grader_results, calls | Candidate object or null; arrays | Immutable hashes, reports and provider-call records |
+| scorecard | Score object or null | Null for Approach B and infrastructure errors; policy version required otherwise |
+| publication | Eligibility object | Eligibility, blocking reasons, review reference and selected release |
+
+All records reject unknown top-level fields, duplicate IDs, negative durations, invalid hash encodings and unresolved required references. JSON Schema handles structure; the host validator enforces reference integrity, totals, status and score invariants and permitted publication. An invalid record is quarantined, not repaired into a success.
+
+Supporting contracts (proposed):
+
+| Object | Required fields and invariants |
+| --- | --- |
+| TaskManifest | task_id, revision, baseline_commit, prompt_hash, allowed_paths[], baseline_test_hashes[], suite_ids[], dependency_lock_hash. Paths are relative to the application root; reject traversal, external symlinks and unlisted edits. |
+| Campaign | campaign_id, approach, ordered task and profile references, evaluator commit, image digests, policy and metric versions, repetitions, spend and rate caps, price reference and environment class. No scored Approach C campaign starts with unresolved placeholders. |
+| ToolProfile | tool, version or unknown_reason, interface, mode, model and version, reasoning setting, approval and sandbox policy, integrations, operating system and capability report. Distinguish the observed configuration from documented availability. |
+| Timing | wall_seconds, active_seconds, approval_wait_seconds, setup_seconds, grading_seconds, cleanup_seconds, measurement_method, interval_definition. Unavailable fields are null with a reason; overlapping intervals are not summed. |
+| Usage and cost | input_tokens, output_tokens, cached_tokens where reported, completeness, source, unknown_reason; estimated_usd, currency, price_version and billing interpretation. Cached and uncached categories are recorded without double counting. |
+| GraderResult | suite_id, suite_hash, candidate_hash, tool_version, outcome (completed or error), counts or null, findings[], duration_seconds, report_hash, error or null. Completed test counts sum consistently; a scanner error has no passing count. |
+| Candidate | tree_hash, file_manifest[], allowed_change_result, baseline_test_preservation, capture_method, original_attempt_ref. Captured after writers stop; an unavailable candidate is null with a reason. |
+| Error | code, stage, sanitized_message, retryable, evidence_ref. Stable codes; no raw prompt, credentials, host paths or stack dumps in public records. |
+| Publication | eligible, blocked_reasons[], review_ref or null, release_hash or null. A passing task alone never makes a record eligible. |
+
+Call records contain call_id, attempt number, start and end metadata, provider outcome and nullable usage. Failed calls are recorded; retries keep a parent request ID but have distinct call IDs. Usage totals are complete only when all chargeable calls are accounted for. Partial counts are retained as partial and do not support an asserted exact cost.
+
+Approach A cells use the fields in the feature matrix specification [4]: 2 configurations × 18 features = 36 cells. “Not established from documentation” is a valid result, not a zero. The set of profiles is not final: the matrix specification names two Copilot profiles and the whitepaper names three tools, so the cell count follows whichever profiles the team defines. The two Copilot profiles in the matrix specification are placeholders; the final profiles will come from the tool sets named in the whitepaper.
 
 Approach A data (SRS Specs 5.1–5.3; formats defined in [4]):
 
@@ -555,31 +605,39 @@ Testbed: baseline/ passes its 5 tests (V02); app/ fails because of a stray first
 8. Grade with evaluator suites and scanners.
 9. Score, clean up, and write the record.
 
-| Event | Status |
-| --- | --- |
-| Secret or forbidden action | failed, total 0 (takes precedence) |
-| Provider, environment, or tool failure | infrastructure_error (one rerun) |
-| Active time reaches 120 s | timeout |
-| Approval rejected or expired | aborted |
-| Token limit reached | failed (token_limit_exceeded) |
-| Work completed but not accepted | failed |
-| All checks pass | passed |
+| Event (checked in this order) | Status | Terminal treatment (proposed) |
+| --- | --- | --- |
+| Secret or forbidden action | failed, total 0 (takes precedence) | Total 0 and zeroed_by set. Missing scans still block publication. |
+| Provider, environment, or tool failure (also a required grader or cleanup failure) | infrastructure_error (one rerun) | Scores null, not zero. The one rerun gets a new run ID linked by retry_of. |
+| Active time reaches 120 s (or the command watchdog is exceeded) | timeout | Grade the available candidate when it is safe to do so; record a distinct reason. |
+| Approval rejected or expired (or user cancellation) | aborted | Preserve the available evidence. |
+| Token limit reached | failed (token_limit_exceeded) | Reason token_limit_exceeded. |
+| Work completed but not accepted | failed | Reason acceptance_failed. |
+| All checks pass | passed | Publication still requires license, redaction and review gates. |
+
+Status and scores are resolved only after report completeness and cleanup are known. Every path ends in exactly one validated record, and the detailed status and reason in the record are authoritative; the process exit code is a summary.
 
 ### Interfaces
 
-| ID | From → to | Contract | Rule |
+I01–I09 are proposed target contracts. Internal transport is a typed in-process call; persisted forms are UTF-8 JSON. Expected failures return a typed result (Result of value or error). Unexpected exceptions are caught at the controller boundary and converted to infrastructure_error after finalization. No interface permits an unvalidated path to become a host shell command.
+
+| ID | From → to | Request → response | Preconditions, rule and errors |
 | --- | --- | --- | --- |
-| I01 | M01 → M02 | Validated inputs with hashes | Nothing runs until valid |
-| I02 | M02 → M04 | Messages, request ID, token reservation | Every call recorded |
-| I03 | M05 → M06 | Approved command | Output bounded |
-| I04 | M06 → M05 | Exit code and output (≤ 2,000 characters) | Secrets redacted first |
-| I05 | M07 → M08 | Frozen candidate ID | Read-only |
-| I06 | M08 → M09 | GraderResult: suite hash, counts, findings | Missing report = unscored |
-| I07 | M09 → M10 | Scores and total_max | Range-checked |
-| I08 | M10, M11 → M13 | Validated public records | Secrets and mixed cohorts rejected |
-| I09 | Tool adapter → M02 | Capability report: headless, model pinning, sandbox routing, usage | Missing capability = supervised only |
+| I01 | M01 → M02 | ValidatedInputs{campaign, task, profiles, policy, suite_refs, hashes} → AdmissionResult{accepted, validation_errors[]} | All immutable references resolve; no unresolved caps. Nothing runs until valid. INVALID_INPUT, HASH_MISMATCH or CAPABILITY_MISSING prevents run allocation. |
+| I02 | M02 → M04 | ModelRequest{run_id, request_id, messages, output_token_cap, reservation_id} → ModelOutcome{call_id, response or error, usage, latency} | M02 reserves tokens, cost and a rate slot first. Every call recorded. Messages are transient and excluded from telemetry. PROVIDER_ERROR is retried at most twice; unknown usage blocks exact budget guarantees. |
+| I03 | M05 → M06 | CommandRequest{run_id, command_id, script, cwd_relative, approval_ref, timeout_seconds} → execution handle | M02 authorization and a validated working directory are required; no host execution. Maximum 60 s per command, also bounded by the active deadline. FORBIDDEN_ACTION, APPROVAL_REQUIRED or SANDBOX_ERROR. |
+| I04 | M06 → M05 | CommandOutcome{command_id, exit_code or null, sanitized_output, timed_out, duration, policy_events[]} | Output combined and bounded to 2,000 characters after redaction (secrets redacted first). A null exit code requires an execution error. Watchdog and policy events are also delivered to M02. |
+| I05 | M07 → M08 | FrozenCandidateRef{run_id, tree_hash, manifest_hash, suite_refs, private_storage_handle} → EvaluationBundle | Read-only; no active writers; candidate and grader hashes match. The handle is host-local and never public. FREEZE_ERROR or HASH_MISMATCH prevents grading. |
+| I06 | M08 → M09 | EvaluationBundle{candidate_hash, grader_results[], required_suites[], policy_events[]} → ScoreEligibility | Every required result is complete and identifies the same candidate. Missing or error reports are unscored. VERIFIED_SECRET or FORBIDDEN_ACTION records a zero override and blocks publication. |
+| I07 | M09 → M10 | ScoreDecision{status_candidate, dimensions or null, total or null, total_max or null, metric_version, reasons[]} | M02 supplies final cleanup and lifecycle outcomes before the write. Range, weight and status invariants are checked. M10 rejects SCHEMA_ERROR and inconsistent totals. |
+| I08 | M10, M11 → M13 (via M12 review) | ReleaseInput{record_refs[], review_refs[], trusted_ci_refs[], comparison_group} → ReleaseOutcome{release_hash or errors[]} | Record, schema and hash integrity, trusted CI, review, redaction and license gates pass; secrets and mixed cohorts are rejected. Approach A records from M11 are published only if the team decides so (see Database servers, design and Schemas). On failure keep the old release. |
+| I09 | Tool adapter → M02 | CapabilityReport{headless, model_pinning, sandbox_routing, turn_counting, usage_reporting, budget_control, evidence_refs} → AdmissionDecision | Capability booleans describe tested integration, not marketing claims. An unknown or false required capability excludes the adapter from Approach C and keeps it eligible for separately labeled Approach B (supervised only). |
 
 Interfaces are in-process calls that pass immutable dataclasses (Module Design); payloads that persisted (I06–I08) are JSON validated against JSON Schema 2020-12 [20]. Only I02 (the provider call, HTTPS from the host) and I08 (publication to GitHub) cross a network. Expected errors are typed results rather than exceptions, so every failure maps to one status in the table above.
+
+The external provider exchange is HTTPS owned by M04, not the internal transport of I02. Provider credentials are host-only. A retried request reuses the logical request identity but records separate attempts and actual usage, and the adapter must not retry automatically after a hard budget stop. Dangerous commands trigger the Spec 2.4 escalation path; operator approval does not override hard policy prohibitions such as outside-workspace writes, credential access, network egress or evaluator tampering. Commands remain untrusted data executed only inside M06.
+
+M12 and M13 exchange files through repository and CI artifacts; network transfer uses authenticated GitHub operations. Reports are parsed against a size-bounded schema and tied to the exact candidate and workflow run, and are never evaluated as code. Release actions hold only the permission needed for their particular write. Module-to-module data do not expose raw host paths: a private_storage_handle is an opaque controller-owned identifier resolved only inside trusted host code, and public references use repository-relative evidence locations and content hashes.
 
 ### Formulas & Algorithms
 
@@ -603,7 +661,7 @@ T = 100 if U <= 0.5L, else max(0, 200 * (1 - U/L))
 cost = sum(U_in * P_in + U_out * P_out) / 1,000,000
 ```
 
-If any agent lacks token counts, T is dropped and totals are out of 90. Scores are averaged over three attempts per task, then across tasks, with min–max ranges and an instability flag. Example: 7,500 of 15,000 tokens scores T = 50 in the code and 100 under the SRS.
+If a tool does not report token counts (A-7), T is dropped for every agent and totals are out of 90. Proposed terminology: a measurement that could not be captured is recorded as null with status unavailable and a reason, never as zero. A tool that does not report usage is different from a harness that failed to record it: the second is a process failure on the team's side, so the run ends as infrastructure_error (one rerun) and is not scored against the agent. Scores are averaged over three attempts per task, then across tasks, with min–max ranges and an instability flag. Example: 7,500 of 15,000 tokens scores T = 50 in the code and 100 under the SRS.
 
 Task 001 ID rule: accept only digits representing a positive safe integer (01 valid; 0, -1, 1.5, 1abc return 400). parseInt alone is insufficient.
 
@@ -616,7 +674,7 @@ Task 001 ID rule: accept only digits representing a positive safe integer (01 va
 | 03 | Enforce limits on the host, not through prompts | Prompt instructions as controls | Partial |
 | 04 | Grade with evaluator-owned acceptance suites | Agent’s own tests | Used in pilot |
 | 05 | Keep AutoGen behind an adapter; evaluate Microsoft Agent Framework later [17] | Immediate migration | Proposed |
-| 06 | Record schema v3 as an SRS amendment | Relabel v1; store unknowns as 0 | Proposed |
+| 06 | Record schema v3 as an SRS amendment | Relabel v1; store unknowns as 0 | Proposed (design adopted; SRS amendment on hold) |
 | 07 | Version the metric contract | Silent renormalization | Proposed |
 | 08 | Wrap the model client instead of a LiteLLM gateway | Extra proxy process | Implemented |
 | 09 | JSON files and static site | Database server | Proposed |
@@ -669,7 +727,7 @@ Figure 9. Observed referee workflow (agent-pr-referee.yml) and the proposed sepa
 
 ### ADR-13: Native tools run through a shared-evaluator procedure
 
-- Context: The sponsor’s question is how each vendor pipeline performs in its shipped defaults [3]. IDE-only tools cannot meet the harness’s non-interactive constraint (C-6), and the pilots had to start before the harness was complete.
+- Context: The sponsor’s question is how each vendor pipeline performs in its recorded configuration, shipped defaults where possible [3]. IDE-only tools cannot meet the harness’s non-interactive constraint (C-6), and the pilots had to start before the harness was complete.
 - Options: (a) add every tool to the harness through adapters now; (b) run native tools through a written procedure that shares evaluators, evidence layout and publication, keeping harness scoring for Approach C; (c) drop the harness and run native tools only.
 - Trade-off: Option a gives uniform scoring, but tools lack headless mode or usage reporting (A-2), which would delay all results. Option c loses enforced limits and controlled comparisons. Option b answers the sponsor now with identical grading, at the cost of manual steps, operator variance and timing that is not comparable across operators.
 - Consequence: Results stay in separate cohorts (ADR-01). A tool joins Approach C only through I09. The team should standardize one timing method for later campaigns.
@@ -686,7 +744,7 @@ Every SRS feature (F1–F5) and specification section referenced in this documen
 | F4 Independent grading, secret and license scans | 1.5, 2.3, 4.1, 4.3 | M07 Freezer; M08 Evaluation; M09 Scoring | I05, I06 | TC-2.3-x, TC-1.5-x, TC-4.1-x, TC-4.3-x; formula fixtures | Evaluator-owned suites used in all 9 pilot runs; freezer done manually by manifests; scans and M09 scoring not yet applied to pilots |
 | F5 Per-run telemetry and public microsite | 4.2, 4.4, 4.5 | M10 Record writer; M12 Export and referee; M13 Release builder | I07, I08 | TC-4.2-x, TC-4.4-x, TC-4.5-x | Evidence published on results branches; site prototype does not read records; CI referee targets the wrong branch |
 | F6 Documentation-only feature assessment (Approach A) | 5.1–5.5 | M11 Assessment; M13 Release builder | I08 | TC-5.1-1 to TC-5.5-2 | Specification v0.2; stub record only; no cell recorded |
-| Sponsor: compare native pipelines in shipped defaults | C-9 [3] | Approach B procedure; M08; M10 record format | I09 (promotion path) | Procedure checklists [8], [24] | 9 runs across 4 tools on 2 tasks (Scenario view) |
+| Sponsor: compare native pipelines in their recorded configuration (shipped defaults where possible) | C-9 [3] | Approach B procedure; M08; M10 record format | I09 (promotion path) | Procedure checklists [8], [24] | 9 runs across 4 tools on 2 tasks (Scenario view) |
 | Sponsor: documented feature comparison | Feature matrix spec [4] | M11 Assessment; M13 | I08 | All 36 cells reviewed | Specification v0.2; cells not yet recorded |
 | Legal L1–L5 | SRS legal items | M02 (spend), M08 (license), M06 (limits), M13 (AI label) | I02, I06, I08 | See Security Considerations | Mapped; spend caps and license scans not yet run |
 
@@ -775,7 +833,7 @@ The design meets the specified need; the sponsor needed an objective, repeatable
 | Factor | Consideration | Design response | Where |
 | --- | --- | --- | --- |
 | Public health and safety | AI-generated code can be unsafe: it may leak secrets, misuse resources or contain vulnerabilities, and software defects can harm the people who rely on a system | Agent code is never deployed (C-5); it runs only in network-less, non-root, resource-limited containers or isolated snapshots; secret and license scans grade every candidate, and a leaked secret scores zero | C-5; M06; M08; Security Considerations |
-| Public welfare | Organizations may adopt AI coding tools on marketing claims and ship insecure software to their users | Independent, repeatable evidence of how each pipeline behaves in its shipped defaults, including security; limitations are stated, and no single run is presented as a general winner | Benchmark Approaches; ADR-01; A-4; Scenario view |
+| Public welfare | Organizations may adopt AI coding tools on marketing claims and ship insecure software to their users | Independent, repeatable evidence of how each pipeline behaves in its recorded configuration, including security; limitations are stated, and no single run is presented as a general winner | Benchmark Approaches; ADR-01; A-4; Scenario view |
 | Global | Tools and models come from several vendors and regions; availability and pricing change by region and over time; readers worldwide | Four vendors compared on identical inputs; runs on Windows, macOS and Linux; model version recorded per run and a new version starts a new cohort; the public site targets WCAG 2.2 AA accessibility [23] | A-6; Web servers; Scenario view |
 | Cultural | Engineering practice is shifting from writing code by hand to supervising agents [3]; academic integrity requires clear disclosure of AI use | Human oversight is kept and measured (approvals and corrections are recorded, not hidden); AI-written code is labeled as AI-generated on the site; AI-drafted sections of this document are tagged | Formulas (human help); Spec 4.4; AI Impacts and Uses |
 | Social | Privacy of students and sponsor staff; fair treatment of each vendor; trust in published results | No personal data in results and least-privilege access (C-7, FERPA); every tool gets the same task, prompt and evaluator; evidence is preserved so others can check it | C-7; A-5; Data view; Development view |
@@ -790,9 +848,9 @@ This section is kept from the earlier import. It gathers existing design content
 
 | Concern | Design | Status and limits |
 | --- | --- | --- |
-| Observability | Telemetry is event-based and append-only: every stage emits events that are ingested later. The model adapter (M04) records every call with latency and whether usage is complete. The record writer (M10) writes one validated record per run. Each result records its host profile (CPU, RAM, OS, Docker version, image digest). Raw logs stay private; only redacted records enter Git. | Today the runner writes logs/<task>_<run>.json (schema 1) and a CI referee comment. The schema 3 record is proposed. The telemetry overhead target (under 5%) is not measured. No monitoring or alerting service is designed. |
-| Fault tolerance | The controller (M02) always finalizes one record and reruns an infrastructure error once. The model adapter retries twice, then ends the run as infrastructure_error. The sandbox (M06) kills and removes containers on every path. A missing scanner or report is infrastructure_error, not a pass. Records are written to a temporary path, validated, then renamed. A failed release check keeps the previous release. | Today an export error can prevent the record from being written, and the 60 s watchdog and resource limits are not enforced. Both are in the Risks table below. |
-| Configuration management | Model profiles and limits are inputs; secrets come from host environment variables and never from YAML. A proposed campaign manifest fixes the commit, tasks, suite hash, image digest, profile, limits, spend cap, and metric contract. Lockfiles are pinned, CI actions are pinned by commit SHA, and a new task revision, grader version, or model version starts a new cohort. | The campaign manifest and tool profile are proposed. Only azure-prod is benchmark-valid. |
+| Observability | Telemetry is event-based and append-only: every stage emits events that are ingested later. The model adapter (M04) records every call with latency and whether usage is complete. The record writer (M10) writes one validated record per run. Each result records its host profile (CPU, RAM, OS, Docker version, image digest). Raw logs stay private; only redacted records enter Git. Proposed event fields: run_id, event_id, stage, monotonic duration, safe error code and evidence hash. Counts cover turns, provider retries, approval waits, grader outcomes and cleanup attempts. Events exclude prompts, environment values, credentials, personal information and internal paths. Redaction happens before serialization, with canary validation and independent review before public release. Per-run stage events provide tracing without an always-on telemetry service, and local summaries expose incomplete runs, invalid records and budget state. Raw vendor transcripts from pilots are separate evidence with explicit review; publishing them does not establish SRS telemetry compliance. | Today the runner writes logs/<task>_<run>.json (schema 1) and a CI referee comment. The schema 3 record is proposed. The telemetry overhead target (under 5%) is not measured. No monitoring or alerting service is designed. |
+| Fault tolerance | The controller (M02) always finalizes one record and reruns an infrastructure error once. The model adapter retries twice, then ends the run as infrastructure_error. The sandbox (M06) kills and removes containers on every path. A missing scanner or report is infrastructure_error, not a pass. Records are written to a temporary path, validated, then renamed. A failed release check keeps the previous release. Proposed recovery: a sanitized start journal is written when a run is accepted, and a recovery sweep reconciles journals that have no terminal record, removes named disposable resources and writes an infrastructure_error record when storage is available. A persistence failure returns a nonzero exit and blocks release. Provider retries use bounded backoff within the remaining budgets. No design can promise a completed write if durable storage itself is unavailable. | Today an export error can prevent the record from being written, and the 60 s watchdog and resource limits are not enforced. Both are in the Risks table below. |
+| Configuration management | Model profiles and limits are inputs; secrets come from host environment variables and never from YAML. A proposed campaign manifest fixes the commit, tasks, suite hash, image digest, profile, limits, spend cap, and metric contract. Lockfiles are pinned, CI actions are pinned by commit SHA, and a new task revision, grader version, or model version starts a new cohort. Proposed: the effective configuration is resolved and validated once, hashed and attached to the campaign; secrets are injected only into the host provider adapter; no implicit default fills a missing token, spend or rate cap, and a campaign with unknown usage or price information needs a conservative bound or an approved alternative policy before admission. | The campaign manifest and tool profile are proposed. Only azure-prod is benchmark-valid. |
 | Security | See Security Considerations. | Controls are mostly planned, not enforced. |
 
 ## Risks, Assumptions and Mitigations
@@ -803,7 +861,7 @@ This section is kept from the earlier import. Assumptions are listed under Archi
 | --- | --- | --- | --- |
 | Staging does not exclude .env files | Credentials could reach the sandbox (Spec 1.2) | Copy only manifest-listed files; reject .env and external links (proposed) | TC-1.2-3 |
 | Resource limits and the 60 s watchdog are not enforced | Runaway or abusive commands (Spec 1.3) | Per-container limits and watchdog (proposed) | TC-1.3-1 to TC-1.3-5 |
-| Antigravity pilot runs exceed the 120 s active-time target (about 6 min on Task 001, 533 s on Task 003) | Runs may time out before scoring | Review the limit before scored runs (open decision) | Timed scored runs; none yet |
+| Antigravity pilot runs (Approach B) took longer than 120 s (about 6 min UI estimate on Task 001, 533 s on Task 003) | A slow tool admitted to Approach C would end as timeout | The 120 s active-time limit stands (SRS C-2). Approach B times are wall-clock figures that include operator waits and are not comparable to it | Timed scored runs; none yet |
 | Referee workflow grades code from the pull request and triggers on main, but the default branch is master | Grading could be tampered with | Grade base-branch code in an unprivileged job (proposed, ADR-11) | TC-4.5-1, TC-4.5-2 |
 | Schema v2 cannot record unknown usage or an unscored infrastructure failure | Wrong zeros in scores | Schema v3 (proposed, ADR-06) | TC-4.2-1 to TC-4.2-5 |
 | Graders run in the candidate's tree with a read-write mount | Candidate can alter its own grading | Evaluator-owned suites and a read-only frozen candidate (proposed, ADR-04) | TC-4.1-1 to TC-4.1-3 |
@@ -817,7 +875,7 @@ This section is kept from the earlier import. Assumptions are listed under Archi
 
 Validation approach: harness verification checks H-0 to H-8 in the SRS test plan, the module verification column in Module Specifications, and the nine pilot runs as the only measured evidence so far. A passing mapping or a designed test is not evidence that a control works.
 
-The third risk row and the last risk row were reworded or added in the merge to match the version 1.4 pilot table; the earlier import said "Pilot took about 6.5 minutes against a 120 s active-time target".
+The third risk row and the last risk row were reworded or added in the merge to match the version 1.4 pilot table; the earlier import said "Pilot took about 6.5 minutes against a 120 s active-time target". The 6.5 minutes was an uncontrolled Antigravity IDE wall-clock figure reported at the October 9 sponsor meeting, not a measured active time.
 
 ## References
 

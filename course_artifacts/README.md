@@ -15,9 +15,9 @@ Shared workspace for Team 3's course documents. Markdown files in `sources/` are
 | ID | File | Imported from | Notes |
 | --- | --- | --- | --- |
 | SRS | [sources/srs.md](sources/srs.md) | `SRS_Doc_Group#3.docx`, revision 1.1 | Phone/email contact fields omitted in the import |
-| DDD | [sources/ddd.md](sources/ddd.md) | DDD version 1.5 (October 16, 2026), built from the version 1.4 PDF supplied October 15, 2026 plus additions from the version 1.0 import (see Merge notes in the file) | Version 1.4 is the baseline for text and figures; proposals and reported status kept as written; the DDD says Approach A/B/C where the SRS and matrix files say Track A (DOC-048) |
+| DDD | [sources/ddd.md](sources/ddd.md) | DDD version 1.5 (October 16, 2026), built from the version 1.4 PDF supplied October 15, 2026 plus additions from the version 1.0 import (see Merge notes in the file) | Version 1.4 is the baseline for text and figures; proposals and reported status kept as written; the DDD, matrix specification, whitepaper, README and AGENTS say Approach A; the SRS, `TRACEABILITY.md` and the assessment record file name still say Track A until the SRS change is made (DOC-048) |
 | MATRIX | [sources/feature_matrix_specification.md](sources/feature_matrix_specification.md) | Feature matrix specification v0.2 | Documentation-only assessment method; incorporated as SRS Requirement 5 and DDD M11 |
-| TRACK A | [sources/track_a_assessment.md](sources/track_a_assessment.md) | Created from the matrix specification (not an import) | Stub: profiles undefined, no cell assessed |
+| APPROACH A | [sources/track_a_assessment.md](sources/track_a_assessment.md) | Created from the matrix specification (not an import) | Stub: profiles undefined, no cell assessed |
 | PROCEDURE | [sources/benchmark_procedure.md](sources/benchmark_procedure.md) | `team-benchmark-procedure(1).md` | Operational benchmark procedure |
 | PAPER | [sources/whitepaper.md](sources/whitepaper.md) | `white_paper_draft.md` | Outline with placeholders |
 
@@ -35,7 +35,7 @@ The imports are not approved content until DOC-001 is done. Figures are in `sour
 ## Boundaries
 
 - Matrix assessment is documentation-only. Do not add live testing or treat availability as effectiveness.
-- Current work: team review of the feature matrix incorporated into the SRS and DDD (DOC-040), and the Track A profile decision (DOC-041).
+- Current work: team review of the feature matrix incorporated into the SRS and DDD (DOC-040), and the Approach A profile decision (DOC-041).
 - Documentation tasks do not authorize code changes, model runs, spending, deployment, or publishing.
 - Behavior reported in the DDD is not verified against the repository until a commit is recorded.
 

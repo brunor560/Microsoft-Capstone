@@ -3,6 +3,7 @@
 | Reference | Role |
 | --- | --- |
 | [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); `sources/ddd.md` (version 1.5) was rebuilt from it |
+| [Kapil's proposed DDD revision 1.5 PDF](baselines/ddd_2026-10-15_kapil_rev1.5-proposed.pdf) | Supplied by Kapil Srikanth, dated October 15, 2026 (file was `Microsoft_Capstone_DDD_Revised.pdf`). Self-described as "revision 1.5 proposed" and AI-assisted (ChatGPT/Codex); not team-approved. Reference only: `sources/ddd.md` is the baseline, and selected parts were merged (see its Merge notes) |
 | [Earlier DDD baseline PDF](baselines/ddd_2026-10-14.pdf) | DDD version 1.0 supplied October 14, 2026; the previous `sources/ddd.md` import, kept for comparison |
 | [Week 1](course_slides/CIS4910_Week1_Fall2026.pdf), [Week 2](course_slides/CIS4910_Week2_Fall2026.pdf) | Course context |
 | [Week 3](course_slides/CIS4910_Week3_Fall2026.pdf) | Requirements and specification guidance |
@@ -31,6 +32,7 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | Week 4 slides | `34308b8fc31514286fce884c6f9907fa2fe170b386d8f8d43ac75ae8fdaf4638` |
 | Week 6 slides | `7c361cb14e4d170516ece111808ad0e75af4b86db9467b87a35a5d5b749f895b` |
 | DDD v1.4 PDF `ddd_2026-10-15_v1.4.pdf` (added 2026-10-15; not part of the 2026-10-14 import) | `e124eea4415dfc3b7a26a7e89aebe3c1e6d3586ddac694c659615b1390246ed2` |
+| Kapil's proposed DDD revision 1.5 PDF `ddd_2026-10-15_kapil_rev1.5-proposed.pdf` (added 2026-10-15; not part of the 2026-10-14 import) | `f4a9a6ac422d34e38dab3f425c1d401172550d3ed1b0ad9d14b6779ce66fea1e` |
 | DDD review rubric (added later; not part of the 2026-10-14 import) | `66ae8c487c7b6d5525a5254d91c5b4da3e9597d5269e883f1664e8985378c339` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 

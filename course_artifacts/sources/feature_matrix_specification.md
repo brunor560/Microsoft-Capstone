@@ -12,7 +12,7 @@ This specification defines a feature matrix for comparing the documented capabil
 
 The intended audience includes developers, engineering teams, and decision-makers considering adoption. The initial matrix supports discussion with the sponsor. It does not assign an overall score, rank products, or measure how well they perform development tasks.
 
-The existing AutoGen-based model evaluation prototype is a separate project track. This feature matrix does not execute tools or use prototype execution results to validate feature claims. A documentation-based assessment is a complete deliverable; it does not require subsequent live validation.
+The existing AutoGen-based model evaluation prototype is a separate project workstream. This feature matrix is Approach A in the Detailed Design Document. It does not execute tools or use prototype execution results to validate feature claims. A documentation-based assessment is a complete deliverable; it does not require subsequent live validation.
 
 ## Scope and terminology
 
@@ -203,6 +203,6 @@ These official sources illustrate the tool categories and terminology. They are 
 
 ## Revision note
 
-Version 0.2 replaces inspection and demonstration requirements with documentation review; removes runtime evidence and future effectiveness trials; separates the AutoGen evaluation track; and defers add-ons to an optional separate component. The 18 feature identifiers and seven landscape categories are retained.
+Version 0.2 replaces inspection and demonstration requirements with documentation review; removes runtime evidence and future effectiveness trials; separates the AutoGen evaluation workstream; and defers add-ons to an optional separate component. The 18 feature identifiers and seven landscape categories are retained.
 
 This draft was developed with assistance from OpenAI ChatGPT. The team should review its definitions and findings and document AI assistance in submitted course materials as required by the course syllabus.

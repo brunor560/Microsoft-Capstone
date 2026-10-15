@@ -16,9 +16,9 @@
 > *"I'm a Solutions Architect with an enterprise client wanting to buy 10,000 seats for my institution. Which platform should I choose? How do I compare and grade them using an evidence-based framework?"*
 
 * **Context & Objective:** Briefly state why this evaluation exists. Summarize how enterprise software engineering is moving from autocomplete assistants to autonomous multi-agent loops, and explain the need for an empirical, harness-focused decision matrix.
-* **The Dual-Track Architecture:**
-  * **Track A (Outer Loop):** Commercial Platform & IDE Harness Audit (GitHub Copilot / VS Code, Claude Code CLI, Google Anti-Gravity).
-  * **Track B (Inner Loop):** Headless AutoGen Orchestration & Trajectory Benchmarking within air-gapped Docker sandboxes.
+* **The Evaluation Approaches:**
+  * **Approach A (Outer Loop):** Commercial Platform & IDE Harness Audit (GitHub Copilot / VS Code, Claude Code CLI, Google Anti-Gravity).
+  * **Approach C (Inner Loop):** Headless AutoGen Orchestration & Trajectory Benchmarking within air-gapped Docker sandboxes.
 * **High-Level Recommendation Preview:** [Placeholder: 1–2 paragraphs highlighting the top-performing harness for the 10,000-seat deployment based on security, DevEx, throughput, and total cost of ownership.]
 
 ---
