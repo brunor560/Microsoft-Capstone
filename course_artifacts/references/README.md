@@ -2,7 +2,7 @@
 
 | Reference | Role |
 | --- | --- |
-| [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); the baseline `sources/ddd.md` was rebuilt from |
+| [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); `sources/ddd.md` (version 1.5) was rebuilt from it |
 | [Earlier DDD baseline PDF](baselines/ddd_2026-10-14.pdf) | DDD version 1.0 supplied October 14, 2026; the previous `sources/ddd.md` import, kept for comparison |
 | [Week 1](course_slides/CIS4910_Week1_Fall2026.pdf), [Week 2](course_slides/CIS4910_Week2_Fall2026.pdf) | Course context |
 | [Week 3](course_slides/CIS4910_Week3_Fall2026.pdf) | Requirements and specification guidance |

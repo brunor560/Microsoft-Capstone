@@ -1,6 +1,6 @@
 # Detailed Design Document
 
-> Working Markdown source based on DDD version 1.4 (PDF supplied October 15, 2026; [baseline PDF](../references/baselines/ddd_2026-10-15_v1.4.pdf)). Version 1.4 is the baseline for text, figures and identifiers. Additions kept from the earlier Markdown import (version 1.0, October 14, 2026) are listed under "Merge notes" below. Document claims about code and experiments are imported claims, not new verification. Tables and headings were converted for editing; the figures were extracted from the version 1.4 PDF. Team review of the conversion is pending.
+> Working Markdown source, version 1.5 (October 16, 2026). Version 1.5 is built from DDD version 1.4 (PDF supplied October 15, 2026; [baseline PDF](../references/baselines/ddd_2026-10-15_v1.4.pdf)), which is the baseline for text, figures and identifiers. Additions kept from the earlier Markdown import (version 1.0, October 14, 2026) and the version 1.5 consistency changes are listed under "Merge notes" below. Document claims about code and experiments are imported claims, not new verification. Tables and headings were converted for editing; the figures were extracted from the version 1.4 PDF. Team review of the conversion and merge is pending.
 
 ## Document Control
 
@@ -10,13 +10,14 @@
 | Course | CIS-4910 Senior Project Fall 2026 |
 | Authors | Bruno Rocha; Kapil Srikanth; Ross Volenec; Joseph Bressani |
 | Sponsors | Chad Hage; Brad Lawrence |
-| Baseline version | 1.4 (PDF cover footer shows October 16, 2026; version history ends October 15, 2026) |
+| Version | 1.5 October 16, 2026 |
 | State | Working source; conversion and merge review pending |
 
 ### Document Version History
 
 | Date | Version | Author | Change reference |
 | --- | --- | --- | --- |
+| 16-October 26 | 1.5 | Team 3 (AI-assisted draft) | Markdown source rebuilt from version 1.4 with version 1.0 additions merged; Approach A/B/C terminology used throughout; consistency pass (see Merge notes). Review pending. |
 | 15-October 26 | 1.4 | Team 3 | Added Public Health, Safety, and Welfare section. |
 | 15-October 26 | 1.3 | Team 3 | Rubric Review |
 | 15-October 26 | 1.2 | Team 3 | Added behavioral view; expanded logical, physical, and data view |
@@ -28,25 +29,35 @@
 
 ### Merge notes
 
-Content taken from the earlier Markdown import (version 1.0 text) and kept here because version 1.4 does not contain it. None of it has been independently reviewed.
+Version 1.5 takes its text, figures and identifiers from version 1.4. None of the changes below has been independently reviewed.
 
-- Scope items, goal 7, the M11 processing row, the Approach A data tables and the matching traceability rows for the documentation-only assessment (SRS F6, Requirement 5). Version 1.4 calls this work "Approach A"; the SRS, the matrix specification and the Track A record call it "Track A". This source uses "Approach A" first and names "Track A" beside it.
+Content kept from the earlier Markdown import (version 1.0 text) because version 1.4 does not contain it:
+
+- Scope items, goal 7, the M11 processing row, the Approach A data tables and the matching traceability rows for the documentation-only feature assessment (SRS F6, Requirement 5).
 - The Cross-Cutting Concerns section, the Capacity and scaling subsection and the Risks, Assumptions and Mitigations section.
 - The traceability table by SRS specification, kept beside the version 1.4 matrix by feature.
 - The decision record for the documentation-only assessment, renumbered ADR-14 because version 1.4 uses ADR-13 for the shared-evaluator procedure.
 - Glossary terms that version 1.4 does not define.
 
-Where version 1.4 and the earlier text disagree, version 1.4 is used. Known inconsistencies inside version 1.4 are kept as written and tracked in the team's task list, not silently fixed.
+Version 1.5 consistency changes:
+
+- Terminology: Approach A, B and C (the version 1.4 overview table) is used throughout. The earlier import's "Track A" and "Track B" labels were removed. The SRS, the matrix specification and the assessment record file still use "Track A"; they are separate sources and were not changed.
+- System Coupling cites Figure 2 (logical view) for dependency direction; version 1.4 cited Figure 4, which is the data view.
+- Constraint C-1 no longer mentions an embedded database, which contradicted ADR-09 and Spec 3.1.
+- Sponsor and Context no longer says differences come from the tooling "not the model", because Approach B records a different default model per tool. Approach C fixes the model.
+- Wording and spelling fixes: the Purpose paragraph, Module Processing step 5, the note on tasks T3 to T8, and the last sentence of the High Level Architecture text.
+
+Where version 1.4 and the earlier text disagree, version 1.4 is used. Other inconsistencies found inside version 1.4 are kept as written and tracked in the team's task list, not silently fixed: the Antigravity CLI in A-2 against the IDE-only statement in C-6, references (D05, D06, D09, V02 to V05, E15) that are never defined, and the 7-October dates for all four authors in the version history.
 
 ## Introduction
 
 ### Purpose
 
-The Detailed Design Document (DDD) is meant to translate the System Requirement Specification (SRS) for this project into an implementable architecture. The harness provides an AI coding agent with a coding task, it will then run in an isolated sandbox and grade the results independently and publish a side-by-side comparison for different matrixes we believe most software engineers would deem valuable. These matrixes are correctness, security, code quality, token efficiency, and human help the agent’s needs. This document defines the architectural style, the components and their responsibilities, the interfaces between them, the data they persist, the infrastructure they run on, and the design decisions and trade-offs behind each choice.
+The Detailed Design Document (DDD) is meant to translate the System Requirement Specification (SRS) for this project into an implementable architecture. The harness provides an AI coding agent with a coding task, it will then run in an isolated sandbox and grade the results independently and publish a side-by-side comparison for different metrics we believe most software engineers would deem valuable. These metrics are correctness, security, code quality, token efficiency, and the human help the agent needs. This document defines the architectural style, the components and their responsibilities, the interfaces between them, the data they persist, the infrastructure they run on, and the design decisions and trade-offs behind each choice.
 
 ### Sponsor and Context
 
-The project is sponsored by Microsoft (Chad Hage, Brad Lawrence). The group must decide which AI coding agent to adopt and has no objective, repeatable way to compare the candidates. The initial agents are OpenAI Codex, Anthropic Claude Code, GitHub Copilot, and Google Antigravity. Every agent runs against the shipped default settings, so differences in the results come from the agent’s tooling, not the model.
+The project is sponsored by Microsoft (Chad Hage, Brad Lawrence). The group must decide which AI coding agent to adopt and has no objective, repeatable way to compare the candidates. The initial agents are OpenAI Codex, Anthropic Claude Code, GitHub Copilot, and Google Antigravity. Every agent runs against its shipped default settings, so differences in the results come from the tool and its default model. Approach C fixes the model so that agents can be compared on tooling alone.
 
 ### Scope
 
@@ -57,7 +68,7 @@ In scope:
 - Orchestration of agent runs under turn, time, token, and cost limits (F3).
 - Independent grading, including secret and license scans (F4).
 - Per-run telemetry and public results microsite (F5).
-- A separate documentation-only feature assessment of commercial tools, Approach A (Track A in the SRS; F6, SRS Requirement 5), designed as module M11.
+- A separate documentation-only feature assessment of commercial tools, Approach A (F6, SRS Requirement 5), designed as module M11.
 
 Out of scope:
 
@@ -97,9 +108,9 @@ Viewpoints and notations used:
 
 ## Benchmark Approaches
 
-The project compares tools through three approaches that share one evaluator, one evidence layout and one publication path, but are never mixed in one score (ADR-01, ADR-13). Approach A is called Track A in the SRS, the matrix specification and the Track A record.
+The project compares tools through three approaches that share one evaluator, one evidence layout and one publication path, but are never mixed in one score (ADR-01, ADR-13).
 
-| | A. Feature matrix (Track A) | B. Native-tool pilots | C. AutoGen harness |
+| | A. Feature matrix | B. Native-tool pilots | C. AutoGen harness |
 | --- | --- | --- | --- |
 | Question answered | What each tool documents it can do | How each vendor pipeline performs in its shipped defaults (sponsor’s main question) | How agents perform under identical, enforced limits |
 | Who drives the agent | No agent; reviewers read documentation | The operator, using the vendor’s own CLI or IDE (Codex CLI, Claude Code, Copilot CLI, Antigravity) | The harness controller (M02) through the model adapter (M04) |
@@ -140,13 +151,13 @@ The architecture is designed to achieve the following goals:
 
 6. Extensibility: Separate agent integrations from task definitions, sandbox management, and grading so additional agents can be evaluated without redesigning the entire harness.
 
-7. Honest uncertainty (Approach A, Track A): Report documented capability with a source for every finding, treat unknowns as “Not established” rather than as zero, and never present documented availability as measured effectiveness (SRS Requirement 5).
+7. Honest uncertainty (Approach A): Report documented capability with a source for every finding, treat unknowns as “Not established” rather than as zero, and never present documented availability as measured effectiveness (SRS Requirement 5).
 
 ### Constraints
 
 | ID | Constraints | Source | Architectural Impact |
 | --- | --- | --- | --- |
-| C-1 | The harness runs on the operator’s machine and not as a hosted service | SRS Scope | Local-first design: CLI Docker/embedded database; no multi-tenant web back end |
+| C-1 | The harness runs on the operator’s machine and not as a hosted service | SRS Scope | Local-first design: CLI and Docker; no database server and no multi-tenant web back end |
 | C-2 | Only the JavaScript reference application is benchmarked | SRS Scope |  |
 | C-3 | Budget is limited to the $100 Azure credit given to us by the sponsor. | Initial Sponsor Meeting | Hard per-trial token and cost caps; small pinned model; trial count configurable. Approach B tools run on each member’s own tool plan; their usage is recorded when the tool reports it |
 | C-4 | Fixed schedule based on the semester; Final Demo on Dec 4th,2026. | Course Syllabus | Limits scope of what can be done in the short amount of time provided. |
@@ -180,7 +191,7 @@ Portions of this document were prepared with the assistance of generative AI too
 | Sponsor and Context; C-8, C-9; A-5–A-7; pilot paragraph; Security Considerations text and Table 21 | 1.1 | AI-drafted | Oct. 9 meeting transcript [3]; repository | Reviewed, edited and verified by the team against the listed sources |
 | Logical, physical and data view text; Figures 5–7 | 1.2 | AI-drafted from existing DDD content | Sections of v1.1 | Reviewed, edited and verified by the team against the listed sources |
 | Architecture Description Framework; Benchmark Approaches; revised C-3, C-6, A-2; Figure 8; Development and Scenario views; expanded ADRs and ADR-13; Traceability Matrix; pilot evidence; Appendices A–C | 1.3 | AI-drafted | Results branches and procedures in [1], [8], [24]; SRS [2] | Reviewed, edited and verified by the team against the listed sources |
-| Markdown conversion of version 1.4; merge of version 1.0 additions (see Merge notes); extraction of figures from the version 1.4 PDF | Markdown source, Oct. 15, 2026 | AI-assisted conversion and merge | Version 1.4 PDF; version 1.0 Markdown import | Team review pending |
+| Markdown conversion of version 1.4; merge of version 1.0 additions (see Merge notes); extraction of figures from the version 1.4 PDF; Approach A/B/C terminology and consistency changes | 1.5 | AI-assisted conversion, merge and editing | Version 1.4 PDF; version 1.0 Markdown import | Team review pending |
 
 AI coding agents are also the subject of this project: their outputs are evidence to be graded, never trusted inputs. Every agent-written file is preserved, hashed and graded by evaluator-owned suites, and the public site labels agent-generated code as AI-generated (Spec 4.4).
 
@@ -194,7 +205,7 @@ The harness is a modular monolith organized as a layered architecture whose core
 
 Figure 1. High-level architecture and implementation status. Green, solid border = implemented; amber, solid border = pilot or prototype; blue, dashed border = proposed.
 
-Evidence producers generate candidate code or documented findings. Candidate code is graded inside the trusted evaluation boundary. Graded results become run records that a release builder publishes. Readers cannot start running.
+Evidence producers generate candidate code or documented findings. Candidate code is graded inside the trusted evaluation boundary. Graded results become run records that a release builder publishes. Readers cannot start runs.
 
 ### Architectural Views
 
@@ -205,7 +216,7 @@ The logical view decomposes the harness into four layers, each with one responsi
 - Contracts and control: M01 Contracts validates the task, profile, policy and campaign; M02 Controller owns the run lifecycle, budgets and final status.
 - Execution: M03 Staging copies the seed without credentials; M04 Model adapter records every provider call; M05 Coder loop counts turns and requests approvals; M06 Sandbox enforces container limits and teardown.
 - Evaluation: M07 Freezer hashes the candidate and enforces the file manifest; M08 Evaluation runs evaluator-owned suites and scans; M09 Scoring applies the metric contract.
-- Records and publication: M10 Record writer writes one validated record per run; M11 Assessment holds Approach A (Track A) feature-matrix cells; M12 Export and referee regrades in CI; M13 Release builder publishes reviewed records to the site.
+- Records and publication: M10 Record writer writes one validated record per run; M11 Assessment holds Approach A feature-matrix cells; M12 Export and referee regrades in CI; M13 Release builder publishes reviewed records to the site.
 
 The implementation differs from the SRS view: it uses CodeExecutorAgent instead of UserProxyAgent, wraps the model client instead of using a LiteLLM gateway, grades pull requests with code from the pull request itself, and does not publish run records.
 
@@ -234,7 +245,7 @@ The physical view places every component on one of three trust zones.
 
 Figure 4. Data relationships.
 
-A RunRecord links one task, one profile, and one campaign to its calls and grader results. Corrections are separate records linked by phase and retry_of. Approach A (Track A) uses AssessmentCells. A release manifest selects reviewed records by hash.
+A RunRecord links one task, one profile, and one campaign to its calls and grader results. Corrections are separate records linked by phase and retry_of. Approach A uses AssessmentCells. A release manifest selects reviewed records by hash.
 
 Persistence strategy. All state is versioned JSON files; no database server runs (ADR-09). Every file is written to a temporary path, validated against JSON Schema 2020-12, then renamed, so a crash never leaves a half-written record. Raw logs and transcripts stay on the operator machine; only redacted records are committed to a results branch, and only reviewed records selected by hash in a release manifest reach the public site.
 
@@ -428,13 +439,13 @@ The system is a modular application on the operator host with untrusted work iso
 | M08 Evaluation | Acceptance suites, scans, quality | graders/ | Partial | 1.5, 4.1, 4.3 |
 | M09 Scoring | Dimensions, overrides, aggregation | scoring.py | Partial | Test Plan |
 | M10 Record writer | Terminal record, atomic write | telemetry.py | Partial | 4.2 |
-| M11 Assessment | Approach A (Track A) cells and review | Specification only [4]; stub record in sources/track_a_assessment.md | Proposed | 5.1–5.5 |
+| M11 Assessment | Approach A cells and review | Specification only [4]; stub record in sources/track_a_assessment.md | Proposed | 5.1–5.5 |
 | M12 Export and referee | Patch export, CI regrade | pr_export.py, referee.py | Partial | 4.5 |
 | M13 Release builder | Publish records to site | index.html prototype | Proposed | 4.4 |
 
 ### System Coupling
 
-Dependencies point from policy toward adapters (Figure 4). Scoring imports no Docker or provider code; publication depends only on validated records.
+Dependencies point from policy toward adapters (Figure 2). Scoring imports no Docker or provider code; publication depends only on validated records.
 
 | Boundary | Current | Proposed |
 | --- | --- | --- |
@@ -479,9 +490,9 @@ v2 cannot record an unknown token count or an unscored infrastructure failure, s
 - A null token score forces total_max = 90.
 - Per-call tokens must sum to totals; every hash must resolve.
 
-Approach A (Track A) cells use the fields in the feature matrix specification [4]: 2 configurations × 18 features = 36 cells. “Not established from documentation” is a valid result, not a zero. The set of profiles is not final: the matrix specification names two Copilot profiles and the whitepaper names three tools, so the cell count follows whichever profiles the team defines.
+Approach A cells use the fields in the feature matrix specification [4]: 2 configurations × 18 features = 36 cells. “Not established from documentation” is a valid result, not a zero. The set of profiles is not final: the matrix specification names two Copilot profiles and the whitepaper names three tools, so the cell count follows whichever profiles the team defines.
 
-Approach A (Track A) data (SRS Specs 5.1–5.3; formats defined in [4]):
+Approach A data (SRS Specs 5.1–5.3; formats defined in [4]):
 
 | Entity | Key fields | Rule |
 | --- | --- | --- |
@@ -530,15 +541,15 @@ Files are written to a temporary path, validated, then renamed. Suite files are 
 
 Contracts and results are immutable in Python dataclasses. Adapters return typed outcomes instead of raising expected conditions. One scored run executes at a time; parallel runs wait until the global Docker patch is removed, and budget reservation is atomic.
 
-Testbed: baseline/ passes its 5 tests (V02); app/ fails because of a stray first line (V03), but SRS TC-3.3-1 names app/ as the clean baseline (D06). Task 001 on master describes a DELETE route that already exists; benchmark-start-v1 fixes this. Tasks T3–T8 from the SRS test plan is not yet written.
+Testbed: baseline/ passes its 5 tests (V02); app/ fails because of a stray first line (V03), but SRS TC-3.3-1 names app/ as the clean baseline (D06). Task 001 on master describes a DELETE route that already exists; benchmark-start-v1 fixes this. Tasks T3–T8 from the SRS test plan are not yet written.
 
 ### Module Processing
 
 1. Validate the campaign, task, profile, limits, and host.
 2. Assign a run ID and stage the task without credentials.
 3. Start the container and confirm its limits.
-4. Before each model calls, check budgets; record the call.
-5. Request approval when Spec 2.4 requires the active clock pauses.
+4. Before each model call, check budgets; record the call.
+5. Request approval when Spec 2.4 requires it, and pause the active clock.
 6. Run each command under the 60 s watchdog; return sanitized output.
 7. When finished or out of budget, freeze the candidate and check the manifest.
 8. Grade with evaluator suites and scanners.
@@ -613,7 +624,7 @@ Task 001 ID rule: accept only digits representing a positive safe integer (01 va
 | 11 | Separate CI grading and publishing jobs; pin actions by SHA [18] | Grade with pull-request code | Proposed |
 | 12 | Keep original and corrected attempts separately | Overwrite the original | Used in pilot |
 | 13 | Run native tools through a shared-evaluator procedure (Approach B), scored separately from the harness | Fold every tool into the harness now | Used in pilot |
-| 14 | Assess commercial tools by documentation review only (Approach A, Track A); keep it separate from benchmark results | Live testing or benchmarking the tools; treating unknowns as zero scores | Proposed |
+| 14 | Assess commercial tools by documentation review only (Approach A); keep it separate from benchmark results | Live testing or benchmarking the tools; treating unknowns as zero scores | Proposed |
 
 ADR-14 was ADR-13 in the earlier Markdown import and was renumbered because version 1.4 uses ADR-13 for the shared-evaluator procedure. ADR-03, ADR-04, ADR-06, ADR-07, ADR-10, ADR-12 and ADR-14 have no detail record yet; ADR-01 is explained under Benchmark Approaches.
 
@@ -674,7 +685,7 @@ Every SRS feature (F1–F5) and specification section referenced in this documen
 | F3 Orchestration under turn, time, token and cost limits | 2.1, 2.2, 2.4, 2.5 | M02 Controller; M04 Model adapter; M05 Coder loop | I01, I02, I09 | TC-2.1-x, TC-2.2-x, TC-2.4-x, TC-2.5-x | Partial (10-message ceiling approximates 5 turns); approval timeout not implemented |
 | F4 Independent grading, secret and license scans | 1.5, 2.3, 4.1, 4.3 | M07 Freezer; M08 Evaluation; M09 Scoring | I05, I06 | TC-2.3-x, TC-1.5-x, TC-4.1-x, TC-4.3-x; formula fixtures | Evaluator-owned suites used in all 9 pilot runs; freezer done manually by manifests; scans and M09 scoring not yet applied to pilots |
 | F5 Per-run telemetry and public microsite | 4.2, 4.4, 4.5 | M10 Record writer; M12 Export and referee; M13 Release builder | I07, I08 | TC-4.2-x, TC-4.4-x, TC-4.5-x | Evidence published on results branches; site prototype does not read records; CI referee targets the wrong branch |
-| F6 Documentation-only feature assessment (Approach A, Track A) | 5.1–5.5 | M11 Assessment; M13 Release builder | I08 | TC-5.1-1 to TC-5.5-2 | Specification v0.2; stub record only; no cell recorded |
+| F6 Documentation-only feature assessment (Approach A) | 5.1–5.5 | M11 Assessment; M13 Release builder | I08 | TC-5.1-1 to TC-5.5-2 | Specification v0.2; stub record only; no cell recorded |
 | Sponsor: compare native pipelines in shipped defaults | C-9 [3] | Approach B procedure; M08; M10 record format | I09 (promotion path) | Procedure checklists [8], [24] | 9 runs across 4 tools on 2 tasks (Scenario view) |
 | Sponsor: documented feature comparison | Feature matrix spec [4] | M11 Assessment; M13 | I08 | All 36 cells reviewed | Specification v0.2; cells not yet recorded |
 | Legal L1–L5 | SRS legal items | M02 (spend), M08 (license), M06 (limits), M13 (AI label) | I02, I06, I08 | See Security Considerations | Mapped; spend caps and license scans not yet run |
@@ -701,7 +712,7 @@ Each SRS specification is linked to the modules that realize it (from the System
 | 4.3 License scan | M08 | None recorded | TC-4.3-1 to TC-4.3-3 |
 | 4.4 Microsite publishing | M13 | ADR-09 | TC-4.4-1 to TC-4.4-4 |
 | 4.5 Trusted-base grading | M12 | ADR-10, ADR-11 | TC-4.5-1, TC-4.5-2 |
-| 5.1 to 5.5 Approach A (Track A) feature matrix | M11 | ADR-14 | TC-5.1-1 to TC-5.5-2 |
+| 5.1 to 5.5 Approach A feature matrix | M11 | ADR-14 | TC-5.1-1 to TC-5.5-2 |
 | Test plan scoring formulas | M09 | ADR-07 | Formula fixtures |
 
 Open items in this mapping:
@@ -898,8 +909,6 @@ Terms marked (v1.0) are kept from the earlier import; the others are from versio
 | Term | Definition |
 | --- | --- |
 | Approach A / B / C | The three comparison methods: documentation feature matrix, native-tool pilots, and the AutoGen harness (Benchmark Approaches) |
-| Track A (v1.0) | The SRS, matrix specification and Track A record name for Approach A: the documentation-only feature assessment of commercial tools (module M11) |
-| Track B (v1.0) | The earlier import's name for the benchmark of agents (modules M01 to M10, M12, M13); version 1.4 splits it into Approach B (native-tool pilots) and Approach C (harness) |
 | Acceptance suite (v1.0) | Evaluator-owned tests that grade a run; the agent cannot read, modify, skip, or delete them (SRS definition) |
 | Baseline (starting) commit | The fixed commit whose app/ and task file every attempt starts from, e.g. be98d69 or 4e258a9 |
 | Campaign (v1.0) | One benchmark cohort defined by a committed manifest: commit, tasks, suite hash, image digest, profile, limits, spend cap, and metric contract (proposed) |

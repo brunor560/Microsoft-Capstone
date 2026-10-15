@@ -15,7 +15,7 @@ Shared workspace for Team 3's course documents. Markdown files in `sources/` are
 | ID | File | Imported from | Notes |
 | --- | --- | --- | --- |
 | SRS | [sources/srs.md](sources/srs.md) | `SRS_Doc_Group#3.docx`, revision 1.1 | Phone/email contact fields omitted in the import |
-| DDD | [sources/ddd.md](sources/ddd.md) | DDD version 1.4 PDF supplied October 15, 2026, merged with additions from the version 1.0 import (see Merge notes in the file) | Version 1.4 is the baseline; proposals and reported status kept as written; Approach A in the DDD is Track A elsewhere |
+| DDD | [sources/ddd.md](sources/ddd.md) | DDD version 1.5 (October 16, 2026), built from the version 1.4 PDF supplied October 15, 2026 plus additions from the version 1.0 import (see Merge notes in the file) | Version 1.4 is the baseline for text and figures; proposals and reported status kept as written; the DDD says Approach A/B/C where the SRS and matrix files say Track A (DOC-048) |
 | MATRIX | [sources/feature_matrix_specification.md](sources/feature_matrix_specification.md) | Feature matrix specification v0.2 | Documentation-only assessment method; incorporated as SRS Requirement 5 and DDD M11 |
 | TRACK A | [sources/track_a_assessment.md](sources/track_a_assessment.md) | Created from the matrix specification (not an import) | Stub: profiles undefined, no cell assessed |
 | PROCEDURE | [sources/benchmark_procedure.md](sources/benchmark_procedure.md) | `team-benchmark-procedure(1).md` | Operational benchmark procedure |
