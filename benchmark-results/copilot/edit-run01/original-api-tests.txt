@@ -1,0 +1,20 @@
+✔ API-01: title updates trim whitespace and preserve other state (27.673792ms)
+✔ API-02/API-03: empty string is rejected without changing state (2.45775ms)
+✔ API-02/API-03: whitespace is rejected without changing state (1.978042ms)
+✔ API-02/API-03: null is rejected without changing state (1.680875ms)
+✔ API-02/API-03: number is rejected without changing state (1.348875ms)
+✔ API-02/API-03: boolean is rejected without changing state (1.539375ms)
+✔ API-02/API-03: object is rejected without changing state (1.342708ms)
+✔ API-02/API-03: array is rejected without changing state (1.89325ms)
+✔ API-04: completion-only updates preserve the title and other todos (1.382583ms)
+✔ API-04: updating a missing todo returns 404 without changing state (1.2145ms)
+✔ API-05: blank POST remains rejected without changing state (1.008333ms)
+✔ API-05: DELETE retains leading-zero support and repeat behavior (3.330125ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 111.083333

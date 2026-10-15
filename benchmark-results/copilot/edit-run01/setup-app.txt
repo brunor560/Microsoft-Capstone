@@ -1,0 +1,28 @@
+
+added 68 packages, and audited 69 packages in 598ms
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (20.953166ms)
+✔ POST /api/todos creates a new valid task (5.263ms)
+✔ POST /api/todos rejects empty title with 400 (1.643083ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (4.634916ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (4.487834ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.733125ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (3.208042ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.471625ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.670625ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 112.727292
