@@ -27,7 +27,7 @@ jobs:
         tool: [antigravity, claude, codex, copilot]
     env:
       CI: 'true'
-      STAGE: ${{ runner.temp }}/title-edit-${{ matrix.tool }}
+      STAGE: /tmp/title-edit-${{ matrix.tool }}
     steps:
       - name: Check out verification code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
