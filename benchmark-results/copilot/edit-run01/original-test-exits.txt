@@ -1,3 +1,0 @@
-local_exit=0
-api_exit=0
-browser_exit=0

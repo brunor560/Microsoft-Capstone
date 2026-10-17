@@ -1,3 +1,0 @@
-local_exit=0
-acceptance_exit=0
-supplemental_exit=0

@@ -1,1 +1,0 @@
-Approval policy never; no human approval requests or waits. Two setup-blocked attempts preceded the successful fresh attempt. See setup-history and README. No corrective coding feedback was supplied.
