@@ -496,6 +496,48 @@ Include:
 Do not commit node_modules, credentials, or unrelated personal data. Publication
 happens after the measured coding attempt.
 
+### Also add your run to the results/all-runs branch
+
+Your `results/<tool>-bugfix-run01` branch is the full original record.
+Every run must **also** be added to the shared `results/all-runs`
+branch, which collects all tools and tasks in one place for analysis.
+
+Copy only the files needed to analyse the run:
+
+- README, the initial prompt, and the final report.
+- Local, API, and browser test logs, and the exit-code files.
+- Timing, token usage, approval notes, environment, and run
+  configuration.
+- Scope review and scope diff.
+- The original source snapshot (`original/`) and any corrected
+  snapshots.
+
+Leave out raw transcripts and event logs, setup and install logs, file
+manifests, hashes, grader copies, and Playwright HTML reports and traces.
+They stay on your own results branch.
+
+From the repository directory, after pushing your own results branch:
+
+```powershell
+git fetch origin
+git switch results/all-runs
+git pull --ff-only origin results/all-runs
+
+# Copy the files listed above from your evidence folder into:
+#   benchmark-results/<tool>/bugfix-run01/
+
+git add benchmark-results/<tool>/bugfix-run01
+git commit -m "Add <tool> bugfix-run01 to all-runs"
+
+# Name the branch explicitly. A plain "git push" can send the commit to
+# the wrong branch if the local branch tracks master.
+git push origin results/all-runs:results/all-runs
+```
+
+If the push is rejected because someone else pushed first, run
+`git pull --rebase origin results/all-runs` and push again. Also add the
+run to the results table in that branch's root README.md.
+
 ## 12. Compare outcomes
 
 Compare:
