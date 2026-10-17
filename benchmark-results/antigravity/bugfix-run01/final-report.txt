@@ -1,0 +1,52 @@
+﻿## Bug Report & Fix Summary
+
+### Bug 1 â€” CSV sync script un-checking marks todos as done
+
+**Cause:** The PUT handler used `Boolean(req.body.completed)`, which coerces any truthy value to `true`. The string `"false"` (read from a CSV) is truthy, so sending `completed: "false"` resulted in `completed: true` â€” the opposite of the intended value.
+
+**Fix (`server.js`):** Replaced the whole PUT handler with strict validation:
+- **API-01:** Check `typeof req.body.completed !== 'boolean'` â€” reject with 400 if it's a string, number, null, or anything else non-boolean.
+- **API-02:** Added the same digits-only / range check used by DELETE (BigInt comparison), supporting leading zeros.
+- **API-03:** Reject non-object bodies (e.g. arrays) with 400.
+- **API-04:** All validation runs before any mutation, so a bad request leaves the todo unchanged.
+- **API-05:** Valid `completed: true/false` and title updates continue to return 200.
+
+### Bug 2 â€” No feedback when server is down
+
+**Cause:** `toggleStatus()` in `index.html` had no error handling â€” it called `fetchTodos()` unconditionally whether the request succeeded or failed, and showed no error message.
+
+**Fix (`index.html`):**
+- Wrapped the `fetch` in a `try/catch` to handle network failures.
+- Checked `res.ok`; if false, reads the error message and displays it in a `<span role="alert">` inside the todo's `<li>`.
+- On failure, `fetchTodos()` is **not** called, so the UI reverts to the pre-click state (UI-03).
+- Each `<li>` now contains an alert span (`id="alert-${item.id}"`) for per-item error display (UI-02).
+
+### Test Results
+
+```
+âœ” GET /api/todos returns array of tasks
+âœ” POST /api/todos creates a new valid task
+âœ” POST /api/todos rejects empty title with 400
+âœ” PUT /api/todos/:id updates a todo and preserves its title
+âœ” DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+âœ” DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+âœ” DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+âœ” DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+âœ” DELETE /api/todos/:id handles safe-integer boundary correctly
+âœ” API-01: PUT rejects completed as string "true" with 400
+âœ” API-01: PUT rejects completed as string "false" with 400
+âœ” API-01: PUT rejects completed as number 1 with 400
+âœ” API-01: PUT rejects completed as null with 400
+âœ” API-01: PUT accepts completed: false (boolean) and sets it to false
+âœ” API-02: PUT rejects non-digit id with 400
+âœ” API-02: PUT rejects id=0 with 400
+âœ” API-02: PUT rejects id exceeding MAX_SAFE_INTEGER with 400
+âœ” API-02: PUT with leading-zero id resolves to correct todo
+âœ” API-02: PUT with valid id and no matching todo returns 404
+âœ” API-03: PUT rejects array body with 400
+âœ” API-04: rejected PUT with invalid completed does not mutate todo even with valid title
+âœ” API-05: PUT with completed: true returns 200 with updated todo
+âœ” API-05: PUT with title update returns 200 with updated title
+
+tests 23 | pass 23 | fail 0
+```

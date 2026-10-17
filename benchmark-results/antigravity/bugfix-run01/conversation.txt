@@ -1,0 +1,98 @@
+Initial Request:
+Read pipeline/tasks/004-fix-update-validation.md and complete the task
+exactly as specified.
+
+Work only within this project folder. Do not access parent folders,
+external grading files, reference solutions, or other runs.
+
+Run the required tests and report the actual results.
+Do not commit or push.
+
+
+
+Viewed 004-fix-update-validation.md:1-86
+
+Now let me examine the existing app code:
+
+Viewed server.js:1-74
+Viewed index.html:1-67
+Viewed test.js:1-179
+
+Now I have a clear picture. Let me analyze the bugs and what needs to be fixed:
+
+**Bug 1 (CSV sync script):** `Boolean(req.body.completed)` converts truthy values like the string `"true"` to `true`, ignoring the actual boolean value sent. So `"false"` (a truthy string) gets converted to `true` — the opposite of what was sent. The fix: only allow actual JSON booleans.
+
+**Bug 2 (server down, no feedback):** `toggleStatus` in `index.html` doesn't handle errors — it just calls `fetchTodos()` regardless of success/failure, with no error message shown.
+
+Let me now fix both files and add the required tests:
+
+Edited server.js
+
+Now fix the UI — add error handling and the `role="alert"` element:
+
+Edited index.html
+
+Now add the new tests for API-01 through API-05 to test.js:
+
+Edited test.js
+
+Now run the tests:
+
+Ran command: Test execution (`npm.cmd test`)
+
+All 23 tests pass. Here's the full report:
+
+---
+
+## Bug Report & Fix Summary
+
+### Bug 1 — CSV sync script un-checking marks todos as done
+
+**Cause:** The PUT handler used `Boolean(req.body.completed)`, which coerces any truthy value to `true`. The string `"false"` (read from a CSV) is truthy, so sending `completed: "false"` resulted in `completed: true` — the opposite of the intended value.
+
+**Fix (`server.js`):** Replaced the whole PUT handler with strict validation:
+- **API-01:** Check `typeof req.body.completed !== 'boolean'` — reject with 400 if it's a string, number, null, or anything else non-boolean.
+- **API-02:** Added the same digits-only / range check used by DELETE (BigInt comparison), supporting leading zeros.
+- **API-03:** Reject non-object bodies (e.g. arrays) with 400.
+- **API-04:** All validation runs before any mutation, so a bad request leaves the todo unchanged.
+- **API-05:** Valid `completed: true/false` and title updates continue to return 200.
+
+### Bug 2 — No feedback when server is down
+
+**Cause:** `toggleStatus()` in `index.html` had no error handling — it called `fetchTodos()` unconditionally whether the request succeeded or failed, and showed no error message.
+
+**Fix (`index.html`):**
+- Wrapped the `fetch` in a `try/catch` to handle network failures.
+- Checked `res.ok`; if false, reads the error message and displays it in a `<span role="alert">` inside the todo's `<li>`.
+- On failure, `fetchTodos()` is **not** called, so the UI reverts to the pre-click state (UI-03).
+- Each `<li>` now contains an alert span (`id="alert-${item.id}"`) for per-item error display (UI-02).
+
+### Test Results
+
+```
+✔ GET /api/todos returns array of tasks
+✔ POST /api/todos creates a new valid task
+✔ POST /api/todos rejects empty title with 400
+✔ PUT /api/todos/:id updates a todo and preserves its title
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly
+✔ API-01: PUT rejects completed as string "true" with 400
+✔ API-01: PUT rejects completed as string "false" with 400
+✔ API-01: PUT rejects completed as number 1 with 400
+✔ API-01: PUT rejects completed as null with 400
+✔ API-01: PUT accepts completed: false (boolean) and sets it to false
+✔ API-02: PUT rejects non-digit id with 400
+✔ API-02: PUT rejects id=0 with 400
+✔ API-02: PUT rejects id exceeding MAX_SAFE_INTEGER with 400
+✔ API-02: PUT with leading-zero id resolves to correct todo
+✔ API-02: PUT with valid id and no matching todo returns 404
+✔ API-03: PUT rejects array body with 400
+✔ API-04: rejected PUT with invalid completed does not mutate todo even with valid title
+✔ API-05: PUT with completed: true returns 200 with updated todo
+✔ API-05: PUT with title update returns 200 with updated title
+
+tests 23 | pass 23 | fail 0
+```

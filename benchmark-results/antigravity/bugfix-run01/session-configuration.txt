@@ -1,0 +1,7 @@
+Fresh conversation in isolated workspace.
+Installed tab: 0 plugins, 0 custom agents, 0 MCP servers.
+8 built-in skills/rules remain available; screenshot preserved.
+No memory/knowledge toggle found; disabled state unverified.
+model=Claude Sonnet 4.6 (Thinking)
+security_preset=Default
+Model choice follows team agreement discussed with Chad.

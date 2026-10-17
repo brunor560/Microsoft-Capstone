@@ -1,0 +1,10 @@
+Source compared with baseline 4e258a96855d98edd10247f68c0b8265e53a8921.
+Uploaded source hashes match the graded original manifest.
+All 9 original tests preserved unchanged; 14 tests added.
+DELETE endpoint and title-validation rules unchanged.
+New local tests cover API-01 through API-05.
+Manifest shows changes only to the three permitted files.
+Local: 23 passed. Independent API: 24 passed. Browser: 4 passed.
+All test exit codes: 0.
+No corrective coding required based on source review and supplied test evidence.
+Memory disabled state remains unverified, as recorded in configuration.
