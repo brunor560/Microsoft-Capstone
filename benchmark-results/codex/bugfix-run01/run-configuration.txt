@@ -1,0 +1,21 @@
+Participant: Joseph B.
+Date: 2026-10-17
+Run ID: codex-bugfix-run01
+Tool/interface: Codex headless CLI 0.163.0-alpha.10.2
+Model: gpt-6.1-sol; reasoning low (light)
+Route: explicitly assigned model/effort per choose-subagent-model skill
+OS: Windows; Node v24.22.0; npm 11.19.1; Playwright 1.64.1
+Approval never; sandbox workspace-write; Windows backend elevated
+Fresh new ephemeral session; no resume/fork/history supplied
+Memory and external memory import disabled
+User config/rules ignored; project_doc_max_bytes=0
+Global AGENTS.md exists; disabled via project_doc_max_bytes=0; contents preserved separately
+Apps/plugins/hooks/multi_agent disabled; host skill discovery skipped
+All inherited CODEX_* environment variables removed from child process
+Baseline/evaluator commit: 1e690f91a11dd1b37c796345a511d6791476efbc
+Deviation: benchmark-start-v3-bugfix is unpublished; user directed using consistent existing patterns after being informed; published protocol commit used for both exports; app tree matches required baseline exactly
+Cross-participant grader hash comparison: unverified; hashes saved; strict shared-protocol comparability remains conditional
+Operator previous grader/reference knowledge: unknown; setup agent has read procedure and prior trial README/results, but no trial solution, reference source, or grader source
+Available measured MCP servers/connectors: none configured by invocation; unexpected auto-loaded capabilities not independently inventoried
+No coding hints or earlier conversations provided
+Dollar cost unavailable

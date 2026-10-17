@@ -1,0 +1,7 @@
+started_utc=2026-10-17T20:43:20.1678573+00:00
+ended_utc=2026-10-17T20:44:18.0494791+00:00
+elapsed_seconds=57.8742672
+cli_exit=0
+method=Stopwatch immediately before prompt submission to CLI process return; includes startup after prompt and final shutdown
+approval_wait_seconds=0 (never policy)
+exact_final_event_time=unavailable; process return used as proxy

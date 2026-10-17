@@ -1,0 +1,9 @@
+Completed changes in the three permitted files.
+
+- Fixed `Boolean("false")` incorrectly marking todos complete. PUT now validates booleans, IDs, and object bodies before making changes.
+- Fixed silent UI failures. Failed toggles show a per-item `role="alert"` message and preserve the prior completion state.
+- Preserved existing tests and added API regression tests plus page-script checks.
+
+Ran `npm.cmd test` from `app/`: **15 passed, 0 failed, 0 skipped**.
+
+UI checks used a simulated DOM; no real browser check was run. No commits or pushes were made.
