@@ -1,0 +1,145 @@
+✔ GET, POST, and PUT retain their existing behavior (26.840333ms)
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (3.281666ms)
+✔ Valid missing IDs return 404 without changing todos (1.479792ms)
+✖ Invalid ID abc returns 400 without changing todos (0.781ms)
+✖ Invalid ID 1abc returns 400 without changing todos (1.254167ms)
+✖ Invalid ID 1.5 returns 400 without changing todos (1.214333ms)
+✖ Invalid ID 0 returns 400 without changing todos (1.193167ms)
+✖ Invalid ID -1 returns 400 without changing todos (1.174417ms)
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (0.944875ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 2
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.615958
+
+✖ failing tests:
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:78:1
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (3.281666ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 204
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:85:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 204,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID abc returns 400 without changing todos (0.781ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1abc returns 400 without changing todos (1.254167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1.5 returns 400 without changing todos (1.214333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 0 returns 400 without changing todos (1.193167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID -1 returns 400 without changing todos (1.174417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../benchmark-grading-verified/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (0.944875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/Users/rossvol/USF/CIS4930/benchmark-grading-verified/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

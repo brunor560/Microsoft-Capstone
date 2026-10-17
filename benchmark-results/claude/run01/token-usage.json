@@ -1,0 +1,79 @@
+{
+  "num_turns": 8,
+  "duration_ms": 28642,
+  "duration_api_ms": 28230,
+  "total_cost_usd": 0.11364210000000001,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 14967,
+    "cache_read_input_tokens": 178056,
+    "output_tokens": 3581,
+    "output_tokens_details": {
+      "thinking_tokens": 126
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 14967,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 508,
+        "cache_read_input_tokens": 40223,
+        "cache_creation_input_tokens": 2013,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2013
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1260,
+      "outputTokens": 25,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001385,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 10,
+      "outputTokens": 3581,
+      "cacheReadInputTokens": 178056,
+      "cacheCreationInputTokens": 14967,
+      "webSearchRequests": 0,
+      "costUSD": 0.1135036,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 126,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01CikzFf6PKnVGZyieBb26G2",
+      "tool_input": {
+        "command": "cat >> /home/claude/pilot/claude-delete-run01/app/test.js <<'EOF'\n\n\nasync function createTodo(title) {\n  const res = await fetch(`${BASE_URL}/api/todos`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ title })\n  });\n  assert.strictEqual(res.status, 201);\n  return res.json();\n}\n\nasync function listTodos() {\n  const res = await fetch(`${BASE_URL}/api/todos`);\n  assert.strictEqual(res.status, 200);\n  return res.json();\n}\n\ntest('DELETE /api/todos/:id removes an existing todo with 204 and empty body', async () => {\n  const target = await createTodo('DELETE target');\n  const other = await createTodo('DELETE bystander');\n  const before = await listTodos();\n\n  const res = await fetch(`${BASE_URL}/api/todos/${target.id}`, { method: 'DELETE' });\n  assert.strictEqual(res.status, 204);\n  assert.strictEqual(await res.text(), '');\n\n  const after = await listTodos();\n  assert.ok(!after.some(t => t.id === target.id));\n  assert.deepStrictEqual(after, before.filter(t => t.id !== target.id));\n  assert.deepStrictEqual(after.find(t => t.id === other.id), other);\n});\n\ntest('DELETE /api/todos/:id returns 404 when deleting the same id again', async () => {\n  const target = await createTodo('DELETE twice');\n  const first = await fetch(`${BASE_URL}/api/todos/${target.id}`, { method: 'DELETE' });\n  assert.strictEqual(first.status, 204);\n\n  const before = await listTodos();\n  const second = await fetch(`${BASE_URL}/api/todos/${target.id}`, { method: 'DELETE' });\n  assert.strictEqual(second.status, 404);\n  assert.deepStrictEqual(await listTodos(), before);\n});\n\ntest('DELETE /api/todos/:id returns 404 for a valid id that does not exist', async () => {\n  const before = await listTodos();\n  const res = await fetch(`${BASE_URL}/api/todos/9007199254740991`, { method: 'DELETE' });\n  assert.strictEqual(res.status, 404);\n  assert.deepStrictEqual(await listTodos(), before);\n});\n\ntest('DELETE /api/todos/:id returns 400 for invalid ids and changes nothing', async () => {\n  await createTodo('DELETE invalid-id guard');\n  const before = await listTodos();\n  const invalidIds = ['abc', '1abc', '1.5', '0', '-1', '9007199254740992', '+1', '1e2', '00', '%201'];\n  for (const id of invalidIds) {\n    const res = await fetch(`${BASE_URL}/api/todos/${id}`, { method: 'DELETE' });\n    assert.strictEqual(res.status, 400, `id \"${id}\" should be rejected`);\n  }\n  assert.deepStrictEqual(await listTodos(), before);\n});\nEOF\ncd /home/claude/pilot/claude-delete-run01/app && npm test 2>&1 | tail -40"
+      }
+    }
+  ]
+}

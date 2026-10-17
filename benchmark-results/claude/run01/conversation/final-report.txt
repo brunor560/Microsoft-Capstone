@@ -1,0 +1,16 @@
+I added `DELETE /api/todos/:id`, and `npm test` from `app/` passes: 8 tests, 8 pass, 0 fail. The 4 original tests still pass, and I added 4 new ones. I didn't commit or push.
+
+**Changes**
+- **`app/server.js`:** The new route only accepts an ID made of decimal digits that is a positive safe integer. Anything else gets a 400.
+  - A valid ID that doesn't exist gets a 404.
+  - A successful delete removes just that todo and returns a 204 with an empty body.
+  - The 400 and 404 paths don't touch the todo list.
+- **`app/test.js`:** I kept the existing tests and added four, using two small helpers (`createTodo` and `listTodos`).
+  - **Delete:** a 204 with an empty body, the todo gone from `GET /api/todos`, and the other todos unchanged.
+  - **Delete again:** a second delete of the same ID returns 404.
+  - **Missing ID:** a valid ID that doesn't exist (`9007199254740991`) returns 404.
+  - **Invalid IDs:** 400 for `abc`, `1abc`, `1.5`, `0`, `-1`, `9007199254740992`, `+1`, `1e2` and `00`. The list is unchanged afterwards.
+
+**Command run:** `npm test` (in `app/`).
+
+I changed only `app/server.js` and `app/test.js`. I made no dependency, package-file or frontend changes. I hit no errors or unresolved problems.

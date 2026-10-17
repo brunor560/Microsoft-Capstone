@@ -1,0 +1,6 @@
+started_utc=2026-10-14T21:28:27.1805683+00:00
+ended_utc=2026-10-14T21:29:39.8055427+00:00
+elapsed_seconds=72.6223101
+cli_exit=0
+timing_method=Stopwatch immediately before prompt pipe through CLI process return; startup/shutdown included
+approval_wait_seconds=0 (never policy)

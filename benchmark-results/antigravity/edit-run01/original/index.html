@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Benchmark Baseline</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 550px; margin: 50px auto; padding: 0 20px; color: #222; }
+    h1 { color: #006747; border-bottom: 2px solid #006747; padding-bottom: 8px; }
+    form { display: flex; gap: 8px; margin: 20px 0; }
+    input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    button { padding: 10px 18px; background: #006747; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid #eee; gap: 8px; flex-wrap: wrap; }
+    .item-text { cursor: pointer; flex: 1; }
+    .done { text-decoration: line-through; color: #888; }
+    .delete-btn { background: #d9534f; padding: 6px 10px; font-size: 0.85rem; }
+    .edit-btn { background: #006747; padding: 6px 10px; font-size: 0.85rem; }
+    .save-btn { background: #006747; padding: 6px 10px; font-size: 0.85rem; }
+    .cancel-btn { background: #6c757d; padding: 6px 10px; font-size: 0.85rem; }
+    .edit-input { flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
+    .error-msg { width: 100%; color: #d9534f; font-size: 0.85rem; margin-top: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <h1>Baseline Test Application</h1>
+  <form id="todo-form">
+    <input id="todo-input" placeholder="Enter task requirement..." required />
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const list = document.getElementById('todo-list');
+    let todos = [];
+    const editingState = new Map(); // id -> { draft: string, error: string | null }
+
+    function showError(li, message) {
+      let alert = li.querySelector('[role="alert"]');
+      if (!alert) {
+        alert = document.createElement('div');
+        alert.setAttribute('role', 'alert');
+        alert.className = 'error-msg';
+        li.appendChild(alert);
+      }
+      alert.textContent = message;
+    }
+
+    function clearError(li) {
+      const alert = li.querySelector('[role="alert"]');
+      if (alert) alert.remove();
+    }
+
+    function renderRow(li, item, isEditing) {
+      li.innerHTML = '';
+      li.setAttribute('data-todo-id', item.id);
+
+      if (isEditing) {
+        const state = editingState.get(item.id) || { draft: item.title, error: null };
+
+        const label = document.createElement('label');
+        label.className = 'sr-only';
+        label.htmlFor = `edit-input-${item.id}`;
+        label.textContent = 'Edit title';
+        li.appendChild(label);
+
+        const input = document.createElement('input');
+        input.id = `edit-input-${item.id}`;
+        input.type = 'text';
+        input.className = 'edit-input';
+        input.setAttribute('aria-label', 'Edit title');
+        input.value = state.draft !== undefined ? state.draft : item.title;
+        input.oninput = (e) => {
+          const cur = editingState.get(item.id) || {};
+          cur.draft = e.target.value;
+          editingState.set(item.id, cur);
+        };
+        input.onkeydown = (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSave(item.id);
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            handleCancel(item.id);
+          }
+        };
+        li.appendChild(input);
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'save-btn';
+        saveBtn.type = 'button';
+        saveBtn.textContent = 'Save';
+        saveBtn.onclick = () => handleSave(item.id);
+        li.appendChild(saveBtn);
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'cancel-btn';
+        cancelBtn.type = 'button';
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.onclick = () => handleCancel(item.id);
+        li.appendChild(cancelBtn);
+
+        if (state.error) {
+          showError(li, state.error);
+        }
+
+        setTimeout(() => {
+          input.focus();
+        }, 0);
+      } else {
+        const span = document.createElement('span');
+        span.className = `item-text ${item.completed ? 'done' : ''}`;
+        span.textContent = item.title;
+        span.onclick = () => toggleStatus(item.id, !item.completed);
+        li.appendChild(span);
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-btn';
+        editBtn.type = 'button';
+        editBtn.textContent = 'Edit';
+        editBtn.onclick = () => startEditing(item.id);
+        li.appendChild(editBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.type = 'button';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = () => deleteItem(item.id);
+        li.appendChild(deleteBtn);
+      }
+    }
+
+    function startEditing(id) {
+      const todo = todos.find(t => t.id === id);
+      if (!todo) return;
+      editingState.set(id, { draft: todo.title, error: null });
+      const li = document.querySelector(`li[data-todo-id="${id}"]`);
+      if (li) renderRow(li, todo, true);
+    }
+
+    function handleCancel(id) {
+      editingState.delete(id);
+      const todo = todos.find(t => t.id === id);
+      const li = document.querySelector(`li[data-todo-id="${id}"]`);
+      if (li && todo) renderRow(li, todo, false);
+    }
+
+    async function handleSave(id) {
+      const li = document.querySelector(`li[data-todo-id="${id}"]`);
+      if (!li) return;
+      const input = li.querySelector('.edit-input');
+      if (!input) return;
+
+      const draft = input.value;
+      const trimmed = draft.trim();
+
+      clearError(li);
+
+      if (!trimmed) {
+        editingState.set(id, { draft, error: 'Title cannot be empty' });
+        showError(li, 'Title cannot be empty');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/todos/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: trimmed })
+        });
+
+        if (!res.ok) {
+          let errMsg = 'Failed to save todo';
+          try {
+            const data = await res.json();
+            if (data && data.error) errMsg = data.error;
+          } catch (_) {}
+          editingState.set(id, { draft, error: errMsg });
+          showError(li, errMsg);
+          return;
+        }
+
+        const updated = await res.json();
+        editingState.delete(id);
+        const idx = todos.findIndex(t => t.id === id);
+        if (idx !== -1) todos[idx] = updated;
+        renderRow(li, updated, false);
+      } catch (err) {
+        const errMsg = 'Network error: Failed to save todo';
+        editingState.set(id, { draft, error: errMsg });
+        showError(li, errMsg);
+      }
+    }
+
+    async function fetchTodos() {
+      const res = await fetch('/api/todos');
+      todos = await res.json();
+      list.innerHTML = '';
+      todos.forEach(item => {
+        const li = document.createElement('li');
+        const isEditing = editingState.has(item.id);
+        renderRow(li, item, isEditing);
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById('todo-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('todo-input');
+      await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: input.value })
+      });
+      input.value = '';
+      fetchTodos();
+    };
+
+    async function toggleStatus(id, completed) {
+      await fetch(`/api/todos/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed })
+      });
+      fetchTodos();
+    }
+
+    async function deleteItem(id) {
+      await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      fetchTodos();
+    }
+
+    fetchTodos();
+  </script>
+</body>
+</html>

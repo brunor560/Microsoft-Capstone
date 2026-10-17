@@ -1,0 +1,17 @@
+
+Running 10 tests using 1 worker
+
+(node:20404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 edit-title.browser.spec.cjs:54:3 › UI-01/UI-02/UI-03: Edit opens accessible inline controls (328ms)
+  ok  2 edit-title.browser.spec.cjs:78:3 › UI-04/UI-05/UI-08: Save trims the title and survives reload (275ms)
+  ok  3 edit-title.browser.spec.cjs:130:3 › UI-07/UI-08: Cancel discards the draft without changing todos (194ms)
+  ok  4 edit-title.browser.spec.cjs:165:5 › UI-06: empty title shows an error and preserves saved state (223ms)
+  ok  5 edit-title.browser.spec.cjs:165:5 › UI-06: whitespace-only title shows an error and preserves saved state (224ms)
+  ok  6 edit-title.browser.spec.cjs:199:5 › UI-09: HTTP 500 shows an error and retains the draft (292ms)
+  ok  7 edit-title.browser.spec.cjs:199:5 › UI-09: network failure shows an error and retains the draft (277ms)
+  ok  8 edit-title.browser.spec.cjs:283:3 › UI-03/UI-08: Edit, Save, and Cancel work through the keyboard (411ms)
+  ok  9 edit-title.browser.spec.cjs:342:3 › UI-10: HTML-like titles remain literal text before and after editing (277ms)
+  ok 10 edit-title.browser.spec.cjs:420:1 › UI-11: Add, title-click completion toggling, and Delete still work (377ms)
+
+  10 passed (3.9s)

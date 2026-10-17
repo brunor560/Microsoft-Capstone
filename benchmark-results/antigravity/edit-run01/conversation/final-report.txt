@@ -1,0 +1,83 @@
+Implementation Summary
+
+The task was completed following all user-interface, API, interface contract, and constraint requirements.
+
+Files Changed:
+
+app/server.js
+
+Updated the PUT /api/todos/:id route to validate the title payload whenever supplied.
+Enforced that supplied titles must be strings whose trimmed value is non-empty, returning HTTP 400 for empty, whitespace-only, or non-string titles.
+Ensured title validation rejects invalid title updates prior to mutating any state (preserving completed status and leaving all todos intact if validation fails).
+Preserved existing behavior for completion-only updates (completed without title) and preserved completion state and ID when updating title only.
+Retained HTTP 404 behavior for nonexistent todos and preserved all GET, POST, and DELETE endpoints.
+
+app/public/index.html
+
+Added an "Edit" button to each todo row.
+Added data-todo-id="${item.id}" to each todo's <li> element.
+Implemented inline editing mode containing an input initialized with the current title, a "Save" button, and a "Cancel" button, all belonging to that todo's list item.
+Gave the editing input the accessible name "Edit title" via aria-label="Edit title" and an associated screen-reader label <label for="...">Edit title</label>.
+Enabled full keyboard navigation (Tab navigation between input and buttons, Enter to save, Escape to cancel).
+Implemented whitespace trimming upon saving and visible error reporting inside an element with role="alert" belonging to the affected todo's list item.
+Preserved draft text in the editor and kept the editor open upon empty/whitespace validation errors, non-success HTTP responses, or network errors.
+Restored original title and closed the editor without modifying the todo upon clicking "Cancel".
+Rendered titles using textContent to ensure literal text rendering and prevent HTML injection or XSS execution.
+Preserved existing task addition, delete interactions, and completion toggling by clicking displayed titles when not in edit mode.
+
+app/test.js
+
+Preserved all 9 existing test cases.
+Added 7 local API tests covering:
+Valid title update and whitespace trimming (PUT /api/todos/:id).
+State preservation (preserving completed state and ID when updating title only).
+Validation rejection (HTTP 400) for empty strings and whitespace-only titles.
+Validation rejection (HTTP 400) for non-string types (number, boolean, null, object, array).
+Rejection behavior preventing mutation of completed state when an invalid title is supplied alongside completed.
+Completion-only update retention.
+Non-existent ID handling (HTTP 404).
+Commands Executed & Actual Test Totals
+Test Execution: npm test inside app/
+text
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+✔ GET /api/todos returns array of tasks (105.4019ms)
+✔ POST /api/todos creates a new valid task (26.7806ms)
+✔ POST /api/todos rejects empty title with 400 (5.9278ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (19.2794ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (21.7711ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (8.7393ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (14.7629ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (11.1276ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (6.8955ms)
+✔ PUT /api/todos/:id updates a todo with a valid title and trims whitespace (8.658ms)
+✔ PUT /api/todos/:id preserves completion state when updating title only (6.8952ms)
+✔ PUT /api/todos/:id rejects empty and whitespace-only title with 400 and leaves todo unchanged (9.8258ms)
+✔ PUT /api/todos/:id rejects non-string titles with 400 and leaves todo unchanged (15.305ms)
+✔ PUT /api/todos/:id rejected title update does not modify completion state or any other property (8.7656ms)
+✔ PUT /api/todos/:id completion-only update retains existing behavior (4.7326ms)
+✔ PUT /api/todos/:id returns 404 for nonexistent todo (2.3545ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 641.2483
+Total: 16 passed, 0 failed.
+Browser Checks & Actual Outcomes
+
+An automated headless browser verification suite was executed using Microsoft Edge (Edg/155.0.4283.45) via the Chrome DevTools Protocol (CDP) evaluating the live interface:
+
+Contract & UI-01: Verified data-todo-id attributes exist on all <li> elements, and each has an "Edit" button and "Delete" button. (Passed)
+UI-02 & UI-03: Clicking "Edit" revealed the inline input populated with the current title, accessible name "Edit title" via aria-label, and "Save" and "Cancel" buttons belonging to the row. (Passed)
+UI-06: Submitting empty/whitespace text displayed a visible alert inside [role="alert"], kept the editor open, and preserved the input draft. (Passed)
+UI-07: Clicking "Cancel" closed the editor and restored the original title without saving. (Passed)
+UI-04, UI-05, UI-08: Saving a valid title with surrounding whitespace trimmed the title, updated the item via PUT, preserved the item's completion state, left other todos unchanged, and closed the editor. (Passed)
+UI-05 (Reload): Verified the saved title remained after page reload. (Passed)
+UI-10: Verified titles containing HTML characters (<b id="injected-tag">, <script>) rendered as literal text without creating DOM elements or executing scripts. (Passed)
+UI-11: Verified clicking a displayed title in view mode toggled completion state. (Passed)
+UI-09: Verified network/server errors display an alert with role="alert" and retain the draft in the open editor. (Passed)
+Errors, Limitations, or Unresolved Requirements
+None. All requirements (UI-01 through UI-11, API-01 through API-05, and Interface Contract specifications) have been implemented and verified. No commits or pushes were performed.

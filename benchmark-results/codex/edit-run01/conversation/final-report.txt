@@ -1,0 +1,12 @@
+Implemented changes in only:
+
+- `app/public/index.html`: inline Edit/Save/Cancel controls, accessible input, row-level errors, and safe literal title rendering.
+- `app/server.js`: validates titles before changing any todo fields.
+- `app/test.js`: preserved existing tests and added title-update regression coverage.
+
+Verification:
+- `npm.cmd test` from `app/`: **13 passed, 0 failed**.
+- `node --check server.js`, `node --check test.js`, and inline-script syntax check: passed.
+- Browser checks were not performed; no browser automation tool was available. UI behavior remains unverified in a browser.
+
+No commits or pushes were made.

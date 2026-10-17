@@ -1,0 +1,7 @@
+Scope review: passed. File manifests show only app/server.js, app/test.js, app/public/index.html changed.
+Directory review: only app, app/public, pipeline, pipeline/tasks outside node_modules; no unexpected added directories.
+Existing tests preserved: all nine baseline tests unchanged apart from final newline; four local API tests appended.
+Required local coverage present: valid and invalid titles, atomic rejection, state preservation, completion-only updates, missing todos.
+Agent final report: local total confirmed independently; browser limitation accurately disclosed.
+Independent grading: local 13 passed/0 failed; API 12 passed/0 failed; browser 10 passed/0 failed.
+No coding corrections. Original preserved before grading.
