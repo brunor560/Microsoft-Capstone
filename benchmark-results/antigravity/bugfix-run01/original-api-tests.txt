@@ -1,0 +1,34 @@
+Γû╢ API-01: completed must be a boolean
+  Γ£ö rejects completed: "false" (6.4703ms)
+  Γ£ö rejects completed: "true" (6.2989ms)
+  Γ£ö rejects completed: 0 (5.1711ms)
+  Γ£ö rejects completed: 1 (3.8114ms)
+  Γ£ö rejects completed: null (3.4007ms)
+  Γ£ö rejects completed: {} (2.7478ms)
+  Γ£ö rejects completed: [] (5.7852ms)
+Γ£ö API-01: completed must be a boolean (74.2472ms)
+Γ£ö API-01: string "false" does not mark a todo complete (2.7606ms)
+Γû╢ API-02: malformed ids are rejected
+  Γ£ö rejects id 5abc (2.4785ms)
+  Γ£ö rejects id -5 (2.3366ms)
+  Γ£ö rejects id 0 (2.1323ms)
+  Γ£ö rejects id 0x1 (2.2245ms)
+  Γ£ö rejects id 1.0 (2.5789ms)
+  Γ£ö rejects id abc (3.2335ms)
+  Γ£ö rejects id 9007199254740992 (3.2218ms)
+Γ£ö API-02: malformed ids are rejected (19.974ms)
+Γ£ö API-02: leading zeros refer to the same todo (1.9213ms)
+Γ£ö API-02: a valid id with no todo returns 404 (2.6296ms)
+Γ£ö API-03: a non-object body is rejected (3.0472ms)
+Γ£ö API-04: an invalid completed value blocks a valid title (2.9286ms)
+Γ£ö API-05: boolean updates still work in both directions (2.8609ms)
+Γ£ö API-05: valid title updates still work (3.4029ms)
+Γ£ö API-05: GET, POST and DELETE keep their behaviour (3.7711ms)
+Γä╣ tests 24
+Γä╣ suites 0
+Γä╣ pass 24
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 286.1456

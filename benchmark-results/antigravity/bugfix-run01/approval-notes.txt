@@ -1,0 +1,5 @@
+Conversation evidence: manual copy with summarized tool actions.
+Operator confirms one approval request to run npm test.
+Operator selected approve this time (one-time approval).
+Approval waiting included in stopwatch time; duration not measured separately.
+Token usage and cost: unavailable.
