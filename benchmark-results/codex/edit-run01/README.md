@@ -28,6 +28,6 @@ The repository package follows Antigravity's edit-run layout: original source sn
 
 The agent reported that it performed no browser checks; the operator subsequently ran the independent browser suite. Its local test count and allowed-file report were verified. Review the recorded limitations before comparisons: one task and attempt do not establish a general tool winner.
 
-This evidence package is prepared on a separate results branch. No commit or push has been performed.
+The full evidence package is published on results/codex-edit-run01. This copy on results/all-runs keeps only the files needed for analysis.
 
 

@@ -19,7 +19,7 @@ Saved JavaScript files are evidence copies, not replacements for the repository'
 
 ## Relationship to the master specifications
 
-The [feature matrix specification](../../agentic_developer_feature_matrix_specification.md) defines a documentation-only assessment and explicitly separates live benchmarks from that deliverable. These results belong to the separate execution pilot and do not validate documentation-based feature claims or establish a general tool ranking.
+The [feature matrix specification](../../course_artifacts/sources/feature_matrix_specification.md) defines a documentation-only assessment and explicitly separates live benchmarks from that deliverable. These results belong to the separate execution pilot and do not validate documentation-based feature claims or establish a general tool ranking.
 
 The [task matrix](../../pipeline/tasks/README.md) defines shared benchmark tasks. These attempts used the preserved `benchmark-start-v1` version of task `001-add-delete-endpoint`, identified by the starting commit above, rather than silently substituting the current master task.
 

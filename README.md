@@ -45,9 +45,12 @@ Shared graders and run procedures are in
 [`benchmark-results/protocol/`](benchmark-results/protocol/): the
 [delete procedure](benchmark-results/protocol/team-benchmark-procedure.md) and the
 [title-edit procedure](benchmark-results/protocol/edit-title/README.md).
+The task 004 and task 005 procedures and graders live on their own
+branches, `benchmark-protocol-v3-bugfix` and `benchmark-protocol-v4-injection`;
+see [`benchmark-results/protocol/update-bugfix/`](benchmark-results/protocol/update-bugfix/README.md).
 
-These files were copied from the `results/*` and `benchmark-protocol-v2-edit`
-branches. Those branches are still the original records. This branch keeps only what
+These files were copied from the `results/*` branches and from
+`benchmark-protocol-v2-edit`. Those branches are still the original records. This branch keeps only what
 is needed to analyse the runs: run reports, prompts and final reports, test
 outputs and exit codes, timing, token usage, scope reviews, and the agents'
 original code. Raw transcripts, setup logs, file manifests, hashes, and
