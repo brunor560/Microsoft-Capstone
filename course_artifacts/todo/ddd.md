@@ -14,6 +14,6 @@ Part of the split task list; see [../TODO.md](../TODO.md) for status values and 
 | DOC-047 | Open: item (8), C-2 has no architectural impact; the undefined references D05, D06, D09, V02-V05 and E15 are tracked in DOC-004. | Unassigned | In progress | [DOC-047](history.md#doc-047) |
 | DOC-049 | Decide what to keep once among the overlapping capacity, failure-handling, configuration and risk text; cross-reference the rest; keep numbers and status labels unchanged; check table and figure references; pick one status vocabulary. | Unassigned | Open | [DOC-049](history.md#doc-049) |
 | DOC-051 | Open: how the evaluator reaches the frozen candidate (Docker none network gives only container-local loopback). | Unassigned | Ready for review | [DOC-051](history.md#doc-051) |
-| DOC-052 | Open: the timeout exit code and the 3.5-hour campaign estimate. | Unassigned | In progress | [DOC-052](history.md#doc-052) |
+| DOC-052 | Review the removal of the aggregate campaign-duration estimate and confirm the six-hour target, 96-run configuration, grading/rerun requirements, per-run active-time limit, and exit-code mapping remain intact. | Unassigned | Ready for review | [DOC-052](history.md#doc-052) |
 
 DOC-043 to DOC-046 (DOC-044 is now part of DOC-043) come from the grading rubric ([references](../references/ddd-grading-rubric.md)) compared with the DDD text. They are a quick read, not a scored review.

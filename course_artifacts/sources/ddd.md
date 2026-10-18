@@ -281,7 +281,7 @@ The behavioral view shows the four workflows the system runs most: one scored ha
 
 Figure 5. Sequence: one scored harness run (Approach C)
 
-The controller validates and hashes every input before a run ID exists, then drives at most five coder turns inside a network-less container; every model call is recorded and every command result is redacted before the agent sees it. Only after the candidate is frozen do evaluator-owned suites grade it, and the run ends with exactly one record and an exit code (0 passed, 1 failed, 2 invalid input or infrastructure error, 130 cancelled).
+The controller validates and hashes every input before a run ID exists, then drives at most five coder turns inside a network-less container; every model call is recorded and every command result is redacted before the agent sees it. Only after the candidate is frozen do evaluator-owned suites grade it. Each admitted run produces one validated record when finalization storage is available; the process exit code summarizes the outcome.
 
 ##### Grading and final status
 
@@ -411,7 +411,7 @@ No hosted API is used. Inputs are local CLI, task files, and model profiles.
 python run_benchmark.py --task 001-add-delete-endpoint --model-profile azure-dev
 ```
 
-The runner returns 0 after any completed run, even an unreliable one. Proposed exit codes: 0 passed, 1 failed, 2 invalid input or infrastructure error, 130 cancelled.
+The current runner returns 0 after any completed run, even an unreliable one. Proposed application-level exit codes: 0 when the terminal record status is passed; 1 when a valid terminal record has any other status (failed, timeout, aborted, or infrastructure_error); 2 when input is invalid or a fatal harness, finalization, or storage error prevents a valid terminal record. User cancellation is recorded as aborted and returns 1. The record's status and reason remain authoritative; AutoGen task termination does not select the process exit code.
 
 | Contract | Current | Proposed |
 | --- | --- | --- |
@@ -615,7 +615,7 @@ Testbed: baseline/ passes its 5 tests (V02); app/ fails because of a stray first
 | Work completed but not accepted | failed | Reason acceptance_failed. |
 | All checks pass | passed | Publication still requires license, redaction and review gates. |
 
-Status and scores are resolved only after report completeness and cleanup are known. Every path ends in exactly one validated record, and the detailed status and reason in the record are authoritative; the process exit code is a summary.
+Status and scores are resolved only after report completeness and cleanup are known. Every admitted run ends in exactly one validated record when durable storage is available. Invalid input is rejected before run ID assignment; a fatal harness, finalization, or storage error may prevent a valid terminal record. When a record exists, its detailed status and reason are authoritative and the process exit code is a summary.
 
 ### Interfaces
 
@@ -688,7 +688,7 @@ ADR-14 was ADR-13 in the earlier Markdown import and was renumbered because vers
 
 ### ADR-02: Local modular application with containers
 
-- Context: The harness must run on the operator’s machine (C-1). A full campaign is 96 runs, about 3.2 hours of agent time, on a $100 budget (C-3) and a one-semester schedule (C-4).
+- Context: The harness must run on the operator’s machine (C-1). A full campaign is 96 runs, on a $100 budget (C-3) and a one-semester schedule (C-4).
 - Options: (a) a modular monolith with Docker containers for untrusted code; (b) microservices for controller, grader and publisher behind a queue; (c) a hosted cloud service.
 - Trade-off: Options b and c scale horizontally and isolate each service, but add network contracts, deployment, cloud credentials and running cost, none of which this workload needs. Option a keeps interfaces in-process, typed and easy to test; it limits parallelism to one machine and shares one fault domain, while containers still isolate the untrusted code.
 - Consequence: One host process runs one scored run at a time. If campaigns outgrow a machine-day, the fallback is an Azure VM per A-1, not a re-architecture.
@@ -783,7 +783,7 @@ Open items in this mapping:
 
 ## System Size and Performance
 
-The SRS campaign is 96 harness runs. At 120 s each, active agent time is at most 3.2 hours, excluding grading and reruns. No scored harness run has been timed yet; the pilot evidence below comes from Approach B runs and grading.
+The SRS campaign is 96 harness runs. Each run has a 120 s active-time limit (SRS:Spec 2.1); campaign wall time includes grading and any reruns. SRS:NFR-S2 sets a six-hour wall-time target for the full campaign. No scored harness campaign has been timed; the pilot evidence below comes from Approach B runs and grading.
 
 | Target | Source | Current evidence |
 | --- | --- | --- |
@@ -792,6 +792,7 @@ The SRS campaign is 96 harness runs. At 120 s each, active agent time is at most
 | Sandbox ready < 3 s; removed < 5 s | Spec 1.4 | Not measured |
 | ≤ 5 turns, ≤ 120 s active | Spec 2.1 | Partial |
 | Approval expires at 180 ± 1 s | Spec 2.4 | Not implemented |
+| 96-run campaign completes within 6 h, including grading and reruns | SRS:NFR-S2 | Not measured |
 | Test suite < 500 ms | Spec 3.1 | 318 ms, one local sample (V02) |
 | UI update ≤ 100 ms | Spec 3.2 | Not measured |
 | Telemetry overhead < 5% | Spec 4.2 | Not measured |
@@ -800,11 +801,11 @@ The SRS campaign is 96 harness runs. At 120 s each, active agent time is at most
 
 Each result records the host profile (CPU, RAM, OS, Docker version, image digest). Results from different platforms are not combined.
 
-Capacity plan. One scored run executes at a time (Module Design). The 96-run campaign needs about 3.2 hours of agent time plus grading; with about 10 s of grading per run, that is roughly 3.5 hours on one workstation. Model cost is bounded by the per-trial token cap within the $100 credit (C-3). Approach B token usage ranged from about 113,000 to 193,000 input tokens per Task 001 attempt where reported, most of it cached.
+Capacity plan. One scored run executes at a time (Module Design). Model cost is bounded by the per-trial token cap within the $100 credit (C-3). Approach B token usage ranged from about 113,000 to 193,000 input tokens per Task 001 attempt where reported, most of it cached.
 
 ### Capacity and scaling
 
-The benchmark is 96 runs (4 agents × 8 tasks × 3 runs). At the 120 s active-time limit that is at most 3.2 hours of agent time, excluding grading and reruns. One scored run executes at a time; parallel runs wait until the global Docker patch is removed. The harness runs on the operator's machine (at least 16 GB RAM and 100 GB free disk, assumption A-1) and each sandbox is limited to 2 CPUs, 2 GB RAM, and 128 processes. The planning estimate is 5 MiB per run record, about 480 MiB for 96 runs, and it has not been measured. The design does not scale beyond one operator host: hosting the harness as a service is out of scope (C-1). Latency targets appear in the table above, and most are not yet measured. This subsection is kept from the earlier import.
+The benchmark is 96 runs (4 agents × 8 tasks × 3 runs). Each run is limited to 120 s of active time; campaign wall time also includes grading and reruns. One scored run executes at a time; parallel runs wait until the global Docker patch is removed. The harness runs on the operator's machine (at least 16 GB RAM and 100 GB free disk, assumption A-1) and each sandbox is limited to 2 CPUs, 2 GB RAM, and 128 processes. The planning estimate is 5 MiB per run record, about 480 MiB for 96 runs, and it has not been measured. The design does not scale beyond one operator host: hosting the harness as a service is out of scope (C-1). Latency targets appear in the table above, and most are not yet measured. This subsection is kept from the earlier import.
 
 ## Security Considerations
 

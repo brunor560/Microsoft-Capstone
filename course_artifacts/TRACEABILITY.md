@@ -44,7 +44,7 @@ SRS revision 1.2 adds a Non-Functional Requirements section. The Design column b
 | SRS:NFR-P1 | Performance | SRS:TC-NFR-P1 | M13 | Unreviewed; not mapped in the DDD |
 | SRS:NFR-A1 | Availability | SRS:TC-NFR-A1 | GitHub Pages | Unreviewed; not mapped in the DDD |
 | SRS:NFR-S1 | Security | SRS:TC-NFR-S1 | M12, ADR-11 | Unreviewed; not mapped in the DDD |
-| SRS:NFR-S2 | Scalability | SRS:TC-NFR-S2 | M02 | Unreviewed; not mapped in the DDD |
+| SRS:NFR-S2 | Scalability | SRS:TC-NFR-S2 | M02 | Unreviewed; DDD System Size and Performance retains the six-hour target including grading and reruns; campaign timing not measured |
 | SRS:NFR-R1 | Reliability | SRS:TC-NFR-R1 | M02, M10 | Unreviewed; not mapped in the DDD |
 | SRS:NFR-R2 | Repeatability | SRS:TC-NFR-R2 | M09, M13 | Unreviewed; not mapped in the DDD |
 | SRS:NFR-PT1 | Portability | SRS:TC-NFR-PT1 | M06, M08 | Unreviewed; not mapped in the DDD |

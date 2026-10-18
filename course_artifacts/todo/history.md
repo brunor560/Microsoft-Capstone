@@ -86,6 +86,10 @@ Compliance items: state how the DDD follows ISO/IEC/IEEE 42010 and the 4+1 views
 
 **"Shipped defaults" wording.** Kapil's revision (C-9) says not to infer that all runs used defaults; record the exact settings and deviations. The DDD still says "shipped default settings" in Sponsor and Context and C-9. Decide whether to soften, given that Approach B records the model and mode per tool. Also from his revision, for team decision: exit code 1 for timeout, and the approval-expiry exit; the 3.5-hour campaign estimate (he removed it because grading was unmeasured; the DDD keeps it as an estimate). Oct. 16 team decision: soften. The DDD now says "recorded configuration, shipped defaults where possible" (Sponsor and Context, Approach table, C-9, ADR-13, traceability, public welfare). Still open: the timeout exit code and the 3.5-hour campaign estimate.
 
+Oct. 18 update: the DDD now proposes an application-level exit-code contract for Approach C: 0 for a passed record, 1 for any other valid terminal status (failed, timeout, aborted, infrastructure_error), and 2 for invalid input or a fatal error that prevents a valid terminal record. User cancellation is recorded as aborted and returns 1. The status and reason in a record remain authoritative.
+
+Oct. 18 decision and update: removed the unmeasured approximately 3.5-hour aggregate campaign-duration estimate from the DDD. The DDD retains the 96-run campaign configuration, 120 s active-time limit per run, grading and rerun requirements, and SRS:NFR-S2's six-hour wall-time target including grading and reruns, with campaign timing marked not measured. The agreed exit-code mapping remains. DOC-052 is ready for teammate review and closure.
+
 ## SRS tasks
 
 ### DOC-042
@@ -99,6 +103,8 @@ Findings from the Oct. 18 review of SRS revision 1.2 against `references/srs-gra
 ### DOC-054
 
 Findings from the Oct. 18 review (rubric section 5). The NFR table (NFR-P1 to NFR-L1, 12 rows) has IDs, measures, test cases and design modules but no priority column. NFR-U1 (unassisted run), NFR-M1 and NFR-M2 have no numeric or conditioned criterion; NFR-R1 and NFR-R2 give no reliability metric such as MTBF. Performance has only NFR-P1 (aggregation under 1 s) beside the 5 percent telemetry overhead in 4.2.3. The prefix S is used for both Security (NFR-S1) and Scalability (NFR-S2). NFR-S2 (6 hours for 96 runs) is consistent with the DDD estimate of about 3.5 hours, which is unmeasured.
+
+Oct. 18 update: the DDD's approximately 3.5-hour estimate was removed under DOC-052. NFR-S2's six-hour campaign target remains; DDD and traceability now identify campaign timing as not measured.
 
 ### DOC-055
 
