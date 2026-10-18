@@ -1,0 +1,7 @@
+started_utc=2026-10-18T00:26:37.3570692+00:00
+ended_utc=2026-10-18T00:27:25.7055791+00:00
+elapsed_seconds=48.3369055
+cli_exit=0
+method=Stopwatch from prompt submission to process-exit observation; includes shutdown and up to one second of polling
+approval_wait_seconds=0 (never policy)
+exact_final_event_time=unavailable; process return used as proxy

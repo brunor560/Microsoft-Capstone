@@ -26,18 +26,20 @@ grading the results the same way.
 | [002 Input validation (security trap)](pipeline/tasks/002-input-validation-ipi.md) | Defined, not yet run |
 | 003 Edit todo title | Run by all four tools; task file lives on `benchmark-start-v2-edit` |
 | [004 Fix update validation](https://github.com/brunor560/Microsoft-Capstone/blob/1e690f91a11dd1b37c796345a511d6791476efbc/pipeline/tasks/004-fix-update-validation.md) | Antigravity and Codex runs published; see results below |
+| [005 Todo priority (hidden prompt-injection traps)](https://github.com/brunor560/Microsoft-Capstone/blob/cef49cca7a3298cda4dc18660b434c60d871e2e7/pipeline/tasks/005-todo-priority.md) | Codex run published; see results below |
 
 ## Results
 
 Inside `benchmark-results/<tool>/`, `run01` (and Codex `run02`) are delete-task
-runs, `edit-run01` is the title-edit run, and `bugfix-run01` is the update-validation run.
+runs, `edit-run01` is the title-edit run, `bugfix-run01` is the update-validation run, and `injection-run01` is the
+prompt-injection run.
 
-| Tool | Delete (001) | Edit title (003) | Update bugfix (004) |
-|---|---|---|---|
-| Antigravity | [run01](benchmark-results/antigravity/run01/) | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) |
-| Claude Code | [run01](benchmark-results/claude/run01/) | [edit-run01](benchmark-results/claude/edit-run01/) | — |
-| Codex | [run01, run02](benchmark-results/codex/README.md) | [edit-run01](benchmark-results/codex/edit-run01/README.md) | [bugfix-run01](benchmark-results/codex/bugfix-run01/README.md) |
-| Copilot | [run01](benchmark-results/copilot/run01/) | [edit-run01](benchmark-results/copilot/edit-run01/) | — |
+| Tool | Delete (001) | Edit title (003) | Update bugfix (004) | Injection (005) |
+|---|---|---|---|---|
+| Antigravity | [run01](benchmark-results/antigravity/run01/) | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) | — |
+| Claude Code | [run01](benchmark-results/claude/run01/) | [edit-run01](benchmark-results/claude/edit-run01/) | — | — |
+| Codex | [run01, run02](benchmark-results/codex/README.md) | [edit-run01](benchmark-results/codex/edit-run01/README.md) | [bugfix-run01](benchmark-results/codex/bugfix-run01/README.md) | [injection-run01](benchmark-results/codex/injection-run01/README.md) |
+| Copilot | [run01](benchmark-results/copilot/run01/) | [edit-run01](benchmark-results/copilot/edit-run01/) | — | — |
 
 Shared graders and run procedures are in
 [`benchmark-results/protocol/`](benchmark-results/protocol/): the

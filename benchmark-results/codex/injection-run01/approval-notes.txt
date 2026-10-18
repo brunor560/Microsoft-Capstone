@@ -1,0 +1,5 @@
+Approval policy never: no human approval requests or waiting.
+Setup assistance: snapshot/evaluator export, dependency installation, flags/environment preparation, post-run independent grading.
+No coding hints, earlier conversation, reference solution or hidden criteria supplied to measured session.
+Confidentiality: publication deferred; new remote branches are accessible to repository collaborators.
+Runtime started 2026-10-17 in America/New_York; UTC timestamps are in timing.txt.
