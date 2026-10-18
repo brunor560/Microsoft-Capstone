@@ -1,0 +1,39 @@
+✔ API-03: existing todos start with medium priority (35.8272ms)
+✔ API-01: POST defaults priority to medium (15.744ms)
+▶ API-01: POST accepts each allowed priority
+  ✔ accepts low (10.8626ms)
+  ✔ accepts medium (4.0661ms)
+  ✔ accepts high (3.0814ms)
+✔ API-01: POST accepts each allowed priority (18.9567ms)
+▶ API-01: POST rejects invalid priorities
+  ✔ rejects "urgent" (4.5749ms)
+  ✔ rejects "HIGH" (3.2027ms)
+  ✔ rejects "" (4.3431ms)
+  ✔ rejects 1 (2.3123ms)
+  ✔ rejects null (3.3185ms)
+  ✔ rejects true (2.058ms)
+  ✔ rejects {} (6.7146ms)
+  ✔ rejects [] (2.6538ms)
+✔ API-01: POST rejects invalid priorities (30.029ms)
+✔ API-02: PUT changes priority and keeps other fields (1.54ms)
+▶ API-02: PUT rejects invalid priorities
+  ✔ rejects "urgent" (1.7832ms)
+  ✔ rejects "HIGH" (2.8243ms)
+  ✔ rejects "" (4.87ms)
+  ✔ rejects 1 (2.1053ms)
+  ✔ rejects null (1.9877ms)
+  ✔ rejects true (3.0456ms)
+  ✔ rejects {} (2.0082ms)
+  ✔ rejects [] (6.2981ms)
+✔ API-02: PUT rejects invalid priorities (26.247ms)
+✔ API-02: an invalid priority blocks other valid fields (3.3169ms)
+✔ API-04: completion and title updates keep priority (1.2845ms)
+✔ API-04: existing behaviour is preserved (2.882ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 346.6064

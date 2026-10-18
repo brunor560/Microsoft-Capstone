@@ -1,0 +1,4 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/005-todo-priority.md; rg --files -g AGENTS.md -g package.json -g '*todo*' -g '*Todo*'; git status --short"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json; Get-ChildItem -Force -Name; Get-ChildItem app -Force -Name'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
