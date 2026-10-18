@@ -2,22 +2,25 @@
 
 ## 1. Starting point and evaluator source
 
-- Starting branch: benchmark-start-v3-bugfix
-- Starting app commit: 4e258a96855d98edd10247f68c0b8265e53a8921
-  (the same app as the title-edit task)
-- Start-branch commit, which adds the task file: record the full ID of
-  `origin/benchmark-start-v3-bugfix` once the team agrees on it
+- Branch: benchmark-protocol-v3-bugfix. One commit holds both the task
+  file and the graders; there is no separate start branch.
+- Agreed commit, used for both the snapshot and the graders:
+  1e690f91a11dd1b37c796345a511d6791476efbc
+- Underlying app: 4e258a96855d98edd10247f68c0b8265e53a8921 (the same app
+  as the title-edit task)
 - Task: pipeline/tasks/004-fix-update-validation.md
-- Evaluator branch: benchmark-protocol-v3-bugfix
 - Evaluator folder: benchmark-results/protocol/update-bugfix/
+
+Later commits on this branch change documentation only; the grader files
+are identical to the agreed commit. Use the agreed commit for snapshots
+and grading so every run matches.
 
 The starting application has Add, completion toggling, and Delete. Its
 `PUT /api/todos/:id` endpoint and its status-toggle code contain the bugs
 described in [ACCEPTANCE.md](ACCEPTANCE.md).
 
-The team must agree on one published start commit and one published
-evaluator commit before running. Record both full commit IDs for every
-attempt.
+Record the agreed commit ID for every attempt, as both the baseline
+commit and the protocol commit.
 
 Give the agent only the isolated app/task snapshot created below. Keep
 graders, the reference solution (`reference/`), ACCEPTANCE.md, evidence,
@@ -83,8 +86,8 @@ git status --short
 $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
 
-# Set this to the agreed full commit ID of benchmark-start-v3-bugfix.
-$baseline = '<agreed start commit>'
+# The agreed commit, used for both the snapshot and the graders.
+$baseline = '1e690f91a11dd1b37c796345a511d6791476efbc'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-bugfix-run01'
@@ -122,17 +125,16 @@ The snapshot contains app/ and the task file, without Git metadata.
 From the repository directory:
 
 ```powershell
-$protocolCommit = (
-    git rev-parse origin/benchmark-protocol-v3-bugfix
-).Trim()
-if ($LASTEXITCODE -ne 0) { throw 'Evaluator commit lookup failed.' }
+# The graders come from the same agreed commit as the snapshot.
+$protocolCommit = $baseline
 
-$protocolCommit
+git cat-file -e "$($protocolCommit)^{commit}"
+if ($LASTEXITCODE -ne 0) { throw 'Agreed commit not found; run git fetch origin.' }
 ```
 
-Compare the printed ID with the team's agreed evaluator commit. If the
-branch has advanced, set $protocolCommit to the agreed full ID. Do not
-silently use different evaluator versions.
+Do not use the newest commit of `benchmark-protocol-v3-bugfix` for grading. Later commits
+change documentation only, but every run must record and use the same
+agreed commit. Do not silently use different evaluator versions.
 
 Then run:
 
@@ -472,7 +474,7 @@ version, and regrade all preserved outputs consistently.
 
 After coding and independent grading, publish evidence on a separate
 results branch, `results/<tool>-bugfix-run01`. Do not modify
-benchmark-start-v3-bugfix.
+benchmark-protocol-v3-bugfix.
 
 Suggested results folder:
 
