@@ -1,0 +1,138 @@
+
+Running 4 tests using 1 worker
+
+  x  1 injection-priority.browser.spec.cjs:72:1 › UI-01: each todo shows its priority (5.4s)
+  x  2 injection-priority.browser.spec.cjs:87:1 › UI-02: the add form has a Priority control, medium by default (5.3s)
+  x  3 injection-priority.browser.spec.cjs:106:1 › UI-03: a chosen priority is saved and shown after reload (30.2s)
+  ok 4 injection-priority.browser.spec.cjs:120:1 › UI-04: toggle, add and delete still work (506ms)
+
+
+  1) injection-priority.browser.spec.cjs:72:1 › UI-01: each todo shows its priority ────────────────
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('li').filter({ hasText: 'Shown with priority' })
+    Timeout: 5000ms
+    Expected pattern: /\blow\b/i
+    Received string:  "···········
+                Shown with priority···········
+              Delete
+            "
+
+    Call log:
+      - Expect "toContainText" locator('li').filter({ hasText: 'Shown with priority' }) with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Shown with priority' })
+        14 × locator resolved to <li>…</li>
+           - unexpected value "
+              
+                Shown with priority
+              
+              Delete
+            "
+
+
+      79 |   try {
+      80 |     const row = page.locator('li', { hasText: 'Shown with priority' });
+    > 81 |     await expect(row).toContainText(/\blow\b/i);
+         |                       ^
+      82 |   } finally {
+      83 |     await capture(page, 'UI-01-priority-shown');
+      84 |   }
+        at C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority.browser.spec.cjs:81:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-7eaaa-ach-todo-shows-its-priority\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\injection-priority.browser-7eaaa-ach-todo-shows-its-priority\error-context.md
+
+    Error Context: browser-test-results\injection-priority.browser-7eaaa-ach-todo-shows-its-priority\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-7eaaa-ach-todo-shows-its-priority\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\injection-priority.browser-7eaaa-ach-todo-shows-its-priority\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) injection-priority.browser.spec.cjs:87:1 › UI-02: the add form has a Priority control, medium by default 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByLabel('Priority', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByLabel('Priority', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Priority', { exact: true })
+
+
+      90 |
+      91 |     const control = priorityControl(page);
+    > 92 |     await expect(control).toBeVisible();
+         |                           ^
+      93 |
+      94 |     const tag = await control.evaluate(el => el.tagName);
+      95 |     if (tag === 'SELECT') {
+        at C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority.browser.spec.cjs:92:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-58353-y-control-medium-by-default\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\injection-priority.browser-58353-y-control-medium-by-default\error-context.md
+
+    Error Context: browser-test-results\injection-priority.browser-58353-y-control-medium-by-default\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-58353-y-control-medium-by-default\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\injection-priority.browser-58353-y-control-medium-by-default\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) injection-priority.browser.spec.cjs:106:1 › UI-03: a chosen priority is saved and shown after reload 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.evaluate: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Priority', { exact: true })
+
+
+      49 | async function choosePriority(page, value) {
+      50 |   const control = priorityControl(page);
+    > 51 |   const tag = await control.evaluate(el => el.tagName);
+         |                             ^
+      52 |
+      53 |   if (tag === 'SELECT') {
+      54 |     await control.selectOption({ label: value }).catch(() =>
+        at choosePriority (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority.browser.spec.cjs:51:29)
+        at addTodo (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority.browser.spec.cjs:64:23)
+        at C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority.browser.spec.cjs:109:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-2f7ed-aved-and-shown-after-reload\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\injection-priority.browser-2f7ed-aved-and-shown-after-reload\error-context.md
+
+    Error Context: browser-test-results\injection-priority.browser-2f7ed-aved-and-shown-after-reload\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\injection-priority.browser-2f7ed-aved-and-shown-after-reload\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\injection-priority.browser-2f7ed-aved-and-shown-after-reload\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    injection-priority.browser.spec.cjs:72:1 › UI-01: each todo shows its priority ─────────────────
+    injection-priority.browser.spec.cjs:87:1 › UI-02: the add form has a Priority control, medium by default 
+    injection-priority.browser.spec.cjs:106:1 › UI-03: a chosen priority is saved and shown after reload 
+  1 passed (45.6s)

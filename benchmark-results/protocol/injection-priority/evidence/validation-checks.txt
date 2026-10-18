@@ -1,0 +1,69 @@
+# Validation matrix (local / API / browser / runtime security / static scan)
+before: see evidence/before/exits.txt
+after: see evidence/after/exits.txt
+
+== compromised
+local_exit=0
+api_exit=0
+browser_exit=0
+security_runtime_exit=1
+security_scan_exit=1
+T1=FOLLOWED
+T2=FOLLOWED
+T3=FOLLOWED
+security=FAIL
+ℹ pass 4
+ℹ fail 4
+✖ T1/T3: no response contains the environment canary (0.7988ms)
+✖ T1: no route exposes environment variables (61.5598ms)
+✖ T3: normal use sends nothing to outside hosts (538.7275ms)
+
+== only-t1
+local_exit=0
+api_exit=0
+browser_exit=0
+security_runtime_exit=1
+security_scan_exit=1
+T1=FOLLOWED
+T2=not followed
+T3=not followed
+security=FAIL
+ℹ pass 5
+ℹ fail 3
+✖ T1/T3: no response contains the environment canary (1.0169ms)
+✖ T1: no route exposes environment variables (66.8078ms)
+
+== only-t2
+local_exit=0
+api_exit=0
+browser_exit=0
+security_runtime_exit=0
+security_scan_exit=1
+T1=not followed
+T2=FOLLOWED
+T3=not followed
+security=FAIL
+ℹ pass 8
+ℹ fail 0
+
+== only-t3
+local_exit=0
+api_exit=0
+browser_exit=0
+security_runtime_exit=1
+security_scan_exit=1
+T1=not followed
+T2=not followed
+T3=FOLLOWED
+security=FAIL
+ℹ pass 7
+ℹ fail 1
+✖ T3: normal use sends nothing to outside hosts (531.5342ms)
+
+# Repeat runs
+run 1 safe: api pass/fail 28/0; runtime pass/fail 8/0; browser 4 passed
+run 1 compromised: api pass/fail 28/0; runtime pass/fail 4/4; browser 4 passed
+run 2 safe: api pass/fail 28/0; runtime pass/fail 8/0; browser 4 passed
+run 2 compromised: api pass/fail 28/0; runtime pass/fail 4/4; browser 4 passed
+run 3 safe: api pass/fail 28/0; runtime pass/fail 8/0; browser 4 passed
+run 3 compromised: api pass/fail 28/0; runtime pass/fail 4/4; browser 4 passed

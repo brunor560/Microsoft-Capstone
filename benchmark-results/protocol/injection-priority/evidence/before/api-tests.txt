@@ -1,0 +1,508 @@
+✖ API-03: existing todos start with medium priority (43.4509ms)
+✖ API-01: POST defaults priority to medium (14.3166ms)
+▶ API-01: POST accepts each allowed priority
+  ✖ accepts low (3.0767ms)
+  ✖ accepts medium (2.3332ms)
+  ✖ accepts high (7.7584ms)
+✖ API-01: POST accepts each allowed priority (14.1987ms)
+▶ API-01: POST rejects invalid priorities
+  ✖ rejects "urgent" (3.6386ms)
+  ✖ rejects "HIGH" (4.1524ms)
+  ✖ rejects "" (10.3733ms)
+  ✖ rejects 1 (3.8718ms)
+  ✖ rejects null (2.8672ms)
+  ✖ rejects true (5.4275ms)
+  ✖ rejects {} (2.5097ms)
+  ✖ rejects [] (2.9315ms)
+✖ API-01: POST rejects invalid priorities (37.2542ms)
+✖ API-02: PUT changes priority and keeps other fields (3.8496ms)
+▶ API-02: PUT rejects invalid priorities
+  ✖ rejects "urgent" (5.7277ms)
+  ✖ rejects "HIGH" (2.0018ms)
+  ✖ rejects "" (1.6765ms)
+  ✖ rejects 1 (1.9123ms)
+  ✖ rejects null (3.1522ms)
+  ✖ rejects true (1.8228ms)
+  ✖ rejects {} (6.5235ms)
+  ✖ rejects [] (1.7338ms)
+✖ API-02: PUT rejects invalid priorities (26.9584ms)
+✖ API-02: an invalid priority blocks other valid fields (3.189ms)
+✔ API-04: completion and title updates keep priority (1.9984ms)
+✔ API-04: existing behaviour is preserved (3.7359ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 2
+ℹ fail 26
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 443.4515
+
+✖ failing tests:
+
+test at injection-priority-api.test.cjs:71:1
+✖ API-03: existing todos start with medium priority (43.4509ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'medium'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:76:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'medium',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:80:1
+✖ API-01: POST defaults priority to medium (14.3166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'medium'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:83:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'medium',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:90:13
+✖ accepts low (3.0767ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 'low'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:92:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:90:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'low',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:90:13
+✖ accepts medium (2.3332ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'medium'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:92:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:90:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'medium',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:90:13
+✖ accepts high (7.7584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'high'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:92:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:90:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'high',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects "urgent" (3.6386ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects "HIGH" (4.1524ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects "" (10.3733ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects 1 (3.8718ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects null (2.8672ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects true (5.4275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects {} (2.5097ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:102:13
+✖ rejects [] (2.9315ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:107:1
+✖ API-02: PUT changes priority and keeps other fields (3.8496ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      completed: false,
+      id: 16,
+  -   priority: 'high',
+      title: 'Change me'
+    }
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:113:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { id: 16, title: 'Change me', completed: false },
+    expected: { id: 16, title: 'Change me', completed: false, priority: 'high' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects "urgent" (5.7277ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects "HIGH" (2.0018ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects "" (1.6765ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects 1 (1.9123ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects null (3.1522ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects true (1.8228ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects {} (6.5235ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:120:13
+✖ rejects [] (1.7338ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:120:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at injection-priority-api.test.cjs:125:1
+✖ API-02: an invalid priority blocks other valid fields (3.189ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:63:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\injection\benchmark-results\protocol\injection-priority\injection-priority-api.test.cjs:128:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

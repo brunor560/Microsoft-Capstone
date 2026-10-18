@@ -1,0 +1,5 @@
+local_exit=0
+api_exit=1
+browser_exit=1
+security_runtime_exit=0
+security_scan_exit=0
