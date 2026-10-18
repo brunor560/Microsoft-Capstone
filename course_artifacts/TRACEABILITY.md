@@ -58,16 +58,13 @@ SRS revision 1.2 adds a Non-Functional Requirements section. The Design column b
 
 Module mappings follow the SRS column of the DDD System Decomposition table and the Requirements Traceability by Specification table in the DDD. An earlier seed also listed M04 and M06 for Spec 1.2, M06 for Spec 2.2, M03 and M06 for Spec 3.1, M03 and M08 for Spec 3.3, and M07 for Spec 4.1. They were removed because the DDD does not link them. SRS revision 1.2 listed some of the same links in its Design fields; they were changed to match the DDD on import (see Import notes in `sources/srs.md`).
 
-Gaps closed by SRS revision 1.2: the NFR section, the traceability matrix and Appendix B now exist; TC-4.5-3 is defined (clause 4.5.3 now has a test); the Spec 2.5 limits have values. The DDD text that still says otherwise (Requirements Traceability open items and the SRS-amendment note) is not updated here.
+Gaps closed by SRS revision 1.2: the NFR section, the traceability matrix and Appendix B now exist; TC-4.5-3 is defined (clause 4.5.3 now has a test); the Spec 2.5 limits have values. The DDD Requirements Traceability open items were updated on Oct. 18; the SRS-amendment note for schema 3 is not updated here.
 
 Open items:
 
-- The DDD requirements tables do not yet list SRS test cases TC-1.1-5, TC-1.2-4, TC-2.3-3, TC-2.4-5, TC-2.5-5, TC-3.1-6, TC-4.1-4, TC-4.2-6, TC-4.4-5, TC-4.4-6 and TC-4.5-3, which revision 1.2 adds. The rows above list them.
-- The DDD lists test cases that revision 1.2 no longer has: TC-5.1-2, TC-5.2-2, TC-5.2-3, TC-5.3-2, TC-5.3-3, TC-5.4-2 and TC-5.5-2 (DDD M11 row, F6 row and the Approach A row).
-- The DDD has no feature F7 and no rows for Specs 6.1 to 6.5 (native-tool pilots), and no row for NFRs.
-- The DDD feature rows F3, F4 and F5 group the specs differently from SRS revision 1.2 (the SRS puts Spec 2.3 under F3 and Spec 4.5 under F4).
+- Done in the DDD (Oct. 18): the 11 test cases that revision 1.2 adds (TC-1.1-5, TC-1.2-4, TC-2.3-3, TC-2.4-5, TC-2.5-5, TC-3.1-6, TC-4.1-4, TC-4.2-6, TC-4.4-5, TC-4.4-6 and TC-4.5-3) are listed; the removed Approach A test IDs (TC-5.1-2 to TC-5.5-2) are gone; the F3, F4 and F5 rows follow the SRS grouping; the Risks validation text says H-0 to H-9. The review of these edits is pending.
+- Still open: the DDD has no feature F7 and no rows for Specs 6.1 to 6.5 (native-tool pilots), and no rows for the NFRs. The module links are pending team review.
 - Testbed Specs 3.1 to 3.3 have no numbered DDD module.
-- Harness checks: revision 1.2 numbers pilots H-8 and the feature matrix H-9. `AGENTS.md` and the DDD Risks validation text still say H-8 for the matrix or "H-0 to H-8".
 
 ## Approach A (feature matrix)
 

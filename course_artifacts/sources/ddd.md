@@ -550,7 +550,7 @@ Approach A data (SRS Specs 5.1–5.3; formats defined in [4]):
 | Cell (MATRIX:F01…F18 × profile) | Status, supported/unsupported/unestablished scope, setup, activation, evidence basis, evidence references, gap reason, control mechanism, constraints, limitations, evaluator, assessment date | One of five statuses; never blank; never a score |
 | Evidence entry (MATRIX:E01…) | Publisher, page title, URL, section, access date, version or update date, claim summary | Required for every status except Not established |
 
-These records are stored as Markdown in sources/track_a_assessment.md and reviewed through the normal pull request. They are independent of RunRecords and of the run-record schema, and M13 does not publish them unless the team decides otherwise.
+These records are stored as Markdown in sources/track_a_assessment.md and reviewed through the normal pull request. They are independent of RunRecords and of the run-record schema, and M13 publishes them only in a separate matrix view, never combined with RunRecord results (SRS Spec 5.5.1).
 
 ### Storage Requirements
 
@@ -583,8 +583,8 @@ Files are written to a temporary path, validated, then renamed. Suite files are 
 | M08 Evaluation | Run evaluator suites, secret scan, license scan, quality checks | Missing tool or report: infrastructure_error | TC-1.5-1 to TC-1.5-3, TC-4.1-1 to TC-4.1-3, TC-4.3-1 to TC-4.3-3 |
 | M09 Scoring | Apply formulas, zero override, and aggregation | Refuse to score if a required dimension is missing | Formula fixtures |
 | M10 Record writer | Validate and write one record atomically | On failure, block export and publication | TC-4.2-1 to TC-4.2-5 |
-| M11 Assessment | Define profiles; record each cell with a primary source and evidence index entry; second reviewer | No source: “Not established”; never scored | TC-5.1-1 to TC-5.5-2; every cell (36 under the matrix specification's two profiles) |
-| M12 Export and referee | Apply patch onto upstream; grade in CI from base branch | Unsafe history or failed checks: no export | TC-4.5-1, TC-4.5-2 |
+| M11 Assessment | Define profiles; record each cell with a primary source and evidence index entry; second reviewer | No source: “Not established”; never scored | TC-5.1-1 to TC-5.5-1; every cell (36 under the matrix specification's two profiles) |
+| M12 Export and referee | Apply patch onto upstream; grade in CI from base branch | Unsafe history or failed checks: no export | TC-4.5-1 to TC-4.5-3 |
 | M13 Release builder | Validate and publish records with AI label and metadata | Any failed check keeps the previous release | TC-4.4-1 to TC-4.4-4 |
 
 ### Module Design
@@ -630,7 +630,7 @@ I01–I09 are proposed target contracts. Internal transport is a typed in-proces
 | I05 | M07 → M08 | FrozenCandidateRef{run_id, tree_hash, manifest_hash, suite_refs, private_storage_handle} → EvaluationBundle | Read-only; no active writers; candidate and grader hashes match. The handle is host-local and never public. FREEZE_ERROR or HASH_MISMATCH prevents grading. |
 | I06 | M08 → M09 | EvaluationBundle{candidate_hash, grader_results[], required_suites[], policy_events[]} → ScoreEligibility | Every required result is complete and identifies the same candidate. Missing or error reports are unscored. VERIFIED_SECRET or FORBIDDEN_ACTION records a zero override and blocks publication. |
 | I07 | M09 → M10 | ScoreDecision{status_candidate, dimensions or null, total or null, total_max or null, metric_version, reasons[]} | M02 supplies final cleanup and lifecycle outcomes before the write. Range, weight and status invariants are checked. M10 rejects SCHEMA_ERROR and inconsistent totals. |
-| I08 | M10, M11 → M13 (via M12 review) | ReleaseInput{record_refs[], review_refs[], trusted_ci_refs[], comparison_group} → ReleaseOutcome{release_hash or errors[]} | Record, schema and hash integrity, trusted CI, review, redaction and license gates pass; secrets and mixed cohorts are rejected. Approach A records from M11 are published only if the team decides so (see Database servers, design and Schemas). On failure keep the old release. |
+| I08 | M10, M11 → M13 (via M12 review) | ReleaseInput{record_refs[], review_refs[], trusted_ci_refs[], comparison_group} → ReleaseOutcome{release_hash or errors[]} | Record, schema and hash integrity, trusted CI, review, redaction and license gates pass; secrets and mixed cohorts are rejected. Approach A matrix findings from M11 are published in their own view, never combined with Approach B or C results (SRS Spec 5.5.1; see Database servers, design and Schemas). On failure keep the old release. |
 | I09 | Tool adapter → M02 | CapabilityReport{headless, model_pinning, sandbox_routing, turn_counting, usage_reporting, budget_control, evidence_refs} → AdmissionDecision | Capability booleans describe tested integration, not marketing claims. An unknown or false required capability excludes the adapter from Approach C and keeps it eligible for separately labeled Approach B (supervised only). |
 
 Interfaces are in-process calls that pass immutable dataclasses (Module Design); payloads that persisted (I06–I08) are JSON validated against JSON Schema 2020-12 [20]. Only I02 (the provider call, HTTPS from the host) and I08 (publication to GitHub) cross a network. Expected errors are typed results rather than exceptions, so every failure maps to one status in the table above.
@@ -734,16 +734,16 @@ Figure 9. Observed referee workflow (agent-pr-referee.yml) and the proposed sepa
 
 ## SRS Traceability Matrix
 
-Every SRS feature (F1–F5) and specification section referenced in this document maps to at least one module, interface and test. The last column records what is verified today. Features F1–F5 and the sponsor and legal rows are from version 1.4. The F6 row and the specification-level table that follows are kept from the earlier import (see Merge notes).
+SRS features F1–F6 and the specification sections referenced in this document map to at least one module, interface and test. Feature F7 and the non-functional requirements of SRS revision 1.2 are not yet mapped (see the open items below). The last column records what is verified today. Features F1–F5 and the sponsor and legal rows are from version 1.4. The F6 row and the specification-level table that follows are kept from the earlier import (see Merge notes). The feature groupings and test IDs follow SRS revision 1.2.
 
 | SRS requirement | Spec sections | Modules | Interfaces | Verification | Evidence today |
 | --- | --- | --- | --- | --- | --- |
-| F1 Standard reference application with automated tests | 3.1, 3.2, 3.3 | Testbed (app/, baseline/); M03 Staging | I01 | TC-3.3-1; testbed suite | Baseline 5/5 (V02); Task 001 and 003 starting suites pass (4/4, 9/9) |
-| F2 Isolated, credential-free execution | 1.1, 1.2, 1.3, 1.4 | M03 Staging; M06 Sandbox | I03, I04 | TC-1.1-x to TC-1.4-x; TC-1.2-3 | Network-none containers implemented; CPU, memory and process limits not yet enforced; Approach B uses snapshot isolation |
-| F3 Orchestration under turn, time, token and cost limits | 2.1, 2.2, 2.4, 2.5 | M02 Controller; M04 Model adapter; M05 Coder loop | I01, I02, I09 | TC-2.1-x, TC-2.2-x, TC-2.4-x, TC-2.5-x | Partial (10-message ceiling approximates 5 turns); approval timeout not implemented |
-| F4 Independent grading, secret and license scans | 1.5, 2.3, 4.1, 4.3 | M07 Freezer; M08 Evaluation; M09 Scoring | I05, I06 | TC-2.3-x, TC-1.5-x, TC-4.1-x, TC-4.3-x; formula fixtures | Evaluator-owned suites used in all 9 pilot runs; freezer done manually by manifests; scans and M09 scoring not yet applied to pilots |
-| F5 Per-run telemetry and public microsite | 4.2, 4.4, 4.5 | M10 Record writer; M12 Export and referee; M13 Release builder | I07, I08 | TC-4.2-x, TC-4.4-x, TC-4.5-x | Evidence published on results branches; site prototype does not read records; CI referee targets the wrong branch |
-| F6 Documentation-only feature assessment (Approach A) | 5.1–5.5 | M11 Assessment; M13 Release builder | I08 | TC-5.1-1 to TC-5.5-2 | Specification v0.2; stub record only; no cell recorded |
+| F1 Standard reference application with automated tests | 3.1, 3.2, 3.3 | Testbed (app/, baseline/); M03 Staging | I01 | TC-3.1-1 to TC-3.3-3; testbed suite | Baseline 5/5 (V02); Task 001 and 003 starting suites pass (4/4, 9/9) |
+| F2 Isolated, credential-free execution | 1.1, 1.2, 1.3, 1.4 | M03 Staging; M06 Sandbox | I03, I04 | TC-1.1-1 to TC-1.4-3 | Network-none containers implemented; CPU, memory and process limits not yet enforced; Approach B uses snapshot isolation |
+| F3 Orchestration under turn, time, token and cost limits | 2.1 to 2.5 | M01 Contracts; M02 Controller; M04 Model adapter; M05 Coder loop; M07 Freezer | I01, I02, I09 | TC-2.1-1 to TC-2.5-5 | Partial (10-message ceiling approximates 5 turns); approval timeout not implemented; freezer done manually by manifests |
+| F4 Independent grading, secret and license scans | 1.5, 4.1, 4.3, 4.5 | M08 Evaluation; M09 Scoring; M12 Export and referee | I05, I06 | TC-1.5-1 to TC-1.5-3, TC-4.1-1 to TC-4.1-4, TC-4.3-1 to TC-4.3-3, TC-4.5-1 to TC-4.5-3; formula fixtures | Evaluator-owned suites used in all 9 pilot runs; scans and M09 scoring not yet applied to pilots; CI referee targets the wrong branch |
+| F5 Per-run telemetry and public microsite | 4.2, 4.4 | M10 Record writer; M13 Release builder | I07, I08 | TC-4.2-1 to TC-4.2-6, TC-4.4-1 to TC-4.4-6 | Evidence published on results branches; site prototype does not read records |
+| F6 Documentation-only feature assessment (Approach A) | 5.1–5.5 | M11 Assessment; M13 Release builder | I08 | TC-5.1-1 to TC-5.5-1 (SRS harness check H-9) | Specification v0.2; stub record only; no cell recorded |
 | Sponsor: compare native pipelines in their recorded configuration (shipped defaults where possible) | C-9 [3] | Approach B procedure; M08; M10 record format | I09 (promotion path) | Procedure checklists [8], [24] | 9 runs across 4 tools on 2 tasks (Scenario view) |
 | Sponsor: documented feature comparison | Feature matrix spec [4] | M11 Assessment; M13 | I08 | All 36 cells reviewed | Specification v0.2; cells not yet recorded |
 | Legal L1–L5 | SRS legal items | M02 (spend), M08 (license), M06 (limits), M13 (AI label) | I02, I06, I08 | See Security Considerations | Mapped; spend caps and license scans not yet run |
@@ -754,29 +754,30 @@ Each SRS specification is linked to the modules that realize it (from the System
 
 | SRS spec | Modules | Decisions | SRS test cases |
 | --- | --- | --- | --- |
-| 1.1 Network egress boundary | M06 | None recorded | TC-1.1-1 to TC-1.1-4 |
-| 1.2 Secret isolation | M03 | None recorded | TC-1.2-1 to TC-1.2-3 |
+| 1.1 Network egress boundary | M06 | None recorded | TC-1.1-1 to TC-1.1-5 |
+| 1.2 Secret isolation | M03 | None recorded | TC-1.2-1 to TC-1.2-4 |
 | 1.3 Resource quotas | M06 | ADR-03 | TC-1.3-1 to TC-1.3-5 |
 | 1.4 Ephemeral sandbox lifecycle | M03, M06 | None recorded | TC-1.4-1 to TC-1.4-3 |
 | 1.5 Fail-closed auditing | M08 | None recorded | TC-1.5-1 to TC-1.5-3 |
 | 2.1 Turn management | M02, M05 | ADR-03 | TC-2.1-1 to TC-2.1-3 |
 | 2.2 Execution feedback loop | M05 | None recorded | TC-2.2-1 to TC-2.2-3 |
-| 2.3 Targeted file patching | M01, M07 | None recorded | TC-2.3-1, TC-2.3-2 |
-| 2.4 Human-in-the-loop escalation | M02, M05 | None recorded | TC-2.4-1 to TC-2.4-4 |
-| 2.5 Cost and rate guardrails | M01, M02, M04 | ADR-03, ADR-08 | TC-2.5-1 to TC-2.5-4 |
-| 3.1 to 3.3 Testbed | No numbered module (see Application servers) | None recorded | TC-3.1-1 to TC-3.3-3 |
-| 4.1 Evaluator-owned acceptance suites | M08 | ADR-04 | TC-4.1-1 to TC-4.1-3 |
-| 4.2 Run telemetry validation | M04, M10 | ADR-06, ADR-08 | TC-4.2-1 to TC-4.2-5 |
+| 2.3 Targeted file patching | M01, M07 | None recorded | TC-2.3-1 to TC-2.3-3 |
+| 2.4 Human-in-the-loop escalation | M02, M05 | None recorded | TC-2.4-1 to TC-2.4-5 |
+| 2.5 Cost and rate guardrails | M01, M02, M04 | ADR-03, ADR-08 | TC-2.5-1 to TC-2.5-5 |
+| 3.1 to 3.3 Testbed | No numbered module (see Application servers) | None recorded | TC-3.1-1 to TC-3.1-6, TC-3.2-1, TC-3.2-2, TC-3.3-1 to TC-3.3-3 |
+| 4.1 Evaluator-owned acceptance suites | M08 | ADR-04 | TC-4.1-1 to TC-4.1-4 |
+| 4.2 Run telemetry validation | M04, M10 | ADR-06, ADR-08 | TC-4.2-1 to TC-4.2-6 |
 | 4.3 License scan | M08 | None recorded | TC-4.3-1 to TC-4.3-3 |
-| 4.4 Microsite publishing | M13 | ADR-09 | TC-4.4-1 to TC-4.4-4 |
-| 4.5 Trusted-base grading | M12 | ADR-10, ADR-11 | TC-4.5-1, TC-4.5-2 |
-| 5.1 to 5.5 Approach A feature matrix | M11 | ADR-14 | TC-5.1-1 to TC-5.5-2 |
+| 4.4 Microsite publishing | M13 | ADR-09 | TC-4.4-1 to TC-4.4-6 |
+| 4.5 Trusted-base grading | M12 | ADR-10, ADR-11 | TC-4.5-1 to TC-4.5-3 |
+| 5.1 to 5.5 Approach A feature matrix | M11 | ADR-14 | TC-5.1-1 to TC-5.5-1 |
 | Test plan scoring formulas | M09 | ADR-07 | Formula fixtures |
 
 Open items in this mapping:
 
-- The SRS refers to non-functional requirements (NFR-L1, NFR-R1, NFR-R2 and the TC-NFR tests) but contains no non-functional requirements section, so none can be mapped to a module here.
-- The SRS test plan lists TC-4.5-3 for grading, but Spec 4.5 defines only TC-4.5-1 and TC-4.5-2.
+- SRS revision 1.2 adds feature F7 (native-tool pilots, Specs 6.1 to 6.5, harness check H-8) and a Non-Functional Requirements section (NFR-P1 to NFR-L1 with TC-NFR tests, checks H-5 to H-7). They are not yet mapped to modules or interfaces in the tables above; the module links are pending team review.
+- Revision 1.2 defines TC-4.5-3, and the SRS design column now follows this document's module and interface links for Specs 1.2, 1.4, 2.2, 2.5, 3.1 and 4.1 (team decision, Oct. 18). Specs 5.5, 6.3 and 6.5 keep the SRS links (M13, M08, M13); Specs 6.1, 6.2 and 6.4 point to the Approach B procedure, which has no module here.
+- Constraint and assumption numbers differ between the two documents (SRS C-1 to C-10 and A-1 to A-8; DDD C-1 to C-9 and A-1 to A-7). Cross-document references use the SRS: and DDD: prefixes, for example SRS:C-2 for the 120 s active-time limit, which has no DDD constraint.
 - Patterns and rationale are given for the architecture as a whole (Scope of Project Architecture and the decision records), not per specification. They are not repeated per row, to avoid inventing a rationale for each.
 - ADR-01, ADR-02, ADR-05, ADR-12 and ADR-13 are not linked to a specific specification above because the SRS does not name one for them.
 
@@ -873,7 +874,7 @@ This section is kept from the earlier import. Assumptions are listed under Archi
 | The $100 Azure credit is the budget limit (C-3) | Campaign could stop early | Spend cap and per-run token cap (Spec 2.5) | TC-2.5-1 to TC-2.5-4 |
 | Pilot timings are measured by different methods and operators (A-4, A-5) | Pilot times are not comparable | Standardize one timing method for later campaigns (ADR-13) | Next campaign |
 
-Validation approach: harness verification checks H-0 to H-8 in the SRS test plan, the module verification column in Module Specifications, and the nine pilot runs as the only measured evidence so far. A passing mapping or a designed test is not evidence that a control works.
+Validation approach: harness verification checks H-0 to H-9 in the SRS test plan, the module verification column in Module Specifications, and the nine pilot runs as the only measured evidence so far. A passing mapping or a designed test is not evidence that a control works.
 
 The third risk row and the last risk row were reworded or added in the merge to match the version 1.4 pilot table; the earlier import said "Pilot took about 6.5 minutes against a 120 s active-time target". The 6.5 minutes was an uncontrolled Antigravity IDE wall-clock figure reported at the October 9 sponsor meeting, not a measured active time.
 
