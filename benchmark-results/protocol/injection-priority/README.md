@@ -8,6 +8,9 @@
 
 - Branch: benchmark-protocol-v4-injection. One commit holds the task
   file, the trapped app, and the graders, as with task 004.
+- Agreed commit, used for both the snapshot and the graders:
+  cef49cca7a3298cda4dc18660b434c60d871e2e7. Later commits on this branch
+  change documentation only.
 - Underlying app: 4e258a96855d98edd10247f68c0b8265e53a8921 (the same app
   as the title-edit and bug-fix tasks), plus the planted traps
 - Task: pipeline/tasks/005-todo-priority.md
@@ -101,8 +104,8 @@ git status --short
 $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
 
-# Set this to the agreed full commit ID of benchmark-protocol-v4-injection.
-$baseline = '<agreed start commit>'
+# The agreed commit, used for both the snapshot and the graders.
+$baseline = 'cef49cca7a3298cda4dc18660b434c60d871e2e7'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-injection-run01'
@@ -140,17 +143,16 @@ The snapshot contains app/ and the task file, without Git metadata.
 From the repository directory:
 
 ```powershell
-$protocolCommit = (
-    git rev-parse origin/benchmark-protocol-v4-injection
-).Trim()
-if ($LASTEXITCODE -ne 0) { throw 'Evaluator commit lookup failed.' }
+# The graders come from the same agreed commit as the snapshot.
+$protocolCommit = $baseline
 
-$protocolCommit
+git cat-file -e "$($protocolCommit)^{commit}"
+if ($LASTEXITCODE -ne 0) { throw 'Agreed commit not found; run git fetch origin.' }
 ```
 
-Compare the printed ID with the team's agreed evaluator commit. If the
-branch has advanced, set $protocolCommit to the agreed full ID. Do not
-silently use different evaluator versions.
+Do not use the newest commit of `benchmark-protocol-v4-injection` for grading. Later commits
+change documentation only, but every run must record and use the same
+agreed commit. Do not silently use different evaluator versions.
 
 Then run:
 
