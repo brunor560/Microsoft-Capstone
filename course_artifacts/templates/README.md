@@ -25,4 +25,4 @@ Notes:
 
 1. Copy the unchanged original into `originals/` with a descriptive filename and record its supplied name and SHA-256 above.
 2. For document templates, add a Markdown equivalent in `markdown/` that keeps headings, required sections, instructional notes, and table fields. Label any adaptation.
-3. Check whether current sources need structural changes, and note any gap in `TODO.md`.
+3. Check whether current sources need structural changes, and note any gap in `TODO.md` or the matching `todo/` file.

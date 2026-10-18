@@ -4,9 +4,9 @@ Shared workspace for Team 3's course documents. Markdown files in `sources/` are
 
 ## Workflow
 
-1. Read [AGENTS.md](AGENTS.md), [TODO.md](TODO.md), and [TRACEABILITY.md](TRACEABILITY.md).
+1. Read [AGENTS.md](AGENTS.md), [TODO.md](TODO.md) (index; see also [todo/ddd.md](todo/ddd.md), [todo/srs.md](todo/srs.md), [todo/parked.md](todo/parked.md), [todo/history.md](todo/history.md)), and [TRACEABILITY.md](TRACEABILITY.md).
 2. Make the change in the affected `sources/` files. Check the ownership table in `AGENTS.md` for dependent documents.
-3. Update `TRACEABILITY.md` and `TODO.md` if the change affects them.
+3. Update `TRACEABILITY.md` and the task files (`TODO.md`, `todo/`) if the change affects them.
 4. Review the diff, then commit with a short note: sources touched, sources not touched and why, task IDs, AI assistance.
 5. A teammate reviews and closes finished tasks.
 
@@ -28,6 +28,7 @@ The imports are not approved content until DOC-001 is done. Figures are in `sour
 | Path | Purpose |
 | --- | --- |
 | `sources/` | Editable documents and figures |
+| `todo/` | Task lists split by source (DDD, SRS, parked work) and the dated task history; see [TODO.md](TODO.md) for the index |
 | `templates/` | Supplied course templates (`originals/`) and readable equivalents (`markdown/`); see [templates/README.md](templates/README.md) |
 | `references/` | Supplied slide decks, the DDD and SRS grading rubrics, and the DDD baseline PDFs; see [references/README.md](references/README.md) |
 | `submissions/` | Dated Word/PDF exports; see [submissions/README.md](submissions/README.md) |
@@ -42,13 +43,15 @@ The imports are not approved content until DOC-001 is done. Figures are in `sour
 ## Starter prompt
 
 ```text
-Read course_artifacts/AGENTS.md, README.md, TODO.md, and TRACEABILITY.md.
+Read course_artifacts/AGENTS.md, README.md, TODO.md (plus the todo/ file for
+the source you are changing), and TRACEABILITY.md.
 
 Task: [describe the change]
 Related task IDs: [DOC-xxx or none]
 Team decisions for this task: [explicit decisions, or none]
 
-Update the affected sources, TRACEABILITY.md, and TODO.md. Report which
+Update the affected sources, TRACEABILITY.md, and the task files (TODO.md,
+todo/). Report which
 sources you changed and which you left alone and why. Check local links.
 ```
 
