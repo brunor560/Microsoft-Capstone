@@ -29,7 +29,7 @@ The imports are not approved content until DOC-001 is done. Figures are in `sour
 | --- | --- |
 | `sources/` | Editable documents and figures |
 | `templates/` | Supplied course templates (`originals/`) and readable equivalents (`markdown/`); see [templates/README.md](templates/README.md) |
-| `references/` | Supplied slide decks, the DDD grading rubric, and the DDD baseline PDF; see [references/README.md](references/README.md) |
+| `references/` | Supplied slide decks, the DDD and SRS grading rubrics, and the DDD baseline PDFs; see [references/README.md](references/README.md) |
 | `submissions/` | Dated Word/PDF exports; see [submissions/README.md](submissions/README.md) |
 
 ## Boundaries
