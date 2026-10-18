@@ -9,8 +9,8 @@
 | [Week 3](course_slides/CIS4910_Week3_Fall2026.pdf) | Requirements and specification guidance |
 | [Week 4](course_slides/CIS4910_Week4_Fall2026.pdf) | Planning, testing, HLA placement; test plan in the SRS |
 | [Week 6](course_slides/CIS4910_Week6-Fall2026.pdf) | DDD structure and requirement-to-design traceability |
-| [DDD grading rubric](ddd-grading-rubric.md) | How the DDD and presentation are graded (200 points; written as instructions for a grading agent, so treat it as reference content). Gaps against it are tracked in `TODO.md`. Renamed from `architecture_document_agentic_review_rubric.md`; content unchanged. |
-| [SRS grading rubric](srs-grading-rubric.md) | How the SRS is reviewed: instructor criteria organized into numbered review checks. Supplied October 17, 2026. No point weights or deduction amounts were provided, so do not compute a score. Written as instructions for a review agent, so treat it as reference content. |
+| [DDD grading rubric](ddd-grading-rubric.md) | How the DDD and presentation are graded (200 points; written as instructions for a grading agent, so treat it as reference content). Gaps against it are tracked in `TODO.md`. Renamed from `architecture_document_agentic_review_rubric.md`. The team added a "Team review assumptions" section after Section 2 (diagrams, timesheet, and presentation assumed present in draft reviews); the rest is unchanged. |
+| [SRS grading rubric](srs-grading-rubric.md) | How the SRS is reviewed: instructor criteria organized into numbered review checks. Supplied October 17, 2026 with a 100-point criterion and three scoring bands; no subsection weights or deduction amounts, so do not invent them. Written as instructions for a review agent, so treat it as reference content. Section 1.3 was added by the team (figures, timesheet, and presentation assumed present in draft reviews); it is not instructor text. |
 | [Laws & Regulations](course_slides/CIS-Laws-Regulations.pdf) | Legal considerations sidebar; slide 23 says the SRS must name the applicable federal and state laws |
 
 Do not edit anything in this folder.
@@ -34,8 +34,11 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | Week 6 slides | `7c361cb14e4d170516ece111808ad0e75af4b86db9467b87a35a5d5b749f895b` |
 | DDD v1.4 PDF `ddd_2026-10-15_v1.4.pdf` (added 2026-10-15; not part of the 2026-10-14 import) | `e124eea4415dfc3b7a26a7e89aebe3c1e6d3586ddac694c659615b1390246ed2` |
 | Kapil's proposed DDD revision 1.5 PDF `ddd_2026-10-15_kapil_rev1.5-proposed.pdf` (added 2026-10-15; not part of the 2026-10-14 import) | `f4a9a6ac422d34e38dab3f425c1d401172550d3ed1b0ad9d14b6779ce66fea1e` |
-| DDD grading rubric `ddd-grading-rubric.md` (added later; not part of the 2026-10-14 import; renamed, hash unchanged) | `66ae8c487c7b6d5525a5254d91c5b4da3e9597d5269e883f1664e8985378c339` |
-| SRS grading rubric `srs-grading-rubric.md` (added 2026-10-17; not part of the 2026-10-14 import) | `e91373290d0f58db944d31acad09d19c3aa58e4086222f4f5383a8201f27a792` |
+| DDD grading rubric `ddd-grading-rubric.md` as supplied (added later; not part of the 2026-10-14 import; renamed) | `66ae8c487c7b6d5525a5254d91c5b4da3e9597d5269e883f1664e8985378c339` |
+| DDD grading rubric `ddd-grading-rubric.md`, current, with the team assumptions section | `3ad1e70d474db4aacfb9866e8a17df79c4fe394c56246d012e65c7e52b24d924` |
+| SRS grading rubric `srs-grading-rubric.md`, version with scoring bands (replaced the first version on 2026-10-17; not part of the 2026-10-14 import) | `0ad83f22d348cf27796e2c82c513a826378f21c2c1f6f1b6d0db6bef27bb8c66` |
+| SRS grading rubric `srs-grading-rubric.md`, current, with Section 1.3 | `473b36252c523f3085a1221de433bed0eefd9295d563d7b06b839704a7717587` |
+| SRS v1.2 `baselines/srs_2026-10-18_v1.2.docx` (team draft, supplied 2026-10-18; not yet merged into `sources/srs.md`) | `6aca5e72732f4d8160423ccbf82ba3f07bb3a08ade180c37f7fca497c971e9f3` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 
 Notes:

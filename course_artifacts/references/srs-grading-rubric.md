@@ -29,6 +29,18 @@ Review the submission holistically against the scoring descriptions above and th
 - Do not invent subsection weights, fixed deduction amounts, or a formula that turns checklist completion into the official score.
 - If only the SRS is available, give an SRS-focused assessment and identify the missing submission, presentation, or timesheet evidence that limits an overall score.
 
+### 1.3 Team review assumptions (added by the team; not instructor text)
+
+The team will include the figures, the timesheet, and the presentation in the actual submission. When reviewing a Markdown or Word draft of the SRS before then:
+
+- Treat figures, the timesheet, and the presentation as **assumed present**. Do not mark them Blocked, do not list them as gaps, and do not lower the supported band because they are absent from the draft under review.
+- Still review everything that can be checked from the text: figure numbers, captions, and cross-references; whether the prose matches what each figure is described as showing; and consistency among scenarios, requirements, and acceptance criteria.
+- Do not judge the content or notation of a figure that was not supplied. Record it as "assumed present, not reviewed".
+- An assumption is not evidence. Do not state that the timesheet supports the work or that the presentation is well done. Phrase the band as conditional, for example "Average Marks, assuming the figures, timesheet, and presentation meet the Full Marks descriptions".
+- Section 1.2's instruction to flag missing presentation or timesheet evidence does not apply to these three items. The required-document list and the AI citation format are not covered by this assumption; Section 2 still applies to them.
+- If a figure, timesheet, or presentation is supplied, review it as in Sections 1.1 and 1.2.
+
+
 ## 2. Submission completeness, status reporting, references, and AI attribution
 
 **Instructor criteria:** All required documents must be present and professionally written. Status reports must accurately describe specific project items. References must sufficiently support the project, and all instances of AI use must be referenced properly.
