@@ -14,8 +14,7 @@ Part of the split task list; see [../TODO.md](../TODO.md) for status values and 
 | DOC-046 | Decide whether the timesheet goes in the DDD (for example an appendix) or is submitted separately, and confirm it matches the work. No template has been supplied. | Unassigned | Open | [DOC-046](history.md#doc-046) |
 | DOC-047 | Open: item (8), C-2 has no architectural impact; the undefined references D05, D06, D09, V02-V05 and E15 are tracked in DOC-004. | Unassigned | In progress | [DOC-047](history.md#doc-047) |
 | DOC-049 | Decide what to keep once among the overlapping capacity, failure-handling, configuration and risk text; cross-reference the rest; keep numbers and status labels unchanged; check table and figure references; pick one status vocabulary. | Unassigned | Open | [DOC-049](history.md#doc-049) |
-| DOC-050 | A team member confirms or replaces the AI-estimated score (about 184/200, Above Average on Oct. 16). Diagram notation and the timesheet were not assessed. | Unassigned | Open | [DOC-050](history.md#doc-050) |
 | DOC-051 | Open: how the evaluator reaches the frozen candidate (Docker none network gives only container-local loopback). | Unassigned | Ready for review | [DOC-051](history.md#doc-051) |
 | DOC-052 | Open: the timeout exit code and the 3.5-hour campaign estimate. | Unassigned | In progress | [DOC-052](history.md#doc-052) |
 
-DOC-043 to DOC-046 come from the grading rubric ([references](../references/ddd-grading-rubric.md)) compared with the DDD text. They are a quick read, not a scored review. DOC-050 holds the first scored estimate.
+DOC-043 to DOC-046 come from the grading rubric ([references](../references/ddd-grading-rubric.md)) compared with the DDD text. They are a quick read, not a scored review.

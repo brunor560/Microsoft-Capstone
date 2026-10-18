@@ -38,7 +38,7 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | DDD grading rubric `ddd-grading-rubric.md`, current, with the team assumptions section | `3ad1e70d474db4aacfb9866e8a17df79c4fe394c56246d012e65c7e52b24d924` |
 | SRS grading rubric `srs-grading-rubric.md`, version with scoring bands (replaced the first version on 2026-10-17; not part of the 2026-10-14 import) | `0ad83f22d348cf27796e2c82c513a826378f21c2c1f6f1b6d0db6bef27bb8c66` |
 | SRS grading rubric `srs-grading-rubric.md`, current, with Section 1.3 | `473b36252c523f3085a1221de433bed0eefd9295d563d7b06b839704a7717587` |
-| SRS v1.2 `baselines/srs_2026-10-18_v1.2.docx` (team draft, supplied 2026-10-18; not yet merged into `sources/srs.md`) | `6aca5e72732f4d8160423ccbf82ba3f07bb3a08ade180c37f7fca497c971e9f3` |
+| SRS v1.2 `baselines/srs_2026-10-18_v1.2.docx` (team draft supplied 2026-10-18; imported as `sources/srs.md` revision 1.2) | `6aca5e72732f4d8160423ccbf82ba3f07bb3a08ade180c37f7fca497c971e9f3` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 
 Notes:
