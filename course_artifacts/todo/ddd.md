@@ -1,19 +1,9 @@
 # DDD tasks
 
-Part of the split task list; see [../TODO.md](../TODO.md) for status values and rules. Dated history for each task is in [history.md](history.md).
+Part of the split task list; see [../TODO.md](../TODO.md) for status values and rules. Restarted Oct. 21, 2026; earlier tasks are in [carry-over.md](carry-over.md) and [history.md](history.md). Cross-document tasks that touch the DDD (DOC-060, DOC-061, DOC-062, DOC-063) are in [../TODO.md](../TODO.md).
 
 | ID | Open ask | Owner | Status | History |
 | --- | --- | --- | --- | --- |
-| DOC-003 | Recover or recreate editable diagram sources (Mermaid); reconcile Figure 2 with the text; fix figure and table references; settle the Figure 9 number and placement. Diagrams come last by team decision. | Unassigned | Open | [DOC-003](history.md#doc-003) |
-| DOC-004 | Define or drop the D05, D06, D09, V02-V05 and E15 references; decide whether to adopt the definitions in Kapil's revision. | Unassigned | Open | [DOC-004](history.md#doc-004) |
-| DOC-008 | Build-versus-buy analysis, pattern rationale, quality-attribute coverage, and version and submission metadata; check against `../references/ddd-grading-rubric.md`. | Unassigned | In progress | [DOC-008](history.md#doc-008) |
-| DOC-015 | Detail records for ADR-01, 03, 04, 06, 07, 10, 12 and 14; recorded dispositions for the proposed or partial ADRs; trade-off analysis. | Unassigned | Open | [DOC-015](history.md#doc-015) |
-| DOC-043 | Team review of the DDD sections imported from v1.4 and Kapil's revision: the behavioral (Figures 5-8), development and scenarios views (UML notation not checked) and the proposed I01-I09 contracts (codes and field names not approved; no interface has a tested implementation). Merged from DOC-044. | Unassigned | Ready for review | [DOC-043](history.md#doc-043) |
-| DOC-045 | Observability design; likelihood, impact and owner columns for the risks table (team judgment, do not invent values); validation and residual-limitation columns; team review of the drafted sections. | Unassigned | In progress | [DOC-045](history.md#doc-045) |
-| DOC-046 | Decide whether the timesheet goes in the DDD (for example an appendix) or is submitted separately, and confirm it matches the work. No template has been supplied. | Unassigned | Open | [DOC-046](history.md#doc-046) |
-| DOC-047 | Open: item (8), C-2 has no architectural impact; the undefined references D05, D06, D09, V02-V05 and E15 are tracked in DOC-004. | Unassigned | In progress | [DOC-047](history.md#doc-047) |
-| DOC-049 | Decide what to keep once among the overlapping capacity, failure-handling, configuration and risk text; cross-reference the rest; keep numbers and status labels unchanged; check table and figure references; pick one status vocabulary. | Unassigned | Open | [DOC-049](history.md#doc-049) |
-| DOC-051 | Open: how the evaluator reaches the frozen candidate (Docker none network gives only container-local loopback). | Unassigned | Ready for review | [DOC-051](history.md#doc-051) |
-| DOC-052 | Review the removal of the aggregate campaign-duration estimate and confirm the six-hour target, 96-run configuration, grading/rerun requirements, per-run active-time limit, and exit-code mapping remain intact. | Unassigned | Ready for review | [DOC-052](history.md#doc-052) |
-
-DOC-043 to DOC-046 (DOC-044 is now part of DOC-043) come from the grading rubric ([references](../references/ddd-grading-rubric.md)) compared with the DDD text. They are a quick read, not a scored review.
+| DOC-064 | Recover or recreate editable diagram sources (Mermaid) for the nine figures in the Oct. 18 DDD, and check each figure against the text (Figure 1 legend, Figure 9 against ADR-11). Diagrams come last by team decision. Replaces DOC-003. | Unassigned | Open | [DOC-064](history.md#doc-064) |
+| DOC-065 | Check the Oct. 18 DDD against `../references/ddd-grading-rubric.md` only for gaps the team asks about. The older DDD tasks (DOC-004, DOC-008, DOC-015, DOC-043, DOC-045, DOC-047, DOC-049, DOC-051, DOC-052) are listed in [carry-over.md](carry-over.md); the new text may already cover some of them (for example the risks table now has consequence, control, verification and residual-limit columns, and a build-versus-buy section exists). Not a mock review; no score unless asked. | Unassigned | Open | [DOC-065](history.md#doc-065) |
+| DOC-066 | Decide whether the timesheet goes in the DDD (for example an appendix) or is submitted separately. The Oct. 18 DDD says real timesheets and the presentation accompany the course submission. No template has been supplied. Replaces DOC-046. | Unassigned | Open | [DOC-066](history.md#doc-066) |

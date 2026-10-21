@@ -125,3 +125,34 @@ Merge consequences of the Oct. 18 import. Team decision: the DDD is authoritativ
 ### DOC-059
 
 Open items from the Oct. 18 review of SRS revision 1.2. OI-1: SRS v1.1 recorded "100 x 4 Azure credits"; the DDD records a $100 credit. OI-2: app/ fails its own tests on master because of a stray first line while baseline/ passes (DOC-020). OI-3: choose one timing method for all operators (Spec 6.5.2). The 120-second active-time limit (C-2, Spec 2.1.2) applies to Approach C; the Oct. 16 decision in DOC-013 is that it stands, and the SRS does not yet say that Approach B times are not comparable to it. Spec 2.5 and C-1 depend on OI-1. Legal items L1 to L5 cite guidance and the EU AI Act but no federal or state statute; the legal sidebar (`references/course_slides/CIS-Laws-Regulations.pdf`, slide 23) says the SRS must name the applicable federal and state laws. The rubric asks for domain entities, constraints and assumptions; the SRS has no entity list (the run-record schema is the closest). Tasks T3 to T8 are one-line entries with no prompts or acceptance criteria (DOC-021). The SRS says the schema file is committed (Appendix A and Spec 4.2.2) while DOC-011 reports it absent: verify or reword. Oct. 18 update: OI-2 is tracked as DOC-020 and the T3 to T8 definitions as DOC-021 in `todo/parked.md`; the tracker row no longer repeats them. The schema-file question is on hold: the file may exist on another branch (per the team).
+
+## Oct. 21, 2026 restart
+
+The task lists were restarted on Oct. 21, 2026. The earlier trackers are in `todo/archive/2026-10-21_pre-v2/`; `todo/carry-over.md` maps every earlier ID to its new home. The entries above are unchanged.
+
+### DOC-060
+
+Oct. 21: opened (replaces DOC-001). SRS 2.0 and the Oct. 18 DDD were imported into `sources/srs.md` and `sources/ddd.md` by script, and the Word files were copied to `references/baselines/` (`srs_2026-10-18_v2.0.docx`, `ddd_2026-10-18_v1.4-submitted.docx`). Table counts match the Word files (SRS 30, DDD 35), as do the figure counts (DDD 9, SRS 1). Nothing was compared clause by clause. Known conversion limits: Word header rows merged across columns leave empty cells, and the DDD version-history table has cells that Word shifted between columns.
+
+### DOC-061
+
+Oct. 21: opened (replaces DOC-040 and DOC-041). Team decisions: the Approach A feature in the Oct. 18 submission is the canonical version, and the Approach A workflow will be updated to match the design on a separate branch after the submitted documents are pushed to master. Not done in this pass: the matrix specification, the assessment record content and the whitepaper still follow the fixed-profile method. SRS 2.0 Spec 5.1.1 assesses an approved, versioned profile manifest (P profiles), Spec 5.2.1 gives 18 × P cells, and the DDD states that 36 applies only when P = 2.
+
+### DOC-062
+
+Oct. 21: opened (continues DOC-058). A script compared the module IDs in the SRS 2.0 Design fields with the DDD Requirements Traceability by Specification table. They agree except for Specs 6.1, 6.2 and 6.4, where the SRS names replaced modules and the DDD lists none. Interface links were not compared. The DDD Document Control says version 1.4 (18-October 26), the same number as the Oct. 15 PDF; the previous Markdown called itself version 1.5, which was never submitted.
+
+### DOC-063
+
+Oct. 21: opened (replaces DOC-010, DOC-012, DOC-013 and DOC-059). SRS 2.0 has two open issues, OI-1 and OI-2 (revision 1.2 had OI-1 to OI-3 with different content), and a Configuration and Adoption Gates table that rejects runs with no spend cap, unapproved profiles or a missing reviewer.
+
+### DOC-064 to DOC-069
+
+Oct. 21: opened by the restart; see `todo/carry-over.md` for the old IDs each replaces.
+
+### Restart and import decisions (Oct. 21, 2026)
+
+Team decisions given by Ross Volenec on Oct. 21: partial reset of the task lists; keep the DOC-xxx history; archive the old trackers under `todo/archive/`; rename every "Track A" mention to "Approach A" now; as of the Oct. 18 submission all work in SRS 2.0 and the DDD is adopted, and later design changes are proposals.
+
+Done: `sources/srs.md`, `sources/ddd.md` and `TRACEABILITY.md` regenerated; `sources/track_a_assessment.md` renamed to `sources/approach_a_assessment.md` (DOC-048) with links updated in README, AGENTS and TRACEABILITY; old `TODO.md`, `todo/ddd.md`, `todo/srs.md`, `todo/parked.md` and the old `TRACEABILITY.md` saved to `todo/archive/2026-10-21_pre-v2/`. Not done: Approach A content reconciliation (DOC-061); `feature_matrix_specification.md`, `benchmark_procedure.md` and `whitepaper.md` were not changed.
+

@@ -2,7 +2,9 @@
 
 | Reference | Role |
 | --- | --- |
-| [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); `sources/ddd.md` (version 1.5) was rebuilt from it |
+| [DDD Oct. 18 submission](baselines/ddd_2026-10-18_v1.4-submitted.docx) | Team-approved DDD submitted October 18, 2026 (file was `Detailed_Design_Doc_Microsoft#2.docx`; its Document Control says version 1.4, the same number as the Oct. 15 PDF below, with different content). Current baseline: `sources/ddd.md` was rebuilt from it on Oct. 21 |
+| [SRS 2.0 baseline](baselines/srs_2026-10-18_v2.0.docx) | Team-approved SRS version 2.0 dated October 18, 2026 (file was `SRS_Doc_Group#3_v2.docx`). Current baseline: `sources/srs.md` was rebuilt from it on Oct. 21. Contains one open Word comment from Ross Volenec |
+| [DDD v1.4 baseline PDF](baselines/ddd_2026-10-15_v1.4.pdf) | DDD version 1.4 supplied October 15, 2026 (file was `2026-Oct-Bruno DDD.pdf`); the earlier `sources/ddd.md` ("version 1.5") was rebuilt from it. Superseded by the Oct. 18 submission |
 | [Kapil's proposed DDD revision 1.5 PDF](baselines/ddd_2026-10-15_kapil_rev1.5-proposed.pdf) | Supplied by Kapil Srikanth, dated October 15, 2026 (file was `Microsoft_Capstone_DDD_Revised.pdf`). Self-described as "revision 1.5 proposed" and AI-assisted (ChatGPT/Codex); not team-approved. Reference only: `sources/ddd.md` is the baseline, and selected parts were merged (see its Merge notes) |
 | [Earlier DDD baseline PDF](baselines/ddd_2026-10-14.pdf) | DDD version 1.0 supplied October 14, 2026; the previous `sources/ddd.md` import, kept for comparison |
 | [Week 1](course_slides/CIS4910_Week1_Fall2026.pdf), [Week 2](course_slides/CIS4910_Week2_Fall2026.pdf) | Course context |
@@ -39,6 +41,8 @@ Provenance only; it does not approve any content. SHA-256 of the supplied inputs
 | SRS grading rubric `srs-grading-rubric.md`, version with scoring bands (replaced the first version on 2026-10-17; not part of the 2026-10-14 import) | `0ad83f22d348cf27796e2c82c513a826378f21c2c1f6f1b6d0db6bef27bb8c66` |
 | SRS grading rubric `srs-grading-rubric.md`, current, with Section 1.3 | `473b36252c523f3085a1221de433bed0eefd9295d563d7b06b839704a7717587` |
 | SRS v1.2 `baselines/srs_2026-10-18_v1.2.docx` (team draft supplied 2026-10-18; imported as `sources/srs.md` revision 1.2) | `6aca5e72732f4d8160423ccbf82ba3f07bb3a08ade180c37f7fca497c971e9f3` |
+| DDD Oct. 18 submission `baselines/ddd_2026-10-18_v1.4-submitted.docx` (added 2026-10-21; identical to `submissions/Detailed_Design_Doc_Microsoft#2.docx`) | `dc880362df1a3fa9e0902f95618879990b55abcbfde80962f745ec46ec22c585` |
+| SRS 2.0 `baselines/srs_2026-10-18_v2.0.docx` (added 2026-10-21; identical to `submissions/SRS_Doc_Group#3_v2.docx`) | `16476ed591d89ac8bff343f56437e9e3b86f6dd5694bd5be2105b8deec805719` |
 | Laws & Regulations sidebar (added later; not part of the 2026-10-14 import) | `b9d47aba5542477f8da5c459682fb5c4cb7790f627fcbd6c13f9c2dfb5821921` |
 
 Notes:

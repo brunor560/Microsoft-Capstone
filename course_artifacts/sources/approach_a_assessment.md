@@ -1,12 +1,12 @@
-# Track A assessment record (stub)
+# Approach A assessment record (stub)
 
-Working record for the documentation-based feature assessment (Track A) defined by the [feature matrix specification](feature_matrix_specification.md) (v0.2) and required by SRS Requirement 5 (Specs 5.1 to 5.5). Design: DDD module M11.
+Working record for the documentation-based feature assessment (Approach A) defined by the [feature matrix specification](feature_matrix_specification.md) (v0.2) and required by SRS Requirement 5 (Specs 5.1 to 5.5). Design: DDD module M11.
 
 **Status: stub.** No profile is defined and no cell has been assessed. Profile details are left to the team. Nothing below is a finding, a score, or evidence of support. Method: documentation review only; no tool is installed, run, or tested. Availability is not effectiveness. Do not convert "Not established from documentation" into a score.
 
 ## Profiles
 
-The profile set follows the tools the [whitepaper](whitepaper.md) names for Track A. The matrix specification v0.2 names two Copilot profiles instead; the team still needs to reconcile the two. Column names and tools below are placeholders until the team defines them.
+The profile set follows the tools the [whitepaper](whitepaper.md) names for Approach A. The matrix specification v0.2 names two Copilot profiles instead; the team still needs to reconcile the two. Column names and tools below are placeholders until the team defines them.
 
 | Configuration ID | Placeholder tool (from whitepaper) | Definition |
 | --- | --- | --- |

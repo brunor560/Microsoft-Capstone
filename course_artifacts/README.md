@@ -14,14 +14,14 @@ Shared workspace for Team 3's course documents. Markdown files in `sources/` are
 
 | ID | File | Imported from | Notes |
 | --- | --- | --- | --- |
-| SRS | [sources/srs.md](sources/srs.md) | Revision 1.2 (October 17, 2026), from `references/baselines/srs_2026-10-18_v1.2.docx` | Replaced the revision 1.1 import on Oct. 18. Phone/email contact fields left out; Design fields of Specs 1.2, 1.4, 2.2, 2.5, 3.1 and 4.1 changed to match the DDD (see Import notes at the end of the file); the rest converted as written and not yet reviewed |
-| DDD | [sources/ddd.md](sources/ddd.md) | DDD version 1.5 (October 16, 2026), built from the version 1.4 PDF supplied October 15, 2026 plus additions from the version 1.0 import (see Merge notes in the file) | Version 1.4 is the baseline for text and figures; proposals and reported status kept as written; the DDD, matrix specification, whitepaper, README and AGENTS say Approach A; `TRACEABILITY.md` and the assessment record file name still say Track A until the file is renamed (DOC-048); the SRS says Approach A from revision 1.2 |
+| SRS | [sources/srs.md](sources/srs.md) | Version 2.0 (October 18, 2026), the team-approved submission, from `references/baselines/srs_2026-10-18_v2.0.docx` | Replaced the revision 1.2 import on Oct. 21. Converted by script, not reviewed clause by clause; Design fields not edited; see Import notes at the end of the file |
+| DDD | [sources/ddd.md](sources/ddd.md) | DDD submitted October 18, 2026 (its Document Control says version 1.4, but it is not the Oct. 15 v1.4 PDF), from `references/baselines/ddd_2026-10-18_v1.4-submitted.docx` | Team-approved. Replaced the earlier Markdown "version 1.5" merge on Oct. 21; defines M01 to M13 and I01 to I12; see Import notes at the end of the file |
 | MATRIX | [sources/feature_matrix_specification.md](sources/feature_matrix_specification.md) | Feature matrix specification v0.2 | Documentation-only assessment method; incorporated as SRS Requirement 5 and DDD M11 |
-| APPROACH A | [sources/track_a_assessment.md](sources/track_a_assessment.md) | Created from the matrix specification (not an import) | Stub: profiles undefined, no cell assessed |
+| APPROACH A | [sources/approach_a_assessment.md](sources/approach_a_assessment.md) | Created from the matrix specification (not an import); renamed from `track_a_assessment.md` on Oct. 21 | Stub: profiles undefined, no cell assessed. Still follows the fixed-profile method; to be reconciled with the parameterized SRS Requirement 5 (18 × P cells) on a separate branch |
 | PROCEDURE | [sources/benchmark_procedure.md](sources/benchmark_procedure.md) | `team-benchmark-procedure(1).md` | Operational benchmark procedure |
 | PAPER | [sources/whitepaper.md](sources/whitepaper.md) | `white_paper_draft.md` | Outline with placeholders |
 
-The imports are not approved content until DOC-001 is done. Figures are in `sources/assets/`. The DDD diagrams (nine, from the v1.4 PDF) are images only (DOC-003); the v1.0 images are in `sources/assets/ddd-v1.0/`.
+The SRS 2.0 and DDD files are the team-approved Oct. 18 submission (copies are in `submissions/` and `references/baselines/`); their Markdown conversion is not yet checked against the Word files (DOC-001). The other imports are not approved content. Figures are in `sources/assets/`. The nine DDD diagrams (`ddd-2026-10-18-*.png`) are images only (DOC-003). Images from earlier DDD imports remain in `sources/assets/` and `sources/assets/ddd-v1.0/` but are no longer referenced.
 
 ## Folder map
 
@@ -36,7 +36,7 @@ The imports are not approved content until DOC-001 is done. Figures are in `sour
 ## Boundaries
 
 - Matrix assessment is documentation-only. Do not add live testing or treat availability as effectiveness.
-- Current work: team review of the feature matrix incorporated into the SRS and DDD (DOC-040), and the Approach A profile decision (DOC-041).
+- Current work: the SRS 2.0 and DDD (Oct. 18 submission) are the baseline. Next, on a separate branch, reconcile the Approach A workflow (matrix specification, assessment record, whitepaper) with the parameterized Requirement 5 and DDD M11 (DOC-061). Task lists were restarted on Oct. 21; see [TODO.md](TODO.md).
 - Documentation tasks do not authorize code changes, model runs, spending, deployment, or publishing.
 - Behavior reported in the DDD is not verified against the repository until a commit is recorded.
 
