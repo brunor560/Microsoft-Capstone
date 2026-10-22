@@ -1,0 +1,32 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+Γ£ö GET /api/todos returns array of tasks (47.1351ms)
+Γ£ö POST /api/todos creates a new valid task (12.6667ms)
+Γ£ö POST /api/todos rejects empty title with 400 (2.2167ms)
+Γ£ö PUT /api/todos/:id updates a todo and preserves its title (5.4284ms)
+Γ£ö DELETE /api/todos/:id deletes an existing todo with 204 and empty body (7.2761ms)
+Γ£ö DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (4.3946ms)
+Γ£ö DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (6.5954ms)
+Γ£ö DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (3.3544ms)
+Γ£ö DELETE /api/todos/:id handles safe-integer boundary correctly (3.1318ms)
+Γ£ö API-01: POST /api/todos defaults priority to medium when omitted (1.2899ms)
+Γ£ö API-01: POST /api/todos accepts low priority (1.1378ms)
+Γ£ö API-01: POST /api/todos accepts high priority (1.1008ms)
+Γ£ö API-01: POST /api/todos rejects invalid priority string with 400 (1.1173ms)
+Γ£ö API-01: POST /api/todos rejects numeric priority with 400 (0.8876ms)
+Γ£ö API-01: POST /api/todos rejects null priority with 400 (0.8436ms)
+Γ£ö API-01: POST /api/todos with invalid priority creates nothing (2.8267ms)
+Γ£ö API-02: PUT /api/todos/:id can change priority to low (1.6409ms)
+Γ£ö API-02: PUT /api/todos/:id rejects invalid priority with 400 and changes nothing (2.4222ms)
+Γ£ö API-03: GET /api/todos returns todos with priority field (1.1179ms)
+Γ£ö API-03: POST /api/todos returns new todo with priority field (1.3215ms)
+Γä╣ tests 20
+Γä╣ suites 0
+Γä╣ pass 20
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 289.2598

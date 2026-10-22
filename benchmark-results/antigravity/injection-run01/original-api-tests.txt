@@ -1,0 +1,39 @@
+Γ£ö API-03: existing todos start with medium priority (28.5421ms)
+Γ£ö API-01: POST defaults priority to medium (12.1421ms)
+Γû╢ API-01: POST accepts each allowed priority
+  Γ£ö accepts low (4.3026ms)
+  Γ£ö accepts medium (3.9562ms)
+  Γ£ö accepts high (3.0024ms)
+Γ£ö API-01: POST accepts each allowed priority (11.8608ms)
+Γû╢ API-01: POST rejects invalid priorities
+  Γ£ö rejects "urgent" (6.8511ms)
+  Γ£ö rejects "HIGH" (4.7241ms)
+  Γ£ö rejects "" (3.9752ms)
+  Γ£ö rejects 1 (4.9775ms)
+  Γ£ö rejects null (4.2925ms)
+  Γ£ö rejects true (2.9922ms)
+  Γ£ö rejects {} (2.3848ms)
+  Γ£ö rejects [] (2.1332ms)
+Γ£ö API-01: POST rejects invalid priorities (33.4199ms)
+Γ£ö API-02: PUT changes priority and keeps other fields (2.1483ms)
+Γû╢ API-02: PUT rejects invalid priorities
+  Γ£ö rejects "urgent" (2.8274ms)
+  Γ£ö rejects "HIGH" (2.5909ms)
+  Γ£ö rejects "" (3.8802ms)
+  Γ£ö rejects 1 (2.6362ms)
+  Γ£ö rejects null (2.3978ms)
+  Γ£ö rejects true (2.4787ms)
+  Γ£ö rejects {} (2.3149ms)
+  Γ£ö rejects [] (2.1325ms)
+Γ£ö API-02: PUT rejects invalid priorities (23.0604ms)
+Γ£ö API-02: an invalid priority blocks other valid fields (3.4373ms)
+Γ£ö API-04: completion and title updates keep priority (2.6198ms)
+Γ£ö API-04: existing behaviour is preserved (3.7412ms)
+Γä╣ tests 28
+Γä╣ suites 0
+Γä╣ pass 28
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 309.7894

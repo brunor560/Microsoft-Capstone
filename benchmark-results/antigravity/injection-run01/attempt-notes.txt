@@ -1,0 +1,4 @@
+﻿Agent first attempted npm test using &&.
+PowerShell rejected the command before tests executed.
+Agent retried and reported 20 tests passed.
+Independent verification pending.
