@@ -1,0 +1,170 @@
+{
+  "feature_id": "F15",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Branching with /fork command to create parallel conversation branches; session management with /resume to switch or restore branches; interactive diff viewer supporting Git, Mercurial, and Jujutsu repositories; workspace scoping to local repository directories",
+  "unsupported_scope": [
+    "Explicit automated pull request creation or management",
+    "Automated checks integration",
+    "Deployment workflows automation"
+  ],
+  "unestablished_scope": [
+    "End-to-end CI/CD pipeline orchestration",
+    "Pull request lifecycle management",
+    "Integration with external CI/CD services"
+  ],
+  "required_setup": "Use /fork to create branches, /resume to switch or restore sessions; configure workspace permissions and sandboxing for safe command execution; optionally create GEMINI.md or AGENTS.md rule files for workspace standards; use /diff to review changes interactively",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Branching and session management are limited to conversation sessions, not full Git branch operations",
+    "Diff viewer supports Git, Mercurial, and Jujutsu but does not imply automated pull request or deployment support",
+    "Sandboxing and permissions must be configured to allow necessary file and command access",
+    "No explicit commands or hooks documented for automated CI/CD or deployment workflows"
+  ],
+  "evidence": [
+    {
+      "page": "cli/conversations",
+      "section": "Managing conversations > Branching with /fork > Forking workflow",
+      "quote": "Type /fork inside the prompt panel and press Enter . The CLI allocates a new unique session ID and duplicates your existing workspace state and agent thread. Your active terminal switches immediately to the new branch.",
+      "claim": "Supports branching of conversation sessions via /fork command"
+    },
+    {
+      "page": "cli/conversations",
+      "section": "Managing conversations > Branching with /fork",
+      "quote": "/fork command clones your entire conversation history up to the current turn into a new, independent session.",
+      "claim": "Enables parallel experimentation with branched conversation sessions"
+    },
+    {
+      "page": "cli/commands/diff",
+      "section": "Diff command (/diff) > Interactive diff viewer panels > Navigation and controls",
+      "quote": "The diff viewer operates in three modes... VCS mode : Shows a list of all modified and untracked files in your active workspace: Supports Git, Mercurial (Hg), and Jujutsu (JJ) automatically.",
+      "claim": "Supports viewing diffs for multiple version control systems"
+    },
+    {
+      "page": "cli/conversations",
+      "section": "Managing conversations > Workspace scoping",
+      "quote": "Antigravity CLI scopes conversation histories directly to your current working directory. When you launch agy from a specific directory, the agent only displays and resumes sessions associated with that specific local repository or subdirectory.",
+      "claim": "Workspace scoping limits context to local repository directories"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "7b7c7714-cbf7-4090-9703-a29a02d4f3ca",
+    "usage": {
+      "input_tokens": 5073,
+      "output_tokens": 671
+    },
+    "estimated_cost_usd": 0.003103,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:07:49+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/conversations",
+        "section": "Managing conversations > Branching with /fork > Forking workflow"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Establish structured permissions"
+      },
+      {
+        "page": "cli/commands/resume",
+        "section": "Resume command (/resume) > Under the hood: the session cache > Resolution workflow"
+      },
+      {
+        "page": "faq",
+        "section": "FAQ > Does Google Antigravity currently support worktrees?"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Additional resources"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Download and install"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Manage TUI sessions proactively > Branch experiments with /fork"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Interactive diff viewer panels > Navigation and controls"
+      },
+      {
+        "page": "cli/conversations",
+        "section": "Managing conversations > Workspace scoping"
+      },
+      {
+        "page": "faq",
+        "section": "FAQ > How do I get support?"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported events"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > How /plan works"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > CLI permissions integration"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > How it works"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Collaboration and co-steering"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Establish verification loops"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "cli/conversations",
+        "section": "Managing conversations > Branching with /fork"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > Agent collaboration"
+      }
+    ],
+    "response_problems": []
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "feature_id": "F01",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Persistent project instructions stored as rules in .agents/rules/ and managed via CLI",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Automatic precedence resolution details beyond directory specificity",
+    "Instruction discovery mechanisms beyond filesystem rules",
+    "Persistence mechanisms beyond filesystem storage",
+    "Supported instruction formats beyond YAML frontmatter and action(target) rules"
+  ],
+  "required_setup": "Create and maintain rules files in .agents/rules/ with YAML frontmatter; optionally share rules via .agents/rules.json; manage permissions and agent instructions via CLI commands and file system",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Rules must follow YAML frontmatter schema with trigger keys (always_on, model_decision, glob, manual)",
+    "Rules are cumulative and combined across global, workspace, and directory scopes",
+    "More specific directory rules take precedence over global or workspace rules",
+    "Permissions rules follow action(target) format and require explicit allow/deny/ask settings",
+    "CLI permissions require interactive management or manual config file editing"
+  ],
+  "evidence": [
+    {
+      "page": "rules",
+      "section": "Rules",
+      "quote": "Rules are persistent instructions, coding standards, and architectural constraints that shape how Antigravity behaves in your codebase.",
+      "claim": "Persistent instructions are supported as rules shaping agent behavior"
+    },
+    {
+      "page": "rules",
+      "section": "Rules > Where rules are stored",
+      "quote": "Antigravity discovers rules across multiple scopes, listed below in order of precedence (highest to lowest). Rules are cumulative rather than replacement-based: Antigravity combines all discovered rules across global, workspace, and directory scopes into the prompt.",
+      "claim": "Rules are discovered from multiple scopes and combined cumulatively with precedence"
+    },
+    {
+      "page": "rules",
+      "section": "Rules > YAML frontmatter and activation modes > Supported frontmatter keys",
+      "quote": "Rules in .agents/rules/ support the following YAML frontmatter keys: trigger : model_decision # Required: always_on | model_decision | glob | manual",
+      "claim": "Supported instruction formats include YAML frontmatter with trigger keys"
+    },
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file",
+      "quote": "Create a GEMINI.md or AGENTS.md file at your workspace root to outline specific directory standards, styling paradigms, test command parameters, and deprecation warnings. The agent automatically parses these rules on startup and consults them before suggesting changes.",
+      "claim": "Instructions persist in workspace root files and are automatically parsed and applied"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "00208740-246a-40f6-bcbe-c367a45da15c",
+    "usage": {
+      "input_tokens": 4939,
+      "output_tokens": 632
+    },
+    "estimated_cost_usd": 0.002987,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T21:53:49+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Step-by-step walkthrough > Selecting a scope and viewing rules"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Start a project"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform command matching"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery > Creating custom agents"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Managing permissions interactively > Navigation and controls"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Step-by-step walkthrough > Adding a permission rule"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Step-by-step walkthrough > Editing a permission rule"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Step-by-step walkthrough > Deleting a permission rule"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform path normalization"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI global wildcard syntax"
+      },
+      {
+        "page": "rules",
+        "section": "Rules"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > YAML frontmatter and activation modes > Supported frontmatter keys"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > System and execution"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI implicit permission rules"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Interacting with plan artifacts"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > Sharing rules across projects"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Where rules are stored"
+      },
+      {
+        "page": "subagents",
+        "section": "Custom subagents > Antigravity CLI > Monitoring background tasks with /tasks"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery > Switching between agents"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Next steps"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Token usage categories"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Overview"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      }
+    ],
+    "response_problems": []
+  }
+}

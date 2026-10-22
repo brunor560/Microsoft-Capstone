@@ -132,3 +132,6 @@ class Store:
             if os.path.exists(self.path(stale)):
                 os.remove(self.path(stale))
         shutil.rmtree(self.path('out'), ignore_errors=True)
+        # Model drafts belong to the dataset being reset. The spend ledger is not
+        # here (repository-level, cumulative), so resetting never resets the cap.
+        shutil.rmtree(self.path('drafts'), ignore_errors=True)

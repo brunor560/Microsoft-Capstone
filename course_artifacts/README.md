@@ -37,7 +37,7 @@ The SRS 2.0 and DDD files are the team-approved Oct. 18 submission (copies are i
 
 - Matrix assessment is documentation-only. Do not add live testing or treat availability as effectiveness.
 - Current work: the SRS 2.0 and DDD (Oct. 18 submission) are the baseline. The Approach A reconciliation (DOC-061) is ready for review, and the Antigravity CLI profile needs confirmation, approval, authorship and review before the sponsor demo (DOC-070). Task lists were restarted on Oct. 21; see [TODO.md](TODO.md).
-- The Approach A workbench (`../tools/approach_a/`) is the one authorized code exception to rule 8 in AGENTS.md. It reads official documentation only and never runs an assessed tool.
+- The Approach A workbench (`../tools/approach_a/`) is the one authorized code exception to rule 8 in AGENTS.md. It reads official documentation only and never runs an assessed tool. Since Oct. 22 (amended SRS Spec 5.4.2) it can also send documentation excerpts to Azure OpenAI to draft briefs, within fixed spending limits; those drafts are not findings until a named author and an independent reviewer accept them.
 - Documentation tasks do not authorize code changes, model runs, spending, deployment, or publishing.
 - Behavior reported in the DDD is not verified against the repository until a commit is recorded.
 

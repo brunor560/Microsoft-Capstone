@@ -1,7 +1,8 @@
 """Terminal output: real progress lines, prompts and simple tables (stdlib only)."""
 import sys
 
-PHASES = {'discovery': 'Source discovery', 'assess': 'Assessment (research agents)',
+PHASES = {'discovery': 'Source discovery', 'draft': 'Drafting (Azure OpenAI, documentation excerpts only)',
+          'assess': 'Assessment (research agents)',
           'challenge': 'Evidence checking (challenge pass)', 'render': 'Artifact generation',
           'validate': 'Validation'}
 TTY = sys.stdout.isatty()

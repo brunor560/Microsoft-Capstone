@@ -1,0 +1,159 @@
+{
+  "feature_id": "F18",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Setting execution modes with different file operation behaviors; sandbox containment for terminal commands; permission modes governing command execution; interactive diff review and approval for file writes",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Explicit time limits for execution",
+    "Iteration limits",
+    "Spending limits",
+    "Hard enforcement of limits vs. warnings or instruction-based requests"
+  ],
+  "required_setup": "Configure execution mode via settings.json or CLI flags; optionally enable terminal sandbox in settings.json; configure toolPermission mode for safety barriers; optionally override permissions.allow rules for headless mode",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "constraints": [
+    "Sandbox is an OS-level containment feature and must be enabled in settings.json",
+    "Permission modes affect whether commands require user approval or run automatically",
+    "Execution mode affects file write behavior: default mode pauses for review, accept-edits auto-approves, plan mode prepends /plan prefix",
+    "Headless mode disables interactive prompts and relies on policy and pre-granted permissions"
+  ],
+  "evidence": [
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Available modes",
+      "quote": "default Pauses for interactive diff review before modifying or creating files. Standard development, reviewing sensitive code changes, and careful refactoring.",
+      "claim": "Execution modes provide different levels of file operation control including pausing for review."
+    },
+    {
+      "page": "cli/features",
+      "section": "Antigravity CLI features > Terminal sandbox",
+      "quote": "The terminal sandbox is a lightweight security isolation mechanism that protects your host system from potentially destructive file manipulations or unauthorized outbound network requests when the agent executes local shell commands.",
+      "claim": "Terminal sandbox provides containment to limit execution impact."
+    },
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Configure your workspace environment > Establish structured permissions",
+      "quote": "Tune your safety barriers in ~/.gemini/antigravity-cli/settings.json based on your project risk level: request-review (default): Prompts you before executing any write operations, Bash commands, or remote network calls.",
+      "claim": "Permission modes govern interactive approval for command execution."
+    },
+    {
+      "page": "cli/headless",
+      "section": "Headless mode > Permissions in headless mode",
+      "quote": "By default, the CLI respects the permission mode in your settings. A tool that requires approval it can’t obtain is soft-denied: the run continues, exits 0 , and prints a notice to stderr naming the tool and how to allow it.",
+      "claim": "In headless mode, permission approvals are handled by policy with soft-denies for unapproved tools."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "03251e7c-021a-41f6-afd1-83d7a11745ad",
+    "usage": {
+      "input_tokens": 4518,
+      "output_tokens": 637
+    },
+    "estimated_cost_usd": 0.002826,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:10:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Command-line flag overrides"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Using the interactive settings panel"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Setting agentMode in settings.json"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > System and execution"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Establish structured permissions"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Request-review mode, execution mode cycling, and line-level diff previews"
+      },
+      {
+        "page": "cli/conversations",
+        "section": "Managing conversations > Workspace scoping"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Permissions in headless mode"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Common mistakes"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Next steps"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode > New file creation previews"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > File includes"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Command-line overrides"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Terminal sandbox"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Available modes"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Cycle execution modes during a session"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      }
+    ],
+    "response_problems": []
+  }
+}

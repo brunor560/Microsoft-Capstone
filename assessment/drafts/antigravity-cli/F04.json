@@ -1,0 +1,165 @@
+{
+  "feature_id": "F04",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Locating and inspecting relevant existing code within the workspace and repository, including file path autocompletion, file content inlining in rules, workspace indexing, and context window management.",
+  "unsupported_scope": [],
+  "unestablished_scope": [],
+  "required_setup": "Create or open a project workspace with local Git repositories or working directories; optionally configure GEMINI.md or AGENTS.md rule files to define directory standards and file references; launch the CLI and use built-in commands and features such as @ path autocompletion, /context panel, and plan mode for codebase investigation.",
+  "activation_state": "default",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Single rule files are truncated at 24,000 bytes after expanding includes.",
+    "Aggregate rules budget is limited to 20,000 tokens, with automatic demotion of large files to pointers.",
+    "Context window token limits are managed by automatic checkpoint summaries and token usage visualization.",
+    "File path autocompletion indexes empty directories but requires workspace indexing.",
+    "Workspace scoping limits conversation histories to the current working directory to prevent context pollution."
+  ],
+  "evidence": [
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Target file autocompletion",
+      "quote": "Type @ within your prompt box to trigger the Interactive Path Suggestion overlay. Highlighting and selecting a path imports the absolute workspace file path directly into your prompt.",
+      "claim": "Supports file path autocompletion to help target code searches."
+    },
+    {
+      "page": "rules",
+      "section": "Rules > Advanced features and limits > File includes",
+      "quote": "Antigravity supports two distinct @ syntaxes for referencing files: @[label](path) : Inlines the target file’s contents directly into the rule before prompt evaluation and size-limit checks.",
+      "claim": "Supports inlining file contents in rules for context gathering."
+    },
+    {
+      "page": "cli/commands/context",
+      "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files",
+      "quote": "The /context panel lists active session state: Checkpoints and Tracked file sections listing loaded Knowledge files, Artifact files, and Skill files with their individual token counts.",
+      "claim": "Provides a context panel showing loaded files and token usage for context management."
+    },
+    {
+      "page": "cli/conversations",
+      "section": "Managing conversations > Workspace scoping",
+      "quote": "Antigravity CLI scopes conversation histories directly to your current working directory. When you launch agy from a specific directory, the agent only displays and resumes sessions associated with that specific local repository or subdirectory.",
+      "claim": "Scopes context to the relevant codebase to maintain context hygiene."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "9b872bc2-966a-45ac-80a2-61c65ca6d80e",
+    "usage": {
+      "input_tokens": 4840,
+      "output_tokens": 637
+    },
+    "estimated_cost_usd": 0.002955,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T21:56:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Target file autocompletion"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Overview of /artifact > Code files and visual media"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > File includes"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Skill icon branding, empty directory indexing in @-completion, and headless exit code fixes"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery > Creating custom agents"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Visual grid indicators"
+      },
+      {
+        "page": "cli/conversations",
+        "section": "Managing conversations > Workspace scoping"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Download and install"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Start a project"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > File and directory operations"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > Size limits and token budgets"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Voice dictation, embedded ripgrep code search, status line cost metrics, and UTF-8 encoding fixes"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context)"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Manage context growth"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Next steps"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Open the context usage panel"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Overview"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Token usage categories"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Analyze tasks before editing with plan mode"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > Search and research"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP)"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > Getting started by surface > Antigravity CLI > Interactive MCP manager"
+      }
+    ],
+    "response_problems": [
+      "section 'CLI best practices > Target file autocompletion' not an excerpt header; kept for verification"
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "feature_id": "F05",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Multi-file architectural changes, complex refactoring, and unfamiliar codebase investigations with planning and review",
+  "unsupported_scope": [],
+  "unestablished_scope": [],
+  "required_setup": "Use plan mode (--mode=plan) to analyze and outline multi-file changes before writing code; default mode pauses for interactive diff review before modifying or creating files; configure rules and workspace environment for directory standards and styling paradigms",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Agent prompts for approval before writing code files unless configured otherwise",
+    "Tool permission rules govern shell commands across all execution modes",
+    "Artifact review policy controls when prompts for reviewing generated artifacts occur"
+  ],
+  "evidence": [
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Analyze tasks before editing with plan mode",
+      "quote": "Use plan mode when taking on complex refactoring, multi-file architectural changes, or unfamiliar codebase investigations.",
+      "claim": "Plan mode supports multi-file architectural changes and complex refactoring"
+    },
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Available modes",
+      "quote": "plan Prepends the /plan instruction prefix to analyze and outline steps before writing code. Exploring unfamiliar architecture or designing complex multi-step features.",
+      "claim": "Plan mode analyzes and outlines steps before writing code for multi-file changes"
+    },
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Available modes",
+      "quote": "default Pauses for interactive diff review before modifying or creating files. Standard development, reviewing sensitive code changes, and careful refactoring.",
+      "claim": "Default mode supports interactive review of file modifications and creations"
+    },
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file",
+      "quote": "Create a GEMINI.md or AGENTS.md file at your workspace root to outline specific directory standards, styling paradigms, test command parameters, and deprecation warnings. The agent automatically parses these rules on startup and consults them before suggesting changes.",
+      "claim": "Workspace environment configuration supports consistent multi-file changes"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "6c434c63-44fa-4936-8057-17243f7a72f8",
+    "usage": {
+      "input_tokens": 5423,
+      "output_tokens": 531
+    },
+    "estimated_cost_usd": 0.003019,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T21:57:47+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Analyze tasks before editing with plan mode"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > YAML frontmatter and activation modes > Supported frontmatter keys"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Overview of /artifact > Code files and visual media"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP configuration structure > MCP configuration properties"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Setting up preferences > Configuration file location"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > File list view (VCS and Turn modes)"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > File and directory operations"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP configuration structure"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Markdown format custom agents, /copy index support, progressive /codesearch streaming, default temp directory access, and stability fixes"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Vim modal editing mode, Vim-aware submission, print-mode slash-command enhancements, and various CLI and permission fixes"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Handle exit codes and errors"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Available modes"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode > New file creation previews"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > Supported MCP servers"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Comparison of planning and reasoning modes"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Related resources"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions"
+      }
+    ],
+    "response_problems": []
+  }
+}

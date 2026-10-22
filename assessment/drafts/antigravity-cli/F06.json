@@ -1,0 +1,149 @@
+{
+  "feature_id": "F06",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Run builds or tests, inspect failures, and revise work based on results within the Antigravity CLI workspace",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Automatic defect correction or revision based on test results",
+    "Direct integration with external build systems beyond local test commands"
+  ],
+  "required_setup": "Configure workspace with a test suite and optionally set toolPermission and enableTerminalSandbox in settings.json; use execution modes (default, accept-edits, plan) to control file write approvals; optionally enable terminal sandbox for safe command execution",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "constraints": [
+    "Workspace must have a test suite ready for verification loops",
+    "File write and command execution permissions governed by toolPermission settings or /permissions rules",
+    "Execution modes affect approval behavior for file modifications",
+    "Terminal sandbox restricts filesystem and network access for safety"
+  ],
+  "evidence": [
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Establish verification loops",
+      "quote": "The single most effective way to ensure reliable, correct modifications from an autonomous agent is to provide the agent with a local verification mechanism (such as unit tests, build commands, or formatting scripts). Before asking the agent to implement a code change, follow these steps: Ensure your workspace directory has a test suite ready. If tests don’t exist, direct the agent to write a stan",
+      "claim": "Supports running tests and inspecting results to verify work"
+    },
+    {
+      "page": "cli/reference",
+      "section": "CLI commands > Core slash commands",
+      "quote": "/diff Utilities — Open the interactive diff viewer to view changes, turns, and commits.",
+      "claim": "Provides interactive diff viewer to inspect changes and revisions"
+    },
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Available modes",
+      "quote": "default Pauses for interactive diff review before modifying or creating files. Standard development, reviewing sensitive code changes, and careful refactoring. accept-edits Automatically approves file edits and creations (mkdir, touch, file writes). Rapid prototyping, iterating on trusted code, and reducing prompt interruptions.",
+      "claim": "Execution modes control approval of file modifications during build/test cycles"
+    },
+    {
+      "page": "sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > How it works",
+      "quote": "With the terminal sandbox enabled, Antigravity CLI executes commands inside an OS-level isolation boundary. Commands can write to your workspace, temporary directories, and common build caches, and read system directories such as /usr and /etc so your tools keep working.",
+      "claim": "Supports safe execution of build and test commands within a sandbox"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "3c4898d0-2a97-4aba-8a14-cc7a895fb708",
+    "usage": {
+      "input_tokens": 5190,
+      "output_tokens": 677
+    },
+    "estimated_cost_usd": 0.003159,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T21:58:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inspecting subagent progress"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Auto-approve edits with accept-edits mode"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Establish structured permissions"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Establish verification loops"
+      },
+      {
+        "page": "cli/commands/resume",
+        "section": "Resume command (/resume) > Under the hood: the session cache > Resolution workflow"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > How it works"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Markdown format custom agents, /copy index support, progressive /codesearch streaming, default temp directory access, and stability fixes"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Overview"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Overview"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Permissions in headless mode"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Stream prompts from stdin > Read the results"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Available modes"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Common mistakes"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Command-line flag overrides"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Additional resources"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Input and output contract > PreToolUse"
+      }
+    ],
+    "response_problems": []
+  }
+}

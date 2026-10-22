@@ -1,0 +1,188 @@
+{
+  "feature_id": "F08",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Execution of agent shell commands within OS-level sandbox boundaries using native OS features (nsjail on Linux, sandbox-exec on macOS, AppContainer on Windows) with configurable containment and permission rules.",
+  "unsupported_scope": [
+    "Running commands without sandbox restrictions by default (sandbox is disabled by default).",
+    "Commands that require network access outside approved domains unless explicitly allowed.",
+    "Commands that require access to sensitive files like ~/.ssh and .env which are blocked by default."
+  ],
+  "unestablished_scope": [
+    "Whether all possible agent actions beyond shell commands are sandboxed.",
+    "Exact enforcement details for non-filesystem or non-network resources.",
+    "Sandbox behavior on platforms other than Linux, macOS, and Windows."
+  ],
+  "required_setup": "Enable the terminal sandbox by setting \"enableTerminalSandbox\" to true in ~/.gemini/antigravity-cli/settings.json and configure \"toolPermission\" to control sandbox execution behavior (e.g., \"proceed-in-sandbox\").",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Sandbox is disabled by default (\"enableTerminalSandbox\" default is false).",
+    "User must approve commands that request to run outside the sandbox unless matching an unsandboxed allow rule.",
+    "Filesystem access is limited to mounted paths per permissions; denied paths are blocked.",
+    "Network access is blocked by default except for domains allowed under read_url permissions.",
+    "Escape hatch commands require explicit allow rules or user approval.",
+    "Interactive prompts appear for commands needing review or sandbox bypass approval."
+  ],
+  "evidence": [
+    {
+      "page": "cli/features",
+      "section": "Antigravity CLI features > Terminal sandbox",
+      "quote": "The terminal sandbox is a lightweight security isolation mechanism that protects your host system from potentially destructive file manipulations or unauthorized outbound network requests when the agent executes local shell commands.",
+      "claim": "Describes the sandbox as a security isolation mechanism for agent shell commands."
+    },
+    {
+      "page": "sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > CLI permissions integration",
+      "quote": "Filesystem : Workspace folders and paths allowed under write_file are mounted read-write. Paths allowed under read_file are mounted read-only, on top of the default system mounts. Denied paths are blocked, and everything else is inaccessible.",
+      "claim": "Sandbox enforces filesystem boundaries based on permissions."
+    },
+    {
+      "page": "sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > How it works",
+      "quote": "With the terminal sandbox enabled, Antigravity CLI executes commands inside an OS-level isolation boundary. Commands can write to your workspace, temporary directories, and common build caches, and read system directories such as /usr and /etc so your tools keep working.",
+      "claim": "Sandbox runs commands inside OS-level isolation boundaries with controlled filesystem access."
+    },
+    {
+      "page": "sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > Interactive prompts",
+      "quote": "When the agent asks to bypass the sandbox, the prompt calls it out explicitly so you can judge the risk: Approving “always allow” here records an unsandboxed(...) rule instead of a plain command(...) rule.",
+      "claim": "User approval is required to bypass sandbox restrictions, with explicit prompts."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "749fc276-76f4-4eaa-9ef4-dd2fcad5e1c3",
+    "usage": {
+      "input_tokens": 4772,
+      "output_tokens": 759
+    },
+    "estimated_cost_usd": 0.003123,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:00:51+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Terminal sandbox"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Setting agentMode in settings.json"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > CLI permissions integration"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Establish structured permissions"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Default CLI system behaviors and guardrails"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Using the interactive settings panel"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Command-line flag overrides"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform command matching"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI global wildcard syntax"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > How it works"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > Interactive prompts"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Markdown format custom agents, /copy index support, progressive /codesearch streaming, default temp directory access, and stability fixes"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Next steps"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inline tool approvals"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode > New file creation previews"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Default keybindings > Prompt focus keys"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform path normalization"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI implicit permission rules"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Related resources"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > CLI configuration"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Pinned prompt headers, MCP always-load tools, plugin agents.json, and sandbox protection for user application data"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Establish verification loops"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery > Switching between agents"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Overview"
+      }
+    ],
+    "response_problems": []
+  }
+}

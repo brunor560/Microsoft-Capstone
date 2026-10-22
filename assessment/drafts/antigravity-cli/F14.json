@@ -1,0 +1,167 @@
+{
+  "feature_id": "F14",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Native integration with external tools via Model Context Protocol (MCP) servers and permission-controlled execution of commands and tools.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Native integration support without connecting a service",
+    "Limits on connections or usage quotas"
+  ],
+  "required_setup": "Configure MCP servers in mcpServers with appropriate authentication (OAuth or Google credentials), set permissions for MCP tools and commands, and optionally adjust toolPermission and sandbox settings.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Access to MCP tools and resources is governed by Antigravity’s permissions system requiring explicit allow rules or user approval (page: mcp, section: Model Context Protocol (MCP) > MCP permissions and access control).",
+    "OAuth authentication is handled automatically for servers supporting dynamic client registration or manually configured with client credentials (page: mcp, section: Model Context Protocol (MCP) > MCP authentication > OAuth).",
+    "Terminal sandbox restricts network and filesystem access unless permissions allow otherwise (page: sandbox, section: Terminal sandbox > Antigravity CLI > CLI permissions integration).",
+    "Commands and MCP tools require explicit permission rules in the form action(target), e.g., mcp(server/tool) or mcp(*) (page: permissions, section: Agent permissions > Antigravity CLI > Supported CLI actions and matching rules)."
+  ],
+  "evidence": [
+    {
+      "page": "mcp",
+      "section": "Model Context Protocol (MCP) > MCP permissions and access control",
+      "quote": "Access to Model Context Protocol tools and resources is governed by Antigravity’s permissions system. By default, unconfigured MCP tools run in Ask mode, requiring your approval before execution.",
+      "claim": "MCP tool access requires permissions and user approval by default."
+    },
+    {
+      "page": "mcp",
+      "section": "Model Context Protocol (MCP) > Supported MCP servers",
+      "quote": "The MCP Store features direct integrations for a wide variety of developer platforms, databases, and productivity services: Databases and storage (15 servers)... Developer tools and CI/CD (17 servers)...",
+      "claim": "Antigravity supports many MCP servers for external tool integration."
+    },
+    {
+      "page": "mcp",
+      "section": "Model Context Protocol (MCP) > MCP authentication > OAuth",
+      "quote": "Antigravity automatically handles OAuth for servers that support dynamic client registration (DCR). For these servers, no additional configuration is needed...",
+      "claim": "OAuth authentication for MCP servers is supported and can be automatic or manual."
+    },
+    {
+      "page": "sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > CLI permissions integration",
+      "quote": "The sandbox derives its access boundaries from your Permissions configuration: Filesystem: Workspace folders and paths allowed under write_file are mounted read-write... Network: Sandboxed commands run without network access by default.",
+      "claim": "Sandboxing enforces permission-based access control for external tool execution."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "15b81892-5ae9-4d6b-a74a-08ac3cc22fe5",
+    "usage": {
+      "input_tokens": 4867,
+      "output_tokens": 703
+    },
+    "estimated_cost_usd": 0.003072,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:06:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP permissions and access control"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > System and execution"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Additional resources"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > Supported MCP servers"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > Agent collaboration"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI global wildcard syntax"
+      },
+      {
+        "page": "plugins",
+        "section": "Plugins > Directory structure > Supported components"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > CLI permissions integration"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > File and directory operations"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > Interaction and media"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > Search and research"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP)"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP authentication > OAuth"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP configuration structure > MCP configuration properties"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform path normalization"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI implicit permission rules"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP authentication"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > What is MCP? > Add custom tools"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform command matching"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Managing permissions interactively > Navigation and controls"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      }
+    ],
+    "response_problems": [
+      "feature_id 'F14_External_tool_integration' does not match F14"
+    ]
+  }
+}

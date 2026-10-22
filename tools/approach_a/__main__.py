@@ -15,6 +15,19 @@ from . import research
 from . import store as st
 
 
+def drafting_options(a):
+    g = a.add_argument_group('model-assisted drafting (SRS Spec 5.4.2; defaults and limits in tools/approach_a/drafting.json)')
+    g.add_argument('--draft', choices=['azure'],
+                   help='draft missing briefs with Azure OpenAI (default from drafting.json: default_draft)')
+    g.add_argument('--no-draft', dest='draft', action='store_const', const='off',
+                   help='no Azure requests: use prepared briefs and saved drafts only')
+    g.add_argument('--env-file', help='file with the AZURE_DEV_* variables (default from drafting.json: default_env_file)')
+    g.add_argument('--max-requests', type=int, help='override max_requests_per_run for this run')
+    g.add_argument('--token-budget', type=int, help='override max_tokens_per_run for this run')
+    g.add_argument('--max-cost', type=float, help='override max_cost_usd_per_run (USD) for this run')
+    g.add_argument('--redraft', action='store_true', help='retry features whose earlier response was rejected')
+
+
 def parser():
     ap = argparse.ArgumentParser(prog='python3 -m tools.approach_a', description=__doc__.split('\n')[0])
     ap.add_argument('--data', help='dataset directory (default: assessment/ or $APPROACH_A_DATA)')
@@ -32,6 +45,7 @@ def parser():
     s.add_argument('--profile', action='append')
     s.add_argument('--rehearsal', action='store_true',
                    help='add the proposal as an UNCONFIRMED boundary for a labeled practice run')
+    drafting_options(s)
 
     r = sub.add_parser('research', help='discover sources, run research agents and the challenge pass')
     for a in (r,):
@@ -41,6 +55,7 @@ def parser():
         a.add_argument('--refresh', action='store_true', help='re-fetch pages even if cached')
         a.add_argument('--crawl-limit', type=int, default=40)
         a.add_argument('--rehearsal', action='store_true', help='allow research on a proposed boundary')
+        drafting_options(a)
 
     sub.add_parser('status', help='progress by profile and the last validation result')
     sh = sub.add_parser('show', help="inspect one feature's finding, scope, sources and review state")
@@ -72,6 +87,7 @@ def parser():
     rs.add_argument('--crawl-limit', type=int, default=40)
     rs.add_argument('--brief', action='store_true')
     rs.add_argument('--rehearsal', action='store_true')
+    drafting_options(rs)
     i = sub.add_parser('init', help='create an empty dataset (catalog, roster and candidates only)')
     i.add_argument('--force', action='store_true')
     n = sub.add_parser('new', help='add a candidate for a tool with no prepared research')

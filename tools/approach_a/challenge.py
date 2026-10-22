@@ -56,6 +56,10 @@ def challenge_cell(cell, profile, index_data):
         if not gr or gr.startswith('assessment pending'):
             flags.append({'type': 'scope_gap_basis', 'severity': 'block',
                           'detail': 'Not established needs a specific gap or conflict reason'})
+    if (cell.get('drafted_by') or '').startswith('model:'):
+        flags.append({'type': 'model_drafted', 'severity': 'note',
+                      'detail': 'Drafted by %s; the author and reviewer must check each quote supports the status'
+                                % cell['drafted_by'][6:]})
     if cell.get('rejected_citations'):
         flags.append({'type': 'rejected_citation', 'severity': 'warn',
                       'detail': '%d brief citation(s) failed verification' % len(cell['rejected_citations'])})

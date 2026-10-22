@@ -79,9 +79,11 @@ def sources_md(data):
 
 def worklog_md(entries):
     out = ['# Assessment work log\n',
-           'Append-only record from `worklog.jsonl`. Agent activity is labeled. This workbench fetches official '
-           'documentation pages only: it does not install or run any assessed developer tool and makes no model API '
-           'calls (SRS Spec 5.4).\n',
+           'Append-only record from `worklog.jsonl`. Agent and model activity is labeled. This workbench fetches '
+           'official documentation pages only and never installs, runs or tests an assessed developer tool. Unless '
+           'run with `--no-draft`, it sends documentation excerpts to a model to draft briefs (SRS Spec 5.4.2 as amended '
+           'Oct. 22); every request is logged below as `model_request` or `model_request_failed`. Model drafts are '
+           'not findings until a named author and an independent reviewer accept them.\n',
            '| Time (UTC) | Actor | Event | Details |', '| --- | --- | --- | --- |']
     for e in entries:
         d = {k: v for k, v in e.items() if k not in ('ts', 'actor', 'event')}

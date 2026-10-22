@@ -73,7 +73,9 @@ def resume(store, args):
     interrupted = bool(started) and (not done or done[-1] < started[-1])
     if interrupted:
         ui.warn('The research run started at %s stopped before validation; resuming it.' % log[started[-1]]['ts'])
-    if never_ran or interrupted or k['drafted']:
+    from . import azure
+    drafting_pending = azure.draft_mode(args, azure.load_config()) == 'azure' and k['pending']
+    if never_ran or interrupted or k['drafted'] or drafting_pending:
         from . import cmd_research
         return cmd_research.run(store, args)
     if k['pending']:

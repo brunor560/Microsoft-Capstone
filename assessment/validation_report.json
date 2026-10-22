@@ -1,6 +1,6 @@
 {
   "schema": "approach-a/validation/1",
-  "generated_at": "2026-10-22T18:48:45+00:00",
+  "generated_at": "2026-10-22T22:19:50+00:00",
   "manifest_version": 1,
   "profiles": [
     "antigravity-cli"
@@ -9,9 +9,9 @@
   "expected_cells": 18,
   "present_cells": 18,
   "cell_states": {
-    "pending": 1,
+    "pending": 0,
     "drafted": 0,
-    "challenged": 17,
+    "challenged": 18,
     "reviewed": 0
   },
   "accepted": false,
@@ -20,8 +20,7 @@
   "counts_by_code": {
     "APPROVAL_MISSING": 1,
     "AUTHOR_MISSING": 17,
-    "CELL_PENDING": 1,
-    "REVIEW_MISSING": 17
+    "REVIEW_MISSING": 18
   },
   "issues": [
     {
@@ -55,9 +54,9 @@
       "where": "antigravity-cli/F02"
     },
     {
-      "code": "CELL_PENDING",
+      "code": "REVIEW_MISSING",
       "severity": "block",
-      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "message": "No independent team-member review",
       "where": "antigravity-cli/F03"
     },
     {

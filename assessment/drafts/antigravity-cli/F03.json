@@ -1,0 +1,149 @@
+{
+  "feature_id": "F03",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Explicit linking of requirements, tasks, changes, and verification checkpoints via structured Implementation Plan artifacts and interactive artifact review",
+  "unsupported_scope": [],
+  "unestablished_scope": [],
+  "required_setup": "Invoke /plan command to generate an Implementation Plan artifact; ensure workspace has test suites or instruct agent to write tests; configure artifact review policies as needed",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "User must review and approve the Implementation Plan artifact before execution",
+    "Verification requires local test suites or agent-generated tests",
+    "Artifact review policies can configure whether agent pauses for plan approval"
+  ],
+  "evidence": [
+    {
+      "page": "plan",
+      "section": "Plan (/plan) > Overview",
+      "quote": "The agent drafts a structured Implementation Plan artifact with clear task breakdowns and verification checkpoints.",
+      "claim": "Structured Implementation Plan artifacts explicitly link tasks and verification checkpoints to requirements."
+    },
+    {
+      "page": "plan",
+      "section": "Plan (/plan) > How /plan works",
+      "quote": "The agent generates an Implementation Plan artifact. User review and approval: The agent presents the plan artifact in the review pane.",
+      "claim": "User can review and approve the plan artifact, enabling traceability from requirements to implementation."
+    },
+    {
+      "page": "cli/best-practices",
+      "section": "CLI best practices > Establish verification loops",
+      "quote": "Once the agent proposes code, instruct it to run the local test command to verify its work. Watch the agent execute the command and iterate on the test outputs automatically.",
+      "claim": "Verification evidence is linked by running local tests after implementation."
+    },
+    {
+      "page": "plan",
+      "section": "Plan (/plan) > Interacting with plan artifacts",
+      "quote": "You can interact with the plan in several ways: Inline comments, Scope adjustments, Artifact review policies, Proceed to transition the agent into execution mode.",
+      "claim": "Interactive artifact review and inline commenting support explicit linking and traceability."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "95318247-062a-4c31-98fe-ba7bbb1b1fd9",
+    "usage": {
+      "input_tokens": 4750,
+      "output_tokens": 491
+    },
+    "estimated_cost_usd": 0.002686,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T21:55:47+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Overview"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Establish verification loops"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Analyze tasks before editing with plan mode"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > When to use /plan"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Explore, plan, then execute"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan)"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Comparison of planning and reasoning modes"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > How /plan works"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Enhanced /diff navigation and position indicators, Windows plugin lifecycle management, and subagent and task status fixes"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Collaboration and co-steering"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Interacting with plan artifacts"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Artifact heading outline, print-mode commands, artifact alerts/carousels, improved terminal hyperlinks, and extensive CLI fixes"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Start a project"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > How to use /plan"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > Next steps"
+      },
+      {
+        "page": "plans",
+        "section": "Plans > Baseline quota"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > YAML frontmatter and activation modes > Activation modes"
+      },
+      {
+        "page": "subagents",
+        "section": "Custom subagents > Antigravity CLI > Monitoring background tasks with /tasks"
+      }
+    ],
+    "response_problems": []
+  }
+}

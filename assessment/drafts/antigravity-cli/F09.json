@@ -1,0 +1,149 @@
+{
+  "feature_id": "F09",
+  "status": "Configuration or extension required",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Credential delivery and secure authentication via Application Default Credentials (ADC) and native OS secure keyring integration",
+  "unsupported_scope": [
+    "Explicit secret redaction mechanisms in prompts or generated code",
+    "Automatic secret detection and removal from committed files"
+  ],
+  "unestablished_scope": [
+    "Storage and lifecycle management of secrets beyond ADC and keyring",
+    "Secret exposure boundaries within agent-generated content",
+    "Limits on secret handling and leakage prevention in prompts or code"
+  ],
+  "required_setup": "Enable Application Default Credentials (ADC) by setting environment variable AGY_ADC_AUTH=true or user setting enableAdc in ~/.gemini/config/config.json; sign in via local OS secure keyring or web browser for token profile acquisition",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "constraints": [
+    "ADC usage requires explicit environment variable or user setting activation",
+    "Agent prompts for approval before executing write or terminal commands by default",
+    "Terminal sandbox can be enabled to restrict command execution and protect credentials",
+    "Non-workspace file access is off by default for safety"
+  ],
+  "evidence": [
+    {
+      "page": "install",
+      "section": "Authenticate > Sign in by surface > Application Default Credentials (ADC)",
+      "quote": "Antigravity CLI ( agy ) uses secure credentials and token profiles to communicate with the shared agent harness.",
+      "claim": "The CLI uses secure credentials and token profiles for communication, indicating built-in credential handling."
+    },
+    {
+      "page": "install",
+      "section": "Authenticate > Sign in by surface > Application Default Credentials (ADC)",
+      "quote": "Enable ADC in the CLI by setting AGY_ADC_AUTH=true (and optionally GOOGLE_CLOUD_QUOTA_PROJECT and GOOGLE_CLOUD_LOCATION )",
+      "claim": "Credential delivery via ADC requires explicit environment variable activation."
+    },
+    {
+      "page": "install",
+      "section": "Authenticate > Sign in by surface > Local silent keyring sign-in",
+      "quote": "the CLI attempts to access your operating system’s native secure keyring (such as Apple Keychain, Linux Secret Service/dbus, or Windows Credential Manager). If a valid token profile is found, the CLI authenticates your session silently without opening a browser.",
+      "claim": "The CLI supports silent authentication using native OS secure keyrings, avoiding manual credential input."
+    },
+    {
+      "page": "settings",
+      "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions",
+      "quote": "Tool Permission ( toolPermission ) : Controls the authorization flow for tools (such as running terminal commands): request-review (default): Prompts for your approval before running write, bash, or web tools.",
+      "claim": "Agent prompts for user approval before executing potentially sensitive operations, providing control over secret exposure."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "74938393-9dff-4f15-be5e-f15cc5bec47f",
+    "usage": {
+      "input_tokens": 4781,
+      "output_tokens": 648
+    },
+    "estimated_cost_usd": 0.002949,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:01:49+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Target file autocompletion"
+      },
+      {
+        "page": "install",
+        "section": "Authenticate > Sign in by surface > Application Default Credentials (ADC)"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > File includes"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Overview of /artifact > Code files and visual media"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > File and directory operations"
+      },
+      {
+        "page": "install",
+        "section": "Authenticate > Sign in by surface > Application Default Credentials (ADC)"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Subagent roster prompt injection, background task names, credential invalidation handling, and thinking frame freeze fixes"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Interactive CLI permission prompts"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Pinned prompt headers, MCP always-load tools, plugin agents.json, and sandbox protection for user application data"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Stream prompts from stdin > Unsupported messages"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Additional resources"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Download and install"
+      },
+      {
+        "page": "install",
+        "section": "Authenticate > Sign in by surface > Local silent keyring sign-in"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Establish structured permissions"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Attaching visual evidence"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Establish verification loops"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Terminal sandbox"
+      }
+    ],
+    "response_problems": []
+  }
+}

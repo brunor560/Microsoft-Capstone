@@ -160,7 +160,9 @@ assessment_date: null
 review: null                     # reviewer (not the author), decision, disposition, date
 ```
 
-In the workbench dataset (`assessment/cells.json`) the evaluator field is named `author`, an agent-drafted cell also records `drafted_by: agent`, and review records are kept in `assessment/reviews.json` with the hash of the cell as reviewed.
+In the workbench dataset (`assessment/cells.json`) the evaluator field is named `author`, an agent-drafted cell also records `drafted_by: agent`, and review records are kept in `assessment/reviews.json` with the hash of the cell as reviewed. A cell drafted by a model records `drafted_by: model:azure-openai/<deployment>` and `model_provenance` (deployment, returned model version, API version, prompt version, request ID and time).
+
+Model-assisted drafting (SRS Spec 5.4.2 as amended Oct. 22, 2026): a model may read excerpts of official documentation pages and draft a brief (status, scope and page/section/quote evidence). The model receives no other input and never runs or tests the assessed tool. Every quote is re-checked against the cited section before a cell is drafted, and quotes that fail are dropped. The model's draft is a proposal like any agent draft: it needs a named author and an independent reviewer before it is accepted, and the work log records every request.
 
 ## Initial review workflow
 
@@ -216,5 +218,7 @@ Version 0.3 (October 21, 2026) aligns the method with SRS 2.0 Requirement 5 and 
 - The 18 features, seven categories, five statuses, evidence basis and control mechanism values, and the documentation-only boundary are unchanged.
 
 The structured record lives in `assessment/` and is maintained with the workbench in `tools/approach_a/`. These v0.3 edits were prepared with AI assistance (Cline) and await team review.
+
+Oct. 22, 2026 (within v0.3): the SRS Spec 5.4.2 amendment allows model-assisted drafting. A note under the cell template describes the drafting rule and the `model_provenance` field. The documentation-only boundary (no execution or testing of assessed tools) is unchanged.
 
 This draft was developed with assistance from OpenAI ChatGPT. The team should review its definitions and findings and document AI assistance in submitted course materials as required by the course syllabus.

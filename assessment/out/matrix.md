@@ -9,21 +9,21 @@ P = 1 (antigravity-cli). One cell per feature/profile pair. "Pending research" i
 
 | Feature | Name | antigravity-cli |
 | --- | --- | --- |
-| MATRIX:F01 | Persistent project instructions | [Built in (unreviewed draft)](cells/antigravity-cli/F01.md) |
+| MATRIX:F01 | Persistent project instructions | [Config/extension (unreviewed draft)](cells/antigravity-cli/F01.md) |
 | MATRIX:F02 | Planning before implementation | [Built in (unreviewed draft)](cells/antigravity-cli/F02.md) |
-| MATRIX:F03 | Requirements traceability | [Pending research](cells/antigravity-cli/F03.md) |
+| MATRIX:F03 | Requirements traceability | [Built in (unreviewed draft)](cells/antigravity-cli/F03.md) |
 | MATRIX:F04 | Codebase context gathering | [Built in (unreviewed draft)](cells/antigravity-cli/F04.md) |
 | MATRIX:F05 | Coordinated changes across files | [Built in (unreviewed draft)](cells/antigravity-cli/F05.md) |
-| MATRIX:F06 | Execution and feedback | [Built in (unreviewed draft)](cells/antigravity-cli/F06.md) |
+| MATRIX:F06 | Execution and feedback | [Config/extension (unreviewed draft)](cells/antigravity-cli/F06.md) |
 | MATRIX:F07 | Tool and permission restrictions | [Built in (unreviewed draft)](cells/antigravity-cli/F07.md) |
-| MATRIX:F08 | Execution isolation | [Built in (unreviewed draft)](cells/antigravity-cli/F08.md) |
-| MATRIX:F09 | Secrets handling | [Not established (unreviewed draft)](cells/antigravity-cli/F09.md) |
+| MATRIX:F08 | Execution isolation | [Config/extension (unreviewed draft)](cells/antigravity-cli/F08.md) |
+| MATRIX:F09 | Secrets handling | [Config/extension (unreviewed draft)](cells/antigravity-cli/F09.md) |
 | MATRIX:F10 | Approval checkpoints | [Built in (unreviewed draft)](cells/antigravity-cli/F10.md) |
 | MATRIX:F11 | Inspection and intervention | [Built in (unreviewed draft)](cells/antigravity-cli/F11.md) |
 | MATRIX:F12 | Change recovery | [Built in (unreviewed draft)](cells/antigravity-cli/F12.md) |
 | MATRIX:F13 | Reusable skills and task workflows | [Built in (unreviewed draft)](cells/antigravity-cli/F13.md) |
-| MATRIX:F14 | External tool integration | [Built in (unreviewed draft)](cells/antigravity-cli/F14.md) |
-| MATRIX:F15 | Repository and CI/CD integration | [Not established (unreviewed draft)](cells/antigravity-cli/F15.md) |
+| MATRIX:F14 | External tool integration | [Config/extension (unreviewed draft)](cells/antigravity-cli/F14.md) |
+| MATRIX:F15 | Repository and CI/CD integration | [Config/extension (unreviewed draft)](cells/antigravity-cli/F15.md) |
 | MATRIX:F16 | Action logs and audit trail | [Built in (unreviewed draft)](cells/antigravity-cli/F16.md) |
 | MATRIX:F17 | Usage and cost visibility | [Built in (unreviewed draft)](cells/antigravity-cli/F17.md) |
 | MATRIX:F18 | Execution limits | [Built in (unreviewed draft)](cells/antigravity-cli/F18.md) |

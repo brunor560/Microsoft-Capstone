@@ -1,7 +1,8 @@
 """Research agent (one per profile).
 
-The agent does not invent findings. It turns agent-drafted briefs (one JSON
-file per feature, written from official pages) into cell records, but only
+The agent does not invent findings. It turns drafted briefs (one JSON file per
+feature, written from official pages, either prepared with the candidate or
+drafted by a model in drafting.py) into cell records, but only
 after fetching each cited page and confirming every quote appears inside the
 section it cites. Features without a verified brief stay pending. The
 evidence-challenge pass (challenge.py) runs afterwards. Neither is a team review.
@@ -43,17 +44,24 @@ def apply_brief(cell, brief, refs, rejected, profile_id, operator):
         'activation_state': brief.get('activation_state', 'not established'),
         'control_mechanism': brief.get('control_mechanism', 'not established'),
         'constraints': brief.get('constraints', []),
-        'drafted_by': 'agent', 'assessment_date': st.today(), 'author': None,
+        'drafted_by': brief.get('drafted_by') or 'agent', 'assessment_date': st.today(), 'author': None,
         'rejected_citations': rejected, 'challenge': None,
     })
+    prov = brief.get('provenance')
+    if prov:
+        cell['model_provenance'] = {k: prov.get(k) for k in (
+            'provider', 'deployment', 'model', 'api_version', 'prompt_version', 'request_id', 'drafted_at')}
+    else:
+        cell.pop('model_provenance', None)
     model.touch(cell, 'drafted', by='research-agent:' + profile_id, operator=operator,
                 verified_refs=refs, rejected=len(rejected))
 
 
 class ResearchAgent:
-    def __init__(self, store, index, cand, profile, operator, progress, lock):
+    def __init__(self, store, index, cand, profile, operator, progress, lock, briefs=None):
         self.store, self.index, self.cand, self.profile = store, index, cand, profile
         self.operator, self.progress, self.lock = operator, progress, lock
+        self.briefs = briefs
         self.docs = cand['docs']
         self.result = {'drafted': 0, 'left_pending': 0, 'kept': 0, 'rejected_quotes': 0, 'features': {}}
 
@@ -82,7 +90,7 @@ class ResearchAgent:
         return refs, rejected
 
     def run(self, cells, features):
-        briefs = load_briefs(self.cand, self.profile['surface'])
+        briefs = self.briefs if self.briefs is not None else load_briefs(self.cand, self.profile['surface'])
         total = len(features)
         for n, f in enumerate(features, 1):
             fid = f['id']
@@ -114,8 +122,11 @@ class Stopped(Exception):
     """Raised when the operator interrupts or an agent fails; completed cells are kept."""
 
 
-def run_agents(store, index, candidates, profiles, operator, progress):
+def run_agents(store, index, candidates, profiles, operator, progress, briefs_by_profile=None):
     """One research agent per profile, in parallel threads sharing one source index.
+
+    briefs_by_profile maps a profile id to model-drafted briefs (drafting.py);
+    profiles not in it use the candidate's prepared briefs.
 
     Each drafted cell is complete on its own, so on interruption or agent
     failure the cells finished so far are saved and the run stops before the
@@ -145,7 +156,8 @@ def run_agents(store, index, candidates, profiles, operator, progress):
             store.log('research_skipped', actor=operator, profile_id=p['id'],
                       reason='no candidate documentation set for this tool')
             continue
-        a = ResearchAgent(store, index, cand, p, operator, progress, lock)
+        a = ResearchAgent(store, index, cand, p, operator, progress, lock,
+                          (briefs_by_profile or {}).get(p['id']))
         agents.append(a)
         threads.append(threading.Thread(target=guarded, args=(a,), name=p['id'], daemon=True))
     for t in threads:

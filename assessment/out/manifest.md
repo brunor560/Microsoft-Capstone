@@ -27,4 +27,4 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Rules files (AGENTS.md, GEMINI.md, .agents/rules/*.md, global ~/.gemini/... and ~/.gemini/antigravity-cli/rules/); permissions allow/deny/ask lists in ~/.gemini/antigravity-cli/settings.json; toolPermission preset (request-review default); artifactReviewPolicy (asks-for-review default). |
 | Documentation base | https://antigravity.google/docs/ |
 | Source access date | 2026-10-22 |
-| Boundary confirmed by | Ross Volenec at 2026-10-22T18:48:33+00:00 |
+| Boundary confirmed by | Ross Volenec at 2026-10-22T21:53:20+00:00 |

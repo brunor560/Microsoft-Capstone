@@ -4,15 +4,18 @@
     "antigravity-cli/F01": {
       "feature_id": "F01",
       "profile_id": "antigravity-cli",
-      "status": "Built in",
+      "status": "Configuration or extension required",
       "assessment_state": "challenged",
-      "supported_scope": "Workspace and directory rules (AGENTS.md, GEMINI.md, .agents/rules/*.md), global rules under ~/.gemini and ~/.gemini/antigravity-cli/rules/, and plugin rules, evaluated during prompt expansion. Rules are cumulative; more specific directory rules take priority. Frontmatter triggers: always_on, model_decision, glob, manual.",
+      "supported_scope": "Persistent project instructions stored as rules in .agents/rules/ and managed via CLI",
       "unsupported_scope": [],
       "unestablished_scope": [
-        "Whether rules are guaranteed to be followed (documented as injected context, not enforcement)"
+        "Automatic precedence resolution details beyond directory specificity",
+        "Instruction discovery mechanisms beyond filesystem rules",
+        "Persistence mechanisms beyond filesystem storage",
+        "Supported instruction formats beyond YAML frontmatter and action(target) rules"
       ],
-      "required_setup": "Create a rules file; none exists by default.",
-      "activation_state": "default",
+      "required_setup": "Create and maintain rules files in .agents/rules/ with YAML frontmatter; optionally share rules via .agents/rules.json; manage permissions and agent instructions via CLI commands and file system",
+      "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
         "E01",
@@ -20,19 +23,28 @@
         "E03"
       ],
       "gap_reason": null,
-      "control_mechanism": "instruction-based",
+      "control_mechanism": "enforced",
       "constraints": [
-        "24,000-byte per-file truncation",
-        "20,000-token aggregate budget; larger rules are demoted to pointers"
+        "Rules must follow YAML frontmatter schema with trigger keys (always_on, model_decision, glob, manual)",
+        "Rules are cumulative and combined across global, workspace, and directory scopes",
+        "More specific directory rules take precedence over global or workspace rules",
+        "Permissions rules follow action(target) format and require explicit allow/deny/ask settings",
+        "CLI permissions require interactive management or manual config file editing"
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
         "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E01",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide"
+          },
           {
             "type": "shared_page",
             "severity": "note",
@@ -40,17 +52,21 @@
             "detail": "Section is not surface-specific; page applies to app+cli+ide"
           },
           {
-            "type": "shared_page",
+            "type": "model_drafted",
             "severity": "note",
-            "ref": "E03",
-            "detail": "Section is not surface-specific; page applies to app+cli+ide"
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
           }
         ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
@@ -59,816 +75,1322 @@
             "E02",
             "E03"
           ],
-          "rejected": 0
+          "rejected": 1
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [
+        "rules / Rules > YAML frontmatter and activation modes > Supported frontmatter keys: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "00208740-246a-40f6-bcbe-c367a45da15c",
+        "drafted_at": "2026-10-22T21:53:49+00:00"
+      }
     },
     "antigravity-cli/F02": {
       "feature_id": "F02",
       "profile_id": "antigravity-cli",
       "status": "Built in",
       "assessment_state": "challenged",
-      "supported_scope": "plan execution mode (--mode=plan or Shift+Tab) prepends /plan, investigates with read-only tools and presents an outline for approval before writing code. /plan in the CLI renders a structured plan in the terminal.",
+      "supported_scope": "Producing a developer-reviewable implementation plan before changing code, including interactive review and approval of the plan artifact",
       "unsupported_scope": [],
       "unestablished_scope": [
-        "Whether plan approval is a hard gate in the CLI or depends on artifact review settings"
+        "Whether planning is strictly required before any code changes",
+        "Whether approval gates are mandatory or optional by policy"
       ],
-      "required_setup": "Select plan mode or type /plan; the default mode does not plan first.",
+      "required_setup": "Invoke the CLI in plan mode (agy --mode=plan) or prepend /plan instruction prefix to prompts; optionally configure artifact review policies for plan approval behavior",
       "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
         "E04",
-        "E05"
+        "E05",
+        "E06"
       ],
       "gap_reason": null,
-      "control_mechanism": "mixed",
-      "constraints": [],
+      "control_mechanism": "instruction-based",
+      "constraints": [
+        "Plan mode uses read-only tools to analyze codebase before writing",
+        "User must review and approve the structured Implementation Plan artifact before proceeding",
+        "Default mode pauses for interactive diff review before applying file writes",
+        "Artifact review policies can configure whether the agent pauses for plan approval"
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
-        "flags": [],
+        "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E05",
+            "detail": "Section is not surface-specific; page applies to app+cli"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
+          }
+        ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
             "E04",
-            "E05"
+            "E05",
+            "E06"
           ],
-          "rejected": 0
+          "rejected": 1
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [
+        "plan / Plan (/plan) > How /plan works: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "4af1f520-cac0-48a9-8f10-1b34dea0cfd4",
+        "drafted_at": "2026-10-22T21:54:48+00:00"
+      }
     },
     "antigravity-cli/F03": {
       "feature_id": "F03",
       "profile_id": "antigravity-cli",
-      "status": "Not established from documentation",
-      "assessment_state": "pending",
-      "supported_scope": "Not established",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Explicit linking of requirements, tasks, changes, and verification checkpoints via structured Implementation Plan artifacts and interactive artifact review",
       "unsupported_scope": [],
       "unestablished_scope": [],
-      "required_setup": "Not established",
-      "activation_state": "not established",
-      "evidence_basis": null,
-      "evidence_refs": [],
+      "required_setup": "Invoke /plan command to generate an Implementation Plan artifact; ensure workspace has test suites or instruct agent to write tests; configure artifact review policies as needed",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E07",
+        "E08",
+        "E09"
+      ],
       "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
+      "control_mechanism": "enforced",
+      "constraints": [
+        "User must review and approve the Implementation Plan artifact before execution",
+        "Verification requires local test suites or agent-generated tests",
+        "Artifact review policies can configure whether agent pauses for plan approval"
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": null,
-      "assessment_date": null,
-      "challenge": null,
-      "history": []
+      "author": "ross",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E07",
+            "detail": "Section is not surface-specific; page applies to app+cli"
+          },
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E08",
+            "detail": "Section is not surface-specific; page applies to app+cli"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E07",
+            "E08",
+            "E09"
+          ],
+          "rejected": 1
+        },
+        {
+          "at": "2026-10-22T22:19:35+00:00",
+          "event": "author_set",
+          "author": "ross"
+        }
+      ],
+      "rejected_citations": [
+        "plan / Plan (/plan) > Interacting with plan artifacts: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "95318247-062a-4c31-98fe-ba7bbb1b1fd9",
+        "drafted_at": "2026-10-22T21:55:47+00:00"
+      }
     },
     "antigravity-cli/F04": {
       "feature_id": "F04",
       "profile_id": "antigravity-cli",
       "status": "Built in",
       "assessment_state": "challenged",
-      "supported_scope": "Read-only investigation tools (code_search, grep_search, view_file) used in plan mode; /context lists tracked files and token usage; older turns are compacted into checkpoint summaries automatically.",
+      "supported_scope": "Locating and inspecting relevant existing code within the workspace and repository, including file path autocompletion, file content inlining in rules, workspace indexing, and context window management.",
       "unsupported_scope": [],
-      "unestablished_scope": [
-        "Repository indexing method and size limits"
-      ],
-      "required_setup": "None documented beyond confirming workspace trust on first launch.",
+      "unestablished_scope": [],
+      "required_setup": "Create or open a project workspace with local Git repositories or working directories; optionally configure GEMINI.md or AGENTS.md rule files to define directory standards and file references; launch the CLI and use built-in commands and features such as @ path autocompletion, /context panel, and plan mode for codebase investigation.",
       "activation_state": "default",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E06",
-        "E07"
+        "E10",
+        "E11",
+        "E12"
       ],
       "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Single rule files are truncated at 24,000 bytes after expanding includes.",
+        "Aggregate rules budget is limited to 20,000 tokens, with automatic demotion of large files to pointers.",
+        "Context window token limits are managed by automatic checkpoint summaries and token usage visualization.",
+        "File path autocompletion indexes empty directories but requires workspace indexing.",
+        "Workspace scoping limits conversation histories to the current working directory to prevent context pollution."
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
-        "flags": [],
+        "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E11",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
+          }
+        ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E06",
-            "E07"
+            "E10",
+            "E11",
+            "E12"
           ],
-          "rejected": 0
+          "rejected": 1
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [
+        "cli/commands/context / Context command (/context) > Understand the context breakdown > Checkpoints and tracked files: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "9b872bc2-966a-45ac-80a2-61c65ca6d80e",
+        "drafted_at": "2026-10-22T21:56:50+00:00"
+      }
     },
     "antigravity-cli/F05": {
       "feature_id": "F05",
       "profile_id": "antigravity-cli",
       "status": "Built in",
       "assessment_state": "challenged",
-      "supported_scope": "File creation and replacement tools including multi_replace_file_content; accept-edits mode applies edits across the filesystem without pausing for each file; default mode shows each write as a diff for review.",
+      "supported_scope": "Multi-file architectural changes, complex refactoring, and unfamiliar codebase investigations with planning and review",
       "unsupported_scope": [],
-      "unestablished_scope": [
-        "Atomicity or rollback of a multi-file change as a unit"
-      ],
-      "required_setup": "None; default mode reviews each file write.",
-      "activation_state": "default",
+      "unestablished_scope": [],
+      "required_setup": "Use plan mode (--mode=plan) to analyze and outline multi-file changes before writing code; default mode pauses for interactive diff review before modifying or creating files; configure rules and workspace environment for directory standards and styling paradigms",
+      "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E08"
+        "E13",
+        "E14",
+        "E15",
+        "E03"
       ],
       "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Agent prompts for approval before writing code files unless configured otherwise",
+        "Tool permission rules govern shell commands across all execution modes",
+        "Artifact review policy controls when prompts for reviewing generated artifacts occur"
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
-        "flags": [],
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E08"
+            "E13",
+            "E14",
+            "E15",
+            "E03"
           ],
           "rejected": 0
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "6c434c63-44fa-4936-8057-17243f7a72f8",
+        "drafted_at": "2026-10-22T21:57:47+00:00"
+      }
     },
     "antigravity-cli/F06": {
       "feature_id": "F06",
       "profile_id": "antigravity-cli",
-      "status": "Built in",
+      "status": "Configuration or extension required",
       "assessment_state": "challenged",
-      "supported_scope": "The agent runs shell commands (run_command) governed by permission rules; the best-practices page describes having the agent run the local test command and iterate on test output.",
+      "supported_scope": "Run builds or tests, inspect failures, and revise work based on results within the Antigravity CLI workspace",
       "unsupported_scope": [],
       "unestablished_scope": [
-        "Whether revision after a failing test is automatic or prompt-driven; the page describes a recommended workflow, not a guaranteed loop"
+        "Automatic defect correction or revision based on test results",
+        "Direct integration with external build systems beyond local test commands"
       ],
-      "required_setup": "Shell commands default to Ask unless an allow rule exists.",
-      "activation_state": "policy-dependent",
+      "required_setup": "Configure workspace with a test suite and optionally set toolPermission and enableTerminalSandbox in settings.json; use execution modes (default, accept-edits, plan) to control file write approvals; optionally enable terminal sandbox for safe command execution",
+      "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E09",
-        "E10"
+        "E16",
+        "E17",
+        "E18",
+        "E19"
       ],
       "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
+      "control_mechanism": "mixed",
+      "constraints": [
+        "Workspace must have a test suite ready for verification loops",
+        "File write and command execution permissions governed by toolPermission settings or /permissions rules",
+        "Execution modes affect approval behavior for file modifications",
+        "Terminal sandbox restricts filesystem and network access for safety"
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
-        "flags": [],
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E09",
-            "E10"
+            "E16",
+            "E17",
+            "E18",
+            "E19"
           ],
           "rejected": 0
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "3c4898d0-2a97-4aba-8a14-cc7a895fb708",
+        "drafted_at": "2026-10-22T21:58:50+00:00"
+      }
     },
     "antigravity-cli/F07": {
       "feature_id": "F07",
       "profile_id": "antigravity-cli",
       "status": "Built in",
       "assessment_state": "challenged",
-      "supported_scope": "allow, deny and ask lists over read_file, write_file, read_url, execute_url, command, unsandboxed and mcp actions in settings.json; deny blocks immediately; rules editable with /permissions at project, shared or global scope.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Network destination restriction for commands run outside the sandbox (the outbound allowlist is described for sandboxed commands)"
-      ],
-      "required_setup": "Add rules in settings.json or /permissions; unconfigured actions default to Ask.",
-      "activation_state": "optional",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E11",
-        "E12",
-        "E13"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "enforced",
-      "constraints": [
-        "--dangerously-skip-permissions approves all tool calls"
-      ],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E11",
-            "E12",
-            "E13"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F08": {
-      "feature_id": "F08",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "Terminal sandbox for agent shell commands on Linux (kernel namespaces) and macOS (sandbox-exec). Workspace and write_file paths read-write, read_file paths read-only, everything else inaccessible; no network by default except read_url domains.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "CLI terminal sandbox on Windows (the CLI section lists Linux and macOS only)",
-        "Isolation of the agent's own file-edit tools, as distinct from shell commands"
-      ],
-      "required_setup": "enableTerminalSandbox defaults to false; enable it in settings.json or with --sandbox.",
-      "activation_state": "optional",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E14",
-        "E15",
-        "E16"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "enforced",
-      "constraints": [
-        "unsandboxed(...) allow rules and approved agent requests run commands outside the sandbox"
-      ],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E14",
-            "E15",
-            "E16"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F09": {
-      "feature_id": "F09",
-      "profile_id": "antigravity-cli",
-      "status": "Not established from documentation",
-      "assessment_state": "challenged",
-      "supported_scope": "Not established",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Application secret delivery to tasks",
-        "Redaction in transcripts and logs",
-        "Secret handling outside the sandbox"
-      ],
-      "required_setup": "Not established",
-      "activation_state": "not established",
-      "evidence_basis": "documentation_gap",
-      "evidence_refs": [
-        "E17",
-        "E18"
-      ],
-      "gap_reason": "Reviewed CLI pages cover product sign-in (keyring, GEMINI_API_KEY, ADC) and MCP credentials (OAuth, headers); the sandbox section says sensitive files such as .env are blocked inside the sandbox. None describes a supported way to supply application secrets to the agent's tasks, or redaction of secrets from prompts, transcripts or generated code. Product sign-in does not establish application secret handling (matrix spec F09).",
-      "control_mechanism": "not established",
-      "constraints": [],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [
-          {
-            "type": "shared_page",
-            "severity": "note",
-            "ref": "E18",
-            "detail": "Section is not surface-specific; page applies to app+cli+ide-extensions"
-          }
-        ],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E17",
-            "E18"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F10": {
-      "feature_id": "F10",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "toolPermission presets: request-review (default) prompts before write, bash or web tools; strict prompts for all non-read tools. artifactReviewPolicy asks-for-review by default. Ask rules prompt for specific actions.",
+      "supported_scope": "Commands, filesystem paths, external services (MCP tools), and network destinations (URLs) can be limited by fine-grained allow, deny, and ask permission rules configured in Antigravity CLI settings and managed interactively.",
       "unsupported_scope": [],
       "unestablished_scope": [],
-      "required_setup": "None; the defaults prompt.",
+      "required_setup": "Configure permission rules in ~/.gemini/antigravity-cli/settings.json or interactively via /permissions command; optionally enable terminal sandbox and set toolPermission mode for sandbox enforcement.",
       "activation_state": "default",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E19",
         "E20"
       ],
       "gap_reason": null,
       "control_mechanism": "enforced",
       "constraints": [
-        "always-proceed and --dangerously-skip-permissions remove prompts",
-        "Headless mode soft-denies tools that need approval it cannot obtain"
+        "Permissions follow action(target) format with allow, deny, and ask lists.",
+        "Unconfigured actions default to Ask mode with secure fallbacks.",
+        "Terminal sandbox restricts commands and network access unless unsandboxed rules apply.",
+        "Approval prompts appear inline in /agents panel or as interactive TUI prompt cards.",
+        "Scope editing of file and URL targets is supported in prompts except for terminal commands."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E19",
-            "E20"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F11": {
-      "feature_id": "F11",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "Progress: /agents subagent status and tool reasoning toggle (Ctrl+O). Inspect: /diff VCS, Turn and Commit modes. Redirect: diff line comments are sent as the next prompt. Stop: Esc halts active streams; subagents can be killed.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Whether Esc stops a shell command already running, and limits on interruption"
-      ],
-      "required_setup": "None",
-      "activation_state": "default",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E21",
-        "E22"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E21",
-            "E22"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F12": {
-      "feature_id": "F12",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "/rewind (alias /undo) rolls conversation history back to a previous message; /fork branches the session. The CLI changelog describes rewind reverting workspace snapshots.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Recovery of shell side effects, external actions and deployed resources",
-        "File restoration is described in the changelog, not in the main command documentation"
-      ],
-      "required_setup": "None",
-      "activation_state": "default",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E23",
-        "E24"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [
-        "Changelog: edits with diffs over 1 MiB skip the elided diff during /rewind reverts"
-      ],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
         "flags": [
           {
-            "type": "release_note_source",
+            "type": "model_drafted",
             "severity": "note",
-            "ref": "E24",
-            "detail": "Release notes describe a change; confirm in the main documentation"
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "3 brief citation(s) failed verification"
           }
         ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E20"
+          ],
+          "rejected": 3
+        }
+      ],
+      "rejected_citations": [
+        "permissions / Agent permissions > Antigravity CLI > CLI fine-grained permissions: quote_not_found",
+        "sandbox / Terminal sandbox > Antigravity CLI > CLI permissions integration: quote_not_found",
+        "permissions / Agent permissions > Antigravity CLI > Supported CLI actions and matching rules: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "529eadf9-ba62-41cc-9a72-b1b4c72fd577",
+        "drafted_at": "2026-10-22T21:59:50+00:00"
+      }
+    },
+    "antigravity-cli/F08": {
+      "feature_id": "F08",
+      "profile_id": "antigravity-cli",
+      "status": "Configuration or extension required",
+      "assessment_state": "challenged",
+      "supported_scope": "Execution of agent shell commands within OS-level sandbox boundaries using native OS features (nsjail on Linux, sandbox-exec on macOS, AppContainer on Windows) with configurable containment and permission rules.",
+      "unsupported_scope": [
+        "Running commands without sandbox restrictions by default (sandbox is disabled by default).",
+        "Commands that require network access outside approved domains unless explicitly allowed.",
+        "Commands that require access to sensitive files like ~/.ssh and .env which are blocked by default."
+      ],
+      "unestablished_scope": [
+        "Whether all possible agent actions beyond shell commands are sandboxed.",
+        "Exact enforcement details for non-filesystem or non-network resources.",
+        "Sandbox behavior on platforms other than Linux, macOS, and Windows."
+      ],
+      "required_setup": "Enable the terminal sandbox by setting \"enableTerminalSandbox\" to true in ~/.gemini/antigravity-cli/settings.json and configure \"toolPermission\" to control sandbox execution behavior (e.g., \"proceed-in-sandbox\").",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E21",
+        "E22",
+        "E19"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Sandbox is disabled by default (\"enableTerminalSandbox\" default is false).",
+        "User must approve commands that request to run outside the sandbox unless matching an unsandboxed allow rule.",
+        "Filesystem access is limited to mounted paths per permissions; denied paths are blocked.",
+        "Network access is blocked by default except for domains allowed under read_url permissions.",
+        "Escape hatch commands require explicit allow rules or user approval.",
+        "Interactive prompts appear for commands needing review or sandbox bypass approval."
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E21",
+            "E22",
+            "E19"
+          ],
+          "rejected": 1
+        }
+      ],
+      "rejected_citations": [
+        "sandbox / Terminal sandbox > Antigravity CLI > Interactive prompts: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "749fc276-76f4-4eaa-9ef4-dd2fcad5e1c3",
+        "drafted_at": "2026-10-22T22:00:51+00:00"
+      }
+    },
+    "antigravity-cli/F09": {
+      "feature_id": "F09",
+      "profile_id": "antigravity-cli",
+      "status": "Configuration or extension required",
+      "assessment_state": "challenged",
+      "supported_scope": "Credential delivery and secure authentication via Application Default Credentials (ADC) and native OS secure keyring integration",
+      "unsupported_scope": [
+        "Explicit secret redaction mechanisms in prompts or generated code",
+        "Automatic secret detection and removal from committed files"
+      ],
+      "unestablished_scope": [
+        "Storage and lifecycle management of secrets beyond ADC and keyring",
+        "Secret exposure boundaries within agent-generated content",
+        "Limits on secret handling and leakage prevention in prompts or code"
+      ],
+      "required_setup": "Enable Application Default Credentials (ADC) by setting environment variable AGY_ADC_AUTH=true or user setting enableAdc in ~/.gemini/config/config.json; sign in via local OS secure keyring or web browser for token profile acquisition",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E23",
+        "E24",
+        "E25",
+        "E26"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "mixed",
+      "constraints": [
+        "ADC usage requires explicit environment variable or user setting activation",
+        "Agent prompts for approval before executing write or terminal commands by default",
+        "Terminal sandbox can be enabled to restrict command execution and protect credentials",
+        "Non-workspace file access is off by default for safety"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E23",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide-extensions"
+          },
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E24",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide-extensions"
+          },
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E25",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide-extensions"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
             "E23",
-            "E24"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F13": {
-      "feature_id": "F13",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "SKILL.md skills discovered at workspace (.agents/skills/), global (~/.gemini/antigravity-cli/skills/) and plugin locations; each skill becomes a slash command in the TUI; plugins package and share skills through agy plugin.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Skill versioning other than through plugin versions"
-      ],
-      "required_setup": "Author or install a skill; none is added to this profile.",
-      "activation_state": "optional",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E25",
-        "E26"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "instruction-based",
-      "constraints": [],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
+            "E24",
             "E25",
             "E26"
           ],
           "rejected": 0
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "74938393-9dff-4f15-be5e-f15cc5bec47f",
+        "drafted_at": "2026-10-22T22:01:49+00:00"
+      }
+    },
+    "antigravity-cli/F10": {
+      "feature_id": "F10",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Approval checkpoints for write, bash, web tools, and code artifact writes with interactive prompts and review modes",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Approval requirements for non-standard or third-party tools beyond native mechanisms",
+        "Bypass mechanisms outside sandbox mode and toolPermission settings",
+        "Mode-specific exceptions beyond default and plan modes"
+      ],
+      "required_setup": "Default configuration uses 'request-review' toolPermission and 'asks-for-review' artifactReviewPolicy; sandbox mode optional and configurable",
+      "activation_state": "default",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E26",
+        "E06",
+        "E27"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Actions not explicitly allowed or denied default to Ask mode requiring approval",
+        "Workspace file reads/writes auto-allowed unless overridden",
+        "Sandbox mode affects approval prompts and command execution containment",
+        "Plan mode prepends /plan prefix and uses read-only tools before approval"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E26",
+            "E06",
+            "E27"
+          ],
+          "rejected": 1
+        }
+      ],
+      "rejected_citations": [
+        "permissions / Agent permissions > Antigravity CLI > Default CLI system behaviors and guardrails: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "3a9bffd5-6094-4e97-9980-44fd2f6afd67",
+        "drafted_at": "2026-10-22T22:02:49+00:00"
+      }
+    },
+    "antigravity-cli/F11": {
+      "feature_id": "F11",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Viewing subagent progress and status, inspecting detailed subagent thoughts and logs, reviewing workspace and conversation diffs, adding inline comments to steer the agent, terminating subagents to stop work",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Limits on interrupting ongoing actions beyond manual termination",
+        "Redirecting work outside of inline comment steering"
+      ],
+      "required_setup": "No special setup required; use /agents to monitor and control subagents, /diff to review and comment on changes, and keyboard shortcuts for navigation and control",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E28",
+        "E29"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Manual termination of subagents requires user selection and keypress (K)",
+        "Steering via comments requires submitting feedback in /diff Detail View",
+        "Inspection requires navigating interactive TUI panels (/agents, /diff)"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "2 brief citation(s) failed verification"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E28",
+            "E29"
+          ],
+          "rejected": 2
+        }
+      ],
+      "rejected_citations": [
+        "cli/commands/diff / Diff command (/diff) > Step-by-step walkthrough > Adding comments and steering the agent: quote_not_found",
+        "cli/commands/diff / Diff command (/diff) > Interactive diff viewer panels > Navigation and controls: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "59c31cd0-d84c-42e0-81e6-babe114ee919",
+        "drafted_at": "2026-10-22T22:03:49+00:00"
+      }
+    },
+    "antigravity-cli/F12": {
+      "feature_id": "F12",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Checkpoint rollback of conversation history, file change diff viewing, and tracked file context management",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Recovery coverage of shell effects",
+        "Recovery coverage of external actions",
+        "Recovery coverage of deployed resources"
+      ],
+      "required_setup": "No special configuration required; usage of built-in commands like /rewind and /diff is default",
+      "activation_state": "default",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E30",
+        "E31",
+        "E32",
+        "E33"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Recovery limited to conversation checkpoints and tracked files within the session context",
+        "File diffs and rollbacks operate on files tracked in the workspace and session",
+        "No explicit mention of undoing shell effects, external actions, or deployed resources"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E30",
+            "E31",
+            "E32",
+            "E33"
+          ],
+          "rejected": 0
+        }
+      ],
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "e86daff2-5266-41da-bba7-8cb0883810b8",
+        "drafted_at": "2026-10-22T22:04:48+00:00"
+      }
+    },
+    "antigravity-cli/F13": {
+      "feature_id": "F13",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Packaging, sharing, versioning, and invoking reusable skills and task workflows via native SKILL.md format, plugin management, and automatic skill discovery and invocation",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Explicit versioning mechanisms for skills",
+        "Invocation rules beyond automatic context-based and explicit name mention",
+        "Sharing mechanisms outside plugin installation and workspace/global skill discovery"
+      ],
+      "required_setup": "Skills must be defined as folders containing a SKILL.md file with YAML frontmatter and instructions; skills can be managed via plugins using agy plugin commands; no explicit user invocation needed as agent auto-discovers and activates relevant skills",
+      "activation_state": "default",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E34"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Skill files require YAML frontmatter defining name and triggering criteria",
+        "Skills should be focused on one task",
+        "Skills can include optional scripts and resources",
+        "Agent uses progressive disclosure to load skill content on demand",
+        "Skill usage is automatic based on context but can be explicitly mentioned by name"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "shared_page",
+            "severity": "note",
+            "ref": "E34",
+            "detail": "Section is not surface-specific; page applies to app+cli+ide"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "3 brief citation(s) failed verification"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E34"
+          ],
+          "rejected": 3
+        }
+      ],
+      "rejected_citations": [
+        "skills / Agent skills > What are skills?: quote_not_found",
+        "skills / Agent skills > How the agent uses skills: quote_not_found",
+        "skills / Agent skills > Skills by surface > Antigravity CLI > Managing skills with plugins: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "ea08f807-cb36-4886-af3a-3ebc0702c228",
+        "drafted_at": "2026-10-22T22:05:50+00:00"
+      }
     },
     "antigravity-cli/F14": {
       "feature_id": "F14",
       "profile_id": "antigravity-cli",
-      "status": "Built in",
+      "status": "Configuration or extension required",
       "assessment_state": "challenged",
-      "supported_scope": "MCP client for local stdio and remote servers, configured globally or per workspace and managed with /mcp; authentication by Google credentials, OAuth or custom headers; MCP tools governed by mcp(server/tool) permission rules and Ask by default.",
+      "supported_scope": "Native integration with external tools via Model Context Protocol (MCP) servers and permission-controlled execution of commands and tools.",
       "unsupported_scope": [],
-      "unestablished_scope": [],
-      "required_setup": "Configure an MCP server; none is included in the profile.",
+      "unestablished_scope": [
+        "Native integration support without connecting a service",
+        "Limits on connections or usage quotas"
+      ],
+      "required_setup": "Configure MCP servers in mcpServers with appropriate authentication (OAuth or Google credentials), set permissions for MCP tools and commands, and optionally adjust toolPermission and sandbox settings.",
       "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E27",
-        "E28"
+        "E35"
       ],
       "gap_reason": null,
-      "control_mechanism": "mixed",
-      "constraints": [],
+      "control_mechanism": "enforced",
+      "constraints": [
+        "Access to MCP tools and resources is governed by Antigravity’s permissions system requiring explicit allow rules or user approval (page: mcp, section: Model Context Protocol (MCP) > MCP permissions and access control).",
+        "OAuth authentication is handled automatically for servers supporting dynamic client registration or manually configured with client credentials (page: mcp, section: Model Context Protocol (MCP) > MCP authentication > OAuth).",
+        "Terminal sandbox restricts network and filesystem access unless permissions allow otherwise (page: sandbox, section: Terminal sandbox > Antigravity CLI > CLI permissions integration).",
+        "Commands and MCP tools require explicit permission rules in the form action(target), e.g., mcp(server/tool) or mcp(*) (page: permissions, section: Agent permissions > Antigravity CLI > Supported CLI actions and matching rules)."
+      ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
         "flags": [
           {
             "type": "shared_page",
             "severity": "note",
-            "ref": "E28",
+            "ref": "E35",
             "detail": "Section is not surface-specific; page applies to app+cli+ide"
+          },
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "3 brief citation(s) failed verification"
           }
         ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E27",
-            "E28"
+            "E35"
           ],
-          "rejected": 0
+          "rejected": 3
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [
+        "mcp / Model Context Protocol (MCP) > Supported MCP servers: quote_not_found",
+        "mcp / Model Context Protocol (MCP) > MCP authentication > OAuth: quote_not_found",
+        "sandbox / Terminal sandbox > Antigravity CLI > CLI permissions integration: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "15b81892-5ae9-4d6b-a74a-08ac3cc22fe5",
+        "drafted_at": "2026-10-22T22:06:50+00:00"
+      }
     },
     "antigravity-cli/F15": {
       "feature_id": "F15",
       "profile_id": "antigravity-cli",
-      "status": "Not established from documentation",
+      "status": "Configuration or extension required",
       "assessment_state": "challenged",
-      "supported_scope": "Not established",
-      "unsupported_scope": [],
+      "supported_scope": "Branching with /fork command to create parallel conversation branches; session management with /resume to switch or restore branches; interactive diff viewer supporting Git, Mercurial, and Jujutsu repositories; workspace scoping to local repository directories",
+      "unsupported_scope": [
+        "Explicit automated pull request creation or management",
+        "Automated checks integration",
+        "Deployment workflows automation"
+      ],
       "unestablished_scope": [
-        "Native pull-request creation or review",
-        "CI check integration beyond headless invocation",
-        "Deployment workflows"
+        "End-to-end CI/CD pipeline orchestration",
+        "Pull request lifecycle management",
+        "Integration with external CI/CD services"
       ],
-      "required_setup": "Not established",
-      "activation_state": "not established",
-      "evidence_basis": "documentation_gap",
+      "required_setup": "Use /fork to create branches, /resume to switch or restore sessions; configure workspace permissions and sandboxing for safe command execution; optionally create GEMINI.md or AGENTS.md rule files for workspace standards; use /diff to review changes interactively",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E29",
-        "E30"
+        "E36",
+        "E37",
+        "E12"
       ],
-      "gap_reason": "The CLI documentation describes headless mode for CI pipelines (agy -p with JSON output and exit codes), a /diff Commit mode over the repository history, and MCP servers in a 'Developer tools and CI/CD' category (including GitHub and GitLab). It does not describe native creation or management of branches or pull requests, running checks in a CI system, or deployment workflows from the CLI. Headless invocation from CI and an MCP catalog entry do not establish native repository and CI/CD integration (matrix spec F15: branch or pull-request support alone does not establish a pipeline).",
-      "control_mechanism": "not established",
+      "gap_reason": null,
+      "control_mechanism": "instruction-based",
       "constraints": [
-        "Integration through MCP servers would be an add-on outside this profile"
+        "Branching and session management are limited to conversation sessions, not full Git branch operations",
+        "Diff viewer supports Git, Mercurial, and Jujutsu but does not imply automated pull request or deployment support",
+        "Sandboxing and permissions must be configured to allow necessary file and command access",
+        "No explicit commands or hooks documented for automated CI/CD or deployment workflows"
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
         "flags": [
           {
-            "type": "shared_page",
+            "type": "model_drafted",
             "severity": "note",
-            "ref": "E30",
-            "detail": "Section is not surface-specific; page applies to app+cli+ide"
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          },
+          {
+            "type": "rejected_citation",
+            "severity": "warn",
+            "detail": "1 brief citation(s) failed verification"
           }
         ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E29",
-            "E30"
+            "E36",
+            "E37",
+            "E12"
           ],
-          "rejected": 0
+          "rejected": 1
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [
+        "cli/commands/diff / Diff command (/diff) > Interactive diff viewer panels > Navigation and controls: quote_not_found"
+      ],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "7b7c7714-cbf7-4090-9703-a29a02d4f3ca",
+        "drafted_at": "2026-10-22T22:07:49+00:00"
+      }
     },
     "antigravity-cli/F16": {
       "feature_id": "F16",
       "profile_id": "antigravity-cli",
       "status": "Built in",
       "assessment_state": "challenged",
-      "supported_scope": "Headless stream-json emits init, step_update and result events; tool steps carry the tool name, parameters and output; conversations are stored and can be resumed by ID.",
+      "supported_scope": "Inspecting and exporting tool calls, commands, results, and changes associated with a task via streaming JSON output and interactive CLI commands",
       "unsupported_scope": [],
       "unestablished_scope": [
-        "Retention period and integrity guarantees for conversation logs",
-        "Export of an interactive session as an audit record"
+        "Explicit retention policies for action logs",
+        "Integrity guarantees of audit trail data",
+        "Distinction and export of chat history separate from audit trail"
       ],
-      "required_setup": "Run headless with --output-format stream-json and keep the output.",
+      "required_setup": "Use --output-format stream-json to emit NDJSON events capturing tool calls and results; use /agents to monitor subagent logs and status; use /diff to review changes; configure toolPermission and artifactReviewPolicy for tool execution control",
       "activation_state": "optional",
       "evidence_basis": "documented_support",
       "evidence_refs": [
-        "E31",
-        "E32"
+        "E38",
+        "E39",
+        "E40",
+        "E41"
       ],
       "gap_reason": null,
-      "control_mechanism": "not established",
-      "constraints": [],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E31",
-            "E32"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F17": {
-      "feature_id": "F17",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "Token usage (input, output, thinking, cache read, total) per run in headless JSON; /context token breakdown; /usage model quota; /credits AI credit balance and billing-cycle usage.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Monetary charge per task when plan quota is used (quotas are not stated in currency)"
-      ],
-      "required_setup": "None for /usage and /context; headless JSON for per-run token counts.",
-      "activation_state": "default",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E33",
-        "E34"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "not established",
+      "control_mechanism": "instruction-based",
       "constraints": [
-        "In stream-json input sessions, usage counters are cumulative over the session"
+        "Audit trail is accessible via streaming JSON output and CLI commands but retention and integrity guarantees are not explicitly documented",
+        "Tool calls requiring authorization prompt inline approval in /agents panel",
+        "Context compaction via checkpoints may summarize older turns, affecting full history visibility"
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
       "author": null,
-      "drafted_by": "agent",
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
       "assessment_date": "2026-10-22",
       "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
-        "by": "evidence-challenge pass (automated)",
-        "flags": [],
-        "note": "Automated check; not a team-member review"
-      },
-      "history": [
-        {
-          "at": "2026-10-22T18:48:45+00:00",
-          "event": "drafted",
-          "by": "research-agent:antigravity-cli",
-          "operator": "cli",
-          "verified_refs": [
-            "E33",
-            "E34"
-          ],
-          "rejected": 0
-        }
-      ],
-      "rejected_citations": []
-    },
-    "antigravity-cli/F18": {
-      "feature_id": "F18",
-      "profile_id": "antigravity-cli",
-      "status": "Built in",
-      "assessment_state": "challenged",
-      "supported_scope": "Headless runs accept --print-timeout as a maximum wait for a response; useG1Credits controls whether personal AI credits are used once plan quota is exhausted.",
-      "unsupported_scope": [],
-      "unestablished_scope": [
-        "Turn or iteration limit",
-        "Spending cap in currency",
-        "Time limit for interactive sessions"
-      ],
-      "required_setup": "Pass --print-timeout in headless mode; set useG1Credits off to restrict fallback billing.",
-      "activation_state": "optional",
-      "evidence_basis": "documented_support",
-      "evidence_refs": [
-        "E35",
-        "E36",
-        "E37"
-      ],
-      "gap_reason": null,
-      "control_mechanism": "enforced",
-      "constraints": [
-        "Documentation conflict on the headless timeout default: the headless page says five minutes; CLI changelog v1.2.6 says the default changed to unlimited"
-      ],
-      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
-      "drafted_by": "agent",
-      "assessment_date": "2026-10-22",
-      "challenge": {
-        "at": "2026-10-22T18:48:45+00:00",
+        "at": "2026-10-22T22:10:50+00:00",
         "by": "evidence-challenge pass (automated)",
         "flags": [
           {
-            "type": "release_note_source",
+            "type": "model_drafted",
             "severity": "note",
-            "ref": "E37",
-            "detail": "Release notes describe a change; confirm in the main documentation"
-          },
-          {
-            "type": "source_conflict",
-            "severity": "warn",
-            "detail": "Cell records conflicting documentation; reviewer must confirm disposition"
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
           }
         ],
         "note": "Automated check; not a team-member review"
       },
       "history": [
         {
-          "at": "2026-10-22T18:48:45+00:00",
+          "at": "2026-10-22T22:10:50+00:00",
           "event": "drafted",
           "by": "research-agent:antigravity-cli",
           "operator": "cli",
           "verified_refs": [
-            "E35",
-            "E36",
-            "E37"
+            "E38",
+            "E39",
+            "E40",
+            "E41"
           ],
           "rejected": 0
         }
       ],
-      "rejected_citations": []
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "49d29d06-a4bc-43b2-8db7-b0f7dc4f9758",
+        "drafted_at": "2026-10-22T22:08:48+00:00"
+      }
+    },
+    "antigravity-cli/F17": {
+      "feature_id": "F17",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Task-level token usage and quota visibility with detailed category breakdowns and model quota limits",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Monetary charges reporting",
+        "Request allowances beyond model quotas",
+        "Estimation methods for usage or cost"
+      ],
+      "required_setup": "No special setup required; usage and token breakdowns are available via built-in /context and /usage commands",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E42",
+        "E43",
+        "E44",
+        "E45"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "instruction-based",
+      "constraints": [
+        "Token usage is broken down by categories such as User messages, Agent responses, Tool calls, System prompt, and customizations",
+        "Model quotas and remaining requests/tokens are shown per supported model",
+        "Context window token usage includes checkpoint summaries and tracked files",
+        "Usage data is refreshed automatically when opening usage panels"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E42",
+            "E43",
+            "E44",
+            "E45"
+          ],
+          "rejected": 0
+        }
+      ],
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "37518579-aec6-4f6e-aefe-b16b7c553e9b",
+        "drafted_at": "2026-10-22T22:09:50+00:00"
+      }
+    },
+    "antigravity-cli/F18": {
+      "feature_id": "F18",
+      "profile_id": "antigravity-cli",
+      "status": "Built in",
+      "assessment_state": "challenged",
+      "supported_scope": "Setting execution modes with different file operation behaviors; sandbox containment for terminal commands; permission modes governing command execution; interactive diff review and approval for file writes",
+      "unsupported_scope": [],
+      "unestablished_scope": [
+        "Explicit time limits for execution",
+        "Iteration limits",
+        "Spending limits",
+        "Hard enforcement of limits vs. warnings or instruction-based requests"
+      ],
+      "required_setup": "Configure execution mode via settings.json or CLI flags; optionally enable terminal sandbox in settings.json; configure toolPermission mode for safety barriers; optionally override permissions.allow rules for headless mode",
+      "activation_state": "optional",
+      "evidence_basis": "documented_support",
+      "evidence_refs": [
+        "E15",
+        "E21",
+        "E46",
+        "E47"
+      ],
+      "gap_reason": null,
+      "control_mechanism": "mixed",
+      "constraints": [
+        "Sandbox is an OS-level containment feature and must be enabled in settings.json",
+        "Permission modes affect whether commands require user approval or run automatically",
+        "Execution mode affects file write behavior: default mode pauses for review, accept-edits auto-approves, plan mode prepends /plan prefix",
+        "Headless mode disables interactive prompts and relies on policy and pre-granted permissions"
+      ],
+      "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
+      "author": null,
+      "drafted_by": "model:azure-openai/gpt-4.1-mini",
+      "assessment_date": "2026-10-22",
+      "challenge": {
+        "at": "2026-10-22T22:10:50+00:00",
+        "by": "evidence-challenge pass (automated)",
+        "flags": [
+          {
+            "type": "model_drafted",
+            "severity": "note",
+            "detail": "Drafted by azure-openai/gpt-4.1-mini; the author and reviewer must check each quote supports the status"
+          }
+        ],
+        "note": "Automated check; not a team-member review"
+      },
+      "history": [
+        {
+          "at": "2026-10-22T22:10:50+00:00",
+          "event": "drafted",
+          "by": "research-agent:antigravity-cli",
+          "operator": "cli",
+          "verified_refs": [
+            "E15",
+            "E21",
+            "E46",
+            "E47"
+          ],
+          "rejected": 0
+        }
+      ],
+      "rejected_citations": [],
+      "model_provenance": {
+        "provider": "azure-openai",
+        "deployment": "gpt-4.1-mini",
+        "model": "gpt-4.1-mini-2025-04-14",
+        "api_version": "2024-10-21",
+        "prompt_version": "brief-prompt/1",
+        "request_id": "03251e7c-021a-41f6-afd1-83d7a11745ad",
+        "drafted_at": "2026-10-22T22:10:50+00:00"
+      }
     }
   }
 }
