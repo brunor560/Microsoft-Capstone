@@ -17,7 +17,7 @@
 
 * **Context & Objective:** Briefly state why this evaluation exists. Summarize how enterprise software engineering is moving from autocomplete assistants to autonomous multi-agent loops, and explain the need for an empirical, harness-focused decision matrix.
 * **The Evaluation Approaches:**
-  * **Approach A (Outer Loop):** Commercial Platform & IDE Harness Audit (GitHub Copilot / VS Code, Claude Code CLI, Google Anti-Gravity).
+  * **Approach A (Outer Loop):** Documentation-only feature matrix of commercial tool profiles (SRS Requirement 5). The profiles are those listed in the approved assessment manifest (P profiles, 18 × P cells); earlier drafts named GitHub Copilot / VS Code, Claude Code CLI and Google Antigravity as candidates. Findings describe documented capability, not measured effectiveness, and are never scored or combined with Approach B or C results.
   * **Approach C (Inner Loop):** Headless AutoGen Orchestration & Trajectory Benchmarking within air-gapped Docker sandboxes.
 * **High-Level Recommendation Preview:** [Placeholder: 1–2 paragraphs highlighting the top-performing harness for the 10,000-seat deployment based on security, DevEx, throughput, and total cost of ownership.]
 
@@ -64,6 +64,8 @@
   * Describe the canonical 3-tier reference application used across all evaluations.
   * Standardized backlog tasks (feature addition, bug fix, prompt injection trap, refactor).
 * **3.3 The Enterprise Platform Comparison Matrix:**
+  * **Approach A documentary matrix (separate view):** [Placeholder: the 18 × P status grid for the approved manifest, generated from `assessment/` (`assessment/out/matrix.md`), with each cell's source and uncertainty label. Only cells that have passed independent team review may be reported as findings; pending cells are labeled as pending. No weights, scores or composite. Method: matrix specification v0.3.]
+  * **Open item (team decision):** the weighted table below names commercial tools beside the AutoGen baseline. Approach A documentary findings must not enter it (SRS Specs 4.4.5 and 5.5.1). Whether its columns are Approach C profiles, and how Approach B pilot results are reported, is not settled here.
 
 | Evaluation Metric | Weight | GitHub Copilot / VS Code | Claude Code CLI | Google Anti-Gravity | AutoGen Baseline |
 | :--- | :---: | :---: | :---: | :---: | :---: |

@@ -156,3 +156,53 @@ Team decisions given by Ross Volenec on Oct. 21: partial reset of the task lists
 
 Done: `sources/srs.md`, `sources/ddd.md` and `TRACEABILITY.md` regenerated; `sources/track_a_assessment.md` renamed to `sources/approach_a_assessment.md` (DOC-048) with links updated in README, AGENTS and TRACEABILITY; old `TODO.md`, `todo/ddd.md`, `todo/srs.md`, `todo/parked.md` and the old `TRACEABILITY.md` saved to `todo/archive/2026-10-21_pre-v2/`. Not done: Approach A content reconciliation (DOC-061); `feature_matrix_specification.md`, `benchmark_procedure.md` and `whitepaper.md` were not changed.
 
+
+## Approach A reconciliation (Oct. 21, 2026)
+
+### DOC-061 (update)
+
+Oct. 21 update (branch `feature-matrix-revisions`; agent edits with Cline, team review pending; set to Ready for review).
+
+Team decisions given by Ross Volenec on Oct. 21:
+- The Approach A content of the Oct. 18 submission is canonical.
+- Minimal CLI tooling and official-source web research are authorized, including agent assistance for research and evidence checking.
+- The assessed developer tools are not executed, and no microsite, preview, deployment or publication work is done.
+- Ross is the current manifest approver, and reviewers come from a roster.
+- Google Antigravity is the default tool, with the CLI (`agy`) as the first surface.
+- "Not established from documentation" stays the fifth status; pending research is tracked separately.
+
+Done:
+- **Matrix specification v0.3:** approved, versioned manifest with P profiles and 18 × P cells. The workflow adds boundary confirmation, approval, `assessment_state`, an evidence check, a named author and disagreement dispositions. The 18 features, 7 categories, 5 statuses and the documentation-only boundary are unchanged.
+- **`sources/approach_a_assessment.md`:** now points to the `assessment/` dataset. The placeholder profiles MATRIX:C01 to C03 were removed (they remain in git history).
+- **Whitepaper:** the Approach A bullet now describes the manifest model. Section 3.3 has a placeholder for the separate documentary view and an open item about the weighted table.
+- **`TRACEABILITY.md`:** the Approach A rows point to the dataset.
+- **New in the repository:**
+  - `assessment/` holds the catalog (generated from the spec tables), the roster, the Antigravity candidate and 18 research briefs.
+  - `tools/approach_a/` is the workbench (standard library only, with tests).
+  - `.gitignore` excludes the page cache.
+
+Checks run:
+- 28 unit tests pass.
+- 13 representative invalid inputs were run through the CLI. Each one was refused or blocked:
+  - an empty manifest, and approving an empty manifest
+  - an operator or reviewer who is not on the roster
+  - approval by someone who is not an approver
+  - reviewing a pending cell, or a cell with no author
+  - self-review
+  - an open disagreement
+  - an approval made stale by a manifest edit
+  - offline research with no cached pages
+  - a documentation URL that is not https
+- Interrupting and resuming was tested, both with a real SIGINT and in a unit test.
+- A rehearsal run fetched 31 official Antigravity pages and verified all 37 quotes in the briefs against the sections they cite. 17 cells were drafted, and F03 stayed pending.
+
+Not done: source-to-claim review of any cell, so no finding is accepted; F03 research; TC-5.5-1 publication.
+
+### DOC-070
+
+Oct. 21: opened. It covers the human steps that make the Antigravity CLI cells acceptable (see the tracker row).
+
+Recorded facts, not yet reviewed:
+- The brief for F18 (execution limits) records a conflict. The headless page states a five-minute default timeout, while CLI changelog v1.2.6 says the default became unlimited.
+- The briefs for F09 (secrets handling) and F15 (repository and CI/CD integration) are drafted as "Not established from documentation" with gap reasons.
+

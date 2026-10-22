@@ -17,7 +17,7 @@ Shared workspace for Team 3's course documents. Markdown files in `sources/` are
 | SRS | [sources/srs.md](sources/srs.md) | Version 2.0 (October 18, 2026), the team-approved submission, from `references/baselines/srs_2026-10-18_v2.0.docx` | Replaced the revision 1.2 import on Oct. 21. Converted by script, not reviewed clause by clause; Design fields not edited; see Import notes at the end of the file |
 | DDD | [sources/ddd.md](sources/ddd.md) | DDD submitted October 18, 2026 (its Document Control says version 1.4, but it is not the Oct. 15 v1.4 PDF), from `references/baselines/ddd_2026-10-18_v1.4-submitted.docx` | Team-approved. Replaced the earlier Markdown "version 1.5" merge on Oct. 21; defines M01 to M13 and I01 to I12; see Import notes at the end of the file |
 | MATRIX | [sources/feature_matrix_specification.md](sources/feature_matrix_specification.md) | Feature matrix specification v0.2 | Documentation-only assessment method; incorporated as SRS Requirement 5 and DDD M11 |
-| APPROACH A | [sources/approach_a_assessment.md](sources/approach_a_assessment.md) | Created from the matrix specification (not an import); renamed from `track_a_assessment.md` on Oct. 21 | Stub: profiles undefined, no cell assessed. Still follows the fixed-profile method; to be reconciled with the parameterized SRS Requirement 5 (18 × P cells) on a separate branch |
+| APPROACH A | [sources/approach_a_assessment.md](sources/approach_a_assessment.md) | Created from the matrix specification (not an import); renamed from `track_a_assessment.md` on Oct. 21 | Pointer only. Since matrix spec v0.3 the record is the structured dataset in `../assessment/`, maintained with `../tools/approach_a/` (see its README). No accepted finding yet (DOC-070) |
 | PROCEDURE | [sources/benchmark_procedure.md](sources/benchmark_procedure.md) | `team-benchmark-procedure(1).md` | Operational benchmark procedure |
 | PAPER | [sources/whitepaper.md](sources/whitepaper.md) | `white_paper_draft.md` | Outline with placeholders |
 
@@ -36,7 +36,8 @@ The SRS 2.0 and DDD files are the team-approved Oct. 18 submission (copies are i
 ## Boundaries
 
 - Matrix assessment is documentation-only. Do not add live testing or treat availability as effectiveness.
-- Current work: the SRS 2.0 and DDD (Oct. 18 submission) are the baseline. Next, on a separate branch, reconcile the Approach A workflow (matrix specification, assessment record, whitepaper) with the parameterized Requirement 5 and DDD M11 (DOC-061). Task lists were restarted on Oct. 21; see [TODO.md](TODO.md).
+- Current work: the SRS 2.0 and DDD (Oct. 18 submission) are the baseline. The Approach A reconciliation (DOC-061) is ready for review, and the Antigravity CLI profile needs confirmation, approval, authorship and review before the sponsor demo (DOC-070). Task lists were restarted on Oct. 21; see [TODO.md](TODO.md).
+- The Approach A workbench (`../tools/approach_a/`) is the one authorized code exception to rule 8 in AGENTS.md. It reads official documentation only and never runs an assessed tool.
 - Documentation tasks do not authorize code changes, model runs, spending, deployment, or publishing.
 - Behavior reported in the DDD is not verified against the repository until a commit is recorded.
 

@@ -1,0 +1,17 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "Terminal sandbox for agent shell commands on Linux (kernel namespaces) and macOS (sandbox-exec). Workspace and write_file paths read-write, read_file paths read-only, everything else inaccessible; no network by default except read_url domains.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["CLI terminal sandbox on Windows (the CLI section lists Linux and macOS only)", "Isolation of the agent's own file-edit tools, as distinct from shell commands"],
+  "required_setup": "enableTerminalSandbox defaults to false; enable it in settings.json or with --sandbox.",
+  "constraints": ["unsandboxed(...) allow rules and approved agent requests run commands outside the sandbox"],
+  "evidence": [
+    {"page": "sandbox", "section": "Antigravity CLI > How it works", "quote": "Antigravity CLI executes commands inside an OS-level isolation boundary"},
+    {"page": "sandbox", "section": "CLI configuration", "quote": "enableTerminalSandbox (boolean, default: false )"},
+    {"page": "sandbox", "section": "CLI permissions integration", "quote": "Sandboxed commands run without network access by default"}
+  ]
+}

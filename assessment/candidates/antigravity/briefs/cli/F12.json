@@ -1,0 +1,16 @@
+{
+  "feature_id": "F12",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "not established",
+  "supported_scope": "/rewind (alias /undo) rolls conversation history back to a previous message; /fork branches the session. The CLI changelog describes rewind reverting workspace snapshots.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Recovery of shell side effects, external actions and deployed resources", "File restoration is described in the changelog, not in the main command documentation"],
+  "required_setup": "None",
+  "constraints": ["Changelog: edits with diffs over 1 MiB skip the elided diff during /rewind reverts"],
+  "evidence": [
+    {"page": "cli/reference", "section": "Core slash commands", "quote": "Roll back your conversation history to a previous message"},
+    {"page": "changelog", "section": "Antigravity CLI > Session-scoped Remote Control, unlimited headless run timeouts, structured error reporting, and artifact text selection", "quote": "Fixed /rewind conversation reverts and forks sweeping backward to an older workspace snapshot"}
+  ]
+}

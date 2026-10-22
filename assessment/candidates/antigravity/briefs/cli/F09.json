@@ -1,0 +1,18 @@
+{
+  "feature_id": "F09",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "Reviewed CLI pages cover product sign-in (keyring, GEMINI_API_KEY, ADC) and MCP credentials (OAuth, headers); the sandbox section says sensitive files such as .env are blocked inside the sandbox. None describes a supported way to supply application secrets to the agent's tasks, or redaction of secrets from prompts, transcripts or generated code. Product sign-in does not establish application secret handling (matrix spec F09).",
+  "activation_state": "not established",
+  "control_mechanism": "not established",
+  "supported_scope": "Not established",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Application secret delivery to tasks", "Redaction in transcripts and logs", "Secret handling outside the sandbox"],
+  "required_setup": "Not established",
+  "constraints": [],
+  "evidence": [
+    {"page": "sandbox", "section": "Antigravity CLI > How it works", "quote": "Sensitive files such as ~/.ssh and .env are blocked"},
+    {"page": "install", "section": "Troubleshooting API key authentication", "quote": "does not load .env files"}
+  ]
+}

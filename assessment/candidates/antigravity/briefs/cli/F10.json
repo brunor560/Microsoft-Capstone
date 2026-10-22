@@ -1,0 +1,16 @@
+{
+  "feature_id": "F10",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "enforced",
+  "supported_scope": "toolPermission presets: request-review (default) prompts before write, bash or web tools; strict prompts for all non-read tools. artifactReviewPolicy asks-for-review by default. Ask rules prompt for specific actions.",
+  "unsupported_scope": [],
+  "unestablished_scope": [],
+  "required_setup": "None; the defaults prompt.",
+  "constraints": ["always-proceed and --dangerously-skip-permissions remove prompts", "Headless mode soft-denies tools that need approval it cannot obtain"],
+  "evidence": [
+    {"page": "settings", "section": "Antigravity CLI > Safety and permissions", "quote": "request-review (default): Prompts for your approval before running write,"},
+    {"page": "cli/headless", "section": "Permissions in headless mode", "quote": "A tool that requires approval it can’t obtain is soft-denied"}
+  ]
+}

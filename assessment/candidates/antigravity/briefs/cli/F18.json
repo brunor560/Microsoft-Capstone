@@ -1,0 +1,17 @@
+{
+  "feature_id": "F18",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "Headless runs accept --print-timeout as a maximum wait for a response; useG1Credits controls whether personal AI credits are used once plan quota is exhausted.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Turn or iteration limit", "Spending cap in currency", "Time limit for interactive sessions"],
+  "required_setup": "Pass --print-timeout in headless mode; set useG1Credits off to restrict fallback billing.",
+  "constraints": ["Documentation conflict on the headless timeout default: the headless page says five minutes; CLI changelog v1.2.6 says the default changed to unlimited"],
+  "evidence": [
+    {"page": "cli/headless", "section": "Handle exit codes and errors", "quote": "Adjust the ceiling with --print-timeout"},
+    {"page": "cli/credits", "section": "Settings configuration", "quote": "set it to off to restrict fallback billing"},
+    {"page": "changelog", "section": "Antigravity CLI > Session-scoped Remote Control, unlimited headless run timeouts, structured error reporting, and artifact text selection", "quote": "Changed the default timeout for headless ( -p / --prompt ) runs from 5 minutes to unlimited"}
+  ]
+}

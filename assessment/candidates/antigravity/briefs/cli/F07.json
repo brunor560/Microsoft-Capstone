@@ -1,0 +1,17 @@
+{
+  "feature_id": "F07",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "allow, deny and ask lists over read_file, write_file, read_url, execute_url, command, unsandboxed and mcp actions in settings.json; deny blocks immediately; rules editable with /permissions at project, shared or global scope.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Network destination restriction for commands run outside the sandbox (the outbound allowlist is described for sandboxed commands)"],
+  "required_setup": "Add rules in settings.json or /permissions; unconfigured actions default to Ask.",
+  "constraints": ["--dangerously-skip-permissions approves all tool calls"],
+  "evidence": [
+    {"page": "permissions", "section": "Antigravity CLI > CLI fine-grained permissions", "quote": "deny : The action is blocked immediately"},
+    {"page": "permissions", "section": "Supported CLI actions and matching rules", "quote": "Matches command prefixes word-by-word literally by default"},
+    {"page": "cli/headless", "section": "Permissions in headless mode", "quote": "To auto-approve every tool for a run, pass --dangerously-skip-permissions"}
+  ]
+}

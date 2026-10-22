@@ -1,9 +1,9 @@
 # Agentic Developer Tool and Pipeline Feature Matrix Specification
 
 **Project:** CIS 4910 Senior Project, Group 3  
-**Version:** 0.2  
-**Status:** Draft for team and sponsor review  
-**Date:** October 9, 2026  
+**Version:** 0.3  
+**Status:** Aligned with SRS 2.0 Requirement 5 and DDD M11 (Oct. 18 submission); revision pending team review  
+**Date:** October 21, 2026 (v0.2: October 9, 2026)  
 **Assessment method:** Documentation review only
 
 ## Purpose
@@ -22,7 +22,7 @@ The existing AutoGen-based model evaluation prototype is a separate project work
 
 **Out of scope:** Installing or configuring tools for assessment; inspecting running environments; conducting live sessions, demonstrations, or feature tests; collecting team-generated screenshots, execution logs, or task results; benchmarking task success, duration, cost, or reliability; and testing security boundaries. These activities are not required deliverables or planned extensions of this matrix.
 
-The initial comparison covers the Copilot baseline in VS Code and Copilot CLI. Define each as a documented capability profile, with its relevant operating modes and platform constraints. Spec Kit and other add-ons are excluded from the core comparison. A separate add-on component may be considered later, but is not needed to complete the core matrix.
+The comparison covers exactly the profiles listed in an approved, versioned assessment manifest (SRS Spec 5.1.1). P is the number of profiles in that manifest; the matrix has 18 × P cells. Define each profile as a documented capability profile, with its relevant operating modes and platform constraints. Spec Kit and other add-ons are excluded from the core comparison. A separate add-on component may be considered later, but is not needed to complete the core matrix.
 
 ### Definitions
 
@@ -59,7 +59,7 @@ Examples identify categories only; they do not establish support for matrix feat
 
 Each matrix column represents a specific documented capability profile, rather than a vendor name alone. Each row represents one feature from the catalog. A profile describes the product, modes, platform, and allowed components under review; it is not an installed or tested configuration.
 
-For the initial comparison, use “Copilot baseline in VS Code” and “Copilot CLI,” defining the modes covered in each column. Exclude Spec Kit, user-authored skills, added MCP servers, and custom orchestration. Assess native support for instructions, skills, and integrations where documented, while recording that optional integrations are not enabled in the baseline profile. Support for a mechanism is distinct from including an add-on that uses it.
+Profiles come from the assessment manifest, not from this specification. Version 0.2 proposed “Copilot baseline in VS Code” and “Copilot CLI”; they are examples only and are not approved profiles unless the manifest lists them. A profile enters the manifest in two steps: a team member confirms its boundary (surface, modes, platform, tier, exclusions), and the manifest version is then approved. Any change to the manifest creates a new version and requires approval again. Duplicate, unnamed or unapproved profiles are rejected (PROFILE_INVALID); placeholders do not count toward P. Exclude Spec Kit, user-authored skills, added MCP servers, and custom orchestration. Assess native support for instructions, skills, and integrations where documented, while recording that optional integrations are not enabled in the baseline profile. Support for a mechanism is distinct from including an add-on that uses it.
 
 Record the following for each column:
 
@@ -123,7 +123,7 @@ Broad features may have partial support. Preserve one primary status while ident
 
 ## Evidence and assessment records
 
-For every cell, retain:
+There is exactly one cell for each of the 18 × P feature–profile pairs (SRS Spec 5.2.1). For every cell, retain:
 
 1. Feature ID and configuration ID.
 2. Primary status, supported scope, and unsupported or unestablished subcapabilities.
@@ -141,8 +141,9 @@ Use sources specific to the product, mode, and platform assessed. Do not transfe
 
 ```yaml
 feature_id: F07
-configuration_id: C01
-status: Not established from documentation
+configuration_id: C01            # profile id from the approved manifest
+assessment_state: pending        # pending | drafted | challenged | reviewed
+status: Not established from documentation   # placeholder while pending; not a finding
 supported_scope: Not established
 unsupported_scope: []
 unestablished_scope: [Command, filesystem, service, and network restrictions]
@@ -154,22 +155,26 @@ gap_reason: Assessment pending; replace with the reviewed scope and unresolved q
 control_mechanism: Not established
 constraints: []
 limitations: Documentation-only assessment; runtime behavior is not evaluated
-evaluator: Unassigned
+evaluator: Unassigned            # the author: team member responsible for the cell
 assessment_date: null
+review: null                     # reviewer (not the author), decision, disposition, date
 ```
+
+In the workbench dataset (`assessment/cells.json`) the evaluator field is named `author`, an agent-drafted cell also records `drafted_by: agent`, and review records are kept in `assessment/reviews.json` with the hash of the cell as reviewed.
 
 ## Initial review workflow
 
-1. Define the two core profiles and their included modes, components, and exclusions.
-2. Create a column per profile and include all 18 feature rows.
-3. Initialize cells as “Not established from documentation.”
-4. Review official documentation and record source coverage and access dates.
-5. Extract feature claims, delivery mechanisms, defaults, requirements, and limitations; identify gaps and conflicts.
-6. Assign statuses and populate the evidence index and cell notes.
-7. Have another group member review source-to-claim alignment and consistent use of statuses.
-8. Present the matrix, documented differences, and unresolved documentation questions to the sponsor.
+1. Propose each profile with its included modes, components, platform, tier, and exclusions; a team member confirms the boundary before research.
+2. Approve the manifest version (the approver role is assigned by the team). P is fixed by that version.
+3. Create one cell per feature and profile (18 × P). Each starts in assessment state `pending`. Its displayed status, “Not established from documentation,” is a placeholder and not a finding until research completes.
+4. Review official documentation and record source coverage and access dates in the shared source index.
+5. Extract feature claims, delivery mechanisms, defaults, requirements, and limitations; identify gaps and conflicts. Do not transfer a claim from one product surface to another.
+6. Assign statuses and populate the evidence index and cell notes (state `drafted`). A completed “Not established from documentation” finding records the specific gap or conflict; “Assessment pending” is not a gap reason.
+7. Run an evidence check for unsupported claims, source conflicts, and surface transfers (state `challenged`). Automated or agent-assisted checks do not replace step 8.
+8. Name the team member responsible for each cell (the author). Have a different group member review source-to-claim alignment and consistent use of statuses (state `reviewed`). Record disagreements with their disposition; a cell that changes after review needs a new review (SRS Spec 5.3).
+9. Present the matrix, documented differences, and unresolved documentation questions to the sponsor, separately from Approach B and C results (SRS Spec 5.5).
 
-The sponsor-facing draft is complete when profiles are identified, all 18 features have a status, findings of support or absence have source references, and uncertain cells explain the documentation gap or conflict. Uncertain cells are acceptable completed findings. No live demonstration or feature test is a completion criterion. The presentation must describe documented capabilities and avoid claims of measured effectiveness or verified security.
+The sponsor-facing draft is complete when the approved manifest's 18 × P cells all have a status, findings of support or absence have source references, uncertain cells explain the documentation gap or conflict, and every cell has an independent review. Uncertain cells are acceptable completed findings. A pending cell is not. A partial assessment may be shown if pending cells are labeled as such. No live demonstration or feature test is a completion criterion. The presentation must describe documented capabilities and avoid claims of measured effectiveness or verified security.
 
 ## Scoring and future extensions
 
@@ -181,7 +186,7 @@ A separate, optional add-on component may later describe Spec Kit, reusable skil
 
 ## Questions for team and sponsor review
 
-- Are the Copilot baseline and CLI profiles clearly defined enough for a useful first comparison?
+- Which profiles should the approved manifest list, and at which account tier?
 - Which documented capabilities are essential to the sponsor's adoption decision?
 - Which broad features need subcapability detail to avoid misleading summaries?
 - How should preview features and differences in documentation versions be presented?
@@ -204,5 +209,12 @@ These official sources illustrate the tool categories and terminology. They are 
 ## Revision note
 
 Version 0.2 replaces inspection and demonstration requirements with documentation review; removes runtime evidence and future effectiveness trials; separates the AutoGen evaluation workstream; and defers add-ons to an optional separate component. The 18 feature identifiers and seven landscape categories are retained.
+
+Version 0.3 (October 21, 2026) aligns the method with SRS 2.0 Requirement 5 and DDD M11 (October 18 submission):
+- The fixed two Copilot profiles are replaced by an approved, versioned profile manifest with P profiles and exactly 18 × P cells.
+- The workflow adds boundary confirmation, manifest approval, an `assessment_state` that separates pending research from a completed “Not established from documentation” finding, an evidence check for unsupported claims and cross-surface transfers, a named author per cell, and a recorded disposition for each reviewer disagreement.
+- The 18 features, seven categories, five statuses, evidence basis and control mechanism values, and the documentation-only boundary are unchanged.
+
+The structured record lives in `assessment/` and is maintained with the workbench in `tools/approach_a/`. These v0.3 edits were prepared with AI assistance (Cline) and await team review.
 
 This draft was developed with assistance from OpenAI ChatGPT. The team should review its definitions and findings and document AI assistance in submitted course materials as required by the course syllabus.

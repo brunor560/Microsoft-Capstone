@@ -1,0 +1,17 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "Workspace and directory rules (AGENTS.md, GEMINI.md, .agents/rules/*.md), global rules under ~/.gemini and ~/.gemini/antigravity-cli/rules/, and plugin rules, evaluated during prompt expansion. Rules are cumulative; more specific directory rules take priority. Frontmatter triggers: always_on, model_decision, glob, manual.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Whether rules are guaranteed to be followed (documented as injected context, not enforcement)"],
+  "required_setup": "Create a rules file; none exists by default.",
+  "constraints": ["24,000-byte per-file truncation", "20,000-token aggregate budget; larger rules are demoted to pointers"],
+  "evidence": [
+    {"page": "rules", "section": "Antigravity CLI > Managing rules in Antigravity CLI", "quote": "The Antigravity CLI evaluates workspace, directory-scoped, global, and plugin rules during prompt expansion"},
+    {"page": "rules", "section": "Where rules are stored", "quote": "Rules are cumulative rather than replacement-based"},
+    {"page": "rules", "section": "Size limits and token budgets", "quote": "Antigravity truncates any single rule file that exceeds 24,000 bytes"}
+  ]
+}

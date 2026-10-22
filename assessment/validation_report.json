@@ -1,0 +1,360 @@
+{
+  "schema": "approach-a/validation/1",
+  "generated_at": "2026-10-22T18:20:40+00:00",
+  "manifest_version": 2,
+  "profiles": [
+    "antigravity-cli",
+    "cursor-ide"
+  ],
+  "P": 2,
+  "expected_cells": 36,
+  "present_cells": 36,
+  "cell_states": {
+    "pending": 19,
+    "drafted": 0,
+    "challenged": 17,
+    "reviewed": 0
+  },
+  "accepted": false,
+  "result": "NOT ACCEPTED",
+  "blocking_count": 54,
+  "counts_by_code": {
+    "APPROVAL_MISSING": 1,
+    "AUTHOR_MISSING": 17,
+    "CELL_PENDING": 19,
+    "REVIEW_MISSING": 17
+  },
+  "issues": [
+    {
+      "code": "APPROVAL_MISSING",
+      "severity": "block",
+      "message": "Manifest version 2 is not approved",
+      "where": null
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F01"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F01"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F02"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F02"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "antigravity-cli/F03"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F04"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F04"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F05"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F05"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F06"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F06"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F07"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F07"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F08"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F08"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F09"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F09"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F10"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F10"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F11"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F11"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F12"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F12"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F13"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F13"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F14"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F14"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F15"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F15"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F16"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F16"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F17"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F17"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F18"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F18"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F01"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F02"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F03"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F04"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F05"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F06"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F07"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F08"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F09"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F10"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F11"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F12"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F13"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F14"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F15"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F16"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F17"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "cursor-ide/F18"
+    }
+  ],
+  "limits": [
+    "Structural validation only: it does not prove that each source supports its claim.",
+    "The automated evidence-challenge pass is not the independent team-member review (SRS Spec 5.3).",
+    "TC-5.5-1 (separate publication) is not checked here; no publication is produced.",
+    "A passing report is not by itself H-9 completion; the team confirms H-9.",
+    "The CLI cannot authenticate people; reviewer and approver identity comes from the commit that records them."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "feature_id": "F14",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "supported_scope": "MCP client for local stdio and remote servers, configured globally or per workspace and managed with /mcp; authentication by Google credentials, OAuth or custom headers; MCP tools governed by mcp(server/tool) permission rules and Ask by default.",
+  "unsupported_scope": [],
+  "unestablished_scope": [],
+  "required_setup": "Configure an MCP server; none is included in the profile.",
+  "constraints": [],
+  "evidence": [
+    {"page": "mcp", "section": "Getting started by surface > Antigravity CLI", "quote": "Antigravity CLI supports both local stdio processes and remote host MCP server configurations"},
+    {"page": "mcp", "section": "MCP permissions and access control", "quote": "unconfigured MCP tools run in Ask mode"}
+  ]
+}
