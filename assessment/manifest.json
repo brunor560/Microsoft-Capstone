@@ -1,6 +1,54 @@
 {
   "schema": "approach-a/manifest/1",
-  "manifest_version": 0,
-  "profiles": [],
+  "manifest_version": 1,
+  "profiles": [
+    {
+      "id": "antigravity-cli",
+      "tool": "Google Antigravity",
+      "tool_key": "antigravity",
+      "surface": "cli",
+      "surface_label": "Antigravity CLI (agy)",
+      "category_tags": [
+        "T2"
+      ],
+      "version": {
+        "value": "1.4.0",
+        "kind": "latest release listed in the official changelog on the access date",
+        "source": "changelog > Antigravity CLI > v1.4.0 (dated October 16, 2026)",
+        "documentation_note": "Individual documentation pages carry no version or last-updated date; the documentation is treated as unversioned and identified by access date and page hash."
+      },
+      "modes": [
+        "Interactive TUI execution modes: default (request-review), accept-edits, plan",
+        "Headless print mode (agy -p) with text, json and stream-json output",
+        "Optional terminal sandbox (enableTerminalSandbox / --sandbox)",
+        "Subagents launched by the main agent"
+      ],
+      "platforms": [
+        "macOS (Apple Silicon or Intel)",
+        "Linux x64/ARM64",
+        "Windows (PowerShell or CMD installer)",
+        "Googlebook"
+      ],
+      "account_and_tier": "Personal Google account plans (no Google AI plan, Google AI Pro, Google AI Ultra) or Gemini Enterprise; the Plans page lists the CLI among product features available to all plans. Paid-only commands (for example /boost, /teamwork-preview) are excluded below. Tier for the assessment is a team choice.",
+      "exclusions": [
+        "Antigravity App, Antigravity IDE, IDE extensions and SDK (separate surfaces; claims from their sections do not transfer)",
+        "Third-party plugins, MCP servers, skills and custom subagents beyond the native mechanisms (the mechanism is assessed; no add-on is added to the profile)",
+        "Paid-plan-only commands: /boost, /teamwork-preview (Preview)",
+        "Gemini Enterprise administrative controls (VPC-SC, data residency, Cloud logging) unless the team selects the enterprise tier",
+        "Remote Control companion sessions"
+      ],
+      "included_components": [
+        "Native CLI tools, permissions engine, rules, skills, hooks, MCP client, subagents, /plan, /diff, /rewind, /resume, artifact review, headless mode"
+      ],
+      "interface_and_execution_location": "Terminal TUI and headless print mode on the developer workstation; model inference is a hosted service (the docs describe the CLI talking to a shared agent harness and model endpoints).",
+      "instructions_and_permissions": "Rules files (AGENTS.md, GEMINI.md, .agents/rules/*.md, global ~/.gemini/... and ~/.gemini/antigravity-cli/rules/); permissions allow/deny/ask lists in ~/.gemini/antigravity-cli/settings.json; toolPermission preset (request-review default); artifactReviewPolicy (asks-for-review default).",
+      "model_support": "Gemini models listed by `agy models`; some models require paid plans (FAQ). Model choice is not part of the comparison.",
+      "documentation_base": "https://antigravity.google/docs/",
+      "source_access_date": "2026-10-22",
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-10-22T18:48:33+00:00",
+      "boundary_state": "confirmed"
+    }
+  ],
   "approval": null
 }

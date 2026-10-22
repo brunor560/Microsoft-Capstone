@@ -1,0 +1,251 @@
+{
+  "schema": "approach-a/validation/1",
+  "generated_at": "2026-10-22T18:48:45+00:00",
+  "manifest_version": 1,
+  "profiles": [
+    "antigravity-cli"
+  ],
+  "P": 1,
+  "expected_cells": 18,
+  "present_cells": 18,
+  "cell_states": {
+    "pending": 1,
+    "drafted": 0,
+    "challenged": 17,
+    "reviewed": 0
+  },
+  "accepted": false,
+  "result": "NOT ACCEPTED",
+  "blocking_count": 36,
+  "counts_by_code": {
+    "APPROVAL_MISSING": 1,
+    "AUTHOR_MISSING": 17,
+    "CELL_PENDING": 1,
+    "REVIEW_MISSING": 17
+  },
+  "issues": [
+    {
+      "code": "APPROVAL_MISSING",
+      "severity": "block",
+      "message": "Manifest version 1 is not approved",
+      "where": null
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F01"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F01"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F02"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F02"
+    },
+    {
+      "code": "CELL_PENDING",
+      "severity": "block",
+      "message": "Research pending; the NE status is a placeholder, not a finding",
+      "where": "antigravity-cli/F03"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F04"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F04"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F05"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F05"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F06"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F06"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F07"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F07"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F08"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F08"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F09"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F09"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F10"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F10"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F11"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F11"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F12"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F12"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F13"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F13"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F14"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F14"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F15"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F15"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F16"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F16"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F17"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F17"
+    },
+    {
+      "code": "AUTHOR_MISSING",
+      "severity": "block",
+      "message": "No named human author (agent drafts need a responsible team member)",
+      "where": "antigravity-cli/F18"
+    },
+    {
+      "code": "REVIEW_MISSING",
+      "severity": "block",
+      "message": "No independent team-member review",
+      "where": "antigravity-cli/F18"
+    }
+  ],
+  "limits": [
+    "Structural validation only: it does not prove that each source supports its claim.",
+    "The automated evidence-challenge pass is not the independent team-member review (SRS Spec 5.3).",
+    "TC-5.5-1 (separate publication) is not checked here; no publication is produced.",
+    "A passing report is not by itself H-9 completion; the team confirms H-9.",
+    "The CLI cannot authenticate people; reviewer and approver identity comes from the commit that records them."
+  ]
+}
