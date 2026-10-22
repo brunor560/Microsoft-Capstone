@@ -1,0 +1,1 @@
+Setup interruption: npm notice triggered PowerShell NativeCommandError; resumed before measured attempt.

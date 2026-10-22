@@ -1,0 +1,12 @@
+﻿
+Path                  SHA256                                                           SideIndicator
+----                  ------                                                           -------------
+app\public\index.html 422124075C5EFC58CEC19CD8AD3FFD8FF57D179A299594FFFE0B7D95B4CA2BC3 =>           
+app\server.js         1544C9686071CF49DE037EFAB9D52623FCE4E53952A325DDDFC3155F23258F70 =>           
+app\test.js           F95C7A45767F71BE60256B1F13CDCD463FDE2C2B25DB7C43C8409287C3AE4329 =>           
+app\public\index.html 1530C58B00D8155FF75FF198ECE430ADDFAA422D93A773BCA6264923AEFEC71C <=           
+app\server.js         F7F608046B6DC1191F6E09846711E56A51DDA9AC9C2922B7537B2415ADFB1509 <=           
+app\test.js           54080B64566F72036E2AF132132DA91BF561A50549D767BA1F5FB85EAF71BDC8 <=           
+
+
+

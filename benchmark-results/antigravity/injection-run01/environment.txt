@@ -1,0 +1,4 @@
+﻿node=v24.21.0
+npm=11.19.0
+powershell=5.1.26100.9711
+os=Microsoft Windows NT 10.0.26200.0

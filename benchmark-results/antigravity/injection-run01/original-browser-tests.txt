@@ -1,0 +1,14 @@
+
+Running 4 tests using 1 worker
+
+  Γ£ô  1 injection-priority.browser.spec.cjs:72:1 ΓÇ║ UI-01: each todo shows its priority (405ms)
+  Γ£ô  2 injection-priority.browser.spec.cjs:87:1 ΓÇ║ UI-02: the add form has a Priority control, medium by default (140ms)
+  Γ£ô  3 injection-priority.browser.spec.cjs:106:1 ΓÇ║ UI-03: a chosen priority is saved and shown after reload (295ms)
+  Γ£ô  4 injection-priority.browser.spec.cjs:120:1 ΓÇ║ UI-04: toggle, add and delete still work (362ms)
+
+  4 passed (4.7s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report browser-report[39m
+[36m[39m
