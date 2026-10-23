@@ -1,0 +1,483 @@
+TAP version 13
+# Subtest: API-01: completed must be a boolean
+    # Subtest: rejects completed: "false"
+    not ok 1 - rejects completed: "false"
+      ---
+      duration_ms: 7.977708
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: "true"
+    not ok 2 - rejects completed: "true"
+      ---
+      duration_ms: 5.969926
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: 0
+    not ok 3 - rejects completed: 0
+      ---
+      duration_ms: 17.167736
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: 1
+    not ok 4 - rejects completed: 1
+      ---
+      duration_ms: 13.356615
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: null
+    not ok 5 - rejects completed: null
+      ---
+      duration_ms: 6.211901
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: {}
+    not ok 6 - rejects completed: {}
+      ---
+      duration_ms: 6.917141
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: rejects completed: []
+    not ok 7 - rejects completed: []
+      ---
+      duration_ms: 4.116635
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    1..7
+not ok 1 - API-01: completed must be a boolean
+  ---
+  duration_ms: 120.876702
+  type: 'test'
+  location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:75:1'
+  failureType: 'subtestsFailed'
+  error: '7 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-01: string "false" does not mark a todo complete
+not ok 2 - API-01: string "false" does not mark a todo complete
+  ---
+  duration_ms: 10.532032
+  type: 'test'
+  location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:85:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:91:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02: malformed ids are rejected
+    # Subtest: rejects id 5abc
+    not ok 1 - rejects id 5abc
+      ---
+      duration_ms: 8.092904
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id -5
+    not ok 2 - rejects id -5
+      ---
+      duration_ms: 4.851071
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id 0
+    not ok 3 - rejects id 0
+      ---
+      duration_ms: 7.607451
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id 0x1
+    not ok 4 - rejects id 0x1
+      ---
+      duration_ms: 3.207911
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id 1.0
+    not ok 5 - rejects id 1.0
+      ---
+      duration_ms: 3.331562
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id abc
+    not ok 6 - rejects id abc
+      ---
+      duration_ms: 10.086533
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects id 9007199254740992
+    not ok 7 - rejects id 9007199254740992
+      ---
+      duration_ms: 3.222954
+      type: 'test'
+      location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..7
+not ok 3 - API-02: malformed ids are rejected
+  ---
+  duration_ms: 43.543644
+  type: 'test'
+  location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:94:1'
+  failureType: 'subtestsFailed'
+  error: '7 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-02: leading zeros refer to the same todo
+ok 4 - API-02: leading zeros refer to the same todo
+  ---
+  duration_ms: 4.43133
+  type: 'test'
+  ...
+# Subtest: API-02: a valid id with no todo returns 404
+ok 5 - API-02: a valid id with no todo returns 404
+  ---
+  duration_ms: 4.843124
+  type: 'test'
+  ...
+# Subtest: API-03: a non-object body is rejected
+not ok 6 - API-03: a non-object body is rejected
+  ---
+  duration_ms: 7.570274
+  type: 'test'
+  location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:121:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:123:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-04: an invalid completed value blocks a valid title
+not ok 7 - API-04: an invalid completed value blocks a valid title
+  ---
+  duration_ms: 4.160075
+  type: 'test'
+  location: '/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:126:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    expectRejected (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (/home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:129:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-05: boolean updates still work in both directions
+ok 8 - API-05: boolean updates still work in both directions
+  ---
+  duration_ms: 6.319748
+  type: 'test'
+  ...
+# Subtest: API-05: valid title updates still work
+ok 9 - API-05: valid title updates still work
+  ---
+  duration_ms: 2.790897
+  type: 'test'
+  ...
+# Subtest: API-05: GET, POST and DELETE keep their behaviour
+ok 10 - API-05: GET, POST and DELETE keep their behaviour
+  ---
+  duration_ms: 6.765221
+  type: 'test'
+  ...
+1..10
+# tests 24
+# suites 0
+# pass 5
+# fail 19
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 371.235543

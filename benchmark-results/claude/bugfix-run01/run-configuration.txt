@@ -1,0 +1,20 @@
+run_id=claude-bugfix-run01
+participant=operator: Claude (claude-opus-5-5) running the CLI on behalf of the account owner (crochajr81); human participant name to be filled in by team; 2026-10-23, America/New_York
+tool=Claude Code 2.1.309
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6
+reasoning_effort=default (no --effort flag; inherited CLAUDE_EFFORT env var removed)
+baseline_commit=eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd
+protocol_commit=eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd (agreed commit per procedure; branch head c76f5c5 is docs-only)
+underlying_app=4e258a96855d98edd10247f68c0b8265e53a8921
+os=Ubuntu 24.04.5 LTS (Linux 6.18.44 x86_64), Anthropic-hosted cloud container; bash equivalents of the PowerShell steps
+node=v22.22.0
+npm=10.9.4
+playwright=1.64.1 (grader); browser=Chromium 141.0.7390.37 (pre-installed build 1194, see setup-notes.txt)
+approval=--permission-mode acceptEdits, --allowedTools Bash (edits and shell pre-approved; no prompts)
+sandbox=none beyond the container; no filesystem confinement to the run folder
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools)
+memory=off: --settings '{"autoMemoryEnabled":false}'; host memory MCP server removed (--strict-mcp-config with empty config); no ~/.claude/CLAUDE.md exists (global-instructions-check.txt); --setting-sources project excludes user settings and user hooks; run folder has no CLAUDE.md or .claude/
+fresh_start=new session (session_id 5204b03b-69bd-4cc3-9dc4-a7eb3dc887ce), not resumed or forked; skills/slash commands off; Chrome off; host-session env vars removed via freshenv.sh
+residual_environment=CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed
+operator_knowledge=operator read the shared procedure; did not read the task file, ACCEPTANCE.md, reference/, or grader test bodies before the run; no hints given

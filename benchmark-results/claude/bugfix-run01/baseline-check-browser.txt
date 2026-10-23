@@ -1,0 +1,91 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 update-bugfix.browser.spec.cjs:76:1 › UI-01: toggling persists across reload (612ms)
+  ✘  2 update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: an HTTP 500 response shows an error and keeps state (5.4s)
+  ✘  3 update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: a network failure shows an error and keeps state (5.6s)
+  ✓  4 update-bugfix.browser.spec.cjs:131:1 › UI-04: add and delete still work (590ms)
+
+
+  1) update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: an HTTP 500 response shows an error and keeps state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('li').filter({ hasText: 'Failure server-error' }).getByRole('alert')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('li').filter({ hasText: 'Failure server-error' }).getByRole('alert') with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Failure server-error' }).getByRole('alert')
+
+
+      118 |       const alert = row.getByRole('alert');
+      119 |       try {
+    > 120 |         await expect(alert).toBeVisible();
+          |                             ^
+      121 |         await expect(alert).not.toHaveText(/^\s*$/);
+      122 |       } finally {
+      123 |         await capture(page, `UI-02-${failure.slug}`);
+        at /home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix.browser.spec.cjs:120:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/update-bugfix.browser-UI-0-b4783-ws-an-error-and-keeps-state/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/update-bugfix.browser-UI-0-b4783-ws-an-error-and-keeps-state/error-context.md
+
+    Error Context: browser-test-results/update-bugfix.browser-UI-0-b4783-ws-an-error-and-keeps-state/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/update-bugfix.browser-UI-0-b4783-ws-an-error-and-keeps-state/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/update-bugfix.browser-UI-0-b4783-ws-an-error-and-keeps-state/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: a network failure shows an error and keeps state 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('li').filter({ hasText: 'Failure network-error' }).getByRole('alert')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" locator('li').filter({ hasText: 'Failure network-error' }).getByRole('alert') with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Failure network-error' }).getByRole('alert')
+
+
+      118 |       const alert = row.getByRole('alert');
+      119 |       try {
+    > 120 |         await expect(alert).toBeVisible();
+          |                             ^
+      121 |         await expect(alert).not.toHaveText(/^\s*$/);
+      122 |       } finally {
+      123 |         await capture(page, `UI-02-${failure.slug}`);
+        at /home/claude/bench/claude-bugfix-run01-evidence/grader-source/benchmark-results/protocol/update-bugfix/update-bugfix.browser.spec.cjs:120:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/update-bugfix.browser-UI-0-3401f-ws-an-error-and-keeps-state/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/update-bugfix.browser-UI-0-3401f-ws-an-error-and-keeps-state/error-context.md
+
+    Error Context: browser-test-results/update-bugfix.browser-UI-0-3401f-ws-an-error-and-keeps-state/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/update-bugfix.browser-UI-0-3401f-ws-an-error-and-keeps-state/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/update-bugfix.browser-UI-0-3401f-ws-an-error-and-keeps-state/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: an HTTP 500 response shows an error and keeps state 
+    update-bugfix.browser.spec.cjs:105:3 › UI-02/UI-03: a network failure shows an error and keeps state 
+  2 passed (15.5s)

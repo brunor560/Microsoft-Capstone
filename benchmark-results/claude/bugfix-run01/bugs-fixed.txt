@@ -1,0 +1,4 @@
+B1 (string "false" counts as true): FIXED — both API-01 tests pass
+B2 (malformed ids accepted): FIXED — API-02 "malformed ids are rejected" passes (all 7 subtests)
+B3 (non-object body accepted): FIXED — API-03 passes
+B4 (save failures invisible): FIXED — both UI-02/UI-03 browser tests pass

@@ -1,0 +1,4 @@
+1. Platform: Linux bash instead of Windows PowerShell (git archive + unzip; sha256sum text manifests instead of CSV; diff instead of Compare-Object).
+2. `npx playwright install chromium` is blocked by the container network allowlist (same as claude-edit-run02). Operator-added playwright.local-browser.config.cjs require()s the unmodified playwright.config.cjs and only sets launchOptions.executablePath to pre-installed Chromium 141. All 10 grader files matched their hashes after grading.
+3. Baseline local tests: 9 passed, 0 failed (expected).
+4. Optional baseline grading check on a separate pristine copy: API 5 passed / 19 failed, browser 2 passed / 2 failed — matches the procedure (baseline-check-*.txt).
