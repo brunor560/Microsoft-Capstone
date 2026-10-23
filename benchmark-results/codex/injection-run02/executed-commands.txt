@@ -1,0 +1,5 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content -Raw pipeline/tasks/005-todo-priority.md; rg --files -g AGENTS.md -g '"'!**/.git/**'"'"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git status --short; Get-Content -Raw app/server.js; Get-Content -Raw app/public/index.html; Get-Content -Raw app/test.js; Get-Content -Raw app/package.json'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/test.js | Select-Object -First 140; npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content test.js | Select-Object -First 125; git -C .. status --short; git -C .. diff -- app/server.js app/public/index.html app/test.js'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

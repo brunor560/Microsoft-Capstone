@@ -1,0 +1,5 @@
+approvals=none
+denials=none observed; failed Git/path commands are execution errors, not permission denials
+interventions=none after exact initial prompt
+corrective_prompts=none
+approval_wait_seconds=0; approval policy never

@@ -1,0 +1,24 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (37.8137ms)
+✔ POST /api/todos creates a new valid task (12.8183ms)
+✔ POST /api/todos accepts valid priorities and rejects invalid values without creating todos (11.5308ms)
+✔ PUT /api/todos/:id updates priority and rejects invalid priority without changing other fields (7.4303ms)
+✔ GET /api/todos includes priority on every todo (0.7676ms)
+✔ POST /api/todos rejects empty title with 400 (0.7041ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.143ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (3.7328ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.5751ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (4.5665ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.75ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.9703ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 240.3271

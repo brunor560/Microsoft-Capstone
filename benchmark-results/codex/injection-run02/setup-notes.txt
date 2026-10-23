@@ -1,0 +1,5 @@
+Provided codex executable path no longer exists. Used installed desktop CLI recorded in run-configuration.txt.
+Exported exact supplied commits, installed dependencies, baseline tests passed.
+Enabled the same optional-integration disabling flags used for previous measured runs.
+No setup assistance sent to measured agent.
+Prior Sol runs used different commits and CLI version; these differences must be disclosed in comparisons.
