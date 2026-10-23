@@ -644,8 +644,18 @@ const fmt1 = (v) => (Math.round(v * 10) / 10).toString();
 // The Node runner repeats failures under a "failing tests:" summary line; skip that header.
 const failedTests = (s) => [...new Set(s.tests.filter((t) => !t.ok && !/^failing tests:?$/i.test(t.name.trim())).map((t) => t.name.replace(/\s+\(\d.*$/, '')))];
 function suiteCount(s) {
-  if (s.pass != null) return { p: s.pass, f: s.fail || 0, label: `${s.pass} / ${s.pass + (s.fail || 0)} checks passed` };
-  return { p: s.ok ? 1 : 0, f: s.ok ? 0 : 1, label: s.verdict ? `verdict ${s.verdict}` : s.ok ? 'passed' : 'failed' };
+  const tag = s.regraded ? ' (fixed grader)' : '';
+  if (s.pass != null) return { p: s.pass, f: s.fail || 0, label: `${s.pass} / ${s.pass + (s.fail || 0)} checks passed${tag}` };
+  return { p: s.ok ? 1 : 0, f: s.ok ? 0 : 1, label: (s.verdict ? `verdict ${s.verdict}` : s.ok ? 'passed' : 'failed') + tag };
+}
+// Shown when a run was regraded after an evaluator fix: the regrade counts, the original stays as evidence.
+function regradeHTML(r) {
+  if (!r.regrade) return '';
+  const g = r.regrade, short = esc(g.commit.slice(0, 7));
+  const row = (o) => `<div class="t ${o.ok ? 'ok' : 'bad'}"><span class="ic">${o.ok ? '✔' : '✖'}</span><span>${esc(o.name)}: ${o.pass != null ? `${o.pass} / ${o.pass + (o.fail || 0)} checks passed` : esc(o.verdict || (o.ok ? 'passed' : 'failed'))} · exit ${esc(o.exit ?? '—')}${o.changed ? ' <b>(changed by the fix)</b>' : ''}</span></div>`;
+  return `<div class="box"><h4>Regraded with a fixed grader</h4>
+    <p class="note">This run's preserved original output was graded again with the fixed evaluator <code>${short}</code>${g.date ? ` on ${esc(g.date)}` : ''}, with no agent correction or code change. The score uses the regrade. The original grader's results are kept below as evidence; see the run README for the defect.</p>
+    <div class="why-dim"><b>Original grader results</b>${g.original.map(row).join('')}</div></div>`;
 }
 function explainRun(r) {
   const parts = [];
@@ -930,14 +940,15 @@ function renderTab() {
       </div>
       ${r.timing?.method ? `<p class="note">Timing method: ${esc(r.timing.method)}</p>` : ''}
       ${explainHTML(r)}
-      <div class="box"><h4>Suites</h4>${r.suites.map((s) => `<div class="t ${s.ok ? 'ok' : 'bad'}"><span class="ic">${s.ok ? '✔' : '✖'}</span><span style="flex:1">${esc(s.name)}</span><span class="num note">${s.pass != null ? `${s.pass} pass · ${s.fail} fail` : s.verdict || ''} · exit ${s.exit ?? '—'}</span></div>`).join('')}</div>
+      ${regradeHTML(r)}
+      <div class="box"><h4>Suites</h4>${r.suites.map((s) => `<div class="t ${s.ok ? 'ok' : 'bad'}"><span class="ic">${s.ok ? '✔' : '✖'}</span><span style="flex:1">${esc(s.name)}${s.regraded ? ' <span class="note">(fixed grader)</span>' : ''}</span><span class="num note">${s.pass != null ? `${s.pass} pass · ${s.fail} fail` : s.verdict || ''} · exit ${s.exit ?? '—'}</span></div>`).join('')}</div>
       ${r.traps.length ? `<div class="box"><h4>Prompt-injection traps</h4>${r.traps.map((t) => `<div class="trap"><b>${esc(t.trap)}</b><span class="badge ${/not followed/i.test(t.result) ? 'pass' : 'fail'}">${esc(t.result)}</span><span class="note" style="grid-column:1/-1">${esc(t.disclosure)}</span></div>`).join('')}</div>` : ''}
       <div class="box"><h4>Run README</h4><div class="md">${md(r.readme)}</div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-go="replay">▶ Watch replay</button><button class="btn" data-go="diff">View code diff</button></div>`;
     body.querySelectorAll('[data-go]').forEach((b) => b.onclick = () => { currentTab = b.dataset.go; openRun(r.id, currentTab); });
   }
   if (currentTab === 'tests') {
-    body.innerHTML = r.suites.map((s, i) => `<details class="suite" ${i < 3 ? 'open' : ''}><summary><span class="badge ${s.ok ? 'pass' : 'fail'}">${s.ok ? 'PASS' : 'FAIL'}</span>${esc(s.name)}<span class="spacer"></span><span class="note num">${s.pass != null ? `${s.pass}/${s.pass + (s.fail || 0)}` : s.verdict || ''}</span></summary>
+    body.innerHTML = r.suites.map((s, i) => `<details class="suite" ${i < 3 ? 'open' : ''}><summary><span class="badge ${s.ok ? 'pass' : 'fail'}">${s.ok ? 'PASS' : 'FAIL'}</span>${esc(s.name)}${s.regraded ? ' <span class="note">(fixed grader)</span>' : ''}<span class="spacer"></span><span class="note num">${s.pass != null ? `${s.pass}/${s.pass + (s.fail || 0)}` : s.verdict || ''}</span></summary>
       <div class="tests">${s.tests.length ? s.tests.map((t) => `<div class="t ${t.ok ? 'ok' : 'bad'}" style="padding-left:${t.depth * 6}px"><span class="ic">${t.ok ? '✔' : '✖'}</span>${esc(t.name)}</div>`).join('') : ''}
       ${s.log ? `<details style="margin-top:8px"><summary class="note" style="cursor:pointer">Raw log</summary><pre class="text">${esc(s.log)}</pre></details>` : ''}</div></details>`).join('') || '<div class="empty">No grader logs saved for this run</div>';
   }

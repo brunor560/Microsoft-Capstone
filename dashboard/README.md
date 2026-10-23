@@ -38,4 +38,6 @@ Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Function
 
 Every score shows its reasoning. Open **Why these scores** under the chart for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Overview tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
 
+If a run was regraded after an evaluator fix, its folder has `regrade-fixed-grader-*.txt` logs and a `regrade-fixed-grader-exits.txt` naming the grader commit. The dashboard scores those suites from the regrade, marks them "(fixed grader)", and shows the original grader's results in a **Regraded with a fixed grader** box as evidence.
+
 The replay is rebuilt from saved files (prompt, final code, grader logs). It is not a recording, and its timing is sped up.

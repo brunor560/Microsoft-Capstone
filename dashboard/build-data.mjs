@@ -89,6 +89,15 @@ const SUITE_FILES = {
   security_runtime: ['original-security-runtime.txt'],
   security_scan: ['original-security-scan.txt'],
 };
+// A run regraded after an evaluator fix keeps its original logs as evidence and adds
+// regrade-fixed-grader-<suite>.txt plus regrade-fixed-grader-exits.txt. The regrade is the
+// result to report, so it takes precedence for the suites it covers.
+const REGRADE_FILES = {
+  api: 'regrade-fixed-grader-api-tests.txt',
+  browser: 'regrade-fixed-grader-browser-tests.txt',
+  security_runtime: 'regrade-fixed-grader-security-runtime.txt',
+  security_scan: 'regrade-fixed-grader-security-scan.txt',
+};
 
 function findFile(files, dir, pattern) {
   const re = new RegExp('^' + pattern.replace(/[.]/g, '\\.').replace('*', '[^/]+') + '$');
@@ -135,8 +144,11 @@ function tokens(json) {
   const cached = u.cache_read_tokens_field_sum ?? u.cached_input_tokens ?? u.cache_read_input_tokens;
   const output = u.output_tokens_field_sum ?? u.output_tokens;
   const cacheCreate = u.cache_creation_input_tokens || 0;
-  // Claude reports uncached input separately from cache reads/creations
-  const total = t.usage ? (input || 0) + (cached || 0) + cacheCreate + (output || 0) : (u.total_tokens ?? (input || 0) + (output || 0));
+  // Claude reports uncached input separately from cache reads/creations (cache_read_input_tokens),
+  // so those are added. OpenAI/Codex cached_input_tokens is already part of input_tokens, so it is not.
+  // (Antigravity's *_field_sum counts are left as input + output, as before: its cache accounting is unverified.)
+  const separateCache = u.cache_read_input_tokens != null;
+  const total = u.total_tokens ?? ((input || 0) + (separateCache ? (cached || 0) + cacheCreate : 0) + (output || 0));
   return { input, cached, output, total, cost: t.total_cost_usd ?? null, model: t.model || null, turns: t.num_turns ?? null };
 }
 
@@ -195,16 +207,34 @@ for (const tool of TOOLS) {
     const exits = kv(show(BRANCH, `${dir}/original-test-exits.txt`)
       || show(BRANCH, files.find((f) => f.endsWith('original-test-exits.txt')) || '') || '');
 
+    const regradeExits = kv(show(BRANCH, `${dir}/regrade-fixed-grader-exits.txt`) || '');
+    const regrade = regradeExits.grader_commit
+      ? { commit: regradeExits.grader_commit, date: regradeExits.graded_utc || null, original: [] } : null;
+
+    const suite = (key, log, exit) => {
+      const c = counts(log);
+      const ok = exit != null ? exit === '0' : (c.fail === 0 || c.verdict === 'PASS');
+      return { key, name: SUITE_NAMES[key], exit: exit ?? null, ok, ...c, tests: testLines(log), log: log ? log.slice(0, 20000) : null };
+    };
     const suites = [];
     for (const [key, pats] of Object.entries(SUITE_FILES)) {
       let f = null;
       for (const p of pats) if ((f = findFile(files, dir, p))) break;
       const log = f ? show(BRANCH, f) : null;
       const exit = exits[`${key}_exit`];
+      const re = regrade && REGRADE_FILES[key] && files.includes(`${dir}/${REGRADE_FILES[key]}`)
+        ? show(BRANCH, `${dir}/${REGRADE_FILES[key]}`) : null;
+      if (re != null) {
+        const s = suite(key, re, regradeExits[`${key}_exit`]);
+        suites.push({ ...s, regraded: true });
+        if (log || exit != null) {
+          const o = suite(key, log, exit);
+          regrade.original.push({ key, name: o.name, pass: o.pass ?? null, fail: o.fail ?? null, verdict: o.verdict ?? null, exit: o.exit, ok: o.ok, changed: o.ok !== s.ok || o.pass !== s.pass });
+        }
+        continue;
+      }
       if (!log && exit == null) continue;
-      const c = counts(log);
-      const ok = exit != null ? exit === '0' : (c.fail === 0 || c.verdict === 'PASS');
-      suites.push({ key, name: SUITE_NAMES[key], exit: exit ?? null, ok, ...c, tests: testLines(log), log: log ? log.slice(0, 20000) : null });
+      suites.push(suite(key, log, exit));
     }
 
     const changed = [];
@@ -230,7 +260,7 @@ for (const tool of TOOLS) {
       title: (readme || '').split('\n')[0].replace(/^#\s*/, ''),
       summary: (readme || '').split('\n').slice(1).find((l) => l.trim() && !l.startsWith('#') && !l.startsWith('|')) || '',
       ...modelInfo(dir), suites, timing: elapsed(files, dir), tokens: tokens(show(BRANCH, `${dir}/token-usage.json`)),
-      changed, prompt, report, traps: traps(readme), readme,
+      changed, prompt, report, traps: traps(readme), readme, regrade,
       commit: sha[0], date: sha[1], path: dir,
       url: `https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/${dir}`,
     });
