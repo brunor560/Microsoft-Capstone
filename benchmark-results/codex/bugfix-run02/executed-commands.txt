@@ -1,0 +1,5 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content -Raw pipeline/tasks/004-fix-update-validation.md; rg --files -g AGENTS.md -g '"'!../*'"' -g '"'!**/.git/**'"'; git status --short"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Location; Get-ChildItem -Force; Get-Content -Raw app/server.js; Get-Content -Raw app/public/index.html; Get-Content -Raw app/test.js; Get-Content -Raw app/package.json; rg --files -g AGENTS.md -g '"'!**/node_modules/**'"'"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git diff --check; git status --short; git diff -- app/server.js app/public/index.html app/test.js'
