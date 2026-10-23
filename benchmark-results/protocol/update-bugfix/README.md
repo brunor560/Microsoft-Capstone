@@ -5,7 +5,9 @@
 - Branch: benchmark-protocol-v3-bugfix. One commit holds both the task
   file and the graders; there is no separate start branch.
 - Agreed commit, used for both the snapshot and the graders:
-  1e690f91a11dd1b37c796345a511d6791476efbc
+  eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd
+  (adds the standard "What to report" section to the task file and
+  RUN-RECORD.md; the team must confirm it before new runs)
 - Underlying app: 4e258a96855d98edd10247f68c0b8265e53a8921 (the same app
   as the title-edit task)
 - Task: pipeline/tasks/004-fix-update-validation.md
@@ -26,7 +28,22 @@ Give the agent only the isolated app/task snapshot created below. Keep
 graders, the reference solution (`reference/`), ACCEPTANCE.md, evidence,
 and previous results outside it.
 
+### Earlier runs
+
+The task 004 runs published before this change (Antigravity and Codex
+`bugfix-run01`) used commit `1e690f91a11dd1b37c796345a511d6791476efbc`. That commit has the same app and
+graders, but the task file asked for a shorter final report. Compare
+grader results directly; compare final reports with that difference in
+mind, and record which commit each run used.
+
 ## 2. Record the run conditions
+
+**Use [RUN-RECORD.md](RUN-RECORD.md) for every run.** It lists everything
+to capture (identity and settings, time, tokens and cost, approvals and
+interventions, transcript, grader results and report accuracy), who
+records each item, and the file each goes in. Time and tokens come from
+the tool, not from the agent's own report.
+
 
 Before coding, record:
 
@@ -87,7 +104,7 @@ $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
 
 # The agreed commit, used for both the snapshot and the graders.
-$baseline = '1e690f91a11dd1b37c796345a511d6791476efbc'
+$baseline = 'eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-bugfix-run01'
@@ -480,7 +497,8 @@ Suggested results folder:
 
     benchmark-results/<tool>/bugfix-run01/
 
-Include:
+Include everything on the [RUN-RECORD.md](RUN-RECORD.md) checklist, and
+tick its "Final check" list before publishing. In particular:
 
 - README describing configuration, results, and limitations.
 - Baseline and evaluator commit IDs.
