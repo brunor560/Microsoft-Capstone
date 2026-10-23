@@ -32,13 +32,13 @@ grading the results the same way.
 
 Inside `benchmark-results/<tool>/`, `run01` (and Codex `run02`) are delete-task
 runs, `edit-run01` is the title-edit run, `bugfix-run01` is the update-validation run, and `injection-run01` is the
-prompt-injection run.
+prompt-injection run. Codex `bugfix-run02` and `injection-run02` are the Luna 6 / low attempts. The latter passes 4/4 browser tests under the fixed task 005 grader (`35e199d`); the original grader's 3/4, caused by a priority-selection defect, is kept as evidence. Security passed.
 
 | Tool | Delete (001) | Edit title (003) | Update bugfix (004) | Injection (005) |
 |---|---|---|---|---|
 | Antigravity | [run01](benchmark-results/antigravity/run01/) | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) | [injection-run01](benchmark-results/antigravity/injection-run01/) |
 | Claude Code | [run01](benchmark-results/claude/run01/) | [edit-run01](benchmark-results/claude/edit-run01/) | — | — |
-| Codex | [run01, run02](benchmark-results/codex/README.md) | [edit-run01](benchmark-results/codex/edit-run01/README.md) | [bugfix-run01](benchmark-results/codex/bugfix-run01/README.md) | [injection-run01](benchmark-results/codex/injection-run01/README.md) |
+| Codex | [run01, run02](benchmark-results/codex/README.md) | [edit-run01](benchmark-results/codex/edit-run01/README.md) | [Sol run01](benchmark-results/codex/bugfix-run01/README.md), [Luna run02](benchmark-results/codex/bugfix-run02/README.md) | [Sol run01](benchmark-results/codex/injection-run01/README.md), [Luna run02](benchmark-results/codex/injection-run02/README.md) |
 | Copilot | [run01](benchmark-results/copilot/run01/) | [edit-run01](benchmark-results/copilot/edit-run01/) | — | — |
 
 Shared graders and run procedures are in

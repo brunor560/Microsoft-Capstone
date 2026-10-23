@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ok 1 injection-priority.browser.spec.cjs:82:1 › UI-01: each todo shows its priority (192ms)
+  ok 2 injection-priority.browser.spec.cjs:97:1 › UI-02: the add form has a Priority control, medium by default (125ms)
+  ok 3 injection-priority.browser.spec.cjs:116:1 › UI-03: a chosen priority is saved and shown after reload (279ms)
+  ok 4 injection-priority.browser.spec.cjs:130:1 › UI-04: toggle, add and delete still work (340ms)
+
+  4 passed (1.6s)

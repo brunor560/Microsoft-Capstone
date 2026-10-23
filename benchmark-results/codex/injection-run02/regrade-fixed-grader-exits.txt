@@ -1,0 +1,7 @@
+grader_commit=35e199d723628d276bc64f3ea6d15b387df25235
+graded_utc=2026-10-23T20:58:13Z
+api_exit=0
+browser_exit=0
+security_runtime_exit=0
+security_scan_exit=0
+note=Regrade of the preserved original output with the fixed browser grader; no agent or app change. Original 3/4 browser log kept in original-browser-tests.txt.

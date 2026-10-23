@@ -1,0 +1,9 @@
+Evaluator issue: priority control selection is label-first and case-sensitive.
+Published helper tries selectOption({label: value}) then catches and tries selectOption(value).
+Luna UI has <option value="high">High</option>. The first lookup for label high waits for the entire test timeout, closing the page before fallback.
+The requirements specify allowed values and an accessible Priority control, not lowercase visible option labels.
+Official result preserved: browser 3 passed / 1 failed (UI-03).
+Diagnostic copied the evaluator and replaced that helper expression with selectOption(value); unchanged app passes 4/4.
+Diagnostic is supplemental only, not a changed official result.
+Next step: agree and publish a corrected evaluator version, then regrade all preserved task-005 outputs consistently.
+No agent correction or application source change was made after original output preservation.

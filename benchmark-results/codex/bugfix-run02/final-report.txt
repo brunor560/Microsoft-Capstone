@@ -1,0 +1,16 @@
+Implemented the PUT validation and UI failure handling.
+
+- [server.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run02/app/server.js): validates PUT IDs and JSON object bodies, accepts only boolean `completed` values, and rejects invalid updates before mutation.
+- [index.html](/C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run02/app/public/index.html): keeps the clicked completion state on screen after a successful PUT; on failure, restores the prior state and shows a nonempty alert inside that todo’s list item.
+- [test.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run02/app/test.js): adds API coverage for boolean values, invalid completion values and atomicity, non-object bodies, and PUT ID validation.
+
+The first reported bug came from `Boolean(...)` coercing strings such as `"false"` to `true`; PUT’s `parseInt` also accepted malformed IDs. The second came from the UI ignoring failed responses and refetching without showing an error.
+
+**Commands and results, in order**
+
+1. Read the task and project files; attempted `git status --short` from the project root. The read succeeded; Git reported the directory is not a repository.
+2. Ran `npm.cmd test` from `app/`: **12 passed, 1 failed, 0 skipped**. This exposed that `express.json()` handled the JSON literal `null` before the PUT route and returned an HTML error.
+3. Ran `npm.cmd test` again from `app/` after fixing the parse-error response: **13 passed, 0 failed, 0 skipped**.
+4. Attempted `git diff --check`, `git status --short`, and `git diff` from the project root. Git reported it is not a repository, so those checks could not run.
+
+No browser or manual UI checks were performed. No dependencies or package files were changed; no commit or push was made. The task requirements were clear. Unexpected project detail: the provided project folder has no Git repository metadata. Session duration, model, and token usage: not available.

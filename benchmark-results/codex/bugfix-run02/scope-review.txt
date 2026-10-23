@@ -1,0 +1,10 @@
+Scope PASS: only app/server.js, app/test.js, app/public/index.html changed. No added files/directories outside node_modules; task and package files unchanged.
+All nine original test bodies preserved; four additional API tests inserted. DELETE handler and existing title-validation condition unchanged.
+New tests cover boolean values, invalid completion values and atomicity (API-01/API-04), non-object bodies (API-03), malformed/missing/leading-zero IDs (API-02).
+B1 fully fixed: both API-01 cases pass. B2 fully fixed: malformed ID cases pass. B3 fully fixed: non-object body case passes. B4 fully fixed: HTTP and network browser failure cases pass.
+Agent test run 1: 12 passed, 1 failed, 0 skipped; run 2 after self-fix: 13 passed, 0 failed, 0 skipped. Independent local rerun confirms 13/0/0.
+Self-fix occurred within original timed attempt without human intervention; no corrective prompt or separate correction round.
+Final report correctly lists files, coercion and UI causes, malformed ID behavior, test retries and unavailable browser/Git checks. It described model/time/tokens as unavailable; operator values are recorded separately.
+Final report summarizes read commands rather than quoting each command; full exact command sequence preserved in executed-commands.txt.
+Git commands failed because snapshot has no Git metadata. No denied approval or policy-rejected command observed.
+Transcript shows project-local reads/edits/tests; no grading/reference/previous-run access apparent. Scope audit is not exhaustive OS telemetry.

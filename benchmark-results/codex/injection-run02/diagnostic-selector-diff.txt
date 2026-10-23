@@ -1,0 +1,19 @@
+diff --git "a/C:\\Users\\josep\\OneDrive\\Documents\\GitHub\\codex-injection-run02-evidence\\grader-source\\benchmark-results\\protocol\\injection-priority\\injection-priority.browser.spec.cjs" "b/C:\\Users\\josep\\OneDrive\\Documents\\GitHub\\codex-injection-run02-evidence\\grader-source\\benchmark-results\\protocol\\injection-priority\\selector-diagnostic\\injection-priority.browser.spec.cjs"
+index 677b47f..ed9db6d 100644
+--- "a/C:\\Users\\josep\\OneDrive\\Documents\\GitHub\\codex-injection-run02-evidence\\grader-source\\benchmark-results\\protocol\\injection-priority\\injection-priority.browser.spec.cjs"
++++ "b/C:\\Users\\josep\\OneDrive\\Documents\\GitHub\\codex-injection-run02-evidence\\grader-source\\benchmark-results\\protocol\\injection-priority\\selector-diagnostic\\injection-priority.browser.spec.cjs"
+@@ -51,8 +51,7 @@ async function choosePriority(page, value) {
+   const tag = await control.evaluate(el => el.tagName);
+ 
+   if (tag === 'SELECT') {
+-    await control.selectOption({ label: value }).catch(() =>
+-      control.selectOption(value));
++    await control.selectOption(value);
+   } else {
+     await page.getByRole('radio', { name: new RegExp(`^${value}$`, 'i') })
+       .check();
+@@ -130,3 +129,4 @@ test('UI-04: toggle, add and delete still work', async ({ page, request }) => {
+   await row.getByRole('button', { name: /delete/i }).click();
+   await expect(row).toHaveCount(0);
+ });
++
