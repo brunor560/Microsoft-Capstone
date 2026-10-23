@@ -1,0 +1,156 @@
+TAP version 13
+# Subtest: API-01: completed must be a boolean
+    # Subtest: rejects completed: "false"
+    ok 1 - rejects completed: "false"
+      ---
+      duration_ms: 19.128968
+      type: 'test'
+      ...
+    # Subtest: rejects completed: "true"
+    ok 2 - rejects completed: "true"
+      ---
+      duration_ms: 15.267524
+      type: 'test'
+      ...
+    # Subtest: rejects completed: 0
+    ok 3 - rejects completed: 0
+      ---
+      duration_ms: 28.053098
+      type: 'test'
+      ...
+    # Subtest: rejects completed: 1
+    ok 4 - rejects completed: 1
+      ---
+      duration_ms: 11.084672
+      type: 'test'
+      ...
+    # Subtest: rejects completed: null
+    ok 5 - rejects completed: null
+      ---
+      duration_ms: 7.170532
+      type: 'test'
+      ...
+    # Subtest: rejects completed: {}
+    ok 6 - rejects completed: {}
+      ---
+      duration_ms: 6.31867
+      type: 'test'
+      ...
+    # Subtest: rejects completed: []
+    ok 7 - rejects completed: []
+      ---
+      duration_ms: 11.5347
+      type: 'test'
+      ...
+    1..7
+ok 1 - API-01: completed must be a boolean
+  ---
+  duration_ms: 177.631696
+  type: 'test'
+  ...
+# Subtest: API-01: string "false" does not mark a todo complete
+ok 2 - API-01: string "false" does not mark a todo complete
+  ---
+  duration_ms: 7.665297
+  type: 'test'
+  ...
+# Subtest: API-02: malformed ids are rejected
+    # Subtest: rejects id 5abc
+    ok 1 - rejects id 5abc
+      ---
+      duration_ms: 18.775938
+      type: 'test'
+      ...
+    # Subtest: rejects id -5
+    ok 2 - rejects id -5
+      ---
+      duration_ms: 6.141462
+      type: 'test'
+      ...
+    # Subtest: rejects id 0
+    ok 3 - rejects id 0
+      ---
+      duration_ms: 6.221762
+      type: 'test'
+      ...
+    # Subtest: rejects id 0x1
+    ok 4 - rejects id 0x1
+      ---
+      duration_ms: 4.250741
+      type: 'test'
+      ...
+    # Subtest: rejects id 1.0
+    ok 5 - rejects id 1.0
+      ---
+      duration_ms: 4.589811
+      type: 'test'
+      ...
+    # Subtest: rejects id abc
+    ok 6 - rejects id abc
+      ---
+      duration_ms: 5.596592
+      type: 'test'
+      ...
+    # Subtest: rejects id 9007199254740992
+    ok 7 - rejects id 9007199254740992
+      ---
+      duration_ms: 5.103327
+      type: 'test'
+      ...
+    1..7
+ok 3 - API-02: malformed ids are rejected
+  ---
+  duration_ms: 54.450185
+  type: 'test'
+  ...
+# Subtest: API-02: leading zeros refer to the same todo
+ok 4 - API-02: leading zeros refer to the same todo
+  ---
+  duration_ms: 6.618132
+  type: 'test'
+  ...
+# Subtest: API-02: a valid id with no todo returns 404
+ok 5 - API-02: a valid id with no todo returns 404
+  ---
+  duration_ms: 4.139254
+  type: 'test'
+  ...
+# Subtest: API-03: a non-object body is rejected
+ok 6 - API-03: a non-object body is rejected
+  ---
+  duration_ms: 11.968093
+  type: 'test'
+  ...
+# Subtest: API-04: an invalid completed value blocks a valid title
+ok 7 - API-04: an invalid completed value blocks a valid title
+  ---
+  duration_ms: 6.618965
+  type: 'test'
+  ...
+# Subtest: API-05: boolean updates still work in both directions
+ok 8 - API-05: boolean updates still work in both directions
+  ---
+  duration_ms: 5.521236
+  type: 'test'
+  ...
+# Subtest: API-05: valid title updates still work
+ok 9 - API-05: valid title updates still work
+  ---
+  duration_ms: 2.754128
+  type: 'test'
+  ...
+# Subtest: API-05: GET, POST and DELETE keep their behaviour
+ok 10 - API-05: GET, POST and DELETE keep their behaviour
+  ---
+  duration_ms: 9.35456
+  type: 'test'
+  ...
+1..10
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 415.571503

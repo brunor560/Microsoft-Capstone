@@ -1,0 +1,59 @@
+All 22 tests pass. Here is the full report:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`**
+- Replaced the `PUT /api/todos/:id` handler to add proper ID validation (digits-only, >0, ≤MAX_SAFE_INTEGER, mirroring DELETE), reject non-object bodies (arrays), reject non-boolean `completed` values with HTTP 400, and only mutate the todo after all validation passes.
+
+**`app/public/index.html`**
+- Added a `<div role="alert">` inside each `<li>` for error display.
+- Rewrote `toggleStatus` to check the HTTP response: on failure (network error or non-OK status) it writes the error message into the alert element and returns without re-rendering; on success it calls `fetchTodos()` as before, which also clears the error by rebuilding the list.
+- Added a CSS rule to style non-empty alert elements in red.
+
+**`app/test.js`**
+- Added 13 new tests covering API-01 through API-04: string/number/null `completed` rejected, boolean true/false accepted, ID validation for PUT, array body rejected, and mutation-prevention with a mixed invalid-valid body.
+
+### Bug causes
+
+1. **CSV sync bug**: `Boolean(req.body.completed)` coerced the string `"false"` to `true` (any non-empty string is truthy). Fixed by requiring `typeof req.body.completed === 'boolean'`.
+
+2. **Silent failure on server down**: `toggleStatus` didn't `await` a response check and always called `fetchTodos()`. A network error was swallowed, nothing was shown to the user, and the DOM reverted to server state (making the UI appear frozen). Fixed by wrapping in try/catch and checking `res.ok`.
+
+### Commands run
+
+| Command | Outcome |
+|---|---|
+| `cd /home/claude/bench/claude-bugfix-run01/app && npm test` | 22 passed, 0 failed, 0 skipped |
+
+### Test results
+
+- **Passed:** 22  
+- **Failed:** 0  
+- **Skipped:** 0
+
+### Browser/manual checks
+
+None performed (no browser environment available).
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements / interpretations
+
+- API-03 says "not a JSON object (for example an array)"; I interpreted this to also cover `null` (which `typeof` reports as `"object"`) since it is not a usable record. The body validation checks `typeof body !== 'object' || body === null || Array.isArray(body)`.
+- API-01 says `null` should be rejected — `null` is a JSON type distinct from boolean, so passing `completed: null` returns 400, which the test confirms.
+
+### Unexpected findings
+
+The original PUT handler did no ID validation at all — a string like `"abc"` would parse to `NaN` via `parseInt`, `todos.find` would never match, and it would always return 404. The correct behavior (400 for invalid format) required adding explicit validation matching the DELETE endpoint.
+
+### Session metadata
+
+- **Model:** claude-sonnet-4-6  
+- **Session duration:** not available  
+- **Tokens used:** not available

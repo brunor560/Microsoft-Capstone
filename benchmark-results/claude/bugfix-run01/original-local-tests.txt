@@ -1,0 +1,146 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 51.918805
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 13.739744
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 3.376298
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 4 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 12.589725
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+ok 5 - DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+  ---
+  duration_ms: 32.891595
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+ok 6 - DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+  ---
+  duration_ms: 8.398749
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+ok 7 - DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+  ---
+  duration_ms: 10.89798
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+ok 8 - DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+  ---
+  duration_ms: 10.3195
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id handles safe-integer boundary correctly
+ok 9 - DELETE /api/todos/:id handles safe-integer boundary correctly
+  ---
+  duration_ms: 5.908545
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects string "true" for completed with 400
+ok 10 - PUT /api/todos/:id rejects string "true" for completed with 400
+  ---
+  duration_ms: 4.202057
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects string "false" for completed with 400
+ok 11 - PUT /api/todos/:id rejects string "false" for completed with 400
+  ---
+  duration_ms: 4.456478
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects number for completed with 400
+ok 12 - PUT /api/todos/:id rejects number for completed with 400
+  ---
+  duration_ms: 10.866032
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects null for completed with 400
+ok 13 - PUT /api/todos/:id rejects null for completed with 400
+  ---
+  duration_ms: 6.559842
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id accepts boolean true and sets completed
+ok 14 - PUT /api/todos/:id accepts boolean true and sets completed
+  ---
+  duration_ms: 5.509144
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id accepts boolean false and sets completed
+ok 15 - PUT /api/todos/:id accepts boolean false and sets completed
+  ---
+  duration_ms: 9.580698
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects non-digit ID with 400
+ok 16 - PUT /api/todos/:id rejects non-digit ID with 400
+  ---
+  duration_ms: 1.686139
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects zero ID with 400
+ok 17 - PUT /api/todos/:id rejects zero ID with 400
+  ---
+  duration_ms: 1.773624
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects ID exceeding MAX_SAFE_INTEGER with 400
+ok 18 - PUT /api/todos/:id rejects ID exceeding MAX_SAFE_INTEGER with 400
+  ---
+  duration_ms: 1.642206
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id accepts leading-zero ID
+ok 19 - PUT /api/todos/:id accepts leading-zero ID
+  ---
+  duration_ms: 2.957255
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id returns 404 for valid ID with no matching todo
+ok 20 - PUT /api/todos/:id returns 404 for valid ID with no matching todo
+  ---
+  duration_ms: 1.761747
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id rejects array body with 400
+ok 21 - PUT /api/todos/:id rejects array body with 400
+  ---
+  duration_ms: 3.786301
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id with invalid completed does not mutate todo even with valid title
+ok 22 - PUT /api/todos/:id with invalid completed does not mutate todo even with valid title
+  ---
+  duration_ms: 6.934024
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 357.081105
