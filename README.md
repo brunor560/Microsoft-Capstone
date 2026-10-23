@@ -48,6 +48,10 @@ Shared graders and run procedures are in
 The task 004 and task 005 procedures and graders live on their own
 branches, `benchmark-protocol-v3-bugfix` and `benchmark-protocol-v4-injection`;
 see [`benchmark-results/protocol/update-bugfix/`](benchmark-results/protocol/update-bugfix/README.md).
+Every run, on every task, records the items in
+[`RUN-RECORD.md`](benchmark-results/protocol/RUN-RECORD.md): settings, time,
+tokens and cost, approvals and interventions, transcript, grader results and
+report accuracy.
 
 These files were copied from the `results/*` branches and from
 `benchmark-protocol-v2-edit`. Those branches are still the original records. This branch keeps only what

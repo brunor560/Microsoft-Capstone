@@ -3,7 +3,9 @@
 ## 1. Starting point and evaluator source
 
 - Starting branch: benchmark-start-v2-edit
-- Fixed app/task commit: 4e258a96855d98edd10247f68c0b8265e53a8921
+- Fixed app/task commit: 522f9ada608b30f8801bfa4fac1a164cef3c647c
+  (the same app as before; the task file now has the standard "What to
+  report" section. The team must confirm it before new runs.)
 - Task: pipeline/tasks/003-edit-todo-title.md
 - Evaluator branch: benchmark-protocol-v2-edit
 - Evaluator folder: benchmark-results/protocol/edit-title/
@@ -17,7 +19,22 @@ Record that full commit ID for every attempt.
 Give the agent only the isolated app/task snapshot created below.
 Keep graders, reference solutions, and previous results outside it.
 
+### Earlier runs
+
+The four `edit-run01` runs used commit
+`4e258a96855d98edd10247f68c0b8265e53a8921`. It has the same app, but the
+task file asked for a shorter final report. Compare grader results
+directly; compare final reports with that difference in mind, and record
+which commit each run used.
+
 ## 2. Record the run conditions
+
+**Use [RUN-RECORD.md](RUN-RECORD.md) for every run.** It lists everything
+to capture (identity and settings, time, tokens and cost, approvals and
+interventions, transcript, grader results and report accuracy), who
+records each item, and the file each goes in. Time and tokens come from
+the tool, not from the agent's own report.
+
 
 Before coding, record:
 
@@ -51,7 +68,7 @@ git status --short
 
 $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
-$baseline = '4e258a96855d98edd10247f68c0b8265e53a8921'
+$baseline = '522f9ada608b30f8801bfa4fac1a164cef3c647c'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-edit-run01'
@@ -351,7 +368,8 @@ Suggested results folder:
 
 benchmark-results/<tool>/edit-run01/
 
-Include:
+Include everything on the [RUN-RECORD.md](RUN-RECORD.md) checklist, and
+tick its "Final check" list before publishing. In particular:
 
 - README describing configuration, results, and limitations.
 - Baseline and evaluator commit IDs.

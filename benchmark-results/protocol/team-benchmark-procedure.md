@@ -6,11 +6,25 @@ Follow these steps in order. This procedure reproduces Kapil's benchmark setup, 
 
 | Source | Purpose | What to use |
 |---|---|---|
-| `benchmark-start-v1` | Starting application and task | Fixed commit `be98d692807da26dac3c3a720d4d5cf157e9717d` |
+| `benchmark-start-v1` | Starting application and task | Fixed commit `7bf0751d7c17c98cefb6a46d8990640b2b597b96` (the team must confirm it before new runs) |
 | `results/antigravity-delete-run01` | Shared evaluator tests and procedure | `benchmark-results/protocol/` |
 | Your own results branch | Your evidence and report | `benchmark-results/<tool>/run01/` |
 
 The protocol folder is intentionally absent from the baseline commit. Do not copy an agent's DELETE implementation into the baseline. Do not merge results into the starting application before the comparison.
+
+## Earlier runs and the run record
+
+The `run01` and `run02` runs used commit `be98d692807da26dac3c3a720d4d5cf157e9717d`. The newer commit has the
+same app, but its task file asks for a fuller final report (files, commands,
+exact test counts, problems, anything unexpected, and the model, time and
+tokens when the tool shows them). Compare grader results directly, and
+record which commit each run used.
+
+**Use [RUN-RECORD.md](RUN-RECORD.md) for every run.** It lists everything
+to capture (identity and settings, time, tokens and cost, approvals and
+interventions, transcript, grader results and report accuracy), who
+records each item, and the file each goes in. Time and tokens come from the
+tool, not from the agent's own report.
 
 ## Participants
 
@@ -50,7 +64,7 @@ git status --short
 git fetch origin
 $repoRoot = (Get-Location).Path
 $parentRoot = Split-Path $repoRoot -Parent
-$baselineCommit = 'be98d692807da26dac3c3a720d4d5cf157e9717d'
+$baselineCommit = '7bf0751d7c17c98cefb6a46d8990640b2b597b96'
 $protocolRef = 'origin/results/antigravity-delete-run01'
 git show --no-patch --oneline $baselineCommit
 git ls-tree --name-only $protocolRef benchmark-results/protocol/
@@ -341,7 +355,7 @@ Create `README.md` inside `$evidenceDir`. Use the following structure and replac
 - Harness and version:
 - Model and mode:
 - OS / Node / npm:
-- Baseline commit: be98d692807da26dac3c3a720d4d5cf157e9717d
+- Baseline commit: 7bf0751d7c17c98cefb6a46d8990640b2b597b96
 - Protocol commit:
 - Grader hashes: see grader-hashes.txt
 - Approval settings / integrations / automatically loaded instructions:
@@ -425,6 +439,7 @@ Share the pushed branch link with the team. A pushed branch is available for rev
 ## Completion checklist
 
 - [ ] Same baseline commit and unchanged task/initial prompt.
+- [ ] Everything on the RUN-RECORD.md checklist captured, including its "Final check" list.
 - [ ] Agreed protocol commit and matching grader bytes recorded.
 - [ ] Fresh run folder and conversation; configuration recorded.
 - [ ] Four local baseline tests passed; evaluator baseline failures recorded.
