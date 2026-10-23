@@ -39,9 +39,14 @@ Implement DELETE /api/todos/:id.
 
 Run npm test from app/.
 
-Report:
-- A summary of the changes.
-- The commands executed and actual test results.
-- Any errors or unresolved problems.
+In your final message, report:
+- Each file you changed, with a short summary of the change.
+- Every command you ran to build or test, in order, and its outcome.
+- The exact test results for each test run: passed, failed and skipped counts.
+- Any browser or manual checks you performed and their outcomes, or that you performed none.
+- Errors, retries, limitations, or requirements you could not complete.
+- Any requirement you found unclear, and how you interpreted it.
+- Anything unexpected you noticed in the project.
+- If your tool shows them: the model you ran as, how long the session took, and how many tokens it used. Write "not available" for any you cannot see.
 
 Do not commit or push.
