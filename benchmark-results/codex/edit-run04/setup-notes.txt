@@ -1,0 +1,8 @@
+Setup failures: none. App and evaluator installs succeeded; baseline tests 9 passed, 0 failed.
+No retry or correction round performed.
+Exact supplied snapshot and evaluator commits used; no git fetch needed because both commits were already available (avoids modifying repository refs).
+Optional integrations additionally disabled: apps, plugins, hooks and multi-agent; host skill discovery skipped, consistent with procedure guidance.
+Time measured from prompt submission to process exit using Stopwatch, including shutdown/polling latency; exact final-report delivery time not independently established.
+Global AGENTS.md copied outside workspace and disabled with project_doc_max_bytes=0.
+No repository/branch/grader edits, commits, pushes or publication performed.
+Cross-participant hash confirmation not independently obtained; user-specified pre-run diff check and later exact non-documentation blob comparisons passed.

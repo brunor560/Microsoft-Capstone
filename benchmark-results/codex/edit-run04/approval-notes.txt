@@ -1,0 +1,6 @@
+approvals=none
+denials=none observed
+interventions=none
+corrective_prompts=none
+follow_up_messages=none
+approval_wait_seconds=0; approval policy never

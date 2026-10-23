@@ -1,0 +1,7 @@
+start_utc=2026-10-23T21:14:30.9639544+00:00
+end_utc=2026-10-23T21:15:09.1797491+00:00
+elapsed_seconds=38.2110503
+method=PowerShell Stopwatch immediately before prompt submission through CLI process exit; includes shutdown and monitoring latency
+approval_wait_seconds=0
+cli_exit=0
+exact_final_report_delivery_time=not independently established; process exit is timing proxy

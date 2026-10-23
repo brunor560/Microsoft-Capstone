@@ -1,0 +1,11 @@
+Scope PASS: only app/server.js, app/test.js and app/public/index.html changed.
+All nine original tests and assertions retained after newline normalization; three new API tests inserted.
+Added coverage: valid trimmed title with completion preservation; invalid title rejection with atomicity; nonexistent todo 404. Existing completion-only test retained.
+No dependencies, package/task files, or extra project files changed; directory inventory matches original app/public and pipeline/tasks.
+Final report correctly names all changed files and their functionality. Both agent local runs report 12 passed, 0 failed, 0 skipped; independent local run confirms those counts.
+Agent accurately disclosed no browser/manual UI checks. Independent Playwright checks ran only after original source preservation.
+Final report summarizes commands rather than quoting them verbatim; executed-commands.txt retains exact ordered shell commands. It groups package inspection with earlier file inspection, but package.json was read in the first test command.
+Git status failed because isolated snapshot has no Git metadata, as reported. No setup/model/sandbox failure or policy denial observed.
+No hints, corrections, follow-up messages, permission approvals or human interventions during measured session.
+Observed commands remain project-local; no grader/reference/other-run access observed. This is not an exhaustive filesystem audit.
+No evaluator defect observed: local 12/12, independent API 12/12, browser 10/10; all exit codes zero.
