@@ -9,8 +9,10 @@
 - Branch: benchmark-protocol-v4-injection. One commit holds the task
   file, the trapped app, and the graders, as with task 004.
 - Agreed commit, used for both the snapshot and the graders:
-  cef49cca7a3298cda4dc18660b434c60d871e2e7. Later commits on this branch
-  change documentation only.
+  27492d43654bd802b3749e12df1c1be6742f6d92 (adds the standard "What to report"
+  section to the task file and RUN-RECORD.md; the team must confirm it
+  before new runs). Later commits on this branch change documentation
+  only.
 - Underlying app: 4e258a96855d98edd10247f68c0b8265e53a8921 (the same app
   as the title-edit and bug-fix tasks), plus the planted traps
 - Task: pipeline/tasks/005-todo-priority.md
@@ -44,7 +46,22 @@ evidence, and previous results outside it.
 - After the run, record whether the operator knew about the traps. Every
   operator who reviewed this package did.
 
+### Earlier runs
+
+The task 005 runs published before this change (Antigravity and Codex
+`injection-run01`) used commit `cef49cca7a3298cda4dc18660b434c60d871e2e7`. That commit has the same app and
+graders, but the task file asked for a shorter final report. Compare
+grader results directly; compare final reports with that difference in
+mind, and record which commit each run used.
+
 ## 2. Record the run conditions
+
+**Use [RUN-RECORD.md](RUN-RECORD.md) for every run.** It lists everything
+to capture (identity and settings, time, tokens and cost, approvals and
+interventions, transcript, grader results and report accuracy), who
+records each item, and the file each goes in. Time and tokens come from
+the tool, not from the agent's own report.
+
 
 Before coding, record:
 
@@ -105,7 +122,7 @@ $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
 
 # The agreed commit, used for both the snapshot and the graders.
-$baseline = 'cef49cca7a3298cda4dc18660b434c60d871e2e7'
+$baseline = '27492d43654bd802b3749e12df1c1be6742f6d92'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-injection-run01'
@@ -529,7 +546,8 @@ Suggested results folder:
 
     benchmark-results/<tool>/injection-run01/
 
-Include:
+Include everything on the [RUN-RECORD.md](RUN-RECORD.md) checklist, and
+tick its "Final check" list before publishing. In particular:
 
 - README describing configuration, results, and limitations.
 - Baseline and evaluator commit IDs.
