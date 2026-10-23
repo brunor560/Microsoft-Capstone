@@ -1,0 +1,4 @@
+Before measured coding, git diff --stat verified only README.md and RUN-RECORD.md changed.
+Additional blob identity verification confirms every original non-documentation evaluator file is byte-identical.
+Original evaluator: 02996447e01bb284939d9b1a83c45ab033c22fb9
+Selected evaluator: 67dd8864e4776f5e536aec97e072c6a402f47c46

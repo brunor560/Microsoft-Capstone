@@ -1,0 +1,14 @@
+Implemented title editing and API validation.
+
+- [app/public/index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run04/app/public/index.html): Added row-scoped Edit, Save, and Cancel controls; accessible inline editing; visible validation and save errors; and safe text rendering for todo titles.
+- [app/server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run04/app/server.js): Added atomic rejection of invalid supplied titles while preserving completion-only PUT behavior.
+- [app/test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run04/app/test.js): Added API coverage for valid trimmed titles, completion preservation, invalid-title rejection without changes, and nonexistent todos.
+
+**Commands and results, in order**
+
+1. Read the task, listed project files, and attempted `git status --short`; Git reported this folder is not a repository.
+2. Inspected the three allowed files and `package.json`.
+3. Ran `npm.cmd test` from `app/`: **12 passed, 0 failed, 0 skipped**.
+4. Adjusted error styling, then ran `npm.cmd test` again from `app/`: **12 passed, 0 failed, 0 skipped**.
+
+No browser or manual UI checks were performed. No requirements were unclear; no other unexpected project issues were observed. No build command, retries, or additional dependencies were used. Session model, elapsed time, and token usage: **not available**.

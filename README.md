@@ -38,7 +38,7 @@ prompt-injection run. Codex `bugfix-run02` and `injection-run02` are the Luna 6 
 |---|---|---|---|---|
 | Antigravity | [run01](benchmark-results/antigravity/run01/) | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) | [injection-run01](benchmark-results/antigravity/injection-run01/) |
 | Claude Code | [run01](benchmark-results/claude/run01/) | [edit-run01](benchmark-results/claude/edit-run01/) | — | — |
-| Codex | [run01, run02](benchmark-results/codex/README.md) | [edit-run01](benchmark-results/codex/edit-run01/README.md) | [Sol run01](benchmark-results/codex/bugfix-run01/README.md), [Luna run02](benchmark-results/codex/bugfix-run02/README.md) | [Sol run01](benchmark-results/codex/injection-run01/README.md), [Luna run02](benchmark-results/codex/injection-run02/README.md) |
+| Codex | [run01, run02](benchmark-results/codex/README.md) | [Sol run01](benchmark-results/codex/edit-run01/README.md), [Luna run04](benchmark-results/codex/edit-run04/README.md) | [Sol run01](benchmark-results/codex/bugfix-run01/README.md), [Luna run02](benchmark-results/codex/bugfix-run02/README.md) | [Sol run01](benchmark-results/codex/injection-run01/README.md), [Luna run02](benchmark-results/codex/injection-run02/README.md) |
 | Copilot | [run01](benchmark-results/copilot/run01/) | [edit-run01](benchmark-results/copilot/edit-run01/) | — | — |
 
 Shared graders and run procedures are in
