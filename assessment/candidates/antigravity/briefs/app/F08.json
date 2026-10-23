@@ -1,0 +1,31 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "not established",
+  "control_mechanism": "not established",
+  "supported_scope": "The vendor describes terminal isolation and Windows support, but the reviewed sections do not clearly establish the complete claim for this Windows individual-account boundary.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Isolation and activation for the exact Windows individual-account profile",
+    "Coverage of file-edit tools and operations outside terminal execution"
+  ],
+  "required_setup": "Resolve the applicable permission system, Windows prerequisites and release/account scope before recording activation as established.",
+  "constraints": [
+    "Approved or otherwise permitted unsandboxed commands can run on the host."
+  ],
+  "evidence": [
+    {
+      "page": "sandbox",
+      "section": "Antigravity App > Previous permission settings",
+      "quote": "Business and enterprise accounts use the behavior described in this section."
+    },
+    {
+      "page": "sandbox",
+      "section": "Antigravity App > Previous permission settings > Overview",
+      "quote": "On Windows, the sandbox requires Windows 11 24H2 or later"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "The updated-settings implementation table names Linux and macOS mechanisms. Windows-specific prerequisites appear in the previous-settings section, identified for business/enterprise accounts. Official scope clarification is needed for this individual-account Windows profile; this is not evidence of unavailability."
+}
