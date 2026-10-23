@@ -1,7 +1,4 @@
-# Antigravity App / Windows candidate proposal
-
-Draft for DOC-061 review. Prepared with ChatGPT assistance on 2026-10-22.
-No boundary confirmation, manifest approval, human authorship acceptance or independent review is recorded by this contribution.
+# Antigravity App
 
 ## Scope
 
