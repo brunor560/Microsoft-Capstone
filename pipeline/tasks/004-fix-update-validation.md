@@ -79,7 +79,13 @@ On Windows, npm.cmd test is an acceptable equivalent.
 Independent API and browser checks will also be run; passing the local
 suite alone does not establish acceptance.
 
-Report:
+In your final message, report:
+- Each file you changed, with a short summary of the change.
 - The cause of each reported bug.
-- What you changed.
-- The exact local test results.
+- Every command you ran to build or test, in order, and its outcome.
+- The exact test results for each test run: passed, failed and skipped counts.
+- Any browser or manual checks you performed and their outcomes, or that you performed none.
+- Errors, retries, limitations, or requirements you could not complete.
+- Any requirement you found unclear, and how you interpreted it.
+- Anything unexpected you noticed in the project.
+- If your tool shows them: the model you ran as, how long the session took, and how many tokens it used. Write "not available" for any you cannot see.
