@@ -1,0 +1,48 @@
+All 15 tests pass. Here's the summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`** — Fixed the `PUT /api/todos/:id` handler to validate the `title` field before making any mutations. If `title` is present in the request body and is not a non-empty string, it now returns HTTP 400 and leaves the todo (including `completed`) unchanged.
+
+**`app/public/index.html`** — Replaced the `innerHTML`-based rendering with DOM API calls to prevent XSS. Added:
+- `data-todo-id` attribute on each `<li>`
+- "Edit" button per row
+- Inline editor with an `<input aria-label="Edit title">`, "Save" and "Cancel" buttons
+- `role="alert"` element inside each row for validation/network errors
+- Validation (empty/whitespace title shows error, keeps editor open)
+- Save calls `PUT /api/todos/:id`, updates the displayed title on success, shows error on failure
+
+**`app/test.js`** — Added 6 new API tests covering: valid title update with trimming, empty title rejection, whitespace-only rejection, non-string rejection, state preservation when title+completed supplied together with bad title, and completion-only update.
+
+### Test run
+
+```
+cd /home/claude/bench/claude-edit-run02/app && npm test
+```
+
+**Result: 15 passed, 0 failed, 0 skipped**
+
+### Browser/manual checks
+
+None performed — no browser was available in this environment.
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements
+
+UI-08 states "Editing or saving a title does not toggle the todo's completion state." The implementation satisfies this since the edit save only sends `{ title }` to the API, never touching `completed`.
+
+### Unexpected observations
+
+The original `PUT` handler silently ignored invalid titles (it just skipped updating them without returning 400). This was a pre-existing gap that the task required fixing.
+
+### Session metadata
+
+- Model: claude-sonnet-4-6
+- Duration / tokens: not available from within the session

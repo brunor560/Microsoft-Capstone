@@ -1,0 +1,18 @@
+run_id=claude-edit-run02
+participant=operator: Claude (claude-opus-5-5) running the CLI on behalf of the account owner (crochajr81); human participant name to be filled in by team; 2026-10-23, America/New_York
+tool=Claude Code 2.1.309
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6
+reasoning_effort=default (no --effort flag; inherited CLAUDE_EFFORT env var removed)
+baseline_commit=522f9ada608b30f8801bfa4fac1a164cef3c647c
+protocol_commit=67dd8864e4776f5e536aec97e072c6a402f47c46 (head of origin/benchmark-protocol-v2-edit on 2026-10-23; team agreement on this ID NOT yet confirmed)
+os=Ubuntu 24.04.5 LTS (Linux 6.18.44 x86_64), Anthropic-hosted cloud container; NOT Windows/PowerShell — bash equivalents used
+node=v22.22.0
+npm=10.9.4
+playwright=1.64.1 (grader); browser=Chromium 141.0.7390.37 (pre-installed build 1194, see setup-notes.txt)
+approval=--permission-mode acceptEdits, --allowedTools Bash (all edits and shell commands pre-approved; no prompts)
+sandbox=none beyond the container; no filesystem confinement to the run folder was enforced
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools)
+fresh_start=new session (session_id 735424ef-29d3-464f-a373-a14b7b5790cd); MCP off (--strict-mcp-config, empty config); skills/slash commands off (--disable-slash-commands); Chrome off (--no-chrome); --setting-sources project (no user settings; run folder has no project settings or CLAUDE.md); host-session env vars removed via freshenv.sh
+residual_environment=the CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed; the host system prompt for this container may differ from a stock local install (system/cached prompt ~30k tokens before the task)
+operator_knowledge=operator (Claude, Opus 5.5) read the shared procedure and RUN-RECORD.md and knew the grader file names; did not read the task file, grader test contents, reference solutions or other runs' code before the run; no hints given

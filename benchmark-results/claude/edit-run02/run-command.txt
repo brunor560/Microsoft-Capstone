@@ -1,0 +1,2 @@
+cd /home/claude/bench/claude-edit-run02 && freshenv.sh -p "$(cat initial-prompt.txt)" --model claude-sonnet-4-6 --output-format stream-json --verbose --tools Bash Read Edit Write Glob Grep --permission-mode acceptEdits --allowedTools Bash --strict-mcp-config --mcp-config '{"mcpServers":{}}' --setting-sources project --disable-slash-commands --no-chrome
+freshenv.sh = claude with host-session identity/integration env vars unset (see freshenv.sh)

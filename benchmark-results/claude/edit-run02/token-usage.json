@@ -1,0 +1,74 @@
+{
+  "source": "claude -p --output-format stream-json, final result event",
+  "session_id": "735424ef-29d3-464f-a373-a14b7b5790cd",
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 26588,
+    "cache_read_input_tokens": 120796,
+    "output_tokens": 9184,
+    "output_tokens_details": {
+      "thinking_tokens": 3281
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 26588,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 1,
+        "output_tokens": 498,
+        "cache_read_input_tokens": 25275,
+        "cache_creation_input_tokens": 1313,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1313
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1258,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0001348,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 10,
+      "outputTokens": 9184,
+      "cacheReadInputTokens": 120796,
+      "cacheCreationInputTokens": 26588,
+      "webSearchRequests": 0,
+      "costUSD": 0.33355680000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 3281,
+      "canonicalModel": "claude-sonnet-4-6",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "total_cost_usd": 0.33369160000000003,
+  "num_turns": 10,
+  "duration_ms": 115107,
+  "duration_api_ms": 114599,
+  "permission_denials": [],
+  "cost_note": "list-price cost reported by the CLI; cached reads are part of input"
+}

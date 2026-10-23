@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Benchmark Baseline</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 550px; margin: 50px auto; padding: 0 20px; color: #222; }
+    h1 { color: #006747; border-bottom: 2px solid #006747; padding-bottom: 8px; }
+    form { display: flex; gap: 8px; margin: 20px 0; }
+    input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    button { padding: 10px 18px; background: #006747; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid #eee; }
+    .item-text { cursor: pointer; flex: 1; }
+    .done { text-decoration: line-through; color: #888; }
+    .delete-btn { background: #d9534f; padding: 6px 10px; font-size: 0.85rem; }
+    .edit-btn { background: #0066cc; padding: 6px 10px; font-size: 0.85rem; margin-right: 4px; }
+    .save-btn { background: #006747; padding: 6px 10px; font-size: 0.85rem; margin-right: 4px; }
+    .cancel-btn { background: #666; padding: 6px 10px; font-size: 0.85rem; margin-right: 4px; }
+    .edit-controls { display: flex; gap: 4px; align-items: center; flex: 1; }
+    .edit-input { flex: 1; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    [role="alert"] { width: 100%; color: #d9534f; font-size: 0.85rem; margin-top: 4px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Baseline Test Application</h1>
+  <form id="todo-form">
+    <input id="todo-input" placeholder="Enter task requirement..." required />
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const list = document.getElementById('todo-list');
+
+    function createTodoItem(item) {
+      const li = document.createElement('li');
+      li.dataset.todoId = item.id;
+
+      const span = document.createElement('span');
+      span.className = 'item-text' + (item.completed ? ' done' : '');
+      span.textContent = item.title;
+      span.addEventListener('click', () => toggleStatus(item.id, !item.completed));
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit-btn';
+      editBtn.textContent = 'Edit';
+      editBtn.addEventListener('click', () => openEditor(li, item.title));
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.addEventListener('click', () => deleteItem(item.id));
+
+      const editControls = document.createElement('div');
+      editControls.className = 'edit-controls hidden';
+
+      const editInput = document.createElement('input');
+      editInput.className = 'edit-input';
+      editInput.setAttribute('aria-label', 'Edit title');
+
+      const saveBtn = document.createElement('button');
+      saveBtn.className = 'save-btn';
+      saveBtn.textContent = 'Save';
+      saveBtn.addEventListener('click', () => saveTitle(li, item.id, editInput));
+
+      const cancelBtn = document.createElement('button');
+      cancelBtn.className = 'cancel-btn';
+      cancelBtn.textContent = 'Cancel';
+      cancelBtn.addEventListener('click', () => closeEditor(li));
+
+      editControls.appendChild(editInput);
+      editControls.appendChild(saveBtn);
+      editControls.appendChild(cancelBtn);
+
+      const alertEl = document.createElement('div');
+      alertEl.setAttribute('role', 'alert');
+      alertEl.className = 'hidden';
+
+      li.appendChild(span);
+      li.appendChild(editBtn);
+      li.appendChild(deleteBtn);
+      li.appendChild(editControls);
+      li.appendChild(alertEl);
+
+      return li;
+    }
+
+    function openEditor(li, currentTitle) {
+      li.querySelector('.item-text').classList.add('hidden');
+      li.querySelector('.edit-btn').classList.add('hidden');
+      li.querySelector('.delete-btn').classList.add('hidden');
+      const editControls = li.querySelector('.edit-controls');
+      editControls.classList.remove('hidden');
+      const editInput = editControls.querySelector('.edit-input');
+      editInput.value = currentTitle;
+      editInput.focus();
+      const alertEl = li.querySelector('[role="alert"]');
+      alertEl.classList.add('hidden');
+      alertEl.textContent = '';
+    }
+
+    function closeEditor(li) {
+      li.querySelector('.item-text').classList.remove('hidden');
+      li.querySelector('.edit-btn').classList.remove('hidden');
+      li.querySelector('.delete-btn').classList.remove('hidden');
+      li.querySelector('.edit-controls').classList.add('hidden');
+      const alertEl = li.querySelector('[role="alert"]');
+      alertEl.classList.add('hidden');
+      alertEl.textContent = '';
+    }
+
+    async function saveTitle(li, id, editInput) {
+      const newTitle = editInput.value;
+      const alertEl = li.querySelector('[role="alert"]');
+
+      if (!newTitle || newTitle.trim() === '') {
+        alertEl.textContent = 'Title cannot be empty.';
+        alertEl.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/todos/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: newTitle })
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          alertEl.textContent = data.error || 'Failed to save title.';
+          alertEl.classList.remove('hidden');
+          return;
+        }
+
+        const updated = await res.json();
+        li.querySelector('.item-text').textContent = updated.title;
+        closeEditor(li);
+      } catch (err) {
+        alertEl.textContent = 'Network error. Please try again.';
+        alertEl.classList.remove('hidden');
+      }
+    }
+
+    async function fetchTodos() {
+      const res = await fetch('/api/todos');
+      const data = await res.json();
+      list.innerHTML = '';
+      data.forEach(item => list.appendChild(createTodoItem(item)));
+    }
+
+    document.getElementById('todo-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('todo-input');
+      await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: input.value })
+      });
+      input.value = '';
+      fetchTodos();
+    };
+
+    async function toggleStatus(id, completed) {
+      await fetch(`/api/todos/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed })
+      });
+      fetchTodos();
+    }
+
+    async function deleteItem(id) {
+      await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      fetchTodos();
+    }
+
+    fetchTodos();
+  </script>
+</body>
+</html>
