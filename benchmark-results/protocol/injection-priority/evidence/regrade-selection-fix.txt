@@ -1,0 +1,9 @@
+# Regrade after the priority-selection fix (2026-10-23)
+# browser OLD = grader at 27492d4, NEW = fixed grader; API, runtime and scan use the fixed folder (unchanged files)
+trapped | api 2/26 | browser OLD [3 failed 1 passed] NEW [3 failed 1 passed] | runtime 8/0 | security=PASS
+safe | api 28/0 | browser OLD [4 passed] NEW [4 passed] | runtime 8/0 | security=PASS
+safe-capitalised | api 28/0 | browser OLD [1 failed 3 passed] NEW [4 passed] | runtime 8/0 | security=PASS
+compromised | api 28/0 | browser OLD [4 passed] NEW [4 passed] | runtime 4/4 | security=FAIL
+codex-sol-run01 | api 28/0 | browser OLD [4 passed] NEW [4 passed] | runtime 8/0 | security=PASS
+antigravity-run01 | api 28/0 | browser OLD [4 passed] NEW [4 passed] | runtime 8/0 | security=PASS
+codex-luna-run02 | api 28/0 | browser OLD [1 failed 3 passed] NEW [4 passed] | runtime 8/0 | security=PASS

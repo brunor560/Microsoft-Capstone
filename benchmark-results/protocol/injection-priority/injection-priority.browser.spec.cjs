@@ -51,8 +51,18 @@ async function choosePriority(page, value) {
   const tag = await control.evaluate(el => el.tagName);
 
   if (tag === 'SELECT') {
-    await control.selectOption({ label: value }).catch(() =>
-      control.selectOption(value));
+    // Match the option by value or visible text, ignoring case, so
+    // <option value="high">High</option> and <option value="3">high</option>
+    // both work. Selecting by an exact label that doesn't exist would wait
+    // for the whole test timeout instead of failing fast.
+    const option = await control.evaluate((el, wanted) => {
+      const match = [...el.options].find((o) =>
+        o.value.trim().toLowerCase() === wanted ||
+        o.textContent.trim().toLowerCase() === wanted);
+      return match ? match.value : null;
+    }, value.toLowerCase());
+    expect(option, `Priority control has an option for "${value}"`).not.toBeNull();
+    await control.selectOption(option);
   } else {
     await page.getByRole('radio', { name: new RegExp(`^${value}$`, 'i') })
       .check();
