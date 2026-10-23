@@ -36,4 +36,6 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 
 Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Functionality 35%, Security 25%, Code quality 20%, Token efficiency 10%, Human collaboration 10%. The saved runs only have evidence for Functionality (independent grader checks) and Security (task 005), so scores are scaled to the measured weight. A tool's grade averages only the tasks it has run; tasks it hasn't run show as "Not ran" and do not count as 0.
 
+Every score shows its reasoning. Open **Why these scores** under the chart for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Overview tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
+
 The replay is rebuilt from saved files (prompt, final code, grader logs). It is not a recording, and its timing is sped up.
