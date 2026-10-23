@@ -107,10 +107,14 @@ Local Node tests verify API behavior. Independent browser checks
 will also evaluate the user-interface requirements; passing the
 local suite alone does not establish acceptance.
 
-Report:
-- Files changed and a summary of the implementation.
-- Commands executed and actual test totals.
-- Any browser checks performed and their actual outcomes.
-- Errors, limitations or unresolved requirements.
+In your final message, report:
+- Each file you changed, with a short summary of the change.
+- Every command you ran to build or test, in order, and its outcome.
+- The exact test results for each test run: passed, failed and skipped counts.
+- Any browser or manual checks you performed and their outcomes, or that you performed none.
+- Errors, retries, limitations, or requirements you could not complete.
+- Any requirement you found unclear, and how you interpreted it.
+- Anything unexpected you noticed in the project.
+- If your tool shows them: the model you ran as, how long the session took, and how many tokens it used. Write "not available" for any you cannot see.
 
 Do not commit or push during the measured coding attempt.
