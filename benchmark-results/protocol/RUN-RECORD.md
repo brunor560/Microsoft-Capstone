@@ -68,16 +68,139 @@ Example:
 Cached tokens are part of input, not extra. Note this whenever you
 report totals.
 
+### Token limit per task and the token-efficiency score (10%)
+
+| Task | Token limit | Full marks up to |
+|---|---:|---:|
+| 001 Add DELETE endpoint | 300,000 | 150,000 |
+| 003 Edit todo title | 500,000 | 250,000 |
+| 004 Fix update validation | 400,000 | 200,000 |
+| 005 Todo priority | 400,000 | 200,000 |
+
+**Score** (SRS): 100 if the run used at most 50% of the limit, falling in a
+straight line to 0 at the limit:
+`T = 100 × (limit − tokens) ÷ (limit ÷ 2)`, capped between 0 and 100.
+
+**Tokens counted** = all input (including cached input) + all output. For
+Codex, cached input is already part of `input_tokens`. For Claude Code, add
+`cache_read_input_tokens` and `cache_creation_input_tokens` to
+`input_tokens`. The limits are about twice what an efficient run used on
+each task in the October 2026 runs (112,000–197,000), so a typical run gets
+full marks and an unusually heavy one loses points.
+
+A run whose tool doesn't report tokens gets **no T score** ("not
+available"); it is left out of that run's total rather than scored 0.
+
 ## 4. Human involvement (operator)
 
 | Item | Record | File |
 |---|---|---|
 | Approvals | each permission request, what was asked, approved or denied | `approval-notes.txt` |
-| Interventions | any message you sent after the initial prompt, with time and reason | `approval-notes.txt` |
+| Interventions | every message to the measured agent after the initial prompt | `interventions.json` (below) |
 | Setup help | problems fixed outside the agent, such as installs or sandbox errors | `setup-notes.txt` |
 | Corrections | corrective prompts, recorded separately from the original attempt | `corrections/` |
 
 If there were none, write `none` explicitly.
+
+### Interventions: `interventions.json`
+
+One entry for **every** message sent to the measured agent after the initial
+prompt, whoever sent it. A message from an AI operator counts exactly like
+one from a person: to the agent it is an intervention either way.
+
+```json
+{
+  "run_id": "codex-injection-run02",
+  "interventions": [
+    {
+      "time_utc": "2026-10-23T20:46:30Z",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Approved: npm test",
+      "reason": "permission prompt"
+    }
+  ]
+}
+```
+
+`kind` is one of:
+- `approval`: a routine permission answer. Never counted against the agent.
+- `setup`: help with the environment before or during measurement. Recorded, not counted.
+- `clarification`: answering a question about the task.
+- `correction`: telling the agent something is wrong.
+- `other`.
+
+Use `"interventions": []` when there were none.
+
+### Second-rater review: `h-review.json`
+
+A **different team member** (not the operator) rates each `clarification`,
+`correction` or `other` entry against this rule: **an intervention is
+avoidable if the information it gave was already explicit in the task file
+or the initial prompt.**
+
+```json
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-10-25T15:00:00Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "ratings": [
+    { "index": 1, "avoidable": true, "evidence": "Task file, API-02 states the 400 rule" }
+  ]
+}
+```
+
+`index` is the entry's position in `interventions.json`, starting at 0. With
+no interventions, the review still records the reviewer and
+`"ratings": []`, confirming the run had none.
+
+**Human collaboration score (10%)** (SRS): `H = 100 − 25 × avoidable
+interventions`, minimum 0. Approvals and setup help never count. **A run
+without `h-review.json` gets no H score**: the SRS does not allow claiming
+H before a second rater has reviewed it.
+
+## 4a. Operator (operator)
+
+The **operator** is whoever sets up, launches and grades the run: a person,
+or an AI session (for example a Codex session acting as operator). The
+operator's effort is **not** part of the agent's score. It is the cost of
+running the benchmark, recorded so human-operated and AI-operated runs can
+be compared, and so an informed operator's possible influence is visible.
+
+Record it in `operator.json`:
+
+```json
+{
+  "operator_type": "ai",
+  "operator": "Codex CLI 0.163.0-alpha.11.2, gpt-6.1-sol, low",
+  "supervised_by": "Joseph B.",
+  "knowledge": "read the procedure README and RUN-RECORD.md; did not read reference/ or ACCEPTANCE.md before the measured run",
+  "setup_attempts": 1,
+  "setup_problems": [],
+  "setup_minutes": 6,
+  "grading_minutes": 4,
+  "operator_tokens": { "input": 412000, "output": 9800 },
+  "messages_to_agent": 0
+}
+```
+
+| Field | Meaning |
+|---|---|
+| `operator_type` | `human` or `ai` |
+| `operator` | the person's name, or the AI tool, version, model and reasoning level |
+| `supervised_by` | for an AI operator, the person who directed it |
+| `knowledge` | what the operator knew about the task, graders, reference or earlier runs |
+| `setup_attempts` | including blocked attempts kept in `setup-history/` |
+| `setup_problems` | short descriptions of each problem fixed |
+| `setup_minutes`, `grading_minutes` | operator time, separate from the agent's measured time; `null` if not measured |
+| `operator_tokens` | an AI operator's own token use, or `null` |
+| `messages_to_agent` | must match the number of entries in `interventions.json` |
+
+Rules:
+- Anything the operator, human or AI, says to the measured agent goes in `interventions.json` and can affect H.
+- An AI operator must not pass graders, references, acceptance criteria or earlier conversation to the measured agent. Record what it read in `knowledge`.
+- Use `null` for anything not measured. Never estimate silently.
 
 ## 5. What the agent did (operator, from the transcript)
 
@@ -119,6 +242,10 @@ Record the answers in `scope-review.txt`.
 - [ ] `token-usage.json` has numbers, or `"unavailable"` with a reason
 - [ ] Model, reasoning level and tool version are in `run-configuration.txt`
 - [ ] Approvals, interventions and setup help are recorded, or `none`
+- [ ] `interventions.json` lists every message to the agent (or `[]`)
+- [ ] `operator.json` records the operator type, knowledge, setup attempts and messages to the agent
+- [ ] `h-review.json` is written by a second team member before H is claimed
+- [ ] Tokens are within the task's limit, or the overrun is noted (it lowers T, it doesn't invalidate the run)
 - [ ] Prompt, final report and transcript are saved
 - [ ] All grader logs and exit codes are saved
 - [ ] `quality.json` is generated and committed with the run on `results/all-runs`

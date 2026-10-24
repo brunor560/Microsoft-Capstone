@@ -26,6 +26,20 @@ interventions, transcript, grader results and report accuracy), who
 records each item, and the file each goes in. Time and tokens come from the
 tool, not from the agent's own report.
 
+### Token limit, human collaboration and the operator
+
+- **Token limit for this task: 300,000 tokens.** Token efficiency (10%)
+  is 100 up to 150,000 tokens, falling to 0 at 300,000. Tokens come from the
+  tool's own usage record (RUN-RECORD.md section 3).
+- **Human collaboration (10%):** log every message to the measured agent
+  after the initial prompt in `interventions.json`, whether it came from a
+  person or an AI operator. A second team member rates them in
+  `h-review.json`; only avoidable clarifications and corrections cost
+  points (25 each). Without `h-review.json` the run has no H score.
+- **Operator:** record who ran the benchmark in `operator.json`, a person or
+  an AI session (tool, model, who supervised it), with what the operator
+  knew, setup attempts and time. This is not part of the agent's score.
+
 Runs before `4fa0659` (including any that used `7bf0751`) had no "How
 your work is graded" section in the task file, so those agents were not
 told that code quality is graded.

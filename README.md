@@ -62,6 +62,22 @@ Each run folder has a `quality.json`; the summary is in
 from these commits on tell the agent about these checks: 001 `4fa0659`,
 003 `fb5cfd5`, 004 `0de2440`, 005 `8522ef4`.
 
+**Token efficiency (10%)** uses a token limit per task: 001 300,000, 003
+500,000, 004 400,000, 005 400,000. A run scores 100 up to half the limit,
+falling to 0 at the limit. Runs whose tool doesn't report tokens get no T
+score.
+
+**Human collaboration (10%) and the operator.** Every message to the
+measured agent after the initial prompt is logged in `interventions.json`,
+whether it came from a person or from an AI operator. A second team member
+rates each one in `h-review.json`; only avoidable clarifications and
+corrections cost points (25 each), and a run has no H score until that
+review exists. Who ran the benchmark (a person, or an AI session such as
+Codex acting as operator), what they knew, and their setup effort go in
+`operator.json`. Operator effort is shown separately and is not part of the
+agent's score. See [`RUN-RECORD.md`](benchmark-results/protocol/RUN-RECORD.md)
+sections 3, 4 and 4a.
+
 These files were copied from the `results/*` branches and from
 `benchmark-protocol-v2-edit`. Those branches are still the original records. This branch keeps only what
 is needed to analyse the runs: run reports, prompts and final reports, test
