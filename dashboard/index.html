@@ -293,6 +293,12 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .why-panel > summary { cursor: pointer; font-weight: 800; }
 .why-tool { margin-top: 8px; }
 .why-tool .tests { padding: 4px 14px 10px; }
+.qhelp { padding: 4px 2px; font-size: 13.5px; line-height: 1.5; }
+.qhelp p { margin: 8px 0; }
+.qtable { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+.qtable th, .qtable td { text-align: left; vertical-align: top; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+.qtable th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--label-3); }
+@media (max-width: 640px) { .qtable { font-size: 12px; } .qtable th, .qtable td { padding: 5px 4px; } }
 .told { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 999px; border: 1px solid var(--border-strong); }
 .told.yes { color: var(--ok); } .told.no { color: var(--label-3); }
 .empty { color: var(--label-3); text-align: center; padding: 30px; }
@@ -339,6 +345,22 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
     <details class="why-panel" id="whyPanel"><summary>Why these scores: the checklist and deductions behind each grade</summary>
       <p class="note">Each tool's grade is the average of its task scores. Each task lists what was checked, what lost points, and links to the full breakdown.</p>
       <div id="scoreWhy"></div></details>
+    <details class="why-panel" id="qualityHelp"><summary>How code quality is scored (20% of each grade)</summary>
+      <div class="qhelp">
+        <p>Code quality asks whether the agent left the code in worse shape than it found it, not just whether the feature works. The grader compares the <b>starting code</b> (the app the agent was given) with the <b>agent's code</b>, looking only at the files agents may change: <code>server.js</code>, <code>test.js</code> and the script inside <code>public/index.html</code>.</p>
+        <table class="qtable"><thead><tr><th>Check (25 points)</th><th>What it looks for</th><th>Passes when</th></tr></thead><tbody>
+          <tr><td><b>Lint</b></td><td>Real code problems found by ESLint's recommended rules: unused variables, leftover <code>debugger</code> lines, empty blocks, unreachable code</td><td>No more problems than the starting code</td></tr>
+          <tr><td><b>Complexity</b></td><td>Functions with too many decision paths (<code>if</code>, <code>else</code>, <code>&amp;&amp;</code>, loops); the limit is cyclomatic complexity 10</td><td>No more over-complex functions than the starting code</td></tr>
+          <tr><td><b>Duplication</b></td><td>Blocks of 5 or more lines copied elsewhere (jscpd)</td><td>No more duplicated lines than the starting code</td></tr>
+          <tr><td><b>Runtime</b></td><td>How long <code>npm test</code> takes, timed 10 times each, alternating starting and agent code</td><td>The agent's median is at most 1.2 &times; the starting code's, and its tests pass</td></tr>
+        </tbody></table>
+        <p><b>Score</b> = 25 &times; checks passed (all four = 100, three = 75, &hellip;). In the total it is weighted 20%, for example on a task without security checks: <span class="calc">(35 &times; Functionality + 20 &times; Quality) &divide; 55</span>. Token efficiency and human help are not measured yet, so the total is scaled to what was measured.</p>
+        <div id="qualityLive"></div>
+        <p><b>Told or not told.</b> Agents in runs before 24 October 2026 were not told code quality is graded; newer task files say so. Each run is labelled, and quality scores should only be compared between runs with the same label. The score itself is calculated the same way either way.</p>
+        <p><b>How we know the grader is right.</b> Five versions of the starting app were graded, each with one planted problem (an unused variable, an over-complex function, a copied block, a slow test) plus an untouched copy. Each problem failed exactly its own check, and the untouched copy scored 100.</p>
+        <p><b>Limits.</b> Duplication is strict: the starting code has none, so even one repeated test block fails. Runtime counts the agent's own tests, so very thorough testing can push a run over 1.2 &times;. Results within about 0.05 of the limit should be re-checked.</p>
+        <p class="note">Grader: <a href="https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/benchmark-results/protocol/code-quality" target="_blank" rel="noopener">benchmark-results/protocol/code-quality</a> on <code>results/all-runs</code> (ESLint 9.17.0, jscpd 4.0.5). Each run's details are in its <code>quality.json</code> and in its "Why this score" checklist.</p>
+      </div></details>
   </section>
 
   <section class="stats" id="stats"></section>
@@ -738,6 +760,27 @@ function explainHTML(r) {
     ${ex.unmeasured.length ? `<div class="why-dim"><b>Not counted (${ex.unmeasured.reduce((a, d) => a + d.w, 0)}% of the weight)</b>${ex.unmeasured.map((d) => `<div class="t"><span class="ic note">○</span><span><b>${esc(d.name)} ${d.w}%</b>: ${esc(d.key === 'S' ? 'Not graded on this task: only task 005 has security checks.' : d.how)}</span></div>`).join('')}</div>` : ''}
     <div class="why-dim"><b>Total</b><p class="note calc">${esc(ex.totalCalc)}</p></div></div>`;
 }
+// Live part of the code-quality explanation: a worked example and how often each check fails.
+function qualityLiveHTML() {
+  const graded = D.runs.filter((r) => r.quality);
+  if (!graded.length) return '<p class="note">No run has a code-quality result yet.</p>';
+  const names = { lint: 'Lint', complexity: 'Complexity', duplication: 'Duplication', runtime: 'Runtime' };
+  const fails = Object.keys(names).map((k) => ({ k, n: graded.filter((r) => r.quality.checks[k] && r.quality.checks[k].pass === false).length }))
+    .sort((a, b) => b.n - a.n);
+  const ex = graded.slice().sort((a, b) => a.quality.score - b.quality.score)[0];
+  const c = ex.quality.checks;
+  const line = (k, txt) => `<div class="t ${c[k].pass === false ? 'bad' : 'ok'}"><span class="ic">${c[k].pass === false ? '✖' : '✔'}</span><span>${txt}</span></div>`;
+  const first = (k) => (c[k].details && c[k].details[0]) ? ` <span class="note">(${esc(c[k].details[0])})</span>` : '';
+  return `<p><b>How often each check fails</b> across the ${graded.length} graded runs: ${fails.map((f) => `${names[f.k]} ${f.n}`).join(' · ')}. Average quality score: ${fmt1(graded.reduce((a, r) => a + r.quality.score, 0) / graded.length)}.</p>
+    <p><b>Worked example</b>, the lowest quality score: <a href="#" data-why-run="${ex.id}">${esc(toolName(ex.tool))} · task ${ex.task} · ${esc(ex.run)}</a>, quality <b>${fmt1(ex.quality.score)}</b>.</p>
+    ${line('lint', `Lint: ${c.lint.baseline} → ${c.lint.candidate} problems`)}
+    ${line('complexity', `Complexity: ${c.complexity.baseline} → ${c.complexity.candidate} functions above 10${first('complexity')}`)}
+    ${line('duplication', `Duplication: ${c.duplication.baseline} → ${c.duplication.candidate} duplicated lines${first('duplication')}`)}
+    ${c.runtime.applicable === false ? '' : line('runtime', `Runtime: ${c.runtime.ratio}× the starting code's test time`)}
+    <p class="calc">25 × ${ex.quality.points / 25} passed ÷ ${ex.quality.possible / 25} = ${fmt1(ex.quality.score)}; total ${fmt1(runScore(ex))} (${grade(runScore(ex))})</p>`;
+}
+$('#qualityLive').addEventListener('click', (e) => { const a = e.target.closest('[data-why-run]'); if (!a) return; e.preventDefault(); openRun(a.dataset.whyRun, 'overview'); });
+
 // Per-tool breakdown under the score chart: each task's score and the reason behind it
 function toolWhyHTML(tasks) {
   return D.tools.map((tl) => {
@@ -831,6 +874,7 @@ function renderScore() {
   $('#vbars').innerHTML = h.bars;
   $('#vnames').innerHTML = h.names;
   $('#scoreWhy').innerHTML = toolWhyHTML(tasks);
+  $('#qualityLive').innerHTML = qualityLiveHTML();
 }
 $('#scoreWhy').addEventListener('click', (e) => { const a = e.target.closest('[data-why-run]'); if (!a) return; e.preventDefault(); openRun(a.dataset.whyRun, 'overview'); });
 $('#scoreAll').onclick = () => { state.tasks.clear(); save(); renderFilters(); render(); };

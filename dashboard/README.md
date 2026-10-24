@@ -36,6 +36,8 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 
 Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Functionality 35%, Security 25%, Code quality 20%, Token efficiency 10%, Human collaboration 10%. The saved runs have evidence for Functionality (independent grader checks), Code quality (each run's `quality.json`, from `benchmark-results/protocol/code-quality` on `results/all-runs`) and Security (task 005), so scores are scaled to the measured weight. A tool's grade averages only the tasks it has run; tasks it hasn't run show as "Not ran" and do not count as 0.
 
+Open **How code quality is scored** under the chart for a plain-language explanation of the four code-quality checks, how they are weighted, a worked example (the lowest-scoring run) and how often each check fails.
+
 Each run is labelled **told** or **not told** about code quality: told when its recorded snapshot commit's task file has the "How your work is graded" section (added 2026-10-24), not told otherwise. Runs without a recorded commit predate that section. Code quality is scored the same either way; the label shows which runs are fair to compare on quality.
 
 Every score shows its reasoning. Open **Why these scores** under the chart for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Overview tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
