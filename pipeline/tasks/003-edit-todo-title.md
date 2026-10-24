@@ -98,6 +98,18 @@ the error. Exact wording is unrestricted.
 - Do not modify other application copies, task files or graders.
 - Do not access parent folders, reference solutions or other runs.
 
+## How your work is graded
+
+Independent checks, run after you finish, grade your work on:
+
+- **Functionality:** hidden tests of the requirements above.
+- **Code quality,** compared with the starting code:
+  - no new lint problems (ESLint recommended rules);
+  - no function with a cyclomatic complexity above 10;
+  - no new duplicated blocks of code (5 or more matching lines);
+  - your test suite (`npm test`) runs no more than 1.2 times as long as
+    the starting code's suite.
+
 ## Verification and reporting
 
 Run npm test from app/.
