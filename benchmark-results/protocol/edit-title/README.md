@@ -3,7 +3,7 @@
 ## 1. Starting point and evaluator source
 
 - Starting branch: benchmark-start-v2-edit
-- Fixed app/task commit: 522f9ada608b30f8801bfa4fac1a164cef3c647c
+- Fixed app/task commit: fb5cfd51df4a95bdc4d74c4b04030d247a46d73e
   (the same app as before; the task file now has the standard "What to
   report" section. The team must confirm it before new runs.)
 - Task: pipeline/tasks/003-edit-todo-title.md
@@ -20,6 +20,11 @@ Give the agent only the isolated app/task snapshot created below.
 Keep graders, reference solutions, and previous results outside it.
 
 ### Earlier runs
+
+Runs before `fb5cfd5` (including `codex-edit-run04`, which used
+`522f9ad`) had no "How your work is graded" section in the task file, so
+those agents were not told that code quality is graded. Record which commit
+each run used.
 
 The four `edit-run01` runs used commit
 `4e258a96855d98edd10247f68c0b8265e53a8921`. It has the same app, but the
@@ -68,7 +73,7 @@ git status --short
 
 $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
-$baseline = '522f9ada608b30f8801bfa4fac1a164cef3c647c'
+$baseline = 'fb5cfd51df4a95bdc4d74c4b04030d247a46d73e'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-edit-run01'
@@ -339,6 +344,29 @@ Distinguish application defects from evaluator or setup errors.
 
 The evaluators start the app on an available port.
 There is no need to manually launch server.js for grading.
+
+### Code quality (20% of the score)
+
+Code quality is graded with `benchmark-results/protocol/code-quality` on
+the `results/all-runs` branch, not with the files in this folder. It
+compares the agent's three files with the starting code on four checks,
+25 points each: no new ESLint violations, no new functions above
+cyclomatic complexity 10, no new duplicated lines, and a test-suite
+runtime of at most 1.2 x the starting code's. The task file tells the
+agent about these checks.
+
+After adding your run to `results/all-runs` (section 11), run from that
+folder on the `results/all-runs` branch:
+
+```bash
+npm ci
+```
+```bash
+node score-runs.mjs
+```
+
+It writes `quality.json` into your run folder and updates `scores.md`.
+Commit both with your run. The dashboard reads `quality.json`.
 
 ## 10. Record corrections separately
 
