@@ -194,6 +194,21 @@ function quality(dir) {
       runtime: q.checks.runtime && { ...q.checks.runtime, baseMs: undefined, candMs: undefined } } };
 }
 
+// Was the agent told that code quality is graded? Task files gained a "How your work is
+// graded" section on 2026-10-24. If the run recorded its snapshot commit, check that commit's
+// task file; otherwise the run predates the section (every run without a recorded commit does).
+const GRADING_SECTION = /^## How your work is graded/m;
+function qualityNotice(files, dir, task) {
+  const f = files.find((x) => /(^|\/)source-commits\.txt$/.test(x.slice(dir.length + 1)));
+  const commit = f && (show(BRANCH, f) || '').match(/^(?:baseline|snapshot|start)_commit=([0-9a-f]{7,40})/m)?.[1];
+  if (!commit) return { told: false, commit: null, basis: 'no snapshot commit recorded; the run predates the grading section in task files' };
+  const spec = show(commit, task.taskFile);
+  if (spec == null) return { told: false, commit, basis: `task file not found at ${commit.slice(0, 7)}` };
+  return GRADING_SECTION.test(spec)
+    ? { told: true, commit, basis: `the task file at ${commit.slice(0, 7)} has the "How your work is graded" section` }
+    : { told: false, commit, basis: `the task file at ${commit.slice(0, 7)} has no grading section` };
+}
+
 function elapsed(files, dir) {
   for (const f of ['timing.txt', 'original-timing.txt', 'conversation/timing.txt']) {
     const t = show(BRANCH, `${dir}/${f}`);
@@ -272,7 +287,7 @@ for (const tool of TOOLS) {
       title: (readme || '').split('\n')[0].replace(/^#\s*/, ''),
       summary: (readme || '').split('\n').slice(1).find((l) => l.trim() && !l.startsWith('#') && !l.startsWith('|')) || '',
       ...modelInfo(dir), suites, timing: elapsed(files, dir), tokens: tokens(show(BRANCH, `${dir}/token-usage.json`)),
-      changed, prompt, report, traps: traps(readme), readme, regrade, quality: quality(dir),
+      changed, prompt, report, traps: traps(readme), readme, regrade, quality: quality(dir), qualityNotice: qualityNotice(files, dir, task),
       commit: sha[0], date: sha[1], path: dir,
       url: `https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/${dir}`,
     });
