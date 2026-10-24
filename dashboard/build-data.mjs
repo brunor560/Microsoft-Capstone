@@ -301,7 +301,9 @@ for (const tool of TOOLS) {
   }
 }
 
-const tasks = TASKS.map(({ dir, ...t }) => ({ ...t, spec: show(t.base, t.taskFile) || show('origin/benchmark-start-v2-edit', t.taskFile) }));
+// The starting app's files, so the dashboard can run the before and after apps side by side.
+const tasks = TASKS.map(({ dir, ...t }) => ({ ...t, spec: show(t.base, t.taskFile) || show('origin/benchmark-start-v2-edit', t.taskFile),
+  app: { server: (show(t.base, 'app/server.js') || '').replace(/\r\n/g, '\n'), html: (show(t.base, 'app/public/index.html') || '').replace(/\r\n/g, '\n') } }));
 const data = { generated: new Date().toISOString(), branch: BRANCH, branchCommit: git('rev-parse', '--short', BRANCH).trim(), tools: TOOLS, tasks, runs };
 const out = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data.js');
 writeFileSync(out, `window.BENCH_DATA = ${JSON.stringify(data)};\n`);

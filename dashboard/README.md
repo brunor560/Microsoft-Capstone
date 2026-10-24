@@ -42,6 +42,14 @@ Open **How code quality is scored** under the chart for a plain-language explana
 
 Each run is labelled **told** or **not told** about code quality: told when its recorded snapshot commit's task file has the "How your work is graded" section (added 2026-10-24), not told otherwise. Runs without a recorded commit predate that section. Code quality is scored the same either way; the label shows which runs are fair to compare on quality.
 
+**Live app.** Each run has a **Live app** tab that runs the starting app and the agent's app side by side in the browser, from the saved code: the real `server.js` behind a small Express stand-in, and the real page in a sandboxed frame. It lists the API routes the agent added or removed, page controls before and after, and lines changed per file. Data is kept in memory and nothing is sent anywhere.
+
+**Other switches.**
+- **Show / Hide task 005 details:** trap descriptions, run READMEs, final reports and security test names for task 005 are hidden by default, so an agent browsing the page during a run doesn't learn about the traps.
+- **Freshness warning:** a banner appears if `results/all-runs` has moved on since `data.js` was built (checked against the GitHub API; silent when offline).
+- **Repeat runs:** a tool with several runs on a task is scored on their average, with each run's score and the spread shown under the chart.
+- **Told about quality** filter: show only runs that were, or weren't, told that code quality is graded.
+
 Every score shows its reasoning. Open **Why these scores** under the chart for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Overview tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
 
 If a run was regraded after an evaluator fix, its folder has `regrade-fixed-grader-*.txt` logs and a `regrade-fixed-grader-exits.txt` naming the grader commit. The dashboard scores those suites from the regrade, marks them "(fixed grader)", and shows the original grader's results in a **Regraded with a fixed grader** box as evidence.

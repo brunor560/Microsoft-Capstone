@@ -99,9 +99,11 @@ h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -.01em; }
 .score-head { display: flex; gap: var(--g2); align-items: center; flex-wrap: wrap; margin-bottom: var(--g1); }
 .score-head h2 { margin: 0; }
 .cluster { width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 72%; }
-.cluster .cb { flex: 1; max-width: 26px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 2px; }
+.cluster .cb { flex: 1; min-width: 0; max-width: 28px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 2px; }
 .cluster .cb span { font-size: 10px; font-weight: 800; color: var(--label-2); font-variant-numeric: tabular-nums; }
 .cluster .cb i { display: block; width: 100%; border-radius: 5px 5px 0 0; min-height: 3px; transition: height .45s cubic-bezier(.2,.8,.2,1); box-shadow: inset 0 1px 0 #ffffff22; }
+.cluster .cb em { font-style: normal; font-size: 9.5px; font-weight: 700; color: var(--label-3); line-height: 1; margin-top: 3px; letter-spacing: .02em; }
+.cluster .cb:first-child i { opacity: .85; }
 .cluster .cb.na i { background: repeating-linear-gradient(45deg, var(--raised-3) 0 4px, transparent 4px 8px) !important; height: 12px !important; }
 .grade { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; font-weight: 800; font-size: 14px; color: #fff; }
 .g-A { background: #2f9e62; } .g-B { background: #5aa9ff; } .g-C { background: #c99a2e; } .g-D { background: #d9773a; } .g-F { background: #c94a4a; }
@@ -267,6 +269,14 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .stage { background: var(--raised); border: 1px solid var(--border); border-radius: var(--r-card); overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
 .stage .sh { padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--raised-2); font-weight: 800; font-size: 13px; display: flex; gap: 8px; align-items: center; }
 .stage .sb { padding: 12px; overflow: auto; flex: 1; max-height: 520px; }
+.banner { margin: 0 0 var(--g2); padding: 10px 14px; border-radius: var(--r-card); border: 1px solid var(--danger); background: var(--raised); font-size: 13px; }
+.live-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g2); margin: var(--g2) 0; }
+@media (max-width: 900px) { .live-grid { grid-template-columns: 1fr; } }
+.live-col { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.live-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.live-col iframe { width: 100%; height: 480px; border: 1px solid var(--border-strong); border-radius: 10px; background: #fff; }
+.live-log { font-family: "JetBrains Mono", monospace; font-size: 11.5px; max-height: 96px; overflow: auto; color: var(--label-2); }
+.live-log .ok { color: var(--ok); } .live-log .bad { color: var(--danger); }
 .term { font-family: "JetBrains Mono", monospace; font-size: 12.5px; white-space: pre-wrap; word-break: break-word; color: var(--label-2); }
 .term .line { animation: pop .18s ease-out; }
 .term .ok { color: var(--ok); } .term .bad { color: var(--danger); } .term .hl { color: var(--violet); font-weight: 600; } .term .dim { color: var(--label-3); }
@@ -325,8 +335,10 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
       <div class="sub" id="subtitle"></div>
     </div>
     <div class="spacer"></div>
+    <button class="btn" id="spoilerBtn" title="Task 005 contains hidden prompt-injection traps"></button>
     <button class="btn icon" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">◐</button>
   </header>
+  <div class="banner" id="staleBanner" hidden></div>
 
   <section class="panel">
     <div class="score-head">
@@ -371,6 +383,7 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
       <div class="fgroup"><label>Task</label><div class="chips" id="fTask"></div></div>
       <div class="fgroup"><label>Model</label><div class="chips" id="fModel"></div></div>
       <div class="fgroup"><label>Result</label><div class="chips" id="fStatus"></div></div>
+      <div class="fgroup"><label>Told about quality</label><div class="chips" id="fTold"></div></div>
       <div class="fgroup"><label for="q">Search</label><input type="search" id="q" placeholder="model, test name, file…"></div>
       <div class="fgroup"><label>&nbsp;</label><button class="btn" id="resetBtn">Reset</button></div>
     </div>
@@ -411,6 +424,26 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 <script>
 (() => {
 const D = window.BENCH_DATA;
+// Task 005 hides prompt-injection traps. Their details stay hidden unless the viewer turns
+// them on, so an agent browsing this page during a run doesn't learn about them.
+const SPOILER_KEY = 'bench-show-005-traps';
+let showTraps = false;
+try { showTraps = localStorage.getItem(SPOILER_KEY) === '1'; } catch {}
+if (!showTraps) {
+  const t5 = D.tasks.find((t) => t.id === '005');
+  if (t5) t5.name = 'Todo priority';
+  for (const r of D.runs.filter((x) => x.task === '005')) {
+    r.trapsHidden = r.traps.length;
+    r.traps = [];
+    r.readme = 'The run README is hidden while task 005 details are hidden. Use "Show task 005 details" at the top of the page to see it.';
+    r.summary = '';
+    r.report = r.report ? '(Hidden while task 005 details are hidden.)' : r.report;
+    for (const su of r.suites.filter((x) => x.key.startsWith('security'))) {
+      su.tests = su.tests.map((t, k) => ({ ...t, name: `security check ${k + 1}` }));
+      su.log = null;
+    }
+  }
+}
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtN = (n) => n == null ? '—' : n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(n);
@@ -450,9 +483,9 @@ for (const t of D.tasks) for (const tl of D.tools) {
 
 
 // ---------- state ----------
-const state = { tools: new Set(), tasks: new Set(), status: new Set(), models: new Set(), q: '', scoreMode: 'dim', scoreSort: 'score', sort: { key: 'task', dir: 1 } };
-try { const s = JSON.parse(localStorage.getItem('bench-filters') || 'null'); if (s) { state.tools = new Set(s.tools); state.tasks = new Set(s.tasks); state.status = new Set(s.status); state.models = new Set(s.models || []); state.q = s.q || ''; state.scoreMode = s.scoreMode || 'dim'; state.scoreSort = s.scoreSort || 'score'; } } catch {}
-const save = () => { try { localStorage.setItem('bench-filters', JSON.stringify({ tools: [...state.tools], tasks: [...state.tasks], status: [...state.status], models: [...state.models], q: state.q, scoreMode: state.scoreMode, scoreSort: state.scoreSort })); } catch {} };
+const state = { tools: new Set(), tasks: new Set(), status: new Set(), models: new Set(), told: new Set(), q: '', scoreMode: 'dim', scoreSort: 'score', sort: { key: 'task', dir: 1 } };
+try { const s = JSON.parse(localStorage.getItem('bench-filters') || 'null'); if (s) { state.tools = new Set(s.tools); state.tasks = new Set(s.tasks); state.status = new Set(s.status); state.models = new Set(s.models || []); state.told = new Set(s.told || []); state.q = s.q || ''; state.scoreMode = s.scoreMode || 'dim'; state.scoreSort = s.scoreSort || 'score'; } } catch {}
+const save = () => { try { localStorage.setItem('bench-filters', JSON.stringify({ tools: [...state.tools], tasks: [...state.tasks], status: [...state.status], models: [...state.models], told: [...state.told], q: state.q, scoreMode: state.scoreMode, scoreSort: state.scoreSort })); } catch {} };
 const MODELS = [...new Set(D.runs.map((r) => r.model).filter(Boolean))].sort();
 const modelLabel = (r) => r.model ? r.model + (r.effort && !r.model.toLowerCase().includes(r.effort) ? ` · ${r.effort}` : '') : 'model not recorded';
 const toolModels = (tool, tasks) => [...new Set(D.runs.filter((r) => r.tool === tool && (!tasks || tasks.some((t) => t.id === r.task))).map((r) => r.model).filter(Boolean))];
@@ -466,6 +499,7 @@ function slotVisible(s) {
   if (state.tasks.size && !state.tasks.has(s.task)) return false;
   if (state.status.size && !state.status.has(s.status)) return false;
   if (state.models.size && !s.runs.some((r) => state.models.has(r.model))) return false;
+  if (state.told.size && !s.runs.some((r) => state.told.has(r.qualityNotice?.told ? 'told' : 'not'))) return false;
   if (state.q) {
     const q = state.q.toLowerCase();
     if (!s.runs.length) return `${toolName(s.tool)} ${task(s.task).name} not ran`.toLowerCase().includes(q);
@@ -477,6 +511,24 @@ function slotVisible(s) {
 // ---------- header + stats ----------
 $('#subtitle').innerHTML = `${D.tools.length} tools × ${D.tasks.length} tasks · data from <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>`;
 $('#foot').innerHTML = `Generated ${new Date(D.generated).toLocaleString()}. Rebuild with <code>node dashboard/build-data.mjs</code>. Replays are reconstructed from saved artifacts (prompt, final code, grader logs); timing in replays is compressed.`;
+
+$('#spoilerBtn').textContent = showTraps ? 'Hide task 005 details' : 'Show task 005 details';
+$('#spoilerBtn').onclick = () => { try { localStorage.setItem(SPOILER_KEY, showTraps ? '0' : '1'); } catch {} location.reload(); };
+
+// Warn when results/all-runs has moved on since data.js was built.
+(async () => {
+  try {
+    const branch = D.branch.replace('origin/', '');
+    const res = await fetch(`https://api.github.com/repos/brunor560/Microsoft-Capstone/commits/${encodeURIComponent(branch)}`,
+      { headers: { Accept: 'application/vnd.github.sha' } });
+    if (!res.ok) return;
+    const sha = (await res.text()).trim();
+    if (!/^[0-9a-f]{40}$/.test(sha) || sha.startsWith(D.branchCommit)) return;
+    const b = $('#staleBanner');
+    b.innerHTML = `⚠ This page's data was built from <code>${esc(branch)}</code> @ <code>${esc(D.branchCommit)}</code> on ${esc(new Date(D.generated).toLocaleString())}, but the branch is now at <code>${esc(sha.slice(0, 7))}</code>. Newer runs or results may be missing. Rebuild with <code>node dashboard/build-data.mjs</code> and push.`;
+    b.hidden = false;
+  } catch { /* offline or rate-limited: say nothing */ }
+})();
 
 function renderStats() {
   const vis = slots.filter(slotVisible);
@@ -510,10 +562,11 @@ function renderFilters() {
   $('#fTask').replaceChildren(...D.tasks.map((t) => chip('tasks', t.id, `${t.id} ${t.short}`)));
   $('#fModel').replaceChildren(...MODELS.map((m) => chip('models', m, m)));
   $('#fStatus').replaceChildren(chip('status', 'pass', 'Passed', 'var(--ok)'), chip('status', 'fail', 'Failed', 'var(--danger)'), chip('status', 'none', 'Not ran', 'var(--none)'));
+  $('#fTold').replaceChildren(chip('told', 'told', 'Told'), chip('told', 'not', 'Not told'));
   $('#q').value = state.q;
 }
 $('#q').addEventListener('input', (e) => { state.q = e.target.value.trim(); save(); render(); });
-$('#resetBtn').onclick = () => { state.tools.clear(); state.tasks.clear(); state.status.clear(); state.models.clear(); state.q = ''; save(); renderFilters(); render(); };
+$('#resetBtn').onclick = () => { state.tools.clear(); state.tasks.clear(); state.status.clear(); state.models.clear(); state.told.clear(); state.q = ''; save(); renderFilters(); render(); };
 
 // ---------- matrix ----------
 function renderMatrix() {
@@ -623,7 +676,7 @@ function renderCharts() {
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
 // ---------- score chart ----------
-const TASK_SHADE = ['#9b8cff', '#6a5fc4', '#5aa9ff', '#57d08c'];
+const TASK_SHADE = ['#8b7cf6', '#3b9eff', '#f0a43c', '#3ccf8e'];
 // Rubric from the SRS (course_artifacts/sources/srs.md, "Scoring") and pipeline/autogen/harness/scoring.py:
 // total = 0.35F + 0.25S + 0.20Q + 0.10T + 0.10H. A dimension that was not measured is left out and the
 // total is re-normalised over the measured weight (the SRS does the same for tokens: "scores are out of 90").
@@ -869,25 +922,29 @@ function toolWhyHTML(tasks) {
     const ran = ss.filter((x) => x.s.runs.length);
     const rows = ss.map(({ t, s }) => {
       if (!s.runs.length) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: not run, so not counted</span></div>`;
-      const best = s.runs.reduce((a, r) => ((runScore(r) ?? 0) > (runScore(a) ?? 0) ? r : a), s.runs[0]);
+      // With several runs, explain the lowest-scoring one; the score is their average.
+      const best = s.runs.reduce((a, r) => ((runScore(r) ?? 0) < (runScore(a) ?? 0) ? r : a), s.runs[0]);
+      const each = s.runs.map((r) => runScore(r) ?? 0);
       const v = slotScore(s);
       const told = best.qualityNotice ? `<span class="told ${best.qualityNotice.told ? 'yes' : 'no'}" title="${esc(best.qualityNotice.basis)}">${best.qualityNotice.told ? 'told about quality' : 'not told about quality'}</span>` : '';
-      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b> ${told}${s.runs.length > 1 ? ` <span class="note">(best of ${s.runs.length} runs: ${esc(best.run)})</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
+      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b> ${told}${s.runs.length > 1 ? ` <span class="note">(average of ${s.runs.length} runs: ${s.runs.map((r, k) => `${esc(r.run)} ${fmt1(each[k])}`).join(', ')}; spread ${fmt1(Math.min(...each))}–${fmt1(Math.max(...each))}; reason shown for the lowest)</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
     }).join('');
     const calc = ran.length ? `Average of the ${ran.length} task${ran.length > 1 ? 's' : ''} run: (${ran.map(({ s }) => fmt1(slotScore(s))).join(' + ')}) ÷ ${ran.length} = ${fmt1(sc.overall)}` : 'No grade: none of these tasks has been run.';
     return `<details class="suite why-tool"><summary><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[tl.id]}"></span>${esc(tl.name)}<span class="spacer"></span><span class="note num">${sc.overall == null ? 'NG' : `${grade(sc.overall)} ${fmt1(sc.overall)}`}</span></summary>
       <div class="tests">${rows}<p class="note calc">${esc(calc)}</p></div></details>`;
   }).join('');
 }
-function slotScore(s) { return s.runs.length ? Math.max(...s.runs.map((r) => runScore(r) ?? 0)) : 0; }
-function slotDim(s, dim) { return s.runs.length ? Math.max(...s.runs.map((r) => runDim(r, dim) ?? 0)) : 0; }
+// A tool with several runs on a task is scored on their average (the SRS asks for three runs).
+const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+function slotScore(s) { return s.runs.length ? mean(s.runs.map((r) => runScore(r) ?? 0)) : 0; }
+function slotDim(s, dim) { const v = s.runs.map((r) => runDim(r, dim)).filter((x) => x != null); return v.length ? mean(v) : null; }
 const grade = (v) => v == null ? '—' : v >= 90 ? 'A' : v >= 80 ? 'B' : v >= 70 ? 'C' : v >= 60 ? 'D' : 'F';
 function toolScores(toolId, tasks) {
   // Only tasks the tool actually ran count toward its grade.
   const ss = tasks.map((t) => slots.find((x) => x.task === t.id && x.tool === toolId)).filter((s) => s.runs.length);
   const overall = ss.length ? ss.reduce((a, s) => a + slotScore(s), 0) / ss.length : null;
   const dims = DIMS.map((d) => {
-    const ap = ss.filter((s) => dimApplies(s.task, d));
+    const ap = ss.filter((s) => slotDim(s, d) != null);
     return { ...d, v: ap.length ? ap.reduce((a, s) => a + slotDim(s, d), 0) / ap.length : null, n: ap.length };
   });
   return { overall, dims, ranN: ss.length, of: tasks.length };
@@ -924,13 +981,18 @@ function scoreBarsHTML(rows, tasks, dimMode) {
     const tip = !r.ran ? `${r.tl.name}: no grade, has not run ${tasks.length > 1 ? 'any of these tasks' : 'this task'}` : `${r.tl.name}: weighted ${r.score.toFixed(1)} over ${r.ranN} of ${r.of} tasks\n` + r.dims.map((d) => `${d.name}: ${d.v == null ? 'not graded' : d.v.toFixed(1) + ' (' + grade(d.v) + ')'}`).join('\n');
     if (!r.ran) return `<div class="vcol gray" data-tool="${r.tl.id}" title="${esc(tip)}">${head}<div class="cluster"></div></div>`;
     if (dimMode) {
-      const cb = [{ name: 'Weighted total', color: 'var(--text)', v: r.score }, ...r.dims.filter((d) => tasks.some((t) => dimApplies(t.id, d)))].map((d) => d.v == null
-        ? `<div class="cb na" title="${d.name}${d.w ? ` (${d.w}%)` : ''}: ${esc(d.how || 'not graded for these tasks')}"><span>n/m</span><i></i></div>`
-        : `<div class="cb" title="${d.name}${d.w ? ` (${d.w}%)` : ''}: ${d.v.toFixed(1)} (${grade(d.v)})"><span>${Math.round(d.v)}</span><i style="height:${Math.max(1, d.v) * 0.85}%;background:${d.color}"></i></div>`).join('');
+      const cb = [{ name: 'Weighted total', key: 'All', color: 'var(--text)', v: r.score }, ...r.dims.filter((d) => tasks.some((t) => dimApplies(t.id, d)))].map((d) => d.v == null
+        ? `<div class="cb na" title="${d.name}${d.w ? ` (${d.w}%)` : ''}: ${esc(d.how || 'not graded for these tasks')}"><span>n/m</span><i></i><em>${esc(d.key)}</em></div>`
+        : `<div class="cb" title="${d.name}${d.w ? ` (${d.w}%)` : ''}: ${d.v.toFixed(1)} (${grade(d.v)})"><span>${Math.round(d.v)}</span><i style="height:${Math.max(1, d.v) * 0.8}%;background:${d.color}"></i><em>${esc(d.key)}</em></div>`).join('');
       return `<div class="vcol ${r.gray ? 'gray' : ''}" data-tool="${r.tl.id}" title="${esc(tip)}">${head}<div class="cluster">${cb}</div></div>`;
     }
-    const segs = r.parts.map((p) => `<i class="${p.on ? '' : 'off'}" style="height:${p.on && r.score ? p.v / r.ranN / r.score * 100 : 0}%;background:${TASK_SHADE[p.k]}" title="${p.t.id} ${esc(p.t.short)}: ${p.status === 'none' ? 'Not ran' : Math.round(p.v)}"></i>`).join('');
-    return `<div class="vcol ${r.gray ? 'gray' : ''}" data-tool="${r.tl.id}" title="${esc(tip)}">${head}<div class="vstack" style="height:${r.score * 0.72}%">${segs}</div></div>`;
+    // One bar per selected task, next to the weighted total, each labelled with its value and task.
+    const bars = [{ name: 'Weighted total', lbl: 'All', color: 'var(--text)', v: r.score },
+      ...r.parts.filter((p) => tasks.includes(p.t)).map((p) => ({ name: `${p.t.id} ${p.t.short}`, lbl: p.t.id, color: TASK_SHADE[p.k], v: p.on ? p.v : null }))];
+    const cb = bars.map((d) => d.v == null
+      ? `<div class="cb na" title="${esc(d.name)}: not run yet"><span>—</span><i></i><em>${esc(d.lbl)}</em></div>`
+      : `<div class="cb" title="${esc(d.name)}: ${d.v.toFixed(1)} (${grade(d.v)})"><span>${Math.round(d.v)}</span><i style="height:${Math.max(1, d.v) * 0.8}%;background:${d.color}"></i><em>${esc(d.lbl)}</em></div>`).join('');
+    return `<div class="vcol ${r.gray ? 'gray' : ''}" data-tool="${r.tl.id}" title="${esc(tip)}">${head}<div class="cluster">${cb}</div></div>`;
   }).join('');
   const names = rows.map((r) => {
     const ms = r.tl.variant ? [r.tl.variant] : toolModels(r.tl.id, tasks);
@@ -1048,7 +1110,7 @@ function md(src) {
 
 // ---------- drawer ----------
 let current = null, currentTab = 'overview';
-const TABS = [['overview', 'Overview'], ['replay', 'Replay'], ['diff', 'Code diff'], ['tests', 'Tests'], ['transcript', 'Prompt & report'], ['task', 'Task spec']];
+const TABS = [['overview', 'Overview'], ['live', 'Live app'], ['replay', 'Replay'], ['diff', 'Code diff'], ['tests', 'Tests'], ['transcript', 'Prompt & report'], ['task', 'Task spec']];
 function openRun(id, tab) {
   const r = D.runs.find((x) => x.id === id); if (!r) return;
   stopReplay();
@@ -1109,6 +1171,7 @@ function renderTab() {
   }
   if (currentTab === 'task') body.innerHTML = `<div class="box"><div class="md">${md(task(r.task).spec) || '<div class="note">Task file not found.</div>'}</div></div>`;
   if (currentTab === 'diff') renderDiffTab();
+  if (currentTab === 'live') renderLive();
   if (currentTab === 'replay') renderReplay();
 }
 
@@ -1303,7 +1366,7 @@ function drawReplay(force) {
     const st = tl.steps[k], failed = st.kind === 'suite' && !st.suite.ok;
     b.className = 'step' + (k < i || rp.t >= tl.total ? ' done' : '') + (k === i && rp.t < tl.total ? ' active' : '') + (failed && k <= i ? ' fail' : '');
   });
-  const key = `${i}:${s.kind === 'prompt' || s.kind === 'edit' || s.kind === 'suite' || s.kind === 'work' || s.kind === 'report' ? Math.floor(p * 60) : 0}`;
+  const key = `${i}:${s.kind === 'suite' ? Math.ceil((s.suite.tests.length || 1) * Math.min(1, p * 1.2)) + ':' + (p > .85) : s.kind === 'prompt' || s.kind === 'edit' || s.kind === 'work' || s.kind === 'report' ? Math.floor(p * 60) : 0}`;
   if (!force && rp.lastKey === key) return; rp.lastKey = key;
   const head = $('#rpHead'), body = $('#rpBody');
   const realElapsed = r.timing?.seconds;
@@ -1336,7 +1399,23 @@ function drawReplay(force) {
     const tests = su.tests.length ? su.tests : [{ ok: su.ok, depth: 0, name: su.verdict ? `scan ${su.verdict}` : `exit ${su.exit}` }];
     const n = Math.ceil(tests.length * Math.min(1, p * 1.2));
     const done = n >= tests.length && p > .85;
-    body.innerHTML = `<div class="term"><div class="dim">$ run grader: ${esc(su.key)}</div>${tests.slice(0, n).map((t) => `<div class="line" style="padding-left:${t.depth * 6}px"><span class="${t.ok ? 'ok' : 'bad'}">${t.ok ? '✔' : '✖'}</span> ${esc(t.name)}</div>`).join('')}${done ? `<div class="line hl" style="margin-top:6px">${su.pass != null ? `${su.pass} passed, ${su.fail} failed` : su.verdict || ''} · exit ${su.exit ?? '—'}</div>` : '<span class="caret"></span>'}</div>`;
+    // Only add the lines that are new since the last frame. Redrawing every line on each frame
+    // replayed their fade-in animation and made the whole list flash.
+    let term = body.querySelector(`.term[data-step="${i}"]`);
+    if (!term) {
+      body.innerHTML = `<div class="term" data-step="${i}"><div class="dim">$ run grader: ${esc(su.key)}</div><div class="lines"></div><div class="tail"></div></div>`;
+      term = body.querySelector('.term'); term._n = 0; term._done = null;
+    }
+    const lines = term.querySelector('.lines');
+    if (n < term._n) { lines.innerHTML = ''; term._n = 0; }
+    if (n > term._n) {
+      lines.insertAdjacentHTML('beforeend', tests.slice(term._n, n).map((t) => `<div class="line" style="padding-left:${t.depth * 6}px"><span class="${t.ok ? 'ok' : 'bad'}">${t.ok ? '✔' : '✖'}</span> ${esc(t.name)}</div>`).join(''));
+      term._n = n;
+    }
+    if (term._done !== done) {
+      term.querySelector('.tail').innerHTML = done ? `<div class="line hl" style="margin-top:6px">${su.pass != null ? `${su.pass} passed, ${su.fail} failed` : su.verdict || ''} · exit ${su.exit ?? '—'}</div>` : '<span class="caret"></span>';
+      term._done = done;
+    }
     body.scrollTop = body.scrollHeight;
   } else if (s.kind === 'traps') {
     head.innerHTML = '🛡 Prompt-injection traps';
@@ -1347,6 +1426,130 @@ function drawReplay(force) {
     body.innerHTML = `<div class="verdict"><div class="big ${ok ? 'ok' : 'bad'}">${ok ? 'PASSED' : 'FAILED'}</div><p>${r.suites.filter((x) => x.ok).length} of ${r.suites.length} grader suites passed · ${r.changed.length} files changed · ${fmtS(realElapsed)} · ${fmtN(r.tokens?.total)} tokens</p>${!ok ? '<p class="note">Original attempt failed at least one independent check; see the README for any correction round.</p>' : ''}</div>`;
   }
   body.querySelectorAll('[data-jump]').forEach((a) => a.onclick = (e) => { e.preventDefault(); openRun(r.id, a.dataset.jump); });
+}
+
+// ---------- live app: starting app vs agent's app ----------
+// Each app's real server.js runs in the page against a small Express stand-in, and its real
+// index.html runs in a sandboxed frame whose fetch() is answered by that server. Nothing is
+// sent anywhere. Data lives in memory and resets with "Reset data".
+function makeLiveApp(src) {
+  const routes = [], mws = [], errs = [];
+  const app = { use(...a) { for (const f of a.filter((x) => typeof x === 'function')) { if (f.__skip) continue; (f.length === 4 ? errs : mws).push(f); } return app; },
+    listen() { return { close() {} }; }, set() { return app; }, enable() { return app; }, disable() { return app; } };
+  for (const m of ['get', 'post', 'put', 'patch', 'delete', 'all']) app[m] = (path, ...fns) => { routes.push({ m: m.toUpperCase(), path, fns: fns.flat() }); return app; };
+  const skip = () => { const f = () => {}; f.__skip = true; return f; };
+  const express = () => app;
+  Object.assign(express, { json: skip, urlencoded: skip, static: skip, text: skip, raw: skip,
+    Router() { throw new Error('express.Router is not supported in the live preview'); } });
+  const pathMod = { join: (...p) => p.join('/'), resolve: (...p) => p.join('/'), dirname: (p) => p, basename: (p) => String(p).split(/[\\/]/).pop(), extname: () => '' };
+  const module = { exports: {} };
+  const req = (n) => { if (n === 'express') return express; if (n === 'path' || n === 'node:path') return pathMod; throw new Error(`require('${n}') is not available in the live preview`); };
+  req.main = {};
+  let loadError = null;
+  try { new Function('require', 'module', 'exports', 'process', '__dirname', '__filename', src)(req, module, module.exports, { env: {} }, '/app', '/app/server.js'); }
+  catch (e) { loadError = e; }
+  const toRe = (p) => new RegExp('^' + String(p).replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\?:([A-Za-z_]\w*)/g, (_, k) => `(?<${k}>[^/]+)`) + '/?$');
+  routes.forEach((r) => { r.re = toRe(r.path); });
+
+  function handle(d) {
+    const u = new URL(d.url, 'http://app.local');
+    let body = {}, parseError = null;
+    if (d.body != null && d.body !== '') { try { body = JSON.parse(d.body); } catch (e) { parseError = Object.assign(new SyntaxError('Unexpected token in JSON'), { status: 400, statusCode: 400, type: 'entity.parse.failed', body: d.body }); } }
+    const headers = Object.fromEntries(Object.entries(d.headers || {}).map(([k, v]) => [k.toLowerCase(), v]));
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = (status, text, type) => { if (done) return; done = true; resolve({ status, body: text, type }); };
+      const reqObj = { method: d.method, url: u.pathname + u.search, originalUrl: u.pathname + u.search, path: u.pathname, query: Object.fromEntries(u.searchParams), params: {}, body, headers, get(h) { return headers[String(h).toLowerCase()]; } };
+      const res = { statusCode: 200, headersSent: false, locals: {},
+        status(c) { this.statusCode = c; return this; }, set() { return this; }, header() { return this; }, setHeader() { return this; }, type() { return this; },
+        json(o) { finish(this.statusCode, JSON.stringify(o ?? null), 'application/json'); return this; },
+        send(x) { if (x != null && typeof x === 'object') return this.json(x); finish(this.statusCode, x == null ? '' : String(x), 'text/html'); return this; },
+        end(x) { finish(this.statusCode, x == null ? '' : String(x), 'text/plain'); return this; },
+        sendStatus(c) { this.statusCode = c; finish(c, String(c), 'text/plain'); return this; } };
+      const chain = [...mws.map((fn) => ({ fn })), ...routes.filter((r) => r.m === d.method || r.m === 'ALL').flatMap((r) => { const m = u.pathname.match(r.re); return m ? r.fns.map((fn) => ({ fn, params: m.groups || {} })) : []; })];
+      let k = 0;
+      const fail = (err) => {
+        const h = errs.shift && errs.length ? errs : null;
+        if (h) { let j = 0; const nextErr = (e2) => { const f = h[j++]; if (!f) return finish(e2?.status || 500, `Error: ${e2?.message || e2}`, 'text/plain'); try { f(e2, reqObj, res, nextErr); } catch (e3) { nextErr(e3); } }; return nextErr(err); }
+        finish(err?.status || err?.statusCode || 500, `Error: ${err?.message || err}`, 'text/plain');
+      };
+      const next = (err) => {
+        if (done) return;
+        if (err) return fail(err);
+        const step = chain[k++];
+        if (!step) return finish(404, `Cannot ${d.method} ${u.pathname}`, 'text/plain');
+        if (step.params) reqObj.params = Object.fromEntries(Object.entries(step.params).map(([a, b]) => [a, decodeURIComponent(b)]));
+        try { const out = step.fn(reqObj, res, next); if (out && typeof out.catch === 'function') out.catch(next); } catch (e) { next(e); }
+      };
+      if (parseError) fail(parseError); else next();
+      setTimeout(() => finish(500, 'The app did not respond within 3 seconds', 'text/plain'), 3000);
+    });
+  }
+  return { handle, loadError, routes: routes.map((r) => `${r.m} ${r.path}`) };
+}
+
+const liveSides = {};
+window.addEventListener('message', (e) => {
+  const d = e.data;
+  if (!d || typeof d.__live !== 'string' || !liveSides[d.__live]) return;
+  const side = liveSides[d.__live];
+  side.app.handle(d).then((resp) => {
+    e.source.postMessage({ __live: d.__live, id: d.id, ...resp }, '*');
+    const log = document.querySelector(`[data-log="${side.key}"]`);
+    if (log) { log.insertAdjacentHTML('afterbegin', `<div class="${resp.status < 400 ? 'ok' : 'bad'}">${esc(d.method)} ${esc(new URL(d.url, 'http://app.local').pathname)} → ${resp.status}</div>`); }
+  });
+});
+
+function liveBridge(token) {
+  return `<script>(function(){var T=${JSON.stringify(token)},P={},n=0;
+window.addEventListener('message',function(e){var d=e.data;if(!d||d.__live!==T||!P[d.id])return;var r=P[d.id];delete P[d.id];
+var nb=d.status===204||d.status===205||d.status===304;r(new Response(nb?null:d.body,{status:d.status,headers:{'Content-Type':d.type||'text/plain'}}));});
+window.fetch=function(u,o){o=o||{};var h=o.headers||{};if(typeof Headers!=='undefined'&&h instanceof Headers){var x={};h.forEach(function(v,k){x[k]=v});h=x;}
+return new Promise(function(res){var id=++n;P[id]=res;parent.postMessage({__live:T,id:id,url:String(u&&u.url||u),method:String(o.method||'GET').toUpperCase(),body:o.body==null?null:String(o.body),headers:h},'*');});};})();<\/script>`;
+}
+
+function startLiveSide(key, label, server, html) {
+  const token = `${key}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  for (const t of Object.keys(liveSides)) if (liveSides[t].key === key) delete liveSides[t];
+  const app = makeLiveApp(server || '');
+  liveSides[token] = { key, app };
+  const frame = document.querySelector(`iframe[data-side="${key}"]`);
+  const page = html || '<p>No index.html.</p>';
+  frame.srcdoc = /<head[^>]*>/i.test(page) ? page.replace(/<head[^>]*>/i, (m) => m + liveBridge(token)) : liveBridge(token) + page;
+  const log = document.querySelector(`[data-log="${key}"]`);
+  if (log) log.innerHTML = app.loadError ? `<div class="bad">server.js failed to load: ${esc(app.loadError.message)}</div>` : '';
+  return app;
+}
+
+function renderLive() {
+  const r = current, t = task(r.task), body = $('#dBody');
+  const base = t.app || {};
+  const after = (p) => r.changed.find((x) => x.path === p)?.after;
+  const sides = [
+    { key: 'before', label: 'Starting app', server: base.server, html: base.html },
+    { key: 'after', label: `${toolName(r.tool)}'s app`, server: after('app/server.js') ?? base.server, html: after('app/public/index.html') ?? base.html },
+  ];
+  body.innerHTML = `<p class="note">Both apps run here in your browser, from the saved code: the real <code>server.js</code> behind a small Express stand-in, and the real page. Try the same actions in both to see what the agent added or removed. Data is kept in memory; nothing is sent anywhere.</p>
+    <div class="live-grid">${sides.map((x) => `<div class="live-col"><div class="live-head"><b>${esc(x.label)}</b><button class="btn" data-reset="${x.key}">Reset data</button></div>
+      <iframe sandbox="allow-scripts allow-forms allow-modals" data-side="${x.key}" title="${esc(x.label)}"></iframe>
+      <div class="live-log" data-log="${x.key}" aria-live="polite"></div></div>`).join('')}</div>
+    <div class="box" id="liveDiff"></div>`;
+  const apps = {};
+  for (const x of sides) apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html);
+  body.querySelectorAll('[data-reset]').forEach((b) => b.onclick = () => { const x = sides.find((y) => y.key === b.dataset.reset); apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html); });
+
+  // What was added and removed: API routes, page controls, and line counts per file.
+  const added = apps.after.routes.filter((x) => !apps.before.routes.includes(x));
+  const removed = apps.before.routes.filter((x) => !apps.after.routes.includes(x));
+  const controls = (h) => { const m = (h || '').match(/<(button|input|select|textarea|label)\b[^>]*>/gi) || []; return m.length; };
+  const lines = r.changed.map((ch) => { const o = lineDiff(ch.before, ch.after); return `<div class="t"><span class="ic note">•</span><span><code>${esc(ch.path)}</code>: <span style="color:var(--ok)">+${o.filter((y) => y.t === '+').length}</span> <span style="color:var(--danger)">−${o.filter((y) => y.t === '-').length}</span> lines</span></div>`; }).join('');
+  $('#liveDiff').innerHTML = `<h4>What the agent added and removed</h4>
+    ${added.length ? added.map((x) => `<div class="t ok"><span class="ic">+</span><span>New API route <code>${esc(x)}</code></span></div>`).join('') : '<div class="t"><span class="ic note">○</span><span>No new API routes</span></div>'}
+    ${removed.map((x) => `<div class="t bad"><span class="ic">−</span><span>Removed API route <code>${esc(x)}</code></span></div>`).join('')}
+    <div class="t"><span class="ic note">•</span><span>Page controls (buttons, inputs, selects, labels in the page source): ${controls(sides[0].html)} → ${controls(sides[1].html)}</span></div>
+    ${lines || '<div class="t"><span class="ic note">○</span><span>No app files changed</span></div>'}
+    <p class="note"><a href="#" data-jump="diff">Open the full code diff</a></p>`;
+  $('#liveDiff').querySelectorAll('[data-jump]').forEach((a) => a.onclick = (e) => { e.preventDefault(); openRun(r.id, 'diff'); });
 }
 
 // ---------- theme ----------
