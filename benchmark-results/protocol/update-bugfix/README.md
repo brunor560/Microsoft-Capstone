@@ -372,6 +372,27 @@ and without it every shell command hangs.
 
 Usage is in the last `turn.completed` event of `transcript.jsonl`.
 
+### Log every bit of help (human collaboration and the operator record)
+
+Follow [OPERATOR-GUIDE.md](OPERATOR-GUIDE.md) on every run, whether a
+person or an AI session is the operator:
+
+1. **Before sending the prompt,** create `interventions.json` and
+   `operator.json` in the evidence folder, and fill in who the operator is
+   and what it has read.
+2. **While the agent works,** log every message or action directed at it
+   (approvals, answers, nudges, corrections, restarts), with the UTC time and
+   the exact words. Log every bit of help the operator itself needed or
+   received under `operator_help`.
+3. **After it finishes,** answer the seven yes/no questions in
+   `operator.json` (`checklist`), check that `messages_to_agent` matches the
+   number of interventions, and give both files to a different team member
+   to write `h-review.json`.
+
+If nothing happened, write `"interventions": []` and `"none"`; never leave
+the files out. For an AI operator, also give it the paste-in block at the
+end of OPERATOR-GUIDE.md.
+
 ## 8. Preserve original output before feedback
 
 From the operator's PowerShell terminal:

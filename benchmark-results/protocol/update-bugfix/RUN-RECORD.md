@@ -181,7 +181,18 @@ Record it in `operator.json`:
   "setup_minutes": 6,
   "grading_minutes": 4,
   "operator_tokens": { "input": 412000, "output": 9800 },
-  "messages_to_agent": 0
+  "messages_to_agent": 0,
+  "operator_help": [],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": false,
+    "anything_else_unusual": false
+  },
+  "notes": "none"
 }
 ```
 
@@ -196,6 +207,12 @@ Record it in `operator.json`:
 | `setup_minutes`, `grading_minutes` | operator time, separate from the agent's measured time; `null` if not measured |
 | `operator_tokens` | an AI operator's own token use, or `null` |
 | `messages_to_agent` | must match the number of entries in `interventions.json` |
+| `operator_help` | every time the operator needed or received help (a person helping an AI operator, a teammate, documentation, an environment fix), with time, who and what; `[]` if none |
+| `checklist` | yes/no answers to the seven questions in OPERATOR-GUIDE.md; every "yes" must have a log entry |
+| `notes` | anything else unusual, or `"none"` |
+
+Step-by-step instructions, templates and a paste-in block for an AI operator
+are in [OPERATOR-GUIDE.md](OPERATOR-GUIDE.md).
 
 Rules:
 - Anything the operator, human or AI, says to the measured agent goes in `interventions.json` and can affect H.
@@ -244,6 +261,7 @@ Record the answers in `scope-review.txt`.
 - [ ] Approvals, interventions and setup help are recorded, or `none`
 - [ ] `interventions.json` lists every message to the agent (or `[]`)
 - [ ] `operator.json` records the operator type, knowledge, setup attempts and messages to the agent
+- [ ] `operator.json` has `operator_help` and all seven `checklist` answers (OPERATOR-GUIDE.md)
 - [ ] `h-review.json` is written by a second team member before H is claimed
 - [ ] Tokens are within the task's limit, or the overrun is noted (it lowers T, it doesn't invalidate the run)
 - [ ] Prompt, final report and transcript are saved
