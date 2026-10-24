@@ -38,6 +38,8 @@ Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Function
 
 Open **How code quality is scored** under the chart for a plain-language explanation of the four code-quality checks, how they are weighted, a worked example (the lowest-scoring run) and how often each check fails.
 
+**Token efficiency** is scored against a token limit per task (001 300,000; 003 500,000; 004 400,000; 005 400,000): 100 up to half the limit, 0 at the limit. Runs whose tool doesn't report tokens get no T score. **Human collaboration** is scored from `interventions.json` once a second team member has rated it in `h-review.json` (100 − 25 per avoidable intervention). Each run's Overview also has an **Operator** box from `operator.json`: whether a person or an AI session ran the benchmark, what it knew and its setup effort. That is not part of the agent's score. See `RUN-RECORD.md` on `results/all-runs`.
+
 Each run is labelled **told** or **not told** about code quality: told when its recorded snapshot commit's task file has the "How your work is graded" section (added 2026-10-24), not told otherwise. Runs without a recorded commit predate that section. Code quality is scored the same either way; the label shows which runs are fair to compare on quality.
 
 Every score shows its reasoning. Open **Why these scores** under the chart for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Overview tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.

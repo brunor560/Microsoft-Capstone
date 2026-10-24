@@ -22,10 +22,10 @@ const show = (ref, p) => {
 const ls = (ref, p) => { try { return git('ls-tree', '-r', '--name-only', ref, p).split('\n').filter(Boolean); } catch { return []; } };
 
 const TASKS = [
-  { id: '001', name: 'Add DELETE endpoint', short: 'Delete', dir: /^run\d+$/, base: 'be98d692807da26dac3c3a720d4d5cf157e9717d', taskFile: 'pipeline/tasks/001-add-delete-endpoint.md' },
-  { id: '003', name: 'Edit todo title', short: 'Edit title', dir: /^edit-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921', taskFile: 'pipeline/tasks/003-edit-todo-title.md' },
-  { id: '004', name: 'Fix update validation', short: 'Update bugfix', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc', taskFile: 'pipeline/tasks/004-fix-update-validation.md' },
-  { id: '005', name: 'Todo priority (prompt-injection traps)', short: 'Injection', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7', taskFile: 'pipeline/tasks/005-todo-priority.md' },
+  { id: '001', name: 'Add DELETE endpoint', short: 'Delete', dir: /^run\d+$/, base: 'be98d692807da26dac3c3a720d4d5cf157e9717d', taskFile: 'pipeline/tasks/001-add-delete-endpoint.md', tokenLimit: 300000 },
+  { id: '003', name: 'Edit todo title', short: 'Edit title', dir: /^edit-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921', taskFile: 'pipeline/tasks/003-edit-todo-title.md', tokenLimit: 500000 },
+  { id: '004', name: 'Fix update validation', short: 'Update bugfix', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc', taskFile: 'pipeline/tasks/004-fix-update-validation.md', tokenLimit: 400000 },
+  { id: '005', name: 'Todo priority (prompt-injection traps)', short: 'Injection', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7', taskFile: 'pipeline/tasks/005-todo-priority.md', tokenLimit: 400000 },
 ];
 const TOOLS = [
   { id: 'antigravity', name: 'Antigravity' },
@@ -183,6 +183,13 @@ function modelInfo(dir) {
 }
 
 // Code quality from benchmark-results/protocol/code-quality (quality.json in the run folder).
+// Human-collaboration and operator records (RUN-RECORD.md sections 4 and 4a).
+function jsonFile(dir, name) {
+  const text = show(BRANCH, `${dir}/${name}`);
+  if (!text) return null;
+  try { return JSON.parse(text); } catch { return { invalid: true }; }
+}
+
 function quality(dir) {
   const text = show(BRANCH, `${dir}/quality.json`);
   if (!text) return null;
@@ -287,7 +294,7 @@ for (const tool of TOOLS) {
       title: (readme || '').split('\n')[0].replace(/^#\s*/, ''),
       summary: (readme || '').split('\n').slice(1).find((l) => l.trim() && !l.startsWith('#') && !l.startsWith('|')) || '',
       ...modelInfo(dir), suites, timing: elapsed(files, dir), tokens: tokens(show(BRANCH, `${dir}/token-usage.json`)),
-      changed, prompt, report, traps: traps(readme), readme, regrade, quality: quality(dir), qualityNotice: qualityNotice(files, dir, task),
+      changed, prompt, report, traps: traps(readme), readme, regrade, quality: quality(dir), qualityNotice: qualityNotice(files, dir, task), interventions: jsonFile(dir, 'interventions.json'), hReview: jsonFile(dir, 'h-review.json'), operator: jsonFile(dir, 'operator.json'),
       commit: sha[0], date: sha[1], path: dir,
       url: `https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/${dir}`,
     });
