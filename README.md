@@ -77,6 +77,9 @@ Codex acting as operator), what they knew, and their setup effort go in
 `operator.json`. Operator effort is shown separately and is not part of the
 agent's score. See [`RUN-RECORD.md`](benchmark-results/protocol/RUN-RECORD.md)
 sections 3, 4 and 4a.
+The step-by-step instructions for operators, people or AI, on logging
+every bit of help, with templates and a paste-in block for an AI operator, are in
+[`OPERATOR-GUIDE.md`](benchmark-results/protocol/OPERATOR-GUIDE.md).
 
 These files were copied from the `results/*` branches and from
 `benchmark-protocol-v2-edit`. Those branches are still the original records. This branch keeps only what
