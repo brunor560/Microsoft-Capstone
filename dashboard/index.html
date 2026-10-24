@@ -692,6 +692,16 @@ function suiteCount(s) {
   if (s.pass != null) return { p: s.pass, f: s.fail || 0, label: `${s.pass} / ${s.pass + (s.fail || 0)} checks passed${tag}` };
   return { p: s.ok ? 1 : 0, f: s.ok ? 0 : 1, label: (s.verdict ? `verdict ${s.verdict}` : s.ok ? 'passed' : 'failed') + tag };
 }
+// The seven yes/no questions from OPERATOR-GUIDE.md.
+const OPERATOR_QUESTIONS = {
+  agent_asked_permission: 'Did the agent ask for any permission?',
+  agent_asked_question_or_waited: 'Did the agent ask a question or wait for input?',
+  agent_was_corrected: 'Was the agent told it was wrong or to change approach?',
+  session_restarted_or_nudged: 'Was the session restarted, resumed, nudged or re-prompted?',
+  environment_fixed_during_run: 'Was the environment fixed during the run?',
+  operator_needed_help: 'Did the operator need or receive help?',
+  anything_else_unusual: 'Did anything else unusual happen?',
+};
 // Who ran the benchmark (RUN-RECORD.md section 4a). Not part of the agent's score.
 function operatorHTML(r) {
   const o = r.operator;
@@ -706,7 +716,10 @@ function operatorHTML(r) {
     ${row('Setup time (min)', o.setup_minutes)}${row('Grading time (min)', o.grading_minutes)}
     ${row('Operator tokens', o.operator_tokens && (o.operator_tokens.input != null ? `${fmtN(o.operator_tokens.input)} in, ${fmtN(o.operator_tokens.output)} out` : o.operator_tokens))}
     ${row('Messages to the agent', o.messages_to_agent)}
-    ${mismatch ? `<div class="t bad"><span class="ic">✖</span><span>operator.json says ${o.messages_to_agent} messages but interventions.json lists ${msgs}</span></div>` : ''}</div>`;
+    ${mismatch ? `<div class="t bad"><span class="ic">✖</span><span>operator.json says ${o.messages_to_agent} messages but interventions.json lists ${msgs}</span></div>` : ''}
+    ${Array.isArray(o.operator_help) ? `<div class="why-dim"><b>Help the operator needed or received</b>${o.operator_help.length ? o.operator_help.map((h) => `<div class="t"><span class="ic note">•</span><span>${esc(h.time_utc || '')} ${esc(h.from || '')}: ${esc(h.what || JSON.stringify(h))}</span></div>`).join('') : '<div class="t ok"><span class="ic">✔</span><span>None</span></div>'}</div>` : ''}
+    ${o.checklist ? `<div class="why-dim"><b>Operator checklist</b>${Object.entries(OPERATOR_QUESTIONS).map(([k, q]) => { const v = o.checklist[k]; return `<div class="t ${v === true ? 'bad' : v === false ? 'ok' : ''}"><span class="ic${v == null ? ' note' : ''}">${v === true ? '!' : v === false ? '✔' : '○'}</span><span>${esc(q)} <b>${v === true ? 'Yes' : v === false ? 'No' : 'not answered'}</b></span></div>`; }).join('')}</div>` : ''}
+    ${o.notes && o.notes !== 'none' ? `<p class="note">Notes: ${esc(o.notes)}</p>` : ''}</div>`;
 }
 // Shown when a run was regraded after an evaluator fix: the regrade counts, the original stays as evidence.
 function regradeHTML(r) {
