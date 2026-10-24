@@ -5,7 +5,7 @@
 - Branch: benchmark-protocol-v3-bugfix. One commit holds both the task
   file and the graders; there is no separate start branch.
 - Agreed commit, used for both the snapshot and the graders:
-  eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd
+  0de244020fc0aeb140e2632d7ff75afbe201e30f
   (adds the standard "What to report" section to the task file and
   RUN-RECORD.md; the team must confirm it before new runs)
 - Underlying app: 4e258a96855d98edd10247f68c0b8265e53a8921 (the same app
@@ -29,6 +29,11 @@ graders, the reference solution (`reference/`), ACCEPTANCE.md, evidence,
 and previous results outside it.
 
 ### Earlier runs
+
+Runs before `0de2440` (including `codex-bugfix-run02`, which used
+`eb848b6`) had no "How your work is graded" section in the task file, so
+those agents were not told that code quality is graded. The app and graders
+are unchanged. Record which commit each run used.
 
 The task 004 runs published before this change (Antigravity and Codex
 `bugfix-run01`) used commit `1e690f91a11dd1b37c796345a511d6791476efbc`. That commit has the same app and
@@ -104,7 +109,7 @@ $repoRoot = (Get-Location).Path
 $parentDirectory = Split-Path $repoRoot -Parent
 
 # The agreed commit, used for both the snapshot and the graders.
-$baseline = 'eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd'
+$baseline = '0de244020fc0aeb140e2632d7ff75afbe201e30f'
 
 # Change this for your assigned tool and attempt.
 $runId = 'antigravity-bugfix-run01'
@@ -467,6 +472,29 @@ application defects from evaluator or setup errors.
 
 The evaluators start the app on an available port. There is no need to
 manually launch server.js for grading.
+
+### Code quality (20% of the score)
+
+Code quality is graded with `benchmark-results/protocol/code-quality` on
+the `results/all-runs` branch, not with the files in this folder. It
+compares the agent's three files with the starting code on four checks,
+25 points each: no new ESLint violations, no new functions above
+cyclomatic complexity 10, no new duplicated lines, and a test-suite
+runtime of at most 1.2 x the starting code's. The task file tells the
+agent about these checks.
+
+After adding your run to `results/all-runs` (section 11), run from that
+folder on the `results/all-runs` branch:
+
+```bash
+npm ci
+```
+```bash
+node score-runs.mjs
+```
+
+It writes `quality.json` into your run folder and updates `scores.md`.
+Commit both with your run. The dashboard reads `quality.json`.
 
 ## 10. Record corrections separately
 
