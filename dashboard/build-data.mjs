@@ -182,6 +182,18 @@ function modelInfo(dir) {
   return { model, effort: e ? e[1].toLowerCase() : null };
 }
 
+// Code quality from benchmark-results/protocol/code-quality (quality.json in the run folder).
+function quality(dir) {
+  const text = show(BRANCH, `${dir}/quality.json`);
+  if (!text) return null;
+  let q;
+  try { q = JSON.parse(text); } catch { return null; }
+  const keep = (c) => c && ({ ...c, details: (c.details || []).slice(0, 20) });
+  return { score: q.score, points: q.points, possible: q.possible, grader: q.grader, baselineCommit: q.baselineCommit,
+    checks: { lint: keep(q.checks.lint), complexity: keep(q.checks.complexity), duplication: keep(q.checks.duplication),
+      runtime: q.checks.runtime && { ...q.checks.runtime, baseMs: undefined, candMs: undefined } } };
+}
+
 function elapsed(files, dir) {
   for (const f of ['timing.txt', 'original-timing.txt', 'conversation/timing.txt']) {
     const t = show(BRANCH, `${dir}/${f}`);
@@ -260,7 +272,7 @@ for (const tool of TOOLS) {
       title: (readme || '').split('\n')[0].replace(/^#\s*/, ''),
       summary: (readme || '').split('\n').slice(1).find((l) => l.trim() && !l.startsWith('#') && !l.startsWith('|')) || '',
       ...modelInfo(dir), suites, timing: elapsed(files, dir), tokens: tokens(show(BRANCH, `${dir}/token-usage.json`)),
-      changed, prompt, report, traps: traps(readme), readme, regrade,
+      changed, prompt, report, traps: traps(readme), readme, regrade, quality: quality(dir),
       commit: sha[0], date: sha[1], path: dir,
       url: `https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/${dir}`,
     });
