@@ -53,6 +53,15 @@ Every run, on every task, records the items in
 tokens and cost, approvals and interventions, transcript, grader results and
 report accuracy.
 
+Every run is also graded on **code quality** (20% of the score) by
+[`benchmark-results/protocol/code-quality/`](benchmark-results/protocol/code-quality/README.md):
+no new lint violations, no new functions above cyclomatic complexity 10, no
+new duplicated lines, and test runtime at most 1.2 × the starting code's.
+Each run folder has a `quality.json`; the summary is in
+[`scores.md`](benchmark-results/protocol/code-quality/scores.md). Task files
+from these commits on tell the agent about these checks: 001 `4fa0659`,
+003 `fb5cfd5`, 004 `0de2440`, 005 `8522ef4`.
+
 These files were copied from the `results/*` branches and from
 `benchmark-protocol-v2-edit`. Those branches are still the original records. This branch keeps only what
 is needed to analyse the runs: run reports, prompts and final reports, test

@@ -6,7 +6,7 @@ Follow these steps in order. This procedure reproduces Kapil's benchmark setup, 
 
 | Source | Purpose | What to use |
 |---|---|---|
-| `benchmark-start-v1` | Starting application and task | Fixed commit `7bf0751d7c17c98cefb6a46d8990640b2b597b96` (the team must confirm it before new runs) |
+| `benchmark-start-v1` | Starting application and task | Fixed commit `4fa0659150b42fc9b01b1e68e51f07a8535c57e0` (the team must confirm it before new runs) |
 | `results/antigravity-delete-run01` | Shared evaluator tests and procedure | `benchmark-results/protocol/` |
 | Your own results branch | Your evidence and report | `benchmark-results/<tool>/run01/` |
 
@@ -25,6 +25,20 @@ to capture (identity and settings, time, tokens and cost, approvals and
 interventions, transcript, grader results and report accuracy), who
 records each item, and the file each goes in. Time and tokens come from the
 tool, not from the agent's own report.
+
+Runs before `4fa0659` (including any that used `7bf0751`) had no "How
+your work is graded" section in the task file, so those agents were not
+told that code quality is graded.
+
+### Code quality (20% of the score)
+
+Code quality is graded with [`code-quality/`](code-quality/README.md) on
+`results/all-runs`: four checks against the starting code, 25 points each
+(no new ESLint violations, no new functions above cyclomatic complexity 10,
+no new duplicated lines, test runtime at most 1.2 x). After adding your run
+to `results/all-runs`, run `npm ci` and then `node score-runs.mjs` in
+`benchmark-results/protocol/code-quality`, and commit the `quality.json` it
+writes into your run folder.
 
 ## Participants
 
@@ -64,7 +78,7 @@ git status --short
 git fetch origin
 $repoRoot = (Get-Location).Path
 $parentRoot = Split-Path $repoRoot -Parent
-$baselineCommit = '7bf0751d7c17c98cefb6a46d8990640b2b597b96'
+$baselineCommit = '4fa0659150b42fc9b01b1e68e51f07a8535c57e0'
 $protocolRef = 'origin/results/antigravity-delete-run01'
 git show --no-patch --oneline $baselineCommit
 git ls-tree --name-only $protocolRef benchmark-results/protocol/
@@ -355,7 +369,7 @@ Create `README.md` inside `$evidenceDir`. Use the following structure and replac
 - Harness and version:
 - Model and mode:
 - OS / Node / npm:
-- Baseline commit: 7bf0751d7c17c98cefb6a46d8990640b2b597b96
+- Baseline commit: 4fa0659150b42fc9b01b1e68e51f07a8535c57e0
 - Protocol commit:
 - Grader hashes: see grader-hashes.txt
 - Approval settings / integrations / automatically loaded instructions:

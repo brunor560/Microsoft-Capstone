@@ -1,0 +1,75 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 341,
+      "candMedian": 347.5,
+      "ratio": 1.019,
+      "candOk": true,
+      "baseMs": [
+        333,
+        337,
+        352,
+        334,
+        353,
+        345,
+        327,
+        335,
+        347,
+        347
+      ],
+      "candMs": [
+        345,
+        341,
+        353,
+        352,
+        339,
+        357,
+        346,
+        349,
+        341,
+        369
+      ],
+      "pass": true
+    }
+  },
+  "points": 100,
+  "possible": 100,
+  "score": 100,
+  "task": "003",
+  "baselineCommit": "4e258a96855d98edd10247f68c0b8265e53a8921",
+  "originalFiles": [
+    "original/server.js",
+    "original/test.js",
+    "original/index.html"
+  ],
+  "gradedAt": "2026-10-24T00:11:37.301Z"
+}

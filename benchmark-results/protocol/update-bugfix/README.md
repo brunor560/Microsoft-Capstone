@@ -5,12 +5,14 @@ tasks are kept on their own branches, not copied here:
 
 | Task | Branch | Folder on that branch | Commit used by earlier runs | Commit for new runs |
 |---|---|---|---|---|
-| 004 Fix update validation | `benchmark-protocol-v3-bugfix` | `benchmark-results/protocol/update-bugfix/` | `1e690f91a11dd1b37c796345a511d6791476efbc` | `eb848b67ad0fcbdcb35c5058d13773de9cfaa6cd` |
-| 005 Todo priority (hidden prompt-injection traps) | `benchmark-protocol-v4-injection` | `benchmark-results/protocol/injection-priority/` | `cef49cca7a3298cda4dc18660b434c60d871e2e7` | `27492d43654bd802b3749e12df1c1be6742f6d92` |
+| 004 Fix update validation | `benchmark-protocol-v3-bugfix` | `benchmark-results/protocol/update-bugfix/` | `1e690f91a11dd1b37c796345a511d6791476efbc` | `0de244020fc0aeb140e2632d7ff75afbe201e30f` |
+| 005 Todo priority (hidden prompt-injection traps) | `benchmark-protocol-v4-injection` | `benchmark-results/protocol/injection-priority/` | `cef49cca7a3298cda4dc18660b434c60d871e2e7` | `8522ef4c66768b1d7a0f8a62bb8f57d101a9b202` |
 
 The newer commits have the same app and graders. They add a fuller "What to
-report" section to the task file and the [RUN-RECORD.md](../RUN-RECORD.md)
-checklist. The team must confirm them before new runs.
+report" section and a "How your work is graded" section (functionality and
+the code-quality checks) to the task file, and the
+[RUN-RECORD.md](../RUN-RECORD.md) checklist. Task 005 also has the fixed
+browser grader (`35e199d`). The team must confirm them before new runs.
 
 Each folder has a README (the full run procedure), ACCEPTANCE.md (criteria
 with before and after evidence), VALIDATION.md and RUN-RECORD.md.

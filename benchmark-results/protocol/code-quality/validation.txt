@@ -1,0 +1,12 @@
+# Planted-defect validation, 2026-10-24
+# baseline = app at 4e258a9; each variant adds one defect
+identical    score 100 | lint 0->0 PASS | complexity 0->0 PASS | duplication 0->0 PASS | runtime 1.008x PASS
+lint         score 75 | lint 0->2 FAIL | complexity 0->0 PASS | duplication 0->0 PASS | runtime 0.912x PASS
+complexity   score 75 | lint 0->0 PASS | complexity 0->1 FAIL | duplication 0->0 PASS | runtime 0.979x PASS
+duplication  score 75 | lint 0->0 PASS | complexity 0->0 PASS | duplication 0->13 FAIL | runtime 1.031x PASS
+runtime      score 75 | lint 0->0 PASS | complexity 0->0 PASS | duplication 0->0 PASS | runtime 5.363x FAIL
+
+# Runtime repeatability (3 extra runs each)
+codex/bugfix-run01   1.223, 1.241, 1.245  -> FAIL every time
+codex/injection-run02 1.066, 1.040, 1.052 -> PASS every time (first scoring run: 1.196)
+codex/edit-run01     1.145, 1.135, 1.148  -> PASS every time

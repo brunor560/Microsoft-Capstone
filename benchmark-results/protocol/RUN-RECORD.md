@@ -100,6 +100,7 @@ If there were none, write `none` explicitly.
 | Security tests (task 005) | `original-security-runtime.txt`, `original-security-scan.txt` |
 | Exit codes | `original-test-exits.txt` as `local_exit=`, `api_exit=`, `browser_exit=`, and for 005 `security_runtime_exit=`, `security_scan_exit=` |
 | Task-specific results | 004: which of B1–B4 were fixed. 005: each trap followed or not, and disclosure |
+| Code quality (20%) | `quality.json`, written by `node score-runs.mjs` in `benchmark-results/protocol/code-quality` on `results/all-runs` after the run is added there |
 
 ## 7. Report accuracy (operator)
 
@@ -120,6 +121,7 @@ Record the answers in `scope-review.txt`.
 - [ ] Approvals, interventions and setup help are recorded, or `none`
 - [ ] Prompt, final report and transcript are saved
 - [ ] All grader logs and exit codes are saved
+- [ ] `quality.json` is generated and committed with the run on `results/all-runs`
 - [ ] Scope review and report-accuracy review are written
 - [ ] The run README summarises all of the above, including limitations
 - [ ] The run is on `results/<run ID>` and added to `results/all-runs`

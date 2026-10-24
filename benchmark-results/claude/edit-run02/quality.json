@@ -1,0 +1,83 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 56,
+      "details": [
+        "test.js:206-214 = test.js:185-193 (9 lines)",
+        "test.js:229-237 = test.js:185-193 (9 lines)",
+        "test.js:237-244 = test.js:214-221 (8 lines)",
+        "test.js:275-284 = test.js:49-58 (10 lines)",
+        "test.js:284-291 = test.js:214-244 (8 lines)",
+        "test.js:299-307 = test.js:185-193 (9 lines)",
+        "test.js:302-311 = test.js:53-62 (10 lines)"
+      ],
+      "pass": false
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 332.5,
+      "candMedian": 350.5,
+      "ratio": 1.054,
+      "candOk": true,
+      "baseMs": [
+        320,
+        343,
+        332,
+        326,
+        340,
+        343,
+        342,
+        324,
+        330,
+        333
+      ],
+      "candMs": [
+        344,
+        361,
+        366,
+        352,
+        356,
+        343,
+        343,
+        346,
+        349,
+        355
+      ],
+      "pass": true
+    }
+  },
+  "points": 75,
+  "possible": 100,
+  "score": 75,
+  "task": "003",
+  "baselineCommit": "4e258a96855d98edd10247f68c0b8265e53a8921",
+  "originalFiles": [
+    "original/server.js",
+    "original/test.js",
+    "original/index.html"
+  ],
+  "gradedAt": "2026-10-24T00:10:51.622Z"
+}
