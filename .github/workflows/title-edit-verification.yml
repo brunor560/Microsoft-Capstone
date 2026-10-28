@@ -1,0 +1,142 @@
+name: Title-edit verification
+
+on:
+  push:
+    branches: [ci/title-edit-verification]
+    paths:
+      - '.github/workflows/title-edit-verification.yml'
+      - 'scripts/prepare_title_edit.py'
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/workflows/title-edit-verification.yml'
+      - 'scripts/prepare_title_edit.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify ${{ matrix.tool }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        tool: [antigravity, claude, codex, copilot]
+    env:
+      CI: 'true'
+      STAGE: /tmp/title-edit-${{ matrix.tool }}
+    steps:
+      - name: Check out verification code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.21.0'
+
+      - name: Obtain the historical inputs
+        shell: bash
+        run: |
+          git fetch --no-tags origin \
+            benchmark-start-v2-edit benchmark-protocol-v2-edit \
+            results/antigravity-edit-run01 results/claude-edit-run01 \
+            results/codex-edit-run01 results/copilot-edit-run01
+
+      - name: Restore the fixed baseline, evaluator and saved implementation
+        id: restore
+        shell: bash
+        run: |
+          python3 scripts/prepare_title_edit.py --tool '${{ matrix.tool }}' --output "$STAGE"
+          echo "BENCHMARK_APP_DIR=$STAGE/app" >> "$GITHUB_ENV"
+
+      - name: Install locked dependencies and matching Chromium
+        id: install
+        shell: bash
+        run: |
+          mkdir -p "$STAGE/logs"
+          node --version | tee "$STAGE/logs/node-version.txt"
+          npm --version | tee "$STAGE/logs/npm-version.txt"
+          python3 --version > "$STAGE/logs/python-version.txt"
+          uname -a > "$STAGE/logs/host.txt"
+          npm ci --ignore-scripts --prefix "$STAGE/app"
+          npm ci --ignore-scripts --prefix "$STAGE/evaluator"
+          cd "$STAGE/evaluator"
+          npx --no-install playwright --version | tee "$STAGE/logs/playwright-version.txt"
+          npx --no-install playwright install --with-deps chromium
+
+      - name: Fixed baseline regression suite (9 tests)
+        id: baseline
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        shell: bash
+        run: |
+          cd "$STAGE/app"
+          node --test --test-reporter=tap .baseline-regression.test.cjs 2>&1 | tee "$STAGE/logs/baseline-tests.txt"
+
+      - name: Preserved implementation local tests
+        id: local
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        shell: bash
+        run: |
+          cd "$STAGE/app"
+          node --test --test-reporter=tap test.js 2>&1 | tee "$STAGE/logs/local-tests.txt"
+
+      - name: Independent API suite (12 tests)
+        id: api
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        shell: bash
+        run: |
+          cd "$STAGE/evaluator"
+          node --test --test-reporter=tap edit-title-api.test.cjs 2>&1 | tee "$STAGE/logs/api-tests.txt"
+
+      - name: Independent browser suite (10 tests)
+        id: browser
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        shell: bash
+        run: |
+          cd "$STAGE/evaluator"
+          npx --no-install playwright test --config=playwright.config.cjs 2>&1 | tee "$STAGE/logs/browser-tests.txt"
+
+      - name: Write the job summary
+        if: ${{ always() }}
+        env:
+          RESTORE: ${{ steps.restore.outcome }}
+          INSTALL: ${{ steps.install.outcome }}
+          BASELINE: ${{ steps.baseline.outcome }}
+          LOCAL: ${{ steps.local.outcome }}
+          API: ${{ steps.api.outcome }}
+          BROWSER: ${{ steps.browser.outcome }}
+        shell: bash
+        run: |
+          {
+            echo '## ${{ matrix.tool }}: preserved title-edit implementation'
+            echo '| Check | Outcome |'
+            echo '|---|---|'
+            echo "| Restore | $RESTORE |"
+            echo "| Setup | $INSTALL |"
+            echo "| Fixed baseline suite (9 tests) | $BASELINE |"
+            echo "| Tool-local suite (count varies) | $LOCAL |"
+            echo "| Independent API suite (12 tests) | $API |"
+            echo "| Independent browser suite (10 tests) | $BROWSER |"
+            echo ''
+            echo 'Full input commits and source SHA-256 hashes are in provenance.json.'
+            echo 'This checks preserved code in a common environment. It does not replay generation, rank coding speed, or certify workspace/security compliance.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save provenance, logs and browser evidence
+        if: ${{ always() && steps.restore.outcome == 'success' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: title-edit-${{ matrix.tool }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            ${{ env.STAGE }}/provenance.json
+            ${{ env.STAGE }}/logs/
+            ${{ env.STAGE }}/evaluator/browser-report/
+            ${{ env.STAGE }}/evaluator/browser-test-results/
