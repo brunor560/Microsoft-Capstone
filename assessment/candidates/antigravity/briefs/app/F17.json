@@ -1,0 +1,27 @@
+{
+  "feature_id": "F17",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "The Plans page exposes model-level baseline quota consumption in Settings; it does not establish task-level usage or charges.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Per-task token counts and cost",
+    "Exportable per-run usage records",
+    "Conversion between quota consumption and monetary cost"
+  ],
+  "required_setup": "Inspect App Settings for the documented aggregate quota view; retain unavailable task-level measurements as unavailable.",
+  "constraints": [
+    "Quota is capacity-dependent and is not a token counter or a task invoice."
+  ],
+  "evidence": [
+    {
+      "page": "plans",
+      "section": "Overages",
+      "quote": "view baseline quota usage"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "The documented quota view is across models, not an attributable per-task usage or charge measurement. CLI /usage and headless metrics cannot be transferred to this App baseline."
+}

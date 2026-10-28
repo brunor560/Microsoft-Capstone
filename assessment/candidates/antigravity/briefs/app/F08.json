@@ -17,8 +17,8 @@
   "evidence": [
     {
       "page": "sandbox",
-      "section": "Antigravity App > Previous permission settings",
-      "quote": "Business and enterprise accounts use the behavior described in this section."
+      "section": "Antigravity App > Updated permission settings > Overview",
+      "quote": "Linux Namespaces"
     },
     {
       "page": "sandbox",
@@ -27,5 +27,5 @@
     }
   ],
   "evidence_basis": "documentation_gap",
-  "gap_reason": "The updated-settings implementation table names Linux and macOS mechanisms. Windows-specific prerequisites appear in the previous-settings section, identified for business/enterprise accounts. Official scope clarification is needed for this individual-account Windows profile; this is not evidence of unavailability."
+  "gap_reason": "The updated-settings implementation table names Linux and macOS mechanisms. Windows prerequisites appear under previous settings. The reviewed snapshot does not resolve which system applies to this unpinned Windows individual-account profile; this is not evidence of unavailability."
 }
