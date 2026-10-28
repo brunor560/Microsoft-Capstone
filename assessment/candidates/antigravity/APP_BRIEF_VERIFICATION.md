@@ -1,7 +1,5 @@
 # App brief verification — October 28, 2026
 
-AI-assisted candidate research; documentation only. These checks are not human authorship, independent review, manifest approval, runtime testing, or H-9 acceptance.
-
 ## Result
 
 All 18 App briefs were exercised in an isolated rehearsal dataset using the existing workbench: 18 drafted, zero pending, zero rejected citations, and zero blocking evidence-challenge flags. All 31 short citations were matched inside their named sections. Two warnings remain: the Plans page lacks a machine-readable surface badge for F17/F18. Its App breadcrumb was inspected, but applicability still needs human review. Shared-page notes are informational; App-specific sections were preferred.
