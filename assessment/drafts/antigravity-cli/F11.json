@@ -1,0 +1,166 @@
+{
+  "feature_id": "F11",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Viewing subagent progress and status, inspecting detailed subagent thoughts and logs, reviewing workspace and conversation diffs, adding inline comments to steer the agent, terminating subagents to stop work",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Limits on interrupting ongoing actions beyond manual termination",
+    "Redirecting work outside of inline comment steering"
+  ],
+  "required_setup": "No special setup required; use /agents to monitor and control subagents, /diff to review and comment on changes, and keyboard shortcuts for navigation and control",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Manual termination of subagents requires user selection and keypress (K)",
+    "Steering via comments requires submitting feedback in /diff Detail View",
+    "Inspection requires navigating interactive TUI panels (/agents, /diff)"
+  ],
+  "evidence": [
+    {
+      "page": "cli/commands/agents",
+      "section": "Agents command (/agents) > Subagent monitoring and control > Inspecting subagent progress",
+      "quote": "Highlight a specific subagent row and press Enter to open the full-screen Subagent Detail View . This view displays the subagent’s complete internal thoughts, tool calls, and execution stdout.",
+      "claim": "Supports detailed inspection of subagent progress and internal state"
+    },
+    {
+      "page": "cli/commands/agents",
+      "section": "Agents command (/agents) > Subagent monitoring and control > Terminating active subagents",
+      "quote": "Open /agents and highlight the running subagent row. Press K to terminate the active subagent and all its child threads.",
+      "claim": "Supports manual termination of subagents to stop agent work"
+    },
+    {
+      "page": "cli/commands/diff",
+      "section": "Diff command (/diff) > Step-by-step walkthrough > Adding comments and steering the agent",
+      "quote": "While in the Detail View , you can review the code and write feedback directly onto specific lines: ... Your comments are formatted and sent to the agent as your next prompt, allowing you to steer its next turn.",
+      "claim": "Supports inline commenting to steer the agent's next actions"
+    },
+    {
+      "page": "cli/commands/diff",
+      "section": "Diff command (/diff) > Interactive diff viewer panels > Navigation and controls",
+      "quote": "The diff viewer operates in three modes, which you can cycle through using Tab (or → / ← arrow keys): VCS mode, Turn mode, Commit mode.",
+      "claim": "Supports viewing progress and diffs in multiple interactive modes"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "59c31cd0-d84c-42e0-81e6-babe114ee919",
+    "usage": {
+      "input_tokens": 4652,
+      "output_tokens": 612
+    },
+    "estimated_cost_usd": 0.00284,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:03:49+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inspecting subagent progress"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Interactive diff viewer panels > Navigation and controls"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Adding comments and steering the agent"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Collaboration and co-steering"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > Commit tree view (Commit mode)"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > File detail view"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > File list view (VCS and Turn modes)"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Overview"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > How /plan works"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Markdown format custom agents, /copy index support, progressive /codesearch streaming, default temp directory access, and stability fixes"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Workspace-grouped resume view, Gemini 3.8 Flash support, and Markdown agent ambient customization inheritance"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff)"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Interactive diff viewer panels"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Custom agent selection and discovery > Creating custom agents"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Overview"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inline tool approvals"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Terminating active subagents"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage) > Viewing your usage > Navigation controls"
+      }
+    ],
+    "response_problems": [
+      "feature_id 'F11_Inspection_and_intervention' does not match F11"
+    ]
+  }
+}

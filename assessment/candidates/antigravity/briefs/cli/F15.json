@@ -1,0 +1,18 @@
+{
+  "feature_id": "F15",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "The CLI documentation describes headless mode for CI pipelines (agy -p with JSON output and exit codes), a /diff Commit mode over the repository history, and MCP servers in a 'Developer tools and CI/CD' category (including GitHub and GitLab). It does not describe native creation or management of branches or pull requests, running checks in a CI system, or deployment workflows from the CLI. Headless invocation from CI and an MCP catalog entry do not establish native repository and CI/CD integration (matrix spec F15: branch or pull-request support alone does not establish a pipeline).",
+  "activation_state": "not established",
+  "control_mechanism": "not established",
+  "supported_scope": "Not established",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Native pull-request creation or review", "CI check integration beyond headless invocation", "Deployment workflows"],
+  "required_setup": "Not established",
+  "constraints": ["Integration through MCP servers would be an add-on outside this profile"],
+  "evidence": [
+    {"page": "cli/headless", "section": "Headless mode", "quote": "integrate with CI pipelines, and capture machine-readable output"},
+    {"page": "mcp", "section": "Supported MCP servers", "quote": "Developer tools and CI/CD"}
+  ]
+}

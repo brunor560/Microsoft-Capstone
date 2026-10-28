@@ -1,0 +1,16 @@
+{
+  "feature_id": "F17",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "not established",
+  "supported_scope": "Token usage (input, output, thinking, cache read, total) per run in headless JSON; /context token breakdown; /usage model quota; /credits AI credit balance and billing-cycle usage.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Monetary charge per task when plan quota is used (quotas are not stated in currency)"],
+  "required_setup": "None for /usage and /context; headless JSON for per-run token counts.",
+  "constraints": ["In stream-json input sessions, usage counters are cumulative over the session"],
+  "evidence": [
+    {"page": "cli/headless", "section": "Output formats > JSON", "quote": "\"input_tokens\" : 10415"},
+    {"page": "cli/commands/usage", "section": "Interactive panel features", "quote": "A breakdown of your usage limits and remaining requests/tokens for each supported model"}
+  ]
+}

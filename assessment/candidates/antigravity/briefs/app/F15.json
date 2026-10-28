@@ -1,0 +1,24 @@
+{
+  "feature_id": "F15",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "The App natively reviews branch changes and supports local commits and remote pushes. This is partial repository integration; a full CI/CD workflow is not established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Native pull-request creation and status-check orchestration",
+    "Unattended CI execution and deployment workflow"
+  ],
+  "required_setup": "Use a Git-backed project and separately configured remote authentication for pushes.",
+  "constraints": [
+    "CLI headless CI instructions do not establish the same capability for the interactive App; no added service is included."
+  ],
+  "evidence": [
+    {
+      "page": "features",
+      "section": "Antigravity App features > Version control system (VCS) panel",
+      "quote": "Send branch commits to a remote repository"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "feature_id": "F11",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "not established",
+  "supported_scope": "Progress: /agents subagent status and tool reasoning toggle (Ctrl+O). Inspect: /diff VCS, Turn and Commit modes. Redirect: diff line comments are sent as the next prompt. Stop: Esc halts active streams; subagents can be killed.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Whether Esc stops a shell command already running, and limits on interruption"],
+  "required_setup": "None",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/commands/diff", "section": "Adding comments and steering the agent", "quote": "Your comments are formatted and sent to the agent as your next prompt"},
+    {"page": "cli/reference", "section": "Global controls", "quote": "Closes active panels, halts active streams, or clears empty prompts"}
+  ]
+}

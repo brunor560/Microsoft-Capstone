@@ -1,0 +1,16 @@
+{
+  "feature_id": "F13",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "SKILL.md skills discovered at workspace (.agents/skills/), global (~/.gemini/antigravity-cli/skills/) and plugin locations; each skill becomes a slash command in the TUI; plugins package and share skills through agy plugin.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Skill versioning other than through plugin versions"],
+  "required_setup": "Author or install a skill; none is added to this profile.",
+  "constraints": [],
+  "evidence": [
+    {"page": "skills", "section": "CLI skill locations", "quote": "The Antigravity CLI features full support for local and global agent skills"},
+    {"page": "skills", "section": "Slash command conversion", "quote": "the CLI automatically converts it into a slash command inside the interactive TUI"}
+  ]
+}

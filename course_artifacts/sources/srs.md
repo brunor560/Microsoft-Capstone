@@ -870,13 +870,13 @@ Priority: Should · Feature: F6 · Legal: L1 · Design: M11 Assessment
 Requirement:
 
 - 5.4.1 The matrix shall be built from public documentation only.
-- 5.4.2 The matrix assessment shall not run agents or call model APIs.
+- 5.4.2 The assessment may use agents or model APIs to retrieve and analyze public official documentation and draft feature findings but it won't under any circumstances execute or experimentally test the assessed tools to establish capability claims. Agent-generated findings must identify their sources and receive human verification and independent review before being accepted.
 
 Test cases:
 
-- TC-5.4-1: Inspect source index, cell records and assessment work log. Assert only public official documentation is used, no installation/model calls/agent execution occurs for Approach A, and no B/C run result is evidence for a feature claim. An empty adapter log alone is insufficient.
+- TC-5.4-1: Inspect source index, cell records and assessment work log. Assert only public official documentation is used; no assessed tool is installed, executed or experimentally tested; every model or agent request made for Approach A is recorded in the work log with its model identity and purpose, and its inputs are limited to official documentation; every agent-drafted cell records how it was drafted, cites its sources, and has a named author and an independent reviewer before acceptance; and no B/C run result is evidence for a feature claim. An empty adapter log alone is insufficient.
 
-Acceptance criteria: 100% of Approach A findings trace to public documentation or a documented gap; zero agent executions or model API calls are performed as part of the assessment, and no pilot/harness results support feature claims.
+Acceptance criteria: 100% of Approach A findings trace to public documentation or a documented gap; zero executions or experimental tests of an assessed tool; 100% of model or agent requests recorded; no agent-drafted finding accepted without human verification and independent review; and no pilot/harness results support feature claims. (Oct. 22, 2026: replaced to match the amended Spec 5.4.2; team decision recorded in `todo/history.md` under DOC-070.)
 
 #### Spec 5.5: Separate Publication
 

@@ -1,0 +1,32 @@
+{
+  "feature_id": "F09",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "MCP documents OAuth token storage and permissions can restrict sensitive files. A complete application-secret delivery and redaction boundary is not established for this baseline.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Application-secret injection without exposure to the model",
+    "Redaction of prompts, outputs and logs",
+    "Protection of secrets within permitted project files"
+  ],
+  "required_setup": "Document the specific credential flow before handling application secrets. Added MCP servers remain outside this profile.",
+  "constraints": [
+    "Product login is not application-secret handling; filesystem restrictions alone do not establish redaction."
+  ],
+  "evidence": [
+    {
+      "page": "mcp",
+      "section": "MCP authentication > OAuth",
+      "quote": "Access tokens are stored"
+    },
+    {
+      "page": "permissions",
+      "section": "Antigravity App > Updated permission settings > Configuration examples",
+      "quote": "Safeguard SSH keys"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "OAuth storage and file restrictions do not establish the full delivery, storage, redaction and exposure guarantees required for application secrets in the Windows individual-account baseline."
+}

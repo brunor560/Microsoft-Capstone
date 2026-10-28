@@ -1,0 +1,158 @@
+{
+  "feature_id": "F10",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Approval checkpoints for write, bash, web tools, and code artifact writes with interactive prompts and review modes",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Approval requirements for non-standard or third-party tools beyond native mechanisms",
+    "Bypass mechanisms outside sandbox mode and toolPermission settings",
+    "Mode-specific exceptions beyond default and plan modes"
+  ],
+  "required_setup": "Default configuration uses 'request-review' toolPermission and 'asks-for-review' artifactReviewPolicy; sandbox mode optional and configurable",
+  "activation_state": "default",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Actions not explicitly allowed or denied default to Ask mode requiring approval",
+    "Workspace file reads/writes auto-allowed unless overridden",
+    "Sandbox mode affects approval prompts and command execution containment",
+    "Plan mode prepends /plan prefix and uses read-only tools before approval"
+  ],
+  "evidence": [
+    {
+      "page": "permissions",
+      "section": "Agent permissions > Antigravity CLI > Default CLI system behaviors and guardrails",
+      "quote": "When an action isn’t explicitly listed in your allow , deny , or ask lists, the system falls back to secure system defaults: ... Web browsing defaults to Ask : Actions for read_url and execute_url default to Ask . Before the agent navigates to or actuates on any web page, it pauses and prompts for your approval unless an allow rule is configured.",
+      "claim": "Unconfigured actions default to Ask requiring approval before execution"
+    },
+    {
+      "page": "settings",
+      "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions",
+      "quote": "Tool Permission ( toolPermission ) : Controls the authorization flow for tools (such as running terminal commands): request-review (default): Prompts for your approval before running write, bash, or web tools.",
+      "claim": "Default toolPermission setting enforces approval prompts for write, bash, and web tools"
+    },
+    {
+      "page": "cli/modes",
+      "section": "Choose an execution mode > Review modifications in default mode",
+      "quote": "In default mode ( request-review ), Antigravity CLI pauses before applying any file writes to disk and renders an inline, syntax-highlighted diff preview.",
+      "claim": "Default mode pauses for user approval before file writes"
+    },
+    {
+      "page": "cli/features",
+      "section": "Antigravity CLI features > Terminal sandbox",
+      "quote": "When the sandbox is enabled : The confirmation prompt includes a specific option to Yes, and run without sandbox restrictions if you need to temporarily bypass the containment boundary for a single trusted command.",
+      "claim": "Sandbox mode affects approval prompts and allows temporary bypass with explicit user consent"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "3a9bffd5-6094-4e97-9980-44fd2f6afd67",
+    "usage": {
+      "input_tokens": 5102,
+      "output_tokens": 629
+    },
+    "estimated_cost_usd": 0.003047,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:02:49+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Default CLI system behaviors and guardrails"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Keybindings configuration > Restoring defaults"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Review modifications in default mode"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP configuration structure > MCP configuration properties"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Configuration options reference > Safety and permissions"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Analyze tasks before editing with plan mode"
+      },
+      {
+        "page": "cli/modes",
+        "section": "Choose an execution mode > Persist or override your default mode > Using the interactive settings panel"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Default keybindings > Prompt focus keys"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Hook handler configuration"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP permissions and access control"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI cross-platform command matching"
+      },
+      {
+        "page": "sandbox",
+        "section": "Terminal sandbox > Antigravity CLI > CLI configuration"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Configuration options reference > Editor and notifications"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Keybindings configuration > Format and customization"
+      },
+      {
+        "page": "settings",
+        "section": "Settings > Antigravity CLI > Setting up preferences > Configuration file location"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Model API retry resilience, headless print optimizations, and detailed tool approval prompts"
+      },
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Overview of /artifact > Code files and visual media"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Terminal sandbox"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON"
+      }
+    ],
+    "response_problems": []
+  }
+}

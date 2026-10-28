@@ -1,0 +1,31 @@
+{
+  "feature_id": "F16",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Artifact views and completion summaries provide inspectable work context. App export of a task-associated action audit is not established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Export of tool-call parameters, commands and results",
+    "Audit retention and tamper-evidence guarantees"
+  ],
+  "required_setup": "Establish an App-specific export and retention contract before treating conversation history as an audit record.",
+  "constraints": [
+    "Telemetry sharing is not an operator audit export; CLI streaming JSON is outside the App profile."
+  ],
+  "evidence": [
+    {
+      "page": "artifacts",
+      "section": "Artifacts",
+      "quote": "asynchronous collaboration"
+    },
+    {
+      "page": "settings",
+      "section": "Antigravity App > Settings architecture > The four settings categories > Global settings",
+      "quote": "sharing interaction logs"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "Reviewed App artifact and settings documentation does not establish an exportable, task-linked action trail with tool-call coverage, retention and integrity guarantees."
+}

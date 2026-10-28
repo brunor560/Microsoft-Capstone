@@ -1,0 +1,15 @@
+{
+  "feature_id": "F05",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "not established",
+  "supported_scope": "File creation and replacement tools including multi_replace_file_content; accept-edits mode applies edits across the filesystem without pausing for each file; default mode shows each write as a diff for review.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Atomicity or rollback of a multi-file change as a unit"],
+  "required_setup": "None; default mode reviews each file write.",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/modes", "section": "Auto-approve edits with accept-edits mode", "quote": "all standard file read, creation, and replacement operations ( write_to_file , replace_file_content , multi_replace_file_content ) run automatically"}
+  ]
+}

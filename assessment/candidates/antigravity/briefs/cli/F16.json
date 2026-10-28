@@ -1,0 +1,16 @@
+{
+  "feature_id": "F16",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Headless stream-json emits init, step_update and result events; tool steps carry the tool name, parameters and output; conversations are stored and can be resumed by ID.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Retention period and integrity guarantees for conversation logs", "Export of an interactive session as an audit record"],
+  "required_setup": "Run headless with --output-format stream-json and keep the output.",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/headless", "section": "Tool calls in the stream", "quote": "tool_info holds name , parameters , output"},
+    {"page": "cli/headless", "section": "Streaming JSON", "quote": "Use this format to observe tool calls and token usage in real time"}
+  ]
+}

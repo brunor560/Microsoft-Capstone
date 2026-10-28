@@ -1,0 +1,24 @@
+{
+  "feature_id": "F02",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "supported_scope": "Reviewable implementation-plan artifacts; developers can comment and submit feedback before continuation.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Correctness or completeness of plans",
+    "Universal mandatory planning across all execution modes"
+  ],
+  "required_setup": "Use implementation-plan artifacts; review policy determines whether continuation pauses.",
+  "constraints": [
+    "Planning capability does not establish requirements-to-code-to-test traceability."
+  ],
+  "evidence": [
+    {
+      "page": "implementation-plan",
+      "section": "Implementation plan",
+      "quote": "designed for you to review"
+    }
+  ]
+}

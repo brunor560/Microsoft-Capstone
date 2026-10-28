@@ -1,0 +1,16 @@
+{
+  "feature_id": "F02",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "supported_scope": "plan execution mode (--mode=plan or Shift+Tab) prepends /plan, investigates with read-only tools and presents an outline for approval before writing code. /plan in the CLI renders a structured plan in the terminal.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Whether plan approval is a hard gate in the CLI or depends on artifact review settings"],
+  "required_setup": "Select plan mode or type /plan; the default mode does not plan first.",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/modes", "section": "Analyze tasks before editing with plan mode", "quote": "presents a structured execution outline for your approval before writing code"},
+    {"page": "plan", "section": "How to use /plan > Antigravity CLI", "quote": "The CLI enters planning mode, performs codebase analysis, and renders the structured plan directly in the terminal interface"}
+  ]
+}

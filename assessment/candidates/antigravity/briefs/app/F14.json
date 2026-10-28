@@ -1,0 +1,28 @@
+{
+  "feature_id": "F14",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "supported_scope": "The App provides native MCP server management. Authentication and permission configuration are documented; connecting an added server remains excluded.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Correctness, availability and permissions of any particular third-party service"
+  ],
+  "required_setup": "Use App Customizations to configure an MCP server only in a separately scoped integration profile.",
+  "constraints": [
+    "Native protocol support does not make every connected service part of the baseline."
+  ],
+  "evidence": [
+    {
+      "page": "mcp",
+      "section": "Getting started by surface > Antigravity App",
+      "quote": "Installed MCP Servers"
+    },
+    {
+      "page": "mcp",
+      "section": "MCP permissions and access control",
+      "quote": "requiring your approval before execution"
+    }
+  ]
+}

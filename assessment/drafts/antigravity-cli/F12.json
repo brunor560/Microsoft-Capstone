@@ -1,0 +1,143 @@
+{
+  "feature_id": "F12",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Checkpoint rollback of conversation history, file change diff viewing, and tracked file context management",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Recovery coverage of shell effects",
+    "Recovery coverage of external actions",
+    "Recovery coverage of deployed resources"
+  ],
+  "required_setup": "No special configuration required; usage of built-in commands like /rewind and /diff is default",
+  "activation_state": "default",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Recovery limited to conversation checkpoints and tracked files within the session context",
+    "File diffs and rollbacks operate on files tracked in the workspace and session",
+    "No explicit mention of undoing shell effects, external actions, or deployed resources"
+  ],
+  "evidence": [
+    {
+      "page": "cli/commands/context",
+      "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files",
+      "quote": "/rewind to roll back to an earlier checkpoint. Tracked file sections : lists loaded Knowledge files , Artifact files , and Skill files",
+      "claim": "Supports rollback to earlier checkpoints and tracks files relevant to recovery"
+    },
+    {
+      "page": "cli/features",
+      "section": "Antigravity CLI features > Core slash commands",
+      "quote": "/rewind (alias /undo ) Conversation Roll back conversation history to a previous checkpoint.",
+      "claim": "Built-in command to revert conversation history to prior checkpoints"
+    },
+    {
+      "page": "cli/commands/diff",
+      "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)",
+      "quote": "When you run /diff , it opens in VCS Mode by default (if you have uncommitted changes) and displays a list of modified and untracked files",
+      "claim": "Supports viewing diffs of modified and untracked files for recovery and review"
+    },
+    {
+      "page": "cli/commands/context",
+      "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files",
+      "quote": "Checkpoints : displays the active in-context checkpoint along with a count of historical checkpoints that have already been summarized.",
+      "claim": "Checkpoint system provides multiple recovery points with summaries"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "e86daff2-5266-41da-bba7-8cb0883810b8",
+    "usage": {
+      "input_tokens": 4790,
+      "output_tokens": 540
+    },
+    "estimated_cost_usd": 0.00278,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:04:48+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/artifacts",
+        "section": "Reviewing artifacts > Overview of /artifact > Code files and visual media"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Additional resources"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Configure your workspace environment > Write a codebase rule file"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > File includes"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Markdown format custom agents, /copy index support, progressive /codesearch streaming, default temp directory access, and stability fixes"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Default keybindings > Prompt focus keys"
+      },
+      {
+        "page": "cli/using",
+        "section": "CLI settings and tips > Keybindings"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > CLI mcp management commands, debounced @ path completion, and MCP resource handling fixes"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Target file autocompletion"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > File detail view"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Keyboard shortcuts reference > File list view (VCS and Turn modes)"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "hooks",
+        "section": "Hooks > Supported tools > File and directory operations"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules > CLI global wildcard syntax"
+      }
+    ],
+    "response_problems": [
+      "feature_id 'F12_Change_recovery' does not match F12"
+    ]
+  }
+}

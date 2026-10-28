@@ -1,0 +1,24 @@
+{
+  "feature_id": "F10",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "Native plan/artifact approval and operation-specific permission checkpoints. Policies can request review or allow automatic continuation.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Exact coverage of every action and every release/account combination"
+  ],
+  "required_setup": "Select the applicable artifact-review and action-permission settings.",
+  "constraints": [
+    "Do not infer that every action requires approval.",
+    "An approval checkpoint does not imply execution isolation or undo coverage."
+  ],
+  "evidence": [
+    {
+      "page": "artifact-review",
+      "section": "Artifact review policy > Request review (recommended)",
+      "quote": "The agent always halts and requests your explicit approval before proceeding with proposed changes:"
+    }
+  ]
+}

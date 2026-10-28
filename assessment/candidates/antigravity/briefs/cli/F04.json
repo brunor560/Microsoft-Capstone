@@ -1,0 +1,16 @@
+{
+  "feature_id": "F04",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "default",
+  "control_mechanism": "not established",
+  "supported_scope": "Read-only investigation tools (code_search, grep_search, view_file) used in plan mode; /context lists tracked files and token usage; older turns are compacted into checkpoint summaries automatically.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Repository indexing method and size limits"],
+  "required_setup": "None documented beyond confirming workspace trust on first launch.",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/modes", "section": "Analyze tasks before editing with plan mode", "quote": "The agent investigates relevant files using read-only tools ( code_search , grep_search , view_file )"},
+    {"page": "cli/commands/context", "section": "Manage context growth", "quote": "Antigravity automatically compacts older turns into checkpoint summaries"}
+  ]
+}

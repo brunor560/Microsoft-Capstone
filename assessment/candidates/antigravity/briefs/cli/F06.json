@@ -1,0 +1,16 @@
+{
+  "feature_id": "F06",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "policy-dependent",
+  "control_mechanism": "not established",
+  "supported_scope": "The agent runs shell commands (run_command) governed by permission rules; the best-practices page describes having the agent run the local test command and iterate on test output.",
+  "unsupported_scope": [],
+  "unestablished_scope": ["Whether revision after a failing test is automatic or prompt-driven; the page describes a recommended workflow, not a guaranteed loop"],
+  "required_setup": "Shell commands default to Ask unless an allow rule exists.",
+  "constraints": [],
+  "evidence": [
+    {"page": "cli/best-practices", "section": "Establish verification loops", "quote": "instruct it to run the local test command to verify its work"},
+    {"page": "cli/modes", "section": "Available modes", "quote": "continue to govern shell commands"}
+  ]
+}

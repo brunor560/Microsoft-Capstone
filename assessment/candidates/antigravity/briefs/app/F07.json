@@ -1,0 +1,30 @@
+{
+  "feature_id": "F07",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "Native App allow/ask/deny mechanisms for documented file, command, web and MCP actions. Denial and interactive approval are distinct outcomes.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Complete mediation of indirect actions or all host networking",
+    "Exact mapping of the updated permission system to the proposed Windows individual-account profile"
+  ],
+  "required_setup": "Configure App permission rules and the applicable preset; establish account/version/platform eligibility before asserting a default.",
+  "constraints": [
+    "Control mechanism records vendor-described enforcement, not independently verified security.",
+    "Do not transfer CLI or enterprise-only settings to this profile."
+  ],
+  "evidence": [
+    {
+      "page": "permissions",
+      "section": "Antigravity App > Updated permission settings",
+      "quote": "Deny: The action is blocked immediately."
+    },
+    {
+      "page": "permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "quote": "The following table lists the supported permission actions"
+    }
+  ]
+}

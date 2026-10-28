@@ -1,0 +1,29 @@
+{
+  "feature_id": "F06",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "mixed",
+  "supported_scope": "The App supports agent terminal execution and delegated build/test work. This establishes execution capability, not successful failure diagnosis or repair.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guaranteed automated defect correction",
+    "Completeness of captured test output and feedback-loop stopping behavior"
+  ],
+  "required_setup": "Provide the project toolchain and dependencies and configure the applicable command permissions.",
+  "constraints": [
+    "Windows sandbox applicability remains unresolved in F08; permission to execute is distinct from execution isolation."
+  ],
+  "evidence": [
+    {
+      "page": "agent-settings",
+      "section": "Agent settings",
+      "quote": "executes terminal commands"
+    },
+    {
+      "page": "features",
+      "section": "Features in the App and CLI > Subagents",
+      "quote": "builds, or test runs"
+    }
+  ]
+}

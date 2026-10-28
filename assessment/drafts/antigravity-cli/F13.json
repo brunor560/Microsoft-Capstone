@@ -1,0 +1,161 @@
+{
+  "feature_id": "F13",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Packaging, sharing, versioning, and invoking reusable skills and task workflows via native SKILL.md format, plugin management, and automatic skill discovery and invocation",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Explicit versioning mechanisms for skills",
+    "Invocation rules beyond automatic context-based and explicit name mention",
+    "Sharing mechanisms outside plugin installation and workspace/global skill discovery"
+  ],
+  "required_setup": "Skills must be defined as folders containing a SKILL.md file with YAML frontmatter and instructions; skills can be managed via plugins using agy plugin commands; no explicit user invocation needed as agent auto-discovers and activates relevant skills",
+  "activation_state": "default",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Skill files require YAML frontmatter defining name and triggering criteria",
+    "Skills should be focused on one task",
+    "Skills can include optional scripts and resources",
+    "Agent uses progressive disclosure to load skill content on demand",
+    "Skill usage is automatic based on context but can be explicitly mentioned by name"
+  ],
+  "evidence": [
+    {
+      "page": "skills",
+      "section": "Agent skills > What are skills?",
+      "quote": "Skills are reusable packages of knowledge that extend what the agent can do. Each skill contains: Instructions, Best practices, Scripts and resources",
+      "claim": "Skills are reusable packages that extend agent capabilities with instructions and resources"
+    },
+    {
+      "page": "skills",
+      "section": "Agent skills > How the agent uses skills",
+      "quote": "When a conversation starts, the agent sees a list of available skills with their names and descriptions. If a skill looks relevant to your task, the agent reads the full SKILL.md content. The agent follows the skill’s instructions while working on your task.",
+      "claim": "Agent automatically discovers, activates, and executes skills based on context"
+    },
+    {
+      "page": "skills",
+      "section": "Agent skills > Agent skills > Manifest format ( SKILL.md )",
+      "quote": "Every SKILL.md file begins with YAML frontmatter defining its name and triggering criteria",
+      "claim": "Skills are packaged as folders with SKILL.md files containing YAML frontmatter"
+    },
+    {
+      "page": "skills",
+      "section": "Agent skills > Skills by surface > Antigravity CLI > Managing skills with plugins",
+      "quote": "Skills can also be packaged inside plugins and managed with agy plugin : agy plugin install <plugin-name>",
+      "claim": "Skills can be shared and installed via plugins using CLI commands"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "ea08f807-cb36-4886-af3a-3ebc0702c228",
+    "usage": {
+      "input_tokens": 5100,
+      "output_tokens": 596
+    },
+    "estimated_cost_usd": 0.002994,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:05:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > Sharing rules across projects"
+      },
+      {
+        "page": "cli/commands/permissions",
+        "section": "Permissions command (/permissions) > Step-by-step walkthrough > Adding a permission rule"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > Anatomy of a skill > Manifest format ( SKILL.md )"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > What are skills?"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > Size limits and token budgets"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > How the agent uses skills"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > JSON > Structured output with a schema"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON"
+      },
+      {
+        "page": "permissions",
+        "section": "Agent permissions > Antigravity CLI > Supported CLI actions and matching rules"
+      },
+      {
+        "page": "plan",
+        "section": "Plan (/plan) > How /plan works"
+      },
+      {
+        "page": "plugins",
+        "section": "Plugins"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > File includes"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Configuration by surface > Antigravity CLI > Managing rules in Antigravity CLI"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > YAML frontmatter and activation modes"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > YAML frontmatter and activation modes > Activation modes"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > Best practices > Keep skills focused"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > Best practices > Use scripts as black boxes"
+      },
+      {
+        "page": "skills",
+        "section": "Agent skills > Skills by surface > Antigravity CLI > Managing skills with plugins"
+      },
+      {
+        "page": "subagents",
+        "section": "Custom subagents > Antigravity CLI > Custom agents (Markdown format)"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Enhanced /diff navigation and position indicators, Windows plugin lifecycle management, and subagent and task status fixes"
+      }
+    ],
+    "response_problems": [
+      "section 'Agent skills > Agent skills > Manifest format ( SKILL.md )' not an excerpt header; kept for verification"
+    ]
+  }
+}

@@ -2,4 +2,6 @@ node_modules/
 app/node_modules/
 package-lock.json
 **/.DS_Store
+assessment/.cache/
+**/__pycache__/
 **/.env

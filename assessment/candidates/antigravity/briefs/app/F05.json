@@ -1,0 +1,29 @@
+{
+  "feature_id": "F05",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Native project configuration spans related folders, and file-write operations support edits within permitted paths. This supports multi-file work without adding an integration.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Atomic multi-file transactions",
+    "Guaranteed semantic consistency between implementation, configuration and tests"
+  ],
+  "required_setup": "Place the related folders in one project and select local or worktree mode for the conversation.",
+  "constraints": [
+    "Non-Git folders remain local even when worktree mode is selected; this is not an isolation guarantee."
+  ],
+  "evidence": [
+    {
+      "page": "projects",
+      "section": "Antigravity App > What is a project?",
+      "quote": "a frontend and a backend repository"
+    },
+    {
+      "page": "permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "quote": "write_file"
+    }
+  ]
+}

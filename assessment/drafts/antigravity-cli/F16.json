@@ -1,0 +1,145 @@
+{
+  "feature_id": "F16",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Inspecting and exporting tool calls, commands, results, and changes associated with a task via streaming JSON output and interactive CLI commands",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Explicit retention policies for action logs",
+    "Integrity guarantees of audit trail data",
+    "Distinction and export of chat history separate from audit trail"
+  ],
+  "required_setup": "Use --output-format stream-json to emit NDJSON events capturing tool calls and results; use /agents to monitor subagent logs and status; use /diff to review changes; configure toolPermission and artifactReviewPolicy for tool execution control",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Audit trail is accessible via streaming JSON output and CLI commands but retention and integrity guarantees are not explicitly documented",
+    "Tool calls requiring authorization prompt inline approval in /agents panel",
+    "Context compaction via checkpoints may summarize older turns, affecting full history visibility"
+  ],
+  "evidence": [
+    {
+      "page": "cli/headless",
+      "section": "Headless mode > Output formats > Streaming JSON > Tool calls in the stream",
+      "quote": "On tool steps, tool_info carries the call and its result. This is a real tool step from a run that executed echo hello_headless_demo",
+      "claim": "Tool calls and their results are recorded in streaming JSON output as part of the run"
+    },
+    {
+      "page": "cli/headless",
+      "section": "Headless mode > Output formats > Streaming JSON",
+      "quote": "Set --output-format stream-json to emit one JSON object per line (NDJSON) as the run progresses. Use this format to observe tool calls and token usage in real time.",
+      "claim": "Streaming JSON output format provides real-time monitoring of tool calls and results"
+    },
+    {
+      "page": "cli/commands/agents",
+      "section": "Agents command (/agents) > Subagent monitoring and control > Inspecting subagent progress",
+      "quote": "This view displays the subagent’s complete internal thoughts, tool calls, and execution stdout.",
+      "claim": "Subagent detail view in /agents command shows detailed logs including tool calls and execution output"
+    },
+    {
+      "page": "cli/commands/diff",
+      "section": "Diff command (/diff) > Overview",
+      "quote": "The /diff command opens the Interactive Diff Viewer, a full-screen panel that allows you to inspect changes in your workspace and conversation history.",
+      "claim": "The /diff command supports inspection of changes associated with tasks"
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "49d29d06-a4bc-43b2-8db7-b0f7dc4f9758",
+    "usage": {
+      "input_tokens": 5549,
+      "output_tokens": 598
+    },
+    "estimated_cost_usd": 0.003176,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:08:48+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON > Tool calls in the stream"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Core slash commands"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inspecting subagent progress"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats > Streaming JSON"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Default keybindings > Tool confirmations"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Artifact heading outline, print-mode commands, artifact alerts/carousels, improved terminal hyperlinks, and extensive CLI fixes"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Common mistakes"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing turn history (Turn mode)"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Stream prompts from stdin > Read the results"
+      },
+      {
+        "page": "cli/reference",
+        "section": "CLI commands > Configuration keys ( settings.json ) > Example settings.json"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > GEMINI_API_KEY authentication, custom agent task management, embedded ripgrep caching, and conversation database fixes"
+      },
+      {
+        "page": "cli/commands/agents",
+        "section": "Agents command (/agents) > Subagent monitoring and control > Inline tool approvals"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Manage context growth"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Token usage categories"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Overview"
+      },
+      {
+        "page": "cli/commands/diff",
+        "section": "Diff command (/diff) > Step-by-step walkthrough > Reviewing workspace changes (VCS mode)"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Output formats"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Shortcuts and commands > Common SDK methods and configuration"
+      }
+    ],
+    "response_problems": []
+  }
+}

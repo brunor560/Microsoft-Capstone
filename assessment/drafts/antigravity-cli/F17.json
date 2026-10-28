@@ -1,0 +1,194 @@
+{
+  "feature_id": "F17",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "gap_reason": null,
+  "supported_scope": "Task-level token usage and quota visibility with detailed category breakdowns and model quota limits",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Monetary charges reporting",
+    "Request allowances beyond model quotas",
+    "Estimation methods for usage or cost"
+  ],
+  "required_setup": "No special setup required; usage and token breakdowns are available via built-in /context and /usage commands",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Token usage is broken down by categories such as User messages, Agent responses, Tool calls, System prompt, and customizations",
+    "Model quotas and remaining requests/tokens are shown per supported model",
+    "Context window token usage includes checkpoint summaries and tracked files",
+    "Usage data is refreshed automatically when opening usage panels"
+  ],
+  "evidence": [
+    {
+      "page": "cli/commands/context",
+      "section": "Context command (/context) > Understand the context breakdown > Token usage categories",
+      "quote": "The summary panel breaks down your token consumption into the following rows. The User messages, Agent responses, and Tool calls rows are always shown; the remaining rows appear only when that category is consuming tokens.",
+      "claim": "The CLI provides detailed token usage breakdown by category in the /context panel."
+    },
+    {
+      "page": "cli/commands/context",
+      "section": "Context command (/context) > Overview",
+      "quote": "The /context command opens the interactive Context Usage panel in the Antigravity CLI. It displays a proportional visual grid of your model’s total context window alongside a category-by-category token breakdown, compaction checkpoints, and tracked workspace files.",
+      "claim": "The /context command provides an interactive panel showing token usage and context window details."
+    },
+    {
+      "page": "cli/commands/usage",
+      "section": "Model quotas (/usage) > Viewing your usage > Interactive panel features",
+      "quote": "The panel displays the following details: Model quotas: A breakdown of your usage limits and remaining requests/tokens for each supported model (such as Gemini 3.5 Flash and Gemini 3.1 Pro).",
+      "claim": "The /usage command shows model quota usage and remaining tokens/requests."
+    },
+    {
+      "page": "cli/commands/usage",
+      "section": "Model quotas (/usage) > Overview",
+      "quote": "Antigravity CLI provides the /usage command (alias /quota) to help you monitor your resource consumption. When run, the command refreshes your model configuration and quota status from the backend and opens an interactive TUI panel.",
+      "claim": "The CLI supports interactive usage monitoring with automatic refresh from backend."
+    }
+  ],
+  "drafted_by": "model:azure-openai/gpt-4.1-mini",
+  "provenance": {
+    "provider": "azure-openai",
+    "endpoint_host": "autogen-dev-8cb0e.openai.azure.com",
+    "deployment": "gpt-4.1-mini",
+    "api_version": "2024-10-21",
+    "auth": "api-key",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "prompt_version": "brief-prompt/1",
+    "request_id": "37518579-aec6-4f6e-aefe-b16b7c553e9b",
+    "usage": {
+      "input_tokens": 5318,
+      "output_tokens": 627
+    },
+    "estimated_cost_usd": 0.00313,
+    "attempts": 1,
+    "drafted_at": "2026-10-22T22:09:50+00:00",
+    "operator": "cli",
+    "excerpts": [
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Token usage categories"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Open the context usage panel"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context)"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Overview"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage) > Viewing your usage > Interactive panel features"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Manage context growth"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Checkpoints and tracked files"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Navigation controls"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Understand the context breakdown > Visual grid indicators"
+      },
+      {
+        "page": "rules",
+        "section": "Rules > Advanced features and limits > Size limits and token budgets"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context"
+      },
+      {
+        "page": "cli/commands/context",
+        "section": "Context command (/context) > Next steps"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage)"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage) > Next steps"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage) > Overview"
+      },
+      {
+        "page": "cli/commands/usage",
+        "section": "Model quotas (/usage) > Viewing your usage"
+      },
+      {
+        "page": "cli/features",
+        "section": "Antigravity CLI features > Core slash commands"
+      },
+      {
+        "page": "cli/headless",
+        "section": "Headless mode > Stream prompts from stdin > Read the results"
+      },
+      {
+        "page": "getting-started",
+        "section": "Get started > Shortcuts and commands > Common SDK methods and configuration"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP)"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP authentication > Custom headers"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP authentication > OAuth"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP configuration structure"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > MCP permissions and access control"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > What is MCP?"
+      },
+      {
+        "page": "mcp",
+        "section": "Model Context Protocol (MCP) > What is MCP? > Add custom tools"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > Enterprise sign-in fast path, MCP OAuth metadata documents, /context scrolling, and markdown agent customizations"
+      },
+      {
+        "page": "changelog",
+        "section": "Changelog > Antigravity CLI > OSC 7501 terminal status reporting, alt+m message queue toggle, and enhanced agy plugin validate diagnostics"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Attaching visual evidence"
+      },
+      {
+        "page": "cli/best-practices",
+        "section": "CLI best practices > Enrich your prompting context > Target file autocompletion"
+      }
+    ],
+    "response_problems": []
+  }
+}

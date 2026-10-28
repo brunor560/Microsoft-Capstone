@@ -156,3 +156,83 @@ Team decisions given by Ross Volenec on Oct. 21: partial reset of the task lists
 
 Done: `sources/srs.md`, `sources/ddd.md` and `TRACEABILITY.md` regenerated; `sources/track_a_assessment.md` renamed to `sources/approach_a_assessment.md` (DOC-048) with links updated in README, AGENTS and TRACEABILITY; old `TODO.md`, `todo/ddd.md`, `todo/srs.md`, `todo/parked.md` and the old `TRACEABILITY.md` saved to `todo/archive/2026-10-21_pre-v2/`. Not done: Approach A content reconciliation (DOC-061); `feature_matrix_specification.md`, `benchmark_procedure.md` and `whitepaper.md` were not changed.
 
+
+## Approach A reconciliation (Oct. 21, 2026)
+
+### DOC-061 (update)
+
+Oct. 21 update (branch `feature-matrix-revisions`; agent edits with Cline, team review pending; set to Ready for review).
+
+Team decisions given by Ross Volenec on Oct. 21:
+- The Approach A content of the Oct. 18 submission is canonical.
+- Minimal CLI tooling and official-source web research are authorized, including agent assistance for research and evidence checking.
+- The assessed developer tools are not executed, and no microsite, preview, deployment or publication work is done.
+- Ross is the current manifest approver, and reviewers come from a roster.
+- Google Antigravity is the default tool, with the CLI (`agy`) as the first surface.
+- "Not established from documentation" stays the fifth status; pending research is tracked separately.
+
+Done:
+- **Matrix specification v0.3:** approved, versioned manifest with P profiles and 18 × P cells. The workflow adds boundary confirmation, approval, `assessment_state`, an evidence check, a named author and disagreement dispositions. The 18 features, 7 categories, 5 statuses and the documentation-only boundary are unchanged.
+- **`sources/approach_a_assessment.md`:** now points to the `assessment/` dataset. The placeholder profiles MATRIX:C01 to C03 were removed (they remain in git history).
+- **Whitepaper:** the Approach A bullet now describes the manifest model. Section 3.3 has a placeholder for the separate documentary view and an open item about the weighted table.
+- **`TRACEABILITY.md`:** the Approach A rows point to the dataset.
+- **New in the repository:**
+  - `assessment/` holds the catalog (generated from the spec tables), the roster, the Antigravity candidate and 18 research briefs.
+  - `tools/approach_a/` is the workbench (standard library only, with tests).
+  - `.gitignore` excludes the page cache.
+
+Checks run:
+- 28 unit tests pass.
+- 13 representative invalid inputs were run through the CLI. Each one was refused or blocked:
+  - an empty manifest, and approving an empty manifest
+  - an operator or reviewer who is not on the roster
+  - approval by someone who is not an approver
+  - reviewing a pending cell, or a cell with no author
+  - self-review
+  - an open disagreement
+  - an approval made stale by a manifest edit
+  - offline research with no cached pages
+  - a documentation URL that is not https
+- Interrupting and resuming was tested, both with a real SIGINT and in a unit test.
+- A rehearsal run fetched 31 official Antigravity pages and verified all 37 quotes in the briefs against the sections they cite. 17 cells were drafted, and F03 stayed pending.
+
+Not done: source-to-claim review of any cell, so no finding is accepted; F03 research; TC-5.5-1 publication.
+
+### DOC-070
+
+Oct. 21: opened. It covers the human steps that make the Antigravity CLI cells acceptable (see the tracker row).
+
+Recorded facts, not yet reviewed:
+- The brief for F18 (execution limits) records a conflict. The headless page states a five-minute default timeout, while CLI changelog v1.2.6 says the default became unlimited.
+- The briefs for F09 (secrets handling) and F15 (repository and CI/CD integration) are drafted as "Not established from documentation" with gap reasons.
+
+
+Oct. 22: model-assisted drafting (team decision; prepared with Cline, not yet reviewed).
+- Ross amended SRS Spec 5.4.2 after the team approved it. Agents or model APIs may now analyze official documentation and draft findings. Assessed tools are never executed or tested, and drafts need human verification and independent review before acceptance.
+- TC-5.4-1 and its acceptance criteria were replaced to match (Ross's decision D1). The old text required "zero ... model API calls."
+- Decisions:
+  - D2: use the existing `AZURE_DEV_*` key from `pipeline/autogen/.env` (gitignored, unchanged); Entra ID authentication is deferred.
+  - D3: total demo spending cap of $5.
+  - D4: Ross tunes the limits in `tools/approach_a/drafting.json`.
+- Implemented in `tools/approach_a/`:
+  - `azure.py`, `drafting.py` and `drafting.json`
+  - the `--draft azure` and `--env-file` options
+  - a cumulative spend ledger, `model_spend.jsonl`
+- Verified:
+  - 38 unit tests pass. The new ones use a fake endpoint and cover the key never being written to any file, retries, refused credentials, request and spending caps, invented quotes and resuming.
+  - One live request (F01, Oct. 22) used 4,939 input and 690 output tokens, at an estimated $0.0031. Three of its four quotes verified.
+- Open:
+  - DDD ADR-14 still says "No model calls ... in A"; it needs a team decision (the DDD was not edited).
+  - The deployment allows 10 requests and 10,000 tokens per minute, so a full 18-feature draft paces to roughly 12 to 15 minutes.
+
+Oct. 22 (later): Azure drafting is on by default (Ross's decision, so the demo needs no flags).
+- `drafting.json` now sets `default_draft: azure` and `default_env_file: pipeline/autogen/.env`. `--no-draft` turns drafting off for one run.
+- If Azure is not available, the command stops with an error (exit 2), per Ross's decision; there is no silent fallback to prepared briefs. "Not available" means:
+  - a missing env file or variable, or `--offline`
+  - refused credentials
+  - no response, or 429/5xx errors after retries
+
+  Drafts saved before the stop are kept, and `resume` continues.
+- The test package sets `APPROACH_A_DRAFT=off`, so tests never reach Azure. 44 tests pass.
+
+

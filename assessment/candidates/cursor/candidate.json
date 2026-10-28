@@ -1,0 +1,50 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "cursor",
+  "tool": "cursor",
+  "vendor": "Not established; operator to confirm from official documentation",
+  "default_surface": "ide",
+  "note": "Created live with `assess new` on 2026-10-22. Only the tool name, documentation URL and surface were entered; other fields are unconfirmed. No research brief: every cell stays pending.",
+  "docs": {
+    "base_url": "https://cursor.com/docs/",
+    "allowed_prefixes": [
+      "https://cursor.com/docs/"
+    ],
+    "publisher": "Not established; operator to confirm from official documentation",
+    "surface_labels": {}
+  },
+  "surfaces": {
+    "ide": {
+      "label": "cursor (ide)",
+      "profile_id": "cursor-ide",
+      "category_tags": [
+        "T1"
+      ],
+      "interface_and_execution_location": "Not established; operator to confirm from official documentation",
+      "version": {
+        "value": null,
+        "kind": "not yet identified",
+        "documentation_note": "Version not yet established from documentation; record the access date"
+      },
+      "modes": [
+        "Not established; operator to confirm from official documentation"
+      ],
+      "platforms": [
+        "Not established; operator to confirm from official documentation"
+      ],
+      "account_and_tier": "Not established; operator to confirm from official documentation",
+      "model_support": "Not established; operator to confirm from official documentation",
+      "included_components": [
+        "Not established; operator to confirm from official documentation"
+      ],
+      "exclusions": [
+        "Other product surfaces of cursor",
+        "Add-ons and third-party integrations"
+      ],
+      "instructions_and_permissions": "Not established; operator to confirm from official documentation",
+      "seed_pages": [
+        "https://cursor.com/docs/"
+      ]
+    }
+  }
+}
