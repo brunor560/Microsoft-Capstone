@@ -1,0 +1,31 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Plans and completion walkthroughs describe intended work and changes; a maintained requirement-to-change-to-check mapping is not established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Explicit requirement IDs linked to implementation and verification evidence",
+    "Traceability maintenance when requirements or code change"
+  ],
+  "required_setup": "Establish a documented traceability mechanism before claiming this capability; a plan or completion summary alone is insufficient.",
+  "constraints": [
+    "Artifacts are agent-generated communication, not independently verified trace links."
+  ],
+  "evidence": [
+    {
+      "page": "implementation-plan",
+      "section": "Implementation plan",
+      "quote": "technical details on what revisions are necessary"
+    },
+    {
+      "page": "walkthrough",
+      "section": "Walkthrough",
+      "quote": "summary of the changes made"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "The reviewed plan and walkthrough pages describe planning and summaries, but do not establish explicit links from requirements through changes to verification evidence."
+}

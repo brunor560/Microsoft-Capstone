@@ -4,13 +4,13 @@
   "status": "Built in",
   "activation_state": "optional",
   "control_mechanism": "mixed",
-  "supported_scope": "Reviewable implementation-plan artifacts and an explicit planning invocation; developers can comment and submit feedback before continuation.",
+  "supported_scope": "Reviewable implementation-plan artifacts; developers can comment and submit feedback before continuation.",
   "unsupported_scope": [],
   "unestablished_scope": [
     "Correctness or completeness of plans",
     "Universal mandatory planning across all execution modes"
   ],
-  "required_setup": "Use the documented planning workflow or /plan; review policy determines whether continuation pauses.",
+  "required_setup": "Use implementation-plan artifacts; review policy determines whether continuation pauses.",
   "constraints": [
     "Planning capability does not establish requirements-to-code-to-test traceability."
   ],
@@ -18,7 +18,7 @@
     {
       "page": "implementation-plan",
       "section": "Implementation plan",
-      "quote": "You can explicitly trigger structured planning"
+      "quote": "designed for you to review"
     }
   ]
 }

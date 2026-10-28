@@ -1,0 +1,27 @@
+{
+  "feature_id": "F18",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Provider quota and rate limits are documented, but user-configurable whole-conversation execution limits are not established for the App.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Hard App task time limit",
+    "Iteration/turn ceiling",
+    "Per-task currency budget and termination on exhaustion"
+  ],
+  "required_setup": "Establish App-specific limit settings and enforcement semantics before claiming runaway-work containment.",
+  "constraints": [
+    "Provider capacity limits and permission prompts do not establish operator-set task budgets."
+  ],
+  "evidence": [
+    {
+      "page": "plans",
+      "section": "Baseline quota",
+      "quote": "available capacity"
+    }
+  ],
+  "evidence_basis": "documentation_gap",
+  "gap_reason": "Reviewed baseline quota and App execution settings describe access and rate controls rather than an operator-set time, iteration or spending ceiling for a task. Paid credit overage controls are outside the proposed free-tier boundary."
+}

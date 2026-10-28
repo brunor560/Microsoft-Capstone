@@ -326,5 +326,5 @@ def env_file_for(args, config):
     """--env-file, else config default_env_file (relative to the repository root), else None."""
     path = getattr(args, 'env_file', None) or config.get('default_env_file')
     if path and not os.path.isabs(path) and not getattr(args, 'env_file', None):
-        path = os.path.join(st.REPO, path)
+        path = os.path.normpath(os.path.join(st.REPO, path))
     return path

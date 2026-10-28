@@ -134,7 +134,13 @@
         "projects",
         "plans",
         "models",
-        "changelog"
+        "changelog",
+        "artifacts",
+        "walkthrough",
+        "features",
+        "skills",
+        "mcp",
+        "settings"
       ]
     }
   }

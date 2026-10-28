@@ -1,0 +1,28 @@
+{
+  "feature_id": "F11",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "Native artifact views show plans and diffs, and inline feedback can redirect proposed work. App-wide stop/cancel semantics are not established by these sources.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Cancellation control and effect on already-running processes or external actions"
+  ],
+  "required_setup": "Open artifact review and provide feedback before proceeding; review policy determines where work pauses.",
+  "constraints": [
+    "CLI Escape interruption instructions are not evidence of an App cancellation mechanism."
+  ],
+  "evidence": [
+    {
+      "page": "artifacts",
+      "section": "Reviewing artifacts across surfaces > Antigravity App",
+      "quote": "visual code diffs"
+    },
+    {
+      "page": "artifacts",
+      "section": "Interactive steering and feedback",
+      "quote": "inline text feedback"
+    }
+  ]
+}

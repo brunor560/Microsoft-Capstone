@@ -1,0 +1,29 @@
+{
+  "feature_id": "F04",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "supported_scope": "The App can inspect project files through native read access across configured folders. This establishes file inspection, not a particular indexing or search implementation.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Repository indexing implementation and freshness",
+    "Automatic context-selection completeness and size limits"
+  ],
+  "required_setup": "Add the relevant project folders and retain the read permissions needed to inspect them.",
+  "constraints": [
+    "Broader filesystem access depends on permission rules; project membership is not proof that every relevant file enters model context."
+  ],
+  "evidence": [
+    {
+      "page": "projects",
+      "section": "Antigravity App > What is a project?",
+      "quote": "all of the context required for your codebase"
+    },
+    {
+      "page": "permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "quote": "Grants recursive read access"
+    }
+  ]
+}

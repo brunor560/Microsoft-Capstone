@@ -1,0 +1,34 @@
+{
+  "feature_id": "F13",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "Native skill bundles use SKILL.md instructions and optional resources; the App discovers supported skill locations and provides invocation controls.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Enforced execution of every instruction",
+    "Native skill version history beyond Git-managed files"
+  ],
+  "required_setup": "Assess discovery and invocation only; adding a custom skill or plugin remains excluded from this baseline.",
+  "constraints": [
+    "The capability mechanism is in scope; behavior of an installed third-party skill is not."
+  ],
+  "evidence": [
+    {
+      "page": "skills",
+      "section": "What are skills?",
+      "quote": "Skills are reusable packages of knowledge"
+    },
+    {
+      "page": "skills",
+      "section": "Skills by surface > Antigravity App skill locations",
+      "quote": ".agents/skills"
+    },
+    {
+      "page": "skills",
+      "section": "Skills by surface > Invoking skills in the Antigravity App",
+      "quote": "Manual slash command"
+    }
+  ]
+}
