@@ -1,0 +1,20 @@
+﻿{
+    "total_tokens":  null,
+    "measurement_type":  "Reconstructed from interactive status snapshots",
+    "cache_creation_tokens_field_sum":  0,
+    "cache_read_tokens_field_sum":  147649,
+    "output_tokens_field_sum":  4685,
+    "model_usage_updates":  10,
+    "dollar_cost":  null,
+    "input_tokens_field_sum":  31607,
+    "cache_inclusive_sum_if_separate":  183941,
+    "input_plus_output_tokens":  36292,
+    "method":  "Ten distinct current_usage updates; output sum checked against final cumulative output",
+    "source":  "telemetry-snapshots.jsonl",
+    "cache_accounting":  "Inclusion relationship not independently verified",
+    "output_sum_matches_final_counter":  true,
+    "final_cumulative_input_tokens":  23218,
+    "conversation_id":  "761c73ee-4c87-4ab9-ad69-fe85b068ff54",
+    "final_cumulative_output_tokens":  4685,
+    "notes":  "Final cumulative input differs from the sum of current_usage input fields. No verified billing total or token-efficiency score claimed."
+}

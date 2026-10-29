@@ -1,0 +1,105 @@
+﻿{
+    "run_id":  "antigravity-cli-task002-interactive-run01",
+    "source":  "screen-recording.mp4; ChatGPT recording review",
+    "interventions":  [
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "0",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "0",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "0",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "0",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "0",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "1",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "0",
+                              "message":  "1",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          },
+                          {
+                              "from":  "operator",
+                              "video_time_approx":  "A",
+                              "message":  "p",
+                              "operator_type":  "human",
+                              "kind":  "approval"
+                          }
+                      ],
+    "notes":  "Times approximate; descriptions paraphrased. No corrective prompts observed."
+}
