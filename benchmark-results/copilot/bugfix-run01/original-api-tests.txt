@@ -1,0 +1,34 @@
+▶ API-01: completed must be a boolean
+  ✔ rejects completed: "false" (4.539875ms)
+  ✔ rejects completed: "true" (1.908458ms)
+  ✔ rejects completed: 0 (2.1165ms)
+  ✔ rejects completed: 1 (1.349083ms)
+  ✔ rejects completed: null (1.123917ms)
+  ✔ rejects completed: {} (1.216583ms)
+  ✔ rejects completed: [] (1.184208ms)
+✔ API-01: completed must be a boolean (38.819291ms)
+✔ API-01: string "false" does not mark a todo complete (1.207292ms)
+▶ API-02: malformed ids are rejected
+  ✔ rejects id 5abc (1.524625ms)
+  ✔ rejects id -5 (1.213625ms)
+  ✔ rejects id 0 (0.981042ms)
+  ✔ rejects id 0x1 (0.919791ms)
+  ✔ rejects id 1.0 (1.19375ms)
+  ✔ rejects id abc (0.924917ms)
+  ✔ rejects id 9007199254740992 (1.031625ms)
+✔ API-02: malformed ids are rejected (8.524416ms)
+✔ API-02: leading zeros refer to the same todo (0.811042ms)
+✔ API-02: a valid id with no todo returns 404 (1.790125ms)
+✔ API-03: a non-object body is rejected (1.178416ms)
+✔ API-04: an invalid completed value blocks a valid title (1.260958ms)
+✔ API-05: boolean updates still work in both directions (1.297ms)
+✔ API-05: valid title updates still work (0.70125ms)
+✔ API-05: GET, POST and DELETE keep their behaviour (1.512916ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125.300167

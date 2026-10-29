@@ -1,0 +1,21 @@
+{
+  "run_id": "copilot-bugfix-run01",
+  "interventions": [
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Allowed file edits within the run directory without further per-file approval.",
+      "reason": "Operator-reported approval; wording paraphrased and exact timestamp unavailable."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Approved running tests.",
+      "reason": "Operator-reported approval; wording paraphrased and exact timestamp unavailable."
+    }
+  ]
+}

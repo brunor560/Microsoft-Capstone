@@ -1,0 +1,5 @@
+lint         PASS  baseline 0 candidate 0
+complexity   FAIL  baseline 0 candidate 1
+duplication  FAIL  baseline 0 candidate 13
+runtime      PASS  baseline 130 candidate 136 ratio 1.046
+score 50 (50/100)

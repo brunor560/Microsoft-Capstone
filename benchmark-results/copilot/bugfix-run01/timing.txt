@@ -1,0 +1,5 @@
+start_utc=2026-10-29T16:42:22Z
+end_utc=2026-10-29T16:44:24Z
+elapsed_seconds=122
+method=Operator-recorded UTC timestamps in a separate terminal; manual submission and stop boundaries
+approval_wait_seconds=unknown

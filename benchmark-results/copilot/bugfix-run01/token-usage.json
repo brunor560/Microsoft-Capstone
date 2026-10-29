@@ -1,0 +1,14 @@
+{
+  "source": "copilot-usage.json",
+  "model": "mai-code-1.1-flash",
+  "usage": {
+    "input_tokens": 97577,
+    "cached_input_tokens": 67840,
+    "output_tokens": 16602,
+    "reasoning_output_tokens": 9728
+  },
+  "total_tokens": 114179,
+  "total_cost_usd": null,
+  "cost_note": "USD cost unavailable; zero request-cost fields are not a USD measurement.",
+  "counting_note": "Cached input and reasoning output are included in input and output respectively."
+}

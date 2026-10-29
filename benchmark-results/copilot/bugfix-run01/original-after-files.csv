@@ -1,0 +1,7 @@
+Path,SHA256
+"app/package-lock.json","0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846"
+"app/package.json","6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9"
+"app/public/index.html","fd0ee413ec988ed210ac7a9efdfefbb3479791b7930de7d83d3481fa108b5db1"
+"app/server.js","aa11fdc8feb7bb7672a033e5c9cfbd1a0e779bf90154a31af787ad4583a3b66a"
+"app/test.js","822a56b16ef8ad0582bf17981f7d48dad98975d51ea88301da62a4ca71eed192"
+"pipeline/tasks/004-fix-update-validation.md","f1bec97b0ca2cd0107b4b0bd236398c4cc0065e89bf23d7242294c2546613231"
