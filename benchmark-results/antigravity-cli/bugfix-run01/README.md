@@ -1,4 +1,4 @@
-﻿# Antigravity CLI — Task 004 — Interactive run 01
+# Antigravity CLI — Task 004 — Interactive run 01
 
 ## Configuration
 
@@ -88,8 +88,17 @@ Dollar cost is unavailable.
 ## Dashboard status
 
 Keep this CLI configuration separate from Antigravity desktop results.
-Dashboard integration remains pending.
-Token efficiency scoring remains pending accounting verification.
+Dashboard integration completed locally.
+Token efficiency is scored provisionally, assuming cache reads are separate from input.
 
 Earlier headless attempts were blocked by permissions and are preserved
 separately. This package describes the successful interactive attempt.
+
+## Post-run grading update
+
+Code quality: 25/100.
+Token efficiency: 65.6485/100 using a provisional total of 268,703.
+Assumption: input, output, and cache reads are separate and additive; unverified.
+Human collaboration: 100/100 from zero corrective prompts and seven excluded permission approvals.
+Intervention review: ChatGPT recording review plus operator confirmation; no independent teammate review claimed.
+Weighted score excluding task-inapplicable security: approximately 75.4/100, provisional.

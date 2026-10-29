@@ -152,8 +152,10 @@ function tokens(json) {
   const reconstructed = /reconstructed/i.test(t.measurement_type || '') || u.input_tokens_field_sum != null;
   const accountingUnverified = reconstructed || /not independently verified|unverified/i.test(t.cache_accounting || '');
   const inputPlusOutput = t.input_plus_output_tokens ?? ((input || 0) + (output || 0));
-  const total = accountingUnverified ? null : u.total_tokens ?? ((input || 0) + (separateCache ? (cached || 0) + cacheCreate : 0) + (output || 0));
-  return { input, cached, output, total, inputPlusOutput, reconstructed, accountingUnverified, measurementType: t.measurement_type || null, cacheAccounting: t.cache_accounting || null, cost: t.total_cost_usd ?? null, model: t.model || null, turns: t.num_turns ?? null };
+  const scoringProvisional = accountingUnverified && t.scoring_policy === 'cache_reads_separate_provisional';
+  const assumedTotal = inputPlusOutput + (cached || 0) + (u.cache_creation_tokens_field_sum || 0);
+  const total = scoringProvisional ? assumedTotal : accountingUnverified ? null : u.total_tokens ?? ((input || 0) + (separateCache ? (cached || 0) + cacheCreate : 0) + (output || 0));
+  return { input, cached, output, total, inputPlusOutput, reconstructed, accountingUnverified, scoringProvisional, measurementType: t.measurement_type || null, cacheAccounting: t.cache_accounting || null, cost: t.total_cost_usd ?? null, model: t.model || null, turns: t.num_turns ?? null };
 }
 
 // Model and reasoning effort, from whichever run record names them

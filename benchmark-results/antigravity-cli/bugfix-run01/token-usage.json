@@ -1,4 +1,4 @@
-﻿{
+{
   "source": "telemetry-snapshots.jsonl",
   "method": "Count each distinct current_usage update once, identified by cumulative output-token advancement",
   "model_usage_updates": 12,
@@ -12,5 +12,9 @@
   "output_sum_matches_final_counter": true,
   "cache_accounting": "Inclusion relationship not independently verified",
   "measurement_type": "Reconstructed from interactive status snapshots",
-  "dollar_cost": null
+  "dollar_cost": null,
+  "scoring_policy": "cache_reads_separate_provisional",
+  "scoring_assumption": "Input, output, and cache reads are assumed separate and additive; cache inclusion is not independently verified.",
+  "provisional_scoring_total": 268703,
+  "scoring_status": "provisional assumption; not a verified billing total"
 }
