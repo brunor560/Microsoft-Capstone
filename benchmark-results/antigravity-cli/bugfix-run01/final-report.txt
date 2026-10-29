@@ -1,0 +1,76 @@
+> Read pipeline/tasks/004-fix-update-validation.md and implement the task in this workspace. Follow its requirements and
+  constraints, run the required local tests, and provide the report requested by the task.
+○ Thought for 2.6s (Let me start by reading the task file to understand what needs to be implemented.)
+● Explored 1 file (004-fix-update-validation.md) (ctrl+o to expand)
+
+  Now let me explore the workspace to understand the existing code structure:
+
+● Ran (Get-ChildItem -Recurse C:\Users\kapil\Antigravity-CLI-task004-interactive-run01\workspace\app\ | Select-Objec...
+● Explored 3 files (server.js, test.js, index.html) (ctrl+o to expand)
+
+  Now I have a clear picture of all the code. Let me analyze the bugs and required changes:
+
+  Bug 1: In server.js line 38: todo.completed = Boolean(req.body.completed) — Boolean("false") returns true because
+  any non-empty string is truthy. So sending string "false" sets completed to true. Also no type checking — should
+  require completed to be a boolean.
+
+  Bug 2: In index.html toggleStatus() — if the fetch fails (network error), there's no error handling. The UI just
+  silently fails with no feedback.
+
+  Additional issues per API requirements:
+
+  • No ID validation on PUT (digits only, >0, ≤ MAX_SAFE_INTEGER)
+  • No check that body is a JSON object (not array, etc.)
+  • Boolean() coercion instead of strict boolean check
+
+  Let me now implement all the fixes:
+
+● Edited 1 file (server.js) (ctrl+o to expand)
+  The file uses CRLF line endings. Let me use the exact content:
+● Edited 1 file (server.js) (ctrl+o to expand)
+
+  Now let's update index.html to fix the UI bugs (UI-02, UI-03 — error display and state rollback):
+
+● Edited 1 file (index.html) (ctrl+o to expand)
+
+  Now let's add the required API tests to test.js. I need to add tests for API-01 through API-05 while preserving all
+  existing tests:
+
+● Explored 1 file (package.json) (ctrl+o to expand)
+
+  Now let me write the updated test.js with all existing tests preserved plus new ones for each API requirement:
+● Edited 1 file (test.js) (ctrl+o to expand)
+
+  Now let's run the tests:
+
+● Ran 2 commands (cd C:\Users\kapil\An...: failed · Set-Location C:\User...) (ctrl+o to expand)
+
+  All 24 tests pass. Let me now create the report artifact:
+
+● Edited 1 file (004-report.md) (ctrl+o to expand)
+
+  All done. See the full report in 004-report.md. Here's a summary:
+  ──────
+  ## Bug Causes
+
+  Bug 1 — Sync script un-checks produce wrong result
+  server.js` line 38 used Boolean(req.body.completed). In JavaScript, Boolean("false") === true because any non-empty
+  string is truthy. So a CSV sync sending the string "false" toggled the todo on instead of off.
+
+  Bug 2 — No error shown when server is unreachable
+  index.html` `toggleStatus() had no try/catch and never checked res.ok. Network errors threw silently, and HTTP
+  errors just called fetchTodos() as if nothing happened — no role="alert" was ever rendered.
+  ──────
+  ## What Changed
+
+   File       │ Change
+  ────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────
+   server.js  │ Rewrote PUT handler: ID validation (API-02), object body check (API-03), strict typeof === 'boolean'
+              │ check (API-01), validation before mutation (API-04), direct assignment without coercion
+   index.html │ toggleStatus wrapped in try/catch; checks res.ok; on failure renders a role="alert" error inside the
+              │ todo's <li> without changing the todo's visual state
+   test.js    │ Added 15 new tests (API-01 through API-05); all 9 existing tests preserved
+
+  ## Test Results
+
+    ✔ 24 pass  ✘ 0 fail   (286ms)

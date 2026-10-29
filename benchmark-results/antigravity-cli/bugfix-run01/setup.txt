@@ -1,0 +1,11 @@
+﻿interface=Antigravity CLI interactive
+cli_version=1.4.10
+model=Claude Sonnet 4.6 (Thinking)
+baseline_commit=1e690f91a11dd1b37c796345a511d6791476efbc
+operator=Kapil Srikanth
+operator_prior_task_knowledge=yes
+setup_assistance=ChatGPT
+conversation_capture=screen recording and manually preserved output
+telemetry=custom status-line snapshots; accounting unverified
+machine_readable_transcript=unavailable at reported path during preflight
+approval_policy=one-time approval for reviewed in-scope requests
