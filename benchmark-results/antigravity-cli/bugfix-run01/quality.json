@@ -1,0 +1,84 @@
+﻿{
+    "grader":  "code-quality 1.0.0",
+    "eslint":  "9.17.0",
+    "complexityLimit":  10,
+    "runtimePairs":  10,
+    "runtimeLimit":  1.2,
+    "measuredFiles":  [
+                          "server.js",
+                          "test.js",
+                          "index.inline.js"
+                      ],
+    "checks":  {
+                   "lint":  {
+                                "baseline":  0,
+                                "candidate":  2,
+                                "details":  [
+                                                "index.inline.js:29 no-unused-vars: \u0027span\u0027 is assigned a value but never used.",
+                                                "index.inline.js:30 no-unused-vars: \u0027wasCompleted\u0027 is assigned a value but never used."
+                                            ],
+                                "pass":  false
+                            },
+                   "complexity":  {
+                                      "baseline":  0,
+                                      "candidate":  1,
+                                      "details":  [
+                                                      "server.js:33 Arrow function has a complexity of 14. Maximum allowed is 10."
+                                                  ],
+                                      "pass":  false
+                                  },
+                   "duplication":  {
+                                       "baseline":  0,
+                                       "candidate":  65,
+                                       "details":  [
+                                                       "test.js:204-211 = test.js:186-193 (8 lines)",
+                                                       "test.js:222-229 = test.js:186-193 (8 lines)",
+                                                       "test.js:238-245 = test.js:186-193 (8 lines)",
+                                                       "test.js:330-340 = test.js:259-269 (11 lines)",
+                                                       "test.js:354-361 = test.js:186-193 (8 lines)",
+                                                       "test.js:399-406 = test.js:186-193 (8 lines)",
+                                                       "test.js:429-437 = test.js:284-292 (9 lines)",
+                                                       "server.js:70-82 = server.js:35-45 (13 lines)"
+                                                   ],
+                                       "pass":  false
+                                   },
+                   "runtime":  {
+                                   "applicable":  true,
+                                   "baseMedian":  272,
+                                   "candMedian":  295.5,
+                                   "ratio":  1.086,
+                                   "candOk":  true,
+                                   "baseMs":  [
+                                                  270,
+                                                  275,
+                                                  275,
+                                                  272,
+                                                  272,
+                                                  274,
+                                                  272,
+                                                  274,
+                                                  272,
+                                                  271
+                                              ],
+                                   "candMs":  [
+                                                  294,
+                                                  295,
+                                                  293,
+                                                  298,
+                                                  296,
+                                                  293,
+                                                  294,
+                                                  302,
+                                                  310,
+                                                  300
+                                              ],
+                                   "pass":  true
+                               }
+               },
+    "points":  25,
+    "possible":  100,
+    "score":  25,
+    "baselineCommit":  "1e690f91a11dd1b37c796345a511d6791476efbc",
+    "task":  "004",
+    "gradedAt":  "2026-10-29T21:26:59.8818121Z"
+}

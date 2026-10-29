@@ -635,7 +635,7 @@ function renderRuns() {
       <td class="num">${r ? r.suites.reduce((a, s) => a + (s.pass || 0), 0) : '—'}</td>
       <td class="num">${r ? r.changed.length : '—'}</td>
       <td class="num" style="min-width:120px">${r?.timing ? `<div style="display:flex;gap:6px;align-items:center"><div class="bar" style="width:${r.timing.seconds / maxT * 70}px"></div>${fmtS(r.timing.seconds)}</div>` : '—'}</td>
-      <td class="num">${r?.tokens?.accountingUnverified ? 'reconstructed; see Overview' : r?.tokens?.total ? fmtN(r.tokens.total) : '—'}</td>
+      <td class="num">${r?.tokens?.accountingUnverified ? `${Number(r.tokens.inputPlusOutput).toLocaleString('en-US')} input + output (reconstructed)` : r?.tokens?.total ? fmtN(r.tokens.total) : '—'}</td>
     </tr>`;
   }
   $('#runsTbl').innerHTML = h + '</tbody>';
@@ -665,7 +665,7 @@ function renderCharts() {
       h += `<div class="hgroup" data-task="${t.id}">${t.id} · ${esc(t.short)} <span style="color:var(--violet)">→</span></div>`;
       h += rows.map(({ s, r, v }) => {
         const lbl = `${esc(toolName(s.tool))}${r && r.run.match(/\d+$/)[0] !== '01' ? ' ' + r.run : ''}`;
-        if (v == null) return `<div class="hbar none" ${r ? `data-run="${r.id}" style="cursor:pointer"` : ''}><span class="lbl">${lbl}</span><span class="track"></span><span class="val">${r && el.id === 'chartTok' && r.tokens?.accountingUnverified ? 'reconstructed; see Overview' : r ? 'not recorded' : 'Not ran'}</span></div>`;
+        if (v == null) return `<div class="hbar none" ${r ? `data-run="${r.id}" style="cursor:pointer"` : ''}><span class="lbl">${lbl}</span><span class="track"></span><span class="val">${r && el.id === 'chartTok' && r.tokens?.accountingUnverified ? `${Number(r.tokens.inputPlusOutput).toLocaleString('en-US')} I+O*` : r ? 'not recorded' : 'Not ran'}</span></div>`;
         return `<div class="hbar" data-run="${r.id}" title="${esc(modelLabel(r))}"><span class="lbl">${lbl}<span class="note" style="display:block;font-size:10.5px;line-height:1.2">${esc(r.model || '')}</span></span><span class="track"><i style="width:${v / max * 100}%;background:${TOOL_COLOR[s.tool]}"></i></span><span class="val num">${fmt(v)}</span></div>`;
       }).join('');
     }
@@ -673,6 +673,9 @@ function renderCharts() {
   };
   chart($('#chartTime'), (r) => r.timing?.seconds, fmtS);
   chart($('#chartTok'), (r) => r.tokens?.total, fmtN);
+  if (vis.some((s) => s.runsAll.some((r) => r.tokens?.accountingUnverified))) {
+    $('#chartTok').insertAdjacentHTML('beforeend', '<p class="note">* I+O = reconstructed input plus output; cache reads are recorded separately in Overview. This value is not a cache-inclusive total and is excluded from token comparisons and scoring.</p>');
+  }
 }
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
