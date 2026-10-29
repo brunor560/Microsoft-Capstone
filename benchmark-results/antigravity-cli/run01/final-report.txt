@@ -1,0 +1,46 @@
+﻿## Final Report                                                                                                                           
+                                                                                                                                            
+  ### Files Changed                                                                                                                         
+                                                                                                                                            
+  1. **server.js**                                                                                                                          
+      • Added a parseId(raw) helper function that validates IDs: must be all decimal digits, a positive integer, and within JavaScript's    
+      safe-integer range (returns null for invalid inputs).                                                                                 
+      • Added DELETE /api/todos/:id endpoint: returns 400 for invalid IDs, 404 for not-found, and 204 with empty body on successful deletion.
+  2. **test.js**                                                                                                                            
+      • Preserved all 4 existing tests unchanged.                                                                                           
+      • Added 11 new tests covering all DELETE requirements: 204 on success, empty body, removal from list, 404 for missing, 404 on double- 
+      delete, 400 for abc, 1abc, 1.5, 0, -1, 9007199254740992, and verifying other todos are left unchanged.                                
+                                                                                                                                            
+                                                                                                                                            
+  ### Commands Run                                                                                                                          
+                                                                                                                                            
+   Command                                                             │ Outcome
+  ─────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────
+   cd app; npm test                                                    │ ✅ Exit code 0 — all tests passed
+                                                                                                                                            
+  ### Test Results                                                                                                                          
+                                                                                                                                            
+    tests 15 | pass 15 | fail 0 | cancelled 0 | skipped 0 | todo 0                                                                          
+    duration_ms 266.5                                                                                                                       
+                                                                                                                                            
+  ### Browser / Manual Checks                                                                                                               
+                                                                                                                                            
+  None performed.                                                                                                                           
+                                                                                                                                            
+  ### Errors, Retries, Limitations                                                                                                          
+                                                                                                                                            
+  • First edit_file attempt failed due to CRLF vs LF line-ending mismatch; resolved by rewriting both files with write_file.                
+                                                                                                                                            
+  ### Requirements Unclear / Interpretations                                                                                                
+                                                                                                                                            
+  • -1 as a URL segment: Express routes /api/todos/-1 correctly, so the leading - is caught by the ^\d+$ regex test → 400 as required.      
+                                                                                                                                            
+  ### Unexpected Observations                                                                                                               
+                                                                                                                                            
+  • The existing PUT handler uses parseInt (not the new parseId), so it accepts strings like 1abc (parseInt stops at the first non-digit).  
+  The task only requires adding DELETE, so I left PUT behavior unchanged per the constraint to preserve existing behavior.                  
+                                                                                                                                            
+  ### Model / Session Info                                                                                                                  
+                                                                                                                                            
+  • Model: Claude Sonnet 4.6 (Thinking)                                                                                                     
+  • Session duration / tokens: not available
