@@ -1,0 +1,17 @@
+tool=GitHub Copilot CLI 1.0.103
+interface=interactive CLI
+plan=Student
+intended_controlled_model=claude-sonnet-4.6
+requested_model=auto
+actual_models=pending evidence
+model_deviation=Student plan permits Auto only
+reasoning_effort=not explicitly set
+approval_mode=manual
+memory=disabled; verified before prompt
+custom_instructions=disabled by launch flag
+hooks=disabled in configuration
+ide_auto_connect=disabled in configuration
+connected_mcp_servers=0
+sandbox=not yet verified; workspace path restrictions are not container isolation
+observed_model=mai-code-1.1-flash
+model_evidence=Copilot usage display and Auto routing footer

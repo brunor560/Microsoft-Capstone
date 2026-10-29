@@ -1,0 +1,71 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 1,
+      "details": [
+        "server.js:33 Arrow function has a complexity of 14. Maximum allowed is 10."
+      ],
+      "pass": false
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 13,
+      "details": [
+        "server.js:65-78 = server.js:33-46 (14 lines)"
+      ],
+      "pass": false
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 130,
+      "candMedian": 136,
+      "ratio": 1.046,
+      "candOk": true,
+      "baseMs": [
+        133,
+        130,
+        128,
+        133,
+        134,
+        130,
+        127,
+        130,
+        130,
+        131
+      ],
+      "candMs": [
+        137,
+        139,
+        136,
+        136,
+        136,
+        135,
+        136,
+        136,
+        136,
+        135
+      ],
+      "pass": true
+    }
+  },
+  "points": 50,
+  "possible": 100,
+  "score": 50
+}

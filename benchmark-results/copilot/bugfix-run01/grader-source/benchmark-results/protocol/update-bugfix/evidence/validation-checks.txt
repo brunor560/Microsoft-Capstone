@@ -1,0 +1,20 @@
+# Partial fix: only the completed type check (API-01), nothing else
+✔ API-01: completed must be a boolean (55.4931ms)
+✔ API-01: string "false" does not mark a todo complete (2.2011ms)
+✖ API-02: malformed ids are rejected (14.1945ms)
+✔ API-02: leading zeros refer to the same todo (1.8188ms)
+✔ API-02: a valid id with no todo returns 404 (1.8851ms)
+✖ API-03: a non-object body is rejected (2.906ms)
+✔ API-04: an invalid completed value blocks a valid title (2.3287ms)
+✔ API-05: boolean updates still work in both directions (2.184ms)
+✔ API-05: valid title updates still work (1.1786ms)
+✔ API-05: GET, POST and DELETE keep their behaviour (2.7991ms)
+ℹ tests 24
+ℹ pass 15
+ℹ fail 9
+✖ API-03: a non-object body is rejected (2.906ms)
+
+# Repeat runs of the reference fix
+run 1: api [ℹ pass 24 ℹ fail 0 ] browser [ 4 passed (1.6s) ]
+run 2: api [ℹ pass 24 ℹ fail 0 ] browser [ 4 passed (1.6s) ]
+run 3: api [ℹ pass 24 ℹ fail 0 ] browser [ 4 passed (1.8s) ]

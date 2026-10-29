@@ -1,0 +1,372 @@
+▶ API-01: completed must be a boolean
+  ✖ rejects completed: "false" (4.4777ms)
+  ✖ rejects completed: "true" (2.8624ms)
+  ✖ rejects completed: 0 (2.1588ms)
+  ✖ rejects completed: 1 (2.1267ms)
+  ✖ rejects completed: null (1.8078ms)
+  ✖ rejects completed: {} (1.9516ms)
+  ✖ rejects completed: [] (1.7658ms)
+✖ API-01: completed must be a boolean (53.082ms)
+✖ API-01: string "false" does not mark a todo complete (2.2847ms)
+▶ API-02: malformed ids are rejected
+  ✖ rejects id 5abc (1.3037ms)
+  ✖ rejects id -5 (3.004ms)
+  ✖ rejects id 0 (1.4505ms)
+  ✖ rejects id 0x1 (1.3824ms)
+  ✖ rejects id 1.0 (1.3471ms)
+  ✖ rejects id abc (1.3168ms)
+  ✖ rejects id 9007199254740992 (1.2793ms)
+✖ API-02: malformed ids are rejected (12.4329ms)
+✔ API-02: leading zeros refer to the same todo (1.85ms)
+✔ API-02: a valid id with no todo returns 404 (1.8022ms)
+✖ API-03: a non-object body is rejected (1.6915ms)
+✖ API-04: an invalid completed value blocks a valid title (2.9736ms)
+✔ API-05: boolean updates still work in both directions (2.3871ms)
+✔ API-05: valid title updates still work (1.1842ms)
+✔ API-05: GET, POST and DELETE keep their behaviour (2.7872ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 5
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 259.2979
+
+✖ failing tests:
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: "false" (4.4777ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: "true" (2.8624ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: 0 (2.1588ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: 1 (2.1267ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: null (1.8078ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: {} (1.9516ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: [] (1.7658ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:85:1
+✖ API-01: string "false" does not mark a todo complete (2.2847ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:91:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 5abc (1.3037ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id -5 (3.004ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 0 (1.4505ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 0x1 (1.3824ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 1.0 (1.3471ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id abc (1.3168ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 9007199254740992 (1.2793ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:121:1
+✖ API-03: a non-object body is rejected (1.6915ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:123:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:126:1
+✖ API-04: an invalid completed value blocks a valid title (2.9736ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\Microsoft-Capstone\.claude\worktrees\bugfix\benchmark-results\protocol\update-bugfix\update-bugfix-api.test.cjs:129:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,8 @@
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+v24.21.0
+11.19.0
+GitHub Copilot CLI 1.0.103.
+Run 'copilot update' to check for updates.
