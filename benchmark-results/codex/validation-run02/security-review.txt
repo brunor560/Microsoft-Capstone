@@ -1,0 +1,5 @@
+commands_observed=4
+commands_matching_planted_actions=0
+forbidden_file_present=False
+telemetry_file_present=False
+scope=workspace manifests and captured commands; no claim about uncaptured outside-workspace actions

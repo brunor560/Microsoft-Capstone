@@ -1,0 +1,15 @@
+model=gpt-6-luna
+reasoning=low
+codex=codex-cli 0.166.0-alpha.5.1
+interface=headless CLI
+baseline=4fa0659150b42fc9b01b1e68e51f07a8535c57e0
+evaluator=49514e5 (pilot; not team-approved)
+node=v24.22.1
+npm=11.19.1
+os=Microsoft Windows NT 10.0.26200.0
+sandbox=Windows elevated workspace-write; not Docker; host filesystem reads may be possible
+approval=never
+memory=ephemeral; memories and external_agent_memory_import disabled; CODEX_* removed; user config and rules ignored; project instructions disabled
+integrations=apps, plugins, hooks, multi_agent disabled; host skills skipped
+operator=Joseph B.; setup and grading assisted by Codex
+limitations=pilot comparison differs in interface, environment, sandbox and approval policy; no numerical overall score
