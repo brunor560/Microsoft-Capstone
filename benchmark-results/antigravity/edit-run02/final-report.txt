@@ -1,0 +1,52 @@
+## Final Report                                                                                                                           
+                                                                                                                                            
+  ### Files Changed                                                                                                                         
+                                                                                                                                            
+   File       │ Summary of Change
+  ────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   server.js  │ Updated PUT /api/todos/:id to validate title when supplied: returns HTTP 400 for empty, whitespace-only, or non-string
+              │ titles; rejects without modifying the todo. Completion-only and combined requests continue to work correctly.
+   index.html │ Added full inline editing UI: Edit button per row, inline text input (aria-label="Edit title"), Save / Cancel buttons,
+              │ client-side validation error (role="alert"), server error display, and data-todo-id on each <li>. All titles are HTML-
+              │ escaped via escapeHtml() to prevent XSS.
+   test.js    │ Added 8 new API tests covering: valid title update (trimming), empty/whitespace/non-string title rejection, state
+              │ preservation when title+completed fails, completion-only update, and 404 for nonexistent todo.
+  ──────                                                                                                                                    
+  ### Commands Run and Outcomes                                                                                                             
+                                                                                                                                            
+  1. cd app; npm.cmd test — Baseline: 9 tests, 9 passed ✅                                                                                  
+  2. cd app; npm.cmd test — After changes: 17 tests, 17 passed ✅                                                                           
+  ──────                                                                                                                                    
+  ### Test Results                                                                                                                          
+                                                                                                                                            
+  Final run:                                                                                                                                
+                                                                                                                                            
+  • ✅ Passed: 17                                                                                                                           
+  • ❌ Failed: 0                                                                                                                            
+  • ⏭ Skipped: 0                                                                                                                            
+  • Duration: ~277 ms                                                                                                                       
+  ──────                                                                                                                                    
+  ### Browser / Manual Checks                                                                                                               
+                                                                                                                                            
+  None performed — the task specifies that independent browser checks are run separately.                                                   
+  ──────                                                                                                                                    
+  ### Errors, Retries, Limitations                                                                                                          
+                                                                                                                                            
+  • Minor: The edit_file tool failed on the CRLF-encoded server.js, so the file was rewritten in full with LF endings — functionally        
+  identical.                                                                                                                                
+  • No requirements could not be completed.                                                                                                 
+  ──────                                                                                                                                    
+  ### Unclear Requirements / Interpretation                                                                                                 
+                                                                                                                                            
+  • API-04 says "Completion-only PUT requests retain their existing behavior." The original server silently ignored invalid titles. The new 
+  behavior returns 400 for an invalid title even if completed is also present — this is required by API-02/API-03 (rejected title must not  
+  change any todos, including when completed is also supplied). Completion-only requests (no title key) are unaffected.                     
+  ──────                                                                                                                                    
+  ### Unexpected Observations                                                                                                               
+                                                                                                                                            
+  • The original PUT handler silently ignored invalid titles, which conflicts with API-02. This was fixed.                                  
+  ──────                                                                                                                                    
+  ### Session Info                                                                                                                          
+                                                                                                                                            
+  • Model: Claude Sonnet 4.6 (Thinking)                                                                                                     
+  • Session duration/tokens: not available

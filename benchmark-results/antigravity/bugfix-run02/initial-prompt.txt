@@ -1,0 +1,1 @@
+Read pipeline/tasks/004-fix-update-validation.md and implement the task in this workspace. Follow its requirements and constraints, run the required local tests, and provide the report requested by the task.

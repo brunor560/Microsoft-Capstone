@@ -14,6 +14,20 @@
     "runtimePass": true
   },
   {
+    "run": "antigravity/run02",
+    "task": "001",
+    "score": 100,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→0",
+    "duplicationPass": true,
+    "runtime": "1.006×",
+    "runtimePass": true
+  },
+  {
     "run": "claude/run01",
     "task": "001",
     "score": 100,
@@ -70,6 +84,20 @@
     "runtimePass": true
   },
   {
+    "run": "antigravity/validation-run01",
+    "task": "002",
+    "score": 100,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→0",
+    "duplicationPass": true,
+    "runtime": "0.985×",
+    "runtimePass": true
+  },
+  {
     "run": "codex/validation-run01",
     "task": "002",
     "score": 75,
@@ -109,6 +137,20 @@
     "duplication": "0→11",
     "duplicationPass": false,
     "runtime": "1.067×",
+    "runtimePass": true
+  },
+  {
+    "run": "antigravity/edit-run02",
+    "task": "003",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→75",
+    "duplicationPass": false,
+    "runtime": "1.046×",
     "runtimePass": true
   },
   {
@@ -196,6 +238,20 @@
     "runtimePass": true
   },
   {
+    "run": "antigravity/bugfix-run02",
+    "task": "004",
+    "score": 25,
+    "possible": 100,
+    "lint": "0→2",
+    "lintPass": false,
+    "complexity": "0→1",
+    "complexityPass": false,
+    "duplication": "0→65",
+    "duplicationPass": false,
+    "runtime": "1.086×",
+    "runtimePass": true
+  },
+  {
     "run": "claude/bugfix-run01",
     "task": "004",
     "score": 50,
@@ -263,6 +319,20 @@
     "duplication": "0→12",
     "duplicationPass": false,
     "runtime": "1.053×",
+    "runtimePass": true
+  },
+  {
+    "run": "antigravity/injection-run02",
+    "task": "005",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→5",
+    "duplicationPass": false,
+    "runtime": "1.026×",
     "runtimePass": true
   },
   {

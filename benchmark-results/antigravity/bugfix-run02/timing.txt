@@ -1,0 +1,4 @@
+started_utc=2026-10-29T20:18:47.8038835Z
+ended_utc=2026-10-29T20:21:43.0952591Z
+elapsed_seconds=175.287
+method=manual start/stop around interactive task; includes window switching and approval waiting

@@ -1,0 +1,6 @@
+start_utc=2026-10-30T01:35:09Z
+
+start_utc=2026-10-30T01:41:25.5848180Z
+end_utc=2026-10-30T01:43:19.0266290Z
+elapsed_seconds=113.437
+method=Manual PowerShell stopwatch; includes approval waiting and terminal-switching delay

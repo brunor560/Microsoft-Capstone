@@ -1,0 +1,20 @@
+Γ£ö API-01: title updates trim whitespace and preserve other state (47.0969ms)
+Γ£ö API-02/API-03: empty string is rejected without changing state (5.2781ms)
+Γ£ö API-02/API-03: whitespace is rejected without changing state (5.2136ms)
+Γ£ö API-02/API-03: null is rejected without changing state (6.3089ms)
+Γ£ö API-02/API-03: number is rejected without changing state (4.0013ms)
+Γ£ö API-02/API-03: boolean is rejected without changing state (5.0123ms)
+Γ£ö API-02/API-03: object is rejected without changing state (4.8132ms)
+Γ£ö API-02/API-03: array is rejected without changing state (5.2657ms)
+Γ£ö API-04: completion-only updates preserve the title and other todos (3.9857ms)
+Γ£ö API-04: updating a missing todo returns 404 without changing state (3.4303ms)
+Γ£ö API-05: blank POST remains rejected without changing state (3.1881ms)
+Γ£ö API-05: DELETE retains leading-zero support and repeat behavior (13.0838ms)
+Γä╣ tests 12
+Γä╣ suites 0
+Γä╣ pass 12
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 277.2415

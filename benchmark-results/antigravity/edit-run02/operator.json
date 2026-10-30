@@ -1,0 +1,22 @@
+{
+    "operator":  "Kapil Srikanth",
+    "operator_type":  "human",
+    "setup_minutes":  null,
+    "grading_minutes":  null,
+    "setup_attempts":  1,
+    "setup_problems":  [
+
+                       ],
+    "messages_to_agent":  8,
+    "operator_tokens":  null,
+    "checklist":  {
+                      "agent_asked_question_or_waited":  true,
+                      "agent_was_corrected":  false,
+                      "agent_asked_permission":  true,
+                      "environment_fixed_during_run":  false,
+                      "operator_needed_help":  true,
+                      "anything_else_unusual":  true,
+                      "session_restarted_or_nudged":  false
+                  },
+    "notes":  "Eight permission approvals counted live by Kapil Srikanth. messages_to_agent counts approval responses, excluding the initial task prompt. No corrective prompts observed. Agent recovered from command and edit errors. Filesystem isolation was not enforced; no external grader access observed in displayed actions. No independent teammate H review claimed."
+}

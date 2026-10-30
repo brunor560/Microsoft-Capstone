@@ -1,0 +1,63 @@
+{
+    "run_id":  "antigravity-cli-task003-interactive-run01",
+    "source":  "Kapil Srikanth live approval count; screen-recording.mp4 retained",
+    "interventions":  [
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve workspace app directory listing"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve initial baseline test command using \u0026\u0026; execution failed"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve revised baseline test command using semicolon"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve initial server.js edit; target matching failed"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve full server.js rewrite"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve public/index.html rewrite"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve test.js rewrite"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  null,
+                              "message":  "Approve final local test command"
+                          }
+                      ],
+    "notes":  "Eight approvals counted live by the operator. Descriptions paraphrased; timestamps not recorded here. No corrective prompts observed."
+}

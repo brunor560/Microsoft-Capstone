@@ -44,7 +44,7 @@ starting app.
 | `score-runs.mjs` | Scores every saved run in `benchmark-results/<tool>/<run>/` |
 | `scores.md`, `scores.json` | Results for all saved runs |
 | `validation.txt` | Planted-defect validation and runtime repeatability |
-| `package.json`, `package-lock.json` | Pinned tool versions |
+| `package.json`, `package-lock.json` | Pinned tool versions, plus `express` 4.22.3 (the todo app's own dependency), which the runtime check needs to run each app's tests |
 
 Each scored run folder also gets a `quality.json` with the full details: the
 lint messages, which functions are too complex, where the duplicated lines

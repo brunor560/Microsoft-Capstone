@@ -1,0 +1,29 @@
+{
+    "grading_minutes":  null,
+    "messages_to_agent":  7,
+    "setup_minutes":  null,
+    "operator_type":  "human",
+    "knowledge":  "Prior benchmark experience; task and baseline evaluator results reviewed before measurement.",
+    "setup_problems":  [
+                           "Status-line command quoting corrected before measurement."
+                       ],
+    "checklist":  {
+                      "agent_asked_question_or_waited":  null,
+                      "operator_needed_help":  true,
+                      "session_restarted_or_nudged":  false,
+                      "anything_else_unusual":  true,
+                      "agent_asked_permission":  true,
+                      "environment_fixed_during_run":  false,
+                      "agent_was_corrected":  false
+                  },
+    "setup_attempts":  1,
+    "operator":  "Kapil Srikanth",
+    "operator_tokens":  null,
+    "operator_help":  [
+                          {
+                              "what":  "Setup, telemetry capture, pilot evaluator, recording review and packaging instructions.",
+                              "from":  "ChatGPT"
+                          }
+                      ],
+    "notes":  "Checklist describes supplied evidence. Agent recovered from editing and command errors; no corrective prompts observed. No independent H review claimed."
+}

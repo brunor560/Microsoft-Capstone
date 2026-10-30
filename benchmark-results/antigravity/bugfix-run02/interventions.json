@@ -1,0 +1,51 @@
+{
+  "run_id": "antigravity-cli-task004-interactive-run01",
+  "source": "screen-recording.mp4; approval-notes.txt; operator confirmation",
+  "permission_approvals": 7,
+  "human_corrective_prompts": 0,
+  "interventions": [
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve directory discovery using Get-ChildItem",
+      "video_time_approx": "00:19"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve initial server.js edit",
+      "video_time_approx": "00:45"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve server.js rewrite after line-ending issue",
+      "video_time_approx": "00:59"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve public/index.html write",
+      "video_time_approx": "01:16"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve test.js write",
+      "video_time_approx": "02:08"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve first test command; execution subsequently failed",
+      "video_time_approx": "02:13"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve revised test command; execution succeeded",
+      "video_time_approx": "02:16"
+    }
+  ],
+  "notes": "Initial task prompt excluded. Seven permission approvals; no corrective prompts observed or reported. Agent recovered from its own tool errors."
+}

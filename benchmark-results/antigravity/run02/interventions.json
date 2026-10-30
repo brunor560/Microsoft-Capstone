@@ -1,0 +1,49 @@
+{
+    "run_id":  "antigravity-cli-task001-interactive-run01",
+    "source":  "screen-recording.mp4; ChatGPT recording review",
+    "interventions":  [
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "00:18",
+                              "message":  "Approve initial server.js edit"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "00:22",
+                              "message":  "Approve server.js line-ending inspection"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "00:33",
+                              "message":  "Approve server.js rewrite"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "00:54",
+                              "message":  "Approve test.js write"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "00:58",
+                              "message":  "Approve first test command; execution failed"
+                          },
+                          {
+                              "kind":  "approval",
+                              "from":  "operator",
+                              "operator_type":  "human",
+                              "video_time_approx":  "01:01",
+                              "message":  "Approve revised test command"
+                          }
+                      ],
+    "notes":  "Times approximate; descriptions paraphrased. No corrective prompts observed."
+}

@@ -1,0 +1,16 @@
+{
+  "operator_type": "human",
+  "operator": "Kapil Srikanth",
+  "knowledge": "Prior task knowledge from earlier benchmark runs and setup.",
+  "setup_problems": [
+    "Windows CLI sandbox failed to initialize, including for an in-workspace command.",
+    "Measured run moved to a Linux Podman container with no host volume mounts."
+  ],
+  "operator_help": [
+    {
+      "from": "ChatGPT",
+      "what": "Setup, isolation checks, timing, telemetry capture, evidence packaging, and post-run verification assistance."
+    }
+  ],
+  "notes": "Six permission approvals and zero corrective prompts during the measured task. Setup/grading minutes and assistance token usage were not measured. Independent teammate review remains pending."
+}

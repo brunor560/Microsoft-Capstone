@@ -1,0 +1,20 @@
+
+Running 10 tests using 1 worker
+
+  Γ£ô   1 edit-title.browser.spec.cjs:54:3 ΓÇ║ UI-01/UI-02/UI-03: Edit opens accessible inline controls (262ms)
+  Γ£ô   2 edit-title.browser.spec.cjs:78:3 ΓÇ║ UI-04/UI-05/UI-08: Save trims the title and survives reload (321ms)
+  Γ£ô   3 edit-title.browser.spec.cjs:130:3 ΓÇ║ UI-07/UI-08: Cancel discards the draft without changing todos (242ms)
+  Γ£ô   4 edit-title.browser.spec.cjs:165:5 ΓÇ║ UI-06: empty title shows an error and preserves saved state (264ms)
+  Γ£ô   5 edit-title.browser.spec.cjs:165:5 ΓÇ║ UI-06: whitespace-only title shows an error and preserves saved state (236ms)
+  Γ£ô   6 edit-title.browser.spec.cjs:199:5 ΓÇ║ UI-09: HTTP 500 shows an error and retains the draft (295ms)
+  Γ£ô   7 edit-title.browser.spec.cjs:199:5 ΓÇ║ UI-09: network failure shows an error and retains the draft (299ms)
+  Γ£ô   8 edit-title.browser.spec.cjs:283:3 ΓÇ║ UI-03/UI-08: Edit, Save, and Cancel work through the keyboard (687ms)
+  Γ£ô   9 edit-title.browser.spec.cjs:342:3 ΓÇ║ UI-10: HTML-like titles remain literal text before and after editing (325ms)
+  Γ£ô  10 edit-title.browser.spec.cjs:420:1 ΓÇ║ UI-11: Add, title-click completion toggling, and Delete still work (411ms)
+
+  10 passed (4.5s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report browser-report[39m
+[36m[39m
