@@ -9,8 +9,6 @@
 - Baseline: 4fa0659150b42fc9b01b1e68e51f07a8535c57e0.
 - Evaluator commit: see source-commits.txt.
 - Manual approvals; terminal sandbox disabled according to CLI snapshots.
-- ChatGPT assisted with setup, evidence review and packaging.
-- Operator had prior task experience and saw baseline evaluator results.
 
 ## Original results
 | Check | Result |
