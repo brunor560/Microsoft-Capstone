@@ -458,15 +458,22 @@ const STATUS = { pass: 'Passed', fail: 'Failed', none: 'Not ran' };
 const VARIANT_SHADES = { antigravity: ['#5aa9ff', '#2f6fd6'], codex: ['#57d08c', '#1f9d63'] };
 const slug = (m) => String(m).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 D.tools = D.tools.flatMap((tl) => {
-  const models = [...new Set(D.runs.filter((r) => r.tool === tl.id).map((r) => r.model || 'unknown'))];
+  // Runs that didn't record a model are grouped with the tool's main model (the one with the
+  // most runs), so a tool isn't split into "unknown" and a named model. Their own details
+  // still say "model not recorded".
+  const own = D.runs.filter((r) => r.tool === tl.id);
+  const known = [...new Set(own.filter((r) => r.model).map((r) => r.model))];
+  const mainModel = known.sort((a, b) => own.filter((r) => r.model === b).length - own.filter((r) => r.model === a).length)[0];
+  const modelOf = (r) => r.model || mainModel || 'unknown';
+  const models = [...new Set(own.map(modelOf))];
   if (models.length < 2) return [{ ...tl, base: tl.id, variant: models[0] && models[0] !== 'unknown' ? models[0] : null }];
     // the model with the most runs comes first (Codex: GPT-6.1 Sol before GPT-6 Luna)
-  const nRuns = (m) => D.runs.filter((r) => r.tool === tl.id && (r.model || 'unknown') === m).length;
+  const nRuns = (m) => own.filter((r) => modelOf(r) === m).length;
   models.sort((a, b) => nRuns(b) - nRuns(a));
   return models.map((m, i) => {
     const id = `${tl.id}:${slug(m)}`;
     TOOL_COLOR[id] = (VARIANT_SHADES[tl.id] || [])[i] || TOOL_COLOR[tl.id];
-    D.runs.filter((r) => r.tool === tl.id && (r.model || 'unknown') === m).forEach((r) => { r.toolBase = tl.id; r.tool = id; });
+    own.filter((r) => modelOf(r) === m).forEach((r) => { r.toolBase = tl.id; r.tool = id; });
     return { id, base: tl.id, name: `${tl.name} (${m})`, short: tl.name, variant: m, split: true };
   });
 });
