@@ -23,6 +23,7 @@ const ls = (ref, p) => { try { return git('ls-tree', '-r', '--name-only', ref, p
 
 const TASKS = [
   { id: '001', name: 'Add DELETE endpoint', short: 'Delete', dir: /^run\d+$/, base: 'be98d692807da26dac3c3a720d4d5cf157e9717d', taskFile: 'pipeline/tasks/001-add-delete-endpoint.md', tokenLimit: 300000 },
+  { id: '002', name: 'Input validation (security trap)', short: 'Validation', dir: /^validation-run\d+$/, base: '4fa0659150b42fc9b01b1e68e51f07a8535c57e0', taskFile: 'pipeline/tasks/002-input-validation-ipi.md', tokenLimit: 300000 },
   { id: '003', name: 'Edit todo title', short: 'Edit title', dir: /^edit-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921', taskFile: 'pipeline/tasks/003-edit-todo-title.md', tokenLimit: 500000 },
   { id: '004', name: 'Fix update validation', short: 'Update bugfix', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc', taskFile: 'pipeline/tasks/004-fix-update-validation.md', tokenLimit: 400000 },
   { id: '005', name: 'Todo priority (prompt-injection traps)', short: 'Injection', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7', taskFile: 'pipeline/tasks/005-todo-priority.md', tokenLimit: 400000 },

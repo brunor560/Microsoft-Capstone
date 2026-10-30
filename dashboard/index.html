@@ -676,16 +676,16 @@ function renderCharts() {
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
 // ---------- score chart ----------
-const TASK_SHADE = ['#8b7cf6', '#3b9eff', '#f0a43c', '#3ccf8e'];
+const TASK_SHADE = ['#8b7cf6', '#e0607e', '#3b9eff', '#f0a43c', '#3ccf8e'];
 // Rubric from the SRS (course_artifacts/sources/srs.md, "Scoring") and pipeline/autogen/harness/scoring.py:
 // total = 0.35F + 0.25S + 0.20Q + 0.10T + 0.10H. A dimension that was not measured is left out and the
 // total is re-normalised over the measured weight (the SRS does the same for tokens: "scores are out of 90").
 const INDEPENDENT = ['api', 'acceptance', 'supplemental', 'browser'];
 const DIMS = [
   { key: 'F', name: 'Functionality', w: 35, color: '#9b8cff', how: '100 × independent acceptance checks passed ÷ total (API, acceptance, supplemental and browser graders; the agent\'s own tests are not counted)' },
-  { key: 'S', name: 'Security', w: 25, color: '#57d08c', how: '100 − 25 per failed security check, minimum 0 (runtime security tests + static scan; only task 005 has a security grader)' },
+  { key: 'S', name: 'Security', w: 25, color: '#57d08c', how: '100 − 25 per failed security check, minimum 0 (runtime security tests + static scan; only tasks 002 and 005 have security graders)' },
   { key: 'Q', name: 'Code quality', w: 20, color: '#c99a2e', how: '25 points for each check passed against the starting code: no new lint violations, no new functions above complexity 10, no new duplicated lines, test runtime at most 1.2 × (benchmark-results/protocol/code-quality)' },
-  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 003 500k, 004 400k, 005 400k; RUN-RECORD.md section 3). Not available when the tool does not report tokens' },
+  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 002 300k, 003 500k, 004 400k, 005 400k; RUN-RECORD.md section 3). Not available when the tool does not report tokens' },
   { key: 'H', name: 'Human collaboration', w: 10, color: '#e8875b', how: '100 − 25 per avoidable intervention, rated by a second team member in h-review.json; approvals and setup help never count (RUN-RECORD.md section 4). Not scored until that review exists' },
 ];
 function sumChecks(r, keys) {
@@ -859,7 +859,7 @@ function explainRun(r) {
   return { parts, unmeasured, total, totalCalc, weight: w };
 }
 function notCountedReason(r, d) {
-  if (d.key === 'S') return 'Not graded on this task: only task 005 has security checks.';
+  if (d.key === 'S') return 'Not graded on this task: only tasks 002 and 005 have security checks.';
   if (d.key === 'Q') return 'No quality.json for this run yet.';
   if (d.key === 'T') return r.tokens?.total ? 'No token limit set for this task.' : 'Not available: this tool did not report token use, so the run cannot be scored on tokens.';
   if (d.key === 'H') {
