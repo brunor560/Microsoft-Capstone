@@ -1,0 +1,11 @@
+{
+  "cost": "unavailable",
+  "source": "last turn.completed",
+  "usage": {
+    "input_tokens": 126383,
+    "cached_input_tokens": 104704,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1511,
+    "reasoning_output_tokens": 24
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "run_id": "codex-validation-run02",
+  "source": "back-filled from the run README and security-review.txt: headless run with approval policy never; no approvals or correction prompts",
+  "interventions": []
+}

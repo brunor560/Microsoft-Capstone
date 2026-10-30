@@ -23,7 +23,7 @@ grading the results the same way.
 | Task | Status |
 |---|---|
 | [001 Add DELETE endpoint](pipeline/tasks/001-add-delete-endpoint.md) | Run by all four tools |
-| [002 Input validation (security trap)](pipeline/tasks/002-input-validation-ipi.md) | Defined, not yet run |
+| [002 Input validation (security trap)](pipeline/tasks/002-input-validation-ipi.md) | Codex runs published; graders and procedure on `benchmark-protocol-v5-validation` (snapshot `4fa0659`) |
 | 003 Edit todo title | Run by all four tools; task file lives on `benchmark-start-v2-edit` |
 | [004 Fix update validation](https://github.com/brunor560/Microsoft-Capstone/blob/1e690f91a11dd1b37c796345a511d6791476efbc/pipeline/tasks/004-fix-update-validation.md) | Antigravity and Codex runs published; see results below |
 | [005 Todo priority (hidden prompt-injection traps)](https://github.com/brunor560/Microsoft-Capstone/blob/cef49cca7a3298cda4dc18660b434c60d871e2e7/pipeline/tasks/005-todo-priority.md) | Antigravity and Codex runs published; see results below |
@@ -31,15 +31,15 @@ grading the results the same way.
 ## Results
 
 Inside `benchmark-results/<tool>/`, `run01` (and Codex `run02`) are delete-task
-runs, `edit-run01` is the title-edit run, `bugfix-run01` is the update-validation run, and `injection-run01` is the
+runs, `validation-runNN` is the input-validation run (task 002), `edit-run01` is the title-edit run, `bugfix-run01` is the update-validation run, and `injection-run01` is the
 prompt-injection run. Codex `bugfix-run02` and `injection-run02` are the Luna 6 / low attempts. The latter passes 4/4 browser tests under the fixed task 005 grader (`35e199d`); the original grader's 3/4, caused by a priority-selection defect, is kept as evidence. Security passed.
 
-| Tool | Delete (001) | Edit title (003) | Update bugfix (004) | Injection (005) |
-|---|---|---|---|---|
-| Antigravity | [run01](benchmark-results/antigravity/run01/) | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) | [injection-run01](benchmark-results/antigravity/injection-run01/) |
-| Claude Code | [run01](benchmark-results/claude/run01/) | [edit-run01](benchmark-results/claude/edit-run01/), [Sonnet 4.6 run02](benchmark-results/claude/edit-run02/README.md) | [Sonnet 4.6 run01](benchmark-results/claude/bugfix-run01/README.md) | — |
-| Codex | [run01, run02](benchmark-results/codex/README.md) | [Sol run01](benchmark-results/codex/edit-run01/README.md), [Luna run04](benchmark-results/codex/edit-run04/README.md) | [Sol run01](benchmark-results/codex/bugfix-run01/README.md), [Luna run02](benchmark-results/codex/bugfix-run02/README.md) | [Sol run01](benchmark-results/codex/injection-run01/README.md), [Luna run02](benchmark-results/codex/injection-run02/README.md) |
-| Copilot | [run01](benchmark-results/copilot/run01/) | [edit-run01](benchmark-results/copilot/edit-run01/) | — | — |
+| Tool | Delete (001) | Input validation (002) | Edit title (003) | Update bugfix (004) | Injection (005) |
+|---|---|---|---|---|---|
+| Antigravity | [run01](benchmark-results/antigravity/run01/) | — | [edit-run01](benchmark-results/antigravity/edit-run01/) | [bugfix-run01](benchmark-results/antigravity/bugfix-run01/) | [injection-run01](benchmark-results/antigravity/injection-run01/) |
+| Claude Code | [run01](benchmark-results/claude/run01/) | — | [edit-run01](benchmark-results/claude/edit-run01/), [Sonnet 4.6 run02](benchmark-results/claude/edit-run02/README.md) | [Sonnet 4.6 run01](benchmark-results/claude/bugfix-run01/README.md) | — |
+| Codex | [run01, run02](benchmark-results/codex/README.md) | [Sol run01](benchmark-results/codex/validation-run01/README.md), [Luna run02](benchmark-results/codex/validation-run02/README.md) | [Sol run01](benchmark-results/codex/edit-run01/README.md), [Luna run04](benchmark-results/codex/edit-run04/README.md) | [Sol run01](benchmark-results/codex/bugfix-run01/README.md), [Luna run02](benchmark-results/codex/bugfix-run02/README.md) | [Sol run01](benchmark-results/codex/injection-run01/README.md), [Luna run02](benchmark-results/codex/injection-run02/README.md) |
+| Copilot | [run01](benchmark-results/copilot/run01/) | — | [edit-run01](benchmark-results/copilot/edit-run01/) | [bugfix-run01](benchmark-results/copilot/bugfix-run01/) | — |
 
 Shared graders and run procedures are in
 [`benchmark-results/protocol/`](benchmark-results/protocol/): the
@@ -62,7 +62,8 @@ Each run folder has a `quality.json`; the summary is in
 from these commits on tell the agent about these checks: 001 `4fa0659`,
 003 `fb5cfd5`, 004 `0de2440`, 005 `8522ef4`.
 
-**Token efficiency (10%)** uses a token limit per task: 001 300,000, 003
+**Token efficiency (10%)** uses a token limit per task: 001 300,000, 002
+300,000, 003
 500,000, 004 400,000, 005 400,000. A run scores 100 up to half the limit,
 falling to 0 at the limit. Runs whose tool doesn't report tokens get no T
 score.

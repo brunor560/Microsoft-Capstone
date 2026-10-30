@@ -7,6 +7,9 @@
 //   node score-runs.mjs
 //
 // Writes quality.json into each run folder, and scores.json + scores.md here.
+//
+// To score only some runs and keep the others' existing quality.json:
+//   node score-runs.mjs --only codex/validation-run01,codex/validation-run02
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -22,6 +25,7 @@ const WORK = path.join(HERE, 'work', 'runs');
 // The starting app each task's runs were given (same commits as the dashboard).
 const TASKS = [
   { id: '001', dir: /^run\d+$/, base: 'be98d692807da26dac3c3a720d4d5cf157e9717d' },
+  { id: '002', dir: /^validation-run\d+$/, base: '4fa0659150b42fc9b01b1e68e51f07a8535c57e0' },
   { id: '003', dir: /^edit-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
   { id: '004', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc' },
   { id: '005', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7' },
@@ -44,6 +48,20 @@ function originalFile(runDir, name) {
   return hit ? path.join(runDir, hit) : null;
 }
 
+const onlyArg = process.argv.indexOf('--only');
+const ONLY = onlyArg > -1 ? new Set(process.argv[onlyArg + 1].split(',')) : null;
+
+function rowOf(run, taskId, result) {
+  const c = result.checks;
+  return {
+    run, task: taskId, score: result.score, possible: result.possible,
+    lint: `${c.lint.baseline}→${c.lint.candidate}`, lintPass: c.lint.pass,
+    complexity: `${c.complexity.baseline}→${c.complexity.candidate}`, complexityPass: c.complexity.pass,
+    duplication: `${c.duplication.baseline}→${c.duplication.candidate}`, duplicationPass: c.duplication.pass,
+    runtime: c.runtime.applicable ? `${c.runtime.ratio}×` : 'n/a', runtimePass: c.runtime.applicable ? c.runtime.pass : null,
+  };
+}
+
 fs.rmSync(WORK, { recursive: true, force: true });
 const baselines = {};
 const rows = [];
@@ -53,6 +71,11 @@ for (const tool of fs.readdirSync(RESULTS).filter((d) => d !== 'protocol' && fs.
     const runDir = path.join(RESULTS, tool, run);
     const task = TASKS.find((t) => t.dir.test(run));
     if (!task || !fs.statSync(runDir).isDirectory()) continue;
+    const existing = path.join(runDir, 'quality.json');
+    if (ONLY && !ONLY.has(`${tool}/${run}`)) {
+      if (fs.existsSync(existing)) rows.push(rowOf(`${tool}/${run}`, task.id, JSON.parse(fs.readFileSync(existing, 'utf8').replace(/^﻿/, ''))));
+      continue;
+    }
 
     if (!baselines[task.id]) {
       baselines[task.id] = path.join(WORK, `baseline-${task.id}`);
@@ -76,15 +99,8 @@ for (const tool of fs.readdirSync(RESULTS).filter((d) => d !== 'protocol' && fs.
     result.originalFiles = used;
     result.gradedAt = new Date().toISOString();
     fs.writeFileSync(path.join(runDir, 'quality.json'), JSON.stringify(result, null, 2) + '\n');
-    const c = result.checks;
     console.log(`${result.score}`);
-    rows.push({
-      run: `${tool}/${run}`, task: task.id, score: result.score, possible: result.possible,
-      lint: `${c.lint.baseline}→${c.lint.candidate}`, lintPass: c.lint.pass,
-      complexity: `${c.complexity.baseline}→${c.complexity.candidate}`, complexityPass: c.complexity.pass,
-      duplication: `${c.duplication.baseline}→${c.duplication.candidate}`, duplicationPass: c.duplication.pass,
-      runtime: c.runtime.applicable ? `${c.runtime.ratio}×` : 'n/a', runtimePass: c.runtime.applicable ? c.runtime.pass : null,
-    });
+    rows.push(rowOf(`${tool}/${run}`, task.id, result));
   }
 }
 

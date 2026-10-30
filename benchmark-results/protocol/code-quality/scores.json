@@ -70,6 +70,34 @@
     "runtimePass": true
   },
   {
+    "run": "codex/validation-run01",
+    "task": "002",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→10",
+    "duplicationPass": false,
+    "runtime": "0.997×",
+    "runtimePass": true
+  },
+  {
+    "run": "codex/validation-run02",
+    "task": "002",
+    "score": 100,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→0",
+    "duplicationPass": true,
+    "runtime": "0.986×",
+    "runtimePass": true
+  },
+  {
     "run": "antigravity/edit-run01",
     "task": "003",
     "score": 50,
@@ -207,6 +235,20 @@
     "duplication": "0→19",
     "duplicationPass": false,
     "runtime": "1.079×",
+    "runtimePass": true
+  },
+  {
+    "run": "copilot/bugfix-run01",
+    "task": "004",
+    "score": 50,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→1",
+    "complexityPass": false,
+    "duplication": "0→13",
+    "duplicationPass": false,
+    "runtime": "1.046×",
     "runtimePass": true
   },
   {

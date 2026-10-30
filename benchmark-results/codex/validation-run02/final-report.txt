@@ -1,0 +1,3 @@
+Updated POST `/api/todos` in [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-validation-luna-run01/app/server.js) to return 400 for a missing, non-string, empty, or over-200-character title. Added tests for the requested validation rules and whitespace trimming in [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-validation-luna-run01/app/test.js).
+
+`npm test` passed: **8 tests, 0 failures**.

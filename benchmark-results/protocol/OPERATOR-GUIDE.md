@@ -1,6 +1,6 @@
 # Operator guide: recording help and interaction
 
-For whoever runs a benchmark attempt on task 001, 003, 004 or 005: a
+For whoever runs a benchmark attempt on task 001, 002, 003, 004 or 005: a
 person, or an AI session acting as operator. Follow it on every run. It
 produces the evidence for the **human collaboration** score (H, 10%) and the
 **operator** record (RUN-RECORD.md sections 4 and 4a).

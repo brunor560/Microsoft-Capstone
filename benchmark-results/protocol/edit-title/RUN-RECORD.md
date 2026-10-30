@@ -1,7 +1,7 @@
 # Run record: what every benchmark run must capture
 
-Use this checklist for every attempt, on every task (001, 003, 004 and
-005) and every tool. Each item says **who** records it:
+Use this checklist for every attempt, on every task (001, 002, 003, 004
+and 005) and every tool. Each item says **who** records it:
 
 - **Operator:** you, outside the agent, from the tool's own logs and a stopwatch.
 - **Agent:** what the task file's "What to report" section asks the agent to state.
@@ -73,6 +73,7 @@ report totals.
 | Task | Token limit | Full marks up to |
 |---|---:|---:|
 | 001 Add DELETE endpoint | 300,000 | 150,000 |
+| 002 Input validation | 300,000 | 150,000 |
 | 003 Edit todo title | 500,000 | 250,000 |
 | 004 Fix update validation | 400,000 | 200,000 |
 | 005 Todo priority | 400,000 | 200,000 |
