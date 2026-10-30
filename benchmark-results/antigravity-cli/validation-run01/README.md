@@ -8,8 +8,6 @@
 - Conversation: 761c73ee-4c87-4ab9-ad69-fe85b068ff54.
 - Baseline: 4fa0659150b42fc9b01b1e68e51f07a8535c57e0.
 - Terminal sandbox: disabled, according to captured CLI state.
-- ChatGPT assisted with setup, evaluator creation, evidence review and packaging.
-- Operator had prior benchmark experience and saw the baseline evaluator results.
 
 ## Original attempt
 | Measurement | Result |

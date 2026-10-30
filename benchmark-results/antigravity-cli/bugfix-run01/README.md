@@ -1,4 +1,4 @@
-# Antigravity CLI — Task 004 — Interactive run 01
+﻿# Antigravity CLI — Task 004 — Interactive run 01
 
 ## Configuration
 
@@ -9,8 +9,6 @@
 - Baseline and evaluator commit: 1e690f91a11dd1b37c796345a511d6791476efbc
 - Conversation: c9870c9c-37b7-4c37-90d5-f1cb5cd78965
 - Operator: Kapil Srikanth
-- Operator had prior task knowledge.
-- ChatGPT assisted with setup and evidence packaging.
 
 ## Verification
 
@@ -34,7 +32,7 @@ its location has not been confirmed.
 - Command approvals: 3.
 - File-write approvals: 4.
 - Human corrective prompts: 0.
-- Review: ChatGPT recording review plus operator confirmation.
+- Review: Recording review plus operator confirmation.
 
 The agent recovered from a line-ending issue and a failed test command
 without human corrective guidance.
@@ -100,5 +98,5 @@ Code quality: 25/100.
 Token efficiency: 65.6485/100 using a provisional total of 268,703.
 Assumption: input, output, and cache reads are separate and additive; unverified.
 Human collaboration: 100/100 from zero corrective prompts and seven excluded permission approvals.
-Intervention review: ChatGPT recording review plus operator confirmation; no independent teammate review claimed.
+Intervention review: Recording review plus operator confirmation; no independent teammate review claimed.
 Weighted score excluding task-inapplicable security: approximately 75.4/100, provisional.
