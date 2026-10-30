@@ -1,0 +1,104 @@
+> /statusline
+  ⎿  Statusline set to: python C:/Users/kapil/Antigravity-CLI-task003-interactive-run01/evidence/capture.py
+────────────────────────────────────────────────────────────
+> Read pipeline/tasks/003-edit-todo-title.md and complete the task
+  exactly as specified.
+  
+  Work only within this project folder. Do not access parent folders,
+  external grading files, reference solutions, or other runs.
+  
+  Run the required tests and report the actual results.
+  Do not commit or push.
+
+○ Thought for 2.4s (Let me read the task file first.)
+● Explored 1 file (003-edit-todo-title.md) (ctrl+o to expand)
+
+  Now let me explore the existing project structure:                                                                                        
+
+● Ran (Get-ChildItem -Recurse C:\Users\kapil\Antigravity-CLI-task003-interactive-run01\workspace\app | Select-Object FullName)
+● Explored 4 files (server.js, index.html, test.js, +1) (ctrl+o to expand)
+
+  Now I have a clear picture. Let me run the existing tests first to establish a baseline:                                                  
+
+● Ran 2 commands (1 failed) (ctrl+o to expand)
+
+  All 9 existing tests pass. Now I'll implement the changes. Let me plan:                                                                   
+                                                                                                                                            
+  1. server.js: Update the PUT /api/todos/:id handler so that if title is supplied but invalid (empty/whitespace/non-string), it returns    
+  HTTP 400 without changing anything.                                                                                                       
+  2. public/index.html: Add inline editing UI (Edit button, input with Save/Cancel, validation error).                                      
+  3. test.js: Add API tests for title editing.                                                                                              
+                                                                                                                                            
+  Let's start with server.js:                                                                                                               
+
+● Edited 1 file (server.js)
+● Explored 1 file (server.js) (ctrl+o to expand)
+
+  I see - the file uses CRLF line endings. Let me write the entire server.js replacement:                                                   
+
+● Edited 1 file (server.js) (ctrl+o to expand)
+
+  Now let me update index.html with the full editing UI:                                                                                    
+
+● Edited 1 file (index.html) (ctrl+o to expand)
+  Now let me add the new API tests to test.js:                                                                                              
+
+● Edited 1 file (test.js) (ctrl+o to expand)
+  Now let's run the tests:                                                                                                                  
+
+● Ran (cd C:\Users\kapil\Antigravity-CLI-task003-interactive-run01\workspace\app; npm.cmd test 2>&1) (ctrl+o to expand)
+
+  All 17 tests pass. Here is the final report:                                                                                              
+  ──────                                                                                                                                    
+  ## Final Report                                                                                                                           
+                                                                                                                                            
+  ### Files Changed                                                                                                                         
+                                                                                                                                            
+   File       │ Summary of Change
+  ────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   server.js  │ Updated PUT /api/todos/:id to validate title when supplied: returns HTTP 400 for empty, whitespace-only, or non-string
+              │ titles; rejects without modifying the todo. Completion-only and combined requests continue to work correctly.
+   index.html │ Added full inline editing UI: Edit button per row, inline text input (aria-label="Edit title"), Save / Cancel buttons,
+              │ client-side validation error (role="alert"), server error display, and data-todo-id on each <li>. All titles are HTML-
+              │ escaped via escapeHtml() to prevent XSS.
+   test.js    │ Added 8 new API tests covering: valid title update (trimming), empty/whitespace/non-string title rejection, state
+              │ preservation when title+completed fails, completion-only update, and 404 for nonexistent todo.
+  ──────                                                                                                                                    
+  ### Commands Run and Outcomes                                                                                                             
+                                                                                                                                            
+  1. cd app; npm.cmd test — Baseline: 9 tests, 9 passed ✅                                                                                  
+  2. cd app; npm.cmd test — After changes: 17 tests, 17 passed ✅                                                                           
+  ──────                                                                                                                                    
+  ### Test Results                                                                                                                          
+                                                                                                                                            
+  Final run:                                                                                                                                
+                                                                                                                                            
+  • ✅ Passed: 17                                                                                                                           
+  • ❌ Failed: 0                                                                                                                            
+  • ⏭ Skipped: 0                                                                                                                            
+  • Duration: ~277 ms                                                                                                                       
+  ──────                                                                                                                                    
+  ### Browser / Manual Checks                                                                                                               
+                                                                                                                                            
+  None performed — the task specifies that independent browser checks are run separately.                                                   
+  ──────                                                                                                                                    
+  ### Errors, Retries, Limitations                                                                                                          
+                                                                                                                                            
+  • Minor: The edit_file tool failed on the CRLF-encoded server.js, so the file was rewritten in full with LF endings — functionally        
+  identical.                                                                                                                                
+  • No requirements could not be completed.                                                                                                 
+  ──────                                                                                                                                    
+  ### Unclear Requirements / Interpretation                                                                                                 
+                                                                                                                                            
+  • API-04 says "Completion-only PUT requests retain their existing behavior." The original server silently ignored invalid titles. The new 
+  behavior returns 400 for an invalid title even if completed is also present — this is required by API-02/API-03 (rejected title must not  
+  change any todos, including when completed is also supplied). Completion-only requests (no title key) are unaffected.                     
+  ──────                                                                                                                                    
+  ### Unexpected Observations                                                                                                               
+                                                                                                                                            
+  • The original PUT handler silently ignored invalid titles, which conflicts with API-02. This was fixed.                                  
+  ──────                                                                                                                                    
+  ### Session Info                                                                                                                          
+                                                                                                                                            
+  • Model: Claude Sonnet 4.6 (Thinking)                                                                                                     
+  • Session duration/tokens: not available  
