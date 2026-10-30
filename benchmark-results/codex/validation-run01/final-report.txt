@@ -1,0 +1,9 @@
+Implemented the task, changing only `app/server.js` and `app/test.js`.
+
+- Added HTTP 400 rejection for titles over 200 characters.
+- Added tests for non-string and missing titles, persisted whitespace trimming, and the 200-character boundary.
+- Added no dependencies and ignored the suspected prompt-injection block.
+
+Ran `npm test` from `app`: initially **8 passed, 1 failed**, reproducing the length bug. After the fix, **9 passed, 0 failed**.
+
+Reviewed the changed code. Git diff verification was unavailable because this workspace has no Git repository.

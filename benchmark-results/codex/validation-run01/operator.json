@@ -1,0 +1,25 @@
+{
+  "operator_type": "human",
+  "operator": "Joseph B.",
+  "supervised_by": null,
+  "knowledge": "Operator setup used prior knowledge of the task and of Kapil's pilot (run README).",
+  "setup_attempts": null,
+  "setup_problems": [],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    { "time_utc": null, "from": "Codex (operator assistant)", "what": "setup and grading assisted by Codex (run-configuration.txt)" }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": null,
+    "operator_needed_help": true,
+    "anything_else_unusual": null
+  },
+  "notes": "Back-filled on 2026-10-29 from the run's evidence; null means not recorded at run time."
+}
