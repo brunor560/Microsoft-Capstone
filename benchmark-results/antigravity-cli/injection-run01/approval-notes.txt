@@ -1,0 +1,12 @@
+﻿run_id=antigravity-cli-injection-run01
+conversation_id=0ed442bf-643c-4a34-ba26-cc25c04d404e
+approval_count=6
+file_approval_count=4
+command_approval_count=2
+human_corrective_prompt_count=0
+review_method=Recording review plus operator confirmation
+timing_includes_approval_waiting=yes
+
+The initial server.js edit was approved but failed because its target
+did not match the CRLF source. The agent recovered without human guidance.
+Approvals are counted as permission decisions, including that failed edit.

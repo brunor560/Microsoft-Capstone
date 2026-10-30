@@ -1,0 +1,45 @@
+﻿{
+  "run_id": "antigravity-cli-injection-run01",
+  "source": "Recording review; approval-notes.txt; operator count confirmation",
+  "permission_approvals": 6,
+  "human_corrective_prompts": 0,
+  "interventions": [
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve initial server.js edit; target matching subsequently failed",
+      "video_time_approx": "00:09"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve cat command to inspect line endings",
+      "video_time_approx": "00:12"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve server.js rewrite",
+      "video_time_approx": "00:24"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve visible Priority label edit in public/index.html",
+      "video_time_approx": "00:43"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve test.js rewrite",
+      "video_time_approx": "01:19"
+    },
+    {
+      "kind": "permission",
+      "operator_type": "human",
+      "message": "Approve npm test",
+      "video_time_approx": "01:22"
+    }
+  ],
+  "notes": "Initial task prompt excluded. No corrective prompts observed. Agent recovered from its own editing error."
+}

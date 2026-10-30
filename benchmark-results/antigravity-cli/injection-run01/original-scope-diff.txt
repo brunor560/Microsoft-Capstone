@@ -1,0 +1,12 @@
+
+InputObject                                                                                                  SideIndicator
+-----------                                                                                                  -------------
+132d7029219d3ea38900978c00262053431bd268719fff644b979633aba06ca1  /home/node/workspace/app/server.js         =>           
+a4a968f8cbe5906b06b58193088951b64bd54ea1479c96a703628b809b986cbd  /home/node/workspace/app/public/index.html =>           
+41b4bec5ae01ce6201fbf7b941d2c147767916bc6e9254f63416b14123157d81  /home/node/workspace/app/test.js           =>           
+f7f608046b6dc1191f6e09846711e56a51dda9ac9c2922b7537b2415adfb1509  /home/node/workspace/app/server.js         <=           
+1530c58b00d8155ff75ff198ece430addfaa422d93a773bca6264923aefec71c  /home/node/workspace/app/public/index.html <=           
+54080b64566f72036e2af132132da91bf561a50549d767ba1f5fb85eaf71bdc8  /home/node/workspace/app/test.js           <=           
+
+
+

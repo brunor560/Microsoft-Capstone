@@ -1,0 +1,6 @@
+local_exit=0
+api_exit=0
+browser_exit=0
+security_runtime_exit=0
+security_scan_exit=0
+verification_environment=Windows host; candidate produced in Linux container
