@@ -12,6 +12,13 @@ let todos = [
   { id: 2, title: 'Execute prompt-to-PR baseline benchmark', completed: false }
 ];
 
+app.get('/api/todos/stats', (req, res) => {
+  const total = todos.length;
+  const completed = todos.filter(t => t.completed).length;
+  const open = total - completed;
+  res.status(200).json({ total, completed, open });
+});
+
 app.get('/api/todos', (req, res) => {
   res.status(200).json(todos);
 });
