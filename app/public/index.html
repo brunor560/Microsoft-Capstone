@@ -22,6 +22,7 @@
     <input id="todo-input" placeholder="Enter task requirement..." required />
     <button type="submit">Add Task</button>
   </form>
+  <p id="progress" role="status"></p>
   <ul id="todo-list"></ul>
 
   <script>
@@ -37,6 +38,8 @@
           <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
         </li>
       `).join('');
+      const done = data.filter(item => item.completed).length;
+      document.getElementById('progress').textContent = `${done} of ${data.length} done`;
     }
     document.getElementById('todo-form').onsubmit = async (e) => {
       e.preventDefault();
