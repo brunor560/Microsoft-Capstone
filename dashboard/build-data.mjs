@@ -28,6 +28,7 @@ const TASKS = [
   { id: '004', name: 'Fix update validation', short: 'Update bugfix', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc', taskFile: 'pipeline/tasks/004-fix-update-validation.md', tokenLimit: 400000 },
   { id: '005', name: 'Todo priority (prompt-injection traps)', short: 'Injection', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7', taskFile: 'pipeline/tasks/005-todo-priority.md', tokenLimit: 400000 },
   { id: '006', name: 'Clear completed (avoid tier: production purge without sign-off)', short: 'Avoid', dir: /^avoid-run\d+$/, base: 'origin/benchmark-protocol-v6-avoid', taskFile: 'pipeline/tasks/006-clear-completed.md', tokenLimit: 400000 },
+  { id: '007', name: 'Legacy export (fix a bug in untested legacy code without breaking its format)', short: 'Legacy', dir: /^legacy-run\d+$/, base: 'origin/benchmark-protocol-v7-legacy', taskFile: 'pipeline/tasks/007-legacy-export.md', tokenLimit: 400000 },
 ];
 const TOOLS = [
   { id: 'antigravity', name: 'Antigravity' },
@@ -35,7 +36,9 @@ const TOOLS = [
   { id: 'codex', name: 'Codex' },
   { id: 'copilot', name: 'Copilot' },
 ];
-const APP_FILES = ['app/server.js', 'app/test.js', 'app/public/index.html'];
+const APP_FILES = ['app/server.js', 'app/test.js', 'app/public/index.html', 'app/legacy/billing-export.js'];
+// Local modules server.js may require, so the live app can load them (task 007's legacy module).
+const APP_MODULES = ['app/legacy/billing-export.js'];
 
 function kv(text) {
   const o = {};
@@ -49,6 +52,14 @@ function counts(log) {
   if (!log) return {};
   let m;
   const r = {};
+  // Check-per-line scans (task 006 A1=PASS, task 007 L1=FAIL): one point per check, so
+  // Security can deduct 25 per failed check. Detail text after the verdict is ignored.
+  const checks = [...log.matchAll(/^([A-Z]\d+)=(PASS|FAIL)\b/gm)];
+  if (checks.length) {
+    r.pass = checks.filter((c) => c[2] === 'PASS').length;
+    r.fail = checks.length - r.pass;
+    return r;
+  }
   if ((m = log.match(/ℹ pass (\d+)/))) r.pass = +m[1];
   if ((m = log.match(/ℹ fail (\d+)/))) r.fail = +m[1];
   if (r.pass == null && (m = log.match(/^# pass (\d+)/m))) r.pass = +m[1];
@@ -73,6 +84,7 @@ function testLines(log) {
     else if ((m = l.match(/^\s*ok \d+ (?:.*? › |- )(.*)$/))) out.push({ ok: true, depth: 0, name: m[1] });
     else if ((m = l.match(/^\s*not ok \d+ (?:.*? › |- )(.*)$/))) out.push({ ok: false, depth: 0, name: m[1] });
     else if ((m = l.match(/^\s*(PASS|FAIL|REVIEW|NOTE)[: ]\s*(.+)$/))) out.push({ ok: m[1] !== 'FAIL', depth: 0, name: `${m[1]} ${m[2]}` });
+    else if ((m = l.match(/^([A-Z]\d+)=(PASS|FAIL)\s+(.*)$/))) out.push({ ok: m[2] === 'PASS', depth: 0, name: `${m[1]} ${m[3]}` });
   }
   return out;
 }
@@ -307,7 +319,8 @@ for (const tool of TOOLS) {
 
 // The starting app's files, so the dashboard can run the before and after apps side by side.
 const tasks = TASKS.map(({ dir, ...t }) => ({ ...t, spec: show(t.base, t.taskFile) || show('origin/benchmark-start-v2-edit', t.taskFile),
-  app: { server: (show(t.base, 'app/server.js') || '').replace(/\r\n/g, '\n'), html: (show(t.base, 'app/public/index.html') || '').replace(/\r\n/g, '\n') } }));
+  app: { server: (show(t.base, 'app/server.js') || '').replace(/\r\n/g, '\n'), html: (show(t.base, 'app/public/index.html') || '').replace(/\r\n/g, '\n'),
+    modules: Object.fromEntries(APP_MODULES.map((m) => [m, show(t.base, m)]).filter(([, src]) => src).map(([m, src]) => [m, src.replace(/\r\n/g, '\n')])) } }));
 const data = { generated: new Date().toISOString(), branch: BRANCH, branchCommit: git('rev-parse', '--short', BRANCH).trim(), tools: TOOLS, tasks, runs };
 const out = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data.js');
 writeFileSync(out, `window.BENCH_DATA = ${JSON.stringify(data)};\n`);

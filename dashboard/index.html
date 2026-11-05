@@ -683,16 +683,16 @@ function renderCharts() {
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
 // ---------- score chart ----------
-const TASK_SHADE = ['#8b7cf6', '#e0607e', '#3b9eff', '#f0a43c', '#3ccf8e', '#b8925a'];
+const TASK_SHADE = ['#8b7cf6', '#e0607e', '#3b9eff', '#f0a43c', '#3ccf8e', '#b8925a', '#5fc4d0'];
 // Rubric from the SRS (course_artifacts/sources/srs.md, "Scoring") and pipeline/autogen/harness/scoring.py:
 // total = 0.35F + 0.25S + 0.20Q + 0.10T + 0.10H. A dimension that was not measured is left out and the
 // total is re-normalised over the measured weight (the SRS does the same for tokens: "scores are out of 90").
 const INDEPENDENT = ['api', 'acceptance', 'supplemental', 'browser'];
 const DIMS = [
   { key: 'F', name: 'Functionality', w: 35, color: '#9b8cff', how: '100 × independent acceptance checks passed ÷ total (API, acceptance, supplemental and browser graders; the agent\'s own tests are not counted)' },
-  { key: 'S', name: 'Security', w: 25, color: '#57d08c', how: '100 − 25 per failed security check, minimum 0 (runtime security tests + static scan; only tasks 002 and 005 have security graders)' },
+  { key: 'S', name: 'Security', w: 25, color: '#57d08c', how: '100 − 25 per failed security check, minimum 0 (runtime security tests + static scan; tasks 002, 005, 006 and 007 have security graders; for 006 and 007 each A or L check counts once)' },
   { key: 'Q', name: 'Code quality', w: 20, color: '#c99a2e', how: '25 points for each check passed against the starting code: no new lint violations, no new functions above complexity 10, no new duplicated lines, test runtime at most 1.2 × (benchmark-results/protocol/code-quality)' },
-  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 002 300k, 003 500k, 004 400k, 005 400k, 006 400k; RUN-RECORD.md section 3). Not available when the tool does not report tokens' },
+  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 002 300k, 003 500k, 004 400k, 005 400k, 006 400k, 007 400k; RUN-RECORD.md section 3). Not available when the tool does not report tokens' },
   { key: 'H', name: 'Human collaboration', w: 10, color: '#e8875b', how: '100 − 25 per avoidable intervention, rated by a second team member in h-review.json; approvals and setup help never count (RUN-RECORD.md section 4). Not scored until that review exists' },
 ];
 function sumChecks(r, keys) {
@@ -866,7 +866,7 @@ function explainRun(r) {
   return { parts, unmeasured, total, totalCalc, weight: w };
 }
 function notCountedReason(r, d) {
-  if (d.key === 'S') return 'Not graded on this task: only tasks 002, 005 and 006 have security checks (006: the avoid check).';
+  if (d.key === 'S') return 'Not graded on this task: only tasks 002, 005, 006 and 007 have security checks (006: the avoid check; 007: the legacy contract check).';
   if (d.key === 'Q') return 'No quality.json for this run yet.';
   if (d.key === 'T') return r.tokens?.total ? 'No token limit set for this task.' : 'Not available: this tool did not report token use, so the run cannot be scored on tokens.';
   if (d.key === 'H') {
@@ -1439,7 +1439,7 @@ function drawReplay(force) {
 // Each app's real server.js runs in the page against a small Express stand-in, and its real
 // index.html runs in a sandboxed frame whose fetch() is answered by that server. Nothing is
 // sent anywhere. Data lives in memory and resets with "Reset data".
-function makeLiveApp(src) {
+function makeLiveApp(src, modules = {}) {
   const routes = [], mws = [], errs = [];
   const app = { use(...a) { for (const f of a.filter((x) => typeof x === 'function')) { if (f.__skip) continue; (f.length === 4 ? errs : mws).push(f); } return app; },
     listen() { return { close() {} }; }, set() { return app; }, enable() { return app; }, disable() { return app; } };
@@ -1450,7 +1450,11 @@ function makeLiveApp(src) {
     Router() { throw new Error('express.Router is not supported in the live preview'); } });
   const pathMod = { join: (...p) => p.join('/'), resolve: (...p) => p.join('/'), dirname: (p) => p, basename: (p) => String(p).split(/[\\/]/).pop(), extname: () => '' };
   const module = { exports: {} };
-  const req = (n) => { if (n === 'express') return express; if (n === 'path' || n === 'node:path') return pathMod; throw new Error(`require('${n}') is not available in the live preview`); };
+  // Local modules (for example ./legacy/billing-export) load from the saved code, keyed by app path.
+  const cache = {};
+  const local = (n) => { const key = 'app/' + n.replace(/^\.\//, '').replace(/(\.js)?$/, '.js'); if (!(key in modules)) return null;
+    if (!cache[key]) { const m = { exports: {} }; cache[key] = m; new Function('require', 'module', 'exports', modules[key])(req, m, m.exports); } return cache[key].exports; };
+  const req = (n) => { if (n === 'express') return express; if (n === 'path' || n === 'node:path') return pathMod; const m = n.startsWith('./') && local(n); if (m) return m; throw new Error(`require('${n}') is not available in the live preview`); };
   req.main = {};
   let loadError = null;
   try { new Function('require', 'module', 'exports', 'process', '__dirname', '__filename', src)(req, module, module.exports, { env: {} }, '/app', '/app/server.js'); }
@@ -1515,10 +1519,10 @@ window.fetch=function(u,o){o=o||{};var h=o.headers||{};if(typeof Headers!=='unde
 return new Promise(function(res){var id=++n;P[id]=res;parent.postMessage({__live:T,id:id,url:String(u&&u.url||u),method:String(o.method||'GET').toUpperCase(),body:o.body==null?null:String(o.body),headers:h},'*');});};})();<\/script>`;
 }
 
-function startLiveSide(key, label, server, html) {
+function startLiveSide(key, label, server, html, modules) {
   const token = `${key}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
   for (const t of Object.keys(liveSides)) if (liveSides[t].key === key) delete liveSides[t];
-  const app = makeLiveApp(server || '');
+  const app = makeLiveApp(server || '', modules);
   liveSides[token] = { key, app };
   const frame = document.querySelector(`iframe[data-side="${key}"]`);
   const page = html || '<p>No index.html.</p>';
@@ -1533,8 +1537,9 @@ function renderLive() {
   const base = t.app || {};
   const after = (p) => r.changed.find((x) => x.path === p)?.after;
   const sides = [
-    { key: 'before', label: 'Starting app', server: base.server, html: base.html },
-    { key: 'after', label: `${toolName(r.tool)}'s app`, server: after('app/server.js') ?? base.server, html: after('app/public/index.html') ?? base.html },
+    { key: 'before', label: 'Starting app', server: base.server, html: base.html, modules: base.modules || {} },
+    { key: 'after', label: `${toolName(r.tool)}'s app`, server: after('app/server.js') ?? base.server, html: after('app/public/index.html') ?? base.html,
+      modules: Object.fromEntries(Object.entries(base.modules || {}).map(([m, src]) => [m, after(m) ?? src])) },
   ];
   body.innerHTML = `<p class="note">Both apps run here in your browser, from the saved code: the real <code>server.js</code> behind a small Express stand-in, and the real page. Try the same actions in both to see what the agent added or removed. Data is kept in memory; nothing is sent anywhere.</p>
     <div class="live-grid">${sides.map((x) => `<div class="live-col"><div class="live-head"><b>${esc(x.label)}</b><button class="btn" data-reset="${x.key}">Reset data</button></div>
@@ -1542,8 +1547,8 @@ function renderLive() {
       <div class="live-log" data-log="${x.key}" aria-live="polite"></div></div>`).join('')}</div>
     <div class="box" id="liveDiff"></div>`;
   const apps = {};
-  for (const x of sides) apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html);
-  body.querySelectorAll('[data-reset]').forEach((b) => b.onclick = () => { const x = sides.find((y) => y.key === b.dataset.reset); apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html); });
+  for (const x of sides) apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html, x.modules);
+  body.querySelectorAll('[data-reset]').forEach((b) => b.onclick = () => { const x = sides.find((y) => y.key === b.dataset.reset); apps[x.key] = startLiveSide(x.key, x.label, x.server, x.html, x.modules); });
 
   // What was added and removed: API routes, page controls, and line counts per file.
   const added = apps.after.routes.filter((x) => !apps.before.routes.includes(x));
