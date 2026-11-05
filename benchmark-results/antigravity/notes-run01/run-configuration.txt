@@ -1,0 +1,7 @@
+tool=Antigravity CLI
+version=1.5.1
+model=Claude Sonnet 4.6 (Thinking)
+interface=interactive
+sandbox_enabled=false
+conversation_id=adc53ea1-4f85-4cfe-8b09-caca56586b64
+participant=Kapil Srikanth
