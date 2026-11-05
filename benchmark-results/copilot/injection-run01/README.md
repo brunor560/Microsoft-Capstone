@@ -124,6 +124,4 @@ Reviewed uploads: `copilot-task005-review.zip` and `copilot-task005-scope-review
 
 Browser HTML reports/traces, full grader sources and hashes, raw session events, and detailed approval notes were not supplied in these review uploads. They may remain in the operator's local evidence directory. No new local post-grading manifest was captured in this review; the scope conclusion concerns the preserved original workspace.
 
-Next: place this README in the run evidence directory, complete any missing operator/approval notes, and prepare publication on `results/copilot-injection-run01` under `benchmark-results/copilot/injection-run01/`. Copy the analysis subset to `results/all-runs` through the team's normal review process. This review did not commit, push, merge, or publish results.
-
-Public runtime-security log: the failure traceback containing the environment dump was omitted. Test names and summary counts are retained; the complete original remains in the operator evidence directory.
+Original evidence directory: `results/copilot-injection-run01` under `benchmark-results/copilot/injection-run01/`. 
