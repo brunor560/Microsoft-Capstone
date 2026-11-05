@@ -9,8 +9,8 @@
 //                  most 1.2 x the baseline median; a failing candidate suite
 //                  fails the check
 //
-// Only the files agents may change are measured: app/server.js, app/test.js
-// and the inline <script> of app/public/index.html.
+// Only the files agents may change are measured: app/server.js, app/test.js,
+// the inline <script> of app/public/index.html, and app/legacy/*.js (task 007).
 //
 // Usage: node quality-grader.mjs <baseline app dir> <candidate app dir> [out.json]
 
@@ -48,6 +48,13 @@ function collect(appDir, dest) {
       files.push(name);
     }
   }
+  const legacyDir = path.join(appDir, 'legacy');
+  if (fs.existsSync(legacyDir)) {
+    for (const name of fs.readdirSync(legacyDir).filter((f) => f.endsWith('.js')).sort()) {
+      fs.copyFileSync(path.join(legacyDir, name), path.join(dest, `legacy-${name}`));
+      files.push(`legacy-${name}`);
+    }
+  }
   const html = path.join(appDir, 'public', 'index.html');
   if (fs.existsSync(html)) {
     const scripts = [...fs.readFileSync(html, 'utf8').matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)]
@@ -66,7 +73,7 @@ async function lint(dir, files) {
     overrideConfigFile: true,
     overrideConfig: [
       {
-        files: ['server.js', 'test.js'],
+        files: ['server.js', 'test.js', 'legacy-*.js'],
         languageOptions: { ecmaVersion: 2023, sourceType: 'commonjs', globals: globals.node },
         rules: { ...RULES, complexity: ['warn', COMPLEXITY_LIMIT] },
       },

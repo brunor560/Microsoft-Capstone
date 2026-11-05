@@ -30,8 +30,12 @@ const TASKS = [
   { id: '004', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc' },
   { id: '005', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7' },
   { id: '006', dir: /^avoid-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
+  // 007's starting app is the commit "Add task 007" (it adds the legacy module), found by its message.
+  { id: '007', dir: /^legacy-run\d+$/, base: 'origin/benchmark-protocol-v7-legacy^{/^Add task 007}' },
 ];
-const APP_FILES = ['server.js', 'test.js', 'index.html'];
+const APP_FILES = ['server.js', 'test.js', 'index.html', 'billing-export.js'];
+// Where each preserved file goes in the app (task 007's legacy module lives in legacy/).
+const APP_PATH = { 'index.html': 'public/index.html', 'billing-export.js': 'legacy/billing-export.js' };
 
 function exportApp(commit, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -88,7 +92,7 @@ for (const tool of fs.readdirSync(RESULTS).filter((d) => d !== 'protocol' && fs.
     for (const name of APP_FILES) {
       const src = originalFile(runDir, name);
       if (!src) continue;
-      fs.copyFileSync(src, name === 'index.html' ? path.join(cand, 'public', name) : path.join(cand, name));
+      fs.copyFileSync(src, path.join(cand, APP_PATH[name] || name));
       used.push(path.relative(runDir, src).replace(/\\/g, '/'));
     }
     if (!used.length) { console.log(`skip ${tool}/${run}: no original files`); continue; }

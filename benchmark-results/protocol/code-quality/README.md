@@ -17,9 +17,10 @@ if the starting code's own test suite fails, because then there is no valid
 reference. That has not happened for any saved run.
 
 **What is measured:** only the files agents may change, which are
-`app/server.js`, `app/test.js`, and the inline `<script>` in
-`app/public/index.html`. Files the agent didn't change are taken from the
-starting app.
+`app/server.js`, `app/test.js`, the inline `<script>` in
+`app/public/index.html`, and, for task 007, the legacy module
+`app/legacy/billing-export.js`. Files the agent didn't change are taken from
+the starting app.
 
 ## Differences from the SRS wording
 
