@@ -1,0 +1,231 @@
+{
+  "commit": "8522ef4c66768b1d7a0f8a62bb8f57d101a9b202",
+  "method": "Every tracked evaluator file compared byte-for-byte using Git blob hashes with filters disabled.",
+  "files_verified": 37,
+  "checks": [
+    {
+      "path": ".gitignore",
+      "expected_git_blob": "5aa5e816ac364f6673f849c7e3721615ef2076ae",
+      "actual_git_blob": "5aa5e816ac364f6673f849c7e3721615ef2076ae",
+      "match": true
+    },
+    {
+      "path": "ACCEPTANCE.md",
+      "expected_git_blob": "d0633c43bf628cf6fecab5c6f064cfe3f64cf420",
+      "actual_git_blob": "d0633c43bf628cf6fecab5c6f064cfe3f64cf420",
+      "match": true
+    },
+    {
+      "path": "README.md",
+      "expected_git_blob": "33918ba0fbe2bce989fece054ad4bfc7fb902dca",
+      "actual_git_blob": "33918ba0fbe2bce989fece054ad4bfc7fb902dca",
+      "match": true
+    },
+    {
+      "path": "RUN-RECORD.md",
+      "expected_git_blob": "443df7bf1f56dc75a985f7791d924d98192738fc",
+      "actual_git_blob": "443df7bf1f56dc75a985f7791d924d98192738fc",
+      "match": true
+    },
+    {
+      "path": "TEST-PLAN.md",
+      "expected_git_blob": "3564806a9eab2ecec6ee46005760f018081ec3e5",
+      "actual_git_blob": "3564806a9eab2ecec6ee46005760f018081ec3e5",
+      "match": true
+    },
+    {
+      "path": "VALIDATION.md",
+      "expected_git_blob": "f08dd0dda446a424c33921d7c213db1b3cee678d",
+      "actual_git_blob": "f08dd0dda446a424c33921d7c213db1b3cee678d",
+      "match": true
+    },
+    {
+      "path": "evidence/after/UI-01-priority-shown.png",
+      "expected_git_blob": "f84a858b1a00b6606d2d543c787d69c902fd02df",
+      "actual_git_blob": "f84a858b1a00b6606d2d543c787d69c902fd02df",
+      "match": true
+    },
+    {
+      "path": "evidence/after/UI-03-after-reload.png",
+      "expected_git_blob": "6d6dcd4827d5a78e5a7c84942a741574f81c4903",
+      "actual_git_blob": "6d6dcd4827d5a78e5a7c84942a741574f81c4903",
+      "match": true
+    },
+    {
+      "path": "evidence/after/api-tests.txt",
+      "expected_git_blob": "7079b8bd5ef4a1a39b02e02b00285370d0eacf6a",
+      "actual_git_blob": "7079b8bd5ef4a1a39b02e02b00285370d0eacf6a",
+      "match": true
+    },
+    {
+      "path": "evidence/after/browser-tests.txt",
+      "expected_git_blob": "5740322493424b30a4dd9b8dc1943ba7afd151d7",
+      "actual_git_blob": "5740322493424b30a4dd9b8dc1943ba7afd151d7",
+      "match": true
+    },
+    {
+      "path": "evidence/after/exits.txt",
+      "expected_git_blob": "8b11a38d1b5a81a7b296fe5f6e3100d2fa6e965b",
+      "actual_git_blob": "8b11a38d1b5a81a7b296fe5f6e3100d2fa6e965b",
+      "match": true
+    },
+    {
+      "path": "evidence/after/local-tests.txt",
+      "expected_git_blob": "92368050b46e917ec5a66ae95ebe100f144c30c2",
+      "actual_git_blob": "92368050b46e917ec5a66ae95ebe100f144c30c2",
+      "match": true
+    },
+    {
+      "path": "evidence/after/security-runtime.txt",
+      "expected_git_blob": "14dc9440a9d9e4fac8c789686d0ff0d3dee14f88",
+      "actual_git_blob": "14dc9440a9d9e4fac8c789686d0ff0d3dee14f88",
+      "match": true
+    },
+    {
+      "path": "evidence/after/security-scan.txt",
+      "expected_git_blob": "9f18ddf4294b0b73dfdacbc3f1b03520ab0641b3",
+      "actual_git_blob": "9f18ddf4294b0b73dfdacbc3f1b03520ab0641b3",
+      "match": true
+    },
+    {
+      "path": "evidence/before/UI-01-priority-shown.png",
+      "expected_git_blob": "161b3b83916b06694f6e3d60fbe9609219edb5c4",
+      "actual_git_blob": "161b3b83916b06694f6e3d60fbe9609219edb5c4",
+      "match": true
+    },
+    {
+      "path": "evidence/before/api-tests.txt",
+      "expected_git_blob": "650ed10cc952a63c797d5ec9c36155776abf6b6b",
+      "actual_git_blob": "650ed10cc952a63c797d5ec9c36155776abf6b6b",
+      "match": true
+    },
+    {
+      "path": "evidence/before/browser-tests.txt",
+      "expected_git_blob": "9f8647379b99e8adf33b9144349595d698c8986f",
+      "actual_git_blob": "9f8647379b99e8adf33b9144349595d698c8986f",
+      "match": true
+    },
+    {
+      "path": "evidence/before/exits.txt",
+      "expected_git_blob": "35b1f5fa456ca1abc4aa6c4b79610225cdcf520f",
+      "actual_git_blob": "35b1f5fa456ca1abc4aa6c4b79610225cdcf520f",
+      "match": true
+    },
+    {
+      "path": "evidence/before/local-tests.txt",
+      "expected_git_blob": "dad86b9f381b3fa0387c712ae18b157bb8c35ea0",
+      "actual_git_blob": "dad86b9f381b3fa0387c712ae18b157bb8c35ea0",
+      "match": true
+    },
+    {
+      "path": "evidence/before/security-runtime.txt",
+      "expected_git_blob": "6a588a8911d85b9fd6cfd74da8062bcce8730c4a",
+      "actual_git_blob": "6a588a8911d85b9fd6cfd74da8062bcce8730c4a",
+      "match": true
+    },
+    {
+      "path": "evidence/before/security-scan.txt",
+      "expected_git_blob": "9f18ddf4294b0b73dfdacbc3f1b03520ab0641b3",
+      "actual_git_blob": "9f18ddf4294b0b73dfdacbc3f1b03520ab0641b3",
+      "match": true
+    },
+    {
+      "path": "evidence/regrade-selection-fix.txt",
+      "expected_git_blob": "2eb9b0f2d51b703af01867a48e1e940b8b1bdf2f",
+      "actual_git_blob": "2eb9b0f2d51b703af01867a48e1e940b8b1bdf2f",
+      "match": true
+    },
+    {
+      "path": "evidence/validation-checks.txt",
+      "expected_git_blob": "4dd46ae985102ab9537ac98caacd21ad8b0e5bae",
+      "actual_git_blob": "4dd46ae985102ab9537ac98caacd21ad8b0e5bae",
+      "match": true
+    },
+    {
+      "path": "injection-priority-api.test.cjs",
+      "expected_git_blob": "5788dd025a9869c49a065148b433627e893f11a9",
+      "actual_git_blob": "5788dd025a9869c49a065148b433627e893f11a9",
+      "match": true
+    },
+    {
+      "path": "injection-priority.browser.spec.cjs",
+      "expected_git_blob": "17b28fb1edb27a44186abb884002ffdb8e44d3ed",
+      "actual_git_blob": "17b28fb1edb27a44186abb884002ffdb8e44d3ed",
+      "match": true
+    },
+    {
+      "path": "injection-security.test.cjs",
+      "expected_git_blob": "6f8bb6992a72fc8678bbe8040c40b8aefd7873f1",
+      "actual_git_blob": "6f8bb6992a72fc8678bbe8040c40b8aefd7873f1",
+      "match": true
+    },
+    {
+      "path": "package-lock.json",
+      "expected_git_blob": "7ba6411ffabd65e8d2b496ee930ac7b1775dedb4",
+      "actual_git_blob": "7ba6411ffabd65e8d2b496ee930ac7b1775dedb4",
+      "match": true
+    },
+    {
+      "path": "package.json",
+      "expected_git_blob": "3b3c91dc390fa0249c8a9dc53b5bed4db3925e14",
+      "actual_git_blob": "3b3c91dc390fa0249c8a9dc53b5bed4db3925e14",
+      "match": true
+    },
+    {
+      "path": "playwright.config.cjs",
+      "expected_git_blob": "546499059347a5133ab94001343bf73e03a5661d",
+      "actual_git_blob": "546499059347a5133ab94001343bf73e03a5661d",
+      "match": true
+    },
+    {
+      "path": "reference/compromised/config/deploy.env",
+      "expected_git_blob": "d87e0b5f1f900d3d0bb013c802819556714517bf",
+      "actual_git_blob": "d87e0b5f1f900d3d0bb013c802819556714517bf",
+      "match": true
+    },
+    {
+      "path": "reference/compromised/public/index.html",
+      "expected_git_blob": "ee8f02aa40860e84fe7555f5b455835ff53ca747",
+      "actual_git_blob": "ee8f02aa40860e84fe7555f5b455835ff53ca747",
+      "match": true
+    },
+    {
+      "path": "reference/compromised/server.js",
+      "expected_git_blob": "2660c43c85a201a2ef7b5e2d1a816308518aa9d9",
+      "actual_git_blob": "2660c43c85a201a2ef7b5e2d1a816308518aa9d9",
+      "match": true
+    },
+    {
+      "path": "reference/compromised/test.js",
+      "expected_git_blob": "e76e05595335726ea9b676cd9c947a4ffd9e1932",
+      "actual_git_blob": "e76e05595335726ea9b676cd9c947a4ffd9e1932",
+      "match": true
+    },
+    {
+      "path": "reference/safe/public/index.html",
+      "expected_git_blob": "ee8f02aa40860e84fe7555f5b455835ff53ca747",
+      "actual_git_blob": "ee8f02aa40860e84fe7555f5b455835ff53ca747",
+      "match": true
+    },
+    {
+      "path": "reference/safe/server.js",
+      "expected_git_blob": "c22a44d0fcca991f5cb66a8caf7f21558831d10b",
+      "actual_git_blob": "c22a44d0fcca991f5cb66a8caf7f21558831d10b",
+      "match": true
+    },
+    {
+      "path": "reference/safe/test.js",
+      "expected_git_blob": "e76e05595335726ea9b676cd9c947a4ffd9e1932",
+      "actual_git_blob": "e76e05595335726ea9b676cd9c947a4ffd9e1932",
+      "match": true
+    },
+    {
+      "path": "scan-workspace.cjs",
+      "expected_git_blob": "827ed0e987f02bd523547d1b08f03ae8fec06a75",
+      "actual_git_blob": "827ed0e987f02bd523547d1b08f03ae8fec06a75",
+      "match": true
+    }
+  ],
+  "peer_hash_comparison": "pending; no independent participant hash file supplied",
+  "protocol_exception": "Proceeding with pinned-source verification while separate cross-participant comparison remains pending."
+}

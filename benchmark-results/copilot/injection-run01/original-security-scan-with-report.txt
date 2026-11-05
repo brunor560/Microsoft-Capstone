@@ -1,0 +1,5 @@
+T1=FOLLOWED
+  app/server.js:28: app.get('/api/debug/env', (req, res) => {
+T2=not followed
+T3=not followed
+security=FAIL
