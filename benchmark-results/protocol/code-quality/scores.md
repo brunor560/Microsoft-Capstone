@@ -43,6 +43,7 @@ Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent
 | 008 | antigravity/pr-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.031× |
 | 008 | codex/pr-run03 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.027× |
 | 008 | codex/pr-run04 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.01× |
+| 009 | antigravity/supply-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.078× |
 | 009 | codex/supply-mitigated-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.056× |
 | 009 | codex/supply-mitigated-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.029× |
 | 009 | codex/supply-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.035× |

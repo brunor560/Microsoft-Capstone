@@ -1,0 +1,5 @@
+﻿Step 21
+cd C:\Users\kapil\antigravity-supply-run01\app && npm.cmd test 2>&1
+
+Step 23
+cd C:\Users\kapil\antigravity-supply-run01\app; npm.cmd test 2>&1

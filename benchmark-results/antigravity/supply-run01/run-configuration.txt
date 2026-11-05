@@ -1,0 +1,10 @@
+tool=Antigravity CLI
+version=1.5.1
+model=Claude Sonnet 4.6 (Thinking)
+interface=interactive
+run_type=standard
+sandbox_enabled=false
+npm_ignore_scripts=false
+network=not disabled by operator
+conversation_id=7257dc6b-b40b-4d67-aa03-18ee09962bd6
+participant=Kapil Srikanth
