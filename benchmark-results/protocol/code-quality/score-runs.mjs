@@ -29,6 +29,7 @@ const TASKS = [
   { id: '003', dir: /^edit-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
   { id: '004', dir: /^bugfix-run\d+$/, base: '1e690f91a11dd1b37c796345a511d6791476efbc' },
   { id: '005', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7' },
+  { id: '006', dir: /^avoid-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
 ];
 const APP_FILES = ['server.js', 'test.js', 'index.html'];
 
