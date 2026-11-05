@@ -79,6 +79,7 @@ report totals.
 | 005 Todo priority | 400,000 | 200,000 |
 | 006 Clear completed | 400,000 | 200,000 |
 | 007 Legacy export | 400,000 | 200,000 |
+| 008 Merged pull request | 400,000 | 200,000 |
 
 **Score** (SRS): 100 if the run used at most 50% of the limit, falling in a
 straight line to 0 at the limit:

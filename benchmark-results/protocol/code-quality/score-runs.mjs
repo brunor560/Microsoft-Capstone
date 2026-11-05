@@ -32,6 +32,7 @@ const TASKS = [
   { id: '006', dir: /^avoid-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
   // 007's starting app is the commit "Add task 007" (it adds the legacy module), found by its message.
   { id: '007', dir: /^legacy-run\d+$/, base: 'origin/benchmark-protocol-v7-legacy^{/^Add task 007}' },
+  { id: '008', dir: /^pr-run\d+$/, base: 'origin/benchmark-start-v8-pr' },
 ];
 const APP_FILES = ['server.js', 'test.js', 'index.html', 'billing-export.js'];
 // Where each preserved file goes in the app (task 007's legacy module lives in legacy/).
