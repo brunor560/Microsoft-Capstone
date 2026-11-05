@@ -325,6 +325,8 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .test-area { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--label-2); }
 .test-q { margin: 0; font-weight: 700; line-height: 1.35; }
 .test-how { margin: 0; font-size: 13px; color: var(--label-2); }
+.test-brief { display: flex; flex-wrap: wrap; gap: 4px; }
+.test-brief span { font-size: 11px; font-weight: 600; color: var(--violet); background: var(--accent-surface); border-radius: 6px; padding: 2px 6px; }
 .test-stat { margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); display: flex; align-items: baseline; gap: 6px; font-size: 13px; color: var(--label-2); }
 .test-stat b { font-size: 20px; color: var(--text); }
 kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; }
@@ -365,8 +367,9 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 
   <section class="panel">
     <h2>The 10 tests</h2>
-    <p class="lede">Each test asks one question about how an agent behaves on real work.</p>
+    <p class="lede">Each test asks one question about how an agent behaves on real work, and covers part of the project brief (§ = brief section).</p>
     <div class="tests" id="testCards"></div>
+    <p class="note" style="margin:12px 0 0"><b>Every test also covers:</b> §3 the platform landscape (Codex, Claude Code, Copilot, Antigravity on the same tasks) · §7 human-in-the-loop (every message to an agent is logged and scored) · §8 cost (tokens and time per run) · §9 an audit trail (each run's prompt, report and grader logs are kept).</p>
   </section>
 
   <section class="panel">
@@ -596,6 +599,19 @@ function renderStats() {
 }
 
 // ---------- the 10 tests ----------
+// Project brief sections each test covers ("Agentic Development for Software Engineering").
+const BRIEF = {
+  '001': ['§4a High-confidence use: a well-scoped, testable task'],
+  '002': ['§4a High-confidence use', '§6 Agent output validation'],
+  '003': ['§4a High-confidence use', '§7 Clear specs and agent output quality'],
+  '004': ['§4a High-confidence use: clear success criteria'],
+  '005': ['§6 Prompt injection defense and secrets', '§6 Attack and mitigation demo'],
+  '006': ['§4c Avoid: compliance sign-off, irreversible production changes', '§9 Accountability'],
+  '007': ['§4b Use with caution: legacy, safety-sensitive code'],
+  '008': ['§5 Tool chain: MCP, CI/CD, requirements to merged pull request', '§9 Audit trail'],
+  '009': ['§6 Supply chain risks and least privilege', '§6 Attack and mitigation demo'],
+  '010': ['§9 Responsible disclosure of vulnerabilities', '§6 Agent output validation'],
+};
 const TEST_INFO = {
   '001': ['Feature', 'Can it add a simple feature to an app and its page?', 'Hidden API and browser tests'],
   '002': ['Input safety', 'Does it reject bad input, and ignore an unsafe hint left in the code?', 'Hidden tests plus a trap scan'],
@@ -619,7 +635,7 @@ function renderTests() {
       ? `<b>${avg ?? '—'}</b><span>avg score · ${runs.length} run${runs.length > 1 ? 's' : ''} · ${tools} tool${tools > 1 ? 's' : ''}</span>`
       : '<span>Not run yet</span>';
     return `<div class="test"><div class="test-head"><span class="test-id">${t.id}</span><span class="test-area">${esc(area)}</span></div>
-      <p class="test-q">${esc(asks)}</p><p class="test-how">${esc(check)}</p><div class="test-stat">${stat}</div></div>`;
+      <p class="test-q">${esc(asks)}</p><p class="test-how">${esc(check)}</p>${(BRIEF[t.id] || []).length ? `<div class="test-brief">${BRIEF[t.id].map((b) => `<span>${esc(b)}</span>`).join('')}</div>` : ''}<div class="test-stat">${stat}</div></div>`;
   }).join('');
 }
 
