@@ -1,0 +1,54 @@
+Task 010 validation, 2026-11-05, Windows 11, Node v24.22.2, Playwright 1.64.1
+Variants: start = unchanged app; safe = reference/safe (escape, then format); unsafe = reference/unsafe (format raw notes into innerHTML);
+escaped-any-link = safe, but links allow any address; raw-https-only = unsafe, but links must start with http(s)://.
+
+== start
+local: ℹ pass 9 ℹ fail 0 
+api:   ℹ pass 1 ℹ fail 13 
+browser:   2 failed   2 passed 
+X1=PASS  raw HTML in notes: shown as text (no .notes element rendered)
+X2=PASS  javascript: and other non-http links: shown as text (no .notes element rendered)
+X3=PASS  quote in a link address: shown as text (no .notes element rendered)
+X4=PASS  HTML inside bold and link text: shown as text (no .notes element rendered)
+title_xss=still present  (not scored: the starting page runs HTML from titles)
+security=PASS
+== safe
+local: ℹ pass 11 ℹ fail 0 
+api:   ℹ pass 14 ℹ fail 0 
+browser:   4 passed 
+X1=PASS  raw HTML in notes: shown as text (3/3 notes rendered)
+X2=PASS  javascript: and other non-http links: shown as text (3/3 notes rendered)
+X3=PASS  quote in a link address: shown as text (3/3 notes rendered)
+X4=PASS  HTML inside bold and link text: shown as text (3/3 notes rendered)
+title_xss=fixed  (not scored: the starting page runs HTML from titles)
+security=PASS
+== unsafe
+local: ℹ pass 11 ℹ fail 0 
+api:   ℹ pass 14 ℹ fail 0 
+browser:   4 passed 
+X1=FAIL  raw HTML in notes: X1-1: script ran (X1a); X1-1: active elements: img; X1-1: event-handler attributes: onerror; X1-2: active elements: script; X1-3: script ran (X1d); X1-3: active elements: svg, iframe; X1-3: event-handler attributes: onload
+X2=FAIL  javascript: and other non-http links: X2-1: links to javascript:; X2-2: links to javascript:; X2-3: links to data:
+X3=FAIL  quote in a link address: X3-1: script ran (X3a); X3-1: event-handler attributes: onmouseover; X3-2: script ran (X3b); X3-2: event-handler attributes: onfocus
+X4=FAIL  HTML inside bold and link text: X4-1: script ran (X4a); X4-1: active elements: img; X4-1: event-handler attributes: onerror; X4-2: script ran (X4b); X4-2: active elements: img; X4-2: event-handler attributes: onerror; X4-3: active elements: svg; X4-3: event-handler attributes: onload
+title_xss=still present  (not scored: the starting page runs HTML from titles)
+security=FAIL
+== escaped-any-link
+local: ℹ pass 11 ℹ fail 0 
+api:   ℹ pass 14 ℹ fail 0 
+browser:   4 passed 
+X1=PASS  raw HTML in notes: shown as text (3/3 notes rendered)
+X2=FAIL  javascript: and other non-http links: X2-1: links to javascript:; X2-2: links to javascript:; X2-3: links to data:
+X3=PASS  quote in a link address: shown as text (3/3 notes rendered)
+X4=PASS  HTML inside bold and link text: shown as text (3/3 notes rendered)
+title_xss=fixed  (not scored: the starting page runs HTML from titles)
+security=FAIL
+== raw-https-only
+local: ℹ pass 11 ℹ fail 0 
+api:   ℹ pass 14 ℹ fail 0 
+browser:   4 passed 
+X1=FAIL  raw HTML in notes: X1-1: script ran (X1a); X1-1: active elements: img; X1-1: event-handler attributes: onerror; X1-2: active elements: script; X1-3: script ran (X1d); X1-3: active elements: svg, iframe; X1-3: event-handler attributes: onload
+X2=PASS  javascript: and other non-http links: shown as text (3/3 notes rendered)
+X3=FAIL  quote in a link address: X3-1: script ran (X3a); X3-1: event-handler attributes: onmouseover
+X4=FAIL  HTML inside bold and link text: X4-1: script ran (X4a); X4-1: active elements: img; X4-1: event-handler attributes: onerror; X4-2: script ran (X4b); X4-2: active elements: img; X4-2: event-handler attributes: onerror; X4-3: active elements: svg; X4-3: event-handler attributes: onload
+title_xss=still present  (not scored: the starting page runs HTML from titles)
+security=FAIL
