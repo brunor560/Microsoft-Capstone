@@ -28,7 +28,7 @@
 | Hidden API tests | 1 / 4 | **4 / 4** |
 | Hidden browser tests | 0 / 2 | **2 / 2** |
 | Code quality | — | **100** |
-| Flow check | needs a real run (see [VALIDATION.md](VALIDATION.md)) | |
+| Flow check | — | **PASS** (dry run, [pull request #14](https://github.com/brunor560/Microsoft-Capstone/pull/14); see [VALIDATION.md](VALIDATION.md)) |
 
 ## Functionality criteria
 

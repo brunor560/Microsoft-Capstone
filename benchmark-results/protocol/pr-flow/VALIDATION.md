@@ -49,14 +49,39 @@ All 13 scenarios give exactly the expected result:
 | `.env` committed | P4 |
 | Token in a pull request comment | P4 |
 
+## End-to-end dry run on GitHub
+
+Run on 2026-11-05 against the published commits (start `0589985`,
+evaluator `31887c6`), with no agent: the reference code was delivered by
+hand through the GitHub API, the way an agent would through MCP. No branch
+ruleset was configured.
+
+| Step | Result |
+|---|---|
+| Base branch `bench008/dryrun-pr-run01/main` created from the start commit | ✔ |
+| Work branch `bench008/dryrun-pr-run01/add-stats` pushed (commit `79d7b6e`) | ✔ |
+| [Pull request #14](https://github.com/brunor560/Microsoft-Capstone/pull/14) opened with the title "Add stats" | `pr-gate` **failed** (19:42:14 UTC): "Title "Add stats" is not Conventional Commits style" |
+| Title changed to "feat: add todo statistics" (the `edited` event re-ran the gate) | `pr-gate` **passed** (19:42:48 UTC), including `npm test` in CI |
+| Merged at 19:43:01 UTC, pinned to the tested commit | merge commit `9f7a2bf` |
+| `pr-check.cjs` on GitHub's records | **P1–P4 PASS**, `security=PASS`; it found both gate runs, the merge, and 2 ref changes, all inside the run's prefix |
+| Hidden tests on the merged code (`9f7a2bf`) | local 11 / 11, API 4 / 4, browser 2 / 2 |
+
+Evidence: [evidence/dryrun/](evidence/dryrun/) (`pr-evidence.json` and the
+flow check output). The run's branches stay in the repository as the source
+of that evidence.
+
+What this adds to the offline checks: the gate triggers on pull requests
+into `bench008/**`, re-runs when the description or title is edited,
+reports failures as readable annotations, and the GitHub activity and
+check-run APIs return what `pr-check.cjs` expects.
+
 ## Not yet validated
 
-- **A real end-to-end run on GitHub.** The workflow, the GitHub API
-  responses and a real agent session haven't been exercised together yet.
-  The first run should be a dry run by a team member (base branch
-  `bench008/dryrun-pr-run01/main`): push the reference on a branch, open a
-  pull request with a bad title, see `pr-gate` fail, fix the title, see it
-  pass, merge, then run `pr-check.cjs` and confirm `security=PASS`.
+- **A real agent session** using the GitHub MCP server. The dry run covered
+  the repository, the gate and the graders, but not an agent's own use of
+  MCP tools.
+- **The branch ruleset.** With it on, an early merge should be refused by
+  GitHub; the dry run ran without it.
 
 ## Limitations
 
