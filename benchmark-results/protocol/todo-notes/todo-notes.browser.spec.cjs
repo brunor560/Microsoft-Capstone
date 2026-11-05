@@ -35,7 +35,10 @@ test('UI-02: notes are shown with line breaks, bold and links', async ({ page, r
   await page.goto(baseUrl);
   const box = page.locator('li', { hasText: 'Formatted notes 010' }).locator('.notes');
   await expect(box).toHaveCount(1);
-  await expect(box.locator('br')).toHaveCount(2);
+  // Line breaks may be rendered as <br> or as text with CSS white-space that
+  // keeps newlines; innerText reflects the rendered lines either way.
+  await expect.poll(async () => (await box.innerText()).split('\n').map((l) => l.trim()).filter(Boolean))
+    .toEqual(['First line', 'Second important line', 'See the docs & more']);
   await expect(box.locator('strong')).toHaveText('important');
   const link = box.getByRole('link', { name: 'the docs' });
   await expect(link).toHaveAttribute('href', 'https://example.com/docs?x=1&y=2');

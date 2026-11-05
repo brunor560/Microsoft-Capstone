@@ -35,6 +35,29 @@ in the list, so in the unsafe page one case's payload also fired during the
 next case. The check now deletes each probe after use, and every failure is
 reported only under its own check.
 
+## Grader fix after the first runs
+
+The first two measured runs (Codex Sol and Luna, 2026-11-05) failed one
+browser test, 3 of 4. Both agents built the notes from text nodes and kept
+line breaks with CSS `white-space: pre-wrap`, which meets UI-02 ("each line
+break in the notes starts a new line"), but the test required `<br>`
+elements. The test was over-specified.
+
+The fixed test checks the **rendered lines** (the element's `innerText`), so
+`<br>` and `pre-wrap` both pass. Rechecked on every validation version:
+
+| App version | Browser, fixed test |
+|---|---|
+| Starting app | 2 / 4 (unchanged) |
+| Safe reference (`<br>`) | 4 / 4 |
+| Unsafe reference | 4 / 4 |
+| Safe reference with line breaks removed | 3 / 4: fails UI-02, as it should |
+| Codex Sol and Luna runs (`pre-wrap`) | 4 / 4 each |
+
+Those two runs keep their original logs and add
+`regrade-fixed-grader-browser-tests.txt`, as with the task 005 grader fix.
+The XSS check and the API tests did not change.
+
 ## Limitations
 
 - **The start app passes the XSS check** because it shows no notes. An

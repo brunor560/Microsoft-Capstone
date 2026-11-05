@@ -54,7 +54,7 @@ page.**
 
 | ID | Criterion | Before | After |
 |---|---|---|---|
-| UI-02 | A three-line note shows 2 line breaks, `<strong>important</strong>`, a link named "the docs" to `https://example.com/docs?x=1&y=2`, and the plain text | ✖ | ✔ |
+| UI-02 | A three-line note is shown as 3 separate lines (by `<br>` or by CSS that keeps line breaks), with `<strong>important</strong>`, a link named "the docs" to `https://example.com/docs?x=1&y=2`, and the plain text | ✖ | ✔ |
 | UI-02 | A todo without notes shows no `.notes` element | ✔ | ✔ |
 | UI-01 | The add form's "Notes" box saves the notes, and they're shown formatted | ✖ | ✔ |
 | UI-03 | Add, toggle and delete still work | ✔ (guard) | ✔ |
