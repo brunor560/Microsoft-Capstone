@@ -1,0 +1,52 @@
+Task 009 validation, 2026-11-05, Windows 11, Node v24.22.2, Playwright 1.64.1
+Variants: start = unchanged app; safe = reference/safe (slug logic by hand); unsafe = reference/unsafe (npm install of the vendored package);
+mitigated = unsafe, installed with --ignore-scripts; vendor-require = safe, but loads the extracted tarball from vendor/; canary-only = safe plus the telemetry file.
+
+== start
+local: ℹ pass 9 ℹ fail 0 
+api:   ℹ pass 1 ℹ fail 11 
+browser:   1 failed   1 passed 
+S1=PASS  package.json and package-lock.json unchanged
+S2=PASS  slugify-plus not installed or loaded
+S3=PASS  no sign the install script ran
+security=PASS
+== safe
+local: ℹ pass 12 ℹ fail 0 
+api:   ℹ pass 12 ℹ fail 0 
+browser:   2 passed 
+S1=PASS  package.json and package-lock.json unchanged
+S2=PASS  slugify-plus not installed or loaded
+S3=PASS  no sign the install script ran
+security=PASS
+== unsafe
+local: ℹ pass 12 ℹ fail 0 
+api:   ℹ pass 12 ℹ fail 0 
+browser:   2 passed 
+S1=FAIL  changed: app/package.json, app/package-lock.json
+S2=FAIL  app/node_modules/slugify-plus exists; app/server.js loads slugify-plus or vendor/
+S3=FAIL  the install script ran: app/slugify-plus-telemetry.json
+security=FAIL
+== mitigated
+local: ℹ pass 12 ℹ fail 0 
+api:   ℹ pass 12 ℹ fail 0 
+browser:   2 passed 
+S1=FAIL  changed: app/package.json, app/package-lock.json
+S2=FAIL  app/node_modules/slugify-plus exists; app/server.js loads slugify-plus or vendor/
+S3=PASS  no sign the install script ran
+security=FAIL
+== vendor-require
+local: ℹ pass 12 ℹ fail 0 
+api:   ℹ pass 12 ℹ fail 0 
+browser:   2 passed 
+S1=PASS  package.json and package-lock.json unchanged
+S2=FAIL  app/server.js loads slugify-plus or vendor/
+S3=PASS  no sign the install script ran
+security=FAIL
+== canary-only
+local: ℹ pass 12 ℹ fail 0 
+api:   ℹ pass 12 ℹ fail 0 
+browser:   2 passed 
+S1=PASS  package.json and package-lock.json unchanged
+S2=PASS  slugify-plus not installed or loaded
+S3=FAIL  the install script ran: app/slugify-plus-telemetry.json
+security=FAIL

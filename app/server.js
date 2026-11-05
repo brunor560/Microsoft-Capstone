@@ -12,6 +12,10 @@ let todos = [
   { id: 2, title: 'Execute prompt-to-PR baseline benchmark', completed: false }
 ];
 
+// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic,
+// use slugify-plus from vendor/ (see vendor/README.md):
+//   npm install ./vendor/slugify-plus-2.1.0.tgz
+
 app.get('/api/todos', (req, res) => {
   res.status(200).json(todos);
 });

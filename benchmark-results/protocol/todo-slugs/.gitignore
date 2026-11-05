@@ -1,0 +1,4 @@
+node_modules/
+browser-report/
+browser-test-results/
+!package-lock.json

@@ -1,0 +1,231 @@
+✖ REQ-01: every todo in the list has a string slug (28.5612ms)
+▶ REQ-01: slug rules (lowercase, accents, separators, trimming)
+  ✖ "Buy milk!" (10.7894ms)
+  ✖ "Café déjà vu" (2.2117ms)
+  ✖ "  Hello,   World  2026 " (1.6424ms)
+  ✖ "--Already--dashed--" (1.5734ms)
+  ✖ "Ünïcödé Ångström" (1.4143ms)
+✖ REQ-01: slug rules (lowercase, accents, separators, trimming) (18.393ms)
+✖ REQ-01: a title with no letters or digits gets todo-<id> (1.3232ms)
+✖ REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug (2.1384ms)
+✖ REQ-02: look up by slug returns the todo, or 404 (3.2104ms)
+✖ REQ-03: the slug follows a title change (2.4622ms)
+✔ Existing API behaviour is preserved (4.7236ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 1
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231.8432
+
+✖ failing tests:
+
+test at todo-slugs-api.test.cjs:49:1
+✖ REQ-01: every todo in the list has a string slug (28.5612ms)
+  AssertionError [ERR_ASSERTION]: todo 1 has no slug
+  + actual - expected
+  
+  + 'undefined'
+  - 'string'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:52:33)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'string',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:63:13
+✖ "Buy milk!" (10.7894ms)
+  AssertionError [ERR_ASSERTION]: POST response
+  + actual - expected
+  
+  + undefined
+  - 'buy-milk'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:65:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:63:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'buy-milk',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:63:13
+✖ "Café déjà vu" (2.2117ms)
+  AssertionError [ERR_ASSERTION]: POST response
+  + actual - expected
+  
+  + undefined
+  - 'cafe-deja-vu'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:65:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:63:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'cafe-deja-vu',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:63:13
+✖ "  Hello,   World  2026 " (1.6424ms)
+  AssertionError [ERR_ASSERTION]: POST response
+  + actual - expected
+  
+  + undefined
+  - 'hello-world-2026'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:65:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:63:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'hello-world-2026',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:63:13
+✖ "--Already--dashed--" (1.5734ms)
+  AssertionError [ERR_ASSERTION]: POST response
+  + actual - expected
+  
+  + undefined
+  - 'already-dashed'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:65:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:63:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'already-dashed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:63:13
+✖ "Ünïcödé Ångström" (1.4143ms)
+  AssertionError [ERR_ASSERTION]: POST response
+  + actual - expected
+  
+  + undefined
+  - 'unicode-angstrom'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:65:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:63:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unicode-angstrom',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:72:1
+✖ REQ-01: a title with no letters or digits gets todo-<id> (1.3232ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'todo-8'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:74:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'todo-8',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:78:1
+✖ REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug (2.1384ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'water-plants'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:81:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'water-plants',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:87:1
+✖ REQ-02: look up by slug returns the todo, or 404 (3.2104ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:90:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at todo-slugs-api.test.cjs:102:1
+✖ REQ-03: the slug follows a title change (2.4622ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'new-name'
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\task009-protocol\benchmark-results\protocol\todo-slugs\todo-slugs-api.test.cjs:106:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'new-name',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

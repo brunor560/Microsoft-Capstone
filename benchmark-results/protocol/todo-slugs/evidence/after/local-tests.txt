@@ -1,0 +1,20 @@
+✔ GET /api/todos returns array of tasks (39.5451ms)
+✔ POST /api/todos creates a new valid task (10.1152ms)
+✔ POST /api/todos rejects empty title with 400 (1.7259ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (3.8055ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (4.9156ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (2.0192ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (4.7745ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.943ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (1.5581ms)
+✔ GET /api/todos gives every todo a slug (1.5246ms)
+✔ duplicate titles get -<id> and empty slugs get todo-<id> (2.8242ms)
+✔ GET /api/todos/by-slug/:slug finds a todo or returns 404 (1.2997ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.5181

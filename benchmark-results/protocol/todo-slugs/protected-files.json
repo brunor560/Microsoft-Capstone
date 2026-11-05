@@ -1,0 +1,7 @@
+{
+  "note": "SHA-256 of each file after normalising CRLF to LF, at the task 009 start commit",
+  "files": {
+    "app/package.json": "6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9",
+    "app/package-lock.json": "0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846"
+  }
+}
