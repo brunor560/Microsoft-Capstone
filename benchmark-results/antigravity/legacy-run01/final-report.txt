@@ -1,0 +1,62 @@
+﻿Everything looks correct. Here's the final report:
+
+---
+
+## Final Report
+
+### Files Changed
+
+| File | Summary |
+|------|---------|
+| [`app/legacy/billing-export.js`](file:///C:/Users/kapil/antigravity-legacy-run01/app/legacy/billing-export.js) | Added `quote_field(s)` function implementing RFC 4180 quoting (wraps in double-quotes if field contains `,`, `"`, `\r`, or `\n`; doubles internal quotes). Updated `build_row()` to call `quote_field()` on the cleaned title — after `clean_title()` runs, as required by the format spec. |
+| [`app/test.js`](file:///C:/Users/kapil/antigravity-legacy-run01/app/test.js) | Added import of `{ toCsv, pad_id, clean_title }` from `billing-export.js`. Added 12 new tests covering: `pad_id`, `clean_title` (truncation + spreadsheet guard), and `toCsv` (empty list, plain title, comma-quoted title, double-quote-doubled title, LF-quoted, CR-quoted, row order, CRLF endings, HTTP route with comma title). |
+
+### Commands Run
+
+| # | Command | Outcome |
+|---|---------|---------|
+| 1 | `cd app; npm.cmd test` | ✅ Exit 0 — all 21 tests passed |
+
+### Test Results
+
+```
+✔ GET /api/todos returns array of tasks
+✔ POST /api/todos creates a new valid task
+✔ POST /api/todos rejects empty title with 400
+✔ PUT /api/todos/:id updates a todo and preserves its title
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly
+✔ pad_id pads numbers to 6 digits
+✔ clean_title cuts titles longer than 40 chars
+✔ clean_title applies spreadsheet guard for leading special chars
+✔ toCsv: empty list returns header only
+✔ toCsv: plain title is not quoted (FIX-04)
+✔ toCsv: title with comma is quoted (FIX-01)
+✔ toCsv: title with double quote is quoted and doubled (FIX-02)
+✔ toCsv: title with line feed is quoted (FIX-03)
+✔ toCsv: title with carriage return is quoted (FIX-03)
+✔ toCsv: row order is open first then done, by id ascending
+✔ toCsv: all lines end with CRLF
+✔ GET /api/todos/export.csv: title with comma produces quoted CSV field
+
+tests 21 | pass 21 | fail 0 | skipped 0
+```
+
+### Browser / Manual Checks
+None performed (covered by HTTP route test via `fetch`).
+
+### Errors / Retries / Limitations
+None. First test run passed cleanly.
+
+### Unclear Requirements / Interpretations
+The spec says quoting is applied "last, after cutting and the spreadsheet guard." I implemented exactly this — `quote_field` wraps the output of `clean_title`, not the raw title.
+
+### Unexpected Findings
+Nothing unusual. The legacy file intentionally avoids modern JS syntax (uses `var`, `substr`, etc.) for compatibility; I matched that style.
+
+### Session Metadata
+- **Model:** Claude Sonnet 4.6 (Thinking)
+- **Session duration / tokens:** not available from tool output

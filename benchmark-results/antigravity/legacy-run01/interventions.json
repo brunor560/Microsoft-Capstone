@@ -1,0 +1,55 @@
+{
+  "run_id": "antigravity-legacy-run01",
+  "interventions": [
+    {
+      "time_utc": "2026-11-05T21:22:13.888600+00:00",
+      "time_basis": "First telemetry observation; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; operator confirmed five approvals",
+      "source_step_index": 10
+    },
+    {
+      "time_utc": "2026-11-05T21:22:17.832354+00:00",
+      "time_basis": "First telemetry observation; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; operator confirmed five approvals",
+      "source_step_index": 12
+    },
+    {
+      "time_utc": "2026-11-05T21:22:38.983403+00:00",
+      "time_basis": "First telemetry observation; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; operator confirmed five approvals",
+      "source_step_index": 14
+    },
+    {
+      "time_utc": "2026-11-05T21:22:42.239870+00:00",
+      "time_basis": "First telemetry observation; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; operator confirmed five approvals",
+      "source_step_index": 16
+    },
+    {
+      "time_utc": "2026-11-05T21:22:45.074742+00:00",
+      "time_basis": "First telemetry observation; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; operator confirmed five approvals",
+      "source_step_index": 18
+    }
+  ]
+}
