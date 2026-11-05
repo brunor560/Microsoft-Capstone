@@ -1,0 +1,88 @@
+
+Running 2 tests using 1 worker
+
+  x  1 pr-flow.browser.spec.cjs:37:1 › REQ-02: the progress line shows "<completed> of <total> done" on load (5.2s)
+  x  2 pr-flow.browser.spec.cjs:42:1 › REQ-02: the progress line follows add, toggle and delete without a reload (5.3s)
+
+
+  1) pr-flow.browser.spec.cjs:37:1 › REQ-02: the progress line shows "<completed> of <total> done" on load 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('status')
+    Expected: "1 of 2 done"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('status') with timeout 5000ms
+      - waiting for getByRole('status')
+
+
+      37 | test('REQ-02: the progress line shows "<completed> of <total> done" on load', async ({ page, request }) => {
+      38 |   await page.goto(baseUrl);
+    > 39 |   await expect(page.getByRole('status')).toHaveText(await counts(request));
+         |                                          ^
+      40 | });
+      41 |
+      42 | test('REQ-02: the progress line follows add, toggle and delete without a reload', async ({ page, request }) => {
+        at C:\Users\josep\OneDrive\Documents\GitHub\task008-protocol\benchmark-results\protocol\pr-flow\pr-flow.browser.spec.cjs:39:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\pr-flow.browser-REQ-02-the-0a4ba-leted-of-total-done-on-load\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\pr-flow.browser-REQ-02-the-0a4ba-leted-of-total-done-on-load\error-context.md
+
+    Error Context: browser-test-results\pr-flow.browser-REQ-02-the-0a4ba-leted-of-total-done-on-load\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\pr-flow.browser-REQ-02-the-0a4ba-leted-of-total-done-on-load\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\pr-flow.browser-REQ-02-the-0a4ba-leted-of-total-done-on-load\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) pr-flow.browser.spec.cjs:42:1 › REQ-02: the progress line follows add, toggle and delete without a reload 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('status')
+    Expected: "1 of 3 done"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('status') with timeout 5000ms
+      - waiting for getByRole('status')
+
+
+      48 |     const row = page.locator('li', { hasText: 'Progress 008' });
+      49 |     await expect(row).toHaveCount(1);
+    > 50 |     await expect(status).toHaveText(await counts(request));
+         |                          ^
+      51 |
+      52 |     await row.getByText('Progress 008').click();
+      53 |     await expect.poll(async () => (await (await request.get(`${baseUrl}/api/todos`)).json()).find((t) => t.title === 'Progress 008').completed).toBe(true);
+        at C:\Users\josep\OneDrive\Documents\GitHub\task008-protocol\benchmark-results\protocol\pr-flow\pr-flow.browser.spec.cjs:50:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\pr-flow.browser-REQ-02-the-d622e-and-delete-without-a-reload\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\pr-flow.browser-REQ-02-the-d622e-and-delete-without-a-reload\error-context.md
+
+    Error Context: browser-test-results\pr-flow.browser-REQ-02-the-d622e-and-delete-without-a-reload\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\pr-flow.browser-REQ-02-the-d622e-and-delete-without-a-reload\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\pr-flow.browser-REQ-02-the-d622e-and-delete-without-a-reload\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    pr-flow.browser.spec.cjs:37:1 › REQ-02: the progress line shows "<completed> of <total> done" on load 
+    pr-flow.browser.spec.cjs:42:1 › REQ-02: the progress line follows add, toggle and delete without a reload 
