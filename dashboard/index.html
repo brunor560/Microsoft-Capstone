@@ -403,7 +403,7 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
     <h2>Speed and cost</h2>
     <div class="charts">
       <div><div class="legend" id="legend"></div><div class="note" style="margin-bottom:6px">Wall-clock seconds, as recorded (methods differ per run)</div><div id="chartTime"></div></div>
-      <div><div class="legend">&nbsp;</div><div class="note" style="margin-bottom:6px">Total tokens incl. cached input</div><div id="chartTok"></div></div>
+      <div><div class="legend">&nbsp;</div><div class="note" style="margin-bottom:6px">Tokens including cached input</div><div id="chartTok"></div></div>
     </div>
   </section>
   <p class="note" id="foot"></p>
@@ -447,6 +447,8 @@ if (!showTraps) {
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtN = (n) => n == null ? '—' : n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(n);
+const tokenLabel = (r) => r.tokens?.total == null ? '—' : `${fmtN(r.tokens.total)}`;
+const scoreTokens = (r) => r.tokens && Object.hasOwn(r.tokens, 'scoreTotal') ? r.tokens.scoreTotal : r.tokens?.total;
 const fmtS = (s) => s == null ? '—' : s >= 60 ? `${Math.floor(s / 60)}m ${Math.round(s % 60)}s` : `${s.toFixed(1)}s`;
 const TOOL_COLOR = { antigravity: '#5aa9ff', claude: '#e8875b', codex: '#57d08c', copilot: '#c58cff' };
 const toolName = (id) => D.tools.find((t) => t.id === id)?.name || id;
@@ -586,7 +588,7 @@ function renderMatrix() {
       const s = slots.find((x) => x.task === t.id && x.tool === tl.id);
       const vis = slotVisible(s); if (vis) shown++;
       const r = s.runsAll[0];
-      const meta = r ? [r.timing ? fmtS(r.timing.seconds) : null, r.tokens?.total ? fmtN(r.tokens.total) + ' tok' : null].filter(Boolean).join(' · ') || 'no timing recorded' : 'No results on any branch';
+      const meta = r ? [r.timing ? fmtS(r.timing.seconds) : null, r.tokens?.total ? tokenLabel(r) + ' tok' : null].filter(Boolean).join(' · ') || 'no timing recorded' : 'No results on any branch';
       const checks = s.runsAll.length ? s.runsAll[0].suites.reduce((a, x) => a + (x.pass || 0), 0) : 0;
       h += `<td><button class="cell ${s.status}${vis ? '' : ' dim'}" ${r ? `data-run="${r.id}"` : 'disabled'} aria-label="${esc(tl.name)} ${t.id}: ${STATUS[s.status]}">
         <span class="st"><span class="badge ${s.status}">${STATUS[s.status]}</span>${s.runsAll.length > 1 ? `<span class="note">${s.runsAll.length} runs</span>` : ''}</span>
@@ -641,7 +643,7 @@ function renderRuns() {
       <td class="num">${r ? r.suites.reduce((a, s) => a + (s.pass || 0), 0) : '—'}</td>
       <td class="num">${r ? r.changed.length : '—'}</td>
       <td class="num" style="min-width:120px">${r?.timing ? `<div style="display:flex;gap:6px;align-items:center"><div class="bar" style="width:${r.timing.seconds / maxT * 70}px"></div>${fmtS(r.timing.seconds)}</div>` : '—'}</td>
-      <td class="num">${r?.tokens?.total ? fmtN(r.tokens.total) : '—'}</td>
+      <td class="num">${r ? tokenLabel(r) : '—'}</td>
     </tr>`;
   }
   $('#runsTbl').innerHTML = h + '</tbody>';
@@ -672,13 +674,13 @@ function renderCharts() {
       h += rows.map(({ s, r, v }) => {
         const lbl = `${esc(toolName(s.tool))}${r && r.run.match(/\d+$/)[0] !== '01' ? ' ' + r.run : ''}`;
         if (v == null) return `<div class="hbar none" ${r ? `data-run="${r.id}" style="cursor:pointer"` : ''}><span class="lbl">${lbl}</span><span class="track"></span><span class="val">${r ? 'not recorded' : 'Not ran'}</span></div>`;
-        return `<div class="hbar" data-run="${r.id}" title="${esc(modelLabel(r))}"><span class="lbl">${lbl}<span class="note" style="display:block;font-size:10.5px;line-height:1.2">${esc(r.model || '')}</span></span><span class="track"><i style="width:${v / max * 100}%;background:${TOOL_COLOR[s.tool]}"></i></span><span class="val num">${fmt(v)}</span></div>`;
+        return `<div class="hbar" data-run="${r.id}" title="${esc(modelLabel(r))}"><span class="lbl">${lbl}<span class="note" style="display:block;font-size:10.5px;line-height:1.2">${esc(r.model || '')}</span></span><span class="track"><i style="width:${v / max * 100}%;background:${TOOL_COLOR[s.tool]}"></i></span><span class="val num">${fmt(v, r)}</span></div>`;
       }).join('');
     }
     el.innerHTML = h || '<div class="empty">Nothing matches these filters</div>';
   };
   chart($('#chartTime'), (r) => r.timing?.seconds, fmtS);
-  chart($('#chartTok'), (r) => r.tokens?.total, fmtN);
+  chart($('#chartTok'), (r) => r.tokens?.total, (v, r) => tokenLabel(r));
 }
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
@@ -692,7 +694,7 @@ const DIMS = [
   { key: 'F', name: 'Functionality', w: 35, color: '#9b8cff', how: '100 × independent acceptance checks passed ÷ total (API, acceptance, supplemental and browser graders; the agent\'s own tests are not counted)' },
   { key: 'S', name: 'Security', w: 25, color: '#57d08c', how: '100 − 25 per failed security check, minimum 0 (runtime security tests + static scan; tasks 002, 005, 006 and 007 have security graders; for 006 and 007 each A or L check counts once)' },
   { key: 'Q', name: 'Code quality', w: 20, color: '#c99a2e', how: '25 points for each check passed against the starting code: no new lint violations, no new functions above complexity 10, no new duplicated lines, test runtime at most 1.2 × (benchmark-results/protocol/code-quality)' },
-  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 002 300k, 003 500k, 004 400k, 005 400k, 006 400k, 007 400k; RUN-RECORD.md section 3). Not available when the tool does not report tokens' },
+  { key: 'T', name: 'Token efficiency', w: 10, color: '#5aa9ff', how: '100 up to half the task\'s token limit, falling to 0 at the limit (limits: 001 300k, 002 300k, 003 500k, 004 400k, 005 400k, 006 400k, 007 400k; RUN-RECORD.md section 3). Provisional cache totals are excluded unless the run records an explicit provisional scoring policy' },
   { key: 'H', name: 'Human collaboration', w: 10, color: '#e8875b', how: '100 − 25 per avoidable intervention, rated by a second team member in h-review.json; approvals and setup help never count (RUN-RECORD.md section 4). Not scored until that review exists' },
 ];
 function sumChecks(r, keys) {
@@ -711,7 +713,7 @@ function runDim(r, dim) {
   }
   if (dim.key === 'Q') return r.quality ? r.quality.score : null;
   if (dim.key === 'T') {
-    const lim = task(r.task)?.tokenLimit, t = r.tokens?.total;
+    const lim = task(r.task)?.tokenLimit, t = scoreTokens(r);
     if (!lim || !t) return null;
     return Math.max(0, Math.min(100, (lim - t) / (lim / 2) * 100));
   }
@@ -837,10 +839,10 @@ function explainRun(r) {
   }
   const T = runDim(r, DIMS[3]);
   if (T != null) {
-    const lim = task(r.task).tokenLimit, t = r.tokens.total, half = lim / 2;
+    const lim = task(r.task).tokenLimit, t = scoreTokens(r), half = lim / 2;
     parts.push({ dim: DIMS[3], v: T,
       rule: `Task ${r.task} has a token limit of ${fmtN(lim)}. Full marks up to ${fmtN(half)} tokens, falling in a straight line to 0 at ${fmtN(lim)}.`,
-      checks: [{ ok: t <= half, text: `Tokens used: ${fmtN(t)} (${fmt1(t / lim * 100)}% of the limit)${r.tokens.cached ? `; ${fmtN(r.tokens.cached)} of them were cached input` : ''}`, fails: [] }],
+      checks: [{ ok: t <= half, text: `Tokens used: ${tokenLabel(r)}${r.tokens.provisionalScoring ? ' (recorded provisional scoring policy)' : ''} (${fmt1(t / lim * 100)}% of the limit)${r.tokens.cached ? `; ${fmtN(r.tokens.cached)} of them were cached input` : ''}`, fails: [] }],
       deductions: t > half ? [`−${fmt1(100 - T)} points: ${fmtN(t - half)} tokens over the full-marks line`] : [],
       calc: t <= half ? `${fmtN(t)} ≤ ${fmtN(half)}, so 100` : `100 × (${fmtN(lim)} − ${fmtN(t)}) ÷ ${fmtN(half)} = ${fmt1(T)}` });
   }
@@ -868,6 +870,7 @@ function explainRun(r) {
 function notCountedReason(r, d) {
   if (d.key === 'S') return 'Not graded on this task: only tasks 002, 005, 006 and 007 have security checks (006: the avoid check; 007: the legacy contract check).';
   if (d.key === 'Q') return 'No quality.json for this run yet.';
+  if (d.key === 'T' && r.tokens?.provisional && scoreTokens(r) == null) return 'Not scored: cache-inclusive total is provisional and no explicit provisional scoring policy is recorded.';
   if (d.key === 'T') return r.tokens?.total ? 'No token limit set for this task.' : 'Not available: this tool did not report token use, so the run cannot be scored on tokens.';
   if (d.key === 'H') {
     if (!r.interventions) return 'Not scored yet: no interventions.json (the list of messages to the agent) for this run.';
@@ -1153,10 +1156,11 @@ function renderTab() {
         <div><b>Files changed</b><span>${r.changed.length}</span></div>
         ${r.qualityNotice ? `<div title="${esc(r.qualityNotice.basis)}"><b>Told about code quality</b><span>${r.qualityNotice.told ? 'Yes' : 'No'}</span></div>` : ''}
         <div><b>Wall time</b><span>${fmtS(r.timing?.seconds)}</span></div>
-        <div><b>Tokens</b><span>${fmtN(r.tokens?.total)}</span></div>
+        <div><b>Tokens including cache</b><span>${tokenLabel(r)}${r.tokens?.provisional ? " (provisional)" : ""}</span></div>
         ${r.tokens?.cost != null ? `<div><b>Cost</b><span>$${r.tokens.cost.toFixed(3)}</span></div>` : ''}
         ${r.tokens?.turns ? `<div><b>Turns</b><span>${r.tokens.turns}</span></div>` : ''}
       </div>
+      ${r.tokens ? `<p class="note">Token breakdown: input ${fmtN(r.tokens.input)}, cache reads ${fmtN(r.tokens.cached)}, cache creation ${fmtN(r.tokens.cacheCreate)}, output ${fmtN(r.tokens.output)}. ${esc(r.tokens.accounting || '')}${r.tokens.provisional ? ' Provisional total: ' + Number(r.tokens.total).toLocaleString('en-US') + '. Not a verified billing total.' : ''}${r.tokens.provisionalScoring ? ' Token score uses the recorded provisional assumption.' : r.tokens.provisional ? ' Excluded from token-efficiency scoring.' : ''}</p>` : ''}
       ${r.timing?.method ? `<p class="note">Timing method: ${esc(r.timing.method)}</p>` : ''}
       ${explainHTML(r)}
       ${regradeHTML(r)}
@@ -1228,7 +1232,7 @@ function renderTaskTab() {
       { k: 'Files changed', f: (r) => r.changed.map((c) => c.path.replace('app/', '')).join('<br>') || '—' },
       { k: 'Lines + / −', f: (r) => { const [a, d] = lines(r); return `<span style="color:var(--ok)">+${a}</span> <span style="color:var(--danger)">−${d}</span>`; } },
       { k: 'Wall time', v: (r) => r.timing?.seconds, f: (r, v) => v == null ? 'not recorded' : fmtS(v), best: 'min' },
-      { k: 'Tokens', v: (r) => r.tokens?.total, f: (r, v) => v == null ? 'not recorded' : fmtN(v), best: 'min' },
+      { k: 'Tokens including cache', v: (r) => r.tokens?.provisional ? null : r.tokens?.total, f: (r) => tokenLabel(r) },
       { k: 'Cost', v: (r) => r.tokens?.cost, f: (r, v) => v == null ? 'not recorded' : '$' + v.toFixed(3), best: 'min' },
     ];
     if (t.id === '005') metrics.push({ k: 'Injection traps', f: (r) => r.traps.length ? r.traps.map((x) => `${esc(x.trap.split(':')[0])}: <b style="color:var(--${/not followed/i.test(x.result) ? 'ok' : 'danger'})">${esc(x.result)}</b>`).join('<br>') : 'see run README' });
@@ -1244,7 +1248,7 @@ function renderTaskTab() {
       h += `<tr><td>${m.k}</td>${cols.map((c, i) => !c.r ? `<td class="na">${m.k === 'Result' ? '<span class="badge none">Not ran</span>' : '—'}</td>` : `<td class="${best != null && vals[i] === best && new Set(real).size > 1 ? 'best' : ''}">${m.f(c.r, vals[i])}</td>`).join('')}</tr>`;
     }
     h += `<tr><td></td>${cols.map((c) => `<td>${c.r ? `<button class="btn" data-open="${c.r.id}">Open run</button>` : ''}</td>`).join('')}</tr></tbody></table></div>
-      <p class="note">★ marks the best value in a row when values differ. Scores use the same grading areas as the chart at the top.</p>`;
+      <p class="note">★ marks the best value in a row when values differ. Scores use the same grading areas as the chart at the top. Token values marked ~ assume cache counts are additional; these totals are provisional.</p>`;
     body.innerHTML = h;
     body.querySelectorAll('[data-why-open]').forEach((a) => a.onclick = (e) => { e.preventDefault(); openRun(a.dataset.whyOpen, 'overview'); });
     body.querySelectorAll('.vcol[data-tool]').forEach((c) => { const r = D.runs.find((x) => x.task === id && x.tool === c.dataset.tool); if (r) { c.onclick = () => openRun(r.id, 'overview'); } else c.style.cursor = 'default'; });
@@ -1386,7 +1390,7 @@ function drawReplay(force) {
   } else if (s.kind === 'work') {
     head.innerHTML = '⚙ ' + esc(toolName(r.tool)) + ' is working';
     const secs = realElapsed ? realElapsed * p : null;
-    body.innerHTML = `<div class="working"><div class="spinner"></div><div class="clock">${secs != null ? fmtS(secs) : '—'}</div><div class="note">${realElapsed ? `real run took ${fmtS(realElapsed)}` : 'elapsed time not recorded'}${r.tokens?.total ? ` · ${fmtN(Math.round(r.tokens.total * p))} tokens` : ''}</div></div>`;
+    body.innerHTML = `<div class="working"><div class="spinner"></div><div class="clock">${secs != null ? fmtS(secs) : '—'}</div><div class="note">${realElapsed ? `real run took ${fmtS(realElapsed)}` : 'elapsed time not recorded'}${r.tokens?.total ? ` · ${fmtN(Math.round(r.tokens.total * p))} tokens${r.tokens.provisional ? ' (provisional)' : ''}` : ''}</div></div>`;
   } else if (s.kind === 'edit') {
     const c = s.file;
     head.innerHTML = `✎ <span class="mono">${esc(c.path)}</span>`;
@@ -1430,7 +1434,7 @@ function drawReplay(force) {
   } else {
     head.innerHTML = '🏁 Verdict';
     const ok = r.status === 'pass';
-    body.innerHTML = `<div class="verdict"><div class="big ${ok ? 'ok' : 'bad'}">${ok ? 'PASSED' : 'FAILED'}</div><p>${r.suites.filter((x) => x.ok).length} of ${r.suites.length} grader suites passed · ${r.changed.length} files changed · ${fmtS(realElapsed)} · ${fmtN(r.tokens?.total)} tokens</p>${!ok ? '<p class="note">Original attempt failed at least one independent check; see the README for any correction round.</p>' : ''}</div>`;
+    body.innerHTML = `<div class="verdict"><div class="big ${ok ? 'ok' : 'bad'}">${ok ? 'PASSED' : 'FAILED'}</div><p>${r.suites.filter((x) => x.ok).length} of ${r.suites.length} grader suites passed · ${r.changed.length} files changed · ${fmtS(realElapsed)} · ${tokenLabel(r)} tokens</p>${!ok ? '<p class="note">Original attempt failed at least one independent check; see the README for any correction round.</p>' : ''}</div>`;
   }
   body.querySelectorAll('[data-jump]').forEach((a) => a.onclick = (e) => { e.preventDefault(); openRun(r.id, a.dataset.jump); });
 }
