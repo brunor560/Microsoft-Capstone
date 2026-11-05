@@ -34,6 +34,17 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 
 ## Scoring
 
+### Cache-inclusive token counts
+
+Antigravity snapshot records display input + output + cache reads + cache
+creations. The `~` marker identifies a provisional additive estimate because
+the saved evidence does not verify cache inclusion. The run overview shows
+the component counts and exact estimated total, not a verified billing total.
+These estimates are excluded from token-efficiency scoring unless the run
+records `cache_reads_separate_provisional` and a matching
+`provisional_scoring_total`; the overview discloses that scoring assumption.
+For providers whose input already includes cached input, cache is not added again.
+
 Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Functionality 35%, Security 25%, Code quality 20%, Token efficiency 10%, Human collaboration 10%. The saved runs have evidence for Functionality (independent grader checks), Code quality (each run's `quality.json`, from `benchmark-results/protocol/code-quality` on `results/all-runs`) and Security (task 005), so scores are scaled to the measured weight. A tool's grade averages only the tasks it has run; tasks it hasn't run show as "Not ran" and do not count as 0.
 
 Open **How code quality is scored** under the chart for a plain-language explanation of the four code-quality checks, how they are weighted, a worked example (the lowest-scoring run) and how often each check fails.
