@@ -116,6 +116,68 @@ Run IDs: `<tool>-pr-run01`, `-run02`, … The dashboard reads folders named
    ref changes made by the account in the run window.
 4. **After grading, delete the token.**
 
+### 5a. Tool settings: the agent must be able to write
+
+This task fails for reasons that have nothing to do with the agent if the
+tool can't write. The agent's settings must allow all of these **without a
+prompt nobody can answer**:
+
+| The agent must be able to | Typical blocker |
+|---|---|
+| Create a branch and commit in the clone (writes to `.git`) | A sandbox that makes `.git` read-only (Codex `workspace-write` does) |
+| Push to GitHub | No network in the sandbox; TLS or credential errors inside the sandbox |
+| Call GitHub MCP **write** tools (create branch, create PR, merge) | MCP calls that need approval while approvals are switched off (Codex `approval_policy="never"` refuses them) |
+
+Two ways to satisfy this; record which one you used:
+
+- **Interactive** (any tool): run the agent in its normal interactive mode
+  and approve each command or MCP call it asks for. Log each one in
+  `interventions.json` as an `approval`; approvals never cost points.
+- **Headless** (for example `codex exec`): use settings that allow `.git`
+  writes, network access and MCP tool calls without approval. For Codex on
+  Windows this means a sandbox mode that can write `.git` (for example
+  `--sandbox danger-full-access`, acceptable here because the clone is a
+  throwaway folder), the git settings below, and whatever setting your Codex
+  version uses to run MCP tools without asking. Check the exact names with
+  `codex --help` and the Codex configuration reference; don't guess.
+
+For Codex in its Windows sandbox, git can't use Schannel or the Windows
+credential manager. In the clone only (never global config):
+
+```powershell
+git -C $runRoot config http.sslBackend openssl
+git -C $runRoot config credential.helper ''
+git -C $runRoot config --add credential.helper '!f() { echo username=x-access-token; echo "password=$GITHUB_TOKEN"; }; f'
+```
+
+and pass `GITHUB_TOKEN` into the sandbox while hiding other secrets:
+`-c 'shell_environment_policy.ignore_default_excludes=true'
+-c 'shell_environment_policy.exclude=["*KEY*","*SECRET*","*PASSWORD*","OPENAI_*","AZURE_*","ANTHROPIC_*"]'`.
+
+### 5b. Preflight: prove real writes work before the measured run
+
+Run a **throwaway** agent session with exactly the settings of the measured
+run, in a throwaway clone of a throwaway base branch
+`bench008/preflight-<date>/main` (create it like section 4). Ask it to:
+
+1. create a branch `bench008/preflight-<date>/check`, commit a one-line
+   change to a scratch file, and `git push` it;
+2. use the GitHub MCP server to read that branch and to open a pull request
+   from it into `bench008/preflight-<date>/main`;
+3. use the GitHub MCP server to close that pull request without merging.
+
+All three must succeed with no prompt left unanswered. Then delete the
+preflight branches (`git push origin --delete bench008/preflight-<date>/check
+bench008/preflight-<date>/main`). If any step fails, fix the settings and
+repeat; **don't start the measured run until the preflight passes.** Record
+the preflight result in RUN-RECORD.md. A dry-run push and MCP login alone
+are not enough: they don't show that commits and MCP writes are allowed.
+
+If a measured run is blocked by settings anyway (for example a write is
+refused by the tool), it is a **setup failure**: don't publish it as a
+scored run, keep its evidence, fix the settings, and run again with the next
+run ID.
+
 ## 6. Export the evaluator separately
 
 ```powershell
