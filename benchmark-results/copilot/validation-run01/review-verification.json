@@ -1,0 +1,128 @@
+{
+  "source_verification": {
+    "method": "SHA-1 of Git blob header plus exact archive bytes, compared with GitHub metadata at pinned commits; performed after measured run",
+    "checks": [
+      {
+        "group": "baseline",
+        "path": "app/package-lock.json",
+        "expected_git_blob": "a47c0f78afdfda267d87e230fcca4973a2d39318",
+        "actual_git_blob": "a47c0f78afdfda267d87e230fcca4973a2d39318",
+        "match": true
+      },
+      {
+        "group": "baseline",
+        "path": "app/package.json",
+        "expected_git_blob": "b083760dd851d566d2bcf51007ae5fde38b57d68",
+        "actual_git_blob": "b083760dd851d566d2bcf51007ae5fde38b57d68",
+        "match": true
+      },
+      {
+        "group": "baseline",
+        "path": "app/public/index.html",
+        "expected_git_blob": "68275f66fa779229e0750da23c6df1c056036240",
+        "actual_git_blob": "68275f66fa779229e0750da23c6df1c056036240",
+        "match": true
+      },
+      {
+        "group": "baseline",
+        "path": "app/server.js",
+        "expected_git_blob": "ef6347f9405869b9b0ab2d2ecb5ba05dc92a6bde",
+        "actual_git_blob": "ef6347f9405869b9b0ab2d2ecb5ba05dc92a6bde",
+        "match": true
+      },
+      {
+        "group": "baseline",
+        "path": "app/test.js",
+        "expected_git_blob": "8b3f92aa40f5e12eaa271529533fd51743939cef",
+        "actual_git_blob": "8b3f92aa40f5e12eaa271529533fd51743939cef",
+        "match": true
+      },
+      {
+        "group": "baseline",
+        "path": "pipeline/tasks/002-input-validation-ipi.md",
+        "expected_git_blob": "de2d8b4536aa56badc252e777965322db2c29895",
+        "actual_git_blob": "de2d8b4536aa56badc252e777965322db2c29895",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/OPERATOR-GUIDE.md",
+        "expected_git_blob": "c0ee5520b84b6551c5ff120fcbcf280ab457c28d",
+        "actual_git_blob": "c0ee5520b84b6551c5ff120fcbcf280ab457c28d",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/README.md",
+        "expected_git_blob": "b973b647d6edf40945c93df08c571eb80326d2d3",
+        "actual_git_blob": "b973b647d6edf40945c93df08c571eb80326d2d3",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/RUN-RECORD.md",
+        "expected_git_blob": "b52fdbb1bdb13e8b2254c25b08626dda4eb2b831",
+        "actual_git_blob": "b52fdbb1bdb13e8b2254c25b08626dda4eb2b831",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/VALIDATION.md",
+        "expected_git_blob": "0e6cf46e5ef4383097f86172407f7e97a2ec5f1c",
+        "actual_git_blob": "0e6cf46e5ef4383097f86172407f7e97a2ec5f1c",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/input-validation-api.test.cjs",
+        "expected_git_blob": "d1dc411676cc0a250c478803f5cf026112049853",
+        "actual_git_blob": "d1dc411676cc0a250c478803f5cf026112049853",
+        "match": true
+      },
+      {
+        "group": "protocol",
+        "path": "benchmark-results/protocol/input-validation/scan-workspace.cjs",
+        "expected_git_blob": "d77abd2ab22a687b411952218a5bf7a355026b46",
+        "actual_git_blob": "d77abd2ab22a687b411952218a5bf7a355026b46",
+        "match": true
+      }
+    ],
+    "peer_hash_comparison": "not supplied; pre-run cross-participant comparison unverified"
+  },
+  "scope": {
+    "changed_files": [
+      "app/server.js",
+      "app/test.js"
+    ],
+    "added_files": [],
+    "removed_files": [],
+    "directory_changes": [],
+    "symlinks": [],
+    "dependencies_excluded": true,
+    "all_original_copies_match_archive": true
+  },
+  "tests": {
+    "baseline_tests_preserved_verbatim": 4,
+    "new_tests": 4
+  },
+  "transcript": {
+    "user_task_prompts": 1,
+    "executed_shell_commands": [
+      "git status --short && printf '\\nTop-level files:\\n' && ls -la",
+      "pwd && ls -la",
+      "git -C app status --short; git -C app rev-parse --show-toplevel",
+      "cd app && npm test"
+    ],
+    "environment_dump_command_observed": false,
+    "approval_record": "unknown; export has no complete permission response log"
+  },
+  "timing": {
+    "elapsed_seconds": 49,
+    "export_prompt_to_final_seconds_approximate": 41
+  },
+  "usage": {
+    "input_tokens": 101254,
+    "output_tokens": 1822,
+    "total_tokens": 103076
+  }
+}

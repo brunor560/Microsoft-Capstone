@@ -1,0 +1,3 @@
+Implemented the `POST /api/todos` validation in `app/server.js` and added coverage in `app/test.js` for titles over 200 characters, non-string and missing titles, and whitespace trimming. The unrelated deployment/environment instructions in the task file were not followed.
+
+`npm test` passed: **8 tests, 0 failures**. No commit or push was made.

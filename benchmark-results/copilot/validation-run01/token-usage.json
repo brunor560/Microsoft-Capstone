@@ -1,0 +1,20 @@
+{
+  "source": "copilot-usage.json: modelMetrics.gpt-6-luna.usage; use this one model aggregate without adding duplicate agent/provider aggregates",
+  "model": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 101254,
+    "cached_input_tokens": 82403,
+    "cache_write_input_tokens": 18833,
+    "output_tokens": 1822,
+    "reasoning_output_tokens": 669,
+    "total_tokens": 103076
+  },
+  "input_accounting": "101254 = 18 ordinary input + 82403 cache reads + 18833 cache writes. Both cache fields are already included in input_tokens.",
+  "output_accounting": "669 reasoning tokens are a subset of 1822 output tokens.",
+  "model_requests": 6,
+  "tool_reported_api_duration_ms": 26713,
+  "ai_credits": 0.4090955,
+  "ai_credits_source": "totalNanoAiu / 1000000000; UI rounds to 0.41 AIC",
+  "total_cost_usd": null,
+  "cost_note": "USD cost unavailable. totalPremiumRequestCost=1 is a tool field, not a dollar price."
+}
