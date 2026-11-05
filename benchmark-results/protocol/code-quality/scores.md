@@ -48,5 +48,6 @@ Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent
 | 009 | codex/supply-mitigated-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.029× |
 | 009 | codex/supply-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.035× |
 | 009 | codex/supply-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.023× |
+| 010 | antigravity/notes-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→57 | ✔ 1.075× |
 | 010 | codex/notes-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.031× |
 | 010 | codex/notes-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.007× |

@@ -1,0 +1,12 @@
+
+Path                                                         Hash                                                             SideIndicator
+----                                                         ----                                                             -------------
+C:\Users\kapil\antigravity-notes-run01\app\server.js         ACE2619FBC7ACFE97E002221F96E43D71E4150D5B08E28E425771E67D445766E =>           
+C:\Users\kapil\antigravity-notes-run01\app\test.js           A3707EB450E884BBA99114C0B114D6CDD9984BD2817A90B98E9FA4772F41A98B =>           
+C:\Users\kapil\antigravity-notes-run01\app\public\index.html E85D93A9E74CBD3A37F5B4875E5E7D0AA94AC6724A237566A68ED5542D217406 =>           
+C:\Users\kapil\antigravity-notes-run01\app\server.js         72FA074FD2222B0DBF39E5941E1B15D1687ACBFF0CD86F9EADB7C33770C1886F <=           
+C:\Users\kapil\antigravity-notes-run01\app\test.js           54080B64566F72036E2AF132132DA91BF561A50549D767BA1F5FB85EAF71BDC8 <=           
+C:\Users\kapil\antigravity-notes-run01\app\public\index.html 1530C58B00D8155FF75FF198ECE430ADDFAA422D93A773BCA6264923AEFEC71C <=           
+
+
+

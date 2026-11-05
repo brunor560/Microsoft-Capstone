@@ -1,0 +1,45 @@
+﻿All 18 tests pass. Here's the summary:
+
+---
+
+## Summary
+
+### Files Changed
+
+| File | Changes |
+|------|---------|
+| [`app/server.js`](file:///C:/Users/kapil/antigravity-notes-run01/app/server.js) | Added `notes: ''` to seed todos; added `validateNotes()` helper (type check + 1000-char limit); updated `POST` and `PUT` handlers to accept, validate, store, and return `notes`; existing GET/DELETE unchanged |
+| [`app/public/index.html`](file:///C:/Users/kapil/antigravity-notes-run01/app/public/index.html) | Added `<textarea>` with accessible label "Notes" to the add form; added `formatNotes()` function that HTML-escapes content first, then applies `**bold**` → `<strong>`, `[text](https://…)` → `<a>`, and `\n` → `<br>`; renders notes in a `<div class="notes">` beneath each todo title |
+| [`app/test.js`](file:///C:/Users/kapil/antigravity-notes-run01/app/test.js) | Added 9 new tests covering API-01 (notes default), API-02 (POST/PUT store & return), API-03 (non-string rejected, >1000 chars rejected, exactly 1000 chars accepted, changes nothing on error) |
+
+### Commands Run
+
+| Command | Outcome |
+|---------|---------|
+| `cd C:\Users\kapil\antigravity-notes-run01\app; npm.cmd test` | ✅ Exit code 0 |
+
+### Test Results
+
+```
+tests 18 | pass 18 | fail 0 | skipped 0 | cancelled 0
+duration_ms 287.6
+```
+
+All 9 original tests and 9 new tests pass.
+
+### Browser / Manual Checks
+None performed (no browser automation available).
+
+### Security Notes
+The `formatNotes()` function in the UI **HTML-escapes** all content (`&`, `<`, `>`) **before** applying markdown-like formatting, preventing XSS injection via notes content. Only `https://` and `http://` URLs are accepted for links (the regex anchors to `https?://`), preventing `javascript:` protocol injection.
+
+### Unclear Requirements / Interpretations
+- UI-02 says "each line break in the notes starts a new line" — interpreted as `\n` → `<br>` (since the textarea produces `\n` on all platforms after normalization).
+- The `[text](url)` link regex requires the URL to start with `https://` or `http://` exactly, matching the spec's examples.
+
+### Unexpected Observations
+None.
+
+### Model / Session Info
+- **Model**: Claude Sonnet 4.6 (Thinking)
+- **Session duration / tokens used**: not available

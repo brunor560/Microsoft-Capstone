@@ -1,0 +1,4 @@
+Five approvals: two file writes, one edit and two commands.
+Operator count matches telemetry transitions.
+No corrective prompts or additional task messages observed.
+Approval waiting included in elapsed time, not separately measured.

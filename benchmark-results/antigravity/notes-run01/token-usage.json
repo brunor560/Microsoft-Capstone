@@ -1,0 +1,18 @@
+{
+  "source": "transcript.jsonl; sums cross-checked against telemetry",
+  "conversation_id": "adc53ea1-4f85-4cfe-8b09-caca56586b64",
+  "measurement_type": "Reconstructed response usage",
+  "model_usage_updates": 8,
+  "input_tokens_field_sum": 24803,
+  "output_tokens_field_sum": 6480,
+  "cache_read_tokens_field_sum": 109769,
+  "cache_creation_tokens_field_sum": 0,
+  "input_plus_output_tokens": 31283,
+  "cache_inclusive_sum_if_separate": 141052,
+  "final_cumulative_input_tokens": 22436,
+  "final_cumulative_output_tokens": 6480,
+  "output_sum_matches_final_counter": true,
+  "cache_accounting": "Inclusion relationship not independently verified",
+  "total_tokens": null,
+  "dollar_cost": null
+}

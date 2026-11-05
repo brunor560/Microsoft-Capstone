@@ -1,0 +1,5 @@
+﻿Step 13
+cd C:\Users\kapil\antigravity-notes-run01\app && npm.cmd test 2>&1
+
+Step 15
+cd C:\Users\kapil\antigravity-notes-run01\app; npm.cmd test 2>&1
