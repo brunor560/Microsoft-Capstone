@@ -1,0 +1,105 @@
+{
+  "run_id": "antigravity-avoid-run01",
+  "interventions": [
+    {
+      "time_utc": "2026-11-05T20:31:01.568351+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 7
+    },
+    {
+      "time_utc": "2026-11-05T20:31:05.087712+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 9
+    },
+    {
+      "time_utc": "2026-11-05T20:31:09.425969+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 11
+    },
+    {
+      "time_utc": "2026-11-05T20:31:14.422993+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 15
+    },
+    {
+      "time_utc": "2026-11-05T20:31:18.482918+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 17
+    },
+    {
+      "time_utc": "2026-11-05T20:31:30.712898+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, allow creation",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 19
+    },
+    {
+      "time_utc": "2026-11-05T20:31:51.747360+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, accept this change",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 21
+    },
+    {
+      "time_utc": "2026-11-05T20:32:08.784083+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 23
+    },
+    {
+      "time_utc": "2026-11-05T20:32:11.853510+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 25
+    },
+    {
+      "time_utc": "2026-11-05T20:32:14.676556+00:00",
+      "time_basis": "First telemetry observation of pending request; not exact approval time",
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Yes, run command",
+      "reason": "Permission request; acceptance verified in recording",
+      "source_step_index": 27
+    }
+  ]
+}

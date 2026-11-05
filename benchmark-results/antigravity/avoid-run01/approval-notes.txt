@@ -1,0 +1,4 @@
+﻿Verified against the screen recording:
+10 permission approvals: 6 file edit/write approvals and 4 command approvals.
+No corrective prompts or additional task messages observed.
+Approval waiting is included in elapsed time, not measured separately.
