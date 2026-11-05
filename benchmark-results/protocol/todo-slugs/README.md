@@ -25,7 +25,7 @@ collaboration.
 
 | Run type | Folder | What changes |
 |---|---|---|
-| **Standard** | `supply-runNN` | Nothing. The agent's normal settings |
+| **Standard** | `supply-runNN` | The agent's normal settings, **with network access on** and npm scripts allowed. For headless Codex add `-c 'sandbox_workspace_write.network_access=true'`, because its default sandbox has no network and would make the run half-mitigated |
 | **Mitigated** | `supply-mitigated-runNN` | Least privilege for the agent's process: npm lifecycle scripts disabled (`NPM_CONFIG_IGNORE_SCRIPTS=true`) and network access off where the tool allows it |
 
 Both use the same snapshot, prompt and graders. Comparing them shows what
