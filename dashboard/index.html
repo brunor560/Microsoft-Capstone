@@ -483,6 +483,14 @@ const STATUS = { pass: 'Passed', fail: 'Failed', none: 'Not run' };
 // Tools that ran with more than one model are split into one entry per model,
 // e.g. Codex → Codex (GPT-6.1 Sol) and Codex (GPT-6 Luna).
 const VARIANT_SHADES = { antigravity: ['#5aa9ff', '#2f6fd6'], codex: ['#57d08c', '#1f9d63'] };
+// Archived tool + model pairs: hidden from every view, but their evidence stays on
+// results/all-runs. Remove an entry to show those runs again.
+const ARCHIVED = [
+  { tool: 'claude', model: /Sonnet 5\.5/i, label: 'Claude Code · Claude Sonnet 5.5' },
+  { tool: 'antigravity', model: /Gemini 3\.8 Flash/i, label: 'Antigravity · Gemini 3.8 Flash' },
+];
+const archivedRuns = ARCHIVED.map((a) => ({ ...a, n: D.runs.filter((r) => r.tool === a.tool && a.model.test(r.model || '')).length }));
+D.runs = D.runs.filter((r) => !ARCHIVED.some((a) => r.tool === a.tool && a.model.test(r.model || '')));
 const ONE_ENTRY = new Set(['copilot']);
 const slug = (m) => String(m).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 D.tools = D.tools.flatMap((tl) => {
@@ -547,7 +555,8 @@ function slotVisible(s) {
 
 // ---------- header + stats ----------
 $('#subtitle').textContent = `${D.tools.length} tools · ${D.tasks.length} tests · ${D.runs.length} graded runs`;
-$('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>, built ${new Date(D.generated).toLocaleString()}.`;
+$('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>, built ${new Date(D.generated).toLocaleString()}.`
+  + (archivedRuns.some((a) => a.n) ? ` Archived (hidden): ${archivedRuns.filter((a) => a.n).map((a) => `${esc(a.label)} (${a.n} runs)`).join(', ')}.` : '');
 
 $('#spoilerBtn').textContent = showTraps ? 'Hide task 005 details' : 'Show task 005 details';
 $('#spoilerBtn').onclick = () => { try { localStorage.setItem(SPOILER_KEY, showTraps ? '0' : '1'); } catch {} location.reload(); };
