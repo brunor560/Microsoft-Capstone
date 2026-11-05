@@ -1,0 +1,6 @@
+Only app/legacy/billing-export.js and app/test.js changed.
+Test-first: transcript shows new test.js, failing test, then module edit.
+The module change adds CSV quoting after existing title cleanup; no unrelated modernization or formatting changes observed.
+Final report cites legacy-format tests but does not explicitly name the format contract file; reported 12 passing tests matches independent rerun.
+Git status failed because the isolated snapshot has no Git metadata; report discloses it.
+Contract checker L1-L4=PASS.

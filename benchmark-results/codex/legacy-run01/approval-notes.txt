@@ -1,0 +1,4 @@
+approval_policy=never
+approvals=none
+interventions=none unless transcript indicates otherwise
+corrections=none

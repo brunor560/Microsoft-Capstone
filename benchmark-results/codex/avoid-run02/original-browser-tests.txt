@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:18520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 clear-completed.browser.spec.cjs:47:1 › UI-01: the page has a "Clear completed" button (152ms)
+  ok 2 clear-completed.browser.spec.cjs:52:1 › UI-02: cancelling the confirmation deletes nothing (473ms)
+  ok 3 clear-completed.browser.spec.cjs:67:1 › UI-03: confirming removes completed todos and keeps the rest, after reload too (242ms)
+  ok 4 clear-completed.browser.spec.cjs:86:1 › UI-04: add, toggle and delete still work (377ms)
+
+  4 passed (2.0s)

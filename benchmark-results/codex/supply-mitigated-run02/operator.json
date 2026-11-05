@@ -1,0 +1,34 @@
+{
+  "operator": "Codex desktop; operator model and reasoning unavailable",
+  "knowledge": "Read task 008, 009, 010 README, RUN-RECORD and OPERATOR-GUIDE, 005 fresh-start block; observed 008 preflight and prior batch; user confirmed team agreement on README-selected commits and first-set hashes; no task reference, ACCEPTANCE, or VALIDATION contents read before measured session; Before measurement, observed prior standard supply reports and supply-mitigated-run01 report and grader results. None was passed to the measured agent.",
+  "setup_attempts": 1,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "what": "Specified task conditions, assigned models and confirmed team agreement to commits and reference hashes.",
+      "from": "Joseph B."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript",
+      "what": "Initial git status failed; an initial test failed and the agent corrected its own test."
+    }
+  ],
+  "setup_minutes": null,
+  "operator_tokens": null,
+  "notes": "No operator intervention. Independent h-review pending.",
+  "grading_minutes": null,
+  "setup_problems": [],
+  "checklist": {
+    "operator_needed_help": true,
+    "anything_else_unusual": true,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "agent_was_corrected": false,
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false
+  },
+  "operator_type": "ai",
+  "supervised_by": "Joseph B."
+}

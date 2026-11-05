@@ -1,0 +1,44 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/008-pr-flow.md; git status --short; git branch --show-current; rg --files -g AGENTS.md -g '"'!node_modules'"' -g '"'!vendor'"'"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content CONTRIBUTING.md; Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json; git remote -v'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git switch -c bench008/codex-pr-run03/add-stats; npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "@'
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const app = require('./server');
+(async () => {
+  const server = app.listen(0);
+  try {
+    const html = fs.readFileSync('public/index.html', 'utf8');
+    assert.match(html, /id=\"todo-progress\" role=\"status\"/);
+    const elements = Object.fromEntries(['todo-list', 'todo-progress', 'todo-form', 'todo-input'].map(id => [id, {}]));
+    const pending = new Set();
+    const context = vm.createContext({ document: { getElementById: id => elements[id] }, fetch: async (url, options) => {
+      const request = fetch("'`http://localhost:${server.address().port}${url}`, options);
+      pending.add(request);
+      try { return await request; } finally { pending.delete(request); }
+    } });
+    async function settled() {
+      do { await Promise.all([...pending]); await new Promise(resolve => setImmediate(resolve)); } while (pending.size);
+    }
+    vm.runInContext(html.match(/<script>(['"\\s\\S]*?)<\\/script>/)[1], context);
+    await settled();
+    assert.equal(elements['todo-progress'].textContent, '1 of 2 done');
+    elements['todo-input'].value = 'UI statistics check';
+    await elements['todo-form'].onsubmit({ preventDefault() {} });
+    await settled();
+    assert.equal(elements['todo-progress'].textContent, '1 of 3 done');
+    await context.toggleStatus(3, true);
+    await settled();
+    assert.equal(elements['todo-progress'].textContent, '2 of 3 done');
+    await context.deleteItem(3);
+    await settled();
+    assert.equal(elements['todo-progress'].textContent, '1 of 2 done');
+    console.log('UI progress integration: 1 passed, 0 failed, 0 skipped (initial/add/toggle/delete)');
+  } finally { server.close(); }
+})().catch(error => { console.error(error); process.exitCode = 1; });
+'@ | node"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git diff --check; git diff --stat; git diff'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git add app/server.js app/public/index.html app/test.js; git commit -m "feat: add todo statistics and progress"; git push -u origin bench008/codex-pr-run03/add-stats'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git status --short'

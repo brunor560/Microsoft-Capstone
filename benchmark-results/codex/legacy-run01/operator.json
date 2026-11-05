@@ -1,0 +1,39 @@
+{
+  "checklist": {
+    "environment_fixed_during_run": false,
+    "agent_asked_permission": false,
+    "session_restarted_or_nudged": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false
+  },
+  "operator_help": [
+    {
+      "from": "Joseph B.",
+      "time_utc": "unknown",
+      "what": "Specified models, procedures, preflight retry, GitHub setup and allowed pushes"
+    },
+    {
+      "time_utc": "2026-11-05 (time unavailable)",
+      "from": "Joseph B.",
+      "what": "Confirmed team agreement to commits and first-set grader hashes in chat; instructed six runs."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "observed transcript",
+      "what": "Agent git status failed because snapshot has no Git repository; agent reported it."
+    }
+  ],
+  "supervised_by": "Joseph B.",
+  "operator_tokens": null,
+  "knowledge": "Read 006, 007, 008 procedure README and RUN-RECORD and OPERATOR-GUIDE from origin, and 005 fresh start block; task 008 MCP and git preflight; no task 006/007/008 reference, ACCEPTANCE, VALIDATION read; before measurement: user confirmed all specified commit IDs and hashes as first reference set; read other task procedure READMEs and guides; no reference, ACCEPTANCE, VALIDATION files read.",
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "setup_attempts": 1,
+  "messages_to_agent": 0,
+  "operator_type": "ai",
+  "operator": "Codex desktop, gpt-6.1-terra, effort unknown",
+  "setup_problems": [],
+  "notes": "No operator intervention. h-review requires a second team member."
+}

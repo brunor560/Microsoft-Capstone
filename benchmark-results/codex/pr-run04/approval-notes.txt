@@ -1,0 +1,4 @@
+approval_policy=never; GitHub MCP default_tools_approval_mode=approve
+approvals=none; no prompt observed
+interventions=none
+corrections=none

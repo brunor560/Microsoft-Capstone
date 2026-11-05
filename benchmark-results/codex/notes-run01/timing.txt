@@ -1,0 +1,6 @@
+start_utc=2026-11-05T20:51:33.7070863+00:00
+end_utc=2026-11-05T20:52:49.5006384+00:00
+elapsed_seconds=75.792963
+method=Stopwatch immediately before prompt submission through CLI process exit; exact final delivery time unavailable
+approval_wait_seconds=0
+cli_exit=0

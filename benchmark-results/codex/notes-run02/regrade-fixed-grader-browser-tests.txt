@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ok 1 todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links (247ms)
+  ok 2 todo-notes.browser.spec.cjs:50:1 › UI-02: a todo without notes shows no notes element (138ms)
+  ok 3 todo-notes.browser.spec.cjs:58:1 › UI-01: the add form saves notes typed in the Notes box (211ms)
+  ok 4 todo-notes.browser.spec.cjs:69:1 › UI-03: add, toggle and delete still work (397ms)
+
+  4 passed (1.9s)

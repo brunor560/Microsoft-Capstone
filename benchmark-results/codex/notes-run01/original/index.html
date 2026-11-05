@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Benchmark Baseline</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 550px; margin: 50px auto; padding: 0 20px; color: #222; }
+    h1 { color: #006747; border-bottom: 2px solid #006747; padding-bottom: 8px; }
+    form { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    textarea { width: 100%; padding: 10px; font: inherit; }
+    .item-content { flex: 1; min-width: 0; }
+    .notes { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 6px; }
+    input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    button { padding: 10px 18px; background: #006747; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid #eee; }
+    .item-text { cursor: pointer; flex: 1; }
+    .done { text-decoration: line-through; color: #888; }
+    .delete-btn { background: #d9534f; padding: 6px 10px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>Baseline Test Application</h1>
+  <form id="todo-form">
+    <input id="todo-input" placeholder="Enter task requirement..." required />
+    <textarea id="todo-notes" aria-label="Notes" maxlength="1000"></textarea>
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const list = document.getElementById('todo-list');
+    function formatNotes(notes) {
+      const fragment = document.createDocumentFragment();
+      const pattern = /\*\*([^*]+)\*\*|\[([^\]\r\n]+)\]\((https?:\/\/[^\s)]+)\)/g;
+      let offset = 0;
+      for (const match of notes.matchAll(pattern)) {
+        fragment.append(document.createTextNode(notes.slice(offset, match.index)));
+        const element = document.createElement(match[1] !== undefined ? 'strong' : 'a');
+        element.textContent = match[1] ?? match[2];
+        if (match[3]) element.setAttribute('href', match[3]);
+        fragment.append(element);
+        offset = match.index + match[0].length;
+      }
+      fragment.append(document.createTextNode(notes.slice(offset)));
+      return fragment;
+    }
+    function renderTodo(item) {
+      const row = document.createElement('li');
+      const content = document.createElement('div');
+      content.className = 'item-content';
+      const title = document.createElement('span');
+      title.className = `item-text ${item.completed ? 'done' : ''}`;
+      title.textContent = item.title;
+      title.onclick = () => toggleStatus(item.id, !item.completed);
+      content.append(title);
+      if (item.notes) {
+        const notes = document.createElement('div');
+        notes.className = 'notes';
+        notes.append(formatNotes(item.notes));
+        content.append(notes);
+      }
+      const button = document.createElement('button');
+      button.className = 'delete-btn';
+      button.textContent = 'Delete';
+      button.onclick = () => deleteItem(item.id);
+      row.append(content, button);
+      return row;
+    }
+    async function fetchTodos() {
+      const res = await fetch('/api/todos');
+      const data = await res.json();
+      list.replaceChildren(...data.map(renderTodo));
+    }
+    document.getElementById('todo-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('todo-input');
+      const notes = document.getElementById('todo-notes');
+      await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: input.value, notes: notes.value })
+      });
+      input.value = '';
+      notes.value = '';
+      fetchTodos();
+    };
+    async function toggleStatus(id, completed) {
+      await fetch(`/api/todos/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed })
+      });
+      fetchTodos();
+    }
+    async function deleteItem(id) {
+      await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      fetchTodos();
+    }
+    fetchTodos();
+  </script>
+</body>
+</html>

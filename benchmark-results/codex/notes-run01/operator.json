@@ -1,0 +1,34 @@
+{
+  "grading_minutes": null,
+  "operator_type": "ai",
+  "messages_to_agent": 0,
+  "operator_tokens": null,
+  "knowledge": "Read task 008, 009, 010 README, RUN-RECORD and OPERATOR-GUIDE, 005 fresh-start block; observed 008 preflight and prior batch; user confirmed team agreement on README-selected commits and first-set hashes; no task reference, ACCEPTANCE, or VALIDATION contents read before measured session; Before measurement, observed all supply completion results and the standard and mitigated Sol reports. None was passed to the measured agent.",
+  "operator": "Codex desktop; operator model and reasoning unavailable",
+  "setup_attempts": 1,
+  "setup_minutes": null,
+  "operator_help": [
+    {
+      "from": "Joseph B.",
+      "what": "Specified task conditions, assigned models and confirmed team agreement to commits and reference hashes.",
+      "time_utc": "unknown"
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript and independent grading",
+      "what": "Git status failed in the snapshot; official browser suite fails br-count assertion despite pre-wrap rendering. See diagnostic-browser-notes.txt."
+    }
+  ],
+  "notes": "No operator intervention. Independent h-review pending.",
+  "supervised_by": "Joseph B.",
+  "setup_problems": [],
+  "checklist": {
+    "operator_needed_help": true,
+    "agent_asked_permission": false,
+    "anything_else_unusual": true,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "environment_fixed_during_run": false,
+    "session_restarted_or_nudged": false
+  }
+}

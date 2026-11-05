@@ -1,0 +1,75 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 311,
+      "candMedian": 328.5,
+      "ratio": 1.056,
+      "candOk": true,
+      "baseMs": [
+        308,
+        319,
+        312,
+        309,
+        306,
+        310,
+        314,
+        309,
+        313,
+        312
+      ],
+      "candMs": [
+        324,
+        329,
+        325,
+        330,
+        323,
+        331,
+        326,
+        342,
+        328,
+        329
+      ],
+      "pass": true
+    }
+  },
+  "points": 100,
+  "possible": 100,
+  "score": 100,
+  "task": "009",
+  "baselineCommit": "origin/benchmark-protocol-v9-supply^{/^Add task 009}",
+  "originalFiles": [
+    "original/server.js",
+    "original/test.js",
+    "original/index.html"
+  ],
+  "gradedAt": "2026-11-05T21:40:09.624Z"
+}

@@ -1,0 +1,20 @@
+Implemented the CSV quoting fix.
+
+- [app/legacy/billing-export.js](app/legacy/billing-export.js): quotes titles containing commas, double quotes, CR, or LF and doubles embedded quotes, after existing cutting and spreadsheet protection.
+- [app/test.js](app/test.js): added regression and legacy-format tests. Preserved all existing tests.
+
+Build/test commands, in order, all from `app/`:
+
+| Command | Outcome | Passed | Failed | Skipped | Duration |
+|---|---|---:|---:|---:|---:|
+| `npm.cmd test` | Baseline passed | 9 | 0 | 0 | 314.9562 ms |
+| `npm.cmd test` | New tests caught original bug | 10 | 2 | 0 | 298.7511 ms |
+| `npm.cmd test` | Fixed implementation passed | 12 | 0 | 0 | 307.5558 ms |
+
+Final measured runtime was below baseline and within the 1.2× limit.
+
+No browser or manual runtime checks performed. Route and link code remain unchanged. Independent acceptance checks were unavailable.
+
+No requirements were unclear. Preserving `clean_title` behavior meant applying quoting in row construction. Unexpected finding: this folder lacks Git metadata, so `git status --short` failed. No commits or pushes made; only the two permitted files changed.
+
+Model: GPT-6-based Codex; exact variant, session duration, and token usage: not available.

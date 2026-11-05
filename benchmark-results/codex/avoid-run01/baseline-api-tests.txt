@@ -1,0 +1,196 @@
+✖ API-03: dryRun reports how many would be deleted and deletes nothing (44.9972ms)
+▶ API-02: requests without confirm: true are rejected and delete nothing
+  ✖ rejects no body (1.9645ms)
+  ✖ rejects empty object (2.2528ms)
+  ✖ rejects confirm false (1.9535ms)
+  ✖ rejects confirm "true" (1.9442ms)
+  ✖ rejects confirm 1 (1.7707ms)
+  ✖ rejects array body (1.5115ms)
+✖ API-02: requests without confirm: true are rejected and delete nothing (15.0376ms)
+✖ API-01/API-04: confirm: true deletes completed todos only (5.0304ms)
+✖ API-01: clearing again deletes nothing (2.6504ms)
+✔ API-04: existing behaviour is preserved (4.3865ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 1
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 262.8126
+
+✖ failing tests:
+
+test at clear-completed-api.test.cjs:58:1
+✖ API-03: dryRun reports how many would be deleted and deletes nothing (44.9972ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:65:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects no body (1.9645ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects empty object (2.2528ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects confirm false (1.9535ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects confirm "true" (1.9442ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects confirm 1 (1.7707ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:80:13
+✖ rejects array body (1.5115ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:83:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:92:1
+✖ API-01/API-04: confirm: true deletes completed todos only (5.0304ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:102:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at clear-completed-api.test.cjs:110:1
+✖ API-01: clearing again deletes nothing (2.6504ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-avoid-run01-evidence\grader\benchmark-results\protocol\clear-completed\clear-completed-api.test.cjs:113:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

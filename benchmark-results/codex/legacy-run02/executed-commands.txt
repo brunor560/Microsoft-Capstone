@@ -1,0 +1,4 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/007-legacy-export.md; rg --files -g AGENTS.md -g '"'!../*'"' -g '"'!../../*'"'; git status --short"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/docs/EXPORT-FORMAT.md; Get-Content app/legacy/billing-export.js; Get-Content app/test.js; Get-Content app/package.json; rg --files app'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

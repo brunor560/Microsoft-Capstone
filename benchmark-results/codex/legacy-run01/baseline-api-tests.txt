@@ -1,0 +1,101 @@
+✖ FIX-01: a title with a comma is one quoted field (0.7946ms)
+✖ FIX-02: double quotes are doubled inside a quoted field (0.1123ms)
+✖ FIX-03: line breaks are kept inside a quoted field (0.101ms)
+✖ FIX-01: quoting is applied after cutting long titles (0.0874ms)
+✔ FIX-05: the module keeps its exported functions (0.1035ms)
+✖ FIX-05: the export route returns the fixed CSV (41.1361ms)
+✔ Existing API behaviour is preserved (7.9347ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 253.5563
+
+✖ failing tests:
+
+test at legacy-export-api.test.cjs:57:1
+✖ FIX-01: a title with a comma is one quoted field (0.7946ms)
+  AssertionError [ERR_ASSERTION]: expected the row "000007,\"Call Sam, then Alex\",N" in "ID,TITLE,DONE\r\n000007,Call Sam, then Alex,N\r\n"
+      at hasRow (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:54:10)
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:58:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at legacy-export-api.test.cjs:62:1
+✖ FIX-02: double quotes are doubled inside a quoted field (0.1123ms)
+  AssertionError [ERR_ASSERTION]: expected the row "000007,\"Say \"\"hi\"\"\",N" in "ID,TITLE,DONE\r\n000007,Say \"hi\",N\r\n"
+      at hasRow (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:54:10)
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:63:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at legacy-export-api.test.cjs:67:1
+✖ FIX-03: line breaks are kept inside a quoted field (0.101ms)
+  AssertionError [ERR_ASSERTION]: expected the row "000007,\"line one\nline two\",N" in "ID,TITLE,DONE\r\n000007,line one\nline two,N\r\n"
+      at hasRow (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:54:10)
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:68:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at legacy-export-api.test.cjs:73:1
+✖ FIX-01: quoting is applied after cutting long titles (0.0874ms)
+  AssertionError [ERR_ASSERTION]: expected the row "000007,\"Pay invoices, then file the receipts fo~\",N" in "ID,TITLE,DONE\r\n000007,Pay invoices, then file the receipts fo~,N\r\n"
+      at hasRow (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:54:10)
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:75:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at legacy-export-api.test.cjs:86:1
+✖ FIX-05: the export route returns the fixed CSV (41.1361ms)
+  AssertionError [ERR_ASSERTION]: expected the row "000003,\"Route check, with comma\",N" in "ID,TITLE,DONE\r\n000002,Execute prompt-to-PR baseline benchmark,N\r\n000003,Route check, with comma,N\r\n000001,Configure agent sandbox environment,Y\r\n"
+      at hasRow (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:54:10)
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export-api.test.cjs:93:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

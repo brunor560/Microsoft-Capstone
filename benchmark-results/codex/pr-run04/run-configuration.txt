@@ -1,0 +1,20 @@
+run_id=codex-pr-run04
+participant=Joseph B.
+date=2026-11-05
+timezone=America/New_York
+tool=codex-cli 0.166.0-alpha.6
+interface=headless CLI
+model=gpt-6-luna
+reasoning=low
+approval=never
+sandbox=danger-full-access; network enabled
+node=v24.22.2
+npm=11.19.1
+os=Microsoft Windows NT 10.0.26200.0
+playwright=Version 1.64.1
+fresh_start=ephemeral, memories and external agent memory import disabled, ignore user config and rules, project_doc_max_bytes=0, CODEX_* removed
+github_mcp=https://api.githubcopilot.com/mcp/; bearer_token_env_var=GITHUB_TOKEN; default_tools_approval_mode=approve
+shell_environment_policy=ignore_default_excludes true; exclude *KEY*,*SECRET*,*PASSWORD*,OPENAI_*,AZURE_*,ANTHROPIC_*
+token_scopes_and_ruleset=unknown
+team_commit_agreement=user confirmed
+grader_hashes=first set for this task; nothing to compare yet

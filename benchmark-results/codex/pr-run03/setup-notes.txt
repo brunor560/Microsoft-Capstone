@@ -1,0 +1,3 @@
+User specified and approved full-write preflight.
+Preflight created and pushed a scratch commit, used MCP to open and close PR #15 unmerged; preflight branches deleted.
+No setup changes during measured run.

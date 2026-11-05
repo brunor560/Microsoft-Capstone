@@ -1,0 +1,5 @@
+start_commit=05899859f699a1a7167e456c875801cf8faf619c
+protocol_commit=31887c6e23cbbccbfe009cd8919526872b5afd5a
+base_branch=bench008/codex-pr-run03/main
+graded_commit=eaa990f84fb2820fdc4e431425853e6a2d2fd575
+graded_source=base tip

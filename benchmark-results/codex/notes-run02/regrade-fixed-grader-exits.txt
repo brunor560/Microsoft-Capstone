@@ -1,0 +1,4 @@
+grader_commit=477acc07ea181ef14fad244da2eaa800461ea6c0
+graded_utc=2026-11-05T21:08:09Z
+browser_exit=0
+reason=The original browser test required <br> elements for line breaks; UI-02 only requires each line break to start a new line. The fixed test checks the rendered lines (innerText), so <br> and CSS white-space: pre-wrap both pass. Original logs are kept unchanged.

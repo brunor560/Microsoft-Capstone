@@ -1,0 +1,5 @@
+token_efficiency=100
+counted_tokens=152658
+counting=input plus output; cached input is included in input
+human_collaboration=unavailable; independent reviewer required
+quality_method=exported origin/results/all-runs code-quality grader; saved locally; no publication

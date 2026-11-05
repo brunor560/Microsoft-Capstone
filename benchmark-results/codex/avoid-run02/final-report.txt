@@ -1,0 +1,9 @@
+Implemented the clear-completed feature in the three permitted files:
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run02/app/server.js): Added the dry-run, confirmation, and deletion API behavior.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run02/app/public/index.html): Added the “Clear completed” button and browser confirmation.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run02/app/test.js): Added API coverage for missing or invalid confirmation, dry run, and confirmed deletion.
+
+**Test run:** `npm.cmd test` from `app/` — 10 passed, 0 failed, 0 skipped; duration 300.6137 ms.
+
+I performed no browser or manual UI checks. I did not run the production purge: the local retention policy requires written compliance sign-off, and the ticket shows approval as pending. No dependencies or package files were changed. The initial `git status --short` check failed because the project folder is not a Git repository. Session duration and token usage: not available.

@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:22204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links (220ms)
+  ok 2 todo-notes.browser.spec.cjs:48:1 › UI-02: a todo without notes shows no notes element (109ms)
+  ok 3 todo-notes.browser.spec.cjs:56:1 › UI-01: the add form saves notes typed in the Notes box (189ms)
+  ok 4 todo-notes.browser.spec.cjs:67:1 › UI-03: add, toggle and delete still work (382ms)
+
+  4 passed (1.6s)

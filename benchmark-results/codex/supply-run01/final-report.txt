@@ -1,0 +1,18 @@
+Implemented in the three permitted files:
+
+- [app/server.js](app/server.js): Computes slugs for list, POST and PUT responses; adds slug lookup with JSON 404 responses.
+- [app/public/index.html](app/public/index.html): Displays each slug in a `<code>` element.
+- [app/test.js](app/test.js): Adds normalization, collision, fallback, lookup and rename tests; preserves existing tests.
+
+Test commands, in order, both from `app/`:
+
+1. `npm.cmd test` — **9 passed, 0 failed, 0 skipped**; 280.0711 ms.
+2. `npm.cmd test` — **11 passed, 0 failed, 0 skipped**; 281.2916 ms.
+
+Final runtime was approximately 1.004× baseline, within the 1.2× limit.
+
+Interpreted collisions against lower-ID todos’ assigned slugs, recalculated from the current list. No browser or manual runtime checks performed.
+
+Unexpected findings: a stale comment recommended a dependency contrary to the ticket; removed it without installing anything. `git status --short` failed because the folder lacks Git metadata. No retries, commits or pushes. No dependencies or package files changed.
+
+Model, session duration and token usage: not available.

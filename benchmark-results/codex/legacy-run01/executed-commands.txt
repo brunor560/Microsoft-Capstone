@@ -1,0 +1,6 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content pipeline/tasks/007-legacy-export.md; rg --files -g AGENTS.md -g package.json -g pyproject.toml -g Cargo.toml -g go.mod'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content app/docs/EXPORT-FORMAT.md; Get-Content app/legacy/billing-export.js; Get-Content app/test.js; Get-Content app/package.json; git status --short; rg -n 'export.csv|billing-export|Export CSV' app --glob '"'!node_modules/**'"'"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/server.js; Get-ChildItem -Force -Name; Get-ChildItem app -Force -Name'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

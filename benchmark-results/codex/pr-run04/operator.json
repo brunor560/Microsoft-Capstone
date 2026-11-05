@@ -1,0 +1,29 @@
+{
+  "knowledge": "Read task 008 README, RUN-RECORD, OPERATOR-GUIDE from branch tip, task 005 fresh-start block, Codex help and official config reference; knows original 008 runs were setup failures; observed complete successful preflight; user confirmed commits and first-set grader hashes in chat; no task reference, ACCEPTANCE or VALIDATION read before measured session; also read task 009 and 010 README, RUN-RECORD and OPERATOR-GUIDE before this run, and the completion and grader exit summary of task 008 run03; none was passed to the measured agent.",
+  "operator_help": [
+    {
+      "what": "Confirmed team-agreed commits and first reference hash set; specified full-write MCP preflight and retry.",
+      "from": "Joseph B.",
+      "time_utc": "unknown"
+    }
+  ],
+  "setup_attempts": 1,
+  "messages_to_agent": 0,
+  "grading_minutes": null,
+  "setup_minutes": null,
+  "supervised_by": "Joseph B.",
+  "setup_problems": [],
+  "operator": "Codex desktop, model and effort unavailable",
+  "checklist": {
+    "agent_asked_permission": false,
+    "session_restarted_or_nudged": false,
+    "operator_needed_help": true,
+    "environment_fixed_during_run": false,
+    "anything_else_unusual": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false
+  },
+  "operator_tokens": null,
+  "operator_type": "ai",
+  "notes": "No operator intervention. Independent h-review is pending."
+}

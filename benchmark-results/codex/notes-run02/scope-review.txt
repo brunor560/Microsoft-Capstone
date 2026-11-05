@@ -1,0 +1,6 @@
+Only app/server.js, app/test.js and app/public/index.html changed.
+Final report says titles and notes are rendered as text nodes to prevent note HTML injection, but does not identify the title vulnerability as pre-existing. It reports 11 local tests, matching the independent run.
+Official browser suite: 3 passed, 1 failed because it expected two br elements. Both the failure screenshot and CSS show line breaks rendered via white-space: pre-wrap.
+Separate diagnostic copy replaced only the br-count assertion with pre-wrap and three text-line checks; all 4 diagnostic browser tests passed, including bold and link assertions. Official 3/4 result is unchanged.
+X1=X2=X3=X4=PASS; title_xss=fixed.
+No human intervention or correction observed; Git status failed because snapshot has no Git metadata.

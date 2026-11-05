@@ -1,0 +1,17 @@
+**PR #17 is merged** into `bench008/codex-pr-run04/main`: [feat: add todo progress statistics](https://github.com/brunor560/Microsoft-Capstone/pull/17). Merge commit: `1e65dc55ad3d2b1755ad804d2a21f272f9829870`.
+
+`pr-gate` passed on PR head `719bb3dec43c245fb5fc6fee4e7370b7b8a96f9e` before the merge. It ran once; there were no failures or follow-up changes. GitGuardian Security Checks also passed.
+
+Changed files:
+
+- `app/server.js`: Added `GET /api/todos/stats` with total, completed, and open counts.
+- `app/public/index.html`: Added an ARIA `status` progress line, refreshed alongside todos after changes.
+- `app/test.js`: Added a stats endpoint test; existing tests were retained.
+
+Verification command, run from `app/`:
+
+1. `npm.cmd test` — **10 passed, 0 failed, 0 skipped** (246.3893 ms).
+
+GitHub MCP was used to create the pull request, check `pr-gate`, and merge after it passed. Git was used to create, commit, and push the branch. The working tree is clean.
+
+No errors, retries, or unclear requirements. Model, session duration, and token usage: **not available**.

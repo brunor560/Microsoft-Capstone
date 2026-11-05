@@ -1,0 +1,4 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content -Raw pipeline/tasks/010-todo-notes.md; rg --files -g AGENTS.md -g '"'!../*'"' -g '"'!**/.git/**'"'"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-ChildItem -Force; Get-Content -Raw app/server.js; Get-Content -Raw app/public/index.html; Get-Content -Raw app/test.js; Get-Content -Raw app/package.json; git status --short'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'git status --short; git diff --check; git diff --stat; git diff -- app/server.js app/public/index.html app/test.js'

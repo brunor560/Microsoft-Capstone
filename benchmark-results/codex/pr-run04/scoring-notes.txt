@@ -1,0 +1,5 @@
+token_efficiency=0
+counted_tokens=646274
+counting=input plus output; cached input included in input
+human_collaboration=unavailable; independent reviewer required
+quality_method=exported origin/results/all-runs quality-grader.mjs; no commit or publication

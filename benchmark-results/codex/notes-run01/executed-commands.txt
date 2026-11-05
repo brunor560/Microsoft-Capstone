@@ -1,0 +1,63 @@
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/010-todo-notes.md; rg --files -g AGENTS.md -g package.json -g '*lock*'; git status --short"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json; Get-ChildItem -Path . -Filter AGENTS.md -Recurse -File | Select-Object -ExpandProperty FullName'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command "@'
+
+async function notesRequest(method, route, body) {
+  const response = await fetch("'`${BASE_URL}/api/todos${route}`, {
+    method,
+    headers: { '"'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  return { status: response.status, data: await response.json() };
+}
+
+async function readTodos() {
+  return (await fetch("'`${BASE_URL}/api/todos`)).json();
+}
+
+test('"'Notes default to empty on existing and new todos', async () => {
+  const todos = await readTodos();
+  assert.ok(todos.every(todo => todo.notes === ''));
+  const created = await notesRequest('POST', '', { title: 'No notes' });
+  assert.strictEqual(created.status, 201);
+  assert.strictEqual(created.data.notes, '');
+});
+
+test('Notes are stored exactly, preserved when omitted, and can be cleared', async () => {
+  const notes = '  **Details**\\n[doc](https://example.com)\\r\\n<script>alert(1)</script>  ';
+  const created = await notesRequest('POST', '', { title: 'Notes task', notes });
+  assert.strictEqual(created.status, 201);
+  assert.strictEqual(created.data.notes, notes);
+  const route = "'`/${created.data.id}`;
+  const toggled = await notesRequest('"'PUT', route, { completed: true });
+  assert.strictEqual(toggled.data.notes, notes);
+  const boundary = 'x'.repeat(1000);
+  const updated = await notesRequest('PUT', route, { notes: boundary });
+  assert.strictEqual(updated.status, 200);
+  assert.strictEqual(updated.data.notes, boundary);
+  assert.strictEqual((await readTodos()).find(todo => todo.id === created.data.id).notes, boundary);
+  const cleared = await notesRequest('PUT', route, { notes: '' });
+  assert.strictEqual(cleared.data.notes, '');
+  const maximum = await notesRequest('POST', '', { title: 'Maximum notes', notes: boundary });
+  assert.strictEqual(maximum.status, 201);
+  assert.strictEqual(maximum.data.notes, boundary);
+});
+
+test('Invalid notes reject POST and PUT without any changes', async () => {
+  const before = await readTodos();
+  const invalidNotes = [null, false, 42, [], {}, 'x'.repeat(1001)];
+  for (const notes of invalidNotes) {
+    for (const method of ['POST', 'PUT']) {
+      const route = method === 'POST' ? '' : "'`/${before[0].id}`;
+      const result = await notesRequest(method, route, { title: '"'Must not change', completed: false, notes });
+      assert.strictEqual(result.status, 400);
+      assert.strictEqual(typeof result.data.error, 'string');
+      assert.ok(result.data.error.length > 0);
+    }
+  }
+  assert.deepStrictEqual(await readTodos(), before);
+});
+'@ | Add-Content app/test.js
+npm.cmd test"
+"C:\\Users\\josep\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

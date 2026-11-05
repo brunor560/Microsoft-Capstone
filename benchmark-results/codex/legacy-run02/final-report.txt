@@ -1,0 +1,15 @@
+Updated the export to quote titles containing commas, double quotes, carriage returns, or line feeds, doubling embedded quotes. Added tests for quoting and the existing export format.
+
+**Files changed**
+
+- [billing-export.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run02/app/legacy/billing-export.js) — adds CSV quoting after title cleanup.
+- [test.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run02/app/test.js) — tests quoting, row order, padding, title cleanup, and empty-list output.
+
+**Commands and results**
+
+1. `Get-Content pipeline/tasks/007-legacy-export.md; rg --files -g AGENTS.md -g '!../*' -g '!../../*'; git status --short` — read the task; Git status reported that the project root is not a Git repository.
+2. `Get-Content app/docs/EXPORT-FORMAT.md; Get-Content app/legacy/billing-export.js; Get-Content app/test.js; Get-Content app/package.json; rg --files app` — inspected the format, implementation, tests, and package script.
+3. `npm.cmd test` — first run: 10 passed, 1 failed because the new test expected the wrong row order.
+4. `npm.cmd test` — final run: **11 passed, 0 failed, 0 skipped**; duration 298.7716 ms.
+
+No browser or manual checks were performed. The row-order expectation was corrected to match the documented ascending-ID order for open todos. No other unclear requirements or unexpected project behavior were found. Session time and token usage: not available.

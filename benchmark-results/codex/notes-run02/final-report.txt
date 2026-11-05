@@ -1,0 +1,13 @@
+Implemented the todo notes task in the three permitted files:
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run02/app/server.js): Todos now default to `notes: ""`; POST and PUT preserve supplied notes and reject non-string or over-1000-character notes before changing data.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run02/app/public/index.html): Added a multiline Notes field and formatting for line breaks, bold text, and HTTP(S) links. Titles and notes are rendered as text nodes, preventing note content from injecting HTML.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run02/app/test.js): Added API tests for default, stored, returned, and invalid notes.
+
+**Commands and results**
+
+1. Read the task and project files; inspected `git status --short`. The initial status command reported that the project folder is not a Git repository.
+2. `npm.cmd test` from `app/`: **11 passed, 0 failed, 0 skipped**.
+3. Attempted `git status --short`, `git diff --check`, and `git diff --stat`; Git reported that this folder is not a repository, so those checks could not run.
+
+No browser or manual UI checks were performed. No build command was run. The notes formatting requirements were clear and implemented as specified. I did not access parent folders, external grading files, reference solutions, or other runs, and did not commit or push. Session duration and token usage: not available.

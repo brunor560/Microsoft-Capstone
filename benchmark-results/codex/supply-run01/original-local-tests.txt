@@ -1,0 +1,23 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ todos expose normalized, fallback and duplicate slugs in POST and list responses (59.4183ms)
+✔ slug lookup returns the matching todo or a JSON 404 and follows title updates (8.1109ms)
+✔ GET /api/todos returns array of tasks (0.8317ms)
+✔ POST /api/todos creates a new valid task (1.0406ms)
+✔ POST /api/todos rejects empty title with 400 (1.0071ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.8207ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (3.373ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (2.1009ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (4.9506ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.6878ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.8897ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 261.9087

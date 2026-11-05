@@ -1,0 +1,3 @@
+Baseline installation and tests completed before measured session.
+Team member confirmed commits and reference hashes; no teammate hashes yet.
+No setup changes during measured session.

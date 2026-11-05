@@ -1,0 +1,18 @@
+Implemented the task in the three permitted files:
+
+- `app/server.js`: computes slugs for list, POST and PUT responses; adds slug lookup with JSON 404 errors.
+- `app/public/index.html`: displays each slug in a `<code>` element.
+- `app/test.js`: preserves existing tests and adds normalization, collision, lookup, rename and deletion coverage.
+
+Test commands, in order, both run from `app/`:
+
+1. `npm.cmd test` — **9 passed, 0 failed, 0 skipped**; 305.3382 ms.
+2. `npm.cmd test` — **12 passed, 0 failed, 0 skipped**; 311.3912 ms.
+
+The final suite took approximately 1.02× the baseline duration, within the 1.2× limit.
+
+No browser or separate manual checks were performed. Collision handling was interpreted as comparing against slugs assigned to lower-id todos in the current list.
+
+Unexpected findings: an existing comment recommended adding a dependency, contrary to the task constraints; no dependency was added. `git status --short` failed because Git metadata was unavailable. No retries, commits or pushes occurred.
+
+Model: GPT-6-based Codex; exact model identifier, total session duration and token usage: not available.

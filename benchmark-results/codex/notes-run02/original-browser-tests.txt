@@ -1,0 +1,57 @@
+
+Running 4 tests using 1 worker
+
+(node:12684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links (5.2s)
+(node:24748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 todo-notes.browser.spec.cjs:47:1 › UI-02: a todo without notes shows no notes element (165ms)
+  ok 3 todo-notes.browser.spec.cjs:55:1 › UI-01: the add form saves notes typed in the Notes box (192ms)
+  ok 4 todo-notes.browser.spec.cjs:66:1 › UI-03: add, toggle and delete still work (373ms)
+
+
+  1) todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links ────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes').locator('br')
+    Expected: 2
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes').locator('br') with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes').locator('br')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      36 |   const box = page.locator('li', { hasText: 'Formatted notes 010' }).locator('.notes');
+      37 |   await expect(box).toHaveCount(1);
+    > 38 |   await expect(box.locator('br')).toHaveCount(2);
+         |                                   ^
+      39 |   await expect(box.locator('strong')).toHaveText('important');
+      40 |   const link = box.getByRole('link', { name: 'the docs' });
+      41 |   await expect(link).toHaveAttribute('href', 'https://example.com/docs?x=1&y=2');
+        at C:\Users\josep\OneDrive\Documents\GitHub\codex-notes-run02-evidence\grader\benchmark-results\protocol\todo-notes\todo-notes.browser.spec.cjs:38:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links\error-context.md
+
+    Error Context: browser-test-results\todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links ─────
+  3 passed (7.3s)

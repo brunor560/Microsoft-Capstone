@@ -1,0 +1,50 @@
+
+Running 2 tests using 1 worker
+
+(node:19364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted (552ms)
+(node:20444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 legacy-export.browser.spec.cjs:52:1 › UI-02: add, toggle and delete still work (346ms)
+
+
+  1) legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted 
+
+    Error: expect(received).toMatch(expected)
+
+    Expected pattern: /\n\d{6},"Call Sam, then Alex",N\r?\n/
+    Received string:  "ID,TITLE,DONE·
+    000002,Execute prompt-to-PR baseline benchmark,N·
+    000003,Call Sam, then Alex,N·
+    000001,Configure agent sandbox environment,Y·
+    "
+
+      46 |   const text = fs.readFileSync(await download.path(), 'utf8');
+      47 |   expect(text.startsWith('ID,TITLE,DONE')).toBe(true);
+    > 48 |   expect(text).toMatch(/\n\d{6},"Call Sam, then Alex",N\r?\n/);
+         |                ^
+      49 |   if (EVIDENCE_DIR) fs.writeFileSync(path.join(EVIDENCE_DIR, 'UI-01-export.csv'), text);
+      50 | });
+      51 |
+        at C:\Users\josep\OneDrive\Documents\GitHub\codex-legacy-run01-evidence\grader\benchmark-results\protocol\legacy-export\legacy-export.browser.spec.cjs:48:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results\legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results\legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted\error-context.md
+
+    Error Context: browser-test-results\legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results\legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted\trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results\legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted 
+  1 passed (2.2s)

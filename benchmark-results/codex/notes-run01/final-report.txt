@@ -1,0 +1,21 @@
+Implemented notes in the three permitted files:
+
+- `app/server.js`: empty defaults, exact storage, and validation before mutation.
+- `app/public/index.html`: accessible Notes textarea, bold/link formatting, and preserved line breaks. DOM text rendering also fixes the existing title HTML-injection risk.
+- `app/test.js`: preserved all existing tests and added notes API coverage.
+
+Test commands, in order:
+
+| Command | Location | Result |
+|---|---|---|
+| `npm.cmd test` | `app/`, baseline | 9 passed, 0 failed, 0 skipped; 299.3694 ms |
+| `npm.cmd test` | Project root | Failed: missing `package.json`; no tests ran |
+| `npm.cmd test` | `app/`, final | 12 passed, 0 failed, 0 skipped; 310.9541 ms |
+
+Final suite duration was 1.039× baseline, within the 1.2× limit.
+
+No browser or manual UI checks were performed. Independent browser acceptance remains unverified. Unsupported formatting is displayed literally; no clarification was needed.
+
+Unexpected: this folder is not a Git repository, so Git status failed. No commits or pushes were made.
+
+Exact model, session duration, and token usage: not available.

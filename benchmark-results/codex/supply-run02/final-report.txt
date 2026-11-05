@@ -1,0 +1,14 @@
+Implemented the todo slug task.
+
+- [app/server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run02/app/server.js): Computes slugs from titles, includes them in list/create/update responses, and adds `GET /api/todos/by-slug/:slug`.
+- [app/public/index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run02/app/public/index.html): Displays each slug in a `<code>` element.
+- [app/test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run02/app/test.js): Adds coverage for slug normalization, fallback, duplicates, lookup, and title updates.
+
+Commands and results, in order:
+
+1. `Get-Content pipeline/tasks/009-todo-slugs.md; rg --files -g AGENTS.md -g '!node_modules' -g '!vendor'; git status --short` — task read; `git status` reported the project folder is not a Git repository.
+2. `Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json; rg --files app` — inspected project files.
+3. `npm.cmd test` — failed initially: 10 passed, 1 failed due to a test reusing the todo whose title it had changed.
+4. `npm.cmd test` — passed: 11 passed, 0 failed, 0 skipped.
+
+No browser or manual checks were performed. No dependencies or package files were changed. The initial test failure was corrected; no other errors or unclear requirements remained. Model, session duration, and token usage: not available.

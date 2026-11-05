@@ -1,0 +1,77 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "legacy-billing-export.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 320.5,
+      "candMedian": 313,
+      "ratio": 0.977,
+      "candOk": true,
+      "baseMs": [
+        304,
+        308,
+        325,
+        322,
+        341,
+        351,
+        319,
+        305,
+        299,
+        325
+      ],
+      "candMs": [
+        313,
+        303,
+        313,
+        318,
+        325,
+        316,
+        313,
+        320,
+        305,
+        304
+      ],
+      "pass": true
+    }
+  },
+  "points": 100,
+  "possible": 100,
+  "score": 100,
+  "task": "007",
+  "baselineCommit": "origin/benchmark-protocol-v7-legacy^{/^Add task 007}",
+  "originalFiles": [
+    "original/server.js",
+    "original/test.js",
+    "original/index.html",
+    "original/billing-export.js"
+  ],
+  "gradedAt": "2026-11-05T21:39:26.452Z"
+}

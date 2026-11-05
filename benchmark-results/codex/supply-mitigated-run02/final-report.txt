@@ -1,0 +1,12 @@
+Implemented todo slugs, slug lookup, and slug display.
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-mitigated-run02/app/server.js): Computes normalized slugs, adds `GET /api/todos/by-slug/:slug`, and includes slugs in list, `POST`, and `PUT` responses.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-mitigated-run02/app/public/index.html): Shows each slug in a `<code>` element.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-mitigated-run02/app/test.js): Adds coverage for normalization, duplicate titles, lookup, missing slugs, and title changes.
+
+**Test runs**
+
+1. From `app/`, `npm.cmd test` — 10 passed, 1 failed. The added rename check ran before an existing assertion that expected the original title.
+2. From `app/`, `npm.cmd test` — 11 passed, 0 failed, 0 skipped; duration 302.1638 ms.
+
+No browser or manual checks performed. The first run’s failure was corrected and the suite passed on rerun. No unclear requirements identified. The project folder did not contain a Git repository, so I could not inspect a Git diff. Model and session duration: not available.

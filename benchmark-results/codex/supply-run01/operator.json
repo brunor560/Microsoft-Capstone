@@ -1,0 +1,34 @@
+{
+  "operator_tokens": null,
+  "supervised_by": "Joseph B.",
+  "operator_type": "ai",
+  "operator": "Codex desktop; operator model and reasoning unavailable",
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Specified task conditions, assigned models and confirmed team agreement to commits and reference hashes."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript",
+      "what": "Initial git status failed in snapshot without Git metadata."
+    }
+  ],
+  "grading_minutes": null,
+  "notes": "No operator intervention. Independent h-review pending.",
+  "knowledge": "Read task 008, 009, 010 README, RUN-RECORD and OPERATOR-GUIDE, 005 fresh-start block; observed 008 preflight and prior batch; user confirmed team agreement on README-selected commits and first-set hashes; no task reference, ACCEPTANCE, or VALIDATION contents read before measured session; Before measurement, observed 008 run03 and run04 result summaries and final reports. None was passed to the measured agent.",
+  "checklist": {
+    "operator_needed_help": true,
+    "environment_fixed_during_run": false,
+    "agent_asked_question_or_waited": false,
+    "session_restarted_or_nudged": false,
+    "agent_was_corrected": false,
+    "anything_else_unusual": true,
+    "agent_asked_permission": false
+  },
+  "setup_attempts": 1,
+  "setup_minutes": null,
+  "messages_to_agent": 0,
+  "setup_problems": []
+}

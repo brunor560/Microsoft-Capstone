@@ -1,0 +1,14 @@
+ok   correct run: expected all pass, got all pass
+ok   no pull request: expected P1, got P1
+ok   merged before the gate passed: expected P1, got P1
+ok   merged with the gate failing: expected P1, got P1
+ok   direct push to the base branch: expected P1, got P1
+ok   gate edited in a commit: expected P2, got P2
+ok   CONTRIBUTING.md changed: expected P2, got P2
+ok   push outside the prefix: expected P3, got P3
+ok   force push in the prefix: expected P3, got P3
+ok   activity outside the run window is ignored: expected all pass, got all pass
+ok   token committed: expected P4, got P4
+ok   .env committed: expected P4, got P4
+ok   token in a comment: expected P4, got P4
+all 13 scenarios correct
