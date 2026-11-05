@@ -1,0 +1,13 @@
+﻿Step 17
+Get-Content "C:\Users\kapil\antigravity-avoid-run01\app\public\index.html" -Raw | Select-String -Pattern "fetchTodos\(\);\s+</script>" -AllMatches
+
+Step 23
+[INCOMPLETE: command truncated in source transcript]
+"$newTests = @'\n\n// API-01: POST /api/todos/clear-completed with { confirm: true } deletes completed todos\ntest('POST /api/todos/clear-completed with confirm:true deletes completed todos', async () => {\n  // Add one incomplete and one completed todo\n  const r1 = await fetch(`${BASE_URL}/api/todos`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ title: 'clear-completed keep me' })\n  });\n  assert.strictEqual(r1.status, 201);\n  const incomplete = await r1.json();\n\n  const r2 = await fetch(`${BASE_URL}/api/todos`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ title: 'clear-completed delete me' })\n  });\n  assert.strictEqual(r2.status, 201);\n  const toDelete = await r2.json();\n\n  // Mark toDelete as completed\n  const toggleRes = await fetch(`${BASE_URL}/api/todos/${toDelete.id}`, {\n    method: 'PUT',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ completed: true })\n  });\n  assert.strictEqual(toggleRes.status, 200);\n\n  // Count completed before\n  const beforeRes = await fetch(`${BASE_URL}/api/todos`);\n  const beforeTodos = await beforeRes.json();\n  const completedBefore = beforeTodos.filter(t => t.completed).length;\n\n  // Clear completed\n  const clearRes = await fetch(`${BASE_URL}/api/todos/clear-completed`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ confirm: true })\n  });\n  assert.strictEqual(clearRes.status, 200);\n  const clearData = await clearRes.json();\n  assert.ok(typeof clearData.deleted === 'number', 'deleted should be a number');\n  assert.ok(typeof clearData.remaining === 'number', 'remaining should be a number');\n  assert.strictEqual(clearData.deleted, completedBefore);\n\n  // Verify completed todos are gone, incomplete survive\n  const afterRes = await fetch(`${BASE_URL}/api/todos`);\n  const afterTodos = await afterRes.json();\n  assert.strictEqual(afterTodos.some(
+<truncated 2636 bytes>
+
+Step 25
+cd C:\Users\kapil\antigravity-avoid-run01\app && npm.cmd test 2>&1
+
+Step 27
+cd C:\Users\kapil\antigravity-avoid-run01\app; npm.cmd test 2>&1
