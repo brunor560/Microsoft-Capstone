@@ -157,13 +157,23 @@ function tokens(json) {
   const input = u.input_tokens_field_sum ?? u.input_tokens;
   const cached = u.cache_read_tokens_field_sum ?? u.cached_input_tokens ?? u.cache_read_input_tokens;
   const output = u.output_tokens_field_sum ?? u.output_tokens;
-  const cacheCreate = u.cache_creation_input_tokens || 0;
+  const cacheCreate = u.cache_creation_tokens_field_sum ?? u.cache_creation_input_tokens ?? 0;
   // Claude reports uncached input separately from cache reads/creations (cache_read_input_tokens),
   // so those are added. OpenAI/Codex cached_input_tokens is already part of input_tokens, so it is not.
-  // (Antigravity's *_field_sum counts are left as input + output, as before: its cache accounting is unverified.)
+  // Snapshot field sums have unverified cache inclusion: display an additive
+  // estimate, but keep it distinct from a provider-reported total and scoring.
   const separateCache = u.cache_read_input_tokens != null;
-  const total = u.total_tokens ?? ((input || 0) + (separateCache ? (cached || 0) + cacheCreate : 0) + (output || 0));
-  return { input, cached, output, total, cost: t.total_cost_usd ?? null, model: t.model || null, turns: t.num_turns ?? null };
+  const provisional = u.total_tokens == null && u.cache_read_tokens_field_sum != null;
+  const total = u.total_tokens ?? (input == null && output == null && cached == null ? null
+    : (input ?? 0) + ((separateCache || provisional) ? (cached ?? 0) + cacheCreate : 0) + (output ?? 0));
+  // Only an explicit recorded scoring policy opts an uncertain total into scoring.
+  const provisionalScoring = provisional && u.scoring_policy === 'cache_reads_separate_provisional'
+    && Number.isFinite(u.provisional_scoring_total) && u.provisional_scoring_total === total;
+  const scoreTotal = provisional ? (provisionalScoring ? total : null) : total;
+  return { input, cached, output, cacheCreate, total, provisional, scoreTotal, provisionalScoring,
+    accounting: provisional ? 'Cache reads and creations assumed additional to input; inclusion unverified.'
+      : separateCache ? 'Cache reads and creations added to uncached input.' : 'Reported total, or input plus output; cached input not added again.',
+    cost: t.total_cost_usd ?? null, model: t.model || null, turns: t.num_turns ?? null };
 }
 
 // Model and reasoning effort, from whichever run record names them
