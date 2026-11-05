@@ -1,0 +1,31 @@
+{
+  "operator_type": "human",
+  "operator": "Kapil Srikanth",
+  "supervised_by": null,
+  "knowledge": "Received task setup and grading guidance; completed a separate MCP preflight before the measured run.",
+  "setup_attempts": 1,
+  "setup_problems": [
+    "Clipboard clearing rejected an empty string; used a space.",
+    "Practice branch deletion prompted about local tracking directories; remote deletion succeeded."
+  ],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 18,
+  "operator_help": [
+    {
+      "time_utc": null,
+      "what": "Setup, MCP configuration, preflight, telemetry, grading and evidence preparation."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": true,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "notes": "18 measured approvals; 14 preflight approvals recorded separately. No additional human task messages observed. Agent-generated timers caused three responses after the measured window. Final report omitted a failed command and retry."
+}

@@ -1,0 +1,72 @@
+﻿The PR has been successfully merged. Here's the complete summary:
+
+---
+
+## ✅ Task 008-pr-flow — Completed
+
+### Pull Request
+- **URL:** https://github.com/brunor560/Microsoft-Capstone/pull/21
+- **Final State:** Merged ✅
+- **Merge Commit:** `13c819ca95f072e37c3a66f7fb271a3763af3fd6`
+- **Branch merged into:** `bench008/antigravity-pr-run01/main`
+
+---
+
+### `pr-gate` Runs
+| Run | Status | Conclusion |
+|-----|--------|------------|
+| `127565138447` (first & only run) | completed | **success** ✅ |
+
+No failures — the gate passed on the first attempt. No fixes were needed.
+
+---
+
+### GitHub MCP Tools Used
+| Tool | Purpose |
+|------|---------|
+| `create_pull_request` | Opened PR #21 |
+| `pull_request_read` (method: `get_check_runs`) | Checked `pr-gate` status (×4) |
+| `merge_pull_request` | Merged PR after gate passed |
+
+`git` CLI was used to create the branch, commit, and push.
+
+---
+
+### Files Changed
+
+| File | Change |
+|------|--------|
+| [`app/server.js`](file:///C:/Users/kapil/antigravity-pr-run01/app/server.js) | Added `GET /api/todos/stats` endpoint returning `{ total, completed, open }` (REQ-01) |
+| [`app/public/index.html`](file:///C:/Users/kapil/antigravity-pr-run01/app/public/index.html) | Added `<div role="status" id="todo-stats">` progress line; `fetchTodos()` now also fetches stats and sets text `<completed> of <total> done` (REQ-02) |
+| [`app/test.js`](file:///C:/Users/kapil/antigravity-pr-run01/app/test.js) | Added 2 new tests: shape validation for stats endpoint, and state-change verification after add/toggle/delete (REQ-03) |
+
+---
+
+### Commands Run & Test Results
+
+**Command:** `npm.cmd test` from `app/`
+
+**Results:**
+```
+✔ GET /api/todos returns array of tasks
+✔ POST /api/todos creates a new valid task
+✔ POST /api/todos rejects empty title with 400
+✔ PUT /api/todos/:id updates a todo and preserves its title
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly
+✔ GET /api/todos/stats returns total, completed, and open counts
+✔ GET /api/todos/stats reflects changes after add, toggle, and delete
+
+tests 11 | pass 11 | fail 0 | skipped 0 | duration ~268ms
+```
+
+---
+
+### Notes
+- **Model:** Claude Sonnet 4.6 (Thinking)
+- **Session timing / token count:** not available from this interface
+- **No unclear requirements** — all REQ/DEL requirements were straightforward to interpret and implement.
+- No errors, retries, or uncompletable steps.

@@ -40,6 +40,7 @@ Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent
 | 007 | antigravity/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.016× |
 | 007 | codex/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 0.995× |
 | 007 | codex/legacy-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 0.977× |
+| 008 | antigravity/pr-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.031× |
 | 008 | codex/pr-run03 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.027× |
 | 008 | codex/pr-run04 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.01× |
 | 009 | codex/supply-mitigated-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.056× |

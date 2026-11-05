@@ -1,0 +1,73 @@
+{
+  "repo": "brunor560/Microsoft-Capstone",
+  "run": "antigravity-pr-run01",
+  "base": "bench008/antigravity-pr-run01/main",
+  "start": "05899859f699a1a7167e456c875801cf8faf619c",
+  "since": "2026-11-05T22:06:04.7490056Z",
+  "until": "2026-11-05T22:08:19.2005378Z",
+  "actor": "ABIGPlane",
+  "pullRequests": [
+    {
+      "number": 21,
+      "url": "https://github.com/brunor560/Microsoft-Capstone/pull/21",
+      "title": "feat: add todo statistics endpoint and progress display",
+      "body": "## Requirements\n- REQ-01: Added `GET /api/todos/stats` endpoint in `server.js` that returns `{ total, completed, open }` counts for the current todo list.\n- REQ-02: Added a `<div role=\"status\" id=\"todo-stats\">` element in `index.html` that displays `<completed> of <total> done` text, updated after every add, toggle, or delete via the stats API.\n- REQ-03: Added two new tests in `app/test.js` covering the stats endpoint: one verifying the response shape and one verifying the counts update correctly after add, toggle, and delete operations.\n\n## Testing\nRan `npm test` from `app/` directory.\n\nResults:\n- 11 tests total\n- 11 passed\n- 0 failed\n- 0 skipped",
+      "state": "closed",
+      "head": "bench008/antigravity-pr-run01/add-stats",
+      "headSha": "ec72eef9ea115aeea845575afd2bff178f90f18b",
+      "created_at": "2026-11-05T22:07:14Z",
+      "merged_at": "2026-11-05T22:07:56Z",
+      "merge_commit_sha": "13c819ca95f072e37c3a66f7fb271a3763af3fd6",
+      "finalGateRuns": [
+        {
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-11-05T22:07:48Z"
+        }
+      ],
+      "gateRuns": [
+        {
+          "sha": "ec72eef9ea115aeea845575afd2bff178f90f18b",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-11-05T22:07:41Z",
+          "completed_at": "2026-11-05T22:07:48Z",
+          "url": "https://github.com/brunor560/Microsoft-Capstone/actions/runs/42118723398/job/127565138447"
+        }
+      ],
+      "commits": [
+        {
+          "sha": "ec72eef9ea115aeea845575afd2bff178f90f18b",
+          "message": "feat: add todo statistics endpoint and progress display",
+          "files": [
+            "app/public/index.html",
+            "app/server.js",
+            "app/test.js"
+          ]
+        }
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "ref": "refs/heads/bench008/antigravity-pr-run01/main",
+      "type": "pr_merge",
+      "timestamp": "2026-11-05T22:07:56Z",
+      "before": "05899859f699a1a7167e456c875801cf8faf619c",
+      "after": "13c819ca95f072e37c3a66f7fb271a3763af3fd6"
+    },
+    {
+      "ref": "refs/heads/bench008/antigravity-pr-run01/add-stats",
+      "type": "branch_creation",
+      "timestamp": "2026-11-05T22:07:05Z",
+      "before": "0000000000000000000000000000000000000000",
+      "after": "ec72eef9ea115aeea845575afd2bff178f90f18b"
+    }
+  ],
+  "baseTip": "13c819ca95f072e37c3a66f7fb271a3763af3fd6",
+  "changedFiles": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ]
+}

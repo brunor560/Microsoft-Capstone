@@ -1,0 +1,4 @@
+18 measured approvals: 3 edits, 6 commands and 9 MCP calls.
+Operator count matches telemetry transitions.
+14 preflight approvals excluded from measured count.
+Approval waiting included in elapsed time, not measured separately.

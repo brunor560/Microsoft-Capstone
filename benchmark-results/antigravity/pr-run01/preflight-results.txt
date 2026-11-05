@@ -1,0 +1,6 @@
+preflight=PASS
+pr=https://github.com/brunor560/Microsoft-Capstone/pull/20
+final_state=closed; not merged
+operator_reported_approvals=14
+git_push=PASS
+mcp_read_create_close=PASS

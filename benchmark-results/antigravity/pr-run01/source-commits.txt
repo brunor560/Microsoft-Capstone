@@ -1,0 +1,4 @@
+start_commit=05899859f699a1a7167e456c875801cf8faf619c
+protocol_commit=31887c6e23cbbccbfe009cd8919526872b5afd5a
+base_branch=bench008/antigravity-pr-run01/main
+graded_commit=13c819ca95f072e37c3a66f7fb271a3763af3fd6
