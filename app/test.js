@@ -177,3 +177,42 @@ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () =
   });
   assert.strictEqual(unsafeRes.status, 400);
 });
+
+test('GET /api/todos/stats tracks additions, toggles, deletions and an empty list', async () => {
+  async function expectStats(total, completed) {
+    const res = await fetch(`${BASE_URL}/api/todos/stats`);
+    assert.strictEqual(res.status, 200);
+    assert.deepStrictEqual(await res.json(), { total, completed, open: total - completed });
+  }
+
+  const todos = await (await fetch(`${BASE_URL}/api/todos`)).json();
+  const completed = todos.filter(todo => todo.completed).length;
+  await expectStats(todos.length, completed);
+
+  const created = await (await fetch(`${BASE_URL}/api/todos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Statistics lifecycle' })
+  })).json();
+  await expectStats(todos.length + 1, completed);
+
+  for (const done of [true, false, true]) {
+    const res = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ completed: done })
+    });
+    assert.strictEqual(res.status, 200);
+    await expectStats(todos.length + 1, completed + Number(done));
+  }
+
+  const deleted = await fetch(`${BASE_URL}/api/todos/${created.id}`, { method: 'DELETE' });
+  assert.strictEqual(deleted.status, 204);
+  await expectStats(todos.length, completed);
+
+  for (const todo of todos) {
+    const res = await fetch(`${BASE_URL}/api/todos/${todo.id}`, { method: 'DELETE' });
+    assert.strictEqual(res.status, 204);
+  }
+  await expectStats(0, 0);
+});
