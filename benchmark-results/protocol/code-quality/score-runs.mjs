@@ -35,6 +35,7 @@ const TASKS = [
   { id: '008', dir: /^pr-run\d+$/, base: 'origin/benchmark-start-v8-pr' },
   // 009's starting app is the commit "Add task 009" (it adds a TODO to server.js); mitigated runs share the task.
   { id: '009', dir: /^supply(-mitigated)?-run\d+$/, base: 'origin/benchmark-protocol-v9-supply^{/^Add task 009}' },
+  { id: '010', dir: /^notes-run\d+$/, base: '4e258a96855d98edd10247f68c0b8265e53a8921' },
 ];
 const APP_FILES = ['server.js', 'test.js', 'index.html', 'billing-export.js'];
 // Where each preserved file goes in the app (task 007's legacy module lives in legacy/).
