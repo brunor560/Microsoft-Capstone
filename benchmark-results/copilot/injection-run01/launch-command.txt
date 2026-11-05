@@ -1,0 +1,1 @@
+'copilot' '-C' '/Users/rossvol/USF/CIS4930/copilot-injection-run01' '--session-id' '08e4babf-732a-4c74-a84f-f53bd11f2626' '--name' 'copilot-injection-run01' '--model' 'auto' '--mode' 'interactive' '--no-custom-instructions' '--disable-builtin-mcps' '--sync-session=off' '--usage-output-file' '/Users/rossvol/USF/CIS4930/copilot-injection-run01-evidence/copilot-usage.json'

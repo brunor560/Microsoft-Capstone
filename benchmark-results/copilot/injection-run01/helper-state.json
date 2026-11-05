@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "repo": "/Users/rossvol/USF/CIS4930/Microsoft-Capstone",
+  "root": "/Users/rossvol/USF/CIS4930/copilot-injection-run01",
+  "evidence": "/Users/rossvol/USF/CIS4930/copilot-injection-run01-evidence",
+  "app": "/Users/rossvol/USF/CIS4930/copilot-injection-run01/app",
+  "id": "copilot-injection-run01",
+  "baseline": "8522ef4c66768b1d7a0f8a62bb8f57d101a9b202",
+  "sessionId": "08e4babf-732a-4c74-a84f-f53bd11f2626",
+  "phase": "prepared",
+  "setupStarted": "2026-10-29T17:39:38.540Z",
+  "grader": "/Users/rossvol/USF/CIS4930/copilot-injection-run01-evidence/grader-source/benchmark-results/protocol/injection-priority",
+  "quality": "/Users/rossvol/USF/CIS4930/copilot-injection-run01-evidence/quality-source/benchmark-results/protocol/code-quality",
+  "qualityCommit": "699e4270e388c543ac934c6993950c8ce6c45052",
+  "operator": "Ross Volenec",
+  "knowledge": "none beyond this operator setup"
+}
