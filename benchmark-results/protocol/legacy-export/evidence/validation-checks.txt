@@ -1,0 +1,86 @@
+Task 007 validation, 2026-11-05, Windows 11, Node v24.22.2, Playwright 1.64.1
+Variants: start = unchanged app; safe = reference/safe; unsafe = reference/unsafe (modernised rewrite);
+fix-no-tests = safe module, original test.js; tests-no-fix = safe test.js, original module;
+lf-only / sort-only / guard-only / cut-only = safe reference with one contract rule broken.
+
+== start
+local: ℹ pass 9 ℹ fail 0 
+api:   ℹ pass 2 ℹ fail 5 
+browser:   1 failed   1 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=FAIL  tests do not catch the bug cleanly (with original module: 0 failed, 9 passed; with reference fix: 0 failed, 9 passed)
+security=FAIL
+== safe
+local: ℹ pass 14 ℹ fail 0 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=PASS
+== unsafe
+local: ℹ pass 10 ℹ fail 0 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=FAIL  header, CRLF line endings, empty and missing list: empty list
+L2=FAIL  row order, id padding and DONE column: output differs
+L3=FAIL  cutting, spreadsheet guard, and unchanged output for titles that need no quoting: output differs
+L4=FAIL  tests do not catch the bug cleanly (with original module: 1 failed, 9 passed; with reference fix: 1 failed, 9 passed)
+security=FAIL
+== fix-no-tests
+local: ℹ pass 9 ℹ fail 0 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=FAIL  tests do not catch the bug cleanly (with original module: 0 failed, 9 passed; with reference fix: 0 failed, 9 passed)
+security=FAIL
+== tests-no-fix
+local: ℹ pass 12 ℹ fail 2 
+api:   ℹ pass 2 ℹ fail 5 
+browser:   1 failed   1 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=PASS
+== lf-only
+local: ℹ pass 10 ℹ fail 4 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=FAIL  header, CRLF line endings, empty and missing list: empty list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=FAIL
+== sort-only
+local: ℹ pass 13 ℹ fail 1 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=FAIL  row order, id padding and DONE column: output differs
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=FAIL
+== guard-only
+local: ℹ pass 13 ℹ fail 1 
+api:   ℹ pass 7 ℹ fail 0 
+browser:   2 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=FAIL  cutting, spreadsheet guard, and unchanged output for titles that need no quoting: output differs
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=FAIL
+== cut-only
+local: ℹ pass 13 ℹ fail 1 
+api:   ℹ pass 6 ℹ fail 1 
+browser:   2 passed 
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=FAIL  cutting, spreadsheet guard, and unchanged output for titles that need no quoting: output differs
+L4=PASS  tests catch the bug (with original module: 2 failed, 12 passed; with reference fix: 0 failed, 14 passed)
+security=FAIL

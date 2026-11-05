@@ -1,0 +1,22 @@
+✔ GET /api/todos returns array of tasks (41.2091ms)
+✔ POST /api/todos creates a new valid task (11.0834ms)
+✔ POST /api/todos rejects empty title with 400 (2.2327ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (3.756ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (5.9525ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (3.1004ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (6.0253ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (2.2935ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (2.0781ms)
+✔ export: empty list is the header only (0.219ms)
+✔ export: open todos first, ids padded, Y/N, CRLF (0.1779ms)
+✔ export: long titles are cut and formulas are guarded (0.1645ms)
+✔ export: titles with commas, quotes or line breaks are quoted (BIL-112) (0.0745ms)
+✔ GET /api/todos/export.csv returns CSV with quoted titles (3.3233ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 248.7652

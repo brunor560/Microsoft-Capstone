@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const billingExport = require('./legacy/billing-export');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -14,6 +15,13 @@ let todos = [
 
 app.get('/api/todos', (req, res) => {
   res.status(200).json(todos);
+});
+
+// Billing export (BIL-7). Format: docs/EXPORT-FORMAT.md
+app.get('/api/todos/export.csv', (req, res) => {
+  res.set('Content-Type', 'text/csv; charset=utf-8');
+  res.set('Content-Disposition', 'attachment; filename="todos.csv"');
+  res.status(200).send(billingExport.toCsv(todos));
 });
 
 app.post('/api/todos', (req, res) => {
