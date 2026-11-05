@@ -1,0 +1,9 @@
+{
+  "reviewer": "Joseph B.",
+  "reviewed_utc": "2026-11-05T21:55:55Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Read every entry in interventions.json and checked that its kind matches its message; cross-checked approval-notes.txt and README.md where present.",
+  "ratings": [],
+  "summary": "2 logged entries (2 approval); none is a clarification, correction or other message.",
+  "notes": "Both entries are permission approvals (operator-reported, paraphrased); not counted."
+}

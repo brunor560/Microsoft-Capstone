@@ -1,0 +1,9 @@
+{
+  "reviewer": "Joseph B.",
+  "reviewed_utc": "2026-11-05T21:55:55Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Read every entry in interventions.json and checked that its kind matches its message; cross-checked approval-notes.txt and README.md where present.",
+  "ratings": [],
+  "summary": "14 logged entries (14 approval); none is a clarification, correction or other message.",
+  "notes": "interventions.json is mis-serialised: its 14 entries are fragments (\"0\", \"p\", \"1\") of 7 approval records. approval-notes.txt and README.md, from the screen recording, record 7 permission approvals and 0 corrective prompts. Rated on that basis."
+}
