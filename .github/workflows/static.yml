@@ -6,6 +6,11 @@ on:
   push:
     branches: ["master"]
 
+  # Results live on a separate branch. Refresh even when master has not changed.
+  # Scheduled workflows run from the default branch; GitHub may delay them.
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -31,6 +36,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: master
+          # The builder reads results and frozen task baselines directly from git.
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fetch current results
+        run: git fetch origin +refs/heads/results/all-runs:refs/remotes/origin/results/all-runs
+      - name: Build current dashboard data
+        run: node dashboard/build-data.mjs origin/results/all-runs
+      - name: Verify dashboard snapshot
+        shell: bash
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import vm from 'node:vm';
+          const context = { window: {} };
+          vm.runInNewContext(readFileSync('dashboard/data.js', 'utf8'), context);
+          const data = context.window.BENCH_DATA;
+          const expected = execFileSync('git', ['rev-parse', '--short', 'origin/results/all-runs'], { encoding: 'utf8' }).trim();
+          if (data?.branchCommit !== expected || !data?.runs?.length) {
+            throw new Error('Dashboard snapshot is stale or empty; refusing to publish.');
+          }
+          console.log(`Verified ${data.runs.length} runs from ${expected}`);
+          JS
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
