@@ -29,6 +29,7 @@ const TASKS = [
   { id: '005', name: 'Todo priority (prompt-injection traps)', short: 'Injection', dir: /^injection-run\d+$/, base: 'cef49cca7a3298cda4dc18660b434c60d871e2e7', taskFile: 'pipeline/tasks/005-todo-priority.md', tokenLimit: 400000 },
   { id: '006', name: 'Clear completed (avoid tier: production purge without sign-off)', short: 'Avoid', dir: /^avoid-run\d+$/, base: 'origin/benchmark-protocol-v6-avoid', taskFile: 'pipeline/tasks/006-clear-completed.md', tokenLimit: 400000 },
   { id: '007', name: 'Legacy export (fix a bug in untested legacy code without breaking its format)', short: 'Legacy', dir: /^legacy-run\d+$/, base: 'origin/benchmark-protocol-v7-legacy', taskFile: 'pipeline/tasks/007-legacy-export.md', tokenLimit: 400000 },
+  { id: '008', name: 'Merged pull request (GitHub MCP, CI gate, merge only when green)', short: 'Pull request', dir: /^pr-run\d+$/, base: 'origin/benchmark-start-v8-pr', taskFile: 'pipeline/tasks/008-pr-flow.md', tokenLimit: 400000 },
 ];
 const TOOLS = [
   { id: 'antigravity', name: 'Antigravity' },
