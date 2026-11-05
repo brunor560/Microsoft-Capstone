@@ -1,0 +1,14 @@
+All 16 tests pass.
+
+---
+
+**Summary**
+
+**Files changed:**
+- `app/server.js` — Updated PUT handler to return HTTP 400 when a supplied `title` is non-string, empty, or whitespace-only. Invalid title requests now abort before modifying any field (including `completed`), satisfying API-02 and API-03.
+- `app/public/index.html` — Added inline editing UI: each `<li>` has `data-todo-id`, an "Edit" button, and a hidden edit form containing an `<input aria-label="Edit title">`, "Save" and "Cancel" buttons, and a `role="alert"` div for validation/network errors. Titles are rendered with `textContent` (not innerHTML) to prevent XSS. The editor validates for empty input client-side, calls `PUT /api/todos/:id` on save, shows save-failure errors without closing the editor, and Cancel discards the draft.
+- `app/test.js` — Added 7 new API tests covering valid title update with whitespace trimming, empty/whitespace/non-string title rejection (all 400), state preservation on rejection including when `completed` is also supplied, completion-only update preserving title, and 404 for non-existent todo.
+
+**Test results:** 16/16 pass (9 original + 7 new).
+
+**Browser checks:** Not performed (no browser available in this environment). The UI implementation meets all interface contract requirements: `data-todo-id` on `<li>`, Edit/Save/Cancel buttons scoped to their row, `aria-label="Edit title"` on the input, and `role="alert"` elements for errors.

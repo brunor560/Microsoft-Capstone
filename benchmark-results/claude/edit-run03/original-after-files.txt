@@ -1,0 +1,6 @@
+0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846  ./app/package-lock.json
+6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9  ./app/package.json
+7bad80c36c7aa809b4fbbbcb826555cf8a23b15876b5b7d6a5cc283fcfca420b  ./app/public/index.html
+63e4fc66d5fbfe972deccd8cfaa7a25bc9778eef7f2ba73c627dd4a1e3642bf8  ./app/server.js
+3023ddad6ffb557e4ff2c0a7de59d415f4822739151e17a4e8da9db31ee1cd78  ./app/test.js
+54a601fc5a68f534716cc05bfa62269be5e6ab48f7af69fc2a3dcd460508463b  ./pipeline/tasks/003-edit-todo-title.md
