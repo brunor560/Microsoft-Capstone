@@ -203,6 +203,9 @@ function modelInfo(dir) {
   }
   // Drop sentence punctuation picked up from README prose ("Model: X.") so the same model groups together.
   if (model) model = model.replace(/[\s.,;:]+$/, '');
+  if (model && /^claude-sonnet-4[-.]6(?:$|\s|\()/i.test(model)) {
+    model = 'Claude Sonnet 4.6';
+  }
   if (model) model = PRETTY[model] || model;
   const all = srcs.join('\n');
   const e = all.match(/reasoning[^\n]{0,20}?\b(low|medium|high|xhigh)\b/i) || all.match(/\b(low|medium|high)\b[^\n]{0,12}reasoning/i) || all.match(/Reasoning effort:\s*(\w+)/i) || all.match(/\((Thinking)\)/);
