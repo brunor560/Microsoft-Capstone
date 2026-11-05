@@ -69,8 +69,11 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Publish only the dashboard, so it is the site root
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: './dashboard'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
