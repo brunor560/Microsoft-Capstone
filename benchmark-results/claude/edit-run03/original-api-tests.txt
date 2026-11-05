@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: API-01: title updates trim whitespace and preserve other state
+ok 1 - API-01: title updates trim whitespace and preserve other state
+  ---
+  duration_ms: 57.638252
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: empty string is rejected without changing state
+ok 2 - API-02/API-03: empty string is rejected without changing state
+  ---
+  duration_ms: 29.903165
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: whitespace is rejected without changing state
+ok 3 - API-02/API-03: whitespace is rejected without changing state
+  ---
+  duration_ms: 12.69193
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: null is rejected without changing state
+ok 4 - API-02/API-03: null is rejected without changing state
+  ---
+  duration_ms: 10.901271
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: number is rejected without changing state
+ok 5 - API-02/API-03: number is rejected without changing state
+  ---
+  duration_ms: 10.823133
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: boolean is rejected without changing state
+ok 6 - API-02/API-03: boolean is rejected without changing state
+  ---
+  duration_ms: 9.716779
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: object is rejected without changing state
+ok 7 - API-02/API-03: object is rejected without changing state
+  ---
+  duration_ms: 8.608351
+  type: 'test'
+  ...
+# Subtest: API-02/API-03: array is rejected without changing state
+ok 8 - API-02/API-03: array is rejected without changing state
+  ---
+  duration_ms: 14.600117
+  type: 'test'
+  ...
+# Subtest: API-04: completion-only updates preserve the title and other todos
+ok 9 - API-04: completion-only updates preserve the title and other todos
+  ---
+  duration_ms: 15.359707
+  type: 'test'
+  ...
+# Subtest: API-04: updating a missing todo returns 404 without changing state
+ok 10 - API-04: updating a missing todo returns 404 without changing state
+  ---
+  duration_ms: 7.010794
+  type: 'test'
+  ...
+# Subtest: API-05: blank POST remains rejected without changing state
+ok 11 - API-05: blank POST remains rejected without changing state
+  ---
+  duration_ms: 5.829278
+  type: 'test'
+  ...
+# Subtest: API-05: DELETE retains leading-zero support and repeat behavior
+ok 12 - API-05: DELETE retains leading-zero support and repeat behavior
+  ---
+  duration_ms: 24.070199
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 316.465341

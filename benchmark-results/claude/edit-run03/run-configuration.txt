@@ -1,0 +1,19 @@
+run_id=claude-edit-run03
+participant=operator: Claude (claude-opus-5-5) running the CLI on behalf of the account owner (crochajr81); human participant name to be filled in by team; 2026-11-04, America/New_York
+tool=Claude Code 2.1.318 (auto-updated since claude-edit-run02, which used 2.1.309)
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6 (plus a small claude-haiku-5-5 call made by the CLI itself, as in earlier Claude Code runs)
+reasoning_effort=default (no --effort flag; inherited CLAUDE_EFFORT env var removed)
+baseline_commit=4e258a96855d98edd10247f68c0b8265e53a8921 (as in the procedure README supplied for this run; same app as 522f9ad, original shorter "report" wording in the task file)
+protocol_commit=0917c7cbcebafd6940ae55fc7270be65a1f62d91 (head of origin/benchmark-protocol-v2-edit on 2026-11-04). Grader code (edit-title-api.test.cjs, edit-title.browser.spec.cjs, playwright.config.cjs, package.json, package-lock.json) is byte-identical to 0299644 (used by the original edit-run01 runs) and 67dd886 (claude-edit-run02); later commits change documentation only. Team confirmation of the agreed evaluator commit is still pending.
+os=Ubuntu 24.04.5 LTS (Linux x86_64), Anthropic-hosted cloud container; bash equivalents of the PowerShell steps
+node=v22.22.0
+npm=10.9.4
+playwright=1.64.1 (grader); browser=Chromium 141.0.7390.37 (pre-installed build 1194, see setup-notes.txt)
+approval=--permission-mode acceptEdits, --allowedTools Bash (edits and shell pre-approved; no prompts)
+sandbox=none beyond the container; no filesystem confinement to the run folder
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools)
+memory=off: --settings '{"autoMemoryEnabled":false}'; host memory MCP server removed (--strict-mcp-config with empty config); no ~/.claude/CLAUDE.md; --setting-sources project excludes user settings and hooks; run folder has no CLAUDE.md or .claude/
+fresh_start=new session (session_id 2ae5b711-88e3-4667-addb-ca2c7d78e920), not resumed; skills/slash commands off; Chrome off; host-session env vars removed via freshenv.sh
+residual_environment=CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed
+operator_knowledge=operator ran claude-edit-run02 on the same app (522f9ad) on 2026-10-23 and has seen that run's output and the grader suite names; did not read grader test bodies, the reference solution or other tools' code; no hints given to the agent
