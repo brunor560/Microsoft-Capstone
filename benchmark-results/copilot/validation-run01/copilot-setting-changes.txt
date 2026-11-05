@@ -1,0 +1,4 @@
+Set memory to false in settings.json.
+Set disableAllHooks to true in settings.json.
+Set ide.autoConnect to false in settings.json.
+Set defaultPermissionMode to "manual" in settings.json.

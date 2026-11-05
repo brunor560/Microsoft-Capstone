@@ -1,0 +1,4 @@
+git status --short && printf '\nTop-level files:\n' && ls -la
+pwd && ls -la
+git -C app status --short; git -C app rev-parse --show-toplevel
+cd app && npm test

@@ -1,0 +1,7 @@
+start_utc=2026-11-05T16:56:33Z
+end_utc=2026-11-05T16:57:22Z
+elapsed_seconds=49
+method=Operator recorded UTC and epoch in a second terminal immediately before prompt submission and after final response; terminal switching and approval waiting included.
+approval_wait_seconds=unknown
+transcript_prompt_to_final_approximate_seconds=41
+note=Transcript offsets are rounded. Session setup and export are excluded from the 49-second operator interval. Tool-reported API duration is a separate metric.

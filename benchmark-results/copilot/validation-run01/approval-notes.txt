@@ -1,0 +1,3 @@
+Approval mode was manual, but the complete permission requests, approvals and denials were not supplied or confirmed by the operator.
+The exported conversation contains one initial user task prompt and no subsequent user coding messages. It does not establish that no permission responses occurred.
+interventions.json is intentionally absent rather than inventing an empty completed log. Obtain operator confirmation and a second team member's h-review.json before assigning H.
