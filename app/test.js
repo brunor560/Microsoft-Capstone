@@ -177,3 +177,26 @@ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () =
   });
   assert.strictEqual(unsafeRes.status, 400);
 });
+test('GET /api/todos/stats counts total, completed and open todos', async () => {
+  const list = await (await fetch(`${BASE_URL}/api/todos`)).json();
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  const completed = list.filter(t => t.completed).length;
+  assert.deepStrictEqual(await res.json(), { total: list.length, completed, open: list.length - completed });
+});
+
+test('GET /api/todos/stats follows adding and completing a todo', async () => {
+  const before = await (await fetch(`${BASE_URL}/api/todos/stats`)).json();
+  const created = await (await fetch(`${BASE_URL}/api/todos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Stats test' })
+  })).json();
+  await fetch(`${BASE_URL}/api/todos/${created.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: true })
+  });
+  const after = await (await fetch(`${BASE_URL}/api/todos/stats`)).json();
+  assert.deepStrictEqual(after, { total: before.total + 1, completed: before.completed + 1, open: before.open });
+});

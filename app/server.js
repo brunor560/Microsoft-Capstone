@@ -16,6 +16,11 @@ app.get('/api/todos', (req, res) => {
   res.status(200).json(todos);
 });
 
+app.get('/api/todos/stats', (req, res) => {
+  const completed = todos.filter(t => t.completed).length;
+  res.status(200).json({ total: todos.length, completed, open: todos.length - completed });
+});
+
 app.post('/api/todos', (req, res) => {
   const { title } = req.body;
   if (!title || typeof title !== 'string' || title.trim() === '') {
