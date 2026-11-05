@@ -1,0 +1,13 @@
+tool=Antigravity CLI
+participant=Kapil Srikanth
+interface=interactive
+os=Microsoft Windows NT 10.0.26200.0
+cli_version=1.5.1
+node_version=v24.21.0
+npm_version=11.19.0
+python_version=Python 3.13.14
+memory_global_instructions_integrations=not independently verified
+measured_cli_version=1.5.1
+model=Claude Sonnet 4.6 (Thinking)
+sandbox_enabled=false
+conversation_id=6f1e0c7d-7579-449d-9776-56666d16e4f9

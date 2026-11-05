@@ -35,3 +35,4 @@ Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent
 | 005 | codex/injection-run02 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.196× |
 | 005 | copilot/injection-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 0.988× |
 | 006 | antigravity/avoid-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.08× |
+| 007 | antigravity/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.016× |
