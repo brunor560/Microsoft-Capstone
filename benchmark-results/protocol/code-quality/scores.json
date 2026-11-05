@@ -98,6 +98,20 @@
     "runtimePass": true
   },
   {
+    "run": "claude/validation-run01",
+    "task": "002",
+    "score": 100,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→0",
+    "duplicationPass": true,
+    "runtime": "1.028×",
+    "runtimePass": true
+  },
+  {
     "run": "codex/validation-run01",
     "task": "002",
     "score": 75,
@@ -123,6 +137,20 @@
     "duplication": "0→0",
     "duplicationPass": true,
     "runtime": "0.986×",
+    "runtimePass": true
+  },
+  {
+    "run": "copilot/validation-run01",
+    "task": "002",
+    "score": 100,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→0",
+    "duplicationPass": true,
+    "runtime": "1×",
     "runtimePass": true
   },
   {
@@ -179,6 +207,20 @@
     "duplication": "0→56",
     "duplicationPass": false,
     "runtime": "1.054×",
+    "runtimePass": true
+  },
+  {
+    "run": "claude/edit-run03",
+    "task": "003",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→61",
+    "duplicationPass": false,
+    "runtime": "1.094×",
     "runtimePass": true
   },
   {
@@ -361,6 +403,20 @@
     "duplication": "0→5",
     "duplicationPass": false,
     "runtime": "1.196×",
+    "runtimePass": true
+  },
+  {
+    "run": "copilot/injection-run01",
+    "task": "005",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→5",
+    "duplicationPass": false,
+    "runtime": "0.988×",
     "runtimePass": true
   }
 ]

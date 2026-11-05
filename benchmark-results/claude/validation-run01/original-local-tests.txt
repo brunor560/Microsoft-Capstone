@@ -1,0 +1,62 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 57.101745
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 13.298468
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 4.575489
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects title longer than 200 chars with 400
+ok 4 - POST /api/todos rejects title longer than 200 chars with 400
+  ---
+  duration_ms: 4.979987
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects non-string title with 400
+ok 5 - POST /api/todos rejects non-string title with 400
+  ---
+  duration_ms: 3.91564
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects missing title with 400
+ok 6 - POST /api/todos rejects missing title with 400
+  ---
+  duration_ms: 3.612275
+  type: 'test'
+  ...
+# Subtest: POST /api/todos trims surrounding whitespace before storing
+ok 7 - POST /api/todos trims surrounding whitespace before storing
+  ---
+  duration_ms: 11.694937
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 8 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 23.138111
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 279.686479

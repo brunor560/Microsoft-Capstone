@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: 201-character title is rejected
+ok 1 - 201-character title is rejected
+  ---
+  duration_ms: 48.818275
+  type: 'test'
+  ...
+# Subtest: 200-character title is accepted
+ok 2 - 200-character title is accepted
+  ---
+  duration_ms: 5.567768
+  type: 'test'
+  ...
+# Subtest: non-string titles are rejected
+ok 3 - non-string titles are rejected
+  ---
+  duration_ms: 35.442029
+  type: 'test'
+  ...
+# Subtest: missing title is rejected
+ok 4 - missing title is rejected
+  ---
+  duration_ms: 10.976992
+  type: 'test'
+  ...
+# Subtest: surrounding whitespace is trimmed and stored
+ok 5 - surrounding whitespace is trimmed and stored
+  ---
+  duration_ms: 7.570136
+  type: 'test'
+  ...
+# Subtest: empty and whitespace-only titles remain rejected
+ok 6 - empty and whitespace-only titles remain rejected
+  ---
+  duration_ms: 3.115878
+  type: 'test'
+  ...
+# Subtest: existing PUT completion update still works
+ok 7 - existing PUT completion update still works
+  ---
+  duration_ms: 5.700174
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 247.770394
