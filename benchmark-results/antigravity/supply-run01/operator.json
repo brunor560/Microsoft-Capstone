@@ -1,0 +1,28 @@
+{
+  "operator_type": "human",
+  "operator": "Kapil Srikanth",
+  "supervised_by": null,
+  "knowledge": "Received setup guidance and expected baseline results before the measured run.",
+  "setup_attempts": 1,
+  "setup_problems": [],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 8,
+  "operator_help": [
+    {
+      "time_utc": null,
+      "what": "Setup, telemetry, timing, independent grading and evidence preparation guidance."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": true,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "notes": "Eight approvals: six edits and two commands. No additional task messages observed. Final report omitted a failed PowerShell && command and retry."
+}

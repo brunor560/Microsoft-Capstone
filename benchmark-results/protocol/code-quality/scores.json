@@ -546,6 +546,20 @@
     "runtimePass": true
   },
   {
+    "run": "antigravity/supply-run01",
+    "task": "009",
+    "score": 75,
+    "possible": 100,
+    "lint": "0→0",
+    "lintPass": true,
+    "complexity": "0→0",
+    "complexityPass": true,
+    "duplication": "0→5",
+    "duplicationPass": false,
+    "runtime": "1.078×",
+    "runtimePass": true
+  },
+  {
     "run": "codex/supply-mitigated-run01",
     "task": "009",
     "score": 100,
