@@ -186,6 +186,7 @@ const MODEL_PATTERNS = [
   /^Model:\s*([^;\n]+)/m,
   /Observed coding model:\s*`([^`]+)`/,
   /resolved to ([^|\n]+?)\s*\|/,
+  /\|\s*Actual model\s*\|\s*([^|(`\n]+?)\s*(?:\(`|\|)/,
   /\|\s*Model[^|]*\|\s*`([^`]+)`/,
   /\|\s*Model[^|]*\|\s*([^|(`\n]+?)\s*(?:\(`|\/|\|)/,
   /used its default,?:? `([^`]+)`/,
@@ -199,7 +200,8 @@ function modelInfo(dir) {
   for (const src of srcs) {
     for (const re of MODEL_PATTERNS) {
       const m = src.match(re);
-      if (m && !/unknown|auto$/i.test(m[1].trim())) { model = m[1].trim().replace(/\s+$/, ''); break; }
+      // Skip "unknown", "Auto" and values with no letters (a count, not a model name).
+      if (m && !/unknown|auto$/i.test(m[1].trim()) && /[a-z]/i.test(m[1])) { model = m[1].trim().replace(/\s+$/, ''); break; }
     }
     if (model) break;
   }
