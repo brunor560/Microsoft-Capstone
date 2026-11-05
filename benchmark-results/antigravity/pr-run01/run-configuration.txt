@@ -1,0 +1,10 @@
+tool=Antigravity CLI
+version=1.5.1
+model=Claude Sonnet 4.6 (Thinking)
+interface=interactive
+sandbox_enabled=false
+conversation_id=812eb936-834a-4ebf-a90d-634e07dc2b98
+participant=Kapil Srikanth
+github_mcp=https://api.githubcopilot.com/mcp/
+token_type=classic PAT; repo scope
+ruleset_status=not independently verified

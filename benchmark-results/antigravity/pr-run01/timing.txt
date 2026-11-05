@@ -1,0 +1,5 @@
+started_utc=2026-11-05T22:06:04.7490056Z
+ended_utc=2026-11-05T22:08:19.2005378Z
+elapsed_seconds=134.429
+method=manual prompt-to-final timer; includes approvals, CI waiting and window switching
+approval_wait_seconds=unavailable
