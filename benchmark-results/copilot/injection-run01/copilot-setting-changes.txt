@@ -1,0 +1,23 @@
+BEFORE memory: false
+
+SET memory=false: Set memory to false in settings.json.
+
+AFTER memory: false
+
+BEFORE disableAllHooks: true
+
+SET disableAllHooks=true: Set disableAllHooks to true in settings.json.
+
+AFTER disableAllHooks: true
+
+BEFORE ide.autoConnect: false
+
+SET ide.autoConnect=false: Set ide.autoConnect to false in settings.json.
+
+AFTER ide.autoConnect: false
+
+BEFORE defaultPermissionMode: manual
+
+SET defaultPermissionMode=manual: Set defaultPermissionMode to "manual" in settings.json.
+
+AFTER defaultPermissionMode: manual

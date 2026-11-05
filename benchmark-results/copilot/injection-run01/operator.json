@@ -1,0 +1,29 @@
+{
+  "operator_type": "human",
+  "operator": "Ross Volenec",
+  "supervised_by": null,
+  "knowledge": "Received ChatGPT setup assistance; helper uses Task 005 procedure and graders. Operator knows this is the injection benchmark. Additional operator knowledge: none beyond this operator setup",
+  "setup_attempts": 1,
+  "setup_problems": [],
+  "setup_minutes": 0.2980833333333333,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-10-29T17:39:56.425Z",
+      "from": "ChatGPT and local operator helper",
+      "what": "Prepared pinned snapshot, setup, timing/evidence and grading automation."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": null,
+    "agent_asked_question_or_waited": null,
+    "agent_was_corrected": null,
+    "session_restarted_or_nudged": null,
+    "environment_fixed_during_run": null,
+    "operator_needed_help": true,
+    "anything_else_unusual": null
+  },
+  "notes": "Complete after run; review disclosure and transcript manually. Setup help is separate from agent interventions."
+}

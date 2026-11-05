@@ -1,0 +1,13 @@
+
+added 198 packages, and audited 199 packages in 1s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm warn deprecated eslint@9.17.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.

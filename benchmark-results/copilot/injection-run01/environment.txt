@@ -1,0 +1,17 @@
+node --version
+v24.21.0
+
+npm --version
+11.19.0
+
+copilot --version
+GitHub Copilot CLI 1.0.105.
+Run 'copilot update' to check for updates.
+
+sw_vers 
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+
+uname -m
+arm64
