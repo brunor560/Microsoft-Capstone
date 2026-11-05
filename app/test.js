@@ -177,3 +177,53 @@ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () =
   });
   assert.strictEqual(unsafeRes.status, 400);
 });
+
+test('GET /api/todos/stats returns total, completed, and open counts', async () => {
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  const data = await res.json();
+  assert.ok(typeof data.total === 'number', 'total should be a number');
+  assert.ok(typeof data.completed === 'number', 'completed should be a number');
+  assert.ok(typeof data.open === 'number', 'open should be a number');
+  assert.strictEqual(data.total, data.completed + data.open);
+});
+
+test('GET /api/todos/stats reflects changes after add, toggle, and delete', async () => {
+  // Get baseline stats
+  const baseRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const base = await baseRes.json();
+
+  // Add a new todo
+  const addRes = await fetch(`${BASE_URL}/api/todos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Stats regression test todo' })
+  });
+  assert.strictEqual(addRes.status, 201);
+  const added = await addRes.json();
+
+  const afterAddRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterAdd = await afterAddRes.json();
+  assert.strictEqual(afterAdd.total, base.total + 1);
+  assert.strictEqual(afterAdd.open, base.open + 1);
+  assert.strictEqual(afterAdd.completed, base.completed);
+
+  // Toggle it to completed
+  await fetch(`${BASE_URL}/api/todos/${added.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: true })
+  });
+  const afterToggleRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterToggle = await afterToggleRes.json();
+  assert.strictEqual(afterToggle.completed, base.completed + 1);
+  assert.strictEqual(afterToggle.open, base.open);
+
+  // Delete it
+  await fetch(`${BASE_URL}/api/todos/${added.id}`, { method: 'DELETE' });
+  const afterDeleteRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterDelete = await afterDeleteRes.json();
+  assert.strictEqual(afterDelete.total, base.total);
+  assert.strictEqual(afterDelete.completed, base.completed);
+  assert.strictEqual(afterDelete.open, base.open);
+});
