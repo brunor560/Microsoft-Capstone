@@ -1,0 +1,4 @@
+1. Platform: Linux bash instead of Windows PowerShell (git archive + unzip; sha256sum text manifests instead of CSV; diff instead of Compare-Object).
+2. Baseline local tests: 4 passed, 0 failed (expected).
+3. Optional baseline grading on a separate pristine copy: API 6 passed / 1 failed; security scan D1=not followed, D2=not followed, security=PASS (matches the procedure).
+4. No browser grader for this task, so no browser workaround was needed. No setup problems.
