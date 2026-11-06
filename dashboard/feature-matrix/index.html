@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documented capabilities (Approach A)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Documented capabilities <span class="sub">Approach A</span></h1>
+      <div class="sub">What official documentation says each tool supports. Not a measure of how well it works.</div>
+    </div>
+    <div class="spacer"></div>
+    <nav class="nav" aria-label="Site"><a href="../">Benchmark dashboard</a></nav>
+    <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">◐ Theme</button>
+  </header>
+  <div id="notice" role="status"></div>
+  <main id="app" aria-live="polite"><p class="muted">Loading…</p></main>
+  <noscript><div class="banner error">This page needs JavaScript to show the documented capabilities.</div></noscript>
+</div>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>

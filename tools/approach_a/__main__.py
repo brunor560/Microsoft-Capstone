@@ -11,6 +11,8 @@ from . import cmd_new
 from . import cmd_people
 from . import cmd_research
 from . import cmd_start
+from . import preview_server
+from . import publish
 from . import research
 from . import store as st
 
@@ -88,6 +90,16 @@ def parser():
     rs.add_argument('--brief', action='store_true')
     rs.add_argument('--rehearsal', action='store_true')
     drafting_options(rs)
+    ex = sub.add_parser('export-publication', help='prepare the reviewed matrix projection (JSON) for the site release')
+    ex.add_argument('--mode', choices=list(publish.MODES), default='accepted',
+                    help='accepted: whole manifest must pass validation (default); preview: labeled local draft view')
+    ex.add_argument('--out', help='output file (default: dashboard/feature-matrix/data/matrix.json, '
+                                  'or assessment/preview/matrix.preview.json for preview)')
+    ex.add_argument('--allow-other-out', action='store_true',
+                    help='permit an accepted export outside dashboard/feature-matrix/data/ (scratch use)')
+    ex.add_argument('--source-commit', help='full commit SHA of the dataset snapshot (default: git HEAD)')
+    sp = sub.add_parser('serve-preview', help='serve the feature matrix page locally with the draft preview data')
+    sp.add_argument('--port', type=int, default=4174)
     i = sub.add_parser('init', help='create an empty dataset (catalog, roster and candidates only)')
     i.add_argument('--force', action='store_true')
     n = sub.add_parser('new', help='add a candidate for a tool with no prepared research')
@@ -109,7 +121,8 @@ def main(argv=None):
     handlers = {'start': cmd_start.run, 'research': cmd_research.run, 'status': cmd_misc.status,
                 'show': cmd_misc.show, 'validate': cmd_people.do_validate, 'render': cmd_people.do_render,
                 'approve': cmd_people.approve, 'author': cmd_people.author, 'review': cmd_people.do_review,
-                'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run}
+                'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run,
+                'export-publication': publish.run, 'serve-preview': preview_server.run}
     try:
         return handlers[args.cmd](store, args)
     except (ValueError, FileExistsError, FileNotFoundError) as e:

@@ -5,3 +5,5 @@ package-lock.json
 assessment/.cache/
 **/__pycache__/
 **/.env
+# Local draft previews of the feature matrix (never under dashboard/)
+assessment/preview/

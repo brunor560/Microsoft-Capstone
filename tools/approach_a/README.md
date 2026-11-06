@@ -56,6 +56,8 @@ Each cell has one of the five method statuses plus an `assessment_state`:
 | `review --reviewer <id> --decision agree\|disagree --note "..." [--disposition ...]` | Record an independent review; self-review is refused |
 | `resume` | Continue an interrupted or partial run; completed steps are saved |
 | `new --tool-name ... --docs-url https://.../` | Candidate for a tool with no prepared research; its cells stay pending (honest partial result) |
+| `export-publication [--mode accepted\|preview]` | Prepare the reviewed projection of the matrix as one JSON payload for the site (M13 input; publication is the existing Pages workflow). `accepted` (default) refuses unless the whole manifest passes `validate`, and writes `dashboard/feature-matrix/data/matrix.json` with no names or roster IDs. `preview` keeps draft cells with workflow labels and writes `assessment/preview/matrix.preview.json`, never inside `dashboard/`. Reads a scratch copy; the dataset is not modified |
+| `serve-preview [--port N]` | Serve the feature matrix page locally (127.0.0.1 only, read-only) with the draft file from `assessment/preview/`. See `course_artifacts/references/Feature_Matrix_Publishing_Guide.md` |
 | `init [--force]` | Empty dataset (keeps catalog, roster and candidates) |
 
 Options: `--offline` (cached pages only), `--refresh` (re-fetch), `--data DIR` (scratch dataset), `--rehearsal` (practice run on an unconfirmed, labeled boundary; validation blocks it). `APPROACH_A_STEP_DELAY=0.2` slows the progress display for an audience without changing results.
