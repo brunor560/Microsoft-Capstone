@@ -1,0 +1,55 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "copilot",
+  "tool": "GitHub Copilot",
+  "vendor": "GitHub",
+  "default_surface": "cli",
+  "note": "Proposed documentation-only profile with four starter briefs. Confirm the platform, account and release boundary before assessment. Living documentation may describe features introduced after a benchmarked build.",
+  "docs": {
+    "base_url": "https://docs.github.com/en/copilot/",
+    "allowed_prefixes": [
+      "https://docs.github.com/en/copilot/"
+    ],
+    "publisher": "GitHub",
+    "surface_labels": {}
+  },
+  "surfaces": {
+    "cli": {
+      "label": "GitHub Copilot CLI",
+      "profile_id": "copilot-cli",
+      "category_tags": [
+        "T2"
+      ],
+      "interface_and_execution_location": "Standalone GitHub Copilot CLI on a local macOS workstation, authenticated to GitHub Copilot.",
+      "modes": [
+        "Interactive terminal mode with manual approval",
+        "Built-in plan mode",
+        "Programmatic prompt mode documented separately when relevant"
+      ],
+      "platforms": [
+        "macOS on Apple silicon"
+      ],
+      "account_and_tier": "Proposed: individual GitHub Copilot subscription with CLI access and GitHub sign-in. Confirm the exact tier before attributing plan-dependent behavior.",
+      "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
+      "included_components": [
+        "Native CLI file and shell tools, custom instructions, plan mode, approval prompts, permission rules and optional local sandboxing"
+      ],
+      "exclusions": [
+        "VS Code agent mode, GitHub web chat, cloud coding agent and cloud sandboxes",
+        "BYOK, third-party MCP servers, plugins, added skills and enterprise administration"
+      ],
+      "instructions_and_permissions": "Document the CLI custom instruction paths, manual permissions and tool allow/deny rules. Distinguish permission prompts from local sandbox restrictions.",
+      "version": {
+        "value": null,
+        "kind": "unversioned official documentation snapshot",
+        "documentation_note": "Assess the official pages by access date and page hash. Do not attribute a documented feature to a particular benchmarked binary without a version-specific source."
+      },
+      "seed_pages": [
+        "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+        "https://docs.github.com/en/copilot/get-started/cli-quickstart",
+        "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/understanding-local-sandboxing",
+        "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/overview"
+      ]
+    }
+  }
+}

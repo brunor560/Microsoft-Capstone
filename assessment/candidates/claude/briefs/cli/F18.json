@@ -1,0 +1,25 @@
+{
+  "feature_id": "F18",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "The CLI offers a turn limit in print mode.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "An equivalent interactive time or budget ceiling"
+  ],
+  "required_setup": "Set --max-turns for claude -p.",
+  "constraints": [
+    "No turn limit by default. The limit is scoped to print-mode turns."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/cli-reference",
+      "section": "CLI reference",
+      "quote": "Limit the number of agentic turns (print mode only).",
+      "claim": "The CLI offers a turn limit in print mode."
+    }
+  ]
+}

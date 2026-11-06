@@ -1,0 +1,25 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "Project instructions persist in Markdown via CLAUDE.md. Directory placement controls scope.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Behavior in managed settings excluded from this profile"
+  ],
+  "required_setup": "Add a CLAUDE.md in the relevant project directory.",
+  "constraints": [
+    "Settings may change which instruction sources load."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/memory",
+      "section": "How Claude remembers your project",
+      "quote": "CLAUDE.md files are markdown files that give Claude persistent instructions",
+      "claim": "Project instructions persist in Markdown via CLAUDE.md. Directory placement controls scope."
+    }
+  ]
+}

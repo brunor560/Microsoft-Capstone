@@ -1,0 +1,25 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "policy-dependent",
+  "control_mechanism": "enforced",
+  "supported_scope": "Native Windows sandbox implementations restrict commands and their child processes according to the active permission profile.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guarantees for any unverified Windows device or configuration"
+  ],
+  "required_setup": "Select a supported Windows sandbox implementation and a restrictive permission profile.",
+  "constraints": [
+    "Device support and selected implementation change the available controls."
+  ],
+  "evidence": [
+    {
+      "page": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+      "section": "Configure the Windows sandbox",
+      "quote": "The Windows sandbox enforces the active filesystem and network permissions",
+      "claim": "Native Windows sandbox implementations restrict commands and their child processes according to the active permission profile."
+    }
+  ]
+}

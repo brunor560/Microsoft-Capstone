@@ -1,0 +1,25 @@
+{
+  "feature_id": "F02",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "supported_scope": "The CLI provides an explicit plan mode that allows codebase exploration while blocking edits to project files.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "A mandatory planning gate across all CLI modes"
+  ],
+  "required_setup": "Enter the interactive CLI plan mode.",
+  "constraints": [
+    "Planning is a selected mode."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "Plan mode",
+      "quote": "blocked from editing your project files",
+      "claim": "The CLI provides an explicit plan mode that allows codebase exploration while blocking edits to project files."
+    }
+  ]
+}

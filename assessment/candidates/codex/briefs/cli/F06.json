@@ -1,0 +1,25 @@
+{
+  "feature_id": "F06",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "policy-dependent",
+  "control_mechanism": "not established",
+  "supported_scope": "The CLI can invoke locally installed tools, including repository test commands.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "The precise feedback and retry workflow for a failing test"
+  ],
+  "required_setup": "Provide the project and its command dependencies, and grant the applicable permissions.",
+  "constraints": [
+    "Command execution depends on permissions and the tools installed in the workspace."
+  ],
+  "evidence": [
+    {
+      "page": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Work against your local repository",
+      "quote": "Let Codex inspect files, make edits, and run the tools already installed on your machine.",
+      "claim": "The CLI can invoke locally installed tools, including repository test commands."
+    }
+  ]
+}

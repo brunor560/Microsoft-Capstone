@@ -1,0 +1,25 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "The CLI loads persistent project guidance from documented custom-instruction files, including repository instruction files.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Whether the model follows a given instruction in practice"
+  ],
+  "required_setup": "Add a supported repository instruction file, such as .github/copilot-instructions.md.",
+  "constraints": [
+    "The CLI provides a switch to disable custom instructions."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "Custom instructions locations",
+      "quote": "Copilot CLI loads custom instructions from these locations simultaneously",
+      "claim": "The CLI loads persistent project guidance from documented custom-instruction files, including repository instruction files."
+    }
+  ]
+}
