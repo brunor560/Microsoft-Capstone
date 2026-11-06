@@ -14,5 +14,7 @@
   "output_sum_matches_final_counter": true,
   "cache_accounting": "Inclusion relationship not independently verified",
   "total_tokens": null,
-  "dollar_cost": null
+  "dollar_cost": null,
+  "scoring_policy": "cache_reads_separate_provisional",
+  "provisional_scoring_total": 222148
 }

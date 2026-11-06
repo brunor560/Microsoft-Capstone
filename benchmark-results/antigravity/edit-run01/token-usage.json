@@ -1,11 +1,13 @@
 {
-    "source":  "conversation/transcript_full.jsonl",
-    "aggregation":  "Sum each model-response record once; do not add the duplicate transcript",
-    "model_response_records":  22,
-    "input_tokens_field_sum":  137848,
-    "cache_read_tokens_field_sum":  1071565,
-    "output_tokens_field_sum":  52730,
-    "input_cache_inclusion":  "Not independently verified",
-    "reasoning_token_accounting":  "Not independently verified",
-    "dollar_cost":  "Unavailable"
+  "source": "conversation/transcript_full.jsonl",
+  "aggregation": "Sum each model-response record once; do not add the duplicate transcript",
+  "model_response_records": 22,
+  "input_tokens_field_sum": 137848,
+  "cache_read_tokens_field_sum": 1071565,
+  "output_tokens_field_sum": 52730,
+  "input_cache_inclusion": "Not independently verified",
+  "reasoning_token_accounting": "Not independently verified",
+  "dollar_cost": "Unavailable",
+  "scoring_policy": "cache_reads_separate_provisional",
+  "provisional_scoring_total": 1262143
 }
