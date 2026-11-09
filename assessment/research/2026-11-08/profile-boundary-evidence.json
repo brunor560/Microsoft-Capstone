@@ -1,0 +1,58 @@
+{
+  "codex": [
+    {
+      "evidence_ref": "E157",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "section": "Pricing",
+      "quote": "Plus"
+    },
+    {
+      "evidence_ref": "E158",
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+      "section": "Windows version matrix",
+      "quote": "Windows 11"
+    }
+  ],
+  "claude": [
+    {
+      "evidence_ref": "E159",
+      "url": "https://code.claude.com/docs/en/desktop-quickstart",
+      "section": "Get started with the desktop app",
+      "quote": "Pro, Max"
+    },
+    {
+      "evidence_ref": "E160",
+      "url": "https://code.claude.com/docs/en/setup",
+      "section": "System requirements",
+      "quote": "Windows 10"
+    }
+  ],
+  "copilot": [
+    {
+      "evidence_ref": "E161",
+      "url": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/github-copilot-app",
+      "section": "Supported operating systems",
+      "quote": "Windows"
+    },
+    {
+      "evidence_ref": "E162",
+      "url": "https://docs.github.com/en/copilot/get-started/cli-quickstart",
+      "section": "Who can use this feature?",
+      "quote": "all Copilot plans"
+    }
+  ],
+  "antigravity": [
+    {
+      "evidence_ref": "E163",
+      "url": "https://antigravity.google/docs/plans",
+      "section": "Baseline quota",
+      "quote": "All plans"
+    },
+    {
+      "evidence_ref": "E164",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity App > Previous permission settings > Overview",
+      "quote": "Windows 11 24H2"
+    }
+  ]
+}

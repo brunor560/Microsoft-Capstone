@@ -10,6 +10,9 @@ class El extends Node_ {
   addEventListener(k, fn) { this.listeners[k] = fn; }
   append(...kids) { this.children.push(...kids); }
   get textContent() { return this.children.map((c) => c.textContent).join(''); }
+  set textContent(value) { this.children = [new Text(value)]; }
+  get firstChild() { return this.children[0]; }
+  removeChild(child) { this.children.splice(this.children.indexOf(child), 1); }
   all() { return [this, ...this.children.flatMap((c) => (c instanceof El ? c.all() : []))]; }
 }
 globalThis.Node = Node_;
@@ -84,4 +87,24 @@ test('the detail panel renders evidence and review lines as elements', () => {
   assert.equal(text.includes('[object Object]'), false);
   assert.match(text, /Independently reviewed/);
   assert.match(text, /Documentation gap or conflict/);
+});
+
+
+test('shortlist preserves grouped controls, documentary reasons, safe text and exact cell links', async () => {
+  const { shortlist } = await import('../../../../dashboard/feature-matrix/shortlist.mjs');
+  const profileWithTier = { ...profile, account_and_tier: 'Recorded tier' };
+  const data = { catalog: { features: [feature], statuses: [] }, profiles: [profileWithTier], cells: [{ ...cell, evidence_refs: ['E01'] }], evidence };
+  const state = { tiers: new Set(['p']), features: new Set(['F08']), sort: 'group' };
+  const tree = shortlist(buildIndex(data), () => {}, state, () => {},
+    (p, f) => '?profile=' + p + '&feature=' + f);
+  assert.equal(tree.all().some((e) => ['img', 'script'].includes(e.tag)), false);
+  assert.ok(tree.textContent.includes(EVIL));
+  assert.match(tree.textContent, /Documented gap/);
+  const fieldsets = tree.all().filter((e) => e.tag === 'fieldset');
+  assert.equal(fieldsets.length, 2);
+  const checked = tree.all().filter((e) => e.tag === 'input' && 'checked' in e.attrs);
+  assert.equal(checked.length, 2);
+  const links = tree.all().filter((e) => e.tag === 'a');
+  assert.equal(links.length, 1);
+  assert.equal(links[0].attrs.href, '?profile=p&feature=F08');
 });

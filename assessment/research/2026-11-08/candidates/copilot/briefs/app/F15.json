@@ -1,0 +1,30 @@
+{
+  "feature_id": "F15",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "The app documents issue-linked sessions, PR reviews, CI results, review fixes and merging; this is not a complete deployment system.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Deployment workflow coverage"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests",
+      "section": "Managing issues and pull requests with the GitHub Copilot app > Reviewing a pull request",
+      "quote": "CI check results"
+    },
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests",
+      "section": "Managing issues and pull requests with the GitHub Copilot app > Responding to a review",
+      "quote": "resolve failing CI checks"
+    }
+  ]
+}

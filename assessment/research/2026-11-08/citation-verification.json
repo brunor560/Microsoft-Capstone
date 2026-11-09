@@ -1,0 +1,1430 @@
+{
+  "checked_at": "2026-11-09T00:43:37+00:00",
+  "method": "Fresh pages.locate checks on frozen official page cache; mechanical matching only, not independent review",
+  "citations": [
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F01",
+      "url": "https://antigravity.google/docs/rules",
+      "section": "Antigravity CLI > Managing rules in Antigravity CLI",
+      "result": "verified",
+      "page_sha256": "bd10682fdf02eb300a4b1b1a1ef23f8d32e9b32e193a86e433a7d4b00d448c24"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F01",
+      "url": "https://antigravity.google/docs/rules",
+      "section": "Where rules are stored",
+      "result": "verified",
+      "page_sha256": "bd10682fdf02eb300a4b1b1a1ef23f8d32e9b32e193a86e433a7d4b00d448c24"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F01",
+      "url": "https://antigravity.google/docs/rules",
+      "section": "Size limits and token budgets",
+      "result": "verified",
+      "page_sha256": "bd10682fdf02eb300a4b1b1a1ef23f8d32e9b32e193a86e433a7d4b00d448c24"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F02",
+      "url": "https://antigravity.google/docs/cli/modes",
+      "section": "Choose an execution mode > Analyze tasks before editing with plan mode",
+      "result": "verified",
+      "page_sha256": "04af690cd7d092a3fdfe0d86db559b2d953acd7e9fdefe701f5dbd6775adfd69"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F02",
+      "url": "https://antigravity.google/docs/plan",
+      "section": "Plan (/plan) > How to use /plan > Antigravity CLI",
+      "result": "verified",
+      "page_sha256": "891b459d551a1ab460adaea8474993ba9f037e51a4ba2e4bad42da6cfe1c8b86"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F03",
+      "url": "https://antigravity.google/docs/cli/artifacts",
+      "section": "Reviewing artifacts > Collaboration and co-steering",
+      "result": "verified",
+      "page_sha256": "b46ca76a7f244a54fcf4723fd13fb42cbe49409a433c24c75b909809187ed4a0"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F04",
+      "url": "https://antigravity.google/docs/cli/modes",
+      "section": "Choose an execution mode > Analyze tasks before editing with plan mode",
+      "result": "verified",
+      "page_sha256": "04af690cd7d092a3fdfe0d86db559b2d953acd7e9fdefe701f5dbd6775adfd69"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F04",
+      "url": "https://antigravity.google/docs/cli/commands/context",
+      "section": "Context command (/context) > Manage context growth",
+      "result": "verified",
+      "page_sha256": "d1b177fa56ec2b6f04c935a1862b37143a47abc5fd9cca15ab6b540c3934ed17"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F05",
+      "url": "https://antigravity.google/docs/cli/modes",
+      "section": "Choose an execution mode > Auto-approve edits with accept-edits mode",
+      "result": "verified",
+      "page_sha256": "04af690cd7d092a3fdfe0d86db559b2d953acd7e9fdefe701f5dbd6775adfd69"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F06",
+      "url": "https://antigravity.google/docs/cli/best-practices",
+      "section": "Establish verification loops",
+      "result": "verified",
+      "page_sha256": "483a810279a1fa0da0af69632dec7b1c095aa3fa63187a6e4e5a581cc1eca305"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F07",
+      "url": "https://antigravity.google/docs/cli/commands/permissions",
+      "section": "Permissions command (/permissions) > Step-by-step walkthrough > Selecting a scope and viewing rules",
+      "result": "verified",
+      "page_sha256": "977b684b14afe972b41f29257b275a012124066cba4cc72a26b8605b0de70e16"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F08",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity CLI > How it works",
+      "result": "verified",
+      "page_sha256": "1cc4c2833acffd8e2262cd577804813b4a74e5b96f770b44837ae3ee7183086b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F08",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > CLI configuration > If the sandbox isn’t available",
+      "result": "verified",
+      "page_sha256": "1cc4c2833acffd8e2262cd577804813b4a74e5b96f770b44837ae3ee7183086b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F09",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity CLI > How it works",
+      "result": "verified",
+      "page_sha256": "1cc4c2833acffd8e2262cd577804813b4a74e5b96f770b44837ae3ee7183086b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F09",
+      "url": "https://antigravity.google/docs/install",
+      "section": "Troubleshooting API key authentication",
+      "result": "verified",
+      "page_sha256": "045b07848da1c70889db3c7effd75c84abfc80619d25a179b22e15fb56763983"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F10",
+      "url": "https://antigravity.google/docs/cli/modes",
+      "section": "Choose an execution mode > Review modifications in default mode",
+      "result": "verified",
+      "page_sha256": "04af690cd7d092a3fdfe0d86db559b2d953acd7e9fdefe701f5dbd6775adfd69"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F10",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Headless mode > Permissions in headless mode",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F11",
+      "url": "https://antigravity.google/docs/cli/commands/diff",
+      "section": "Adding comments and steering the agent",
+      "result": "verified",
+      "page_sha256": "77e4c3f4f794f65b069bc2f2fd23aa326c17e50c0e1c3f30fde920326635399d"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F11",
+      "url": "https://antigravity.google/docs/cli/reference",
+      "section": "Global controls",
+      "result": "verified",
+      "page_sha256": "6b31cf4197264ee23c0b87287c40e852a0b1dd2ab4a4b366bd7ec83092461104"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F12",
+      "url": "https://antigravity.google/docs/cli/reference",
+      "section": "Core slash commands",
+      "result": "verified",
+      "page_sha256": "6b31cf4197264ee23c0b87287c40e852a0b1dd2ab4a4b366bd7ec83092461104"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F12",
+      "url": "https://antigravity.google/docs/changelog",
+      "section": "Antigravity CLI > Session-scoped Remote Control, unlimited headless run timeouts, structured error reporting, and artifact text selection",
+      "result": "verified",
+      "page_sha256": "3ce8f2023c7e53a923faf0af24e8ee93c6799997d7f5926e64a5dc2d8cb649cf"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F13",
+      "url": "https://antigravity.google/docs/skills",
+      "section": "CLI skill locations",
+      "result": "verified",
+      "page_sha256": "e4e6ec46aee9e40312967b7903382ebb5b4c652b839a81e7a2688df8040d9d26"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F13",
+      "url": "https://antigravity.google/docs/skills",
+      "section": "Slash command conversion",
+      "result": "verified",
+      "page_sha256": "e4e6ec46aee9e40312967b7903382ebb5b4c652b839a81e7a2688df8040d9d26"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F14",
+      "url": "https://antigravity.google/docs/mcp",
+      "section": "Getting started by surface > Antigravity CLI",
+      "result": "verified",
+      "page_sha256": "39b53bd0321f64c295a4411dd4ab6a968fb1078f4476c3adb9fcb5dd99e560b2"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F14",
+      "url": "https://antigravity.google/docs/mcp",
+      "section": "MCP permissions and access control",
+      "result": "verified",
+      "page_sha256": "39b53bd0321f64c295a4411dd4ab6a968fb1078f4476c3adb9fcb5dd99e560b2"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F15",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Headless mode",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F15",
+      "url": "https://antigravity.google/docs/mcp",
+      "section": "Supported MCP servers",
+      "result": "verified",
+      "page_sha256": "39b53bd0321f64c295a4411dd4ab6a968fb1078f4476c3adb9fcb5dd99e560b2"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F16",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Tool calls in the stream",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F16",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Streaming JSON",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F17",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Headless mode > Handle exit codes and errors",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F17",
+      "url": "https://antigravity.google/docs/cli/commands/usage",
+      "section": "Model quotas (/usage) > Viewing your usage > Interactive panel features",
+      "result": "verified",
+      "page_sha256": "b5c28fa6d67f1195aea47b6bd2cd102de582bbe53a6a141bfcfbf009f5190106"
+    },
+    {
+      "profile_id": "antigravity-cli",
+      "feature_id": "F18",
+      "url": "https://antigravity.google/docs/cli/headless",
+      "section": "Headless mode > Handle exit codes and errors",
+      "result": "verified",
+      "page_sha256": "bf87ff4494dc24a2b31ff7565d8c4fd43f0759129d41db45d1b30a98f443019b"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F01",
+      "url": "https://antigravity.google/docs/rules",
+      "section": "Antigravity App > Antigravity App file locations",
+      "result": "verified",
+      "page_sha256": "bd10682fdf02eb300a4b1b1a1ef23f8d32e9b32e193a86e433a7d4b00d448c24"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F01",
+      "url": "https://antigravity.google/docs/rules",
+      "section": "Activation modes",
+      "result": "verified",
+      "page_sha256": "bd10682fdf02eb300a4b1b1a1ef23f8d32e9b32e193a86e433a7d4b00d448c24"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F02",
+      "url": "https://antigravity.google/docs/implementation-plan",
+      "section": "Implementation plan",
+      "result": "verified",
+      "page_sha256": "99f414ca3c729ee85bbf07187f15fbca5ff4ef40129c8f1683033f38328475ba"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F03",
+      "url": "https://antigravity.google/docs/implementation-plan",
+      "section": "Implementation plan",
+      "result": "verified",
+      "page_sha256": "99f414ca3c729ee85bbf07187f15fbca5ff4ef40129c8f1683033f38328475ba"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F03",
+      "url": "https://antigravity.google/docs/walkthrough",
+      "section": "Walkthrough",
+      "result": "verified",
+      "page_sha256": "78fd7f3ea28082f8132f0b6a55d110d1a9582ec2976c1e0a66e5720d0362807b"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F04",
+      "url": "https://antigravity.google/docs/projects",
+      "section": "Antigravity App > What is a project?",
+      "result": "verified",
+      "page_sha256": "97419ca36424b654835b59f41f27f363a5b7ab17a425a557e54bad0bc5e28ad3"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F04",
+      "url": "https://antigravity.google/docs/permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "result": "verified",
+      "page_sha256": "386e54c0d429e4ac18fac28f8bfbe4c93e308af221c1cf2fd2b884178454e82d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F05",
+      "url": "https://antigravity.google/docs/projects",
+      "section": "Antigravity App > What is a project?",
+      "result": "verified",
+      "page_sha256": "97419ca36424b654835b59f41f27f363a5b7ab17a425a557e54bad0bc5e28ad3"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F05",
+      "url": "https://antigravity.google/docs/permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "result": "verified",
+      "page_sha256": "386e54c0d429e4ac18fac28f8bfbe4c93e308af221c1cf2fd2b884178454e82d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F06",
+      "url": "https://antigravity.google/docs/agent-settings",
+      "section": "Agent settings",
+      "result": "verified",
+      "page_sha256": "b298a4d4b3042cd0abb9757c61e6787c869211f5f4cdc8fcaadf31021596297d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F06",
+      "url": "https://antigravity.google/docs/features",
+      "section": "Features in the App and CLI > Subagents",
+      "result": "verified",
+      "page_sha256": "fe41736805b55ccbca81a348363fff98b7a1982b6acff43a37e2c466d08ff177"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F07",
+      "url": "https://antigravity.google/docs/permissions",
+      "section": "Antigravity App > Updated permission settings",
+      "result": "verified",
+      "page_sha256": "386e54c0d429e4ac18fac28f8bfbe4c93e308af221c1cf2fd2b884178454e82d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F07",
+      "url": "https://antigravity.google/docs/permissions",
+      "section": "Antigravity App > Updated permission settings > Supported actions and matching rules",
+      "result": "verified",
+      "page_sha256": "386e54c0d429e4ac18fac28f8bfbe4c93e308af221c1cf2fd2b884178454e82d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F08",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity App > Updated permission settings > Overview",
+      "result": "verified",
+      "page_sha256": "1cc4c2833acffd8e2262cd577804813b4a74e5b96f770b44837ae3ee7183086b"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F08",
+      "url": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity App > Previous permission settings > Overview",
+      "result": "verified",
+      "page_sha256": "1cc4c2833acffd8e2262cd577804813b4a74e5b96f770b44837ae3ee7183086b"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F09",
+      "url": "https://antigravity.google/docs/mcp",
+      "section": "MCP authentication > OAuth",
+      "result": "verified",
+      "page_sha256": "39b53bd0321f64c295a4411dd4ab6a968fb1078f4476c3adb9fcb5dd99e560b2"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F09",
+      "url": "https://antigravity.google/docs/permissions",
+      "section": "Antigravity App > Updated permission settings > Configuration examples",
+      "result": "verified",
+      "page_sha256": "386e54c0d429e4ac18fac28f8bfbe4c93e308af221c1cf2fd2b884178454e82d"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F10",
+      "url": "https://antigravity.google/docs/artifact-review",
+      "section": "Artifact review policy > Request review (recommended)",
+      "result": "verified",
+      "page_sha256": "69f6424a25d16cc3a804300ce54cc178adf191c525beb720bcb4247c6692e085"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F11",
+      "url": "https://antigravity.google/docs/artifacts",
+      "section": "Reviewing artifacts across surfaces > Antigravity App",
+      "result": "verified",
+      "page_sha256": "0fd5ea30995e72c42dd8097ffb4f09bb8d601fd4a3698d7bb74bcbc50fca42d2"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F11",
+      "url": "https://antigravity.google/docs/artifacts",
+      "section": "Interactive steering and feedback",
+      "result": "verified",
+      "page_sha256": "0fd5ea30995e72c42dd8097ffb4f09bb8d601fd4a3698d7bb74bcbc50fca42d2"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F12",
+      "url": "https://antigravity.google/docs/features",
+      "section": "Antigravity App features > Version control system (VCS) panel",
+      "result": "verified",
+      "page_sha256": "fe41736805b55ccbca81a348363fff98b7a1982b6acff43a37e2c466d08ff177"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F13",
+      "url": "https://antigravity.google/docs/skills",
+      "section": "What are skills?",
+      "result": "verified",
+      "page_sha256": "e4e6ec46aee9e40312967b7903382ebb5b4c652b839a81e7a2688df8040d9d26"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F13",
+      "url": "https://antigravity.google/docs/skills",
+      "section": "Skills by surface > Antigravity App skill locations",
+      "result": "verified",
+      "page_sha256": "e4e6ec46aee9e40312967b7903382ebb5b4c652b839a81e7a2688df8040d9d26"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F13",
+      "url": "https://antigravity.google/docs/skills",
+      "section": "Skills by surface > Invoking skills in the Antigravity App",
+      "result": "verified",
+      "page_sha256": "e4e6ec46aee9e40312967b7903382ebb5b4c652b839a81e7a2688df8040d9d26"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F14",
+      "url": "https://antigravity.google/docs/mcp",
+      "section": "Model Context Protocol (MCP) > Getting started by surface > Antigravity App",
+      "result": "verified",
+      "page_sha256": "39b53bd0321f64c295a4411dd4ab6a968fb1078f4476c3adb9fcb5dd99e560b2"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F15",
+      "url": "https://antigravity.google/docs/features",
+      "section": "Antigravity App features > Version control system (VCS) panel",
+      "result": "verified",
+      "page_sha256": "fe41736805b55ccbca81a348363fff98b7a1982b6acff43a37e2c466d08ff177"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F16",
+      "url": "https://antigravity.google/docs/artifacts",
+      "section": "Artifacts",
+      "result": "verified",
+      "page_sha256": "0fd5ea30995e72c42dd8097ffb4f09bb8d601fd4a3698d7bb74bcbc50fca42d2"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F16",
+      "url": "https://antigravity.google/docs/settings",
+      "section": "Antigravity App > Settings architecture > The four settings categories > Global settings",
+      "result": "verified",
+      "page_sha256": "97dfde4e181c1de5697b52caff5f64a5a15d2f76684fa8723ecac84a3cf9a313"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F17",
+      "url": "https://antigravity.google/docs/plans",
+      "section": "Overages",
+      "result": "verified",
+      "page_sha256": "5f6ba31056b09d516e10b6b57ff24444de3774d941e6e1bfd7e81c2458baead5"
+    },
+    {
+      "profile_id": "antigravity-app-windows",
+      "feature_id": "F18",
+      "url": "https://antigravity.google/docs/plans",
+      "section": "Baseline quota",
+      "result": "verified",
+      "page_sha256": "5f6ba31056b09d516e10b6b57ff24444de3774d941e6e1bfd7e81c2458baead5"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F01",
+      "url": "https://code.claude.com/docs/en/memory",
+      "section": "How Claude remembers your project > Related resources",
+      "result": "verified",
+      "page_sha256": "1f3331d514c479d37b8b5c4ee91138cba66dd56f1714e183680e3bf4f09d0fdf"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F02",
+      "url": "https://code.claude.com/docs/en/common-workflows",
+      "section": "Common workflows > Plan before editing",
+      "result": "verified",
+      "page_sha256": "d1d7860cb16514cae97be2564be2026b6f90041fa89a5382df2c02dc35f82764"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F03",
+      "url": "https://code.claude.com/docs/en/common-workflows",
+      "section": "Common workflows > Plan before editing",
+      "result": "verified",
+      "page_sha256": "d1d7860cb16514cae97be2564be2026b6f90041fa89a5382df2c02dc35f82764"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F04",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works",
+      "section": "How Claude Code works > The agentic loop",
+      "result": "verified",
+      "page_sha256": "525b1c5c988458320dcdf235494862b87667db5221f0c5a97f845d62369ad438"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F05",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works",
+      "section": "How Claude Code works > What Claude can access",
+      "result": "verified",
+      "page_sha256": "525b1c5c988458320dcdf235494862b87667db5221f0c5a97f845d62369ad438"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F06",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works",
+      "section": "How Claude Code works > The agentic loop",
+      "result": "verified",
+      "page_sha256": "525b1c5c988458320dcdf235494862b87667db5221f0c5a97f845d62369ad438"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F07",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "section": "Configure permissions > Tool-specific permission rules > Agent (subagents)",
+      "result": "verified",
+      "page_sha256": "2b2a4ae05db4e640026dee53ebc5c291638bef307d4a3d1c129f141bed5dc776"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F08",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "section": "Configure the sandboxed Bash tool > Limitations > Scope",
+      "result": "verified",
+      "page_sha256": "f286a30103bacedb230f39397a5ea07b8b7043adfaefd74b8329e951b4f4361e"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F09",
+      "url": "https://code.claude.com/docs/en/security",
+      "section": "Security > Security best practices > Working with sensitive code",
+      "result": "verified",
+      "page_sha256": "a113a102f2654df7b5839a53e9cdc95ea23bc05b94e99f282af5fd39878ce9af"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F10",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "section": "Configure permissions > Extend permissions with hooks > Hook approvals in plan mode",
+      "result": "verified",
+      "page_sha256": "2b2a4ae05db4e640026dee53ebc5c291638bef307d4a3d1c129f141bed5dc776"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F11",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works",
+      "section": "How Claude Code works > Work with sessions",
+      "result": "verified",
+      "page_sha256": "525b1c5c988458320dcdf235494862b87667db5221f0c5a97f845d62369ad438"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F12",
+      "url": "https://code.claude.com/docs/en/checkpointing",
+      "section": "Checkpointing > Limitations > Bash command changes not tracked",
+      "result": "verified",
+      "page_sha256": "6dad768f5754315c174045d155ee492b6e231f15e000375b51b0e9d4923e2f31"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F13",
+      "url": "https://code.claude.com/docs/en/skills",
+      "section": "Extend Claude with skills > Choose where skills load > Edit a skill during a session",
+      "result": "verified",
+      "page_sha256": "c4ae9b7e750875f9271367c4de3d74a99729fd950c992eb21d7ade96324cff9a"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F14",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "section": "Connect Claude Code to tools via MCP > Installing MCP servers > MCP tasks for server authors",
+      "result": "verified",
+      "page_sha256": "cdb9bc170b8efbd707fb65bf6436d590d4ed5239b926d85c12512058f92a0197"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F15",
+      "url": "https://code.claude.com/docs/en/github-actions",
+      "section": "Claude Code GitHub Actions > Setup > GitHub App permissions",
+      "result": "verified",
+      "page_sha256": "92bf0c3f0d11779ed789db80a5b4d1d5164767c6ba2d54ab4b8eca9208dfb17b"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F16",
+      "url": "https://code.claude.com/docs/en/sessions",
+      "section": "Manage sessions > Export and locate session data",
+      "result": "verified",
+      "page_sha256": "54de2e1f65219f24ef28e34c5f46f4d31b94e703ce998de150344b46144e5f62"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F17",
+      "url": "https://code.claude.com/docs/en/costs",
+      "section": "Manage costs effectively > Track your costs > Using the /usage command",
+      "result": "verified",
+      "page_sha256": "4bc47e6084d5aab8c5085705edce3d909fe42e5bcce574ea73f890e0fa913a1e"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F18",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "section": "CLI reference > CLI flags",
+      "result": "verified",
+      "page_sha256": "04794d8dd899fcd35275c731a7a1a937bda50c1c37768bbf8d33d0df5bdb5974"
+    },
+    {
+      "profile_id": "claude-cli",
+      "feature_id": "F18",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "section": "CLI reference > CLI flags",
+      "result": "verified",
+      "page_sha256": "04794d8dd899fcd35275c731a7a1a937bda50c1c37768bbf8d33d0df5bdb5974"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F01",
+      "url": "https://code.claude.com/docs/en/memory",
+      "section": "How Claude remembers your project > Related resources",
+      "result": "verified",
+      "page_sha256": "1f3331d514c479d37b8b5c4ee91138cba66dd56f1714e183680e3bf4f09d0fdf"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F01",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > Shared configuration",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F02",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Choose a permission mode",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F03",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Choose a permission mode",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F04",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI?",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F05",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Review changes with diff view",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F06",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Arrange your workspace > Run commands in the terminal",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F07",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Choose a permission mode",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F08",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Environment configuration",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F09",
+      "url": "https://code.claude.com/docs/en/security",
+      "section": "Security > Security best practices > Working with sensitive code",
+      "result": "verified",
+      "page_sha256": "a113a102f2654df7b5839a53e9cdc95ea23bc05b94e99f282af5fd39878ce9af"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F09",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > Shared configuration",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F10",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Choose a permission mode",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F11",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Review changes with diff view",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F12",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Save edits in the file pane",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F13",
+      "url": "https://code.claude.com/docs/en/skills",
+      "section": "Extend Claude with skills > Choose where skills load > Edit a skill during a session",
+      "result": "verified",
+      "page_sha256": "c4ae9b7e750875f9271367c4de3d74a99729fd950c992eb21d7ade96324cff9a"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F13",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > Shared configuration",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F14",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "section": "Connect Claude Code to tools via MCP > Installing MCP servers > MCP tasks for server authors",
+      "result": "verified",
+      "page_sha256": "cdb9bc170b8efbd707fb65bf6436d590d4ed5239b926d85c12512058f92a0197"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F14",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > Shared configuration",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F15",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Monitor pull request status",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F16",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Arrange your workspace > See session details",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F17",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Arrange your workspace > Check usage",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "claude-app-windows",
+      "feature_id": "F18",
+      "url": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > CLI flag equivalents",
+      "result": "verified",
+      "page_sha256": "c9791235a4ea40551722d16e0948ac7e3220329072a14197cedec6bade488bd9"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F01",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "section": "Custom instructions with AGENTS.md > Next steps",
+      "result": "verified",
+      "page_sha256": "0fc4547384425ecf660fb29d3500f49d070b782cc4e99b0fdfd7c82bfa8f2e4b"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F02",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "section": "Developer commands > Built-in slash commands",
+      "result": "verified",
+      "page_sha256": "9740d10dbb437918a0d6b6c22d74bebed4de01bb3c25d43d24907229bc42cd89"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F03",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "section": "Non-interactive mode > Make output machine-readable",
+      "result": "verified",
+      "page_sha256": "39ed04348947a9d0193c59784195ffbb01919cf9e142749471ee74d99460cfd3"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F04",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Inspect, edit, and run code from your terminal > Work against your local repository",
+      "result": "verified",
+      "page_sha256": "f7ab9c32aad90287cc4ab90120cb4b3f592872b8f2ab5267b88b3f2c8bc77637"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F05",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Inspect, edit, and run code from your terminal > See what Codex CLI can do > Keep the coding loop in your terminal",
+      "result": "verified",
+      "page_sha256": "f7ab9c32aad90287cc4ab90120cb4b3f592872b8f2ab5267b88b3f2c8bc77637"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F06",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Inspect, edit, and run code from your terminal > Work against your local repository",
+      "result": "verified",
+      "page_sha256": "f7ab9c32aad90287cc4ab90120cb4b3f592872b8f2ab5267b88b3f2c8bc77637"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F07",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "section": "Permissions > Scope and enforcement > What profiles control",
+      "result": "verified",
+      "page_sha256": "03ddc686ae5f2fd30a500adc962a66acd8841d865511b3ece2795b7254e20bbc"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F08",
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+      "section": "Windows sandbox > Configure the Windows sandbox",
+      "result": "verified",
+      "page_sha256": "9fb1fc9c1966a9332dd2d4b024cbd32eb07ef33c427d170b3fc05026e6af4b9c"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F09",
+      "url": "https://learn.chatgpt.com/docs/auth",
+      "section": "Authentication > Credential storage",
+      "result": "verified",
+      "page_sha256": "ff1d6ef7cbcc442a6e7f4390c6c63fc7088208c6d71decdb25d376f67ab9a380"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F10",
+      "url": "https://learn.chatgpt.com/docs/permission-modes",
+      "section": "Permissions > How permissions work",
+      "result": "verified",
+      "page_sha256": "4581ee9b3dc658c5920ffb6adc17aac048990318c24b9be75ee31c42c3bec9fc"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F11",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Inspect, edit, and run code from your terminal > See what Codex CLI can do > Keep the coding loop in your terminal",
+      "result": "verified",
+      "page_sha256": "f7ab9c32aad90287cc4ab90120cb4b3f592872b8f2ab5267b88b3f2c8bc77637"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F12",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "section": "Inspect, edit, and run code from your terminal > Use Codex CLI when… > You want a local code review",
+      "result": "verified",
+      "page_sha256": "f7ab9c32aad90287cc4ab90120cb4b3f592872b8f2ab5267b88b3f2c8bc77637"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F13",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "section": "Build skills > How ChatGPT and Codex use skills",
+      "result": "verified",
+      "page_sha256": "52d24f5304dde449fa25125d251a683c150c4049ad8ad618d89af71f536f651f"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F14",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "section": "Model Context Protocol > Connect Codex to an MCP server",
+      "result": "verified",
+      "page_sha256": "43412d6a7d461764b958fb8453110bb8a8696db4f2c8cad6e34ccbb427da5597"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F15",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "section": "Non-interactive mode > When to use codex exec",
+      "result": "verified",
+      "page_sha256": "39ed04348947a9d0193c59784195ffbb01919cf9e142749471ee74d99460cfd3"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F16",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "section": "Non-interactive mode > Make output machine-readable",
+      "result": "verified",
+      "page_sha256": "39ed04348947a9d0193c59784195ffbb01919cf9e142749471ee74d99460cfd3"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F17",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "section": "Non-interactive mode > Make output machine-readable",
+      "result": "verified",
+      "page_sha256": "39ed04348947a9d0193c59784195ffbb01919cf9e142749471ee74d99460cfd3"
+    },
+    {
+      "profile_id": "codex-cli",
+      "feature_id": "F18",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "section": "Pricing > Frequently asked questions > What happens when you hit usage limits?",
+      "result": "verified",
+      "page_sha256": "714a47e5aab5545d3392719a7c0d26d27125875dcf8d5fb7c6b794d8fe03e674"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F01",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "section": "Custom instructions with AGENTS.md > Next steps",
+      "result": "verified",
+      "page_sha256": "0fc4547384425ecf660fb29d3500f49d070b782cc4e99b0fdfd7c82bfa8f2e4b"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F01",
+      "url": "https://learn.chatgpt.com/docs/app/windows",
+      "section": "ChatGPT desktop app for Windows > Troubleshooting and FAQ > Share config, auth, and sessions with WSL",
+      "result": "verified",
+      "page_sha256": "c046dea3c453fd886b41ca866dcc623bef703a30e49ccda16f083194069d13df"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F02",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "section": "ChatGPT desktop app commands",
+      "result": "verified",
+      "page_sha256": "9740d10dbb437918a0d6b6c22d74bebed4de01bb3c25d43d24907229bc42cd89"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F03",
+      "url": "https://learn.chatgpt.com/docs/app",
+      "section": "ChatGPT desktop app > Get started with the desktop app > Choose where to work",
+      "result": "verified",
+      "page_sha256": "ca542cf965a9ee1aa9d7a2d8549a2d7f0444ebae10bc4f20cf8fea1fa5ac1f7f"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F04",
+      "url": "https://learn.chatgpt.com/docs/app",
+      "section": "ChatGPT desktop app > Get started with the desktop app > Choose where to work",
+      "result": "verified",
+      "page_sha256": "ca542cf965a9ee1aa9d7a2d8549a2d7f0444ebae10bc4f20cf8fea1fa5ac1f7f"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F05",
+      "url": "https://learn.chatgpt.com/docs/code-review",
+      "section": "Code review > Choose a review scope > Review multiple repositories",
+      "result": "verified",
+      "page_sha256": "cafab8c2cb9ccbdc0e8aa0de3c20b15edcd6e2d57ff547a81bfa3c3c09e67f04"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F06",
+      "url": "https://learn.chatgpt.com/docs/app/windows",
+      "section": "ChatGPT desktop app for Windows > Native sandbox",
+      "result": "verified",
+      "page_sha256": "c046dea3c453fd886b41ca866dcc623bef703a30e49ccda16f083194069d13df"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F07",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "section": "Permissions > Scope and enforcement > What profiles control",
+      "result": "verified",
+      "page_sha256": "03ddc686ae5f2fd30a500adc962a66acd8841d865511b3ece2795b7254e20bbc"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F08",
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+      "section": "Windows sandbox > Configure the Windows sandbox",
+      "result": "verified",
+      "page_sha256": "9fb1fc9c1966a9332dd2d4b024cbd32eb07ef33c427d170b3fc05026e6af4b9c"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F09",
+      "url": "https://learn.chatgpt.com/docs/auth",
+      "section": "Authentication > Credential storage",
+      "result": "verified",
+      "page_sha256": "ff1d6ef7cbcc442a6e7f4390c6c63fc7088208c6d71decdb25d376f67ab9a380"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F10",
+      "url": "https://learn.chatgpt.com/docs/permission-modes",
+      "section": "Permissions > How permissions work",
+      "result": "verified",
+      "page_sha256": "4581ee9b3dc658c5920ffb6adc17aac048990318c24b9be75ee31c42c3bec9fc"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F11",
+      "url": "https://learn.chatgpt.com/docs/code-review",
+      "section": "Code review > Inline comments for feedback",
+      "result": "verified",
+      "page_sha256": "cafab8c2cb9ccbdc0e8aa0de3c20b15edcd6e2d57ff547a81bfa3c3c09e67f04"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F12",
+      "url": "https://learn.chatgpt.com/docs/code-review",
+      "section": "Code review > Staging and reverting files",
+      "result": "verified",
+      "page_sha256": "cafab8c2cb9ccbdc0e8aa0de3c20b15edcd6e2d57ff547a81bfa3c3c09e67f04"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F13",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "section": "Build skills > How ChatGPT and Codex use skills",
+      "result": "verified",
+      "page_sha256": "52d24f5304dde449fa25125d251a683c150c4049ad8ad618d89af71f536f651f"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F14",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "section": "Model Context Protocol > Connect Codex to an MCP server",
+      "result": "verified",
+      "page_sha256": "43412d6a7d461764b958fb8453110bb8a8696db4f2c8cad6e34ccbb427da5597"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F15",
+      "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
+      "section": "Worktrees > Working between Local and Worktree > Option 1: Working on the worktree",
+      "result": "verified",
+      "page_sha256": "b8ceb80700b12d5ed39fdb32b5a61d5170e2fe6e78b47864994cefec19276558"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F16",
+      "url": "https://learn.chatgpt.com/docs/code-review",
+      "section": "Code review > Review local changes",
+      "result": "verified",
+      "page_sha256": "cafab8c2cb9ccbdc0e8aa0de3c20b15edcd6e2d57ff547a81bfa3c3c09e67f04"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F17",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "section": "Pricing > Frequently asked questions > Where can I see my current usage limits?",
+      "result": "verified",
+      "page_sha256": "714a47e5aab5545d3392719a7c0d26d27125875dcf8d5fb7c6b794d8fe03e674"
+    },
+    {
+      "profile_id": "codex-app-windows",
+      "feature_id": "F18",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "section": "Pricing > Frequently asked questions > What happens when you hit usage limits?",
+      "result": "verified",
+      "page_sha256": "714a47e5aab5545d3392719a7c0d26d27125875dcf8d5fb7c6b794d8fe03e674"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F01",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions",
+      "section": "Adding custom instructions for GitHub Copilot CLI > Creating repository-wide custom instructions > Referencing other files",
+      "result": "verified",
+      "page_sha256": "edc3ed941aff90e28eeabddaf8d692fb21c9363495b94bd3cccfe039790b926b"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F02",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Slash commands in the interactive interface",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F03",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Global shortcuts in the interactive interface",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F04",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Tool availability values > Other tools",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F05",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Tool availability values > File operation tools",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F06",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Tool availability values > Shell tools",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F07",
+      "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+      "section": "GitHub Copilot CLI > Security considerations > Allowed tools",
+      "result": "verified",
+      "page_sha256": "610c6f572421477973c033a34245fed6bdec9c75c09989d8bf36197f9453e378"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F08",
+      "url": "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/understanding-local-sandboxing",
+      "section": "Understanding filesystem policies for local sandboxing in GitHub Copilot CLI > What the policy applies to",
+      "result": "verified",
+      "page_sha256": "317561fa17c6aa3d79e09bad4d2dec58ad968f19bcf68ef83967b96ae8d817fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F09",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference",
+      "section": "GitHub Copilot CLI configuration directory > Automatically managed files > mcp-secrets/",
+      "result": "verified",
+      "page_sha256": "e38bab968b4ccaec1d55faa7aac52abc283218a82df997c9f5011bd6c34c1bdf"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F10",
+      "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+      "section": "GitHub Copilot CLI > Security considerations > Allowed tools > Using the approval options",
+      "result": "verified",
+      "page_sha256": "610c6f572421477973c033a34245fed6bdec9c75c09989d8bf36197f9453e378"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F11",
+      "url": "https://docs.github.com/en/copilot/get-started/cli-quickstart",
+      "section": "Getting started with GitHub Copilot CLI > Core shortcuts to master",
+      "result": "verified",
+      "page_sha256": "a6c2b4af8d4f44d37b9cd5cf3a6fb01840ff37f1e0e9d308c7890d06cc01c8c0"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F12",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Slash commands in the interactive interface",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F13",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-skills",
+      "section": "Adding agent skills for GitHub Copilot CLI > Adding a skill that someone else has created",
+      "result": "verified",
+      "page_sha256": "985535341702b59287c6868f2c2e7061e62c0aa78ecf680d23232cbdf3c13f7d"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F14",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers",
+      "section": "Adding MCP servers for GitHub Copilot CLI > Further reading",
+      "result": "verified",
+      "page_sha256": "870243833bc705c3f6f87005aa591fd7b827bf52f109af6111e0a978df5634fd"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F15",
+      "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+      "section": "GitHub Copilot CLI > Use cases for GitHub Copilot CLI > Tasks involving GitHub.com",
+      "result": "verified",
+      "page_sha256": "610c6f572421477973c033a34245fed6bdec9c75c09989d8bf36197f9453e378"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F16",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference",
+      "section": "GitHub Copilot CLI configuration directory > Automatically managed files > session-state/",
+      "result": "verified",
+      "page_sha256": "e38bab968b4ccaec1d55faa7aac52abc283218a82df997c9f5011bd6c34c1bdf"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F17",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Slash commands in the interactive interface",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F18",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Slash commands in the interactive interface",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-cli",
+      "feature_id": "F18",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Command-line options",
+      "result": "verified",
+      "page_sha256": "bbe5873a4d4a1463709e389e3c5b9f23726db13b73164ce621e42d546187f5fe"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F01",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app",
+      "section": "Customizing the GitHub Copilot app > Setting global and repository instructions",
+      "result": "verified",
+      "page_sha256": "de601b2da202e8e63d9ed50f7a6933d729c1048e487774080677e4eb71114cec"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F02",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing a session mode",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F03",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-projects",
+      "section": "Working with projects in the GitHub Copilot app > About projects",
+      "result": "verified",
+      "page_sha256": "72d1e2317199ed41d11cdaddc8aff42cdad1f03321441a8b4a9bb9c59ac54d12"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F04",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing tool permissions",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F05",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing tool permissions",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F06",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing a session mode",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F07",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing tool permissions",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F08",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Using cloud and local sandboxes",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F09",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Using cloud and local sandboxes",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F10",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing tool permissions",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F11",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-projects",
+      "section": "Working with projects in the GitHub Copilot app > Tracking and steering work",
+      "result": "verified",
+      "page_sha256": "72d1e2317199ed41d11cdaddc8aff42cdad1f03321441a8b4a9bb9c59ac54d12"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F12",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Starting a session",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F13",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app",
+      "section": "Customizing the GitHub Copilot app > Adding agent skills",
+      "result": "verified",
+      "page_sha256": "de601b2da202e8e63d9ed50f7a6933d729c1048e487774080677e4eb71114cec"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F14",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app",
+      "section": "Customizing the GitHub Copilot app > Configuring MCP servers",
+      "result": "verified",
+      "page_sha256": "de601b2da202e8e63d9ed50f7a6933d729c1048e487774080677e4eb71114cec"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F15",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests",
+      "section": "Managing issues and pull requests with the GitHub Copilot app > Reviewing a pull request",
+      "result": "verified",
+      "page_sha256": "682a32523a6c80d5b4da3fbe89bcecd5a3ed18510a56df8346a318e6cfcdaf3b"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F15",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests",
+      "section": "Managing issues and pull requests with the GitHub Copilot app > Responding to a review",
+      "result": "verified",
+      "page_sha256": "682a32523a6c80d5b4da3fbe89bcecd5a3ed18510a56df8346a318e6cfcdaf3b"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F16",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Using /chronicle with app sessions",
+      "result": "verified",
+      "page_sha256": "9041ceee9da781d92189ea8de0cc258914fc2cd15b517750547967c34c0d24b0"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F17",
+      "url": "https://docs.github.com/en/copilot/how-tos/manage-and-track-spending/monitor-ai-usage",
+      "section": "Monitoring your GitHub AI Credits usage > In this article",
+      "result": "verified",
+      "page_sha256": "7771b47c7ebb963f95c35b5a9352e580680c01b315569a61af29ce1ec7c04f6c"
+    },
+    {
+      "profile_id": "copilot-app-windows",
+      "feature_id": "F18",
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/using-automations",
+      "section": "Using automations in the GitHub Copilot app > Running an automation on demand",
+      "result": "verified",
+      "page_sha256": "476dee4e71dc36ca2018589d4e74d7449a6fe5bd168a736c08e62ec34416db8b"
+    }
+  ]
+}

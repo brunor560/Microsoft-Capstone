@@ -19,8 +19,13 @@ def to_text(page_html):
     m = re.search(r'<main[^>]*>(.*)</main>', page_html, flags=re.S)
     body = m.group(1) if m else page_html
     body = re.sub(r'<(script|style|nav|aside|svg)[^>]*>.*?</\1>', ' ', body, flags=re.S)
-    body = re.sub(r'<h([1-6])[^>]*>', lambda x: '\n\n\x01H%s\x01' % x.group(1), body)
-    body = re.sub(r'</h[1-6]>', '\n', body)
+    # Resolve a complete heading before block tags inside it create line breaks.
+    # Vendor docs often put anchor divs and a title span inside an h2/h3.
+    def heading(match):
+        title = re.sub(r'<[^>]+>', ' ', match.group(2)).replace('\u200b', '')
+        title = re.sub(r'\s+', ' ', title).strip()
+        return '\n\n\x01H%s\x01%s\n' % (match.group(1), title)
+    body = re.sub(r'<h([1-6])\b[^>]*>(.*?)</h\1>', heading, body, flags=re.S)
     body = re.sub(r'<(p|li|tr|pre|div|br)[^>]*>', '\n', body)
     body = re.sub(r'<[^>]+>', ' ', body)
     body = html.unescape(body).split('Your download has started')[0]

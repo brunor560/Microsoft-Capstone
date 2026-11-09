@@ -1,0 +1,102 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "claude",
+  "tool": "Claude Code",
+  "vendor": "Anthropic",
+  "default_surface": "cli",
+  "note": "Research proposal prepared from official documentation on 2026-11-08. All boundaries and tiers require human confirmation; no approval, authorship or review is asserted.",
+  "docs": {
+    "base_url": "https://code.claude.com/docs/en/",
+    "allowed_prefixes": [
+      "https://code.claude.com/docs/en/"
+    ],
+    "publisher": "Anthropic",
+    "surface_labels": {}
+  },
+  "surfaces": {
+    "cli": {
+      "label": "Claude Code",
+      "profile_id": "claude-cli",
+      "category_tags": [
+        "T2"
+      ],
+      "interface_and_execution_location": "Terminal CLI running against a local Linux workspace, with inference provided by Anthropic.",
+      "modes": [
+        "Headless print mode via claude -p",
+        "Interactive CLI where a capability requires it, with mode differences recorded"
+      ],
+      "platforms": [
+        "Ubuntu 24.04 (Linux scope; sandbox dependency requirements apply)"
+      ],
+      "account_and_tier": "Proposed: Claude Pro with Anthropic sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
+      "included_components": [
+        "Native repository instructions, shell and file tools, permission rules, print-mode controls and optional Bash sandbox"
+      ],
+      "exclusions": [
+        "Desktop, web and editor extensions; separately integrated Agent SDK; Bedrock, Vertex and Foundry routes",
+        "Third-party MCP servers, plugins, browser integration and added skills",
+        "Host-managed benchmark container and policies"
+      ],
+      "instructions_and_permissions": "Document CLAUDE.md scope and loading, permission precedence and differences between tool rules and the Bash sandbox.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://code.claude.com/docs/en/checkpointing",
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://code.claude.com/docs/en/common-workflows",
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/github-actions",
+        "https://code.claude.com/docs/en/how-claude-code-works",
+        "https://code.claude.com/docs/en/mcp",
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/sandboxing",
+        "https://code.claude.com/docs/en/security",
+        "https://code.claude.com/docs/en/sessions",
+        "https://code.claude.com/docs/en/skills"
+      ]
+    },
+    "app": {
+      "label": "Claude Code in Claude Desktop Code tab (Windows local)",
+      "profile_id": "claude-app-windows",
+      "category_tags": [
+        "T1"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: Claude Pro with Anthropic sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://code.claude.com/docs/en/desktop",
+        "https://code.claude.com/docs/en/mcp",
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/security",
+        "https://code.claude.com/docs/en/skills"
+      ]
+    }
+  }
+}

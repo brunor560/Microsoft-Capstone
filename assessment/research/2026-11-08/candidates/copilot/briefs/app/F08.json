@@ -1,0 +1,25 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Local app sandboxing restricts filesystem, network and credential access for agent-run tools; Git worktrees and cloud sandboxes are separate mechanisms.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Identical policy across host platforms and non-local tools"
+  ],
+  "required_setup": "Enable local sandboxing for a local Windows session; check actual policy/platform support rather than assuming a worktree is isolation.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Using cloud and local sandboxes",
+      "quote": "credential access"
+    }
+  ]
+}

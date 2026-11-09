@@ -1,0 +1,26 @@
+{
+  "feature_id": "F09",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "The security docs describe permissions and privacy safeguards but do not establish a full application-secret delivery/redaction lifecycle.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Secret injection, redaction and committed-file prevention"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/security",
+      "section": "Security > Security best practices > Working with sensitive code",
+      "quote": "sensitive repositories"
+    }
+  ],
+  "gap_reason": "Permissions and product sign-in are not evidence of safe application-secret handling across prompts, child processes and generated files."
+}

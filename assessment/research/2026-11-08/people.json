@@ -1,0 +1,10 @@
+{
+  "schema": "approach-a/people/1",
+  "note": "Team roster from the SRS cover page. Roles by team decision on Oct. 21, 2026: Ross Volenec is the current manifest approver; all four members may review cells. A person must be listed here before the CLI accepts them as an author, reviewer or approver. The CLI cannot authenticate who is typing; provenance comes from the commit that records the review.",
+  "people": [
+    {"id": "joseph", "name": "Joseph Bressani", "roles": ["reviewer"]},
+    {"id": "bruno", "name": "Bruno Rocha", "roles": ["reviewer"]},
+    {"id": "kapil", "name": "Kapil Srikanth", "roles": ["reviewer"]},
+    {"id": "ross", "name": "Ross Volenec", "roles": ["approver", "reviewer"]}
+  ]
+}

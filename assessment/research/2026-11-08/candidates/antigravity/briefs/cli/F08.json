@@ -1,0 +1,30 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Current CLI docs describe an optional OS terminal sandbox, including Windows compatibility limits; automatic modes depend on sandbox availability.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Identical protection across all OS versions and non-shell tools"
+  ],
+  "required_setup": "Enable --sandbox or the supported configuration. Windows 11 requirements and v1.4.4 availability rules apply; no claim is attributed to the old 1.4.0 profile.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://antigravity.google/docs/sandbox",
+      "section": "Antigravity CLI > How it works",
+      "quote": "OS-level isolation boundary"
+    },
+    {
+      "page": "https://antigravity.google/docs/sandbox",
+      "section": "Terminal sandbox > Antigravity CLI > CLI configuration > If the sandbox isn’t available",
+      "quote": "Windows 10"
+    }
+  ]
+}

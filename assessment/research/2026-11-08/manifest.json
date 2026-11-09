@@ -1,0 +1,326 @@
+{
+  "schema": "approach-a/manifest/1",
+  "manifest_version": 1,
+  "profiles": [
+    {
+      "id": "antigravity-cli",
+      "tool": "Google Antigravity",
+      "tool_key": "antigravity",
+      "surface": "cli",
+      "surface_label": "Antigravity CLI (agy)",
+      "category_tags": [
+        "T2"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive current documented execution modes, with mode-specific permission distinctions",
+        "Headless print mode with explicit permissions and timeout scope"
+      ],
+      "platforms": [
+        "macOS (Apple Silicon or Intel)",
+        "Linux x64/ARM64",
+        "Windows (PowerShell or CMD installer)",
+        "Googlebook"
+      ],
+      "account_and_tier": "Proposed: Individual personal Google account without Google AI Pro/Ultra; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "Antigravity App, Antigravity IDE, IDE extensions and SDK (separate surfaces; claims from their sections do not transfer)",
+        "Third-party plugins, MCP servers, skills and custom subagents beyond the native mechanisms (the mechanism is assessed; no add-on is added to the profile)",
+        "Paid-plan-only commands: /boost, /teamwork-preview (Preview)",
+        "Gemini Enterprise administrative controls (VPC-SC, data residency, Cloud logging) unless the team selects the enterprise tier",
+        "Remote Control companion sessions"
+      ],
+      "included_components": [
+        "Native CLI tools, permissions engine, rules, skills, hooks, MCP client, subagents, /plan, /diff, /rewind, /resume, artifact review, headless mode"
+      ],
+      "interface_and_execution_location": "Terminal TUI and headless print mode on the developer workstation; model inference is a hosted service (the docs describe the CLI talking to a shared agent harness and model endpoints).",
+      "instructions_and_permissions": "Current interactive default-mode diff review, separate execution and tool-permission settings, and optional terminal sandbox. No newer behavior is attributed to the old active 1.4.0 binary profile.",
+      "model_support": "Gemini models listed by `agy models`; some models require paid plans (FAQ). Model choice is not part of the comparison.",
+      "documentation_base": "https://antigravity.google/docs/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "antigravity-app-windows",
+      "tool": "Google Antigravity",
+      "tool_key": "antigravity",
+      "surface": "app",
+      "surface_label": "Antigravity App - Windows native baseline (proposed)",
+      "category_tags": [
+        "T1"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive implementation planning and direct execution; document mode-specific conditions",
+        "Local project work; native terminal actions and artifact review"
+      ],
+      "platforms": [
+        "Windows 11 24H2 or later with the August 2026 update or later where the documented terminal sandbox applies; updated versus previous permission settings remain a review question"
+      ],
+      "account_and_tier": "Proposed: Individual personal Google account without Google AI Pro/Ultra; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "Antigravity CLI, standalone IDE, editor extensions and SDK",
+        "Added MCP servers, marketplace plugins, user-authored skills, Spec Kit and custom orchestration",
+        "Business/enterprise administration and paid-tier-only capabilities",
+        "Benchmark results, screenshots and empirical feature tests as evidence"
+      ],
+      "included_components": [
+        "Native App project context, editing, planning, artifact review, terminal actions and permission mechanisms",
+        "Assess native support for rules, skills and MCP without adding third-party packages or connections"
+      ],
+      "interface_and_execution_location": "Interactive standalone desktop App with local Windows project folders. Do not infer local model processing from local file execution.",
+      "instructions_and_permissions": "Assess rules and App permission/review mechanisms from official documentation. Distinguish updated and previous permission systems, platform/account eligibility and activation; no runtime preset or enforcement is claimed.",
+      "model_support": "Document compatible models and account restrictions without selecting a model for execution; this assessment makes no evaluated-tool or model calls.",
+      "documentation_base": "https://antigravity.google/docs/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "claude-cli",
+      "tool": "Claude Code",
+      "tool_key": "claude",
+      "surface": "cli",
+      "surface_label": "Claude Code",
+      "category_tags": [
+        "T2"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Headless print mode via claude -p",
+        "Interactive CLI where a capability requires it, with mode differences recorded"
+      ],
+      "platforms": [
+        "Ubuntu 24.04 (Linux scope; sandbox dependency requirements apply)"
+      ],
+      "account_and_tier": "Proposed: Claude Pro with Anthropic sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "Desktop, web and editor extensions; separately integrated Agent SDK; Bedrock, Vertex and Foundry routes",
+        "Third-party MCP servers, plugins, browser integration and added skills",
+        "Host-managed benchmark container and policies"
+      ],
+      "included_components": [
+        "Native repository instructions, shell and file tools, permission rules, print-mode controls and optional Bash sandbox"
+      ],
+      "interface_and_execution_location": "Terminal CLI running against a local Linux workspace, with inference provided by Anthropic.",
+      "instructions_and_permissions": "Document CLAUDE.md scope and loading, permission precedence and differences between tool rules and the Bash sandbox.",
+      "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
+      "documentation_base": "https://code.claude.com/docs/en/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "claude-app-windows",
+      "tool": "Claude Code",
+      "tool_key": "claude",
+      "surface": "app",
+      "surface_label": "Claude Code in Claude Desktop Code tab (Windows local)",
+      "category_tags": [
+        "T1"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: Claude Pro with Anthropic sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
+      "documentation_base": "https://code.claude.com/docs/en/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "codex-cli",
+      "tool": "Codex",
+      "tool_key": "codex",
+      "surface": "cli",
+      "surface_label": "Codex CLI",
+      "category_tags": [
+        "T2"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Non-interactive codex exec",
+        "Interactive CLI where needed to describe mode-specific capabilities"
+      ],
+      "platforms": [
+        "Native Windows 11 with PowerShell; sandbox behavior depends on the configured Windows implementation and device support"
+      ],
+      "account_and_tier": "Proposed: ChatGPT Plus with ChatGPT sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "ChatGPT desktop app, IDE extension, cloud tasks, Work Cloud and WSL",
+        "Third-party MCP servers, plugins, external skills and custom providers",
+        "Experimental and enterprise-only controls unless the exact scope is agreed"
+      ],
+      "included_components": [
+        "Native CLI workspace tools, AGENTS.md, exec mode, permission profiles, approval policy and native Windows sandbox options"
+      ],
+      "interface_and_execution_location": "Standalone Codex terminal client on a native Windows workstation. Workspace commands run locally; model inference is through OpenAI.",
+      "instructions_and_permissions": "Document project instruction layering, permission profile and approval policy separately. Identify which Windows sandbox implementation a claim assumes.",
+      "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
+      "documentation_base": "https://learn.chatgpt.com/docs/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "codex-app-windows",
+      "tool": "Codex",
+      "tool_key": "codex",
+      "surface": "app",
+      "surface_label": "Codex in ChatGPT desktop app (Windows native)",
+      "category_tags": [
+        "T1"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: ChatGPT Plus with ChatGPT sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
+      "documentation_base": "https://learn.chatgpt.com/docs/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "copilot-cli",
+      "tool": "GitHub Copilot",
+      "tool_key": "copilot",
+      "surface": "cli",
+      "surface_label": "GitHub Copilot CLI",
+      "category_tags": [
+        "T2"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive terminal mode with manual approval",
+        "Built-in plan mode",
+        "Programmatic prompt mode documented separately when relevant"
+      ],
+      "platforms": [
+        "macOS on Apple silicon"
+      ],
+      "account_and_tier": "Proposed: Copilot Free with GitHub sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "VS Code agent mode, GitHub web chat, cloud coding agent and cloud sandboxes",
+        "BYOK, third-party MCP servers, plugins, added skills and enterprise administration"
+      ],
+      "included_components": [
+        "Native CLI file and shell tools, custom instructions, plan mode, approval prompts, permission rules and optional local sandboxing"
+      ],
+      "interface_and_execution_location": "Standalone GitHub Copilot CLI on a local macOS workstation, authenticated to GitHub Copilot.",
+      "instructions_and_permissions": "Document the CLI custom instruction paths, manual permissions and tool allow/deny rules. Distinguish permission prompts from local sandbox restrictions.",
+      "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
+      "documentation_base": "https://docs.github.com/en/copilot/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    },
+    {
+      "id": "copilot-app-windows",
+      "tool": "GitHub Copilot",
+      "tool_key": "copilot",
+      "surface": "app",
+      "surface_label": "GitHub Copilot app (Windows local)",
+      "category_tags": [
+        "T1"
+      ],
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: Copilot Free with GitHub sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
+      "documentation_base": "https://docs.github.com/en/copilot/",
+      "source_access_date": "2026-11-08",
+      "confirmed_by": null,
+      "confirmed_at": null,
+      "boundary_state": "proposed"
+    }
+  ],
+  "approval": null
+}

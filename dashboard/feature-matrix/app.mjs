@@ -4,6 +4,8 @@ import { buildIndex, classify, emptyFilters, parseParams, toParams, visibleRows 
 import { controls } from './controls.mjs';
 import { cards, grid } from './grid.mjs';
 import { detail, legend, profileCard } from './views.mjs';
+import { shortlist } from './shortlist.mjs';
+import { readShortlist, writeShortlist } from './shortlist-logic.mjs';
 
 const app = document.getElementById('app');
 
@@ -33,28 +35,75 @@ async function load() {
   if (!res.ok) return { kind: 'error', message: 'The data file could not be loaded (HTTP ' + res.status + ').' };
   let obj;
   try { obj = await res.json(); } catch { return { kind: 'error', message: 'The data file is not valid JSON.' }; }
-  return classify(obj, { allowPreview });
+  return { ...classify(obj, { allowPreview }), demo: allowPreview && obj?.release?.release_id === 'shortlist-demo' };
 }
 
-function render(ix, preview) {
+function render(ix, preview, demo) {
   const rel = ix.payload.release;
-  const keepParams = () => (preview ? '&preview=' + encodeURIComponent(new URLSearchParams(location.search).get('preview')) : '');
+  const initialParams = new URLSearchParams(location.search);
+  const previewFile = preview ? initialParams.get('preview') : null;
   const init = parseParams(location.search);
   const ctx = { preview, f: init.filters, sel: { profile: init.profile, feature: init.feature }, select: null };
+  let view = initialParams.get('view') === 'shortlist' ? 'shortlist' : 'overview';
   const holder = h('div');
+  const overview = h('div', { id: 'overview-panel' },
+    h('div', { class: 'profiles' }, ix.profiles.map(profileCard)), legend(ix), holder);
+  let shortlistState = readShortlist(location.search);
+  const shortlistPanel = h('div', { id: 'shortlist-panel' });
+  function drawShortlist() {
+    clear(shortlistPanel).append(shortlist(ix, (profile, feature) => {
+      view = 'overview'; ctx.select(profile, feature);
+    }, shortlistState, () => update(false), cellUrl));
+  }
+  const overviewButton = viewButton('Overview', 'overview', overview);
+  const shortlistButton = viewButton('Shortlist', 'shortlist', shortlistPanel);
+  const notice = demo
+    ? banner('draft', h('strong', {}, 'Illustrative demo. '), 'The tools, tiers and evidence shown here are fictional.')
+    : preview ? banner('draft', h('strong', {}, 'Draft — not accepted. '), 'Local preview of working research. Findings are unreviewed and must not be used as results.') : null;
   clear(app).append(
-    ...(preview ? [banner('draft', h('strong', {}, 'Draft — not accepted. '), 'Local preview of working research. Findings are unreviewed and must not be used as results.')] : []),
-    h('div', { class: 'profiles' }, ix.profiles.map(profileCard)), legend(ix), holder,
+    ...(notice ? [notice] : []),
+    h('nav', { class: 'matrix-tabs', 'aria-label': 'Feature matrix views' }, overviewButton, shortlistButton),
+    overview, shortlistPanel,
     h('section', { class: 'card', 'aria-label': 'Method and limitations' }, h('h2', {}, 'Method and limitations'),
       h('ul', {}, ix.payload.limitations.map((l) => h('li', {}, l))),
       h('p', { class: 'small mono' }, 'Release ' + rel.release_id + ' · source commit ' + String(rel.source_commit || 'unknown') + ' · manifest v' + rel.manifest_version)));
 
-  function url() {
-    const q = toParams(ctx.f, ctx.sel);
-    const extra = keepParams();
-    return location.pathname + (q ? q + extra : extra ? '?' + extra.slice(1) : '');
+  function viewButton(label, target, panel) {
+    return h('button', { type: 'button', class: 'btn', 'aria-controls': panel.id, onclick: () => {
+      if (view === target) return;
+      view = target;
+      update(true);
+    } }, label);
   }
-  function update(push) { history[push ? 'pushState' : 'replaceState'](null, '', url()); draw(); }
+
+  function showView() {
+    overview.hidden = view !== 'overview';
+    shortlistPanel.hidden = view !== 'shortlist';
+    overviewButton.setAttribute('aria-pressed', String(!overview.hidden));
+    shortlistButton.setAttribute('aria-pressed', String(!shortlistPanel.hidden));
+    if (!shortlistPanel.hidden) shortlistPanel.querySelectorAll('a[data-profile]').forEach((a) => {
+      a.href = cellUrl(a.dataset.profile, a.dataset.feature);
+    });
+  }
+
+  function cellUrl(profile, feature) {
+    const params = new URLSearchParams(url().split('?')[1] || '');
+    params.delete('view'); params.set('profile', profile); params.set('feature', feature);
+    return location.pathname + '?' + params + '#detail';
+  }
+
+  function url() {
+    const params = new URLSearchParams(toParams(ctx.f, ctx.sel));
+    if (previewFile) params.set('preview', previewFile);
+    writeShortlist(params, shortlistState);
+    if (view === 'shortlist') params.set('view', view);
+    return location.pathname + (params.size ? '?' + params : '');
+  }
+  function update(push) {
+    history[push ? 'pushState' : 'replaceState'](null, '', url());
+    showView();
+    if (view === 'overview') draw();
+  }
   ctx.select = (profile, feature) => { ctx.sel = { profile, feature }; update(true); document.getElementById('detail')?.focus(); };
 
   function draw() {
@@ -66,16 +115,25 @@ function render(ix, preview) {
     clear(holder).append(
       controls(ix, ctx.f, (part) => { ctx.f = { ...ctx.f, ...part }; update(false); }, () => { ctx.f = emptyFilters(); update(false); }),
       h('p', { class: 'count', role: 'status' }, 'Showing ' + rows.length + ' of ' + total + ' features'),
-      rows.length ? [grid(ctx, ix, rows, columns), cards(ctx, rows)] : h('p', { class: 'muted' }, 'No features match these filters.'),
-      p && f ? detail(ix, p, f, ix.cells.get(p.id + '/' + f.id) || null, preview) : null);
+      ...(rows.length ? [grid(ctx, ix, rows, columns), cards(ctx, rows)]
+        : [h('p', { class: 'muted' }, 'No features match these filters.')]));
+    if (p && f) holder.append(detail(ix, p, f, ix.cells.get(p.id + '/' + f.id) || null, preview));
     if (typing) { const q = document.getElementById('fQ'); q.focus(); q.setSelectionRange(caret, caret); }
   }
 
   window.addEventListener('popstate', () => {
     const s = parseParams(location.search);
-    ctx.f = s.filters; ctx.sel = { profile: s.profile, feature: s.feature }; draw();
+    ctx.f = s.filters;
+    ctx.sel = { profile: s.profile, feature: s.feature };
+    view = new URLSearchParams(location.search).get('view') === 'shortlist' ? 'shortlist' : 'overview';
+    shortlistState = readShortlist(location.search);
+    drawShortlist();
+    showView();
+    if (view === 'overview') draw();
   });
-  draw();
+  drawShortlist();
+  showView();
+  if (view === 'overview') draw();
 }
 
 (async function main() {
@@ -86,6 +144,6 @@ function render(ix, preview) {
   } else if (result.kind === 'error') {
     clear(app).append(banner('error', h('strong', {}, 'The documented capabilities could not be shown. '), result.message));
   } else {
-    render(buildIndex(result.payload), result.preview);
+    render(buildIndex(result.payload), result.preview, result.demo);
   }
 })();

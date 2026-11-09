@@ -1,0 +1,127 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "antigravity",
+  "tool": "Google Antigravity",
+  "vendor": "Google",
+  "default_surface": "cli",
+  "note": "Research proposal prepared from official documentation on 2026-11-08. All boundaries and tiers require human confirmation; no approval, authorship or review is asserted.",
+  "docs": {
+    "base_url": "https://antigravity.google/docs/",
+    "allowed_prefixes": [
+      "https://antigravity.google/docs/"
+    ],
+    "publisher": "Google (antigravity.google)",
+    "surface_labels": {
+      "Antigravity CLI": "cli",
+      "Antigravity App": "app",
+      "Antigravity IDE": "ide",
+      "IDE extensions": "ide-extensions",
+      "Antigravity SDK": "sdk"
+    }
+  },
+  "surfaces": {
+    "cli": {
+      "label": "Antigravity CLI (agy)",
+      "profile_id": "antigravity-cli",
+      "category_tags": [
+        "T2"
+      ],
+      "interface_and_execution_location": "Terminal TUI and headless print mode on the developer workstation; model inference is a hosted service (the docs describe the CLI talking to a shared agent harness and model endpoints).",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive current documented execution modes, with mode-specific permission distinctions",
+        "Headless print mode with explicit permissions and timeout scope"
+      ],
+      "platforms": [
+        "macOS (Apple Silicon or Intel)",
+        "Linux x64/ARM64",
+        "Windows (PowerShell or CMD installer)",
+        "Googlebook"
+      ],
+      "account_and_tier": "Proposed: Individual personal Google account without Google AI Pro/Ultra; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "Gemini models listed by `agy models`; some models require paid plans (FAQ). Model choice is not part of the comparison.",
+      "included_components": [
+        "Native CLI tools, permissions engine, rules, skills, hooks, MCP client, subagents, /plan, /diff, /rewind, /resume, artifact review, headless mode"
+      ],
+      "exclusions": [
+        "Antigravity App, Antigravity IDE, IDE extensions and SDK (separate surfaces; claims from their sections do not transfer)",
+        "Third-party plugins, MCP servers, skills and custom subagents beyond the native mechanisms (the mechanism is assessed; no add-on is added to the profile)",
+        "Paid-plan-only commands: /boost, /teamwork-preview (Preview)",
+        "Gemini Enterprise administrative controls (VPC-SC, data residency, Cloud logging) unless the team selects the enterprise tier",
+        "Remote Control companion sessions"
+      ],
+      "instructions_and_permissions": "Current interactive default-mode diff review, separate execution and tool-permission settings, and optional terminal sandbox. No newer behavior is attributed to the old active 1.4.0 binary profile.",
+      "seed_pages": [
+        "https://antigravity.google/docs/changelog",
+        "https://antigravity.google/docs/cli/artifacts",
+        "https://antigravity.google/docs/cli/best-practices",
+        "https://antigravity.google/docs/cli/commands/context",
+        "https://antigravity.google/docs/cli/commands/diff",
+        "https://antigravity.google/docs/cli/commands/permissions",
+        "https://antigravity.google/docs/cli/commands/usage",
+        "https://antigravity.google/docs/cli/headless",
+        "https://antigravity.google/docs/cli/modes",
+        "https://antigravity.google/docs/cli/reference",
+        "https://antigravity.google/docs/install",
+        "https://antigravity.google/docs/mcp",
+        "https://antigravity.google/docs/plan",
+        "https://antigravity.google/docs/rules",
+        "https://antigravity.google/docs/sandbox",
+        "https://antigravity.google/docs/skills"
+      ]
+    },
+    "app": {
+      "label": "Antigravity App - Windows native baseline (proposed)",
+      "profile_id": "antigravity-app-windows",
+      "category_tags": [
+        "T1"
+      ],
+      "interface_and_execution_location": "Interactive standalone desktop App with local Windows project folders. Do not infer local model processing from local file execution.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "modes": [
+        "Interactive implementation planning and direct execution; document mode-specific conditions",
+        "Local project work; native terminal actions and artifact review"
+      ],
+      "platforms": [
+        "Windows 11 24H2 or later with the August 2026 update or later where the documented terminal sandbox applies; updated versus previous permission settings remain a review question"
+      ],
+      "account_and_tier": "Proposed: Individual personal Google account without Google AI Pro/Ultra; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "Document compatible models and account restrictions without selecting a model for execution; this assessment makes no evaluated-tool or model calls.",
+      "included_components": [
+        "Native App project context, editing, planning, artifact review, terminal actions and permission mechanisms",
+        "Assess native support for rules, skills and MCP without adding third-party packages or connections"
+      ],
+      "exclusions": [
+        "Antigravity CLI, standalone IDE, editor extensions and SDK",
+        "Added MCP servers, marketplace plugins, user-authored skills, Spec Kit and custom orchestration",
+        "Business/enterprise administration and paid-tier-only capabilities",
+        "Benchmark results, screenshots and empirical feature tests as evidence"
+      ],
+      "instructions_and_permissions": "Assess rules and App permission/review mechanisms from official documentation. Distinguish updated and previous permission systems, platform/account eligibility and activation; no runtime preset or enforcement is claimed.",
+      "seed_pages": [
+        "https://antigravity.google/docs/agent-settings",
+        "https://antigravity.google/docs/artifact-review",
+        "https://antigravity.google/docs/artifacts",
+        "https://antigravity.google/docs/features",
+        "https://antigravity.google/docs/implementation-plan",
+        "https://antigravity.google/docs/mcp",
+        "https://antigravity.google/docs/permissions",
+        "https://antigravity.google/docs/plans",
+        "https://antigravity.google/docs/projects",
+        "https://antigravity.google/docs/rules",
+        "https://antigravity.google/docs/sandbox",
+        "https://antigravity.google/docs/settings",
+        "https://antigravity.google/docs/skills",
+        "https://antigravity.google/docs/walkthrough"
+      ]
+    }
+  }
+}

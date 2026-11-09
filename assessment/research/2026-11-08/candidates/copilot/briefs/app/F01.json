@@ -1,0 +1,25 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "The app supports global and repository instructions; these guide the agent rather than enforce a security boundary.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guaranteed compliance"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app",
+      "section": "Customizing the GitHub Copilot app > Setting global and repository instructions",
+      "quote": "apply globally"
+    }
+  ]
+}

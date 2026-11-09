@@ -1,0 +1,25 @@
+{
+  "feature_id": "F15",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "An official GitHub Actions integration documents CI/PR workflows. It is an additional integration beyond the local CLI baseline.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Native complete deployment workflow"
+  ],
+  "required_setup": "Configure the official GitHub Actions integration separately; do not enable it for this documentary assessment.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/github-actions",
+      "section": "Claude Code GitHub Actions > Setup > GitHub App permissions",
+      "quote": "pull requests"
+    }
+  ]
+}

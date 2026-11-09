@@ -1,0 +1,26 @@
+{
+  "feature_id": "F16",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "App session management and /chronicle expose saved session history; completeness, export and integrity of a command/result audit trail remain unestablished.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Complete event export and integrity guarantees"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Using /chronicle with app sessions",
+      "quote": "session history"
+    }
+  ],
+  "gap_reason": "Saved session history and summaries are not a complete action-audit export contract in the reviewed app pages."
+}

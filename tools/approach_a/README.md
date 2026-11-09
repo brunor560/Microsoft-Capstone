@@ -150,3 +150,92 @@ Synthetic datasets in temporary directories; no network. The drafting tests use 
 - People are not authenticated; the commit that adds a review or approval is its provenance.
 - Section matching depends on the documentation's headings. A site change can make quotes fail; those cells stay pending rather than being guessed.
 
+
+### Feature matrix Shortlist (local review)
+
+The direct `/feature-matrix/` route has Overview and Shortlist views. Overview keeps
+its horizontal profile cards, matrix, and evidence details. Shortlist has two native
+multi-select dropdowns: recorded profile tiers grouped by tool, and searchable
+requirements grouped by the specification's six feature areas. Sort by match group
+or tool name. Tabs preserve both views' filters; shortlist selections and sort also
+survive reload and browser Back/Forward through URL parameters. Each requirement
+has a normal link to its exact profile/feature detail, even when Overview filters
+hide the corresponding matrix row. Enter activates links and picker summaries;
+Space toggles checkboxes; Escape closes a picker and returns focus to its summary.
+
+Shortlist reads the existing `approach-a/publication/1` fields. A tier is the
+profile's recorded `account_and_tier` text, never an inferred list of vendor plans.
+Missing or explicitly undecided tiers appear as **Tier not established**. Distinct
+profiles remain distinct even when they share a tool or tier label.
+
+- **Documented match:** every selected feature has documented whole-feature
+  support on the same eligible profile and recorded tier, with matched source
+  quotations and no explicit unsupported or unestablished scope.
+- **Documented gap:** any selected feature explicitly records unsupported scope
+  backed by matched source quotations, including partial support with a gap.
+- **Needs verification:** otherwise, research/tier/evidence is missing or
+  inconclusive. This includes conflicting/stale/disputed findings and capabilities
+  whose required configuration or implementation setup is not established.
+  Documented setup can support a match within the recorded profile boundary;
+  delivery mechanisms are explained rather than ranked.
+
+These are requirement groups, not capability scores or benchmark rankings. Each
+requirement retains its cell's supported, unsupported and unestablished scope,
+setup and constraints. Draft findings may illustrate groups but remain unreviewed;
+quotation matching does not establish runtime effectiveness. No additional tier
+findings or changes to the exporter schema are required.
+
+From the repository root, generate the real draft and the optional fictional demo
+outside the Pages upload directory, then start the existing loopback server:
+
+```bash
+python3 -m tools.approach_a export-publication --mode preview
+node tools/approach_a/tests/js/shortlist-fixture.mjs > assessment/preview/matrix.demo.json
+python3 -m tools.approach_a serve-preview --port 4174
+```
+
+- Real draft: `http://127.0.0.1:4174/feature-matrix/?preview=matrix.preview.json`
+- Fictional demo: `http://127.0.0.1:4174/feature-matrix/?preview=matrix.demo.json`
+- Public file/empty state: `http://127.0.0.1:4174/feature-matrix/`
+
+The fixture preserves all 18 specification features; select F01, F07 and F08 to
+exercise all three groups. Alder has separate Individual and Enterprise profiles;
+Birch has pending evidence and Elm has an unknown tier. All tools, tiers and
+findings in this demo are fictional. The demo banner labels it explicitly. Both
+preview files stay in gitignored `assessment/preview/`; neither the generator nor
+fictional tier data belongs under `dashboard/`. Preview selection is honored only
+on loopback hosts. The public JSON stays untouched until the whole selected
+manifest passes validation, independent review and approval. No person’s review,
+authorship or approval is recorded by these preview commands.
+
+Run the existing workflow checks:
+
+```bash
+python3 -m unittest discover -s tools/approach_a/tests -t .
+node --test tools/approach_a/tests/js/*.test.mjs
+python3 -m unittest tools.approach_a.tests.test_publish_files.CommittedDataFile -v
+for f in dashboard/feature-matrix/*.mjs; do node --check "$f"; done
+```
+
+An optional browser check reuses an installed Playwright with Chromium (no
+production dependency or download is added). With the preview server running:
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/node_modules/playwright \
+  node tools/approach_a/tests/js/shortlist-browser-check.mjs
+```
+
+It checks the empty state, draft and demo labels, Overview/Shortlist flow, both
+grouped dropdowns, feature search, sorting, URL/reload/history persistence, exact
+cell links and focus, keyboard operation, and a 375px viewport. It expects the
+current public empty marker and a real unaccepted draft with an undecided tier;
+fixtures exercise complete coverage while human review is pending.
+
+For this local integration review (November 8, 2026), the accepted exporter
+reported 36 blockers: `AUTHOR_MISSING` ×17, `REVIEW_MISSING` ×18 and
+`APPROVAL_MISSING` ×1. The public empty marker is retained. Team members must
+resolve authorship, independently review every cell, settle the profile tier
+boundary, and approve the selected manifest before exporting accepted data.
+UI review uses the direct route; a dashboard header link still needs the
+microsite owner's agreement. Push, merge, Pages deployment and changes to
+`.github/workflows/static.yml` are outside this pass.

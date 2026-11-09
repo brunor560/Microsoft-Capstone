@@ -1,0 +1,25 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Optional Linux Bash sandboxing provides filesystem and network restrictions subject to supported dependencies and escape configuration.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Isolation of every non-Bash tool and external service"
+  ],
+  "required_setup": "Enable the documented Bash sandbox and its Linux dependencies; inspect escape settings.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/sandboxing",
+      "section": "Configure the sandboxed Bash tool > Limitations > Scope",
+      "quote": "filesystem and network isolation"
+    }
+  ]
+}

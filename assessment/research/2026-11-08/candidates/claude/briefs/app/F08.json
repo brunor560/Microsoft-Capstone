@@ -1,0 +1,26 @@
+{
+  "feature_id": "F08",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "The documented local environment executes on the user machine. A worktree separates Git changes but does not establish a Windows process/network sandbox.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Native Windows OS sandbox boundary for the selected local Code session"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Environment configuration",
+      "quote": "direct access"
+    }
+  ],
+  "gap_reason": "Linux Bash sandbox and cloud/WSL environment claims cannot establish isolation for the native Windows desktop profile."
+}

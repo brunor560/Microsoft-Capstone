@@ -1,0 +1,26 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "CLI artifact and conversation documentation supplies plans and summaries but not a stable requirement-to-code-to-test traceability record.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Requirements mapped to implementation and verification"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://antigravity.google/docs/cli/artifacts",
+      "section": "Reviewing artifacts > Collaboration and co-steering",
+      "quote": "artifact"
+    }
+  ],
+  "gap_reason": "The reviewed CLI artifact documentation does not establish complete F03 requirements traceability; plans and walkthroughs are not sufficient."
+}

@@ -1,0 +1,25 @@
+{
+  "feature_id": "F13",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Native agent skills group instructions, scripts and resources into reusable tasks.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Effectiveness of any particular added skill"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-skills",
+      "section": "Adding agent skills for GitHub Copilot CLI > Adding a skill that someone else has created",
+      "quote": "SKILL.md"
+    }
+  ]
+}

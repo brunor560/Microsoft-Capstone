@@ -1,0 +1,29 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "supported_scope": "Native App discovery of workspace, directory-scoped and global rule files, with documented activation modes and precedence. Rules supply agent context rather than an access-control boundary.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guaranteed agent compliance with instructions"
+  ],
+  "required_setup": "Create supported rule files or use App Customizations; activation depends on file type and trigger.",
+  "constraints": [
+    "Rule size and aggregate-context limits apply; invalid triggers can prevent loading.",
+    "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
+  ],
+  "evidence": [
+    {
+      "page": "https://antigravity.google/docs/rules",
+      "section": "Antigravity App > Antigravity App file locations",
+      "quote": "The Antigravity App loads rules from the following locations:"
+    },
+    {
+      "page": "https://antigravity.google/docs/rules",
+      "section": "Activation modes",
+      "quote": "Configure the trigger key"
+    }
+  ]
+}

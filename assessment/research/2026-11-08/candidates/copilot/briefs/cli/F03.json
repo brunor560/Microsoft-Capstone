@@ -1,0 +1,26 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "The CLI can include issue/PR context and plans, but no formal requirement-to-code-to-test mapping is established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Stable requirement IDs mapped to verification artifacts"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Global shortcuts in the interactive interface",
+      "quote": "GitHub issue"
+    }
+  ],
+  "gap_reason": "Issue references and implementation plans are not a complete requirements traceability contract in the reviewed CLI documentation."
+}

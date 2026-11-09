@@ -1,0 +1,26 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "Desktop sessions and plans organize work, without a documented formal requirements-to-code-to-test mapping.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Requirements traceability record"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Work with code > Choose a permission mode",
+      "quote": "proposes a plan"
+    }
+  ],
+  "gap_reason": "A desktop plan and session do not establish formal verification traceability in the reviewed material."
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "copilot",
+  "tool": "GitHub Copilot",
+  "vendor": "GitHub",
+  "default_surface": "cli",
+  "note": "Research proposal prepared from official documentation on 2026-11-08. All boundaries and tiers require human confirmation; no approval, authorship or review is asserted.",
+  "docs": {
+    "base_url": "https://docs.github.com/en/copilot/",
+    "allowed_prefixes": [
+      "https://docs.github.com/en/copilot/"
+    ],
+    "publisher": "GitHub",
+    "surface_labels": {
+      "GitHub Copilot CLI": "cli",
+      "GitHub Copilot app": "app"
+    }
+  },
+  "surfaces": {
+    "cli": {
+      "label": "GitHub Copilot CLI",
+      "profile_id": "copilot-cli",
+      "category_tags": [
+        "T2"
+      ],
+      "interface_and_execution_location": "Standalone GitHub Copilot CLI on a local macOS workstation, authenticated to GitHub Copilot.",
+      "modes": [
+        "Interactive terminal mode with manual approval",
+        "Built-in plan mode",
+        "Programmatic prompt mode documented separately when relevant"
+      ],
+      "platforms": [
+        "macOS on Apple silicon"
+      ],
+      "account_and_tier": "Proposed: Copilot Free with GitHub sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
+      "included_components": [
+        "Native CLI file and shell tools, custom instructions, plan mode, approval prompts, permission rules and optional local sandboxing"
+      ],
+      "exclusions": [
+        "VS Code agent mode, GitHub web chat, cloud coding agent and cloud sandboxes",
+        "BYOK, third-party MCP servers, plugins, added skills and enterprise administration"
+      ],
+      "instructions_and_permissions": "Document the CLI custom instruction paths, manual permissions and tool allow/deny rules. Distinguish permission prompts from local sandbox restrictions.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+        "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/understanding-local-sandboxing",
+        "https://docs.github.com/en/copilot/get-started/cli-quickstart",
+        "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions",
+        "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers",
+        "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-skills",
+        "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+        "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference"
+      ]
+    },
+    "app": {
+      "label": "GitHub Copilot app (Windows local)",
+      "profile_id": "copilot-app-windows",
+      "category_tags": [
+        "T1"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: Copilot Free with GitHub sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app",
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests",
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/using-automations",
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-projects",
+        "https://docs.github.com/en/copilot/how-tos/manage-and-track-spending/monitor-ai-usage"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "Projects track goals and work; issue-linked sessions do not establish stable requirements-to-code-to-test traceability.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Formal requirements verification links"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-projects",
+      "section": "Working with projects in the GitHub Copilot app > About projects",
+      "quote": "goal"
+    }
+  ],
+  "gap_reason": "Project coordination and issue context do not specify the F03 traceability record in the reviewed app sources."
+}

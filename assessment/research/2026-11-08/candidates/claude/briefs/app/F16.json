@@ -1,0 +1,26 @@
+{
+  "feature_id": "F16",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "Session details and logs exist, but the reviewed Desktop export contract does not establish a complete durable command/result audit record.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Complete event export and audit integrity"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Arrange your workspace > See session details",
+      "quote": "session"
+    }
+  ],
+  "gap_reason": "Desktop session display is not by itself a complete immutable action audit trail; CLI export behavior is not silently transferred."
+}

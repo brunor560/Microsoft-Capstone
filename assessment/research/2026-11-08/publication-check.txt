@@ -1,0 +1,9 @@
+EXPECTED REFUSAL
+dataset is not accepted: 297 blocking finding(s); nothing was written
+  APPROVAL_MISSING x1
+  AUTHOR_MISSING x144
+  BOUNDARY_UNCONFIRMED x8
+  REVIEW_MISSING x144
+Use --mode preview for a labeled local draft view.
+Public matrix.json SHA-256: f229147ad8216cc1d3a4145a15e9d8e59307244f06c63ebc31bc429c438ed489
+Unchanged: True

@@ -1,0 +1,26 @@
+{
+  "feature_id": "F03",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "Planning and normal development workflows are described, but formal requirement links through implementation and verification are not established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Stable requirement/code/test mappings"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/common-workflows",
+      "section": "Common workflows > Plan before editing",
+      "quote": "Plan Mode"
+    }
+  ],
+  "gap_reason": "A plan is not traceability; the reviewed workflow sources do not define the required linkage record."
+}

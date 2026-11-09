@@ -1,0 +1,26 @@
+{
+  "feature_id": "F18",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "App projects and automations schedule recurring work; scheduling is not a hard time, iteration or spend limit.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "User-configured hard per-task duration, iteration and spend caps"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/using-automations",
+      "section": "Using automations in the GitHub Copilot app > Running an automation on demand",
+      "quote": "schedule"
+    }
+  ],
+  "gap_reason": "The reviewed app automation and session pages do not establish a complete per-task hard-budget contract."
+}

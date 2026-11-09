@@ -1,0 +1,25 @@
+{
+  "feature_id": "F12",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Checkpointing snapshots tracked edits and supports rewind, with explicit limitations for files touched only by shell commands.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Rollback of untracked shell side effects and external actions"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/checkpointing",
+      "section": "Checkpointing > Limitations > Bash command changes not tracked",
+      "quote": "A file that only Bash commands changed"
+    }
+  ]
+}

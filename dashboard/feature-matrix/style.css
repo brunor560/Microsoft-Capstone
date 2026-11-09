@@ -96,3 +96,34 @@ blockquote { margin: 4px 0; padding: 6px 10px; border-left: 3px solid var(--acce
   .cards .cellbtn { margin-top: 6px; }
 }
 
+
+.matrix-tabs, .shortlist-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: start; }
+.matrix-tabs { margin-bottom: 16px; }
+.matrix-tabs [aria-pressed="true"] { background: var(--accent-surface); border-color: var(--accent-line); }
+.shortlist-picker > summary, .shortlist-result > summary { cursor: pointer; }
+.shortlist-picker fieldset { margin: 8px 0; border: 1px solid var(--border); border-radius: var(--r-chip); }
+.shortlist-picker label:not([hidden]) { display: block; }
+.shortlist-picker input[type="search"], .shortlist-filters select {
+  background: var(--raised-2); border: 1px solid var(--border-strong); border-radius: var(--r-chip); padding: 7px;
+}
+.shortlist-picker input[type="search"] { margin-top: 8px; max-width: 100%; }
+.shortlist-result li { margin: 6px 0; }
+.shortlist-reason { display: block; margin-left: 16px; }
+.shortlist-match { color: var(--ok); }
+.shortlist-unknown { color: var(--warn); }
+.shortlist-gap { color: var(--danger); }
+
+/* Keep the document inside narrow viewports; the matrix has its own scrolling/cards. */
+[hidden] { display: none !important; }
+.card, .shortlist-picker, .shortlist-filters > * { min-width: 0; max-width: 100%; }
+.shortlist-picker { flex: 1 1 260px; }
+.shortlist-picker[open] { background: var(--raised-2); border-radius: var(--r-chip); padding-bottom: 8px; }
+.shortlist-picker fieldset { max-height: 280px; overflow-y: auto; }
+.shortlist-picker label { padding: 6px; overflow-wrap: anywhere; }
+.shortlist-result, .detail, .kv dd { overflow-wrap: anywhere; }
+.shortlist-result .btn { display: inline-block; margin-top: 4px; }
+@media (max-width: 480px) {
+  .profiles { grid-template-columns: minmax(0, 1fr); }
+  dl.kv { grid-template-columns: 1fr; }
+  .filters > *, .filters input, .filters select { min-width: 0; max-width: 100%; }
+}

@@ -1,0 +1,25 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "CLI repository and path-specific instruction files provide persistent project guidance, with documented loading scope.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guaranteed instruction compliance"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions",
+      "section": "Adding custom instructions for GitHub Copilot CLI > Creating repository-wide custom instructions > Referencing other files",
+      "quote": "copilot-instructions.md"
+    }
+  ]
+}

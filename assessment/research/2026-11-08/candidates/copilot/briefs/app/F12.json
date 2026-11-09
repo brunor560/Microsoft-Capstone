@@ -1,0 +1,26 @@
+{
+  "feature_id": "F12",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "App worktrees separate branches and session history persists, but these alone do not establish a complete app-native recovery contract.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Native app rollback of files, shell and external effects"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Starting a session",
+      "quote": "separate worktrees"
+    }
+  ],
+  "gap_reason": "CLI rewind behavior is not silently transferred to the app; the reviewed app-specific sources do not establish the full recovery scope."
+}

@@ -1,0 +1,25 @@
+{
+  "feature_id": "F05",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "File editing and patch tools support work across project files; atomic changes are not established.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Transactional multi-file editing"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference",
+      "section": "GitHub Copilot CLI command reference > Tool availability values > File operation tools",
+      "quote": "Apply patches"
+    }
+  ]
+}

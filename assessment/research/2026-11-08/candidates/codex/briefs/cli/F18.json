@@ -1,0 +1,26 @@
+{
+  "feature_id": "F18",
+  "drafted_by": "agent",
+  "status": "Not established from documentation",
+  "evidence_basis": "documentation_gap",
+  "supported_scope": "Plan usage allowances and CLI options are documented; their existence does not establish hard per-task time, iteration and monetary limits for subscription CLI work.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Hard per-task duration, iteration and spend limits"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://learn.chatgpt.com/docs/pricing",
+      "section": "Pricing > Frequently asked questions > What happens when you hit usage limits?",
+      "quote": "purchase additional"
+    }
+  ],
+  "gap_reason": "The reviewed subscription and CLI references do not establish all requested run-level hard limits; usage allowances are not a per-task budget."
+}

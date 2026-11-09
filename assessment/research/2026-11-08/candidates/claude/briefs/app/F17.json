@@ -1,0 +1,25 @@
+{
+  "feature_id": "F17",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Desktop shows context-window utilization and shared plan usage; these are explicitly separate from per-task tokens or billed dollars.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Per-task token and invoice-cost export"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Arrange your workspace > Check usage",
+      "quote": "plan usage"
+    }
+  ]
+}

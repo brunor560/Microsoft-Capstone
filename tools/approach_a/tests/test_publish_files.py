@@ -85,5 +85,22 @@ class CommittedDataFile(unittest.TestCase):
         self.assertEqual(found, [])
 
 
+class PreviewRoutes(unittest.TestCase):
+    def test_preview_routes_stay_outside_pages_upload(self):
+        from tools.approach_a import preview_server
+        handler = object.__new__(preview_server.Handler)
+        for url, expected in [(preview_server.PREVIEW_URL, preview_server.PREVIEW_FILE),
+                              (preview_server.DEMO_URL, preview_server.DEMO_FILE)]:
+            self.assertEqual(handler.translate_path(url + '?cache=1'), expected)
+            self.assertFalse(os.path.realpath(expected).startswith(os.path.realpath(publish.DASHBOARD) + os.sep))
+
+    def test_no_fictional_demo_assets_under_pages_upload(self):
+        found = []
+        for root, _, files in os.walk(os.path.join(publish.DASHBOARD, 'feature-matrix')):
+            found.extend(os.path.join(root, name) for name in files
+                         if name in ('demo-data.mjs', 'matrix.demo.json', 'shortlist-fixture.mjs'))
+        self.assertEqual(found, [])
+
+
 if __name__ == '__main__':
     unittest.main()

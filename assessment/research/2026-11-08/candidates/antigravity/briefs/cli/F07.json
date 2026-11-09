@@ -1,0 +1,25 @@
+{
+  "feature_id": "F07",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Fine-grained allow/ask/deny rules govern CLI file, command, URL and MCP tools. Execution mode and terminal sandbox configuration remain distinct.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Network limits for commands outside the sandbox"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://antigravity.google/docs/cli/commands/permissions",
+      "section": "Permissions command (/permissions) > Step-by-step walkthrough > Selecting a scope and viewing rules",
+      "quote": "deny"
+    }
+  ]
+}

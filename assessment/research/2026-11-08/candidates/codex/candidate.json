@@ -1,0 +1,111 @@
+{
+  "schema": "approach-a/candidate/1",
+  "tool_key": "codex",
+  "tool": "Codex",
+  "vendor": "OpenAI",
+  "default_surface": "cli",
+  "note": "Research proposal prepared from official documentation on 2026-11-08. All boundaries and tiers require human confirmation; no approval, authorship or review is asserted.",
+  "docs": {
+    "base_url": "https://learn.chatgpt.com/docs/",
+    "allowed_prefixes": [
+      "https://learn.chatgpt.com/docs/"
+    ],
+    "publisher": "OpenAI",
+    "surface_labels": {
+      "Codex CLI": "cli",
+      "ChatGPT desktop app": "app"
+    }
+  },
+  "surfaces": {
+    "cli": {
+      "label": "Codex CLI",
+      "profile_id": "codex-cli",
+      "category_tags": [
+        "T2"
+      ],
+      "interface_and_execution_location": "Standalone Codex terminal client on a native Windows workstation. Workspace commands run locally; model inference is through OpenAI.",
+      "modes": [
+        "Non-interactive codex exec",
+        "Interactive CLI where needed to describe mode-specific capabilities"
+      ],
+      "platforms": [
+        "Native Windows 11 with PowerShell; sandbox behavior depends on the configured Windows implementation and device support"
+      ],
+      "account_and_tier": "Proposed: ChatGPT Plus with ChatGPT sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
+      "included_components": [
+        "Native CLI workspace tools, AGENTS.md, exec mode, permission profiles, approval policy and native Windows sandbox options"
+      ],
+      "exclusions": [
+        "ChatGPT desktop app, IDE extension, cloud tasks, Work Cloud and WSL",
+        "Third-party MCP servers, plugins, external skills and custom providers",
+        "Experimental and enterprise-only controls unless the exact scope is agreed"
+      ],
+      "instructions_and_permissions": "Document project instruction layering, permission profile and approval policy separately. Identify which Windows sandbox implementation a claim assumes.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/build-skills",
+        "https://learn.chatgpt.com/docs/codex/cli",
+        "https://learn.chatgpt.com/docs/developer-commands",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/permission-modes",
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://learn.chatgpt.com/docs/pricing",
+        "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+      ]
+    },
+    "app": {
+      "label": "Codex in ChatGPT desktop app (Windows native)",
+      "profile_id": "codex-app-windows",
+      "category_tags": [
+        "T1"
+      ],
+      "interface_and_execution_location": "Native Windows desktop coding interface using local project files and tools; model inference is hosted by the vendor.",
+      "modes": [
+        "Interactive local desktop coding sessions; planning, approvals and other documented modes considered separately"
+      ],
+      "platforms": [
+        "Windows 11, native local execution; WSL and remote/cloud sessions excluded"
+      ],
+      "account_and_tier": "Proposed: ChatGPT Plus with ChatGPT sign-in; pending team confirmation. Tier-specific limits, model availability and enterprise-only controls are not generalized.",
+      "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
+      "included_components": [
+        "Native project context, editing, command execution, review and permission controls",
+        "Native instruction, skill and MCP mechanisms only; no added connections"
+      ],
+      "exclusions": [
+        "CLI and IDE extensions as separate product surfaces",
+        "Cloud, SSH and WSL execution; consumer chat and non-coding modes",
+        "Added MCP servers, plugins, custom skills, external providers and enterprise administration"
+      ],
+      "instructions_and_permissions": "Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree.",
+      "version": {
+        "value": null,
+        "kind": "rolling official documentation snapshot",
+        "documentation_note": "Official pages accessed 2026-11-08, identified by converted-text and raw HTML hashes. Claims are not attributed to an installed or benchmarked binary."
+      },
+      "seed_pages": [
+        "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+        "https://learn.chatgpt.com/docs/app",
+        "https://learn.chatgpt.com/docs/app/windows",
+        "https://learn.chatgpt.com/docs/auth",
+        "https://learn.chatgpt.com/docs/build-skills",
+        "https://learn.chatgpt.com/docs/code-review",
+        "https://learn.chatgpt.com/docs/developer-commands",
+        "https://learn.chatgpt.com/docs/environments/git-worktrees",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://learn.chatgpt.com/docs/permission-modes",
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://learn.chatgpt.com/docs/pricing",
+        "https://learn.chatgpt.com/docs/windows/windows-sandbox"
+      ]
+    }
+  }
+}

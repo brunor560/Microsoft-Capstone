@@ -1,0 +1,225 @@
+{
+  "schema": "approach-a/catalog/1",
+  "source": "course_artifacts/sources/feature_matrix_specification.md",
+  "spec_version": "0.2",
+  "note": "Generated from the matrix specification tables; do not edit by hand. Matrix IDs carry the MATRIX: prefix in other documents.",
+  "categories": [
+    {
+      "id": "T1",
+      "name": "Agents inside an editor or IDE",
+      "description": "Operate alongside the developer in the coding environment, gathering context, editing files, and running checks.",
+      "example": "GitHub Copilot in VS Code"
+    },
+    {
+      "id": "T2",
+      "name": "Terminal or command-line agents",
+      "description": "Act on a repository through files, shell commands, and development tools, with a terminal interface.",
+      "example": "Claude Code"
+    },
+    {
+      "id": "T3",
+      "name": "Background or cloud coding agents",
+      "description": "Receive delegated tasks, work in a separate environment, and return changes for review.",
+      "example": "GitHub Copilot cloud agent"
+    },
+    {
+      "id": "T4",
+      "name": "Integrated application builders",
+      "description": "Combine natural-language app creation with a managed workspace, previews, services, and deployment.",
+      "example": "Replit"
+    },
+    {
+      "id": "T5",
+      "name": "Specialized development agents",
+      "description": "Focus on an activity such as code review, testing, failure investigation, or security fixes.",
+      "example": "GitHub Copilot code review"
+    },
+    {
+      "id": "T6",
+      "name": "Agent orchestration frameworks",
+      "description": "Provide programming components for building agents and coordinating tools, roles, and interactions.",
+      "example": "AutoGen AgentChat"
+    },
+    {
+      "id": "T7",
+      "name": "Specification-driven workflow toolkits",
+      "description": "Provide a structured process for requirements, planning, task decomposition, implementation, and verification using a coding agent.",
+      "example": "GitHub Spec Kit"
+    }
+  ],
+  "features": [
+    {
+      "id": "F01",
+      "area": "Requirements and planning",
+      "name": "Persistent project instructions",
+      "capability": "Save coding standards, security rules, and test commands for use across tasks.",
+      "examine": "Supported instruction formats, discovery rules, precedence, persistence, and scope."
+    },
+    {
+      "id": "F02",
+      "area": "Requirements and planning",
+      "name": "Planning before implementation",
+      "capability": "Produce a developer-reviewable plan before changing code.",
+      "examine": "Planning modes, review steps, and documented transition from planning to implementation. Distinguish optional planning from a required approval gate."
+    },
+    {
+      "id": "F03",
+      "area": "Requirements and planning",
+      "name": "Requirements traceability",
+      "capability": "Connect a requirement to implementation and verification evidence.",
+      "examine": "Explicit linking of requirements, tasks, changes, and checks. A plan or task list alone does not establish traceability."
+    },
+    {
+      "id": "F04",
+      "area": "Development capabilities",
+      "name": "Codebase context gathering",
+      "capability": "Locate and inspect relevant existing code without requiring all context to be supplied manually.",
+      "examine": "Repository search, indexing, file inspection, context selection, and documented limits."
+    },
+    {
+      "id": "F05",
+      "area": "Development capabilities",
+      "name": "Coordinated changes across files",
+      "capability": "Update related code, configuration, and tests together.",
+      "examine": "Multi-file editing support, relevant modes, and documented restrictions."
+    },
+    {
+      "id": "F06",
+      "area": "Development capabilities",
+      "name": "Execution and feedback",
+      "capability": "Run builds or tests, inspect failures, and revise work based on results.",
+      "examine": "Command and test execution, access to results, and documented feedback or revision loops. Do not infer successful defect correction."
+    },
+    {
+      "id": "F07",
+      "area": "Security and control",
+      "name": "Tool and permission restrictions",
+      "capability": "Limit commands, files, external services, or network destinations accessible to the agent.",
+      "examine": "Allow/deny controls and their command, filesystem, service, and network coverage. Distinguish approval prompts from access restrictions."
+    },
+    {
+      "id": "F08",
+      "area": "Security and control",
+      "name": "Execution isolation",
+      "capability": "Run agent actions within an environment with enforced boundaries.",
+      "examine": "Documented sandbox mechanisms, defaults, filesystem/network boundaries, platform restrictions, and exceptions. A branch or Git worktree alone does not establish isolation."
+    },
+    {
+      "id": "F09",
+      "area": "Security and control",
+      "name": "Secrets handling",
+      "capability": "Supply credentials through a supported mechanism without placing them in prompts, generated code, or committed files.",
+      "examine": "Credential delivery, storage, redaction, exposure boundaries, and documented limits. Product sign-in alone does not establish safe handling of application secrets."
+    },
+    {
+      "id": "F10",
+      "area": "Developer oversight",
+      "name": "Approval checkpoints",
+      "capability": "Require developer approval before selected actions.",
+      "examine": "Actions requiring approval, defaults, configuration, bypasses, and mode-specific exceptions."
+    },
+    {
+      "id": "F11",
+      "area": "Developer oversight",
+      "name": "Inspection and intervention",
+      "capability": "View progress, inspect proposed changes, redirect work, and stop the agent.",
+      "examine": "Progress and diff views, steering and cancellation controls, and limits on interrupting ongoing actions. Record each subcapability separately."
+    },
+    {
+      "id": "F12",
+      "area": "Developer oversight",
+      "name": "Change recovery",
+      "capability": "Discard or revert code changes with clear limits on recovery coverage.",
+      "examine": "Checkpoints, undo, restore, or Git-based recovery; coverage of files, shell effects, external actions, and deployed resources."
+    },
+    {
+      "id": "F13",
+      "area": "Customization and integration",
+      "name": "Reusable skills and task workflows",
+      "capability": "Package, share, version, and invoke recurring procedures.",
+      "examine": "Native formats, discovery and invocation rules, sharing mechanisms, and documented requirements. Assess the mechanism without adding a skill to the profile."
+    },
+    {
+      "id": "F14",
+      "area": "Customization and integration",
+      "name": "External tool integration",
+      "capability": "Connect to issue trackers, documentation, databases, or other systems through MCP or another interface.",
+      "examine": "Supported interfaces or protocols, authentication, configuration, permission controls, and limits. Assess native integration support without connecting a service."
+    },
+    {
+      "id": "F15",
+      "area": "Customization and integration",
+      "name": "Repository and CI/CD integration",
+      "capability": "Work with branches, pull requests, automated checks, and deployment workflows.",
+      "examine": "Explicit support for each stage. Branch or pull-request support alone does not establish a complete CI/CD or deployment pipeline."
+    },
+    {
+      "id": "F16",
+      "area": "Evidence and cost",
+      "name": "Action logs and audit trail",
+      "capability": "Inspect and export tool calls, commands, results, and changes associated with a task.",
+      "examine": "Recorded events, run association, export formats, retention, and integrity guarantees where documented. Distinguish chat history from an audit trail."
+    },
+    {
+      "id": "F17",
+      "area": "Evidence and cost",
+      "name": "Usage and cost visibility",
+      "capability": "Obtain task-level token usage, charges, or another clearly defined usage measure.",
+      "examine": "Units, granularity, reporting and estimation methods. Distinguish context usage, tokens, request allowances, and monetary charges."
+    },
+    {
+      "id": "F18",
+      "area": "Evidence and cost",
+      "name": "Execution limits",
+      "capability": "Set time, iteration, or spending limits to contain runaway work.",
+      "examine": "Supported limits, defaults, scope, overrides, and documented enforcement. Distinguish hard limits from estimates, warnings, and instruction-based requests."
+    }
+  ],
+  "statuses": [
+    {
+      "name": "Built in",
+      "meaning": "Official documentation establishes native support within the profile. A native feature may still require an optional setting; record activation separately."
+    },
+    {
+      "name": "Configuration or extension required",
+      "meaning": "Official documentation establishes support through an additional integration or separately assembled configuration outside the native capability assessed. Identify the dependency and whether it is excluded from the profile."
+    },
+    {
+      "name": "Custom implementation required",
+      "meaning": "Documentation explicitly describes implementation work needed to supply the capability. Identify the code and maintenance responsibility. Do not infer this status from a documentation gap."
+    },
+    {
+      "name": "Unavailable",
+      "meaning": "Official documentation explicitly establishes that the capability is unsupported within the assessed profile."
+    },
+    {
+      "name": "Not established from documentation",
+      "meaning": "Reviewed sources are silent, ambiguous, conflicting, or insufficient to establish support or absence."
+    }
+  ],
+  "not_established": "Not established from documentation",
+  "evidence_basis": [
+    "documented_support",
+    "documented_absence",
+    "documentation_gap",
+    "documentation_conflict"
+  ],
+  "control_mechanism": [
+    "enforced",
+    "instruction-based",
+    "mixed",
+    "not established"
+  ],
+  "activation_state": [
+    "default",
+    "optional",
+    "policy-dependent",
+    "not established"
+  ],
+  "assessment_states": [
+    "pending",
+    "drafted",
+    "challenged",
+    "reviewed"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "feature_id": "F17",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Non-interactive completion events include input/output token fields; plan credits and allowances remain different units.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Dollar cost derivation from plan usage"
+  ],
+  "required_setup": "Select JSON output and retain the completion event.",
+  "activation_state": "optional",
+  "control_mechanism": "not established",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "section": "Non-interactive mode > Make output machine-readable",
+      "quote": "input_tokens"
+    }
+  ]
+}

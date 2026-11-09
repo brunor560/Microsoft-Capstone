@@ -1,0 +1,25 @@
+{
+  "feature_id": "F10",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "Manual app tool approval asks before tool use; assisted and unconditional modes alter review behavior.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Universal mandatory human approval"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "enforced",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/agent-sessions",
+      "section": "Working with agent sessions in the GitHub Copilot app > Choosing tool permissions",
+      "quote": "Manual approval"
+    }
+  ]
+}

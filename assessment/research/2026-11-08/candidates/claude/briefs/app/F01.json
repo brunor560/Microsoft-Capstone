@@ -1,0 +1,30 @@
+{
+  "feature_id": "F01",
+  "drafted_by": "agent",
+  "status": "Built in",
+  "evidence_basis": "documented_support",
+  "supported_scope": "The desktop Code tab and CLI explicitly share project CLAUDE.md and CLAUDE.local.md instruction files.",
+  "unsupported_scope": [],
+  "unestablished_scope": [
+    "Guaranteed compliance"
+  ],
+  "required_setup": "Use the native documented mechanism within the proposed account, platform and product surface.",
+  "activation_state": "optional",
+  "control_mechanism": "instruction-based",
+  "constraints": [
+    "Documentation snapshot 2026-11-08; proposed tier and boundary require team confirmation.",
+    "No assessed tool was installed or executed; quotation matching is not human verification."
+  ],
+  "evidence": [
+    {
+      "page": "https://code.claude.com/docs/en/memory",
+      "section": "How Claude remembers your project > Related resources",
+      "quote": "CLAUDE.md"
+    },
+    {
+      "page": "https://code.claude.com/docs/en/desktop",
+      "section": "Desktop application > Coming from the CLI? > Shared configuration",
+      "quote": "used by both"
+    }
+  ]
+}
