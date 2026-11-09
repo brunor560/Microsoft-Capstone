@@ -4,7 +4,7 @@
 
 **Result: NOT ACCEPTED**
 
-Generated 2026-11-09T00:43:37+00:00. Manifest version 1, P = 8, expected cells 144, present 144. Cell states: pending 0, drafted 0, challenged 144, reviewed 0.
+Generated 2026-11-09T01:45:36+00:00. Manifest version 9, P = 8, expected cells 144, present 144. Cell states: pending 0, drafted 0, challenged 144, reviewed 0.
 
 ## Limits
 
@@ -18,309 +18,153 @@ Generated 2026-11-09T00:43:37+00:00. Manifest version 1, P = 8, expected cells 1
 
 | Code | Count |
 | --- | --- |
-| APPROVAL_MISSING | 1 |
-| AUTHOR_MISSING | 144 |
-| BOUNDARY_UNCONFIRMED | 8 |
 | REVIEW_MISSING | 144 |
 
 ## Issues
 
 | Code | Where | Message |
 | --- | --- | --- |
-| BOUNDARY_UNCONFIRMED | manifest:antigravity-cli | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:antigravity-app-windows | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:claude-cli | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:claude-app-windows | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:codex-cli | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:codex-app-windows | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:copilot-cli | Profile boundary is only proposed; confirm it with `start` |
-| BOUNDARY_UNCONFIRMED | manifest:copilot-app-windows | Profile boundary is only proposed; confirm it with `start` |
-| APPROVAL_MISSING | - | Manifest version 1 is not approved |
-| AUTHOR_MISSING | antigravity-app-windows/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F01 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F02 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F03 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F04 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F05 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F06 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F07 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F08 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F09 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F10 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F11 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F12 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F13 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F14 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F15 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F16 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F17 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-app-windows/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-app-windows/F18 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F01 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F02 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F03 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F04 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F05 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F06 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F07 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F08 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F09 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F10 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F11 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F12 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F13 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F14 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F15 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F16 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F17 | No independent team-member review |
-| AUTHOR_MISSING | antigravity-cli/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | antigravity-cli/F18 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F01 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F02 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F03 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F04 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F05 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F06 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F07 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F08 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F09 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F10 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F11 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F12 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F13 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F14 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F15 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F16 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F17 | No independent team-member review |
-| AUTHOR_MISSING | claude-app-windows/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-app-windows/F18 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F01 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F02 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F03 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F04 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F05 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F06 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F07 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F08 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F09 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F10 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F11 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F12 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F13 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F14 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F15 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F16 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F17 | No independent team-member review |
-| AUTHOR_MISSING | claude-cli/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | claude-cli/F18 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F01 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F02 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F03 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F04 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F05 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F06 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F07 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F08 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F09 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F10 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F11 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F12 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F13 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F14 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F15 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F16 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F17 | No independent team-member review |
-| AUTHOR_MISSING | codex-app-windows/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-app-windows/F18 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F01 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F02 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F03 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F04 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F05 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F06 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F07 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F08 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F09 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F10 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F11 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F12 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F13 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F14 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F15 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F16 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F17 | No independent team-member review |
-| AUTHOR_MISSING | codex-cli/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | codex-cli/F18 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F01 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F02 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F03 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F04 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F05 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F06 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F07 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F08 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F09 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F10 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F11 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F12 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F13 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F14 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F15 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F16 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F17 | No independent team-member review |
-| AUTHOR_MISSING | copilot-app-windows/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-app-windows/F18 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F01 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F01 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F02 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F02 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F03 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F03 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F04 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F04 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F05 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F05 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F06 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F06 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F07 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F07 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F08 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F08 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F09 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F09 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F10 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F10 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F11 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F11 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F12 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F12 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F13 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F13 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F14 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F14 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F15 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F15 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F16 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F16 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F17 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F17 | No independent team-member review |
-| AUTHOR_MISSING | copilot-cli/F18 | No named human author (agent drafts need a responsible team member) |
 | REVIEW_MISSING | copilot-cli/F18 | No independent team-member review |

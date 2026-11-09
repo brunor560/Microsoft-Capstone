@@ -5,9 +5,9 @@
 > Documentation-only assessment (SRS Requirement 5). Statuses describe what official documentation says; they are not measured effectiveness, scores or rankings.
 
 
-Manifest version: **1**. Profiles (P): **8**. Expected cells (18 x P): **144**.
+Manifest version: **9**. Profiles (P): **8**. Expected cells (18 x P): **144**.
 
-Approval: **not approved**. No cell is accepted until an approver approves this version.
+Approval: **approved** by Ross Volenec on 2026-11-09T01:45:36+00:00 (manifest SHA-256 `a5c4afce3e6e896a`).
 
 
 ## antigravity-cli
@@ -27,7 +27,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Current interactive default-mode diff review, separate execution and tool-permission settings, and optional terminal sandbox. No newer behavior is attributed to the old active 1.4.0 binary profile. |
 | Documentation base | https://antigravity.google/docs/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:05:28+00:00 |
 
 ## antigravity-app-windows
 
@@ -46,7 +46,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Assess rules and App permission/review mechanisms from official documentation. Distinguish updated and previous permission systems, platform/account eligibility and activation; no runtime preset or enforcement is claimed. |
 | Documentation base | https://antigravity.google/docs/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:04:36+00:00 |
 
 ## claude-cli
 
@@ -65,7 +65,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Document CLAUDE.md scope and loading, permission precedence and differences between tool rules and the Bash sandbox. |
 | Documentation base | https://code.claude.com/docs/en/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:07:20+00:00 |
 
 ## claude-app-windows
 
@@ -84,7 +84,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree. |
 | Documentation base | https://code.claude.com/docs/en/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:05:50+00:00 |
 
 ## codex-cli
 
@@ -103,7 +103,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Document project instruction layering, permission profile and approval policy separately. Identify which Windows sandbox implementation a claim assumes. |
 | Documentation base | https://learn.chatgpt.com/docs/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:08:34+00:00 |
 
 ## codex-app-windows
 
@@ -122,7 +122,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree. |
 | Documentation base | https://learn.chatgpt.com/docs/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:08:11+00:00 |
 
 ## copilot-cli
 
@@ -141,7 +141,7 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Document the CLI custom instruction paths, manual permissions and tool allow/deny rules. Distinguish permission prompts from local sandbox restrictions. |
 | Documentation base | https://docs.github.com/en/copilot/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:10:00+00:00 |
 
 ## copilot-app-windows
 
@@ -160,4 +160,4 @@ Approval: **not approved**. No cell is accepted until an approver approves this 
 | Instructions and permissions | Assess app-specific modes, native local execution policy and documented shared configuration; never infer an OS sandbox from a Git worktree. |
 | Documentation base | https://docs.github.com/en/copilot/ |
 | Source access date | 2026-11-08 |
-| Boundary confirmed by | None at None |
+| Boundary confirmed by | Ross Volenec at 2026-11-09T01:08:59+00:00 |

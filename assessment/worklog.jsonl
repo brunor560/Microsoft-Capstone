@@ -30,3 +30,4 @@
 {"ts": "2026-10-22T22:19:35+00:00", "actor": "ross", "event": "author_set", "cell_id": "antigravity-cli/F03"}
 {"ts": "2026-10-22T22:19:50+00:00", "actor": "cli", "event": "validated", "accepted": false, "blocking": 36, "P": 1}
 {"ts": "2026-10-22T22:19:50+00:00", "actor": "cli", "event": "rendered", "files": 24}
+{"ts": "2026-11-09T01:22:24+00:00", "actor": "cli", "event": "interrupted", "command": "start"}

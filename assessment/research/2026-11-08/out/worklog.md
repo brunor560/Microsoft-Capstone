@@ -31,3 +31,247 @@ Append-only record from `worklog.jsonl`. Agent and model activity is labeled. Th
 | 2026-11-09T00:43:37+00:00 | codex-research-operator | interpretation_corrected | {'where': 'codex-app-windows/F02', 'reason': 'Do not infer an app-native capability solely from a shared engine; prefer an explicitly app-scoped source.'} |
 | 2026-11-09T00:43:37+00:00 | codex-research-operator | challenge_pass | {'checked': 144, 'blocking': 0, 'warnings': 73, 'by_type': {'shared_page': 15, 'surface_unconfirmed': 73, 'release_note_source': 1}} |
 | 2026-11-09T00:43:37+00:00 | cli | validated | {'accepted': False, 'blocking': 297, 'P': 8} |
+| 2026-11-09T00:43:37+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:04:36+00:00 | ross | profile_confirmed | {'profile_id': 'antigravity-app-windows', 'manifest_version': 2, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:05:28+00:00 | ross | profile_confirmed | {'profile_id': 'antigravity-cli', 'manifest_version': 3, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:05:50+00:00 | ross | profile_confirmed | {'profile_id': 'claude-app-windows', 'manifest_version': 4, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:07:20+00:00 | ross | profile_confirmed | {'profile_id': 'claude-cli', 'manifest_version': 5, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:08:11+00:00 | ross | profile_confirmed | {'profile_id': 'codex-app-windows', 'manifest_version': 6, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:08:34+00:00 | ross | profile_confirmed | {'profile_id': 'codex-cli', 'manifest_version': 7, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:08:59+00:00 | ross | profile_confirmed | {'profile_id': 'copilot-app-windows', 'manifest_version': 8, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:10:00+00:00 | ross | profile_confirmed | {'profile_id': 'copilot-cli', 'manifest_version': 9, 'replaced': 'proposed rehearsal boundary'} |
+| 2026-11-09T01:17:32+00:00 | cli | validated | {'accepted': False, 'blocking': 289, 'P': 8} |
+| 2026-11-09T01:17:32+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:20:11+00:00 | cli | validated | {'accepted': False, 'blocking': 289, 'P': 8} |
+| 2026-11-09T01:20:12+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:23:39+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F08'} |
+| 2026-11-09T01:38:21+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F01'} |
+| 2026-11-09T01:38:21+00:00 | cli | validated | {'accepted': False, 'blocking': 287, 'P': 8} |
+| 2026-11-09T01:38:21+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:25+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F02'} |
+| 2026-11-09T01:38:25+00:00 | cli | validated | {'accepted': False, 'blocking': 286, 'P': 8} |
+| 2026-11-09T01:38:25+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:31+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F03'} |
+| 2026-11-09T01:38:31+00:00 | cli | validated | {'accepted': False, 'blocking': 285, 'P': 8} |
+| 2026-11-09T01:38:31+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:34+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F04'} |
+| 2026-11-09T01:38:34+00:00 | cli | validated | {'accepted': False, 'blocking': 284, 'P': 8} |
+| 2026-11-09T01:38:34+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:35+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F05'} |
+| 2026-11-09T01:38:35+00:00 | cli | validated | {'accepted': False, 'blocking': 283, 'P': 8} |
+| 2026-11-09T01:38:35+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:37+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F06'} |
+| 2026-11-09T01:38:37+00:00 | cli | validated | {'accepted': False, 'blocking': 282, 'P': 8} |
+| 2026-11-09T01:38:37+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:38+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F07'} |
+| 2026-11-09T01:38:38+00:00 | cli | validated | {'accepted': False, 'blocking': 281, 'P': 8} |
+| 2026-11-09T01:38:38+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:39+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F08'} |
+| 2026-11-09T01:38:39+00:00 | cli | validated | {'accepted': False, 'blocking': 280, 'P': 8} |
+| 2026-11-09T01:38:39+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:39+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F09'} |
+| 2026-11-09T01:38:39+00:00 | cli | validated | {'accepted': False, 'blocking': 279, 'P': 8} |
+| 2026-11-09T01:38:39+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:40+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F10'} |
+| 2026-11-09T01:38:40+00:00 | cli | validated | {'accepted': False, 'blocking': 278, 'P': 8} |
+| 2026-11-09T01:38:40+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:41+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F11'} |
+| 2026-11-09T01:38:41+00:00 | cli | validated | {'accepted': False, 'blocking': 277, 'P': 8} |
+| 2026-11-09T01:38:41+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:43+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F12'} |
+| 2026-11-09T01:38:43+00:00 | cli | validated | {'accepted': False, 'blocking': 276, 'P': 8} |
+| 2026-11-09T01:38:43+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:44+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F13'} |
+| 2026-11-09T01:38:44+00:00 | cli | validated | {'accepted': False, 'blocking': 275, 'P': 8} |
+| 2026-11-09T01:38:44+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:45+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F14'} |
+| 2026-11-09T01:38:45+00:00 | cli | validated | {'accepted': False, 'blocking': 274, 'P': 8} |
+| 2026-11-09T01:38:45+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:46+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F15'} |
+| 2026-11-09T01:38:46+00:00 | cli | validated | {'accepted': False, 'blocking': 273, 'P': 8} |
+| 2026-11-09T01:38:46+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:47+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F16'} |
+| 2026-11-09T01:38:47+00:00 | cli | validated | {'accepted': False, 'blocking': 272, 'P': 8} |
+| 2026-11-09T01:38:47+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:47+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F17'} |
+| 2026-11-09T01:38:47+00:00 | cli | validated | {'accepted': False, 'blocking': 271, 'P': 8} |
+| 2026-11-09T01:38:48+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:49+00:00 | ross | author_set | {'cell_id': 'antigravity-cli/F18'} |
+| 2026-11-09T01:38:49+00:00 | cli | validated | {'accepted': False, 'blocking': 270, 'P': 8} |
+| 2026-11-09T01:38:49+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:38:59+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F01'} |
+| 2026-11-09T01:38:59+00:00 | cli | validated | {'accepted': False, 'blocking': 269, 'P': 8} |
+| 2026-11-09T01:38:59+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:00+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F02'} |
+| 2026-11-09T01:39:00+00:00 | cli | validated | {'accepted': False, 'blocking': 268, 'P': 8} |
+| 2026-11-09T01:39:00+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:00+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F03'} |
+| 2026-11-09T01:39:00+00:00 | cli | validated | {'accepted': False, 'blocking': 267, 'P': 8} |
+| 2026-11-09T01:39:01+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:01+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F04'} |
+| 2026-11-09T01:39:01+00:00 | cli | validated | {'accepted': False, 'blocking': 266, 'P': 8} |
+| 2026-11-09T01:39:01+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:01+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F05'} |
+| 2026-11-09T01:39:01+00:00 | cli | validated | {'accepted': False, 'blocking': 265, 'P': 8} |
+| 2026-11-09T01:39:01+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:02+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F06'} |
+| 2026-11-09T01:39:02+00:00 | cli | validated | {'accepted': False, 'blocking': 264, 'P': 8} |
+| 2026-11-09T01:39:02+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:02+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F07'} |
+| 2026-11-09T01:39:02+00:00 | cli | validated | {'accepted': False, 'blocking': 263, 'P': 8} |
+| 2026-11-09T01:39:02+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:02+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F08'} |
+| 2026-11-09T01:39:02+00:00 | cli | validated | {'accepted': False, 'blocking': 262, 'P': 8} |
+| 2026-11-09T01:39:02+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:03+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F09'} |
+| 2026-11-09T01:39:03+00:00 | cli | validated | {'accepted': False, 'blocking': 261, 'P': 8} |
+| 2026-11-09T01:39:03+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:03+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F10'} |
+| 2026-11-09T01:39:03+00:00 | cli | validated | {'accepted': False, 'blocking': 260, 'P': 8} |
+| 2026-11-09T01:39:03+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:04+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F11'} |
+| 2026-11-09T01:39:04+00:00 | cli | validated | {'accepted': False, 'blocking': 259, 'P': 8} |
+| 2026-11-09T01:39:04+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:05+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F12'} |
+| 2026-11-09T01:39:05+00:00 | cli | validated | {'accepted': False, 'blocking': 258, 'P': 8} |
+| 2026-11-09T01:39:05+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:05+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F13'} |
+| 2026-11-09T01:39:05+00:00 | cli | validated | {'accepted': False, 'blocking': 257, 'P': 8} |
+| 2026-11-09T01:39:05+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:06+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F14'} |
+| 2026-11-09T01:39:06+00:00 | cli | validated | {'accepted': False, 'blocking': 256, 'P': 8} |
+| 2026-11-09T01:39:06+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:06+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F15'} |
+| 2026-11-09T01:39:06+00:00 | cli | validated | {'accepted': False, 'blocking': 255, 'P': 8} |
+| 2026-11-09T01:39:06+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:06+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F16'} |
+| 2026-11-09T01:39:06+00:00 | cli | validated | {'accepted': False, 'blocking': 254, 'P': 8} |
+| 2026-11-09T01:39:07+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:07+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F17'} |
+| 2026-11-09T01:39:07+00:00 | cli | validated | {'accepted': False, 'blocking': 253, 'P': 8} |
+| 2026-11-09T01:39:07+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:39:09+00:00 | ross | author_set | {'cell_id': 'antigravity-app-windows/F18'} |
+| 2026-11-09T01:39:09+00:00 | cli | validated | {'accepted': False, 'blocking': 252, 'P': 8} |
+| 2026-11-09T01:39:09+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F01'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F02'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F03'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F04'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F05'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F06'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F07'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F08'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F09'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F10'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F11'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F12'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F13'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F14'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F15'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F16'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F17'} |
+| 2026-11-09T01:43:56+00:00 | ross | author_set | {'cell_id': 'claude-cli/F18'} |
+| 2026-11-09T01:43:56+00:00 | cli | validated | {'accepted': False, 'blocking': 234, 'P': 8} |
+| 2026-11-09T01:43:56+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F01'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F02'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F03'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F04'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F05'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F06'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F07'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F08'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F09'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F10'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F11'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F12'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F13'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F14'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F15'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F16'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F17'} |
+| 2026-11-09T01:44:07+00:00 | ross | author_set | {'cell_id': 'claude-app-windows/F18'} |
+| 2026-11-09T01:44:07+00:00 | cli | validated | {'accepted': False, 'blocking': 216, 'P': 8} |
+| 2026-11-09T01:44:07+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F01'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F02'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F03'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F04'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F05'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F06'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F07'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F08'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F09'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F10'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F11'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F12'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F13'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F14'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F15'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F16'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F17'} |
+| 2026-11-09T01:44:22+00:00 | ross | author_set | {'cell_id': 'codex-cli/F18'} |
+| 2026-11-09T01:44:22+00:00 | cli | validated | {'accepted': False, 'blocking': 198, 'P': 8} |
+| 2026-11-09T01:44:22+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:44:30+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F01'} |
+| 2026-11-09T01:44:30+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F02'} |
+| 2026-11-09T01:44:30+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F03'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F04'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F05'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F06'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F07'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F09'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F10'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F11'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F12'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F13'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F14'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F15'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F16'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F17'} |
+| 2026-11-09T01:44:31+00:00 | ross | author_set | {'cell_id': 'codex-app-windows/F18'} |
+| 2026-11-09T01:44:31+00:00 | cli | validated | {'accepted': False, 'blocking': 181, 'P': 8} |
+| 2026-11-09T01:44:31+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F01'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F02'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F03'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F04'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F05'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F06'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F07'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F08'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F09'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F10'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F11'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F12'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F13'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F14'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F15'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F16'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F17'} |
+| 2026-11-09T01:44:42+00:00 | ross | author_set | {'cell_id': 'copilot-cli/F18'} |
+| 2026-11-09T01:44:42+00:00 | cli | validated | {'accepted': False, 'blocking': 163, 'P': 8} |
+| 2026-11-09T01:44:42+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F01'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F02'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F03'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F04'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F05'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F06'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F07'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F08'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F09'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F10'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F11'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F12'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F13'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F14'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F15'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F16'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F17'} |
+| 2026-11-09T01:44:51+00:00 | ross | author_set | {'cell_id': 'copilot-app-windows/F18'} |
+| 2026-11-09T01:44:51+00:00 | cli | validated | {'accepted': False, 'blocking': 145, 'P': 8} |
+| 2026-11-09T01:44:51+00:00 | cli | rendered | {'files': 150} |
+| 2026-11-09T01:45:36+00:00 | ross | manifest_approved | {'manifest_version': 9, 'manifest_sha256': 'a5c4afce3e6e896acebcf2484e9b3177dd2a152a6b44940547ced727807faac2'} |
+| 2026-11-09T01:45:36+00:00 | cli | validated | {'accepted': False, 'blocking': 144, 'P': 8} |
+| 2026-11-09T01:45:36+00:00 | cli | rendered | {'files': 150} |

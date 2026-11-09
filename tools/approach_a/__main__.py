@@ -7,6 +7,7 @@ import argparse
 import sys
 
 from . import cmd_misc
+from . import cmd_blockers
 from . import cmd_new
 from . import cmd_people
 from . import cmd_research
@@ -66,6 +67,11 @@ def parser():
 
     v = sub.add_parser('validate', help='check coverage, fields, evidence, approval and review')
     v.add_argument('--brief', action='store_true')
+    bl = sub.add_parser('blockers', help='choose a profile and blocker type, then resolve or skip each item')
+    bl.add_argument('--list', action='store_true', help='list current blocking keys without prompting or writing')
+    bl.add_argument('--profile', help='start with this profile (manifest-wide blockers are a separate menu entry)')
+    bl.add_argument('--code', help='start with this blocker key, for example AUTHOR_MISSING')
+    bl.add_argument('--operator', help='your roster ID; otherwise asked when recording the first decision')
     sub.add_parser('render', help='regenerate Markdown outputs from the JSON dataset')
 
     ap_ = sub.add_parser('approve', help='record manifest approval (approver role only)')
@@ -118,7 +124,7 @@ def main(argv=None):
     if args.cmd not in ('start', 'init', 'new') and not store.exists('manifest.json'):
         print('No dataset at %s. Run `start` (or `init`) first.' % store.root)
         return 2
-    handlers = {'start': cmd_start.run, 'research': cmd_research.run, 'status': cmd_misc.status,
+    handlers = {'start': cmd_start.run, 'blockers': cmd_blockers.run, 'research': cmd_research.run, 'status': cmd_misc.status,
                 'show': cmd_misc.show, 'validate': cmd_people.do_validate, 'render': cmd_people.do_render,
                 'approve': cmd_people.approve, 'author': cmd_people.author, 'review': cmd_people.do_review,
                 'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run,

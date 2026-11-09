@@ -17,7 +17,8 @@ LIMITS = [
 ]
 
 
-def run(store):
+def inspect(store):
+    """Evaluate current data without writing reports or work-log entries."""
     issues = []
 
     def add(code, severity, msg, where=None):
@@ -43,6 +44,11 @@ def run(store):
         'counts_by_code': {c: sum(i['code'] == c for i in issues) for c in sorted({i['code'] for i in issues})},
         'issues': issues, 'limits': LIMITS,
     }
+    return report
+
+
+def run(store):
+    report = inspect(store)
     store.save('validation_report.json', report)
-    store.log('validated', accepted=report['accepted'], blocking=len(blocking), P=len(ctx.ids))
+    store.log('validated', accepted=report['accepted'], blocking=report['blocking_count'], P=report['P'])
     return report

@@ -50,6 +50,7 @@ Each cell has one of the five method statuses plus an `assessment_state`:
 | `show F07` | One feature: finding, supported/unsupported/unestablished scope, sources (section, URL, access date), challenge flags, author and review state |
 | `status` | Progress by profile and the last validation result |
 | `validate` | Coverage, fields, evidence, approval and review checks; writes the report |
+| `blockers` | Interactive walkthrough: current blocking keys → profile → blocker type → one item at a time, with skip, recheck and quit |
 | `render` | Regenerate `assessment/out/` from the JSON |
 | `approve --approver ross` | Record manifest approval (approver role only); any later manifest change makes it stale |
 | `author --author <id> [--feature Fxx]` | Record the team member responsible for agent drafts |
@@ -239,3 +240,81 @@ boundary, and approve the selected manifest before exporting accepted data.
 UI review uses the direct route; a dashboard header link still needs the
 microsite owner's agreement. Push, merge, Pages deployment and changes to
 `.github/workflows/static.yml` are outside this pass.
+
+
+### Walk through blocking items interactively
+
+For the expanded CLI/Windows research dataset:
+
+```bash
+python3 -m tools.approach_a --data assessment/research/2026-11-08 blockers
+```
+
+For the default active dataset, use `python3 -m tools.approach_a blockers`.
+The selected dataset's absolute path is printed first. The command evaluates the
+current JSON rather than relying on an old validation report, lists the blocking
+keys and counts, then offers a profile selector and a blocker-type selector.
+Manifest-wide blockers such as approval have their own selector entry.
+
+For each matching item, it shows the problem and the current profile or cell,
+including supported/unsupported/unestablished scope, source URLs, quotations,
+challenge flags, authorship and review state. Resolve an item explicitly or use:
+
+- `s` or Enter: skip this item without changing it.
+- `p`: apply one author or reviewer profile-wide (available on author/review blockers).
+- `r`: re-read the current data and recheck the item after an external correction.
+- `u`: change the recording person; select the actual person making the decision.
+- `b`: return to the profile and blocker-type menus.
+- `q`, end-of-input, or Ctrl+C: stop; earlier saved decisions remain saved.
+
+Human-decision blockers have actions for taking responsibility as author, recording
+agreement/disagreement with a required review note, confirming the displayed
+boundary, or approving the manifest. Identity is requested on the first decision
+and reused for the session; `--operator YOUR_ROSTER_ID` can supply it up front.
+Self-review and missing reviewer/approver roles are rejected by the existing
+rules. The CLI cannot authenticate who is typing; Git provenance and independent
+human verification are still required.
+
+Confirm boundaries before assigning authors and reviews. Boundary confirmation
+uses the current manifest profile, preserving existing edits, and lets the person
+set the agreed tier/platforms and add exclusions. It clears that profile's
+previous authorship and manifest approval using the existing boundary procedure.
+The documentation access date is preserved. A proposal placeholder is not an
+agreed account tier.
+
+Other blockers (for example pending research or missing source fields) show the
+problem without inventing a fix. Correct the dataset or research input separately,
+then use `r` or return to the menus. Skipped blockers remain visible next time.
+After each recorded decision, the command refreshes validation and generated
+views. A disagreement can add a new blocker; saving a decision does not necessarily
+resolve the item. If displayed cell/evidence/review/manifest data changes during
+the prompt, the decision is refused until it is rechecked.
+
+Browsing, `--list`, skipping and quitting write nothing. Only explicit decisions
+change records. The command makes no network/model requests and never exports or
+publishes results. Useful shortcuts:
+
+```bash
+# Current blocking keys only; no prompts or dataset writes.
+python3 -m tools.approach_a --data assessment/research/2026-11-08 blockers --list
+
+# Start directly with one profile and blocker type.
+python3 -m tools.approach_a --data assessment/research/2026-11-08 blockers \
+  --profile codex-app-windows --code AUTHOR_MISSING
+```
+
+
+When you choose `p`, the walker shows all eligible cells for the selected profile
+and explains which cells will stay unchanged. A profile-wide author fills only
+missing authors on researched cells. A profile-wide review covers unresolved
+review blockers, across missing/stale/invalid reviews and open disagreements.
+It preserves current reviews and skips cells without an author, pending research,
+and cells authored by the selected reviewer.
+
+For a profile-wide review, choose agree or disagree and enter one shared note.
+This records actual human review decisions for all listed cells, rather than
+assigning a person to review them later. Each record retains its individual cell
+hash and normal review history. The walker asks for explicit confirmation of the
+person, profile and cell count before writing; declining leaves the data alone.
+Use the single-cell actions when decisions or notes differ. Both profile-wide
+options recheck the displayed data and refresh validation after saving.

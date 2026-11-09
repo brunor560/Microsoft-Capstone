@@ -27,7 +27,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -61,6 +61,17 @@
             "E03"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:21+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -89,7 +100,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -109,6 +120,17 @@
             "E05"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:25+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -136,7 +158,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -155,6 +177,17 @@
             "E06"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -183,7 +216,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -203,6 +236,17 @@
             "E07"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:34+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -230,7 +274,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -249,6 +293,17 @@
             "E08"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:35+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -275,7 +330,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -294,6 +349,17 @@
             "E09"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:37+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -321,7 +387,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -340,6 +406,17 @@
             "E10"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:38+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -368,7 +445,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -388,6 +465,17 @@
             "E12"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:39+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -417,7 +505,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -444,6 +532,17 @@
             "E14"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:39+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -472,7 +571,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -492,6 +591,17 @@
             "E16"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:40+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -519,7 +629,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -539,6 +649,17 @@
             "E18"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:41+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -568,7 +689,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -595,6 +716,17 @@
             "E20"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:43+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -622,7 +754,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -642,6 +774,17 @@
             "E22"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:44+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -667,7 +810,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -694,6 +837,17 @@
             "E24"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:45+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -724,7 +878,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -751,6 +905,17 @@
             "E26"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:46+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -779,7 +944,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -799,6 +964,17 @@
             "E28"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:47+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -827,7 +1003,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -847,6 +1023,17 @@
             "E30"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:47+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -875,7 +1062,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -894,6 +1081,17 @@
             "E31"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:28+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:49+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -922,7 +1120,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -949,6 +1147,17 @@
             "E33"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:38:59+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -977,7 +1186,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1003,6 +1212,17 @@
             "E34"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:00+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1032,7 +1252,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1065,6 +1285,17 @@
             "E36"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:00+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1094,7 +1325,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1114,6 +1345,17 @@
             "E38"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:01+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1143,7 +1385,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1163,6 +1405,17 @@
             "E40"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:01+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1192,7 +1445,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1225,6 +1478,17 @@
             "E42"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:02+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1255,7 +1519,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1275,6 +1539,17 @@
             "E44"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:02+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1304,7 +1579,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1324,6 +1599,17 @@
             "E46"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:02+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1354,7 +1640,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1381,6 +1667,17 @@
             "E48"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:03+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1409,7 +1706,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1428,6 +1725,17 @@
             "E49"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:03+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1456,7 +1764,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1483,6 +1791,17 @@
             "E51"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:04+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1512,7 +1831,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1531,6 +1850,17 @@
             "E52"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:05+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1561,7 +1891,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1589,6 +1919,17 @@
             "E55"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:05+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1616,7 +1957,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1635,6 +1976,17 @@
             "E56"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:06+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1663,7 +2015,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1682,6 +2034,17 @@
             "E57"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:06+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1711,7 +2074,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1738,6 +2101,17 @@
             "E59"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:06+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1767,7 +2141,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1793,6 +2167,17 @@
             "E60"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1822,7 +2207,7 @@
         "Current-source recheck 2026-11-08; not independently reviewed. Original candidate claims are retained only where quotations still match."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1848,6 +2233,17 @@
             "E61"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:04:36+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:39:09+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1875,7 +2271,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1901,6 +2297,17 @@
             "E62"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1928,7 +2335,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -1954,6 +2361,17 @@
             "E63"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -1981,7 +2399,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2007,6 +2425,17 @@
             "E63"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2034,7 +2463,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2060,6 +2489,17 @@
             "E64"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2087,7 +2527,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2113,6 +2553,17 @@
             "E65"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2140,7 +2591,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2166,6 +2617,17 @@
             "E66"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2193,7 +2655,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2219,6 +2681,17 @@
             "E67"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2246,7 +2719,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2272,6 +2745,17 @@
             "E68"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2299,7 +2783,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2325,6 +2809,17 @@
             "E69"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2352,7 +2847,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2378,6 +2873,17 @@
             "E70"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2405,7 +2911,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2431,6 +2937,17 @@
             "E71"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2458,7 +2975,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2484,6 +3001,17 @@
             "E72"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2511,7 +3039,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2537,6 +3065,17 @@
             "E73"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2564,7 +3103,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2590,6 +3129,17 @@
             "E74"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2617,7 +3167,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2643,6 +3193,17 @@
             "E75"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2670,7 +3231,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2696,6 +3257,17 @@
             "E76"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2723,7 +3295,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2749,6 +3321,17 @@
             "E77"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2778,7 +3361,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2811,6 +3394,17 @@
             "E79"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:07:20+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:43:56+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2839,7 +3433,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2872,6 +3466,17 @@
             "E80"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2899,7 +3504,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2925,6 +3530,17 @@
             "E81"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -2952,7 +3568,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -2978,6 +3594,17 @@
             "E82"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3005,7 +3632,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3031,6 +3658,17 @@
             "E83"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3058,7 +3696,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3084,6 +3722,17 @@
             "E84"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3111,7 +3760,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3137,6 +3786,17 @@
             "E85"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3164,7 +3824,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3190,6 +3850,17 @@
             "E86"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3217,7 +3888,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3243,6 +3914,17 @@
             "E87"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3271,7 +3953,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3304,6 +3986,17 @@
             "E80"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3331,7 +4024,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3357,6 +4050,17 @@
             "E86"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3384,7 +4088,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3410,6 +4114,17 @@
             "E84"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3438,7 +4153,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3475,6 +4190,17 @@
             "E165"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3503,7 +4229,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3536,6 +4262,17 @@
             "E80"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3564,7 +4301,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3597,6 +4334,17 @@
             "E80"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3624,7 +4372,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3650,6 +4398,17 @@
             "E89"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3677,7 +4436,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3703,6 +4462,17 @@
             "E90"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3730,7 +4500,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3756,6 +4526,17 @@
             "E91"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3783,7 +4564,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3809,6 +4590,17 @@
             "E92"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:05:50+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:07+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3836,7 +4628,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3862,6 +4654,17 @@
             "E93"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3889,7 +4692,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3915,6 +4718,17 @@
             "E94"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3942,7 +4756,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -3968,6 +4782,17 @@
             "E95"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -3995,7 +4820,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4021,6 +4846,17 @@
             "E96"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4048,7 +4884,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4067,6 +4903,17 @@
             "E97"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4094,7 +4941,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4120,6 +4967,17 @@
             "E98"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4147,7 +5005,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4173,6 +5031,17 @@
             "E99"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4200,7 +5069,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4226,6 +5095,17 @@
             "E100"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4254,7 +5134,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4280,6 +5160,17 @@
             "E101"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4307,7 +5198,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4333,6 +5224,17 @@
             "E102"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4360,7 +5262,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4379,6 +5281,17 @@
             "E103"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4406,7 +5319,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4425,6 +5338,17 @@
             "E104"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4452,7 +5376,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4478,6 +5402,17 @@
             "E105"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4505,7 +5440,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4531,6 +5466,17 @@
             "E106"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4558,7 +5504,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4584,6 +5530,17 @@
             "E107"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4611,7 +5568,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4637,6 +5594,17 @@
             "E108"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4664,7 +5632,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4690,6 +5658,17 @@
             "E109"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4717,7 +5696,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4743,6 +5722,17 @@
             "E110"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:34+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:22+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4771,7 +5761,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4798,6 +5788,17 @@
             "E111"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:30+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4825,7 +5826,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4854,6 +5855,17 @@
             "E166"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:30+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4881,7 +5893,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4900,6 +5912,17 @@
             "E113"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:30+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4927,7 +5950,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4946,6 +5969,17 @@
             "E113"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:30+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -4973,7 +6007,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -4999,6 +6033,17 @@
             "E114"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5026,7 +6071,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5045,6 +6090,17 @@
             "E115"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5072,7 +6128,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5098,6 +6154,17 @@
             "E99"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5125,7 +6192,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5151,6 +6218,17 @@
             "E100"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:23:39+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5179,7 +6257,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5205,6 +6283,17 @@
             "E101"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5232,7 +6321,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5258,6 +6347,17 @@
             "E102"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5285,7 +6385,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5311,6 +6411,17 @@
             "E116"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5338,7 +6449,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5364,6 +6475,17 @@
             "E117"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5391,7 +6513,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5417,6 +6539,17 @@
             "E105"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5444,7 +6577,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5470,6 +6603,17 @@
             "E106"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5497,7 +6641,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5523,6 +6667,17 @@
             "E118"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5551,7 +6706,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5577,6 +6732,17 @@
             "E119"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5604,7 +6770,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5630,6 +6796,17 @@
             "E120"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5657,7 +6834,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5683,6 +6860,17 @@
             "E110"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:11+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:31+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5710,7 +6898,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5729,6 +6917,17 @@
             "E121"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5756,7 +6955,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5775,6 +6974,17 @@
             "E122"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5802,7 +7012,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5821,6 +7031,17 @@
             "E123"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5848,7 +7069,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5867,6 +7088,17 @@
             "E124"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5894,7 +7126,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5913,6 +7145,17 @@
             "E125"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5940,7 +7183,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -5959,6 +7202,17 @@
             "E126"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -5986,7 +7240,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6005,6 +7259,17 @@
             "E127"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6032,7 +7297,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6051,6 +7316,17 @@
             "E128"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6079,7 +7355,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6098,6 +7374,17 @@
             "E129"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6125,7 +7412,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6144,6 +7431,17 @@
             "E130"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6171,7 +7469,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6190,6 +7488,17 @@
             "E131"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6217,7 +7526,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6236,6 +7545,17 @@
             "E132"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6263,7 +7583,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6282,6 +7602,17 @@
             "E133"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6309,7 +7640,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6328,6 +7659,17 @@
             "E134"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6355,7 +7697,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6374,6 +7716,17 @@
             "E135"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6401,7 +7754,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6420,6 +7773,17 @@
             "E136"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6447,7 +7811,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6466,6 +7830,17 @@
             "E137"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6495,7 +7870,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6515,6 +7890,17 @@
             "E139"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:10:00+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:42+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6542,7 +7928,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6561,6 +7947,17 @@
             "E140"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6588,7 +7985,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6607,6 +8004,17 @@
             "E141"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6634,7 +8042,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6653,6 +8061,17 @@
             "E142"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6680,7 +8099,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6699,6 +8118,17 @@
             "E143"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6726,7 +8156,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6745,6 +8175,17 @@
             "E144"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6772,7 +8213,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6791,6 +8232,17 @@
             "E145"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6818,7 +8270,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6837,6 +8289,17 @@
             "E146"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6864,7 +8327,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6883,6 +8346,17 @@
             "E147"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6910,7 +8384,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6929,6 +8403,17 @@
             "E147"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -6956,7 +8441,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -6975,6 +8460,17 @@
             "E146"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7002,7 +8498,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7021,6 +8517,17 @@
             "E148"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7048,7 +8555,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7067,6 +8574,17 @@
             "E149"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7094,7 +8612,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7113,6 +8631,17 @@
             "E150"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7140,7 +8669,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7159,6 +8688,17 @@
             "E151"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7187,7 +8727,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7207,6 +8747,17 @@
             "E153"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7234,7 +8785,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7253,6 +8804,17 @@
             "E154"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7280,7 +8842,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7306,6 +8868,17 @@
             "E155"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []
@@ -7333,7 +8906,7 @@
         "No assessed tool was installed or executed; quotation matching is not human verification."
       ],
       "limitations": "Documentation-only assessment; runtime behavior is not evaluated",
-      "author": null,
+      "author": "ross",
       "drafted_by": "agent",
       "assessment_date": "2026-11-08",
       "challenge": {
@@ -7352,6 +8925,17 @@
             "E156"
           ],
           "rejected": 0
+        },
+        {
+          "at": "2026-11-09T01:08:59+00:00",
+          "event": "boundary_confirmed",
+          "by": "ross",
+          "note": "rehearsal draft carried into the confirmed boundary"
+        },
+        {
+          "at": "2026-11-09T01:44:51+00:00",
+          "event": "author_set",
+          "author": "ross"
         }
       ],
       "rejected_citations": []

@@ -1,6 +1,6 @@
 {
   "schema": "approach-a/manifest/1",
-  "manifest_version": 1,
+  "manifest_version": 9,
   "profiles": [
     {
       "id": "antigravity-cli",
@@ -42,9 +42,9 @@
       "model_support": "Gemini models listed by `agy models`; some models require paid plans (FAQ). Model choice is not part of the comparison.",
       "documentation_base": "https://antigravity.google/docs/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:05:28+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "antigravity-app-windows",
@@ -83,9 +83,9 @@
       "model_support": "Document compatible models and account restrictions without selecting a model for execution; this assessment makes no evaluated-tool or model calls.",
       "documentation_base": "https://antigravity.google/docs/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:04:36+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "claude-cli",
@@ -122,9 +122,9 @@
       "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
       "documentation_base": "https://code.claude.com/docs/en/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:07:20+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "claude-app-windows",
@@ -161,9 +161,9 @@
       "model_support": "Anthropic-hosted models available to the selected account. Individual model choice, limits and availability remain account-dependent.",
       "documentation_base": "https://code.claude.com/docs/en/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:05:50+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "codex-cli",
@@ -200,9 +200,9 @@
       "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
       "documentation_base": "https://learn.chatgpt.com/docs/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:08:34+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "codex-app-windows",
@@ -239,9 +239,9 @@
       "model_support": "OpenAI model availability depends on the account and configuration; no specific inference model is required for this documentary profile.",
       "documentation_base": "https://learn.chatgpt.com/docs/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:08:11+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "copilot-cli",
@@ -278,9 +278,9 @@
       "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
       "documentation_base": "https://docs.github.com/en/copilot/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:10:00+00:00",
+      "boundary_state": "confirmed"
     },
     {
       "id": "copilot-app-windows",
@@ -317,10 +317,16 @@
       "model_support": "GitHub Copilot model selection and Auto depend on the account and its available models; no model is pinned for the assessment.",
       "documentation_base": "https://docs.github.com/en/copilot/",
       "source_access_date": "2026-11-08",
-      "confirmed_by": null,
-      "confirmed_at": null,
-      "boundary_state": "proposed"
+      "confirmed_by": "ross",
+      "confirmed_at": "2026-11-09T01:08:59+00:00",
+      "boundary_state": "confirmed"
     }
   ],
-  "approval": null
+  "approval": {
+    "approver": "ross",
+    "approved_at": "2026-11-09T01:45:36+00:00",
+    "manifest_version": 9,
+    "manifest_sha256": "a5c4afce3e6e896acebcf2484e9b3177dd2a152a6b44940547ced727807faac2",
+    "reference": "Recorded with `assess approve`; provenance is the commit that adds it"
+  }
 }
