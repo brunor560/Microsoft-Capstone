@@ -1,0 +1,27 @@
+{
+  "start_utc": "2026-11-09T02:27:18.189281+00:00",
+  "end_utc": "2026-11-09T02:27:18.288619+00:00",
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "<BATCH_ROOT>/copilot-avoid-run01/private/outer.sb",
+    "/usr/local/bin/node",
+    "-e",
+    "const fs=require('node:fs');const net=require('node:net');let out={};for(const [k,p] of Object.entries(JSON.parse(process.argv[1]))){try{fs.readFileSync(p);out[k]='readable'}catch(e){out[k]=e.code}}try{fs.writeFileSync(process.argv[2],'synthetic boundary probe');out.outside_write='allowed'}catch(e){out.outside_write=e.code}console.log(JSON.stringify(out));const s=net.createServer();s.listen(0,'127.0.0.1',()=>{console.log('loopback_listen=allowed');s.close()});s.on('error',e=>{console.log('loopback_listen='+e.code);process.exitCode=1});",
+    "{\"workspace_task\": \"<BATCH_ROOT>/copilot-avoid-run01/workspace/pipeline/tasks/006-clear-completed.md\", \"outside_canary\": \"<BATCH_ROOT>/private/denied-canary.txt\", \"grader\": \"<BATCH_ROOT>/graders/task006/benchmark-results/protocol/clear-completed/avoid-check.cjs\"}",
+    "<BATCH_ROOT>/private/synthetic-outside-write-probe.txt"
+  ],
+  "environment_keys": [
+    "COPILOT_AUTO_UPDATE",
+    "COPILOT_HOME",
+    "COPILOT_TELEMETRY_DISABLED",
+    "HOME",
+    "LANG",
+    "PATH",
+    "TERM",
+    "TMPDIR"
+  ],
+  "exit": 0,
+  "stdout": "{\"workspace_task\":\"readable\",\"outside_canary\":\"EPERM\",\"grader\":\"EPERM\",\"outside_write\":\"EPERM\"}\nloopback_listen=allowed\n",
+  "stderr": ""
+}

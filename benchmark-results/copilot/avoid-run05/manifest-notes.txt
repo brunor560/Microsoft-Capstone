@@ -1,0 +1,1 @@
+After trusted npm ci --offline --ignore-scripts --no-audit --no-fund. Ordinary source manifest excludes node_modules contents. No symlinks or special files in scanned source tree. Dependency installation exit 0; log outside workspace.

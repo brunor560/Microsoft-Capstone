@@ -1,0 +1,18 @@
+{
+  "status": "unreviewed",
+  "independent_human_review": "pending Ross manual review before merge",
+  "human_h_review_created": false,
+  "push_authorization": "User: Pushing unreviewed results is fine. I will review manually before merging the results in with results/all-runs.",
+  "publication_base_commit": "ff63785ce5768f7cfb89f4346644dfc75cc9a6e9",
+  "snapshot_commit": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "execution_status": "review_required",
+  "normal_condition_eligible": true,
+  "configuration_limitations": [
+    "runtime builtin skill inventory differs from disabled configuration",
+    "Main reasoning effort unobserved/default; in-process file tools are not OS sandboxed; see run-configuration.txt"
+  ],
+  "setup_history": "partial journal; protocol/setup-history-limitations.txt",
+  "privacy_preparation": "Automated key/pattern scan and operator image/text inspection only; not independent human review",
+  "prepared_utc": "2026-11-09T02:57:33.359283+00:00"
+}

@@ -1,0 +1,1 @@
+Not applicable: Task 006 uses committed original-workspace avoid-check.cjs static/fixture check; no separate runtime security suite.

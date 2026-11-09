@@ -1,0 +1,21 @@
+{
+  "time_utc": "2026-11-09T02:39:16.722121+00:00",
+  "method": "Copilot native interactive shell mode in separate empty inspection workspace; no model prompts",
+  "configured_network": {
+    "allowOutbound": true,
+    "allowLocalNetwork": true,
+    "allowedHosts": [
+      "localhost",
+      "127.0.0.1",
+      "::1"
+    ]
+  },
+  "observed": {
+    "workspace_read": "readable",
+    "outside_private_canary": "EPERM",
+    "outbound_tcp_1_1_1_1_443": "EPERM",
+    "loopback_listen": "allowed"
+  },
+  "source": "setup/copilot-inspect-workspace/probe.cjs; owned inspection PTY33051",
+  "limitation": "Shell sandbox verified; builtin file tools follow policy best-effort and CLI path rules, not OS sandbox."
+}
