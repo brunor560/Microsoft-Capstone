@@ -122,8 +122,8 @@ class Launcher(Base):
         def setup(store, args):
             seen.append((args.surface, args.research, args.yes))
             self.add_profile()
-            return 0
-        with patch.object(launcher.cmd_start, 'run', side_effect=setup), \
+            return 'tool-cli'
+        with patch.object(launcher.guided_profile, 'run', side_effect=setup), \
                 patch.object(launcher.cmd_research, 'run', return_value=0) as research:
             result, _ = self.run_launcher(['--data', self.dir, 'start', '--no-draft'], ['y'])
         self.assertEqual(result, 0)
@@ -133,8 +133,8 @@ class Launcher(Base):
     def test_declining_research_does_not_configure_or_call_model(self):
         def setup(store, args):
             self.add_profile()
-            return 0
-        with patch.object(launcher.cmd_start, 'run', side_effect=setup), \
+            return 'tool-cli'
+        with patch.object(launcher.guided_profile, 'run', side_effect=setup), \
                 patch.object(launcher.azure, 'connection') as connection, \
                 patch.object(launcher.cmd_research, 'run') as research:
             result, _ = self.run_launcher(['--data', self.dir, 'start'], ['n'])
@@ -184,14 +184,16 @@ class Launcher(Base):
         candidates = {c['tool_key']: c for c in self.store.candidates()}
         candidate = candidates['antigravity']
         result, output = self.run_launcher(['--data', self.dir, 'start', '--no-draft'],
-                                          ['antigravity', '', 'keep', '', 'ross', 'y', 'n'])
+                                          ['prepared', 'antigravity', '', 'Fixture Individual', 'version',
+                                           'unversioned: Official pages have no release identifier',
+                                           'source_access_date', '2026-11-09', 'confirm', 'ross', 'y', 'n'])
         self.assertEqual(result, 0)
         profile = self.store.load('manifest.json')['profiles'][0]
         self.assertEqual(profile['surface'], candidate['default_surface'])
         self.assertEqual(profile['confirmed_by'], 'ross')
         self.assertIsNone(self.store.load('manifest.json')['approval'])
-        self.assertIn('Proposed profile boundary', output)
-        self.assertIn('Account and tier', output)
+        self.assertIn('Editable boundary summary', output)
+        self.assertIn('account_and_tier', output)
 
     def test_selection_is_checkout_local_and_module_cli_ignores_it(self):
         self.run_launcher(['use', self.dir])

@@ -50,7 +50,7 @@ def run_drafting(store, index, cands, profiles, discovered, client, args, operat
     """Draft missing briefs per profile; return {profile_id: drafts} for the research agents."""
     out = {}
     for p in profiles:
-        cand = cands.get(p.get('tool_key'))
+        cand = research.candidate_for_profile(cands, p)
         if not cand or p['id'] not in discovered:
             continue
         ui.phase('draft', '%s: one request per feature, sequential' % p['id'])
@@ -97,11 +97,11 @@ def run(store, args, only=None):
 
     discovered = {}
     for p in profiles:
-        cand = cands.get(p.get('tool_key'))
+        cand = research.candidate_for_profile(cands, p)
         if not cand:
             ui.warn('%s: no candidate documentation set; its cells stay pending.' % p['id'])
             continue
-        seeds = cand['surfaces'][p['surface']].get('seed_pages', [])
+        seeds = p.get('documentation_entry_points') or cand['surfaces'][p['surface']].get('seed_pages', [])
         ui.phase('discovery', '%s (%s)' % (p['id'], cand['docs']['base_url']))
         seen, ok = src.discover(index, cand['docs'], seeds, getattr(args, 'crawl_limit', 40), ui.progress)
         index.save()
@@ -133,7 +133,7 @@ def run(store, args, only=None):
               % (pid, r['drafted'], r['left_pending'], r['kept'], r['rejected_quotes']))
 
     ui.phase('challenge')
-    s = challenge.run(store, ui.progress, operator)
+    s = challenge.run(store, ui.progress, operator, only=[p['id'] for p in profiles])
     (ui.ok if not s['blocking'] else ui.warn)('%d cells checked, %d blocking flag(s), %d warning(s): %s'
                                               % (s['checked'], s['blocking'], s['warnings'], s['by_type'] or 'none'))
 

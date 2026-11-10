@@ -10,7 +10,7 @@
     "api_version": "AZURE_DEV_API_VERSION",
     "api_key": "AZURE_DEV_API_KEY"
   },
-  "prompt_version": "brief-prompt/1",
+  "prompt_version": "brief-prompt/2",
   "temperature": 0,
   "limits": {
     "max_requests_per_run": 24,

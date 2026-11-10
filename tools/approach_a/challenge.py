@@ -66,13 +66,14 @@ def challenge_cell(cell, profile, index_data):
     return flags
 
 
-def run(store, progress, operator):
+def run(store, progress, operator, only=None):
     manifest = store.load('manifest.json')
     profiles = {p['id']: p for p in manifest['profiles']}
     data = store.load('cells.json')
     index_data = store.load('sources.json')
     todo = [c for c in data['cells'].values()
-            if c['profile_id'] in profiles and c['assessment_state'] != 'pending']
+            if c['profile_id'] in profiles and (only is None or c['profile_id'] in only)
+            and c['assessment_state'] != 'pending']
     summary = {'checked': 0, 'blocking': 0, 'warnings': 0, 'by_type': {}}
     for n, cell in enumerate(sorted(todo, key=lambda c: (c['profile_id'], c['feature_id'])), 1):
         flags = challenge_cell(cell, profiles[cell['profile_id']], index_data)

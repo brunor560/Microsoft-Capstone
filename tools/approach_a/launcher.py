@@ -9,7 +9,7 @@ import tempfile
 from types import SimpleNamespace
 
 from . import azure, cmd_blockers, cmd_misc, cmd_people, cmd_research, cmd_start, packet, preview_server, publish
-from . import research, store as st, ui, validate
+from . import guided_profile, research, store as st, ui, validate
 from . import __main__ as cli
 
 
@@ -135,16 +135,11 @@ def start(store, argv):
     args = cli.parser().parse_args(['start', *argv])
     if args.yes or args.rehearsal:
         raise ValueError('Guided start requires human boundary confirmation; use the module CLI for scripted/rehearsal setup.')
-    before = {p['id']: p for p in store.load('manifest.json')['profiles']}
-    args.research = False  # Offer only after the boundary has been explicitly confirmed.
-    result = cmd_start.run(store, args)
-    if result:
-        return result
-    changed = [p['id'] for p in store.load('manifest.json')['profiles']
-               if p.get('confirmed_by') and p != before.get(p['id'])]
-    if changed and cmd_blockers.ask('Start research now?', default='n', choices=['y', 'n']) == 'y':
+    args.research = False
+    created = guided_profile.run(store, args)
+    if created and cmd_blockers.ask('Start research now?', default='n', choices=['y', 'n']) == 'y':
         if confirm_research(args):
-            return cmd_research.run(store, args, only=changed)
+            return cmd_research.run(store, args, only=[created])
     return 0
 
 

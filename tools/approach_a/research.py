@@ -20,6 +20,19 @@ from . import store as st
 AFFIRMATIVE = ('Built in', 'Configuration or extension required', 'Custom implementation required')
 
 
+def candidate_for_profile(candidates, profile):
+    """IDs identify assessments; tool_key/surface identify reusable research inputs."""
+    cand = candidates.get(profile.get('tool_key'))
+    if not cand:
+        return None
+    docs = dict(cand['docs'])
+    if profile.get('documentation_entry_points') and profile.get('documentation_base'):
+        if not src.official(profile['documentation_base'], docs):
+            raise ValueError('NON_OFFICIAL_SOURCE: profile documentation base is outside candidate prefixes')
+        docs['base_url'] = profile['documentation_base']
+    return dict(cand, docs=docs)
+
+
 def load_briefs(cand, surface):
     briefs = {}
     for f in sorted(glob.glob(os.path.join(cand['_dir'], 'briefs', surface, 'F*.json'))):
@@ -90,7 +103,8 @@ class ResearchAgent:
         return refs, rejected
 
     def run(self, cells, features):
-        briefs = self.briefs if self.briefs is not None else load_briefs(self.cand, self.profile['surface'])
+        briefs = self.briefs if self.briefs is not None else (
+            load_briefs(self.cand, self.profile['surface']) if self.profile.get('use_prepared_briefs', True) else {})
         total = len(features)
         for n, f in enumerate(features, 1):
             fid = f['id']
@@ -151,7 +165,7 @@ def run_agents(store, index, candidates, profiles, operator, progress, briefs_by
             stop.set()
 
     for p in profiles:
-        cand = candidates.get(p.get('tool_key'))
+        cand = candidate_for_profile(candidates, p)
         if not cand:
             store.log('research_skipped', actor=operator, profile_id=p['id'],
                       reason='no candidate documentation set for this tool')

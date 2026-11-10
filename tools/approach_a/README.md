@@ -31,12 +31,58 @@ menu only reads status and current checks. With no terminal, `./matrix` prints
 status and exits; guided `start`/`review` also show status without prompting.
 Explicit preview and export commands still perform their requested actions.
 
-`start` reuses the candidate's default surface and guided boundary confirmation,
-then offers research. Before paid drafting, the launcher shows the configured
+`start` offers prepared-candidate and copy-profile paths, with the candidate's
+default surface for prepared setup. Both use one editable boundary summary and
+explicit confirmation, then offer research only for the newly created profile. Before paid drafting, the launcher shows the configured
 Azure deployment, API version and effective request/token/spending limits and
 asks for confirmation (default no). `--no-draft` uses prepared/saved briefs only.
 The actual returned model version is recorded when available. Human authorship,
 independent review and manifest approval remain separate explicit decisions.
+
+To create another tier from an existing CLI profile, work in a scratch copy:
+
+```bash
+review_dir=$(mktemp -d /private/tmp/matrix-tier.XXXXXX)
+cp -R assessment/research/2026-11-08/. "$review_dir/"
+./matrix --data "$review_dir" start --no-draft
+```
+
+Choose `copy`, then `codex-cli` (or your existing CLI profile), and enter the
+intended exact account/tier. The summary marks **INHERITED setup**, **EDITED**,
+and **NEEDS INPUT** fields. Type a field name to jump directly to it, for example
+`platforms`, `modes`, `exclusions` or `documentation_entry_points`; list values
+use semicolons. Enter `version` and provide a documented version or
+`unversioned: <explanation>`, then enter `source_access_date` with the date you
+actually reviewed the official documentation (`YYYY-MM-DD`). Versions and access
+dates are not inherited as established facts. Required blanks and proposal/TBD
+placeholders block confirmation. Check inherited setup against the intended tier,
+including platform-specific interface descriptions.
+
+Type `confirm`, select your actual roster ID, and explicitly answer `y` to add.
+Before that confirmation, cancellation (`q`, EOF, or `n` at final confirmation)
+writes no manifest or cells. A matching boundary instead offers the existing
+profile and shows pending research and review counts, without writing. Scope
+comparison ignores source-access dates, labels, list order and capitalization;
+a genuinely different tier, platform, mode, component boundary or documented
+version can coexist. Existing IDs stay unchanged; new variants receive stable
+IDs with a scope suffix when the candidate's base ID is occupied.
+
+A confirmed profile gets 18 fresh pending cells, a new manifest version and no
+manifest approval. Findings, evidence references, authors and reviews are not
+copied; the original records stay attached to the original profile. Official
+entry points are inherited only as editable research inputs, constrained to the
+candidate's official prefixes. Research still resolves the tool/surface inputs
+through `tool_key` and `surface`, independently of the new profile ID. Copies and
+changed boundaries do not reuse the old scope's prepared findings; `--no-draft`
+leaves their cells pending until new profile-specific briefs exist. Model drafting
+receives the exact tier, platforms and modes; every resulting finding still needs
+human verification and independent review. The existing research offer is limited
+to the new profile, including its evidence-challenge pass.
+
+For a tool without a prepared candidate, the `new` menu entry points to the
+existing `./matrix new` command; then choose `prepared` on the next start. The
+module CLI's `start`, `new`, research flags and scripted syntax remain unchanged.
+Bulk creation is deferred.
 
 `review` opens the only profile needing review, or lists profiles with remaining
 cell-review counts. It reuses the packet, individual exceptions and `p` checked-cell

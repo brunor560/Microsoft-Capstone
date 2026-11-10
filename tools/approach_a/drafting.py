@@ -136,9 +136,13 @@ def fit(feature, profile, excerpts, max_tokens):
 def messages(feature, profile, excerpts):
     blocks = ['[page: %s] [section: %s]\n%s' % (e['page'], e['section'], e['text']) for e in excerpts]
     user = ('Assessed profile: %s (%s, surface %s). Exclusions: %s.\n'
+            'Account/tier: %s. Platforms: %s. Modes: %s. Documentation version: %s.\n'
+            'Do not transfer claims across tiers, platforms or modes without supporting excerpts.\n'
             'Feature %s "%s": %s\nExamine: %s\n\nExcerpts:\n\n%s'
             % (profile['id'], profile['tool'], profile.get('surface_label', profile['surface']),
                '; '.join(profile.get('exclusions') or []) or 'none',
+               profile.get('account_and_tier', 'Not established'), '; '.join(profile.get('platforms') or []),
+               '; '.join(profile.get('modes') or []), json.dumps(profile.get('version') or {}, ensure_ascii=False),
                feature['id'], feature['name'], feature['capability'], feature['examine'],
                '\n\n---\n\n'.join(blocks)))
     return [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': user}]
