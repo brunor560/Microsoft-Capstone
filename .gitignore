@@ -7,3 +7,5 @@ assessment/.cache/
 **/.env
 # Local draft previews of the feature matrix (never under dashboard/)
 assessment/preview/
+# Checkout-local Approach A launcher dataset selection
+/.matrix-data.json

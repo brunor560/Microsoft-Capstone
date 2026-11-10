@@ -6,6 +6,60 @@ A minimal command-line workbench for the documentation-only feature matrix (SRS 
 python3 -m tools.approach_a --help
 ```
 
+## Quick start with `./matrix`
+
+From the repository root:
+
+```bash
+./matrix                                      # status and a short guided menu
+./matrix use assessment/research/2026-11-08     # save this checkout's local selection
+./matrix use --show                            # inspect selection and resolved path
+./matrix use --clear                           # return to environment/default selection
+./matrix --data /path/to/scratch start          # propose and explicitly confirm a boundary
+./matrix --data /path/to/scratch resume --no-draft
+./matrix --data /path/to/scratch review         # source packet and checked-cell review queue
+./matrix --data /path/to/scratch preview        # labeled draft + loopback server; Ctrl+C stops it
+```
+
+Selecting the November 8 example above does not change its records. Use a scratch
+copy for practice; never record fictional authors, reviews or approvals in real
+data. `use` stores an absolute path in ignored `.matrix-data.json` per checkout.
+Resolution is explicit `--data`, then `APPROACH_A_DATA`, saved selection, and
+finally `assessment/`. The resolved path is printed before every guided action;
+a missing saved directory is an error rather than a silent fallback. Opening the
+menu only reads status and current checks. With no terminal, `./matrix` prints
+status and exits; guided `start`/`review` also show status without prompting.
+Explicit preview and export commands still perform their requested actions.
+
+`start` reuses the candidate's default surface and guided boundary confirmation,
+then offers research. Before paid drafting, the launcher shows the configured
+Azure deployment, API version and effective request/token/spending limits and
+asks for confirmation (default no). `--no-draft` uses prepared/saved briefs only.
+The actual returned model version is recorded when available. Human authorship,
+independent review and manifest approval remain separate explicit decisions.
+
+`review` opens the only profile needing review, or lists profiles with remaining
+cell-review counts. It reuses the packet, individual exceptions and `p` checked-cell
+batch action, including confirmation and stale-review checks. Missing authors or
+boundary/approval problems can be resolved with `./matrix blockers`.
+
+`preview [--port 4174]` uses the standard draft destination and existing server:
+`http://127.0.0.1:4174/feature-matrix/?preview=matrix.preview.json`. It does not
+open a browser. The menu offers a local accepted export only when the whole
+manifest passes; the exporter independently revalidates on every invocation:
+
+```bash
+./matrix export              # local assessment/preview/matrix.accepted.json
+./matrix export --public     # explicit public projection; requires committed matching inputs
+```
+
+Public export retains all Git provenance and destination checks. See the
+scratch-to-public sequence below before using `--public`. No launcher action
+pushes or deploys. Existing commands remain available (`./matrix blockers`,
+`./matrix review-packet`, etc.). `python3 -m tools.approach_a` and its current
+syntax are unchanged for scripts; it ignores `.matrix-data.json`. Use the module
+CLI for scripted setup/review, including `start --yes` or rehearsal runs.
+
 ## Boundaries
 
 - It reads public official documentation only (HTTP GET). It never installs, runs or tests an assessed developer tool and makes no benchmark calls (SRS Spec 5.4).
