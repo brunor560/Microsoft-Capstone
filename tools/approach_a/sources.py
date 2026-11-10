@@ -69,6 +69,9 @@ class SourceIndex:
             'access_date': rec['access_date'], 'page_sha256': rec['sha256'],
             'version_or_update': rec.get('version_or_update'), 'check': check['status'],
         }
+        for source_key, evidence_key in (('html_sha256', 'page_html_sha256'), ('effective_url', 'effective_url')):
+            if rec.get(source_key):
+                entry[evidence_key] = rec[source_key]
         for eid, existing in self.data['entries'].items():
             if {k: v for k, v in existing.items() if k != 'id'} == entry:
                 return eid

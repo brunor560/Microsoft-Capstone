@@ -515,11 +515,11 @@ python3 -m tools.approach_a --data "$review_dir" export-publication --mode previ
 python3 -m tools.approach_a serve-preview --port 4174
 ```
 
-No refresh/research command is part of review. Documentation refresh and
-change-only re-review are follow-up work: any future implementation must retain
-reviews only when the finding, evidence and profile scope are unchanged; every
-new manifest version needs approval. This packet workflow does not change the
-Oct. 22 SRS 5.4.2 drafting rules, accepted-export gates or deployment workflow.
+Review does not start research or refresh automatically. Use the explicit refresh
+check/apply workflow below when documentation needs checking. A preserved review
+still binds its original finding, evidence and profile; a new manifest version
+always needs approval. The Oct. 22 SRS 5.4.2 drafting rules, accepted-export gates
+and deployment workflow remain separate.
 
 Verification (synthetic disposable fixtures, no real human decisions):
 
@@ -563,3 +563,96 @@ or null for outside scratch data. Raw in-memory `build` calls without a dataset
 path never claim a clean commit, even if given a SHA or `source_dirty=False`.
 The public-file check rejects these unverified local projections; do not copy a
 scratch projection into `dashboard/`. Re-export from the committed reviewed path.
+
+
+### Check documentation and re-review only affected cells
+
+From an actual assessment workspace (use a scratch copy for practice):
+
+```bash
+./matrix --data /path/to/workspace refresh
+./matrix --data /path/to/workspace refresh --profile codex-cli
+# Module CLI equivalent; existing research --refresh behavior is unchanged:
+python3 -m tools.approach_a --data /path/to/workspace refresh --profile codex-cli
+```
+
+The default is a **check only**. It fetches each distinct cited official URL once
+per run, without crawling or model calls. It does not change the manifest, cells,
+evidence, reviews, work log, approval, validation report or current URL cache.
+New text/HTML, errors, input hashes and per-cell reasons go to a separate temporary
+`approach-a-refresh-...` directory. The command prints the exact report path and
+an apply command. Keep that directory until application/review is complete;
+its comparison files are needed to apply. It can be deleted after the workflow.
+
+Each cell is classified as:
+
+- **unchanged:** the citation's converted-text SHA-256 still matches (with title,
+  section, quotation and known page-availability checks), or a hash-verified
+  historical text/HTML pair proves the citation and scoped context unchanged.
+  A stale/legacy review is never made current by a refresh check.
+- **needs re-review:** the passage disappeared, or the cited context, headings,
+  surface metadata or scope qualifications changed. A surviving quote is not
+  enough to preserve review.
+- **could not verify:** fetch/redirect failure, missing or unverifiable historical
+  context, missing official-source configuration, or a documentation gap.
+  Unestablished subcapabilities are also coverage gaps. Checking cited pages
+  cannot establish that a broader gap still exists.
+
+Context comparison is deliberately conservative and uses no semantic model. It
+compares every heading, the cited subtree, ancestor introductory prose, and all
+same-surface or unscoped prose. Only prose under an explicitly different product
+surface may be omitted, and even there assessed-scope references and qualification
+clauses are retained. Ambiguous surface headings remain shared context. Ordinary
+edits to other features on the same surface therefore require re-review. A
+missing historical snapshot is uncertainty, never an automatic quote-only pass.
+The context guarantee is limited to the recorded official page's converted text,
+its title/surface metadata and the documented structural scope; it does not prove
+runtime behavior or discover new documentation elsewhere.
+
+Unchanged cells and their review records are left byte-for-byte untouched. The
+original evidence hashes are not backfilled to pretend a reviewer approved a new
+snapshot. To reopen selected affected cells, use the report path printed above:
+
+```bash
+./matrix --data /path/to/workspace refresh --apply /path/printed/by/check/report.json
+# Optionally restrict the displayed apply selection:
+./matrix --data /path/to/workspace refresh --apply /path/printed/by/check/report.json --profile codex-cli
+```
+
+Apply displays the cells and reasons again. Enter full cell IDs separated by
+spaces (for example `codex-cli/F07 codex-cli/F08`), or `all` for all displayed
+affected cells, then explicitly confirm `y`; Enter, `n`, `q` and EOF cancel.
+Before writing it verifies the manifest, cells, evidence, reviews, catalog and
+roster still match the checked baseline, and verifies comparison-file hashes.
+Any intervening edit requires a fresh check. Unchanged cells cannot be selected.
+
+Reopened findings keep their statuses and scope text as proposals; refresh never
+invents replacements. Successful fetches receive new immutable evidence IDs and
+separate archived text/HTML snapshots under `.cache/refresh-history/`. Removed
+quotations are recorded as unverified, so acceptance remains blocked. Failed or
+uncertain observations stay visible in the comparison report and cell's refresh
+history; failed fetches do not fabricate new evidence. Old evidence IDs and
+reviews remain history. The reopened cell loses current human authorship and its
+challenge state, making its previous review stale. Manifest boundaries/version
+and approval are untouched. Nothing writes public output or deploys.
+
+Use existing research, human-author and review gates to finish the selected cells:
+
+```bash
+./matrix --data /path/to/workspace research --profile codex-cli --no-draft
+./matrix --data /path/to/workspace blockers
+./matrix --data /path/to/workspace review --profile codex-cli
+./matrix --data /path/to/workspace validate --brief
+```
+
+Research here is an explicit additional operation and may update drafts; its
+`--no-draft` flag avoids paid model calls. Correct changed/removed evidence and
+scope (or establish a specific gap/conflict through broader official-document
+review), run the existing challenge pass, name the actual human responsible for
+the refreshed finding, and obtain a new independent agreeing review. Do not merely
+reassign a reviewer. `show`/`review-packet` retain the refresh reasons and expose
+archived refreshed context. Validation and accepted export continue to reject
+missing authors, unverified evidence, missing challenge passes, stale reviews,
+self-review and open disagreements across the whole manifest. A real boundary
+change still needs a new manifest version and approval; refresh does not approve
+it. Public export additionally retains its existing Git provenance/path gates.

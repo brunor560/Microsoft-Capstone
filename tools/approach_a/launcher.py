@@ -166,6 +166,7 @@ def home(store, interactive):
         if review_counts(store):
             actions.append(('review', 'Review findings and exceptions'))
         if store.load('manifest.json')['profiles']:
+            actions.append(('refresh', 'Check cited documentation (read-only)'))
             actions.append(('preview', 'Generate and serve a labeled draft preview'))
         if report['accepted']:
             actions.append(('export', 'Prepare a local accepted export'))
@@ -217,10 +218,10 @@ def main(argv=None):
         if rest and rest[0] == 'use':
             return use(rest[1:], args.data)
         if rest in (['--help'], ['-h']):
-            print('./matrix [--data PATH] [start | resume | review | preview | export [--public]]')
+            print('./matrix [--data PATH] [start | resume | review | refresh | preview | export [--public]]')
             print('./matrix use PATH | use --show | use --clear; all module CLI commands also remain available.')
             return 0
-        if rest and rest[0] in ('start', 'review') and any(a in ('--help', '-h') for a in rest[1:]):
+        if rest and rest[0] in ('start', 'review', 'refresh') and any(a in ('--help', '-h') for a in rest[1:]):
             if rest[0] == 'review' and not any(
                     a == '--reviewer' or a.startswith('--reviewer=') for a in rest[1:]):
                 review_parser().parse_args(rest[1:])

@@ -25,6 +25,8 @@ def cell_md(feature, profile, cell, sources, people, rv):
             ('Drafted by', cell.get('drafted_by') or '-'),
             ('Author (responsible person)', name(cell.get('author'))),
             ('Assessment date', cell.get('assessment_date') or '-')]
+    if cell.get('documentation_refresh'):
+        rows.append(('Documentation refresh check (historical)', str(cell['documentation_refresh'])))
     out += ['| %s | %s |' % (k, esc(v)) for k, v in rows]
     out.append('\n## Evidence\n')
     if not cell.get('evidence_refs'):

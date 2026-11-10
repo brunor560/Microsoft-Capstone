@@ -16,6 +16,7 @@ from . import preview_server
 from . import publish
 from . import packet
 from . import research
+from . import refresh
 from . import store as st
 
 
@@ -99,6 +100,9 @@ def parser():
     rs.add_argument('--brief', action='store_true')
     rs.add_argument('--rehearsal', action='store_true')
     drafting_options(rs)
+    rf = sub.add_parser('refresh', help='check cited official documentation without changing assessment records or making model calls')
+    rf.add_argument('--profile', action='append', help='limit check or apply selection to profile ID (repeatable)')
+    rf.add_argument('--apply', metavar='REPORT', help='show a checked report and explicitly select/confirm cells to reopen')
     ex = sub.add_parser('export-publication', help='prepare the reviewed matrix projection (JSON) for the site release')
     ex.add_argument('--mode', choices=list(publish.MODES), default='accepted',
                     help='accepted: whole manifest must pass validation (default); preview: labeled local draft view')
@@ -133,7 +137,7 @@ def main(argv=None):
                 'approve': cmd_people.approve, 'author': cmd_people.author, 'review': cmd_people.do_review,
                 'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run,
                 'export-publication': publish.run, 'serve-preview': preview_server.run,
-                'review-packet': packet.run}
+                'review-packet': packet.run, 'refresh': refresh.run}
     try:
         return handlers[args.cmd](store, args)
     except (ValueError, FileExistsError, FileNotFoundError) as e:
@@ -143,7 +147,8 @@ def main(argv=None):
         print('\nStopped: %s. Completed cells were saved; continue with `resume`.' % e)
         return 3
     except KeyboardInterrupt:
-        store.log('interrupted', command=args.cmd)
+        if args.cmd != 'refresh':
+            store.log('interrupted', command=args.cmd)
         print('\nInterrupted. Progress is saved after each step; continue with `resume`.')
         return 130
 

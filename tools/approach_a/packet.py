@@ -5,6 +5,11 @@ from .render_cell import cell_md
 
 def context(store, entry):
     text, _ = fetch.PageCache(store).get(sources.page_key(entry['url']))
+    if entry.get('page_html_sha256'):
+        from .refresh import historical
+        archived = historical(store, entry)
+        if archived is not None:
+            text = archived['text']
     if text is None:
         return 'Context unavailable locally; open the source link and inspect the cited section.'
     if st.sha256(text.encode('utf-8')) != entry.get('page_sha256'):

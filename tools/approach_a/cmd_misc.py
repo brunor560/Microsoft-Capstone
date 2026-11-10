@@ -83,6 +83,8 @@ def show(store, args):
         ui.wrap('Setup / activation', '%s / %s' % (c.get('required_setup'), c.get('activation_state')))
         ui.wrap('Control mechanism', c.get('control_mechanism'))
         ui.wrap('Uncertainties', c.get('constraints'))
+        if c.get('documentation_refresh'):
+            ui.wrap('Documentation refresh', str(c['documentation_refresh']))
         for r in c.get('evidence_refs', []):
             e = entries.get(r, {})
             ui.wrap('Source MATRIX:%s' % r, '%s | %s | %s | accessed %s | %s | "%s"' % (
