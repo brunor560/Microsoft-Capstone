@@ -1,6 +1,7 @@
 """Single-profile setup and research routing on disposable fixtures only."""
 import contextlib
 import copy
+import datetime
 import io
 import json
 from pathlib import Path
@@ -9,6 +10,12 @@ from unittest.mock import patch
 from tools.approach_a import cmd_research, guided_profile as guided, model, publish, review
 from tools.approach_a.__main__ import parser
 from tools.approach_a.tests.test_validation import Base
+
+
+class FixedDate(datetime.date):
+    @classmethod
+    def today(cls):
+        return cls(2026, 11, 9)
 
 
 class GuidedProfile(Base):
@@ -210,3 +217,32 @@ class GuidedProfile(Base):
         self.assertIn('Platforms: Windows', message)
         self.assertIn('Modes: interactive', message)
         self.assertIn('Fixture official excerpt', message)
+
+    def test_access_date_accepts_yesterday_and_today_but_rejects_tomorrow(self):
+        profile = copy.deepcopy(self.store.load('manifest.json')['profiles'][0])
+        with patch.object(guided.datetime, 'date', FixedDate):
+            for date in ('2026-11-08', '2026-11-09'):
+                with self.subTest(date=date):
+                    profile['source_access_date'] = date
+                    self.assertEqual(guided.problems(profile, self.candidate), [])
+            profile['source_access_date'] = '2026-11-10'
+            self.assertIn('source_access_date (cannot be later than today)', guided.problems(profile, self.candidate))
+            for date in ('20261109', '2026-02-30'):
+                with self.subTest(date=date):
+                    profile['source_access_date'] = date
+                    self.assertIn('source_access_date (YYYY-MM-DD, actually reviewed)', guided.problems(profile, self.candidate))
+
+    def test_future_date_blocks_confirmation_without_writes_until_corrected(self):
+        answers = ['copy', 'fixture-cli', 'Pro', 'version', '2.0',
+                   'source_access_date', '2026-11-10', 'confirm']
+        before = self.snapshot()
+        with patch.object(guided.datetime, 'date', FixedDate):
+            pid, output = self.run_setup([*answers, 'q'])
+            self.assertIsNone(pid)
+            self.assertIn('source_access_date [NEEDS INPUT]', output)
+            self.assertIn('Confirmation blocked: source_access_date (cannot be later than today)', output)
+            self.assertEqual(before, self.snapshot())
+            pid, _ = self.run_setup([*answers, 'source_access_date', '2026-11-09', 'confirm', 'ross', 'y'])
+        self.assertIsNotNone(pid)
+        profile = self.store.load('manifest.json')['profiles'][-1]
+        self.assertEqual(profile['source_access_date'], '2026-11-09')

@@ -1,8 +1,8 @@
 """Shared official-source index (sources.json) and source discovery.
 
 Pages are keyed by URL and shared by every profile and tool. Evidence entries
-(MATRIX:E01, E02, ...) are keyed by (URL, section, quote) so that the same
-cited passage gets the same ID wherever it is reused.
+(MATRIX:E01, E02, ...) are immutable: reuse requires the same passage, source
+snapshot and all recorded metadata. A later snapshot gets a new evidence ID.
 """
 import re
 import urllib.parse
@@ -60,22 +60,22 @@ class SourceIndex:
         return rec, text, from_cache
 
     def evidence(self, url, section_spec, quote, check, rec, claim):
-        """Register (or reuse) an evidence entry for a verified quote."""
-        key = (url, section_spec, quote)
-        for eid, e in self.data['entries'].items():
-            if (e['url'], e['section_spec'], e['quote']) == key:
-                e.update({'page_sha256': rec['sha256'], 'access_date': rec['access_date'],
-                          'check': check['status']})
-                return eid
-        eid = 'E%02d' % (len(self.data['entries']) + 1)
-        self.data['entries'][eid] = {
-            'id': eid, 'publisher': rec.get('publisher'), 'page_title': rec.get('title'),
+        """Reuse an identical record; never rewrite evidence cited by other cells."""
+        entry = {
+            'publisher': rec.get('publisher'), 'page_title': rec.get('title'),
             'url': url, 'section_spec': section_spec,
             'section': ' > '.join(check['section_path'] or []),
             'surface': check['surface'], 'quote': quote, 'claim_summary': claim,
             'access_date': rec['access_date'], 'page_sha256': rec['sha256'],
             'version_or_update': rec.get('version_or_update'), 'check': check['status'],
         }
+        for eid, existing in self.data['entries'].items():
+            if {k: v for k, v in existing.items() if k != 'id'} == entry:
+                return eid
+        # Gaps or historical IDs must never cause an existing record to be replaced.
+        last = max((int(eid[1:]) for eid in self.data['entries'] if re.fullmatch(r'E\d+', eid)), default=0)
+        eid = 'E%02d' % (last + 1)
+        self.data['entries'][eid] = dict(entry, id=eid)
         return eid
 
     def save(self):

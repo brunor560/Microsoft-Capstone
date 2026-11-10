@@ -71,8 +71,11 @@ def problems(p, candidate):
         missing.append('surface (must resolve a candidate surface)')
     try:
         date = p.get('source_access_date') or ''
-        if datetime.date.fromisoformat(date).isoformat() != date:
+        parsed_date = datetime.date.fromisoformat(date)
+        if parsed_date.isoformat() != date:
             raise ValueError('Use ISO date format')
+        if parsed_date > datetime.date.today():
+            missing.append('source_access_date (cannot be later than today)')
     except ValueError:
         missing.append('source_access_date (YYYY-MM-DD, actually reviewed)')
     urls = [p.get('documentation_base')] + (p.get('documentation_entry_points') or [])
