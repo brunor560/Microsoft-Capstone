@@ -7,7 +7,7 @@ import copy
 from collections import Counter, OrderedDict
 from types import SimpleNamespace
 
-from . import cmd_misc, model, render, review, store as st, ui, validate
+from . import cmd_misc, model, packet, render, review, store as st, ui, validate
 
 GLOBAL = ':manifest'
 REVIEW_CODES = {'REVIEW_MISSING', 'REVIEW_STALE', 'REVIEW_INVALID', 'DISAGREEMENT_OPEN'}
@@ -143,10 +143,13 @@ class Walker:
         return True
 
     def decide(self, code, where, action, before):
+        self.unchanged(where, before)
         if code == 'BOUNDARY_UNCONFIRMED':
             return self.confirm_boundary(where, before)
         if code == 'AUTHOR_MISSING':
             who = self.actor()
+            if ask('Record %s as author for %s?' % (who, where), default='n', choices=['y', 'n']) != 'y':
+                return False
             self.unchanged(where, before)
             review.set_author(self.store, where, who)
         elif code in REVIEW_CODES:
@@ -164,10 +167,14 @@ class Walker:
                 disposition = ask('Disagreement disposition', default='unresolved',
                                   choices=['unresolved', *review.DISPOSITIONS])
                 disposition = None if disposition == 'unresolved' else disposition
+            if ask('Record %s by %s for %s?' % (action, who, where), default='n', choices=['y', 'n']) != 'y':
+                return False
             self.unchanged(where, before)
             review.record(self.store, where, who, 'disagree' if action == 'd' else 'agree', note, disposition)
         elif code in APPROVAL_CODES:
             who = self.actor('approver')
+            if ask('Approve the displayed manifest version as %s?' % who, default='n', choices=['y', 'n']) != 'y':
+                return False
             self.unchanged(where, before)
             review.approve(self.store, who)
         else:
@@ -185,6 +192,8 @@ class Walker:
         for issue in blockers(self.store):
             live.setdefault(issue.get('where'), set()).add(issue['code'])
         before = {cid: self.fingerprint(cid) for cid in ids}
+        if is_review:
+            print(packet.build(self.store, profile))
         eligible, skipped = [], []
         for cid in ids:
             cell = cells[cid]
@@ -213,6 +222,16 @@ class Walker:
         decision, note, disposition = None, None, None
         if is_review:
             print('  This records a review of every listed cell, not a future reviewer assignment.')
+            selected = ask('Features you actually checked (space-separated Fxx; all means every eligible cell; Enter cancels)')
+            if not selected:
+                return False
+            if selected != 'all':
+                features = set(selected.upper().split())
+                available = {cells[cid]['feature_id'] for cid in eligible}
+                if not features <= available:
+                    raise ValueError('Select only eligible feature IDs: ' + ', '.join(sorted(available)))
+                eligible = [cid for cid in eligible if cells[cid]['feature_id'] in features]
+            ui.table([(cid, cells[cid]['status']) for cid in eligible], ['selected checked cell', 'finding'])
             decision = ask('Decision for all listed cells', choices=['agree', 'disagree'])
             note = ask('Shared review note for all listed cells (required)')
             if not note:
@@ -296,6 +315,7 @@ class Walker:
                     if saved:
                         report = validate.run(self.store)
                         ui.ok('Decision saved. %d blocking finding(s) remain.' % report['blocking_count'])
+                        inventory(self.store)
                         try:
                             render.run(self.store)
                         except (KeyError, TypeError, ValueError) as error:

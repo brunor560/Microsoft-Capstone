@@ -318,3 +318,91 @@ hash and normal review history. The walker asks for explicit confirmation of the
 person, profile and cell count before writing; declining leaves the data alone.
 Use the single-cell actions when decisions or notes differ. Both profile-wide
 options recheck the displayed data and refresh validation after saving.
+
+### Review packets and checked-cell batches
+
+`review-packet` prints an offline, read-only Markdown packet per profile (all
+profiles by default; repeat `--profile` to select). It does not fetch pages,
+call a model, render files into the dataset, or record decisions. Each packet
+shows the exact recorded surface, tier, platforms, modes and exclusions, with
+manifest version/hash and boundary confirmation. Proposed tiers remain proposals.
+Conflicts, explicit absence claims and scope ambiguities are listed first.
+Shared URL/section/quote passages are grouped with the cells using them; findings
+retain individual statuses, scope, flags, named authors, independent reviews,
+dispositions, hashes and stale labels. Context comes only from the matching
+cached source snapshot; missing or changed context is labeled for source-link
+inspection. Quote matching and automated challenge flags do not establish
+source-to-claim alignment. Read the linked official section before agreeing.
+
+Read-only example commands (the November 8 dataset is not modified):
+
+```bash
+python3 -m tools.approach_a --data assessment/research/2026-11-08 review-packet --profile codex-cli > /private/tmp/codex-cli-review.md
+python3 -m tools.approach_a --data assessment/research/2026-11-08 review-packet > /private/tmp/approach-a-review.md
+python3 -m tools.approach_a --data assessment/research/2026-11-08 blockers --list
+```
+
+For a local review workspace, copy that dataset first. Select your actual roster
+ID at the decision prompt; no identity or decision is supplied by these commands:
+
+```bash
+review_dir=$(mktemp -d /private/tmp/approach-a-review.XXXXXX)
+cp -R assessment/research/2026-11-08/. "$review_dir/"
+python3 -m tools.approach_a --data "$review_dir" blockers
+```
+
+Resolve the boundary and responsible human authors first. For review blockers,
+`p` reuses the profile-wide action and displays the packet before asking which
+eligible features you actually checked. Enter space-separated IDs such as
+`F01 F02 F04`, or `all` only after checking every eligible cell; Enter cancels.
+The selected cells, shared decision and required note are shown before an explicit
+`y` confirmation. Use individual `a`/`d` decisions for exceptions, with a
+recorded disagreement disposition where appropriate. Individual decisions also
+require confirmation; Enter never records one. Self-review, missing authors,
+pending research and existing current reviews are excluded from a review batch.
+Unselected cells remain open. Every saved batch uses the existing per-cell review
+hash and work log, then reruns validation and displays remaining blocker counts.
+Changed cells, evidence, reviews or manifest during the prompt invalidate the
+batch before any writes. A new manifest version still requires approval.
+
+After actual human review, use the existing validation/export commands. Validation
+writes reports and generated views only to the selected scratch workspace. The
+accepted exporter independently checks the **entire** manifest, even if only one
+profile was reviewed. It refuses pending, disputed, stale, unapproved or otherwise
+blocked data. It writes a local staging file; it does not deploy or stage Git files:
+
+```bash
+python3 -m tools.approach_a --data "$review_dir" blockers --list
+python3 -m tools.approach_a --data "$review_dir" validate --brief
+# Run only after the entire approved manifest passes:
+python3 -m tools.approach_a --data "$review_dir" export-publication --mode accepted --allow-other-out --out /private/tmp/approach-a-accepted.json
+```
+
+To stage that reviewed manifest's accepted projection at the existing site input
+path, the human operator can run the following after checking the local result:
+
+```bash
+python3 -m tools.approach_a --data "$review_dir" export-publication --mode accepted
+# Optional Git staging, after checking the diff:
+git diff -- dashboard/feature-matrix/data/matrix.json
+git add dashboard/feature-matrix/data/matrix.json
+```
+
+For a draft preview, keep the separate preview destination and existing server:
+
+```bash
+python3 -m tools.approach_a --data "$review_dir" export-publication --mode preview
+python3 -m tools.approach_a serve-preview --port 4174
+```
+
+No refresh/research command is part of review. Documentation refresh and
+change-only re-review are follow-up work: any future implementation must retain
+reviews only when the finding, evidence and profile scope are unchanged; every
+new manifest version needs approval. This packet workflow does not change the
+Oct. 22 SRS 5.4.2 drafting rules, accepted-export gates or deployment workflow.
+
+Verification (synthetic disposable fixtures, no real human decisions):
+
+```bash
+python3 -m unittest discover -s tools/approach_a/tests -t .
+```

@@ -14,6 +14,7 @@ from . import cmd_research
 from . import cmd_start
 from . import preview_server
 from . import publish
+from . import packet
 from . import research
 from . import store as st
 
@@ -64,6 +65,8 @@ def parser():
     sh = sub.add_parser('show', help="inspect one feature's finding, scope, sources and review state")
     sh.add_argument('feature', help='F01-F18')
     sh.add_argument('--profile', action='append')
+    pk = sub.add_parser('review-packet', help='print read-only per-profile review packets; no network or decisions')
+    pk.add_argument('--profile', action='append', help='profile ID (repeatable; default all)')
 
     v = sub.add_parser('validate', help='check coverage, fields, evidence, approval and review')
     v.add_argument('--brief', action='store_true')
@@ -128,7 +131,8 @@ def main(argv=None):
                 'show': cmd_misc.show, 'validate': cmd_people.do_validate, 'render': cmd_people.do_render,
                 'approve': cmd_people.approve, 'author': cmd_people.author, 'review': cmd_people.do_review,
                 'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run,
-                'export-publication': publish.run, 'serve-preview': preview_server.run}
+                'export-publication': publish.run, 'serve-preview': preview_server.run,
+                'review-packet': packet.run}
     try:
         return handlers[args.cmd](store, args)
     except (ValueError, FileExistsError, FileNotFoundError) as e:
