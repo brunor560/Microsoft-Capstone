@@ -8,7 +8,7 @@ import sys
 import tempfile
 from types import SimpleNamespace
 
-from . import azure, cmd_blockers, cmd_misc, cmd_research, cmd_start, packet, preview_server, publish
+from . import azure, cmd_blockers, cmd_misc, cmd_people, cmd_research, cmd_start, packet, preview_server, publish
 from . import research, store as st, ui, validate
 from . import __main__ as cli
 
@@ -87,11 +87,15 @@ def review_counts(store):
     return profiles
 
 
-def review_queue(store, argv):
+def review_parser():
     parser = argparse.ArgumentParser(prog='./matrix review')
     parser.add_argument('--profile')
     parser.add_argument('--operator')
-    args = parser.parse_args(argv)
+    return parser
+
+
+def review_queue(store, argv):
+    args = review_parser().parse_args(argv)
     counts = review_counts(store)
     if not counts:
         print('No outstanding cell reviews. Use ./matrix blockers for author, boundary or approval issues.')
@@ -192,7 +196,10 @@ def dispatch(store, command, argv):
         return review_queue(store, argv)
     if command == 'preview':
         return preview(store, argv)
-    if command in ('resume', 'research'):
+    if command == 'resume':
+        args = cli.parser().parse_args([command, *argv])
+        return cmd_people.resume(store, args, before_research=confirm_research)
+    if command == 'research':
         args = cli.parser().parse_args([command, *argv])
         if not confirm_research(args):
             return 0
@@ -218,6 +225,12 @@ def main(argv=None):
             print('./matrix [--data PATH] [start | resume | review | preview | export [--public]]')
             print('./matrix use PATH | use --show | use --clear; all module CLI commands also remain available.')
             return 0
+        if rest and rest[0] in ('start', 'review') and any(a in ('--help', '-h') for a in rest[1:]):
+            if rest[0] == 'review' and not any(
+                    a == '--reviewer' or a.startswith('--reviewer=') for a in rest[1:]):
+                review_parser().parse_args(rest[1:])
+            else:
+                cli.parser().parse_args(rest)
         store = st.Store(resolve_dataset(args.data))
         if not rest:
             print('Dataset: %s' % store.root, flush=True)

@@ -220,3 +220,92 @@ class Launcher(Base):
         self.assertIn('Prepare a local accepted export', output)
         export.assert_not_called()
         self.assertEqual(before, self.snapshot())
+
+    def test_completed_resume_validates_without_credentials_or_paid_prompt(self):
+        self.add_profile()
+        self.complete_cells()
+        sources = self.store.load('sources.json')
+        sources['entries']['E01']['version_or_update'] = 'Synthetic fixture source'
+        self.store.save('sources.json', sources)
+        self.review_all()
+        review.approve(self.store, 'ross')
+        self.store.log('research_started')
+        self.store.log('validated')
+        with patch.object(launcher.azure, 'connection', side_effect=AssertionError('must not load credentials')), \
+                patch.object(launcher.azure, 'read_env_file', side_effect=AssertionError('must not read env file')), \
+                patch.object(launcher.cmd_research, 'run') as research:
+            result, output = self.run_launcher(['--data', self.dir, 'resume', '--draft', 'azure'], tty=False)
+        self.assertEqual(result, 0)
+        self.assertIn('Nothing automated is left to resume', output)
+        self.assertNotIn('Paid drafting:', output)
+        self.assertTrue(self.store.load('validation_report.json')['accepted'])
+        research.assert_not_called()
+
+    def test_resumed_paid_research_requires_confirmation_before_running(self):
+        self.add_profile()
+        conn = SimpleNamespace(deployment='fixture-resume-model', host='example.invalid', api_version='fixture-api')
+        ledger = SimpleNamespace(lim={'max_requests_per_run': 3, 'max_cost_usd_per_run': 0.25}, prior=0)
+        for decision in ('n', 'y'):
+            with self.subTest(decision=decision):
+                events = []
+                def confirm(*args, **kwargs):
+                    events.append('confirmation')
+                    self.assertIn('fixture-resume-model', sys.stdout.getvalue())
+                    self.assertIn('max_cost_usd_per_run', sys.stdout.getvalue())
+                    return decision
+                def research(store, args):
+                    self.assertEqual(events, ['confirmation'])
+                    events.append('research')
+                    return 0
+                before = self.snapshot()
+                with patch.object(launcher.azure, 'connection', return_value=conn), \
+                        patch.object(launcher.azure, 'Ledger', return_value=ledger), \
+                        patch.object(launcher.cmd_blockers, 'ask', side_effect=confirm), \
+                        patch.object(launcher.cmd_research, 'run', side_effect=research):
+                    result, _ = self.run_launcher(['--data', self.dir, 'resume', '--draft', 'azure'])
+                self.assertEqual(result, 0)
+                self.assertEqual(events, ['confirmation', 'research'] if decision == 'y' else ['confirmation'])
+                self.assertEqual(before, self.snapshot())
+
+    def test_resume_no_draft_keeps_offline_path_without_credentials_or_prompt(self):
+        self.add_profile()
+        with patch.object(launcher.azure, 'connection', side_effect=AssertionError('no credentials needed')), \
+                patch.object(launcher.cmd_research, 'run', return_value=0) as research:
+            result, _ = self.run_launcher(['--data', self.dir, 'resume', '--no-draft', '--offline'])
+        self.assertEqual(result, 0)
+        self.assertEqual(research.call_args.args[1].draft, 'off')
+        self.assertTrue(research.call_args.args[1].offline)
+
+    def test_start_and_review_help_with_redirected_stdin_need_no_dataset(self):
+        repo = Path(__file__).resolve().parents[3]
+        missing = Path(self.dir) / 'missing-dataset'
+        before = self.snapshot()
+        for command, option in (('start', '--surface'), ('review', '--profile')):
+            for flag in ('--help', '-h'):
+                with self.subTest(command=command, flag=flag):
+                    result = subprocess.run([str(repo / 'matrix'), '--data', str(missing), command, flag],
+                                            cwd=repo, env=dict(os.environ), stdin=subprocess.DEVNULL,
+                                            capture_output=True, text=True, timeout=10)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertIn('usage:', result.stdout)
+                    self.assertIn(option, result.stdout)
+                    self.assertNotIn('Showing status only', result.stdout)
+                    self.assertNotIn('No dataset', result.stdout)
+        self.assertFalse(missing.exists())
+        self.assertEqual(before, self.snapshot())
+
+    def test_help_bypasses_missing_saved_selection_and_noninteractive_review_stays_read_only(self):
+        launcher.selection_file().write_text(json.dumps({'path': str(self.checkout / 'missing')}))
+        for command in ('start', 'review'):
+            for flag in ('--help', '-h'):
+                with patch('sys.stdin.isatty', return_value=False), contextlib.redirect_stdout(io.StringIO()), \
+                        self.assertRaises(SystemExit) as exit:
+                    launcher.main([command, flag])
+                self.assertEqual(exit.exception.code, 0)
+        self.add_profile()
+        self.complete_cells()
+        before = self.snapshot()
+        result, output = self.run_launcher(['--data', self.dir, 'review'], tty=False)
+        self.assertEqual(result, 0)
+        self.assertIn('Showing status only', output)
+        self.assertEqual(before, self.snapshot())
