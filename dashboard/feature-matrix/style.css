@@ -127,3 +127,14 @@ blockquote { margin: 4px 0; padding: 6px 10px; border-left: 3px solid var(--acce
   dl.kv { grid-template-columns: 1fr; }
   .filters > *, .filters input, .filters select { min-width: 0; max-width: 100%; }
 }
+
+/* Overview families retain every assessed surface and tier. */
+.profile + .profile { border-top: 1px solid var(--border); margin-top: 12px; padding-top: 12px; }
+.profile-line { margin: 0 0 8px; overflow-wrap: anywhere; }
+summary { cursor: pointer; font-weight: 700; }
+details > summary { margin-bottom: 8px; }
+.profile a { overflow-wrap: anywhere; }
+.filters label { min-width: 0; flex: 1 1 160px; }
+.filters select, .filters input { width: 100%; min-width: 0; max-width: 100%; }
+.filters + details { margin-top: 12px; }
+.cards .card > div { margin-top: 8px; }

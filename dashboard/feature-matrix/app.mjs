@@ -3,7 +3,7 @@ import { h, clear } from './dom.mjs';
 import { buildIndex, classify, emptyFilters, parseParams, toParams, visibleRows } from './matrix-logic.mjs';
 import { controls } from './controls.mjs';
 import { cards, grid } from './grid.mjs';
-import { detail, legend, profileCard } from './views.mjs';
+import { detail, legend, profileGroups } from './views.mjs';
 import { shortlist } from './shortlist.mjs';
 import { readShortlist, writeShortlist } from './shortlist-logic.mjs';
 
@@ -44,27 +44,35 @@ function render(ix, preview, demo) {
   const previewFile = preview ? initialParams.get('preview') : null;
   const init = parseParams(location.search);
   const ctx = { preview, f: init.filters, sel: { profile: init.profile, feature: init.feature }, select: null };
-  let view = initialParams.get('view') === 'shortlist' ? 'shortlist' : 'overview';
+  const readView = () => {
+    const params = new URLSearchParams(location.search);
+    const requested = params.get('view');
+    return ['overview', 'compare', 'shortlist'].includes(requested) ? requested
+      : params.get('profile') && params.get('feature') ? 'compare' : 'overview';
+  };
+  let view = readView();
   const holder = h('div');
   const overview = h('div', { id: 'overview-panel' },
-    h('div', { class: 'profiles' }, ix.profiles.map(profileCard)), legend(ix), holder);
+    h('div', { class: 'profiles' }, profileGroups(ix.profiles)));
+  const comparePanel = h('div', { id: 'compare-panel' }, legend(ix), holder);
   let shortlistState = readShortlist(location.search);
   const shortlistPanel = h('div', { id: 'shortlist-panel' });
   function drawShortlist() {
     clear(shortlistPanel).append(shortlist(ix, (profile, feature) => {
-      view = 'overview'; ctx.select(profile, feature);
+      view = 'compare'; ctx.select(profile, feature);
     }, shortlistState, () => update(false), cellUrl));
   }
   const overviewButton = viewButton('Overview', 'overview', overview);
+  const compareButton = viewButton('Compare', 'compare', comparePanel);
   const shortlistButton = viewButton('Shortlist', 'shortlist', shortlistPanel);
   const notice = demo
     ? banner('draft', h('strong', {}, 'Illustrative demo. '), 'The tools, tiers and evidence shown here are fictional.')
     : preview ? banner('draft', h('strong', {}, 'Draft — not accepted. '), 'Local preview of working research. Findings are unreviewed and must not be used as results.') : null;
   clear(app).append(
     ...(notice ? [notice] : []),
-    h('nav', { class: 'matrix-tabs', 'aria-label': 'Feature matrix views' }, overviewButton, shortlistButton),
-    overview, shortlistPanel,
-    h('section', { class: 'card', 'aria-label': 'Method and limitations' }, h('h2', {}, 'Method and limitations'),
+    h('nav', { class: 'matrix-tabs', 'aria-label': 'Feature matrix views' }, overviewButton, compareButton, shortlistButton),
+    overview, comparePanel, shortlistPanel,
+    h('details', { class: 'card', 'aria-label': 'Method and limitations' }, h('summary', {}, 'Method and limitations'),
       h('ul', {}, ix.payload.limitations.map((l) => h('li', {}, l))),
       h('p', { class: 'small mono' }, 'Release ' + rel.release_id + ' · source commit ' + String(rel.source_commit || 'unknown') + ' · manifest v' + rel.manifest_version)));
 
@@ -78,6 +86,8 @@ function render(ix, preview, demo) {
 
   function showView() {
     overview.hidden = view !== 'overview';
+    comparePanel.hidden = view !== 'compare';
+    compareButton.setAttribute('aria-pressed', String(!comparePanel.hidden));
     shortlistPanel.hidden = view !== 'shortlist';
     overviewButton.setAttribute('aria-pressed', String(!overview.hidden));
     shortlistButton.setAttribute('aria-pressed', String(!shortlistPanel.hidden));
@@ -88,7 +98,7 @@ function render(ix, preview, demo) {
 
   function cellUrl(profile, feature) {
     const params = new URLSearchParams(url().split('?')[1] || '');
-    params.delete('view'); params.set('profile', profile); params.set('feature', feature);
+    params.set('view', 'compare'); params.set('profile', profile); params.set('feature', feature);
     return location.pathname + '?' + params + '#detail';
   }
 
@@ -96,15 +106,15 @@ function render(ix, preview, demo) {
     const params = new URLSearchParams(toParams(ctx.f, ctx.sel));
     if (previewFile) params.set('preview', previewFile);
     writeShortlist(params, shortlistState);
-    if (view === 'shortlist') params.set('view', view);
+    params.set('view', view);
     return location.pathname + (params.size ? '?' + params : '');
   }
   function update(push) {
     history[push ? 'pushState' : 'replaceState'](null, '', url());
     showView();
-    if (view === 'overview') draw();
+    if (view === 'compare') draw();
   }
-  ctx.select = (profile, feature) => { ctx.sel = { profile, feature }; update(true); document.getElementById('detail')?.focus(); };
+  ctx.select = (profile, feature) => { view = 'compare'; ctx.sel = { profile, feature }; update(true); document.getElementById('detail')?.focus(); };
 
   function draw() {
     const typing = document.activeElement && document.activeElement.id === 'fQ';
@@ -125,15 +135,15 @@ function render(ix, preview, demo) {
     const s = parseParams(location.search);
     ctx.f = s.filters;
     ctx.sel = { profile: s.profile, feature: s.feature };
-    view = new URLSearchParams(location.search).get('view') === 'shortlist' ? 'shortlist' : 'overview';
+    view = readView();
     shortlistState = readShortlist(location.search);
     drawShortlist();
     showView();
-    if (view === 'overview') draw();
+    if (view === 'compare') draw();
   });
   drawShortlist();
   showView();
-  if (view === 'overview') draw();
+  if (view === 'compare') draw();
 }
 
 (async function main() {

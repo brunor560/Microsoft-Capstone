@@ -35,5 +35,24 @@ export function demoPayload() {
 
 // Explicit local fixture generation only; imported by tests without writing any files.
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  process.stdout.write(JSON.stringify(demoPayload(), null, 2) + '\n');
+  process.stdout.write(JSON.stringify(process.argv.includes('--presentation') ? presentationPayload() : demoPayload(), null, 2) + '\n');
+}
+
+// Presentation fixture: all five documentary findings plus a pending placeholder.
+// Generated only into the ignored loopback preview directory.
+export function presentationPayload() {
+  const data = demoPayload();
+  data.profiles = data.profiles.slice(0, 2).map((p, i) => ({ ...p, tool_key: 'alder',
+    surface_label: i ? 'Example desktop app' : 'Example CLI',
+    documentation_base: 'https://example.invalid/docs', source_access_date: '2026-11-09' }));
+  data.cells = data.profiles.flatMap((p) => data.catalog.features.map((feature, i) => cell(p.id, feature.id, {
+    status: STATUSES[i % STATUSES.length], assessment_state: i === 5 ? 'pending' : 'challenged',
+    supported_scope: 'Fictional finding for ' + feature.id,
+    required_setup: 'Fictional setup for ' + feature.id, evidence_refs: i === 5 ? [] : ['E01'],
+    author: null, review: null,
+  })));
+  // A pending record deliberately carries the exporter placeholder status.
+  for (const c of data.cells) if (c.assessment_state === 'pending') c.status = 'Not established from documentation';
+  data.limitations = ['Presentation fixture — fictional data, not accepted research.'];
+  return data;
 }

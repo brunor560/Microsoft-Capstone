@@ -1,7 +1,8 @@
 // The feature x profile grid (wide screens) and the card list (small screens).
 import { h } from './dom.mjs';
-import { cellLabel } from './matrix-logic.mjs';
+import { cellLabel, STATUS_LABELS } from './matrix-logic.mjs';
 import { badge } from './views.mjs';
+import { recordedTier } from './shortlist-logic.mjs';
 
 function cellButton(ctx, profile, feature, cell, match) {
   const label = cellLabel(cell, ctx.preview);
@@ -12,7 +13,7 @@ function cellButton(ctx, profile, feature, cell, match) {
     type: 'button', class: 'cellbtn' + (match ? '' : ' nomatch'), 'aria-current': active ? 'true' : null,
     'aria-label': feature.id + ' ' + feature.name + ', ' + profile.tool + ': ' + label.text + (match ? '' : ' (does not match the current filters)'),
     onclick: () => ctx.select(profile.id, feature.id),
-  }, badge(label), dims);
+  }, badge({ ...label, text: STATUS_LABELS[label.text] || label.text }), dims);
 }
 
 export function grid(ctx, ix, rows, columns) {
@@ -27,13 +28,13 @@ export function grid(ctx, ix, rows, columns) {
   return h('div', { class: 'tablewrap' }, h('table', { class: 'matrix' },
     h('caption', { class: 'small' }, 'Feature by profile. Select a cell for its evidence.'),
     h('thead', {}, h('tr', {}, h('th', { scope: 'col' }, 'Feature'),
-      columns.map((p) => h('th', { scope: 'col' }, p.tool, ' ', h('span', { class: 'small' }, p.surface_label))))),
+      columns.map((p) => h('th', { scope: 'col' }, p.tool, ' ', h('span', { class: 'small' }, p.surface_label + ' · ' + (recordedTier(p)?.label || 'Tier not established')))))),
     h('tbody', {}, body)));
 }
 
 export function cards(ctx, rows) {
   return h('div', { class: 'cards' }, rows.map((r) => h('div', { class: 'card' },
     h('strong', {}, r.feature.id + ' ' + r.feature.name), h('div', { class: 'small' }, r.feature.area),
-    r.cells.map((c) => h('div', {}, h('span', { class: 'small' }, c.profile.tool + ' ' + c.profile.surface_label),
+    r.cells.map((c) => h('div', {}, h('span', { class: 'small' }, c.profile.tool + ' ' + c.profile.surface_label + ' · ' + (recordedTier(c.profile)?.label || 'Tier not established')),
       cellButton(ctx, c.profile, r.feature, c.cell, c.match))))));
 }

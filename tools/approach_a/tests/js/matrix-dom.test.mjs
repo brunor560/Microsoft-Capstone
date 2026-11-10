@@ -108,3 +108,45 @@ test('shortlist preserves grouped controls, documentary reasons, safe text and e
   assert.equal(links.length, 1);
   assert.equal(links[0].attrs.href, '?profile=p&feature=F08');
 });
+
+test('Overview groups by tool_key while preserving surface and tier profiles in collapsed disclosures', async () => {
+  const { profileGroups } = await import('../../../../dashboard/feature-matrix/views.mjs');
+  const profiles = [
+    { ...profile, tool_key: 'shared', account_and_tier: 'Individual' },
+    { ...profile, id: 'desktop', tool: 'Alternate display name', tool_key: 'shared', surface_label: 'Desktop', account_and_tier: 'Pending team choice' },
+    { ...profile, id: 'other', tool_key: 'different' },
+  ];
+  const groups = profileGroups(profiles);
+  assert.equal(groups.length, 2);
+  assert.match(groups[0].textContent, /CLI · 1 · Individual/);
+  assert.match(groups[0].textContent, /Desktop · 1 · Tier not established/);
+  assert.equal(groups[0].all().filter(e => e.attrs['data-profile']).length, 2);
+  assert.ok(groups[0].all().filter(e => e.tag === 'details').every(e => !('open' in e.attrs)));
+  assert.match(groups[0].textContent, /Operating systems/);
+});
+
+test('all five statuses stay available with a sparse catalog; compact grid labels preserve full detail labels', async () => {
+  const { controls } = await import('../../../../dashboard/feature-matrix/controls.mjs');
+  const { grid } = await import('../../../../dashboard/feature-matrix/grid.mjs');
+  const { STATUSES, STATUS_LABELS, emptyFilters, visibleRows } = await import('../../../../dashboard/feature-matrix/matrix-logic.mjs');
+  const { presentationPayload } = await import('./shortlist-fixture.mjs');
+  const data = presentationPayload();
+  data.catalog.statuses = [];
+  const index = buildIndex(data);
+  const filters = emptyFilters();
+  const select = controls(index, filters, () => {}, () => {}).all().find(e => e.attrs.id === 'fStatus');
+  assert.deepEqual(select.children.slice(1).map(e => e.textContent), STATUSES);
+  const ctx = { f: filters, sel: {}, preview: true, select() {} };
+  const { rows, columns } = visibleRows(index, filters);
+  const tree = grid(ctx, index, rows, columns);
+  for (const [status, compact] of Object.entries(STATUS_LABELS)) {
+    assert.ok(tree.textContent.includes(compact));
+    const matching = visibleRows(index, { ...filters, status }).rows.flatMap(r => r.cells.filter(c => c.match));
+    assert.ok(matching.length);
+    assert.ok(matching.every(c => c.cell.status === status && c.cell.assessment_state !== 'pending'));
+    const c = matching[0];
+    const f = index.features.find(f => f.id === c.cell.feature_id);
+    assert.ok(detail(index, c.profile, f, c.cell, true).textContent.includes(status));
+  }
+  assert.match(tree.textContent, /Research pending/);
+});

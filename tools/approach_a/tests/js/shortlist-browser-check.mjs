@@ -27,9 +27,10 @@ try {
   await page.goto(demo);
   await visible(page.getByText('Illustrative demo.', { exact: true }));
   assert.ok(await page.locator('.profiles').isVisible());
+  await page.getByRole('button', { name: 'Compare', exact: true }).click();
   assert.ok(await page.locator('table.matrix').isVisible());
   if (process.env.MATRIX_SCREENSHOTS) await page.screenshot({ path: process.env.MATRIX_SCREENSHOTS + '/overview.png', fullPage: true });
-  // Overview filter must survive tab switches and cell navigation.
+  // Compare filter must survive tab switches and cell navigation.
   await page.locator('#fArea').selectOption('Security and control');
   await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
   const tierPicker = page.locator('.shortlist-picker').nth(0);
@@ -67,7 +68,7 @@ try {
   assert.deepEqual(await page.locator('.shortlist-result summary strong').allTextContents(),
     ['Alder', 'Alder', 'Birch', 'Cedar', 'Dogwood', 'Elm']);
   await search.fill('isolation');
-  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await page.getByRole('button', { name: 'Compare', exact: true }).click();
   assert.equal(await page.locator('#fArea').inputValue(), 'Security and control');
   await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
   assert.equal(await search.inputValue(), 'isolation');
@@ -89,7 +90,7 @@ try {
   assert.equal(await page.locator('#detail').evaluate((e) => e === document.activeElement), true);
   assert.ok((await page.locator('#detail').textContent()).includes('Fictional documentation'));
   assert.equal(await page.locator('#fArea').inputValue(), 'Security and control');
-  // Detail remains reachable even if overview filters hide its row.
+  // Detail remains reachable even if Compare filters hide its row.
   await page.goBack();
   await visible(page.getByRole('heading', { name: 'Client requirements', exact: true }));
   assert.equal(await page.getByRole('combobox', { name: 'Sort candidates' }).inputValue(), 'name');
@@ -100,9 +101,9 @@ try {
   await page.locator('.shortlist-picker').nth(0).locator('summary').click();
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   if (process.env.MATRIX_SCREENSHOTS) await page.screenshot({ path: process.env.MATRIX_SCREENSHOTS + '/shortlist-narrow.png', fullPage: true });
-  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await page.getByRole('button', { name: 'Compare', exact: true }).click();
   assert.ok(await page.locator('.cards').isVisible());
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.deepEqual(errors, []);
-  console.log('PASS: public empty state, draft/demo labels, Overview/Shortlist, grouped multi-selects, feature search, sorting, URL/reload/back persistence, exact cell links, keyboard and 375px viewport.');
+  console.log('PASS: public empty state, draft/demo labels, Compare/Shortlist, grouped multi-selects, feature search, sorting, URL/reload/back persistence, exact cell links, keyboard and 375px viewport.');
 } finally { await browser.close(); }

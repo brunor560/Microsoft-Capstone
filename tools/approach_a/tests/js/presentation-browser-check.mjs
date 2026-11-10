@@ -1,0 +1,76 @@
+// Requires the existing local preview and PLAYWRIGHT_MODULE pointing to Playwright.
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+import { presentationPayload } from './shortlist-fixture.mjs';
+import { STATUS_LABELS, buildIndex, emptyFilters, visibleRows } from '../../../../dashboard/feature-matrix/matrix-logic.mjs';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const base = 'http://127.0.0.1:4174/feature-matrix/';
+const demo = base + '?preview=matrix.demo.json';
+const payload = presentationPayload();
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+const errors = [];
+page.on('pageerror', e => errors.push(e.message));
+const visible = async selector => page.locator(selector).waitFor({ state: 'visible' });
+try {
+  await page.goto(demo);
+  await visible('.tool-family');
+  assert.equal(await page.locator('.tool-family').count(), 1);
+  assert.equal(await page.locator('.profile').count(), 2);
+  assert.equal(await page.locator('.profile details[open]').count(), 0);
+  assert.equal(await page.locator('details[aria-label="Method and limitations"][open]').count(), 0);
+  await visible('.banner.draft');
+  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await visible('table.matrix');
+  const options = await page.locator('#fStatus option').allTextContents();
+  assert.deepEqual(options.slice(1), Object.keys(STATUS_LABELS));
+  for (const [status, compact] of Object.entries(STATUS_LABELS)) {
+    await page.locator('#fStatus').selectOption('');
+    assert.ok(await page.locator('table.matrix .badge').filter({ hasText: compact }).count());
+    await page.locator('#fStatus').selectOption(status);
+    const expected = visibleRows(buildIndex(payload), { ...emptyFilters(), status }).rows.map(r => r.feature.id);
+    const actual = await page.locator('table.matrix tbody tr:not(.area) th .fid').allTextContents();
+    assert.deepEqual(actual, expected);
+    const matching = await page.locator('table.matrix .cellbtn:not(.nomatch) .badge').allTextContents();
+    assert.ok(matching.length && matching.every(t => t.endsWith(compact)));
+    assert.equal(await page.locator('table.matrix .tone-pending').count(), 0);
+  }
+  await page.locator('#fStatus').selectOption('');
+  assert.equal(await page.locator('table.matrix .tone-pending').count(), 2);
+  assert.ok((await page.locator('table.matrix .tone-pending').allTextContents()).every(t => t.includes('Research pending') && !t.includes('Not established')));
+  await page.locator('table.matrix .cellbtn').first().click();
+  await visible('#detail');
+  assert.ok(new URL(page.url()).searchParams.get('profile'));
+  assert.equal(await page.locator('#detail details[open]').count(), 0);
+  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await page.goBack(); await visible('#compare-panel'); await visible('#detail');
+  await page.goForward(); await visible('#overview-panel');
+  // Legacy cell URL without a view routes directly to Compare.
+  await page.goto(demo + '&profile=alder-individual&feature=F02');
+  await visible('#compare-panel'); await visible('#detail');
+  assert.ok((await page.locator('#detail').textContent()).includes('Configuration or extension required'));
+  await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
+  await page.locator('.shortlist-picker').nth(1).locator('summary').click();
+  await page.locator('.shortlist-picker input[value="F01"]').check();
+  const link = page.locator('.shortlist-result a[data-profile]').first();
+  assert.equal(new URL(await link.getAttribute('href'), base).searchParams.get('view'), 'compare');
+  await page.locator('.shortlist-result summary').first().click();
+  await link.click(); await visible('#compare-panel'); await visible('#detail');
+  await page.goBack(); await visible('#shortlist-panel');
+  assert.ok(await page.locator('.shortlist-picker input[value="F01"]').isChecked());
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await visible('.cards');
+  assert.equal(await page.locator('table.matrix').isVisible(), false);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: '/private/tmp/feature-matrix-review/compare-mobile.png', fullPage: true });
+  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await page.locator('.profile summary').first().click();
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.screenshot({ path: '/private/tmp/feature-matrix-review/overview-new.png', fullPage: true });
+  await page.goto(base); await page.getByText('No reviewed assessment published yet.', { exact: true }).waitFor();
+  assert.deepEqual(errors, []);
+  console.log('PASS: five statuses, pending isolation, grouping, disclosures, legacy/Shortlist links, Back/Forward, mobile and public empty state');
+} finally { await browser.close(); }

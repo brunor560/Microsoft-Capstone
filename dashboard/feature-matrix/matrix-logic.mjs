@@ -48,7 +48,7 @@ function haystack(cell, feature) {
 
 export function cellMatches(cell, feature, f) {
   if (!cell) return !(f.status || f.activation || f.control || f.q);
-  if (f.status && cell.status !== f.status) return false;
+  if (f.status && (['pending', 'missing'].includes(cell.assessment_state) || cell.status !== f.status)) return false;
   if (f.activation && cell.activation_state !== f.activation) return false;
   if (f.control && cell.control_mechanism !== f.control) return false;
   if (f.q && !haystack(cell, feature).includes(f.q.trim().toLowerCase())) return false;
@@ -70,6 +70,13 @@ export function visibleRows(ix, f) {
   }
   return { rows, columns: selected, total: ix.features.length };
 }
+
+export const STATUS_LABELS = {
+  'Built in': 'Built in', 'Configuration or extension required': 'Needs setup',
+  'Custom implementation required': 'Needs custom code', 'Unavailable': 'Unavailable',
+  'Not established from documentation': 'Not established',
+};
+export const STATUSES = Object.keys(STATUS_LABELS);
 
 const TONES = {
   'Built in': 'built-in', 'Configuration or extension required': 'config', 'Custom implementation required': 'custom',
