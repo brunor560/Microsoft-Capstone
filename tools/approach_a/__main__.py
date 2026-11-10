@@ -106,7 +106,8 @@ def parser():
                                   'or assessment/preview/matrix.preview.json for preview)')
     ex.add_argument('--allow-other-out', action='store_true',
                     help='permit an accepted export outside dashboard/feature-matrix/data/ (scratch use)')
-    ex.add_argument('--source-commit', help='full commit SHA of the dataset snapshot (default: git HEAD)')
+    ex.add_argument('--source-commit', help='Git commit to verify against the selected dataset path (default: HEAD); '
+                    'a supplied SHA never bypasses public provenance checks')
     sp = sub.add_parser('serve-preview', help='serve the feature matrix page locally with the draft preview data')
     sp.add_argument('--port', type=int, default=4174)
     i = sub.add_parser('init', help='create an empty dataset (catalog, roster and candidates only)')

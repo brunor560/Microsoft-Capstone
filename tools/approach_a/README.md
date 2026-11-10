@@ -23,7 +23,7 @@ python3 -m tools.approach_a --help
 | `manifest.json` | Versioned profile manifest: P profiles, boundary confirmation, approval with the manifest hash |
 | `cells.json` | Exactly one cell per feature and profile (18 x P) |
 | `sources.json` | Shared official-source index: pages (title, access date, SHA-256, surfaces) and evidence entries `MATRIX:E01`... |
-| `reviews.json` | Reviewer, decision, disposition and the hash of the cell as reviewed |
+| `reviews.json` | Reviewer, decision, disposition and versioned hashes of the reviewed cell, cited evidence and profile |
 | `worklog.jsonl` | Append-only work log |
 | `validation_report.json` | Latest validation result |
 | `.cache/` | Cached page copies (gitignored) |
@@ -57,7 +57,7 @@ Each cell has one of the five method statuses plus an `assessment_state`:
 | `review --reviewer <id> --decision agree\|disagree --note "..." [--disposition ...]` | Record an independent review; self-review is refused |
 | `resume` | Continue an interrupted or partial run; completed steps are saved |
 | `new --tool-name ... --docs-url https://.../` | Candidate for a tool with no prepared research; its cells stay pending (honest partial result) |
-| `export-publication [--mode accepted\|preview]` | Prepare the reviewed projection of the matrix as one JSON payload for the site (M13 input; publication is the existing Pages workflow). `accepted` (default) refuses unless the whole manifest passes `validate`, and writes `dashboard/feature-matrix/data/matrix.json` with no names or roster IDs. `preview` keeps draft cells with workflow labels and writes `assessment/preview/matrix.preview.json`, never inside `dashboard/`. Reads a scratch copy; the dataset is not modified |
+| `export-publication [--mode accepted\|preview]` | Prepare the reviewed projection of the matrix as one JSON payload for the site (M13 input; publication is the existing Pages workflow). `accepted` (default) refuses unless the whole manifest passes `validate`; public output additionally requires inputs matching their committed repository path. It writes `dashboard/feature-matrix/data/matrix.json` with no names or roster IDs. `preview` keeps draft cells with workflow labels and writes `assessment/preview/matrix.preview.json`, never inside `dashboard/`. Reads a scratch copy; the dataset is not modified |
 | `serve-preview [--port N]` | Serve the feature matrix page locally (127.0.0.1 only, read-only) with the draft file from `assessment/preview/`. See `course_artifacts/references/Feature_Matrix_Publishing_Guide.md` |
 | `init [--force]` | Empty dataset (keeps catalog, roster and candidates) |
 
@@ -378,15 +378,35 @@ python3 -m tools.approach_a --data "$review_dir" validate --brief
 python3 -m tools.approach_a --data "$review_dir" export-publication --mode accepted --allow-other-out --out /private/tmp/approach-a-accepted.json
 ```
 
-To stage that reviewed manifest's accepted projection at the existing site input
-path, the human operator can run the following after checking the local result:
+A scratch export is for local inspection only. It cannot write under `dashboard/`,
+even with `--source-commit`. To prepare public data, first copy the actual reviewed
+inputs to a deliberate repository dataset path and commit them. The example below
+uses a **new**, previously unused destination; do not overwrite historical records.
+Run it only after actual human review and whole-manifest validation have passed.
+No fictional fixture records belong in this workflow.
 
 ```bash
-python3 -m tools.approach_a --data "$review_dir" export-publication --mode accepted
-# Optional Git staging, after checking the diff:
+# Create a unique new path for the actual reviewed snapshot.
+mkdir -p assessment/reviewed
+committed_data=$(mktemp -d assessment/reviewed/accepted.XXXXXX)
+for name in catalog.json manifest.json cells.json sources.json reviews.json people.json; do
+  cp "$review_dir/$name" "$committed_data/$name"
+done
+python3 -m tools.approach_a --data "$committed_data" validate --brief
+git add -- "$committed_data/catalog.json" "$committed_data/manifest.json" "$committed_data/cells.json" "$committed_data/sources.json" "$committed_data/reviews.json" "$committed_data/people.json"
+git diff --cached -- "$committed_data"
+git commit -m "Record human-reviewed Approach A snapshot"
+# Default HEAD, or an explicit commit, must match every input byte at this path.
+python3 -m tools.approach_a --data "$committed_data" export-publication --mode accepted --source-commit HEAD
 git diff -- dashboard/feature-matrix/data/matrix.json
+# Optional Git staging after checking the projection:
 git add dashboard/feature-matrix/data/matrix.json
 ```
+
+Review the staged diff before committing; ensure it contains only the intended
+reviewed inputs. These commands prepare local files and do not push or deploy.
+Validation reports, caches, generated views and work logs do not affect the
+export's Git binding; retain review work logs separately as assessment history.
 
 For a draft preview, keep the separate preview destination and existing server:
 
@@ -406,3 +426,40 @@ Verification (synthetic disposable fixtures, no real human decisions):
 ```bash
 python3 -m unittest discover -s tools/approach_a/tests -t .
 ```
+
+
+### Review integrity and export provenance
+
+New decisions retain `cell_sha256` and add `binding_version: 1`,
+`evidence_sha256` (the full cited entries keyed by ID), and `profile_sha256`
+(the full assessed profile record). A cell change, a cited entry change under
+an unchanged ID, or a profile change makes its review stale and blocks accepted
+export. Entries not cited by the cell and other profiles do not affect it.
+The profile binding is conservative: any change to that profile record requires
+re-review. Changing only the manifest version does not stale cell reviews but
+still invalidates manifest approval. Existing review history is never migrated
+or hashed from current data. Legacy or unsupported bindings are explicitly stale
+because the original evidence/scope cannot be established; a person must check
+and record a new decision through `blockers` or `review`.
+
+Export version 2 binds all six input files, including `people.json`, in
+`release.source_file_sha256`. For public writes, the snapshot bytes must match
+both the claimed commit and the Git index at the **selected dataset path** in
+this repository. Untracked paths, uncommitted input changes, staged differences,
+missing files and an incorrect `--source-commit` are refused before replacing
+public data. Unrelated repository changes do not block export. The final public
+write rechecks the input hashes and Git binding. A matching historical commit
+may be used if its input bytes also match the current worktree and index.
+
+Local accepted exports outside `dashboard/` still require whole-manifest
+acceptance but allow unverified provenance. Draft previews retain their separate
+location and workflow labels. `source_verified` reports whether all input bytes
+matched; `source_dirty` is false only for a verified match (true means unverified
+or mismatched, not the status of unrelated repository files). `source_commit` is
+the resolved commit checked, or null when no repository binding is available;
+`requested_source_commit` preserves an explicit request without asserting it
+contains the inputs. `source_dataset_path` is the repository-relative path checked,
+or null for outside scratch data. Raw in-memory `build` calls without a dataset
+path never claim a clean commit, even if given a SHA or `source_dirty=False`.
+The public-file check rejects these unverified local projections; do not copy a
+scratch projection into `dashboard/`. Re-export from the committed reviewed path.

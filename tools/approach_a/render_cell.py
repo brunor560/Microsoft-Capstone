@@ -53,5 +53,5 @@ def cell_md(feature, profile, cell, sources, people, rv):
         out.append('%s by %s at %s%s. Note: %s%s' % (
             rv['decision'], name(rv['reviewer']), rv['reviewed_at'],
             '; disposition: %s' % rv['disposition'] if rv.get('disposition') else '', rv['note'],
-            ' **(stale: the cell changed after this review)**' if rv['stale'] else ''))
+            ' **(stale: %s)**' % rv.get('stale_reason', 'reviewed inputs changed') if rv['stale'] else ''))
     return '\n'.join(out) + '\n'

@@ -36,7 +36,7 @@ class AcceptedExport(Fixture):
         self.accepted()
         p = self.export()
         self.assertEqual(pubcheck.check_payload(p), [])
-        self.assertEqual(pubcheck.check_public_file(p, self.store.people()), [])
+        self.assertTrue(pubcheck.check_public_file(p, self.store.people()))
         self.assertEqual(len(p['cells']), 18)
         self.assertEqual(p['release']['publication_mode'], 'accepted')
         self.assertTrue(p['release']['accepted'])
@@ -111,7 +111,9 @@ class AcceptedExport(Fixture):
         src = self.store.load('sources.json')
         src['entries']['E01']['quote'] = 'a different quotation under the same id'
         self.store.save('sources.json', src)
-        self.assertNotEqual(self.cell(self.export())['evidence_sha256'], before)
+        self.assertNotEqual(self.cell(self.export('preview'))['evidence_sha256'], before)
+        with self.assertRaisesRegex(publish.PublishError, 'REVIEW_STALE'):
+            self.export()
 
     def test_unsafe_evidence_url_is_rejected(self):
         self.accepted()
@@ -130,7 +132,7 @@ class AcceptedExport(Fixture):
         a, b = self.export(), self.export()
         self.assertEqual(a['release']['release_id'], b['release']['release_id'])
         self.assertEqual(set(a['release']['source_file_sha256']), set(publish.BOUND_FILES))
-        self.assertNotIn('people.json', a['release']['source_file_sha256'])
+        self.assertIn('people.json', a['release']['source_file_sha256'])
 
     def test_source_dataset_is_not_modified(self):
         self.accepted()

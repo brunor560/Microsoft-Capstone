@@ -52,7 +52,7 @@ class PreviewAndOutput(Fixture):
         self.review_all()
         self.assertEqual(publish.run(self.store, Args('accepted', out)), 0)
         with open(out, encoding='utf-8') as f:
-            self.assertEqual(pubcheck.check_public_file(json.load(f), self.store.people()), [])
+            self.assertEqual(pubcheck.check_payload(json.load(f)), [])
         self.assertEqual([n for n in os.listdir(os.path.dirname(out)) if n.endswith('.tmp')], [])
 
 

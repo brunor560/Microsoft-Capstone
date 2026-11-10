@@ -35,9 +35,9 @@ from . import store as st
 from . import validate
 from .pubcheck import MODES, SCHEMA  # noqa: F401  (re-exported)
 
-EXPORT_VERSION = '1'
+EXPORT_VERSION = '2'
 SNAPSHOT_FILES = ('catalog.json', 'manifest.json', 'cells.json', 'sources.json', 'reviews.json', 'people.json')
-BOUND_FILES = ('catalog.json', 'manifest.json', 'cells.json', 'reviews.json', 'sources.json')
+BOUND_FILES = SNAPSHOT_FILES
 
 DASHBOARD = os.path.join(st.REPO, 'dashboard')
 OUT_DIR = os.path.join(DASHBOARD, 'feature-matrix', 'data')
@@ -109,6 +109,44 @@ def snapshot(store):
     return raw
 
 
+def provenance(raw, dataset_root=None, requested_commit=None):
+    """Verify bytes at their actual repository path, not an unrelated clean HEAD.
+
+    Local projections may have unverified provenance. Public writes may not.
+    Neither a caller-supplied SHA nor a caller-supplied dirty flag is proof.
+    """
+    result = {'source_commit': None, 'source_dirty': True, 'source_verified': False,
+              'requested_source_commit': requested_commit, 'source_dataset_path': None}
+    if dataset_root is None or not _inside(dataset_root, st.REPO):
+        return result
+    root = os.path.realpath(dataset_root)
+    relative = os.path.relpath(root, os.path.realpath(st.REPO)).replace(os.sep, '/')
+    result['source_dataset_path'] = relative
+    commit = _git('rev-parse', '--verify', '--end-of-options', (requested_commit or 'HEAD') + '^{commit}')
+    if not commit:
+        return result
+    result['source_commit'] = commit
+    for name in BOUND_FILES:
+        path = os.path.join(root, name)
+        if not _inside(path, st.REPO):
+            return result
+        repo_path = (relative + '/' + name) if relative != '.' else name
+        try:
+            with open(path, 'rb') as f:
+                if f.read() != raw[name]:
+                    return result
+            for spec in (commit + ':' + repo_path, ':' + repo_path):
+                # Binary comparison: JSON whitespace and final newlines count.
+                r = subprocess.run(('git', 'show', spec), cwd=st.REPO,
+                                   capture_output=True, timeout=20)
+                if r.returncode or r.stdout != raw[name]:
+                    return result
+        except (OSError, subprocess.SubprocessError):
+            return result
+    result.update(source_dirty=False, source_verified=True)
+    return result
+
+
 def _rejection(report):
     blocking = [i for i in report['issues'] if i['severity'] == 'block']
     lines = ['dataset is not accepted: %d blocking finding(s); nothing was written' % len(blocking)]
@@ -118,7 +156,7 @@ def _rejection(report):
     return '\n'.join(lines)
 
 
-def build(raw, mode='accepted', source_commit=None, source_dirty=None):
+def build(raw, mode='accepted', source_commit=None, source_dirty=None, dataset_root=None):
     """Return the publication payload for a snapshot. Raises PublishError if it cannot be published."""
     if mode not in MODES:
         raise PublishError('mode must be one of: %s' % ', '.join(MODES))
@@ -131,7 +169,9 @@ def build(raw, mode='accepted', source_commit=None, source_dirty=None):
         report = validate.run(scratch)  # writes only into the scratch copy
         if mode == 'accepted' and not report['accepted']:
             raise PublishError(_rejection(report))
-        payload = _project(scratch, raw, report, mode, source_commit, source_dirty)
+        # source_dirty is retained for API compatibility, never trusted as proof.
+        origin = provenance(raw, dataset_root, source_commit)
+        payload = _project(scratch, raw, report, mode, origin)
         roster = scratch.people()
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -141,7 +181,7 @@ def build(raw, mode='accepted', source_commit=None, source_dirty=None):
     return payload
 
 
-def _cell(c, rv, entries, blocking):
+def _cell(c, rv, entries, blocking, profile):
     """One public cell. Author/reviewer identity is compared here, then dropped."""
     rec = {k: c.get(k) for k in CELL_FIELDS}
     rec['cell_sha256'] = st.cell_hash(c)
@@ -149,8 +189,11 @@ def _cell(c, rv, entries, blocking):
     rec['review'] = None if not rv else {
         'decision': rv['decision'], 'disposition': rv.get('disposition'),
         'reviewed_at': rv['reviewed_at'], 'cell_sha256': rv['cell_sha256'], 'stale': rv['stale'],
-        'independent': bool(c.get('author')) and rv['reviewer'] != c['author']}
+        'independent': bool(c.get('author')) and rv['reviewer'] != c['author'],
+        'binding_version': rv.get('binding_version'),
+        'evidence_sha256': rv.get('evidence_sha256'), 'profile_sha256': rv.get('profile_sha256')}
     rec['evidence_sha256'] = st.sha256({r: entries.get(r) for r in c.get('evidence_refs', [])})
+    rec['profile_sha256'] = st.sha256(profile)
     rec['blocking_codes'] = blocking
     return rec
 
@@ -174,7 +217,7 @@ def _cells(store, cat, manifest, report, mode):
                             'assessment_state': 'missing', 'evidence_refs': [], 'author': None,
                             'review': None, 'blocking_codes': ['CELL_MISSING']})
                 continue
-            out.append(_cell(c, reviews.get(cid), entries, sorted(blocking.get(cid, ()))))
+            out.append(_cell(c, reviews.get(cid), entries, sorted(blocking.get(cid, ())), p))
             used += [r for r in c.get('evidence_refs', []) if r not in used]
     if mode == 'accepted':
         for rec in out:
@@ -190,23 +233,18 @@ def _cells(store, cat, manifest, report, mode):
 
 
 
-def _project(store, raw, report, mode, source_commit, source_dirty):
+def _project(store, raw, report, mode, origin):
     cat, manifest = store.catalog(), store.load('manifest.json')
     cells, evidence = _cells(store, cat, manifest, report, mode)
     approval = manifest.get('approval')
     hashes = {n: st.sha256(raw[n]) for n in BOUND_FILES}
     key = st.sha256({'files': hashes, 'export_version': EXPORT_VERSION, 'mode': mode})
-    if source_commit is None:
-        source_commit = _git('rev-parse', 'HEAD')
-        if source_dirty is None:
-            source_dirty = bool(_git('status', '--porcelain', '--', 'assessment'))
     return {
         'schema': SCHEMA,
         'release': {
             'release_id': 'mx-' + key[:12], 'publication_mode': mode,
             'accepted': bool(report['accepted']), 'generated_at': st.now(),
-            'export_version': EXPORT_VERSION, 'source_commit': source_commit,
-            'source_dirty': source_dirty, 'source_file_sha256': hashes,
+            'export_version': EXPORT_VERSION, **origin, 'source_file_sha256': hashes,
             'manifest_version': manifest.get('manifest_version'),
             'manifest_sha256': st.manifest_hash(manifest),
             'approval': None if not approval else {
@@ -235,6 +273,18 @@ def _project(store, raw, report, mode, source_commit, source_dirty):
 def write(payload, out):
     """Write to a temp file, re-check what was written, then promote it atomically."""
     out = os.path.abspath(out)
+    if _inside(out, DASHBOARD):
+        rel = payload['release']
+        if (rel.get('publication_mode') != 'accepted' or not rel.get('source_verified') or
+                rel.get('source_dirty') is not False or not rel.get('source_commit') or
+                rel.get('source_dataset_path') is None):
+            raise PublishError('Public export requires a matching committed dataset snapshot at its repository path; '
+                               'commit the reviewed inputs first, or use --allow-other-out --out outside dashboard/ for local inspection')
+        dataset_path = os.path.join(st.REPO, rel.get('source_dataset_path') or '')
+        raw = snapshot(st.Store(dataset_path))
+        if ({n: st.sha256(raw[n]) for n in BOUND_FILES} != rel.get('source_file_sha256') or
+                not provenance(raw, dataset_path, rel.get('source_commit'))['source_verified']):
+            raise PublishError('Public export provenance no longer matches the committed inputs; nothing written')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=os.path.dirname(out), suffix='.tmp')
     try:
@@ -242,7 +292,8 @@ def write(payload, out):
             json.dump(payload, f, indent=2, ensure_ascii=False)
             f.write('\n')
         with open(tmp, encoding='utf-8') as f:
-            problems = pubcheck.check_payload(json.load(f))
+            check = pubcheck.check_public_file if _inside(out, DASHBOARD) else pubcheck.check_payload
+            problems = check(json.load(f))
         if problems:
             raise PublishError('written payload failed validation:\n  ' + '\n  '.join(problems))
         os.replace(tmp, out)
@@ -256,7 +307,13 @@ def run(store, args):
     """CLI handler: export-publication."""
     mode = args.mode
     out = resolve_out(mode, args.out, args.allow_other_out)
-    payload = build(snapshot(store), mode, args.source_commit)
+    raw = snapshot(store)
+    payload = build(raw, mode, args.source_commit, dataset_root=store.root)
+    if _inside(out, DASHBOARD) and not provenance(
+            raw, store.root, payload['release']['source_commit'])['source_verified']:
+        raise PublishError('Public export requires all reviewed inputs committed at the selected dataset path '
+                           'and matching the claimed commit; nothing written. Use --allow-other-out --out '
+                           'outside dashboard/ for local inspection.')
     write(payload, out)
     rel = payload['release']
     print('%s payload %s written to %s' % (mode, rel['release_id'], out))

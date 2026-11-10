@@ -97,6 +97,9 @@ def _accepted_cell(c, cid, statuses, evidence, bad):
         bad.append('%s: missing author or review is not independent' % cid)
     elif rv.get('cell_sha256') != c.get('cell_sha256'):
         bad.append('%s: review does not match the exported cell' % cid)
+    elif rv.get('binding_version') != 1 or any(
+            not rv.get(k) or rv[k] != c.get(k) for k in ('evidence_sha256', 'profile_sha256')):
+        bad.append('%s: review does not match the exported evidence/profile binding' % cid)
 
 
 def check_payload(p):
@@ -136,6 +139,10 @@ def check_public_file(obj, roster=None):
     bad = check_payload(obj)
     if not bad and obj['release']['publication_mode'] != 'accepted':
         bad.append('only an accepted payload may be published; this is %r' % obj['release']['publication_mode'])
+    if not bad:
+        rel = obj['release']
+        if not rel.get('source_verified') or rel.get('source_dirty') is not False or not rel.get('source_commit'):
+            bad.append('public payload requires verified committed input provenance')
     if roster and isinstance(obj, dict):
         bad += leaks(obj, roster)
     return bad

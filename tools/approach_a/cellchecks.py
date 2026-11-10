@@ -55,7 +55,7 @@ def independent_review(ctx, c, cid, add):
     if not rv:
         add('REVIEW_MISSING', 'block', 'No independent team-member review', cid)
     elif rv['stale']:
-        add('REVIEW_STALE', 'block', 'Cell changed after review by %s' % rv['reviewer'], cid)
+        add('REVIEW_STALE', 'block', '%s (review by %s)' % (rv['stale_reason'], rv['reviewer']), cid)
     elif rv['reviewer'] == c.get('author'):
         add('REVIEW_MISSING', 'block', 'Self-review is not independent', cid)
     elif rv['reviewer'] not in ctx.people:
