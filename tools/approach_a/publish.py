@@ -78,6 +78,33 @@ def _inside(path, base):
     return path == base or path.startswith(base + os.sep)
 
 
+def _destination_inside(path, base):
+    """Atomic replacement writes in the parent, not through a final symlink.
+
+    Both the declared upload path and its resolved parent require protection.
+    A directory alias must not bypass the public export gates in either direction.
+    """
+    declared, base_declared = os.path.abspath(path), os.path.abspath(base)
+    resolved = os.path.join(os.path.realpath(os.path.dirname(declared)), os.path.basename(declared))
+    return (declared == base_declared or declared.startswith(base_declared + os.sep) or
+            _inside(resolved, base))
+
+
+def _safe_destination(out, dataset_root=None):
+    path = os.path.abspath(out)
+    if os.path.islink(path):
+        raise PublishError('export output file must not be a symlink: %s' % path)
+    if dataset_root is not None:
+        for name in SNAPSHOT_FILES + ('worklog.jsonl',):
+            protected = os.path.join(dataset_root, name)
+            same = os.path.realpath(path) == os.path.realpath(protected)
+            if not same and os.path.exists(path) and os.path.exists(protected):
+                same = os.path.samefile(path, protected)
+            if same:
+                raise PublishError('export output must not replace a dataset input or work log: %s' % path)
+    return path
+
+
 def _git(*args):
     try:
         r = subprocess.run(('git',) + args, cwd=st.REPO, capture_output=True, text=True, timeout=20)
@@ -86,13 +113,13 @@ def _git(*args):
         return None
 
 
-def resolve_out(mode, out=None, allow_other_out=False):
+def resolve_out(mode, out=None, allow_other_out=False, dataset_root=None):
     """Choose and police the output path. Drafts never go near the Pages upload root."""
-    path = os.path.abspath(out or DEFAULT_OUT[mode])
-    if mode == 'preview' and _inside(path, DASHBOARD):
+    path = _safe_destination(out or DEFAULT_OUT[mode], dataset_root)
+    if mode == 'preview' and _destination_inside(path, DASHBOARD):
         raise PublishError('preview output must stay outside dashboard/ (the whole directory is the Pages upload '
                            'root); default: %s' % DEFAULT_OUT['preview'])
-    if mode == 'accepted' and not allow_other_out and not _inside(path, OUT_DIR):
+    if mode == 'accepted' and not allow_other_out and not _destination_inside(path, OUT_DIR):
         raise PublishError('accepted output belongs under %s (use --allow-other-out for a scratch location)' % OUT_DIR)
     return path
 
@@ -270,10 +297,12 @@ def _project(store, raw, report, mode, origin):
     }
 
 
-def write(payload, out):
+def write(payload, out, dataset_root=None):
     """Write to a temp file, re-check what was written, then promote it atomically."""
-    out = os.path.abspath(out)
-    if _inside(out, DASHBOARD):
+    if dataset_root is None and payload['release'].get('source_dataset_path') is not None:
+        dataset_root = os.path.join(st.REPO, payload['release']['source_dataset_path'])
+    out = _safe_destination(out, dataset_root)
+    if _destination_inside(out, DASHBOARD):
         rel = payload['release']
         if (rel.get('publication_mode') != 'accepted' or not rel.get('source_verified') or
                 rel.get('source_dirty') is not False or not rel.get('source_commit') or
@@ -292,10 +321,11 @@ def write(payload, out):
             json.dump(payload, f, indent=2, ensure_ascii=False)
             f.write('\n')
         with open(tmp, encoding='utf-8') as f:
-            check = pubcheck.check_public_file if _inside(out, DASHBOARD) else pubcheck.check_payload
+            check = pubcheck.check_public_file if _destination_inside(out, DASHBOARD) else pubcheck.check_payload
             problems = check(json.load(f))
         if problems:
             raise PublishError('written payload failed validation:\n  ' + '\n  '.join(problems))
+        _safe_destination(out, dataset_root)
         os.replace(tmp, out)
     finally:
         if os.path.exists(tmp):
@@ -306,15 +336,15 @@ def write(payload, out):
 def run(store, args):
     """CLI handler: export-publication."""
     mode = args.mode
-    out = resolve_out(mode, args.out, args.allow_other_out)
+    out = resolve_out(mode, args.out, args.allow_other_out, store.root)
     raw = snapshot(store)
     payload = build(raw, mode, args.source_commit, dataset_root=store.root)
-    if _inside(out, DASHBOARD) and not provenance(
+    if _destination_inside(out, DASHBOARD) and not provenance(
             raw, store.root, payload['release']['source_commit'])['source_verified']:
         raise PublishError('Public export requires all reviewed inputs committed at the selected dataset path '
                            'and matching the claimed commit; nothing written. Use --allow-other-out --out '
                            'outside dashboard/ for local inspection.')
-    write(payload, out)
+    write(payload, out, dataset_root=store.root)
     rel = payload['release']
     print('%s payload %s written to %s' % (mode, rel['release_id'], out))
     print('  profiles: %d, cells: %d, evidence: %d, blocking findings in snapshot: %d'

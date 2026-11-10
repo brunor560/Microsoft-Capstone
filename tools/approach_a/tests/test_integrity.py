@@ -202,3 +202,92 @@ class GitProvenance(Fixture):
         self.assertTrue(rel['source_dirty'])
         self.assertEqual(rel['source_commit'], self.head)
         self.assertEqual(rel['source_dataset_path'], 'assessment/reviewed')
+
+    def tree_snapshot(self):
+        root = Path(self.dir)
+        return {str(p.relative_to(root)): ('link', os.readlink(p)) if p.is_symlink() else
+                ('file', p.read_bytes()) if p.is_file() else ('directory',)
+                for p in root.rglob('*')}
+
+    def test_dashboard_output_symlink_to_outside_is_rejected_without_changes(self):
+        target = Path(self.dir) / 'outside.json'
+        target.write_text('Keep this outside file')
+        self.public.parent.mkdir(parents=True)
+        self.public.symlink_to(target)
+        before = self.tree_snapshot()
+        with patch.object(publish, 'build', side_effect=AssertionError('must reject before build')):
+            with self.assertRaisesRegex(publish.PublishError, 'symlink'):
+                self.run_export()
+            args = SimpleNamespace(mode='preview', out=str(self.public),
+                                   allow_other_out=True, source_commit=None)
+            with self.assertRaisesRegex(publish.PublishError, 'symlink'):
+                publish.run(st.Store(str(self.dataset)), args)
+        self.assertEqual(before, self.tree_snapshot())
+
+    def test_dataset_inputs_and_worklog_cannot_be_export_destinations(self):
+        (self.dataset / 'worklog.jsonl').write_text('Fixture history\n')
+        alias = Path(self.dir) / 'dataset-alias'
+        alias.symlink_to(self.dataset, target_is_directory=True)
+        before = self.tree_snapshot()
+        with patch.object(publish, 'build', side_effect=AssertionError('must reject before build')):
+            for root in (self.dataset, alias):
+                for name in publish.SNAPSHOT_FILES + ('worklog.jsonl',):
+                    for mode in ('accepted', 'preview'):
+                        with self.subTest(root=root, name=name, mode=mode):
+                            args = SimpleNamespace(mode=mode, out=str(root / name),
+                                                   allow_other_out=True, source_commit=None)
+                            with self.assertRaisesRegex(publish.PublishError, 'dataset input or work log'):
+                                publish.run(st.Store(str(self.dataset)), args)
+        self.assertEqual(before, self.tree_snapshot())
+
+    def test_declared_dashboard_directory_alias_still_requires_public_checks(self):
+        outside = Path(self.dir) / 'outside-directory'
+        outside.mkdir()
+        (self.repo / 'dashboard').symlink_to(outside, target_is_directory=True)
+        before = self.tree_snapshot()
+        with self.assertRaisesRegex(publish.PublishError, 'committed'):
+            self.run_export(dataset=self.dir)
+        with self.assertRaisesRegex(publish.PublishError, 'preview output must stay outside'):
+            publish.resolve_out('preview', str(self.public), True)
+        self.assertEqual(before, self.tree_snapshot())
+        # A verified accepted export can use the directory alias safely.
+        self.assertEqual(self.run_export(), 0)
+        self.assertEqual(pubcheck.check_public_file(json.loads(self.public.read_text())), [])
+
+    def test_outside_directory_alias_into_dashboard_requires_public_checks(self):
+        self.public.parent.mkdir(parents=True)
+        alias = Path(self.dir) / 'public-alias'
+        alias.symlink_to(self.public.parent, target_is_directory=True)
+        out = alias / 'aliased.json'
+        before = self.tree_snapshot()
+        with self.assertRaisesRegex(publish.PublishError, 'committed'):
+            self.run_export(dataset=self.dir, out=out)
+        with self.assertRaisesRegex(publish.PublishError, 'preview output must stay outside'):
+            publish.resolve_out('preview', str(out), True)
+        self.assertEqual(before, self.tree_snapshot())
+        self.assertEqual(self.run_export(out=out), 0)
+
+    def test_dangling_output_symlink_is_rejected_without_changes(self):
+        output = Path(self.dir) / 'dangling.json'
+        output.symlink_to(Path(self.dir) / 'missing.json')
+        before = self.tree_snapshot()
+        with self.assertRaisesRegex(publish.PublishError, 'symlink'):
+            self.run_export(out=output)
+        self.assertEqual(before, self.tree_snapshot())
+
+    def test_direct_write_rejects_symlink_and_authoritative_input(self):
+        payload = publish.build(publish.snapshot(st.Store(str(self.dataset))), dataset_root=str(self.dataset))
+        output = Path(self.dir) / 'linked.json'
+        output.symlink_to(Path(self.dir) / 'missing.json')
+        before = self.tree_snapshot()
+        for out, message in ((output, 'symlink'), (self.dataset / 'reviews.json', 'dataset input')):
+            with self.assertRaisesRegex(publish.PublishError, message):
+                publish.write(payload, str(out))
+        self.assertEqual(before, self.tree_snapshot())
+
+    def test_normal_local_preview_remains_available(self):
+        out = Path(self.dir) / 'local-preview.json'
+        args = SimpleNamespace(mode='preview', out=str(out), allow_other_out=True, source_commit=None)
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(publish.run(st.Store(str(self.dataset)), args), 0)
+        self.assertEqual(json.loads(out.read_text())['release']['publication_mode'], 'preview')
