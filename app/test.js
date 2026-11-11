@@ -164,6 +164,36 @@ test('DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID'
   assert.strictEqual(todos.some(t => t.id === created.id), false);
 });
 
+test('GET /api/todos/stats returns total, completed and open counts', async () => {
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  const data = await res.json();
+  assert.ok(typeof data.total === 'number');
+  assert.ok(typeof data.completed === 'number');
+  assert.ok(typeof data.open === 'number');
+  assert.strictEqual(data.total, data.completed + data.open);
+});
+
+test('GET /api/todos/stats reflects changes after toggle', async () => {
+  const listRes = await fetch(`${BASE_URL}/api/todos`);
+  const todos = await listRes.json();
+  const incomplete = todos.find(t => !t.completed);
+  if (!incomplete) return;
+
+  await fetch(`${BASE_URL}/api/todos/${incomplete.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: true })
+  });
+
+  const statsRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const stats = await statsRes.json();
+  const listRes2 = await fetch(`${BASE_URL}/api/todos`);
+  const todos2 = await listRes2.json();
+  assert.strictEqual(stats.completed, todos2.filter(t => t.completed).length);
+  assert.strictEqual(stats.total, todos2.length);
+});
+
 test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {
   // MAX_SAFE_INTEGER is 9007199254740991 (valid ID format, but does not exist -> 404)
   const maxSafeRes = await fetch(`${BASE_URL}/api/todos/9007199254740991`, {
