@@ -1,0 +1,29 @@
+{
+  "source": "copilot-usage.json modelMetrics aggregate; includes subagent exactly once",
+  "models": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 9,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 185194,
+        "outputTokens": 3348,
+        "cacheReadTokens": 160934,
+        "cacheWriteTokens": 24249,
+        "reasoningTokens": 351
+      },
+      "totalNanoAiu": 0,
+      "aiCreditsStatus": "unavailable"
+    }
+  },
+  "input_tokens": 185194,
+  "output_tokens": 3348,
+  "cached_input_tokens": 160934,
+  "cache_write_input_tokens": 24249,
+  "reasoning_output_tokens": 351,
+  "total_cost_usd": null,
+  "cost_reason": "BYOK export reports no USD amount; zero premium request/AI-credit fields are not provider cost",
+  "accounting_notes": "Cache/reasoning fields are subsets; not added to totals. Model aggregate equals sum of main and task agent usage.",
+  "total_tokens": 188542
+}

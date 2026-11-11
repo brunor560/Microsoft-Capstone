@@ -1,0 +1,19 @@
+{
+  "status": "record-format validated; unchanged importer validation still required before pushing",
+  "model": "claude-sonnet-4-6",
+  "seconds": 60.873,
+  "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+  "suites": [
+    "local_exit=0",
+    "api_exit=0",
+    "browser_exit=0",
+    "security_scan_exit=0"
+  ],
+  "raw": [
+    "runtime-observation.json",
+    "copilot-usage.json",
+    "timing.json",
+    "original-test-exits.raw.json"
+  ],
+  "human_review": "pending; no h-review.json generated"
+}

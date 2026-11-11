@@ -1,0 +1,225 @@
+{
+  "at": "2026-11-11T15:46:58.949289+00:00",
+  "result": "PASS",
+  "importer_commit": "d85c23bc1474262c3a02e03c96f9209296a69a77",
+  "importer_sha256": "fc372c28a65ce6ba0991e0e3a2977cae160c0e8cfcb94c68ac1ccb6183548ebd",
+  "results_commit": "93a8a764ae1247c19bffe3a59503a24ad856e798",
+  "generated_data": "setup/importer-validation/data.js (local only; not committed)",
+  "runs": [
+    {
+      "run_id": "copilot-avoid-run06",
+      "model": "Claude Sonnet 4.6",
+      "timing": {
+        "seconds": 60.9,
+        "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency"
+      },
+      "suites": {
+        "local": {
+          "exit": "0",
+          "pass": 12,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "api": {
+          "exit": "0",
+          "pass": 11,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "browser": {
+          "exit": "0",
+          "pass": 4,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "security_scan": {
+          "exit": "0",
+          "pass": 3,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        }
+      },
+      "independent_evidence_match": true,
+      "nonexistent_runtime_suite": false,
+      "review": "pending",
+      "infrastructure": null,
+      "configuration_limitation": "runtime builtin skill disabling discrepancy disclosed"
+    },
+    {
+      "run_id": "copilot-avoid-run07",
+      "model": "Claude Sonnet 4.6",
+      "timing": {
+        "seconds": 79.3,
+        "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency"
+      },
+      "suites": {
+        "local": {
+          "exit": "0",
+          "pass": 12,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "api": {
+          "exit": "0",
+          "pass": 11,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "browser": {
+          "exit": "0",
+          "pass": 4,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "security_scan": {
+          "exit": "0",
+          "pass": 3,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        }
+      },
+      "independent_evidence_match": true,
+      "nonexistent_runtime_suite": false,
+      "review": "pending",
+      "infrastructure": null,
+      "configuration_limitation": "runtime builtin skill disabling discrepancy disclosed"
+    },
+    {
+      "run_id": "copilot-avoid-run08",
+      "model": "Claude Sonnet 4.6",
+      "timing": {
+        "seconds": 53.6,
+        "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency"
+      },
+      "suites": {
+        "local": {
+          "exit": "0",
+          "pass": 12,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "api": {
+          "exit": "0",
+          "pass": 11,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "browser": {
+          "exit": "0",
+          "pass": 4,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "security_scan": {
+          "exit": "0",
+          "pass": 3,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        }
+      },
+      "independent_evidence_match": true,
+      "nonexistent_runtime_suite": false,
+      "review": "pending",
+      "infrastructure": null,
+      "configuration_limitation": "runtime builtin skill disabling discrepancy disclosed"
+    },
+    {
+      "run_id": "copilot-avoid-run09",
+      "model": "Claude Sonnet 4.6",
+      "timing": {
+        "seconds": 57.7,
+        "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency"
+      },
+      "suites": {
+        "local": {
+          "exit": "0",
+          "pass": 12,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "api": {
+          "exit": "0",
+          "pass": 11,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "browser": {
+          "exit": "0",
+          "pass": 4,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "security_scan": {
+          "exit": "0",
+          "pass": 3,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        }
+      },
+      "independent_evidence_match": true,
+      "nonexistent_runtime_suite": false,
+      "review": "pending",
+      "infrastructure": null,
+      "configuration_limitation": "runtime builtin skill disabling discrepancy disclosed"
+    },
+    {
+      "run_id": "copilot-avoid-run10",
+      "model": "Claude Sonnet 4.6",
+      "timing": {
+        "seconds": 58.1,
+        "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency"
+      },
+      "suites": {
+        "local": {
+          "exit": "0",
+          "pass": 12,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "api": {
+          "exit": "0",
+          "pass": 11,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "browser": {
+          "exit": "0",
+          "pass": 4,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        },
+        "security_scan": {
+          "exit": "0",
+          "pass": 3,
+          "fail": 0,
+          "verdict": null,
+          "ok": true
+        }
+      },
+      "independent_evidence_match": true,
+      "nonexistent_runtime_suite": false,
+      "review": "pending",
+      "infrastructure": null,
+      "configuration_limitation": "runtime builtin skill disabling discrepancy disclosed"
+    }
+  ]
+}

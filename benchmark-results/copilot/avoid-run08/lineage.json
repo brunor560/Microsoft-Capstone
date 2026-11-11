@@ -1,0 +1,14 @@
+{
+  "phase": "autonomous_rerun",
+  "attempt_slot": 3,
+  "related_original_run": "copilot-avoid-run03",
+  "original_batch_runs": [
+    "copilot-avoid-run01",
+    "copilot-avoid-run02",
+    "copilot-avoid-run03",
+    "copilot-avoid-run04",
+    "copilot-avoid-run05"
+  ],
+  "reason": "Fresh attempts after publication evidence format correction, not replacement or correction of measured agent code",
+  "original_records": "preserved unchanged in benchmark-archive; original results branch retained"
+}

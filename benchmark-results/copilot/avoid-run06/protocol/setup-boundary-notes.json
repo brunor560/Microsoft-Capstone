@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-11T15:21:53.662634+00:00",
+  "native_shell_outside_read": "EPERM",
+  "external_tcp": "EPERM",
+  "raw_tcp_loopback": "EPERM; host rules use built-in proxy",
+  "required_application_http": "frozen baseline 9/9 passed through actual Copilot sandbox shell",
+  "first_inspection_error": "initial inspection workspace inside denied setup subtree; moved before any model call",
+  "model_calls_so_far": 0
+}

@@ -1,0 +1,1 @@
+Headless scoped preapproval: workspace reads, exactly app/server.js app/test.js app/public/index.html writes, node commands and npm test. No model nudges, restarts or post-prompt messages. No purge sign-off supplied.

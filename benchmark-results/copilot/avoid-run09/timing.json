@@ -1,0 +1,13 @@
+{
+  "start_utc": "2026-11-11T15:37:58.265185+00:00",
+  "end_utc": "2026-11-11T15:38:56.024475+00:00",
+  "start_epoch": 1794411478.265356,
+  "process_elapsed_seconds": 57.75905716700072,
+  "exit": 0,
+  "method": "external monotonic process-lifetime proxy; includes CLI startup/final export overhead; final-report boundary to be derived from events if available",
+  "watchdog": null,
+  "final_report_event_utc": "2026-11-11T15:38:55.934Z",
+  "session_id": "19d50745-16f7-4273-a11a-9bac39517218",
+  "prompt_launch_to_final_report_seconds": 57.668815,
+  "final_boundary_method": "last assistant.message without tool requests, cross-check with shared session final report; proxy includes CLI startup"
+}

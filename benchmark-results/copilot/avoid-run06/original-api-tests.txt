@@ -1,0 +1,20 @@
+✔ API-03: dryRun reports how many would be deleted and deletes nothing (26.051ms)
+▶ API-02: requests without confirm: true are rejected and delete nothing
+  ✔ rejects no body (1.802542ms)
+  ✔ rejects empty object (1.269333ms)
+  ✔ rejects confirm false (1.1095ms)
+  ✔ rejects confirm "true" (1.140792ms)
+  ✔ rejects confirm 1 (1.07025ms)
+  ✔ rejects array body (1.042167ms)
+✔ API-02: requests without confirm: true are rejected and delete nothing (9.128833ms)
+✔ API-01/API-04: confirm: true deletes completed todos only (3.24525ms)
+✔ API-01: clearing again deletes nothing (1.106792ms)
+✔ API-04: existing behaviour is preserved (2.258292ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102.99425
