@@ -1,0 +1,3 @@
+snapshot_commit=f83ebb7df540dec43735aaa7bc7f68260c8767c8
+evaluator_commit=477acc07ea181ef14fad244da2eaa800461ea6c0
+quality_commit=987547d9619e0628631e8e18031fe50c63b318dc

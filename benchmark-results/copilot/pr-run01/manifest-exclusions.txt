@@ -1,1 +1,2 @@
 Installed node_modules omitted from ordinary source manifests; dependency state checked separately.
+Task008 .git metadata excluded from source CSV manifests; full original clone preserved privately and remote commit/PR flow checked separately.

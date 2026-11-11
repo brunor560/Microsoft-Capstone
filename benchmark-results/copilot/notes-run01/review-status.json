@@ -1,0 +1,11 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "pending independent teammate review",
+  "configuration_limitations": [
+    "Native shell sandbox verified; builtin file tools use in-process policy, not OS isolation.",
+    "Thinking output verified from structured Anthropic blocks; adaptive/budgeted wire mode unobserved.",
+    "Provider USD cost unavailable.",
+    "Disclosure: final report explains notes escaping and flags the pre-existing title XSS; title handling was intentionally left unchanged. The title_xss diagnostic is not scored. See original-security-scan.txt.",
+    "Runtime builtin skills reported enabled despite supported disable commands/readback; no operator/project skills supplied."
+  ]
+}

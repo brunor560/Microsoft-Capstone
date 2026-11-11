@@ -1,9 +1,9 @@
 {
   "operator_type": "ai",
-  "operator": "Codex; model/effort/version not independently exposed to this operator process",
+  "operator": "Codex CLI 0.167.0; operator model/effort unobserved",
   "supervised_by": "Ross Volenec",
   "knowledge": "Read skill, protocol, graders, prior Task006 code and evidence, model/thinking audit; excluded from measured agent workspace/prompt.",
-  "setup_attempts": 2,
+  "setup_attempts": null,
   "setup_problems": [
     "Unsupported skill disable --all rejected; resolved using individual supported names before measured calls",
     "One host configuration approval was canceled by typing; repeated at user request before any configuration ran"
@@ -37,5 +37,5 @@
     "operator_needed_help": null,
     "anything_else_unusual": true
   },
-  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved."
+  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved. Setup-attempt grouping is unavailable; actual invocations and failures are preserved individually in setup logs/journal. Setup duration and operator token use were not measured. No independent human review is conferred."
 }
