@@ -1,0 +1,5 @@
+L1=PASS  header, CRLF line endings, empty and missing list
+L2=PASS  row order, id padding and DONE column
+L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting
+L4=PASS  tests catch the bug (with original module: 5 failed, 17 passed; with reference fix: 0 failed, 22 passed)
+security=PASS

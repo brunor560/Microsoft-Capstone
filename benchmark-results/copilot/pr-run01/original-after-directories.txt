@@ -1,0 +1,8 @@
+.github
+.github/scripts
+.github/workflows
+app
+app/node_modules
+app/public
+pipeline
+pipeline/tasks

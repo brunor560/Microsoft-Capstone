@@ -1,0 +1,39 @@
+{
+  "captured_utc": "2026-11-11T23:03:07.582731+00:00",
+  "capture_phase": "After Tasks007\u2013009 execution, during Task010; do not claim this timestamp predates all measured calls",
+  "machine": "arm64",
+  "versions": {
+    "macOS": {
+      "exit": 0,
+      "value": "27.2"
+    },
+    "build": {
+      "exit": 0,
+      "value": "26B123"
+    },
+    "node": {
+      "exit": 0,
+      "value": "v24.21.0"
+    },
+    "npm": {
+      "exit": 0,
+      "value": "11.19.0"
+    },
+    "git": {
+      "exit": 0,
+      "value": "git version 2.54.0 (Apple Git-157)"
+    },
+    "copilot": {
+      "exit": 0,
+      "value": "GitHub Copilot CLI 1.0.107.\nRun 'copilot update' to check for updates."
+    },
+    "codex": {
+      "exit": 0,
+      "value": "codex-cli 0.167.0\nWARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)"
+    },
+    "playwright": {
+      "exit": 0,
+      "value": "Version 1.64.1"
+    }
+  }
+}

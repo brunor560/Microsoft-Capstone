@@ -1,0 +1,23 @@
+✔ API-01: existing todos have notes "" (15.97575ms)
+✔ API-01: a new todo without notes has notes "" (5.127666ms)
+✔ API-02: POST stores notes exactly as sent (2.916583ms)
+✔ API-02: PUT updates notes and keeps the rest (2.193042ms)
+▶ API-03: invalid notes are rejected with 400 and change nothing
+  ✔ POST with a number (2.330708ms)
+  ✔ PUT with a number (1.032708ms)
+  ✔ POST with an object (1.445334ms)
+  ✔ PUT with an object (0.876083ms)
+  ✔ POST with null (1.02675ms)
+  ✔ PUT with null (0.876666ms)
+  ✔ POST with 1001 characters (0.9645ms)
+  ✔ PUT with 1001 characters (0.750583ms)
+✔ API-03: invalid notes are rejected with 400 and change nothing (11.15875ms)
+✔ API-04: existing behaviour is preserved (1.751667ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102.901917

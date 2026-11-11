@@ -1,0 +1,1 @@
+Trusted frozen dependencies installed before timing with npm ci --offline --ignore-scripts --no-audit --no-fund. Task009 runtime scripts remain enabled. Native Copilot direct-shell probes and baseline checks precede measured calls; setup failures retained.

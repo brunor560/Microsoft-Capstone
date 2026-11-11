@@ -1,0 +1,42 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex CLI 0.167.0; operator model/effort unobserved",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read skill, protocol, graders, prior Task006 code and evidence, model/thinking audit; excluded from measured agent workspace/prompt.",
+  "setup_attempts": null,
+  "setup_problems": [
+    "Unsupported skill disable --all rejected; resolved using individual supported names before measured calls",
+    "One host configuration approval was canceled by typing; repeated at user request before any configuration ran"
+  ],
+  "setup_minutes": null,
+  "grading_minutes": 0.14266969305002325,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-11T22:52:02.429399+00:00",
+      "from": "user",
+      "what": "Confirmed team-agreed inputs; requested Thinking on Sonnet4.6; explicit medium effort and thinking verification recorded"
+    },
+    {
+      "time_utc": "2026-11-11T22:55:18.875329+00:00",
+      "from": "operator",
+      "what": "Preserved completed measured session and observed model usage; no messages, runtime environment fixes, restarts or nudges. Enabled skills: ['customize-cloud-agent', 'github-pr-media', 'pr-stack']"
+    },
+    {
+      "time_utc": "2026-11-11T23:05:24.976313+00:00",
+      "from": "operator audit",
+      "what": "Two separate Task008 setup model sessions: first failed to prove git push; second proved Git push and MCP read/create/close. User authorized existing broader-scope Git authentication. Both excluded from measured timing/tokens."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": null,
+    "anything_else_unusual": true
+  },
+  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved. Setup-attempt grouping is unavailable; actual invocations and failures are preserved individually in setup logs/journal. Setup duration and operator token use were not measured. No independent human review is conferred."
+}

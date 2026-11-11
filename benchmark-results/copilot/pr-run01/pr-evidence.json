@@ -1,0 +1,73 @@
+{
+  "repo": "brunor560/Microsoft-Capstone",
+  "run": "copilot-pr-run01",
+  "base": "bench008/copilot-pr-run01/main",
+  "start": "05899859f699a1a7167e456c875801cf8faf619c",
+  "since": "2026-11-11T22:53:28.111967+00:00",
+  "until": "2026-11-11T22:54:59.437092+00:00",
+  "actor": "rossvol",
+  "pullRequests": [
+    {
+      "number": 30,
+      "url": "https://github.com/brunor560/Microsoft-Capstone/pull/30",
+      "title": "feat: add todo statistics endpoint and progress line",
+      "body": "## Requirements\n- REQ-01: Added `GET /api/todos/stats` endpoint returning `{ total, completed, open }` counts from the current todo list.\n- REQ-02: Added a `<p role=\"status\">` progress line showing `<completed> of <total> done`; it updates after every add, toggle, or delete via `fetchTodos()`.\n\n## Testing\nRan `npm test` in `app/` — 11 tests passed, 0 failed, 0 skipped.\n\n```\n✔ GET /api/todos returns array of tasks\n✔ POST /api/todos creates a new valid task\n✔ POST /api/todos rejects empty title with 400\n✔ PUT /api/todos/:id updates a todo and preserves its title\n✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body\n✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged\n✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged\n✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID\n✔ GET /api/todos/stats returns total, completed and open counts\n✔ GET /api/todos/stats reflects changes after toggle\n✔ DELETE /api/todos/:id handles safe-integer boundary correctly\ntests 11, pass 11, fail 0, skipped 0\n```",
+      "state": "closed",
+      "head": "bench008/copilot-pr-run01/add-stats",
+      "headSha": "5fbde1de01694b0f42bf3ac3618b8db95300f8da",
+      "created_at": "2026-11-11T22:54:23Z",
+      "merged_at": "2026-11-11T22:54:49Z",
+      "merge_commit_sha": "bac51fe8c41c906a2a5bd369d4f4e5b4647b1c59",
+      "finalGateRuns": [
+        {
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-11-11T22:54:40Z"
+        }
+      ],
+      "gateRuns": [
+        {
+          "sha": "5fbde1de01694b0f42bf3ac3618b8db95300f8da",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-11-11T22:54:31Z",
+          "completed_at": "2026-11-11T22:54:40Z",
+          "url": "https://github.com/brunor560/Microsoft-Capstone/actions/runs/43115613527/job/130842691221"
+        }
+      ],
+      "commits": [
+        {
+          "sha": "5fbde1de01694b0f42bf3ac3618b8db95300f8da",
+          "message": "feat: add todo statistics endpoint and progress line\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+          "files": [
+            "app/public/index.html",
+            "app/server.js",
+            "app/test.js"
+          ]
+        }
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "ref": "refs/heads/bench008/copilot-pr-run01/main",
+      "type": "pr_merge",
+      "timestamp": "2026-11-11T22:54:48Z",
+      "before": "05899859f699a1a7167e456c875801cf8faf619c",
+      "after": "bac51fe8c41c906a2a5bd369d4f4e5b4647b1c59"
+    },
+    {
+      "ref": "refs/heads/bench008/copilot-pr-run01/add-stats",
+      "type": "branch_creation",
+      "timestamp": "2026-11-11T22:54:12Z",
+      "before": "0000000000000000000000000000000000000000",
+      "after": "5fbde1de01694b0f42bf3ac3618b8db95300f8da"
+    }
+  ],
+  "baseTip": "bac51fe8c41c906a2a5bd369d4f4e5b4647b1c59",
+  "changedFiles": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ]
+}

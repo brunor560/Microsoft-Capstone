@@ -1,0 +1,30 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (19.559292ms)
+✔ POST /api/todos creates a new valid task (5.242958ms)
+✔ POST /api/todos rejects empty title with 400 (2.240292ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.375666ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (2.803666ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.227625ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (2.732291ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.254792ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.608125ms)
+✔ API-01: GET /api/todos returns todos with notes field as empty string (0.474916ms)
+✔ API-01: POST /api/todos without notes gives empty notes string (0.560208ms)
+✔ API-02: POST /api/todos with notes stores and returns notes (0.8235ms)
+✔ API-02: PUT /api/todos/:id with notes updates notes (1.636708ms)
+✔ API-03: POST /api/todos with non-string notes returns 400 (0.473917ms)
+✔ API-03: POST /api/todos with notes > 1000 chars returns 400 (0.44825ms)
+✔ API-03: PUT /api/todos/:id with non-string notes returns 400 and changes nothing (1.062625ms)
+✔ API-03: PUT /api/todos/:id with notes > 1000 chars returns 400 (0.747708ms)
+✔ API-03: notes exactly 1000 chars is accepted (0.38825ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104.874166

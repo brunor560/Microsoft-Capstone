@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/copilot",
+    "--model=anthropic-direct/claude-sonnet-4-6",
+    "--reasoning-effort=medium",
+    "--trust-folder",
+    "--no-auto-update",
+    "--no-custom-instructions",
+    "--disable-builtin-mcps",
+    "--sync-session=off",
+    "--no-bash-env",
+    "--no-experimental",
+    "--no-ask-user",
+    "--disallow-temp-dir",
+    "--sandbox",
+    "--output-format=json",
+    "--share=<BATCH_ROOT>/copilot-pr-run01/private/copilot-share.md",
+    "--usage-output-file=<BATCH_ROOT>/copilot-pr-run01/private/copilot-usage.json",
+    "--allow-tool=read(<BATCH_ROOT>/copilot-pr-run01/workspace/**)",
+    "--allow-tool=write(<BATCH_ROOT>/copilot-pr-run01/workspace/**)",
+    "--allow-tool=shell",
+    "--allow-tool=github-official",
+    "--deny-tool=memory",
+    "--deny-tool=url",
+    "--deny-tool=read(/Users/**)",
+    "--deny-tool=write(/Users/**)",
+    "-p",
+    "Read pipeline/tasks/008-pr-flow.md and complete the task\nexactly as specified, including the pull request and the merge.\n\nWork only within this project folder and this repository's\nbranches under your base branch's prefix. Do not access parent\nfolders, other branches, external grading files, reference\nsolutions, or other runs.\n\nRun the required tests and report the actual results.\n"
+  ]
+}

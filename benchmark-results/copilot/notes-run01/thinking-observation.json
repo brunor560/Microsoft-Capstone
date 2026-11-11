@@ -1,0 +1,9 @@
+{
+  "requested": "on via explicit medium reasoning effort",
+  "main_session_effective_effort": [
+    "medium"
+  ],
+  "thinking_messages": 3,
+  "thinking_wire_mode": "unobserved",
+  "subagent_efforts": []
+}

@@ -1,0 +1,7 @@
+app
+app/docs
+app/legacy
+app/node_modules
+app/public
+pipeline
+pipeline/tasks

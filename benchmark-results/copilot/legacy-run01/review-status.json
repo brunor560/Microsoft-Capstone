@@ -1,0 +1,12 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "pending independent teammate review",
+  "configuration_limitations": [
+    "Native shell sandbox verified; builtin file tools use in-process policy, not OS isolation.",
+    "Thinking output verified from structured Anthropic blocks; adaptive/budgeted wire mode unobserved.",
+    "Provider USD cost unavailable.",
+    "Local/API/contract checks passed. Browser UI-01 was canceled at download.path before its content assertion; separate diagnostic reproduced it. Browser functionality is partially unverified due to this infrastructure limitation.",
+    "The baseline browser run had the same canceled-download error; it was initially mistaken for the expected missing-feature failure by counts. Preserve this preparation limitation.",
+    "Runtime builtin skills reported enabled despite supported disable commands/readback; no operator/project skills supplied."
+  ]
+}

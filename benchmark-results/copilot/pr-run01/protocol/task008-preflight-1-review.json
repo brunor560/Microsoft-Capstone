@@ -1,0 +1,8 @@
+{
+  "status": "setup_failed",
+  "reason": "MCP read/create/close proved, but git push was blocked by command allowlist; no measured attempt started",
+  "pr": 28,
+  "merge": "not performed",
+  "fix": "Allow shell commands within unchanged native workspace filesystem/network boundary; repeat fresh setup session/prefix with same settings planned for measured run",
+  "raw_evidence": "private/task008-preflight"
+}

@@ -1,0 +1,15 @@
+✔ FIX-01: a title with a comma is one quoted field (0.336541ms)
+✔ FIX-02: double quotes are doubled inside a quoted field (0.063541ms)
+✔ FIX-03: line breaks are kept inside a quoted field (0.049583ms)
+✔ FIX-01: quoting is applied after cutting long titles (0.051333ms)
+✔ FIX-05: the module keeps its exported functions (0.043ms)
+✔ FIX-05: the export route returns the fixed CSV (21.542125ms)
+✔ Existing API behaviour is preserved (6.434959ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.930833

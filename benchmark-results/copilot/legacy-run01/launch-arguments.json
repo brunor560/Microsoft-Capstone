@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/copilot",
+    "--model=anthropic-direct/claude-sonnet-4-6",
+    "--reasoning-effort=medium",
+    "--trust-folder",
+    "--no-auto-update",
+    "--no-custom-instructions",
+    "--disable-builtin-mcps",
+    "--sync-session=off",
+    "--no-bash-env",
+    "--no-experimental",
+    "--no-ask-user",
+    "--disallow-temp-dir",
+    "--sandbox",
+    "--output-format=json",
+    "--share=<BATCH_ROOT>/copilot-legacy-run01/private/copilot-share.md",
+    "--usage-output-file=<BATCH_ROOT>/copilot-legacy-run01/private/copilot-usage.json",
+    "--allow-tool=read(<BATCH_ROOT>/copilot-legacy-run01/workspace/**)",
+    "--allow-tool=write(<BATCH_ROOT>/copilot-legacy-run01/workspace/app/legacy/billing-export.js)",
+    "--allow-tool=write(<BATCH_ROOT>/copilot-legacy-run01/workspace/app/test.js)",
+    "--allow-tool=shell(node:*)",
+    "--allow-tool=shell(npm test:*)",
+    "--deny-tool=memory",
+    "--deny-tool=url",
+    "--deny-tool=read(/Users/**)",
+    "--deny-tool=write(/Users/**)",
+    "-p",
+    "Read pipeline/tasks/007-legacy-export.md and complete the task\nexactly as specified.\n\nWork only within this project folder. Do not access parent folders,\nexternal grading files, reference solutions, or other runs.\n\nRun the required tests and report the actual results.\nDo not commit or push.\n"
+  ]
+}
