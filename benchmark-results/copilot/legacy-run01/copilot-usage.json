@@ -1,0 +1,81 @@
+{
+  "totalPremiumRequestCost": 0,
+  "totalUserRequests": 1,
+  "totalNanoAiu": 0,
+  "aiCreditsStatus": "unavailable",
+  "totalApiDurationMs": 87326,
+  "sessionStartTime": "2026-11-11T16:31:15.750Z",
+  "codeChanges": {
+    "linesAdded": 108,
+    "linesRemoved": 1,
+    "filesModifiedCount": 2,
+    "filesModified": [
+      "<BATCH_ROOT>/copilot-legacy-run01/workspace/app/legacy/billing-export.js",
+      "<BATCH_ROOT>/copilot-legacy-run01/workspace/app/test.js"
+    ]
+  },
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 14,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 304893,
+        "outputTokens": 5397,
+        "cacheReadTokens": 277315,
+        "cacheWriteTokens": 27562,
+        "reasoningTokens": 154
+      },
+      "totalNanoAiu": 0,
+      "aiCreditsStatus": "unavailable"
+    }
+  },
+  "agentMetrics": {
+    "main": {
+      "totalApiDurationMs": 87326,
+      "totalNanoAiu": 0,
+      "modelMetrics": {
+        "claude-sonnet-4-6": {
+          "requests": {
+            "count": 14,
+            "cost": 0
+          },
+          "usage": {
+            "inputTokens": 304893,
+            "outputTokens": 5397,
+            "cacheReadTokens": 277315,
+            "cacheWriteTokens": 27562,
+            "reasoningTokens": 154
+          },
+          "totalNanoAiu": 0
+        }
+      }
+    }
+  },
+  "providerModelMetrics": [
+    {
+      "provider": null,
+      "modelId": "claude-sonnet-4-6",
+      "metrics": {
+        "requests": {
+          "count": 14,
+          "cost": 0
+        },
+        "usage": {
+          "inputTokens": 304893,
+          "outputTokens": 5397,
+          "cacheReadTokens": 277315,
+          "cacheWriteTokens": 27562,
+          "reasoningTokens": 154
+        },
+        "totalNanoAiu": 0,
+        "aiCreditsStatus": "unavailable"
+      },
+      "modelDisplayName": "anthropic-direct/claude-sonnet-4-6"
+    }
+  ],
+  "currentModel": "claude-sonnet-4-6",
+  "lastCallInputTokens": 27563,
+  "lastCallOutputTokens": 286
+}

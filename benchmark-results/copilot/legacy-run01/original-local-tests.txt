@@ -1,0 +1,34 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (19.880625ms)
+✔ POST /api/todos creates a new valid task (5.401625ms)
+✔ POST /api/todos rejects empty title with 400 (2.282125ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.409167ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (3.033167ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.102958ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (2.53075ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.0515ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.704208ms)
+✔ pad_id pads to 6 digits (0.094ms)
+✔ clean_title cuts titles longer than 40 chars (0.062792ms)
+✔ clean_title applies spreadsheet guard (0.026834ms)
+✔ toCsv empty list returns header only (0.041333ms)
+✔ toCsv uses CRLF line endings (0.044833ms)
+✔ toCsv title with comma is quoted (FIX-01) (0.023292ms)
+✔ toCsv title with double quote is quoted and doubled (FIX-02) (0.021208ms)
+✔ toCsv title with line feed is quoted (FIX-03) (0.029ms)
+✔ toCsv title with carriage return is quoted (FIX-03) (0.033458ms)
+✔ toCsv plain title is not quoted (FIX-04) (0.023042ms)
+✔ toCsv sorts open todos before completed, then by id (FIX-04) (0.032083ms)
+✔ GET /api/todos/export.csv returns CSV with correct header (1.07325ms)
+✔ GET /api/todos/export.csv returns quoted title for todo with comma (1.490208ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.080416

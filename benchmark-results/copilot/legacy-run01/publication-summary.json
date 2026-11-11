@@ -1,0 +1,173 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-legacy-run01",
+    "task_id": "007",
+    "participant": "Ross Volenec",
+    "tool": "Copilot CLI 1.0.107",
+    "interface": "headless -p",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "provider": "Anthropic BYOK; alias anthropic-direct",
+    "effort_requested": "medium",
+    "thinking_requested": "on, via supported nonzero effort; verify native thinking blocks after execution",
+    "thinking_wire_mode": "unobserved",
+    "session_id": "8c1d65e5-f739-4cab-b9f2-b7f89118e6e9",
+    "approval_mode": "scoped preapproval",
+    "fresh_start": "fresh HOME/COPILOT_HOME/TMPDIR; selected BYOK provider only; memory/hooks/custom instructions/MCP/extensions disabled; supported controls read back",
+    "isolation": "Native Copilot MXC shell sandbox; builtin file tools use in-process path policy, not OS isolation",
+    "network": "loopback HTTP through native proxy; external egress denied",
+    "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+    "cohort_agreement": "User confirms these match team-agreed inputs; see protocol/grader-verification.json",
+    "allowed_writes": "[\"app/legacy/billing-export.js\", \"app/test.js\"]",
+    "model_observed": "[\"claude-sonnet-4-6\"]",
+    "skills_observed": "{\"enabled\": [\"customize-cloud-agent\", \"github-pr-media\", \"pr-stack\", \"customize-cloud-agent\", \"github-pr-media\", \"pr-stack\"], \"all\": [{\"name\": \"customize-cloud-agent\", \"enabled\": true}, {\"name\": \"github-pr-media\", \"enabled\": true}, {\"name\": \"pr-stack\", \"enabled\": true}, {\"name\": \"customize-cloud-agent\", \"enabled\": true}, {\"name\": \"github-pr-media\", \"enabled\": true}, {\"name\": \"pr-stack\", \"enabled\": true}]}",
+    "effort_observed": "{\"main\": [\"medium\"], \"subagents\": []}",
+    "execution_limitation": "None",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+  },
+  "pins": {
+    "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc"
+  },
+  "notes": {
+    "effort": "main session medium; subagent observations kept separate in thinking-observation.json",
+    "scope_findings": [
+      "Only permitted files changed.",
+      "Original test names missing: none",
+      "Local/API/contract checks passed. Browser UI-01 was canceled at download.path before its content assertion; separate diagnostic reproduced it. Browser functionality is partially unverified due to this infrastructure limitation.",
+      "The baseline browser run had the same canceled-download error; it was initially mistaken for the expected missing-feature failure by counts. Preserve this preparation limitation."
+    ],
+    "source": "Operator reconciliation of source manifests, preserved session events and independent grader evidence; no human review conferred."
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-11T16:31:15.264748+00:00",
+    "end_utc": "2026-11-11T16:32:44.184Z",
+    "seconds": 88.92,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 304893,
+    "output_tokens": 5397,
+    "cached_input_tokens": 277315,
+    "cache_write_input_tokens": 27562,
+    "reasoning_output_tokens": 154,
+    "total_tokens": 310290,
+    "total_cost_usd": null,
+    "cost_reason": "BYOK export reports no USD amount; zero premium request/AI-credit fields are not provider cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "api",
+      "file": "original-api-tests.txt",
+      "label": "Independent API",
+      "exit": 0,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "browser",
+      "file": "original-browser-tests.txt",
+      "label": "Independent browser",
+      "exit": 1,
+      "passed": 1,
+      "failed": 1,
+      "skipped": null,
+      "checks": []
+    },
+    {
+      "key": "security_scan",
+      "file": "original-security-scan.txt",
+      "label": "Static security",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": null,
+      "checks": [
+        {
+          "id": "L1",
+          "verdict": "PASS",
+          "detail": "header, CRLF line endings, empty and missing list"
+        },
+        {
+          "id": "L2",
+          "verdict": "PASS",
+          "detail": "row order, id padding and DONE column"
+        },
+        {
+          "id": "L3",
+          "verdict": "PASS",
+          "detail": "cutting, spreadsheet guard, and unchanged output for titles that need no quoting"
+        },
+        {
+          "id": "L4",
+          "verdict": "PASS",
+          "detail": "tests catch the bug (with original module: 5 failed, 17 passed; with reference fix: 0 failed, 22 passed)"
+        }
+      ]
+    }
+  ],
+  "applicability": {
+    "security_runtime": {
+      "applicable": false,
+      "reason": "Pinned Task007 protocol has no separate runtime security suite; task-specific check is security_scan"
+    }
+  },
+  "changed": [
+    "app/legacy/billing-export.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "pending independent teammate review",
+    "configuration_limitations": [
+      "Native shell sandbox verified; builtin file tools use in-process policy, not OS isolation.",
+      "Thinking output verified from structured Anthropic blocks; adaptive/budgeted wire mode unobserved.",
+      "Provider USD cost unavailable.",
+      "Local/API/contract checks passed. Browser UI-01 was canceled at download.path before its content assertion; separate diagnostic reproduced it. Browser functionality is partially unverified due to this infrastructure limitation.",
+      "The baseline browser run had the same canceled-download error; it was initially mistaken for the expected missing-feature failure by counts. Preserve this preparation limitation.",
+      "Runtime builtin skills reported enabled despite supported disable commands/readback; no operator/project skills supplied."
+    ]
+  },
+  "reviewed": false
+}

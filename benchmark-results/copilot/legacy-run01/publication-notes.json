@@ -1,0 +1,10 @@
+{
+  "effort": "main session medium; subagent observations kept separate in thinking-observation.json",
+  "scope_findings": [
+    "Only permitted files changed.",
+    "Original test names missing: none",
+    "Local/API/contract checks passed. Browser UI-01 was canceled at download.path before its content assertion; separate diagnostic reproduced it. Browser functionality is partially unverified due to this infrastructure limitation.",
+    "The baseline browser run had the same canceled-download error; it was initially mistaken for the expected missing-feature failure by counts. Preserve this preparation limitation."
+  ],
+  "source": "Operator reconciliation of source manifests, preserved session events and independent grader evidence; no human review conferred."
+}

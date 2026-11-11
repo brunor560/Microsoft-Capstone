@@ -1,0 +1,6 @@
+{
+  "security_runtime": {
+    "applicable": false,
+    "reason": "Pinned Task007 protocol has no separate runtime security suite; task-specific check is security_scan"
+  }
+}

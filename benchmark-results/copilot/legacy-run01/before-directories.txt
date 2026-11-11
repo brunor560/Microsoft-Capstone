@@ -1,0 +1,6 @@
+app
+app/docs
+app/legacy
+app/public
+pipeline
+pipeline/tasks
