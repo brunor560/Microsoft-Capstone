@@ -250,7 +250,7 @@ Refresh sources when the cohort changes, then freeze them for the batch:
 - Copilot flags/settings: installed help and https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
 - Codex skill format: https://learn.chatgpt.com/docs/build-skills
 
-For local installation place this self-contained file at .agents/skills/run-copilot-benchmarks/SKILL.md in the source checkout, or the supported user skill location. Invoke with `$run-copilot-benchmarks`. Keep it out of exported measured snapshots. Example: "Use $run-copilot-benchmarks to preflight Task 002 for three new attempts. Show the frozen inputs, model/permission condition and blockers before starting." No companion runner or Python dependency is required by this skill.
+For local installation place this self-contained file at .agents/skills/run-copilot-benchmarks/SKILL.md in the source checkout, or the supported user skill location. Invoke with `$run-copilot-benchmarks`. Keep it out of exported measured snapshots. Example: "Use $run-copilot-benchmarks to preflight Task 002 for three new attempts. Show the frozen inputs, model/permission condition and blockers before starting." No benchmark runner or Python dependency is required. The publication-only Node helpers and templates are in `tools/copilot-evidence/`; keep them outside measured workspaces.
 
 ## Publication record compatibility (required before results push)
 
@@ -291,3 +291,59 @@ For new runs, generate these records directly alongside raw evidence:
   Repeat validation for the complete batch before pushing; never commit
   generated dashboard data, alter the importer, or deploy. Preserve pending
   human review and infrastructure/configuration limitations regardless of tests.
+
+
+### Canonical per-attempt presentation and enforced gate
+
+Read `tools/copilot-evidence/README.md` and its `templates/run-readme.md` and
+`templates/publication-notes.example.json` before preparing publication. The
+protocol and unchanged importer govern records; published READMEs are presentation
+examples only. Check their run identity, cache assumptions, legacy score claims,
+and human-review caveats rather than copying another run's results.
+
+Every attempt gets one README/evidence folder. Use sections for Configuration,
+Pinned inputs (task/evaluator/quality full SHAs), Independent results, Changed files
+and scope, Timing, Tokens and cost, Approvals/interventions/review, Limitations,
+and Evidence. The suite table has Suite, Passed, Failed, Skipped and Exit columns.
+List avoidance checks individually, use readable prose/lists instead of Python
+containers, and distinguish measured zero, unavailable and not applicable. Include
+actual scope findings and local evidence links. Put the batch summary in the PR
+body, not a separate multi-attempt packet or duplicated per-run batch README.
+
+Run `node tools/copilot-evidence/publication-records.mjs <publication-packet>`.
+Populate `publication-notes.json` from this attempt's recorded scope/effort evidence;
+never carry findings or review status from an example. Existing raw model/usage,
+timers, logs and candidate code are immutable. `--readme-only` updates presentation
+and derived hashes/summary/format-validation records only. To generate missing
+normalized token usage, explicitly select `--copilot-inclusive-tokens` only after
+verifying the installed export's subset semantics; unknown accounting is a blocker,
+not permission to add cache/reasoning again. Preserve raw and redacted derivatives.
+
+Before continuing a batch after its first completed attempt, commit that packet on
+an isolated results branch and run the publication gate with explicit base/importer
+refs and run directory. Example (all paths absolute except the run identifier):
+
+```sh
+node /tooling/tools/copilot-evidence/validate-publication.mjs \
+  --repo /results-checkout --ref HEAD --base origin/results/all-runs \
+  --importer-ref origin/master --run copilot/avoid-runNN \
+  --report /private-evidence/first-check.json --write-records
+```
+
+The gate checks required artifacts, prompt/source/publication hashes, canonical
+Markdown, internal consistency and the exact results-only directory allowlist.
+It runs byte-identical importer code from the selected Git commit in temporary
+storage, compares imported model/timing/suites/tokens/review to evidence, and
+removes generated data. It permits genuine failed benchmarks and blocks malformed
+or contradictory packets. Save its report before starting remaining attempts.
+Before publication repeat for **every** intended packet using repeated `--run`
+options, commit refreshed per-run validation records/hashes, then check final HEAD
+without `--write-records` and with a new external report path. Never reuse a stale
+validation claim after editing a README. Keep old reports as historical evidence
+for their named inputs/commit. Do not modify the importer or publish generated data.
+
+Keep tooling/template commits separate from presentation/result commits. If a PR
+was already merged, preserve it and use a new results-only follow-up targeting
+results/all-runs for specifically authorized packets; do not alter other historical
+runs. Human-review status and infrastructure/configuration limitations remain
+unchanged regardless of formatting or importer success.

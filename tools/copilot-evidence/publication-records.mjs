@@ -1,35 +1,45 @@
-// Format observed evidence for the existing dashboard reader. Not a benchmark runner/grader.
+// Format preserved observations only. No model, grader, or candidate code execution.
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import assert from 'node:assert/strict';
-const [dir] = process.argv.slice(2);
-assert(dir, 'Usage: node publication-records.mjs EVIDENCE_DIR');
-const read = n => JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8'));
-const write = (n, t) => { const p=path.join(dir,n); assert(!fs.existsSync(p), `Refusing overwrite: ${n}`); fs.writeFileSync(p,t); };
-const observed = read('runtime-observation.json');
-assert(observed.source === 'owned assistant.message events', 'Runtime identity must come from owned session events');
-const models = [...new Set(observed.models)];
-assert(models.length === 1 && models[0] && !/unknown|auto/i.test(models[0]), 'Missing/mixed models: preserve raw evidence, exclude from single-model cohort');
-const usage = read('copilot-usage.json');
-assert.deepEqual(Object.keys(usage.modelMetrics).sort(), models.slice().sort(), 'Runtime messages and usage disagree');
-const configPath=path.join(dir,'run-configuration.txt');
-const config=fs.readFileSync(configPath,'utf8');
-assert(!/^model=/m.test(config), 'Never replace a recorded model identity');
-fs.appendFileSync(configPath, `model=${models[0]}\nmodel_verification_source=runtime-observation.json; corroborated by copilot-usage.json\n`);
-const t=read('timing.json');
-const final=t.final_report_event_utc;
-const seconds=final ? (Date.parse(final)-Date.parse(t.start_utc))/1000 : t.process_elapsed_seconds;
-assert(Number.isFinite(seconds) && seconds>=0, 'Missing actual timer boundaries');
-const method=final ? 'launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency' : 'external monotonic process-lifetime proxy; before CLI launch to process exit; includes startup/shutdown/export overhead, excludes setup/grading';
-write('timing.txt',`start_utc=${t.start_utc}\nend_utc=${final || t.end_utc}\nelapsed_seconds=${seconds}\nmethod=${method}\napproval_wait_seconds=unavailable\nraw_record=timing.json\n`);
-const exits=read('original-test-exits.raw.json');
-const mapping={'local-tests':'local','api-tests':'api','browser-tests':'browser','security-scan':'security_scan','security-runtime':'security_runtime','acceptance':'acceptance','supplemental':'supplemental'};
-const logs={local:'original-local-tests.txt',api:'original-api-tests.txt',browser:'original-browser-tests.txt',security_scan:'original-security-scan.txt',security_runtime:'original-security-runtime.txt',acceptance:'original-acceptance.txt',supplemental:'original-supplemental.txt'};
-const lines=[];
-for(const [raw,key] of Object.entries(mapping)) {
-  if(exits[raw]!==undefined) { assert(Number.isInteger(exits[raw]), 'Suite exit must be actual integer'); assert(fs.existsSync(path.join(dir,logs[key])),`Missing performed suite ${key}`); lines.push(`${key}_exit=${exits[raw]}`); }
-  else assert(!fs.existsSync(path.join(dir,logs[key])),`Absent suite ${key} must not have a placeholder log`);
-}
-assert(lines.some(l=>l.startsWith('local_exit=')),'Missing independent local outcome');
-write('original-test-exits.txt',lines.join('\n')+'\n');
-write('publication-format-validation.json',JSON.stringify({status:'record-format validated; unchanged importer validation still required before pushing',model:models[0],seconds,method,suites:lines,raw:['runtime-observation.json','copilot-usage.json','timing.json','original-test-exits.raw.json'],human_review:'pending; no h-review.json generated'},null,2)+'\n');
+import {packet, render, markdown, hashes, validate, read, json} from './packet.mjs';
+const [dir, ...flags]=process.argv.slice(2);
+assert(dir && flags.every(f=>['--readme-only','--copilot-inclusive-tokens'].includes(f)), 'Usage: node publication-records.mjs EVIDENCE_DIR [--readme-only | --copilot-inclusive-tokens]');
+assert(!(flags.includes('--readme-only') && flags.includes('--copilot-inclusive-tokens')),'Presentation-only mode cannot generate token records');
+const before=hashes(dir), staged=fs.mkdtempSync(path.join(os.tmpdir(),'copilot-packet-format-'));
+try {
+  fs.cpSync(dir,staged,{recursive:true});
+  const outputs={};
+  const write=(name,text)=>{outputs[name]=text;fs.writeFileSync(path.join(staged,name),text);};
+  const add=(name,text)=>{if(fs.existsSync(path.join(staged,name)))assert(read(staged,name)===text,`Refusing to replace contradictory ${name}`);else write(name,text);};
+  if(!fs.existsSync(path.join(staged,'token-usage.json'))) {
+    assert(flags.includes('--copilot-inclusive-tokens'),'Verify installed usage schema, then explicitly select --copilot-inclusive-tokens; never guess cache semantics');
+    const raw=json(staged,'copilot-usage.json'),metrics=Object.values(raw.modelMetrics || {});
+    assert(metrics.length===1,'Mixed/missing model metrics');
+    const u=metrics[0].usage;
+    const fields={input_tokens:'inputTokens',output_tokens:'outputTokens',cached_input_tokens:'cacheReadTokens',cache_write_input_tokens:'cacheWriteTokens',reasoning_output_tokens:'reasoningTokens'};
+    const usage=Object.fromEntries(Object.entries(fields).map(([k,v])=>[k,u[v] ?? null]));
+    assert(Number.isSafeInteger(usage.input_tokens) && Number.isSafeInteger(usage.output_tokens),'Missing raw token totals');
+    write('token-usage.json',JSON.stringify({source:'copilot-usage.json modelMetrics; one aggregate including subagents once',...usage,total_tokens:usage.input_tokens+usage.output_tokens,total_cost_usd:null,cost_reason:'Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost',accounting_notes:'Operator selected verified Copilot inclusive schema: cache read/write are subsets included in input; reasoning is a subset included in output; provider/agent summaries are not added again.'},null,2)+'\n');
+  }
+  let p=packet(staged);
+  if(!flags.includes('--readme-only')) {
+    if(!p.config.model)write('run-configuration.txt',read(staged,'run-configuration.txt').replace(/\n?$/,'\n')+`model=${p.model}\nmodel_verification_source=runtime-observation.json; corroborated by copilot-usage.json\n`);
+    add('timing.txt',`start_utc=${p.timing.start_utc}\nend_utc=${p.timing.end_utc}\nelapsed_seconds=${p.timing.seconds}\nmethod=${p.timing.method}\napproval_wait_seconds=${p.timing.approval_wait_seconds ?? 'unavailable'}\nraw_record=timing.json\n`);
+    add('original-test-exits.txt',p.results.map(s=>`${s.key}_exit=${s.exit}`).join('\n')+'\n');
+  } else {
+    assert(p.config.model===p.model,'Presentation-only update requires existing compatible model');
+    assert(fs.existsSync(path.join(staged,'timing.txt')) && fs.existsSync(path.join(staged,'original-test-exits.txt')),'Presentation-only update needs compatible records');
+  }
+  p=packet(staged);
+  write('publication-summary.json',JSON.stringify(p,null,2)+'\n');
+  write('README.md',render(staged,p));
+  write('publication-format-validation.json',JSON.stringify({version:2,status:'PASS (internal); unchanged importer gate still required',model:p.model,seconds:p.timing.seconds,method:p.timing.method,suites:p.results.map(s=>`${s.key}_exit=${s.exit}`),human_review:p.review.status},null,2)+'\n');
+  markdown(staged,outputs['README.md']);
+  write('publication-files.sha256',hashes(staged));
+  validate(staged);
+  assert(hashes(dir)===before,'Evidence changed while formatting');
+  for(const [name,text] of Object.entries(outputs))fs.writeFileSync(path.join(dir,name),text);
+  console.log(`Formatted and internally validated ${p.config.run_id}; unchanged importer gate still required.`);
+} finally {fs.rmSync(staged,{recursive:true,force:true});}
