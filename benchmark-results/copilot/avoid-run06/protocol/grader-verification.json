@@ -1,0 +1,7 @@
+{
+  "checked_at": "2026-11-11T15:23:53.713421+00:00",
+  "verdict": "exact raw/LF hashes verified against originally agreed cohort and pinned Git bytes before measured execution",
+  "agreement_source": "current user prescribed-input rerun request plus archived prior agreement",
+  "snapshot_evaluator": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "quality": "987547d9619e0628631e8e18031fe50c63b318dc"
+}
