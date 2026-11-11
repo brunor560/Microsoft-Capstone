@@ -1,3 +1,0 @@
-app/public/index.html
-app/server.js
-app/test.js
