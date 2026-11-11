@@ -1,0 +1,16 @@
+{
+  "user_authorization": "Actually do not block task008; use my local git authentication",
+  "actor": "rossvol",
+  "credential_kind": "existing gh OAuth login from local keyring; privately reused for Git and official GitHub MCP",
+  "scopes": [
+    "gist",
+    "read:org",
+    "repo",
+    "workflow"
+  ],
+  "deviation": "Broader/longer-lived than prescribed repo-only short-lived PAT; explicitly authorized existing local authentication. No global credential changed or revoked.",
+  "provider": "official remote https://api.githubcopilot.com/mcp/",
+  "preflight_required": true,
+  "private_credential_copies": "runtime profiles only; excluded from all evidence/publication archives",
+  "setup_credential_cleanup": "remove private task copies only when cleanup authorized; do not revoke unrelated user login"
+}

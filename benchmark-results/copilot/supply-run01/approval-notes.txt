@@ -1,0 +1,1 @@
+Headless scoped-preapproval: reads in snapshot; writes only named allowed files; node commands and npm test plus npm commands, lifecycle scripts and standard outbound network. No model corrections or additional task instructions.

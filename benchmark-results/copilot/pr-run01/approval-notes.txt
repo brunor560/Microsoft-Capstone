@@ -1,0 +1,1 @@
+Task008 headless preapproval: shell commands and writes within the disposable clone, including Git metadata; official GitHub MCP operations in authorized bench008/copilot-pr-run01 prefix. User explicitly authorized existing local Git authentication despite broader workflow scope. No authorization to touch unrelated branches/repositories.

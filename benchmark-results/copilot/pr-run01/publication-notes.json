@@ -1,0 +1,11 @@
+{
+  "effort": "main session medium; subagent observations kept separate in thinking-observation.json",
+  "scope_findings": [
+    "Only permitted files changed.",
+    "Original test names missing: none",
+    "Merged PR30 into bench008/copilot-pr-run01/main; graded merged commit matches preserved working source. MCP created and merged the PR; gh pr checks monitored CI. See [PR evidence](pr-evidence.json) and [graded commit](graded-commit.json).",
+    "User explicitly authorized existing local Git authentication, including broader workflow scope, instead of prescribed short-lived repo-only PAT",
+    "Token use exceeded the protocol reference limit of 400000; report raw usage, no native formula score."
+  ],
+  "source": "Operator reconciliation of source manifests, preserved session events and independent grader evidence; no human review conferred."
+}

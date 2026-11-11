@@ -1,0 +1,17 @@
+{
+  "before_coding": true,
+  "agreement": {
+    "source": "current conversation user confirmation",
+    "message": "These match team-agreed inputs",
+    "recorded_utc": "2026-11-11T16:22:06.505137+00:00",
+    "scope": "All four exact snapshot/evaluator/quality commits and exported grader hash manifests in batch-plan.json"
+  },
+  "verdict": "exported bytes match pinned Git; team agreement confirmed",
+  "manifest_files": [
+    "setup/task007-grader-hashes.json",
+    "setup/task008-grader-hashes.json",
+    "setup/task009-grader-hashes.json",
+    "setup/task010-grader-hashes.json",
+    "setup/quality-grader-hashes.json"
+  ]
+}

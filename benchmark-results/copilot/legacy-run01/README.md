@@ -44,6 +44,7 @@ Skipped counts are unavailable where the log does not report them; static checks
 - Original test names missing: none
 - Local/API/contract checks passed. Browser UI-01 was canceled at download.path before its content assertion; separate diagnostic reproduced it. Browser functionality is partially unverified due to this infrastructure limitation.
 - The baseline browser run had the same canceled-download error; it was initially mistaken for the expected missing-feature failure by counts. Preserve this preparation limitation.
+- Test-first: the legacy module was edited before the first test-file edit and observed npm test; no failing pre-fix regression was demonstrated. One automatic tool permission denial occurred; no operator response or correction was supplied.
 
 Scope and report-accuracy findings: [scope-review.txt](scope-review.txt). Full changes: [original-scope-diff.txt](original-scope-diff.txt); preserved code: [original/](original/).
 

@@ -22,10 +22,14 @@
       "time_utc": "2026-11-11T16:33:15.564614+00:00",
       "from": "operator",
       "what": "Preserved completed measured session and observed model usage; no messages, runtime environment fixes, restarts or nudges. Enabled skills: ['customize-cloud-agent', 'github-pr-media', 'pr-stack', 'customize-cloud-agent', 'github-pr-media', 'pr-stack']"
+    },
+    {
+      "from": "operator audit",
+      "what": "Observed one automatic tool-policy permission denial; no interactive operator permission decision or post-prompt message. Raw tool request/result retained."
     }
   ],
   "checklist": {
-    "agent_asked_permission": false,
+    "agent_asked_permission": true,
     "agent_asked_question_or_waited": false,
     "agent_was_corrected": false,
     "session_restarted_or_nudged": false,

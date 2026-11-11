@@ -1,0 +1,6 @@
+app
+app/node_modules
+app/public
+app/vendor
+pipeline
+pipeline/tasks

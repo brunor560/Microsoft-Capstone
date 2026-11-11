@@ -1,0 +1,37 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex; model/effort/version not independently exposed to this operator process",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read skill, protocol, graders, prior Task006 code and evidence, model/thinking audit; excluded from measured agent workspace/prompt.",
+  "setup_attempts": 2,
+  "setup_problems": [
+    "Unsupported skill disable --all rejected; resolved using individual supported names before measured calls",
+    "One host configuration approval was canceled by typing; repeated at user request before any configuration ran"
+  ],
+  "setup_minutes": null,
+  "grading_minutes": 0.07817756875010673,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-11T16:29:35.983755+00:00",
+      "from": "user",
+      "what": "Confirmed team-agreed inputs; requested Thinking on Sonnet4.6; explicit medium effort and thinking verification recorded"
+    },
+    {
+      "time_utc": "2026-11-11T22:58:52.077483+00:00",
+      "from": "operator",
+      "what": "Preserved completed measured session and observed model usage; no messages, runtime environment fixes, restarts or nudges. Enabled skills: ['customize-cloud-agent', 'github-pr-media', 'pr-stack']"
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": null,
+    "anything_else_unusual": true
+  },
+  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved."
+}

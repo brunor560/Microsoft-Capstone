@@ -1,0 +1,8 @@
+{
+  "raw_evidence": "Preserved privately in per-attempt evidence and private snapshots",
+  "derivative_changes": [
+    "Redacted local batch/home path prefixes in text; original code and binary artifacts byte-identical",
+    "Conversation omits reasoning/signatures and streaming duplicates"
+  ],
+  "human_review": "pending; operator preparation only"
+}

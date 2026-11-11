@@ -1,0 +1,13 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "pending independent teammate review",
+  "configuration_limitations": [
+    "Native shell sandbox verified; builtin file tools use in-process policy, not OS isolation.",
+    "Thinking output verified from structured Anthropic blocks; adaptive/budgeted wire mode unobserved.",
+    "Provider USD cost unavailable.",
+    "Merged PR30 into bench008/copilot-pr-run01/main; graded merged commit matches preserved working source. MCP created and merged the PR; gh pr checks monitored CI. See [PR evidence](pr-evidence.json) and [graded commit](graded-commit.json).",
+    "User explicitly authorized existing local Git authentication, including broader workflow scope, instead of prescribed short-lived repo-only PAT",
+    "Token use exceeded the protocol reference limit of 400000; report raw usage, no native formula score.",
+    "Runtime builtin skills reported enabled despite supported disable commands/readback; no operator/project skills supplied."
+  ]
+}

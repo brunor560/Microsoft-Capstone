@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "git_commit_push": "observed tool output in private/task008-preflight-v2/stdout.jsonl",
+  "mcp_tools": [
+    "get_file_contents",
+    "create_pull_request",
+    "update_pull_request"
+  ],
+  "pr": 29,
+  "state": "closed unmerged",
+  "preflight_prefix": "bench008/preflight-20261111-r1alhdd-v2",
+  "cleanup": "Only throwaway preflight branches deleted after verifying closed PRs; clones/logs retained",
+  "measured_run_started": false
+}
