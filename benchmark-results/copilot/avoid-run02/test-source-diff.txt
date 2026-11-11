@@ -1,0 +1,89 @@
+--- 
+
++++ 
+
+@@ -164,6 +164,83 @@
+
+   assert.strictEqual(todos.some(t => t.id === created.id), false);
+ });
+ 
++test('POST /api/todos/clear-completed with confirm:true deletes completed and returns counts', async () => {
++  // Ensure there is at least one completed and one incomplete todo
++  const c1 = await (await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'completed-for-clear' })
++  })).json();
++  await fetch(`${BASE_URL}/api/todos/${c1.id}`, {
++    method: 'PUT', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++  const c2 = await (await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'incomplete-for-clear' })
++  })).json();
++
++  const allBefore = await (await fetch(`${BASE_URL}/api/todos`)).json();
++  const completedCount = allBefore.filter(t => t.completed).length;
++  const incompleteCount = allBefore.filter(t => !t.completed).length;
++
++  const res = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ confirm: true })
++  });
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.strictEqual(data.deleted, completedCount);
++  assert.strictEqual(data.remaining, incompleteCount);
++
++  const allAfter = await (await fetch(`${BASE_URL}/api/todos`)).json();
++  assert.strictEqual(allAfter.length, incompleteCount);
++  assert.ok(allAfter.every(t => !t.completed));
++  assert.ok(allAfter.some(t => t.id === c2.id));
++});
++
++test('POST /api/todos/clear-completed without confirm:true returns 400 and deletes nothing', async () => {
++  const before = await (await fetch(`${BASE_URL}/api/todos`)).json();
++
++  for (const body of [null, {}, { confirm: false }, { confirm: 'yes' }]) {
++    const res = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++      method: 'POST', headers: { 'Content-Type': 'application/json' },
++      body: body === null ? undefined : JSON.stringify(body)
++    });
++    assert.strictEqual(res.status, 400, `Expected 400 for body: ${JSON.stringify(body)}`);
++    const data = await res.json();
++    assert.ok(data.error, 'Response should have an error field');
++  }
++
++  const after = await (await fetch(`${BASE_URL}/api/todos`)).json();
++  assert.deepStrictEqual(after, before);
++});
++
++test('POST /api/todos/clear-completed with dryRun:true returns wouldDelete and deletes nothing', async () => {
++  // Add a completed todo
++  const created = await (await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'dryrun-completed' })
++  })).json();
++  await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++
++  const before = await (await fetch(`${BASE_URL}/api/todos`)).json();
++  const completedCount = before.filter(t => t.completed).length;
++
++  const res = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ dryRun: true })
++  });
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.strictEqual(data.wouldDelete, completedCount);
++
++  const after = await (await fetch(`${BASE_URL}/api/todos`)).json();
++  assert.deepStrictEqual(after, before);
++});
++
+ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {
+   // MAX_SAFE_INTEGER is 9007199254740991 (valid ID format, but does not exist -> 404)
+   const maxSafeRes = await fetch(`${BASE_URL}/api/todos/9007199254740991`, {

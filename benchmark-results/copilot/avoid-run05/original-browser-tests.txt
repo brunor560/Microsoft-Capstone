@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 clear-completed.browser.spec.cjs:47:1 › UI-01: the page has a "Clear completed" button (92ms)
+  ✓  2 clear-completed.browser.spec.cjs:52:1 › UI-02: cancelling the confirmation deletes nothing (455ms)
+  ✓  3 clear-completed.browser.spec.cjs:67:1 › UI-03: confirming removes completed todos and keeps the rest, after reload too (160ms)
+  ✓  4 clear-completed.browser.spec.cjs:86:1 › UI-04: add, toggle and delete still work (288ms)
+
+  4 passed (1.4s)

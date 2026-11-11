@@ -1,0 +1,13 @@
+{
+  "status": "operator-prepared; independent human review pending",
+  "credential_matches": 0,
+  "checks": [
+    "exact selected provider key absent",
+    "credential/private-key patterns absent",
+    "local batch/home prefixes redacted",
+    "no symlinks/provider files/dependency folders",
+    "three distinct screenshots visually inspected"
+  ],
+  "source_code": "original/server.js, test.js and index.html byte-identical to preserved submissions",
+  "limitations": "not a complete privacy/security audit"
+}

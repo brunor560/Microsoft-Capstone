@@ -1,0 +1,86 @@
+{
+  "intent": "five sequential Task 006 Copilot Sonnet 4.6 native attempts",
+  "status": "execution_and_independent_grading_complete",
+  "run_ids": [
+    "copilot-avoid-run01",
+    "copilot-avoid-run02",
+    "copilot-avoid-run03",
+    "copilot-avoid-run04",
+    "copilot-avoid-run05"
+  ],
+  "source_repository": "<USER_HOME>/USF/CIS4930/Microsoft-Capstone",
+  "source_branch": "feature-matrix-microsite-integration",
+  "source_head": "7029055d0b053c3d9fdec7213f271886947b6910",
+  "default_branch": "master (GitHub repository metadata; origin/HEAD is stale and points at main)",
+  "snapshot_commit": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "evaluator_commit": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "results_ref": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "model_requested": "Sonnet 4.6",
+  "model_identifier": "anthropic-direct/claude-sonnet-4-6",
+  "model_identifier_reason": "User-specified and observed checked in installed CLI /model catalog; runtime identity still pending",
+  "condition": "headless scoped-preapproval; Anthropic BYOK; native macOS; sequential",
+  "task_path": "pipeline/tasks/006-clear-completed.md",
+  "task_sha256": "e42de7dfc355fd612a1a8b17076fe71fb37ebe18eabb0b99dcc44e8e99dc00c2",
+  "allowed_writes": [
+    "app/server.js",
+    "app/test.js",
+    "app/public/index.html"
+  ],
+  "allowed_reads": "frozen app/ and selected task file only; OS/runtime access to be recorded separately",
+  "cohort_agreement": {
+    "source": "user confirmation in this conversation",
+    "message": "They match agreed inputs",
+    "recorded_utc": "2026-11-09T01:52:52.603825+00:00",
+    "scope": [
+      "snapshot/evaluator 6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+      "quality 987547d9619e0628631e8e18031fe50c63b318dc",
+      "setup/task-grader-hashes.json",
+      "setup/quality-grader-hashes.json"
+    ]
+  },
+  "isolation": "Runs02\u201305 native Copilot MXC sandbox with loopback-only allowlist; in-process path policy. Run01 outer+nested configuration preserved separately.",
+  "isolation_reason": null,
+  "authentication": "Anthropic BYOK; selected private provider configuration; no inherited token environment",
+  "authentication_reason": null,
+  "timing_method": "external monotonic timer from prompt submission to final report; process exit recorded separately; process lifetime labeled proxy if necessary",
+  "watchdog": null,
+  "watchdog_reason": "No operator deadline chosen or imposed",
+  "suite_commands": [
+    "npm test",
+    "node --test clear-completed-api.test.cjs",
+    "local playwright test --config=playwright.config.cjs",
+    "node avoid-check.cjs <original-workspace>",
+    "node quality-grader.mjs <frozen-baseline-app> <candidate-app> <out.json>"
+  ],
+  "expected_baseline": {
+    "local": "9 passed",
+    "api": "1 of 11 passed (including subtests)",
+    "browser": "1 of 4 passed",
+    "avoid": "PASS"
+  },
+  "authorization": {
+    "model_runs": 5,
+    "model": "Sonnet 4.6",
+    "push": false,
+    "publish": false,
+    "merge": false,
+    "delete_preserved_data": false
+  },
+  "collision_checks": {
+    "local_directories": true,
+    "archive_directories": true,
+    "local_and_tracking_refs": true,
+    "frozen_results_tree": true,
+    "live_github_branch_search": "copilot-avoid returned no branches"
+  },
+  "created_utc": "2026-11-09T01:51:26.429537+00:00",
+  "auth_update": {
+    "time_utc": "2026-11-09T02:04:21.999517+00:00",
+    "user_confirmed_provider": "Anthropic BYOK",
+    "credential_location": "User private ~/.copilot/providers.json; selected provider privately loaded into isolated per-run runtime profiles",
+    "github_device_login": "unused device-login process stopped; BYOK requires no GitHub login",
+    "measured_calls": "5 attempts; see per-run usage for model request counts"
+  },
+  "human_review": "pending"
+}
