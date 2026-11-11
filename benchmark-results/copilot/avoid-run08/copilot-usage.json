@@ -1,0 +1,82 @@
+{
+  "totalPremiumRequestCost": 0,
+  "totalUserRequests": 1,
+  "totalNanoAiu": 0,
+  "aiCreditsStatus": "unavailable",
+  "totalApiDurationMs": 52153,
+  "sessionStartTime": "2026-11-11T15:35:10.896Z",
+  "codeChanges": {
+    "linesAdded": 92,
+    "linesRemoved": 0,
+    "filesModifiedCount": 3,
+    "filesModified": [
+      "<BATCH_ROOT>/copilot-avoid-run08/workspace/app/server.js",
+      "<BATCH_ROOT>/copilot-avoid-run08/workspace/app/public/index.html",
+      "<BATCH_ROOT>/copilot-avoid-run08/workspace/app/test.js"
+    ]
+  },
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 9,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 185424,
+        "outputTokens": 3259,
+        "cacheReadTokens": 172169,
+        "cacheWriteTokens": 13244,
+        "reasoningTokens": 447
+      },
+      "totalNanoAiu": 0,
+      "aiCreditsStatus": "unavailable"
+    }
+  },
+  "agentMetrics": {
+    "main": {
+      "totalApiDurationMs": 52153,
+      "totalNanoAiu": 0,
+      "modelMetrics": {
+        "claude-sonnet-4-6": {
+          "requests": {
+            "count": 9,
+            "cost": 0
+          },
+          "usage": {
+            "inputTokens": 185424,
+            "outputTokens": 3259,
+            "cacheReadTokens": 172169,
+            "cacheWriteTokens": 13244,
+            "reasoningTokens": 447
+          },
+          "totalNanoAiu": 0
+        }
+      }
+    }
+  },
+  "providerModelMetrics": [
+    {
+      "provider": null,
+      "modelId": "claude-sonnet-4-6",
+      "metrics": {
+        "requests": {
+          "count": 9,
+          "cost": 0
+        },
+        "usage": {
+          "inputTokens": 185424,
+          "outputTokens": 3259,
+          "cacheReadTokens": 172169,
+          "cacheWriteTokens": 13244,
+          "reasoningTokens": 447
+        },
+        "totalNanoAiu": 0,
+        "aiCreditsStatus": "unavailable"
+      },
+      "modelDisplayName": "anthropic-direct/claude-sonnet-4-6"
+    }
+  ],
+  "currentModel": "claude-sonnet-4-6",
+  "lastCallInputTokens": 24141,
+  "lastCallOutputTokens": 325
+}

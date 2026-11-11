@@ -1,0 +1,1 @@
+Whole original app copied with symlinks preserved into disposable grading tree. Packages and full dependency file/link manifests equal trusted frozen baseline installation. Original workspace snapshot remains untouched.

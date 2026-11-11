@@ -1,0 +1,14 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "pending; user reviews before merge",
+  "h_review_created": false,
+  "execution_status": "review_required",
+  "configuration_limitations": [
+    "Runtime reports three enabled builtin skills despite supported disabling commands/readback; no operator/project skills supplied",
+    "Native shell sandbox verified; builtin file tools use in-process policy, not OS isolation",
+    "Raw TCP loopback denied; required HTTP loopback verified through native proxy and baseline",
+    "Main reasoning effort default/unobserved; provider USD cost unavailable"
+  ],
+  "lineage": "lineage.json",
+  "publication": "results-only draft PR authorized; no merge/deployment"
+}

@@ -1,0 +1,9 @@
+{
+  "macOS": "27.2",
+  "build": "26B123",
+  "node": "v24.21.0",
+  "npm": "11.19.0",
+  "git": "git version 2.54.0 (Apple Git-157)",
+  "copilot": "GitHub Copilot CLI 1.0.107.\nRun 'copilot update' to check for updates.",
+  "codex": "codex-cli 0.167.0"
+}

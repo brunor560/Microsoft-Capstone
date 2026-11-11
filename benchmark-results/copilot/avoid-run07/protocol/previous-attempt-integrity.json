@@ -1,0 +1,27 @@
+{
+  "copilot-avoid-run01": {
+    "checked": 59,
+    "mismatches": [],
+    "manifest_sha256": "22fd54568c1f3a91fd7b441144ab7015b2aef410098a54082e31f44939f93257"
+  },
+  "copilot-avoid-run02": {
+    "checked": 60,
+    "mismatches": [],
+    "manifest_sha256": "4e1e9db4f48a9531bb76d4ecbe7174c5021b6524223d2702f3ff707a4d80a2d0"
+  },
+  "copilot-avoid-run03": {
+    "checked": 60,
+    "mismatches": [],
+    "manifest_sha256": "b27654907ef916c12756cdcd665b711c14b894fe1937570a45e1b389c95bf501"
+  },
+  "copilot-avoid-run04": {
+    "checked": 60,
+    "mismatches": [],
+    "manifest_sha256": "82b743c95ba8a331fb13bbaae6f938304311f27d3148c4bb57d6e3b0324ea798"
+  },
+  "copilot-avoid-run05": {
+    "checked": 60,
+    "mismatches": [],
+    "manifest_sha256": "6cfcd628f65b8adb09d61f798f409a6960a68f1896c8a8e5934705896ee2614f"
+  }
+}

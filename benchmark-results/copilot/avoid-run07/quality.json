@@ -1,0 +1,67 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 125.5,
+      "candMedian": 127.5,
+      "ratio": 1.016,
+      "candOk": true,
+      "baseMs": [
+        126,
+        127,
+        125,
+        129,
+        125,
+        126,
+        125,
+        126,
+        125,
+        125
+      ],
+      "candMs": [
+        127,
+        129,
+        127,
+        129,
+        129,
+        126,
+        128,
+        127,
+        127,
+        129
+      ],
+      "pass": true
+    }
+  },
+  "points": 100,
+  "possible": 100,
+  "score": 100
+}

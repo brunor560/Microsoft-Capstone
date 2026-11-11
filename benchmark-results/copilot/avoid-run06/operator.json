@@ -28,5 +28,5 @@
     "operator_needed_help": null,
     "anything_else_unusual": true
   },
-  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved."
+  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved. Setup duration and operator token use unavailable; operator_needed_help is unknown because no per-invocation help classification was collected. Configuration lookup/setup issues are recorded in private journal/setup notes."
 }

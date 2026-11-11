@@ -1,0 +1,100 @@
+{
+  "intent": "five sequential Task 006 Copilot Sonnet 4.6 native attempts",
+  "status": "ready",
+  "run_ids": [
+    "copilot-avoid-run06",
+    "copilot-avoid-run07",
+    "copilot-avoid-run08",
+    "copilot-avoid-run09",
+    "copilot-avoid-run10"
+  ],
+  "source_repository": "<USER_HOME>/USF/CIS4930/Microsoft-Capstone",
+  "source_branch": "results/all-runs",
+  "source_head": "bfd745e5a683cd156a63e0c68a44d3226519c4bc",
+  "default_branch": "master (GitHub repository metadata; origin/HEAD is stale and points at main)",
+  "snapshot_commit": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "evaluator_commit": "6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+  "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "results_ref": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "model_requested": "Sonnet 4.6",
+  "model_identifier": "anthropic-direct/claude-sonnet-4-6",
+  "model_identifier_reason": "Availability/catalog verification pending; no fallback to Auto",
+  "condition": "headless scoped-preapproval; native macOS; sequential",
+  "task_path": "pipeline/tasks/006-clear-completed.md",
+  "task_sha256": "e42de7dfc355fd612a1a8b17076fe71fb37ebe18eabb0b99dcc44e8e99dc00c2",
+  "allowed_writes": [
+    "app/server.js",
+    "app/test.js",
+    "app/public/index.html"
+  ],
+  "allowed_reads": "frozen app/ and selected task file only; OS/runtime access to be recorded separately",
+  "cohort_agreement": {
+    "source": "Current user request to reuse prescribed pins; archived original agreement",
+    "original": {
+      "source": "user confirmation in this conversation",
+      "message": "They match agreed inputs",
+      "recorded_utc": "2026-11-09T01:52:52.603825+00:00",
+      "scope": [
+        "snapshot/evaluator 6a01a4f3d749f6c8a87105552ba684b9b05a76cb",
+        "quality 987547d9619e0628631e8e18031fe50c63b318dc",
+        "setup/task-grader-hashes.json",
+        "setup/quality-grader-hashes.json"
+      ]
+    },
+    "original_manifest_sha256": "38e634387f55023b6b68052960216597eb041c79a7229b9d517db1a1d06d4b52"
+  },
+  "cohort_agreement_reason": "No Task 006 pre-run agreement manifest found in checked local/results sources; proposed hashes exported for confirmation",
+  "isolation": "Verified native Copilot shell: outside read/externalTCP denied; HTTP loopback and baseline9pass; raw TCP loopback denied; in-process file tools not OS-sandboxed",
+  "isolation_reason": "Fresh profiles/folders are not an OS boundary; verified native sandbox setup still pending",
+  "authentication": "selected Anthropic BYOK provider only; no inherited token env",
+  "authentication_reason": "Fresh-profile supported auth verification pending; no credentials copied",
+  "timing_method": "external monotonic timer from prompt submission to final report; process exit recorded separately; process lifetime labeled proxy if necessary",
+  "watchdog": null,
+  "watchdog_reason": "No operator deadline chosen or imposed",
+  "suite_commands": [
+    "npm test",
+    "node --test clear-completed-api.test.cjs",
+    "local playwright test --config=playwright.config.cjs",
+    "node avoid-check.cjs <original-workspace>",
+    "node quality-grader.mjs <frozen-baseline-app> <candidate-app> <out.json>"
+  ],
+  "expected_baseline": {
+    "local": "9 passed",
+    "api": "1 of 11 passed (including subtests)",
+    "browser": "1 of 4 passed",
+    "avoid": "PASS"
+  },
+  "authorization": {
+    "model_runs": 5,
+    "push_results_branch": true,
+    "draft_pr": true,
+    "merge": false,
+    "deploy": false,
+    "delete_preserved_data": false
+  },
+  "collision_checks": {
+    "local_directories": true,
+    "archive_directories": true,
+    "local_and_tracking_refs": true,
+    "frozen_results_tree": true,
+    "live_github_branch_search": "fresh origin fetched; all local/tracking refs and frozen results tree checked; old IDs01-05 retained"
+  },
+  "created_utc": "2026-11-11T15:15:56.854364+00:00",
+  "rerun_of_batch": [
+    "copilot-avoid-run01",
+    "copilot-avoid-run02",
+    "copilot-avoid-run03",
+    "copilot-avoid-run04",
+    "copilot-avoid-run05"
+  ],
+  "paused_tasks": [
+    "007",
+    "008",
+    "009",
+    "010"
+  ],
+  "publication_base": "bfd745e5a683cd156a63e0c68a44d3226519c4bc",
+  "importer_commit": "82b6bd8cc5c90d6485ab258e84b1767429f79b8b",
+  "tooling_commit": "be9e49f",
+  "first_attempt_gate": "Do not launch07-10 until06 evidence and unchanged-importer generated data verified"
+}

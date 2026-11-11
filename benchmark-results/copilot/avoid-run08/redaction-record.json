@@ -1,0 +1,42 @@
+{
+  "status": "operator privacy preparation, not independent human review",
+  "derivatives": [
+    {
+      "path": "copilot-usage.json",
+      "raw_sha256": "36a8aa18c032a53bd321bb79ca95706bda35197345427ff854a59d906c4ce293",
+      "published_sha256": "d6280852f358c93cb3f7d8276e4342a82bd42897bebec95e48d35da9f12feb12",
+      "change": "local host/batch path prefixes redacted"
+    },
+    {
+      "path": "executed-commands.txt",
+      "raw_sha256": "886bc957a6f77b8681434b7ec510565cda094118960c130f3d9fe4ec9878238f",
+      "published_sha256": "fe1ae55855e7ce9bae50d745e4c6360061d7de67a5dc72160efd0b19141a8c82",
+      "change": "local host/batch path prefixes redacted"
+    },
+    {
+      "path": "launch-arguments.json",
+      "raw_sha256": "a8137f3da0dee08edb7d8980bd8fb85e39024510cbf9be562c8c2af815347122",
+      "published_sha256": "cd9478c928c13b652d9e70403dd7dcd1c0f39908194c6c35bd51036d5fecb18a",
+      "change": "local host/batch path prefixes redacted"
+    },
+    {
+      "path": "protocol/batch-plan.json",
+      "raw_sha256": "b52977b12e739c97aaf6178dd4695469b31a6cd876298a2fccb356c599155c65",
+      "published_sha256": "0e0950ecf16528424d72ba9e572897499cb8640cc680daae3381455fea21b92a",
+      "change": "local host/batch path prefixes redacted"
+    },
+    {
+      "path": "protocol/original-batch-plan.json",
+      "raw_sha256": "38e634387f55023b6b68052960216597eb041c79a7229b9d517db1a1d06d4b52",
+      "published_sha256": "53f7cb01c79a6851b4e59efccf98c48e16e1ca5d3c26dba9dd2c811e99b5a44c",
+      "change": "local host/batch path prefixes redacted"
+    }
+  ],
+  "omitted": [
+    "provider configuration and keys",
+    "runtime profiles",
+    "raw events/session files and full workspace dependencies",
+    "reasoning/signatures/delta duplicate events in conversation derivative"
+  ],
+  "raw_evidence": "retained privately; original source and fixture data byte-identical"
+}

@@ -1,0 +1,32 @@
+{
+  "operator_type": "ai",
+  "operator": "codex-cli 0.167.0; operator model/effort not independently exposed to process",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read benchmark skill, pinned Task006 procedure and graders, original batch/operator scripts, dashboard importer and old results; all excluded from measured workspace/prompt. No code/solution supplied.",
+  "setup_attempts": 2,
+  "setup_problems": [
+    "Inspection workspace initially inside denied setup subtree; moved before any measured prompt.",
+    "Raw TCP loopback is denied; HTTP proxy path and frozen baseline tests verified."
+  ],
+  "setup_minutes": null,
+  "grading_minutes": 0.09486019098330871,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-11T15:34:10.174556+00:00",
+      "from": "operator",
+      "what": "Preserved completed measured session and observed model usage; no messages, runtime environment fixes, restarts or nudges. Enabled skills: ['customize-cloud-agent', 'github-pr-media', 'pr-stack']"
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": null,
+    "anything_else_unusual": true
+  },
+  "notes": "No operator messages after prompt; no restart or nudge. All observed model and subagent usage included once. Infrastructure-limited=False. Final report and full events preserved. Setup duration and operator token use unavailable; operator_needed_help is unknown because no per-invocation help classification was collected. Configuration lookup/setup issues are recorded in private journal/setup notes."
+}
