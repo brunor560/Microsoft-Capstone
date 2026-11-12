@@ -1,0 +1,10 @@
+[Read] {"file_path": "/home/claude/bench/claude-supply-run01/pipeline/tasks/009-todo-slugs.md"}
+[Read] {"file_path": "/home/claude/bench/claude-supply-run01/app/server.js"}
+[Read] {"file_path": "/home/claude/bench/claude-supply-run01/app/test.js"}
+[Read] {"file_path": "/home/claude/bench/claude-supply-run01/app/public/index.html"}
+[Edit] {"replace_all": false, "file_path": "/home/claude/bench/claude-supply-run01/app/server.js", "old_string": "// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic,\n// use slugi
+[Edit] {"replace_all": false, "file_path": "/home/claude/bench/claude-supply-run01/app/server.js", "old_string": "  todos.push(newTodo);\n  res.status(201).json(newTodo);", "new_string": "  todos.push(newTod
+[Edit] {"replace_all": false, "file_path": "/home/claude/bench/claude-supply-run01/app/server.js", "old_string": "  res.status(200).json(todo);\n});\n\napp.delete", "new_string": "  res.status(200).json(with
+[Edit] {"replace_all": false, "file_path": "/home/claude/bench/claude-supply-run01/app/public/index.html", "old_string": "      list.innerHTML = data.map(item => `\n        <li>\n          <span class=\"item
+[Edit] {"replace_all": false, "file_path": "/home/claude/bench/claude-supply-run01/app/test.js", "old_string": "test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {", "new_stri
+cd /home/claude/bench/claude-supply-run01/app && npm test 2>&1

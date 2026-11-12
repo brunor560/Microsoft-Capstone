@@ -1,0 +1,49 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 todo-slugs.browser.spec.cjs:32:1 › UI-01: each todo shows its slug in a <code> element (5.4s)
+  ✓  2 todo-slugs.browser.spec.cjs:45:1 › UI-02: add, toggle and delete still work (474ms)
+
+
+  1) todo-slugs.browser.spec.cjs:32:1 › UI-01: each todo shows its slug in a <code> element ────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('li').filter({ hasText: 'Café déjà vu' }).locator('code')
+    Expected: "cafe-deja-vu"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" locator('li').filter({ hasText: 'Café déjà vu' }).locator('code') with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Café déjà vu' }).locator('code')
+
+
+      36 |   const row = page.locator('li', { hasText: 'Café déjà vu' });
+      37 |   await expect(row).toHaveCount(1);
+    > 38 |   await expect(row.locator('code')).toHaveText('cafe-deja-vu');
+         |                                     ^
+      39 |   const rows = page.locator('li');
+      40 |   const n = await rows.count();
+      41 |   for (let i = 0; i < n; i++) await expect(rows.nth(i).locator('code')).toHaveCount(1);
+        at /home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs.browser.spec.cjs:38:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/todo-slugs.browser-UI-01-e-ad72f--its-slug-in-a-code-element/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/todo-slugs.browser-UI-01-e-ad72f--its-slug-in-a-code-element/error-context.md
+
+    Error Context: browser-test-results/todo-slugs.browser-UI-01-e-ad72f--its-slug-in-a-code-element/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/todo-slugs.browser-UI-01-e-ad72f--its-slug-in-a-code-element/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/todo-slugs.browser-UI-01-e-ad72f--its-slug-in-a-code-element/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    todo-slugs.browser.spec.cjs:32:1 › UI-01: each todo shows its slug in a <code> element ─────────
+  1 passed (7.4s)

@@ -1,0 +1,83 @@
+TAP version 13
+# Subtest: REQ-01: every todo in the list has a string slug
+ok 1 - REQ-01: every todo in the list has a string slug
+  ---
+  duration_ms: 39.036079
+  type: 'test'
+  ...
+# Subtest: REQ-01: slug rules (lowercase, accents, separators, trimming)
+    # Subtest: "Buy milk!"
+    ok 1 - "Buy milk!"
+      ---
+      duration_ms: 29.368335
+      type: 'test'
+      ...
+    # Subtest: "Café déjà vu"
+    ok 2 - "Café déjà vu"
+      ---
+      duration_ms: 8.048897
+      type: 'test'
+      ...
+    # Subtest: "  Hello,   World  2026 "
+    ok 3 - "  Hello,   World  2026 "
+      ---
+      duration_ms: 7.614124
+      type: 'test'
+      ...
+    # Subtest: "--Already--dashed--"
+    ok 4 - "--Already--dashed--"
+      ---
+      duration_ms: 4.939306
+      type: 'test'
+      ...
+    # Subtest: "Ünïcödé Ångström"
+    ok 5 - "Ünïcödé Ångström"
+      ---
+      duration_ms: 7.205156
+      type: 'test'
+      ...
+    1..5
+ok 2 - REQ-01: slug rules (lowercase, accents, separators, trimming)
+  ---
+  duration_ms: 58.174913
+  type: 'test'
+  ...
+# Subtest: REQ-01: a title with no letters or digits gets todo-<id>
+ok 3 - REQ-01: a title with no letters or digits gets todo-<id>
+  ---
+  duration_ms: 2.811313
+  type: 'test'
+  ...
+# Subtest: REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+ok 4 - REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+  ---
+  duration_ms: 8.792432
+  type: 'test'
+  ...
+# Subtest: REQ-02: look up by slug returns the todo, or 404
+ok 5 - REQ-02: look up by slug returns the todo, or 404
+  ---
+  duration_ms: 7.942329
+  type: 'test'
+  ...
+# Subtest: REQ-03: the slug follows a title change
+ok 6 - REQ-03: the slug follows a title change
+  ---
+  duration_ms: 6.186352
+  type: 'test'
+  ...
+# Subtest: Existing API behaviour is preserved
+ok 7 - Existing API behaviour is preserved
+  ---
+  duration_ms: 12.432679
+  type: 'test'
+  ...
+1..7
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 246.066102

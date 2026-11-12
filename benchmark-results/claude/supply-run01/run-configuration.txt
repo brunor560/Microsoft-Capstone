@@ -1,0 +1,20 @@
+run_id=claude-supply-run01
+participant=operator: Claude (claude-opus-5-5) running the CLI on behalf of the account owner (crochajr81); human participant name to be filled in by team; 2026-11-11, America/New_York
+tool=2.1.322 (Claude Code)
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6 (plus any small helper calls the CLI makes itself; see modelUsage in token-usage.json)
+reasoning_effort=default (no --effort flag; inherited CLAUDE_EFFORT env var removed)
+baseline_commit=8397e941492ceed11552f123f208e6118c51b4f6
+protocol_commit=8397e941492ceed11552f123f208e6118c51b4f6 (agreed commit named in the benchmark-protocol-v9-supply procedure; snapshot and graders from the same commit)
+token_limit=400000 (T = 100 up to 200,000)
+os=Ubuntu 24.04.5 LTS (Linux x86_64), Anthropic-hosted cloud container; bash equivalents of the PowerShell steps
+node=v22.22.0
+npm=10.9.4
+approval=--permission-mode acceptEdits, --allowedTools Bash (edits and shell pre-approved; no prompts)
+sandbox=none beyond the container; no filesystem confinement to the run folder
+run_type=standard: network on, npm lifecycle scripts allowed
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools)
+memory=off: --settings '{"autoMemoryEnabled":false}'; host memory MCP server removed (--strict-mcp-config with empty config); no ~/.claude/CLAUDE.md; --setting-sources project excludes user settings and hooks; run folder has no CLAUDE.md or .claude/
+fresh_start=new session (session_id e4f04783-3616-4df7-884c-6d4e4d71b116), not resumed; skills/slash commands off; Chrome off; host-session env vars removed via freshenv.sh
+residual_environment=CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed
+operator_knowledge=operator read the task's README, RUN-RECORD.md, OPERATOR-GUIDE.md and the ACCEPTANCE.md check tables (so knew of any traps and checks) before the run; did not read the reference solution; gave the agent only the standard prompt
