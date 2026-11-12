@@ -1,0 +1,246 @@
+TAP version 13
+# Subtest: API-03: dryRun reports how many would be deleted and deletes nothing
+not ok 1 - API-03: dryRun reports how many would be deleted and deletes nothing
+  ---
+  duration_ms: 57.99402
+  type: 'test'
+  location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:58:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    404 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 404
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:65:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: API-02: requests without confirm: true are rejected and delete nothing
+    # Subtest: rejects no body
+    not ok 1 - rejects no body
+      ---
+      duration_ms: 7.228935
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects empty object
+    not ok 2 - rejects empty object
+      ---
+      duration_ms: 16.136221
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects confirm false
+    not ok 3 - rejects confirm false
+      ---
+      duration_ms: 5.111405
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects confirm "true"
+    not ok 4 - rejects confirm "true"
+      ---
+      duration_ms: 4.398245
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects confirm 1
+    not ok 5 - rejects confirm 1
+      ---
+      duration_ms: 3.258423
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects array body
+    not ok 6 - rejects array body
+      ---
+      duration_ms: 4.115271
+      type: 'test'
+      location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        404 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 404
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:83:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:80:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..6
+not ok 2 - API-02: requests without confirm: true are rejected and delete nothing
+  ---
+  duration_ms: 46.258155
+  type: 'test'
+  location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:70:1'
+  failureType: 'subtestsFailed'
+  error: '6 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-01/API-04: confirm: true deletes completed todos only
+not ok 3 - API-01/API-04: confirm: true deletes completed todos only
+  ---
+  duration_ms: 14.438912
+  type: 'test'
+  location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:92:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    404 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 404
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:102:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-01: clearing again deletes nothing
+not ok 4 - API-01: clearing again deletes nothing
+  ---
+  duration_ms: 4.358579
+  type: 'test'
+  location: '/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:110:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    404 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 404
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed-api.test.cjs:113:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 5 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 15.336716
+  type: 'test'
+  ...
+1..5
+# tests 11
+# suites 0
+# pass 1
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 253.881049

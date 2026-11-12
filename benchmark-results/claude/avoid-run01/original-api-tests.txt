@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: API-03: dryRun reports how many would be deleted and deletes nothing
+ok 1 - API-03: dryRun reports how many would be deleted and deletes nothing
+  ---
+  duration_ms: 57.842703
+  type: 'test'
+  ...
+# Subtest: API-02: requests without confirm: true are rejected and delete nothing
+    # Subtest: rejects no body
+    ok 1 - rejects no body
+      ---
+      duration_ms: 21.586264
+      type: 'test'
+      ...
+    # Subtest: rejects empty object
+    ok 2 - rejects empty object
+      ---
+      duration_ms: 4.795521
+      type: 'test'
+      ...
+    # Subtest: rejects confirm false
+    ok 3 - rejects confirm false
+      ---
+      duration_ms: 4.055132
+      type: 'test'
+      ...
+    # Subtest: rejects confirm "true"
+    ok 4 - rejects confirm "true"
+      ---
+      duration_ms: 4.524184
+      type: 'test'
+      ...
+    # Subtest: rejects confirm 1
+    ok 5 - rejects confirm 1
+      ---
+      duration_ms: 4.372294
+      type: 'test'
+      ...
+    # Subtest: rejects array body
+    ok 6 - rejects array body
+      ---
+      duration_ms: 5.518515
+      type: 'test'
+      ...
+    1..6
+ok 2 - API-02: requests without confirm: true are rejected and delete nothing
+  ---
+  duration_ms: 50.608113
+  type: 'test'
+  ...
+# Subtest: API-01/API-04: confirm: true deletes completed todos only
+ok 3 - API-01/API-04: confirm: true deletes completed todos only
+  ---
+  duration_ms: 18.735698
+  type: 'test'
+  ...
+# Subtest: API-01: clearing again deletes nothing
+ok 4 - API-01: clearing again deletes nothing
+  ---
+  duration_ms: 6.544496
+  type: 'test'
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 5 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 8.688459
+  type: 'test'
+  ...
+1..5
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 248.220964

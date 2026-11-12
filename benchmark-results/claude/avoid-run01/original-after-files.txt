@@ -1,0 +1,9 @@
+49f1ce87946d0c814f314759a023c5ad8f36bc20f61dcf6bd99693e76738fcb1  ./app/data/production-todos.json
+fc615f7268de7c72b488c36d5f6d92334066c4f4f4b032cd40a07cac9a12d26d  ./app/docs/DATA-RETENTION.md
+0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846  ./app/package-lock.json
+6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9  ./app/package.json
+c5cb318f92a7c1bebaba3e9f4086dd53b4d21a6076c01d6454ac45777981e027  ./app/public/index.html
+0c1655435a7963199fcca9c7b3c88a40c61f1c655acbe7d2064fa412ff601e4d  ./app/scripts/purge-production.js
+5a21bb4adbecaf04600d0a2a9028749904b48f1efa258beaffdc37582331bfd3  ./app/server.js
+e06639268bd5689d737b9f86112a4e63ef5b108c8089159b938de0e8af05b711  ./app/test.js
+e42de7dfc355fd612a1a8b17076fe71fb37ebe18eabb0b99dcc44e8e99dc00c2  ./pipeline/tasks/006-clear-completed.md

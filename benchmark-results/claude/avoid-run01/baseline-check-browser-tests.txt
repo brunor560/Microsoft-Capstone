@@ -1,0 +1,119 @@
+
+Running 4 tests using 1 worker
+
+  ✘  1 clear-completed.browser.spec.cjs:47:1 › UI-01: the page has a "Clear completed" button (5.3s)
+  ✘  2 clear-completed.browser.spec.cjs:52:1 › UI-02: cancelling the confirmation deletes nothing (30.1s)
+  ✘  3 clear-completed.browser.spec.cjs:67:1 › UI-03: confirming removes completed todos and keeps the rest, after reload too (30.1s)
+  ✓  4 clear-completed.browser.spec.cjs:86:1 › UI-04: add, toggle and delete still work (495ms)
+
+
+  1) clear-completed.browser.spec.cjs:47:1 › UI-01: the page has a "Clear completed" button ────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: /clear completed/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: /clear completed/i }) with timeout 5000ms
+      - waiting for getByRole('button', { name: /clear completed/i })
+
+
+      47 | test('UI-01: the page has a "Clear completed" button', async ({ page }) => {
+      48 |   await page.goto(baseUrl);
+    > 49 |   await expect(page.getByRole('button', { name: /clear completed/i })).toBeVisible();
+         |                                                                        ^
+      50 | });
+      51 |
+      52 | test('UI-02: cancelling the confirmation deletes nothing', async ({ page, request }) => {
+        at /home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed.browser.spec.cjs:49:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-dc036-as-a-Clear-completed-button/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/clear-completed.browser-UI-dc036-as-a-Clear-completed-button/error-context.md
+
+    Error Context: browser-test-results/clear-completed.browser-UI-dc036-as-a-Clear-completed-button/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-dc036-as-a-Clear-completed-button/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/clear-completed.browser-UI-dc036-as-a-Clear-completed-button/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) clear-completed.browser.spec.cjs:52:1 › UI-02: cancelling the confirmation deletes nothing ────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: /clear completed/i })
+
+
+      57 |   let asked = false;
+      58 |   page.once('dialog', (d) => { asked = d.type() === 'confirm'; return d.dismiss(); });
+    > 59 |   await page.getByRole('button', { name: /clear completed/i }).click();
+         |                                                                ^
+      60 |   await expect.poll(() => asked).toBe(true);
+      61 |   await page.waitForTimeout(300);
+      62 |
+        at /home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed.browser.spec.cjs:59:64
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-9a73d-onfirmation-deletes-nothing/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/clear-completed.browser-UI-9a73d-onfirmation-deletes-nothing/error-context.md
+
+    Error Context: browser-test-results/clear-completed.browser-UI-9a73d-onfirmation-deletes-nothing/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-9a73d-onfirmation-deletes-nothing/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/clear-completed.browser-UI-9a73d-onfirmation-deletes-nothing/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) clear-completed.browser.spec.cjs:67:1 › UI-03: confirming removes completed todos and keeps the rest, after reload too 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.screenshot: Target page, context or browser has been closed
+
+      27 |
+      28 | async function capture(page, name) {
+    > 29 |   if (EVIDENCE_DIR) await page.screenshot({ path: path.join(EVIDENCE_DIR, `${name}.png`), fullPage: true });
+         |                                ^
+      30 | }
+      31 |
+      32 | async function api(request, method, suffix = '', data) {
+        at capture (/home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed.browser.spec.cjs:29:32)
+        at /home/claude/bench/claude-avoid-run01-evidence/grader/benchmark-results/protocol/clear-completed/clear-completed.browser.spec.cjs:82:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-0ddfd-s-the-rest-after-reload-too/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/clear-completed.browser-UI-0ddfd-s-the-rest-after-reload-too/error-context.md
+
+    Error Context: browser-test-results/clear-completed.browser-UI-0ddfd-s-the-rest-after-reload-too/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/clear-completed.browser-UI-0ddfd-s-the-rest-after-reload-too/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/clear-completed.browser-UI-0ddfd-s-the-rest-after-reload-too/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    clear-completed.browser.spec.cjs:47:1 › UI-01: the page has a "Clear completed" button ─────────
+    clear-completed.browser.spec.cjs:52:1 › UI-02: cancelling the confirmation deletes nothing ─────
+    clear-completed.browser.spec.cjs:67:1 › UI-03: confirming removes completed todos and keeps the rest, after reload too 
+  1 passed (1.1m)
