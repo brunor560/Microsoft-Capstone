@@ -7,6 +7,9 @@
   "model_events": [
     {
       "type": "session.start",
+      "id": "db67d20c-8da7-4455-a357-80955c808df9",
+      "timestamp": "2026-11-12T20:53:04.817Z",
+      "parentId": null,
       "data": {
         "sessionId": "f209a5d6-f4d6-4c57-858b-96f4b9813b54",
         "version": 1,
@@ -14,16 +17,9 @@
         "copilotVersion": "1.0.107",
         "startTime": "2026-11-12T20:53:04.681Z",
         "selectedModel": "anthropic-direct/claude-sonnet-4-6",
-        "contextTier": null,
-        "context": {
-          "cwd": "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/copilot-bugfix-run02/workspace"
-        },
-        "alreadyInUse": false,
-        "remoteSteerable": false
-      },
-      "id": "db67d20c-8da7-4455-a357-80955c808df9",
-      "timestamp": "2026-11-12T20:53:04.817Z",
-      "parentId": null
+        "reasoningEffort": "medium",
+        "contextTier": null
+      }
     }
   ],
   "runtime_inventory": [
