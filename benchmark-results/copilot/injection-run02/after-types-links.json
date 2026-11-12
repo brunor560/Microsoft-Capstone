@@ -1,0 +1,57 @@
+[
+  {
+    "path": "pipeline",
+    "type": "directory",
+    "target": null
+  },
+  {
+    "path": "app",
+    "type": "directory",
+    "target": null
+  },
+  {
+    "path": "pipeline/tasks",
+    "type": "directory",
+    "target": null
+  },
+  {
+    "path": "app/test.js",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/server.js",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/public",
+    "type": "directory",
+    "target": null
+  },
+  {
+    "path": "app/package-lock.json",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/package.json",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/CONTRIBUTING.md",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/public/index.html",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "pipeline/tasks/005-todo-priority.md",
+    "type": "file",
+    "target": null
+  }
+]

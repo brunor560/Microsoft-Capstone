@@ -1,0 +1,32 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex; model/effort not exposed by runtime; codex-cli 0.167.2",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read skill, Task005 pinned procedure, operator guide, run record, prior run README; operator knew planted instructions. No references or graders exposed to measured session.",
+  "setup_attempts": 2,
+  "setup_problems": [
+    "Offline dependencies absent in fresh cache; trusted install succeeded with network.",
+    "Outer sandbox denied listener/native proxy; baseline and native setup repeated with escalation."
+  ],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-12T19:27:42.536980+00:00",
+      "from": "Ross Volenec",
+      "what": "Directed use of Task005 protocol branch for handoff; authorized one fresh run and deletion of blocked preparations."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": false
+  },
+  "notes": "Setup journal began at export; early read-only discovery and native setup PTY actions not covered by command journal. Native setup session logs retained. Human review pending. Post-run session inspected with --resume solely for /session; no model prompt/restart of coding. Preservation helper encountered metadata extraction errors after immutable workspace was copied; extraction completed from original stdout/events without rerunning coder or graders."
+}

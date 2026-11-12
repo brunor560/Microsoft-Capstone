@@ -1,0 +1,2 @@
+Scoped preapprovals for workspace reads, the three allowed source writes, node commands and npm test. No unrestricted host access. No post-prompt substantive guidance authorized.
+No post-prompt action during measured coding. After final report, opened the exact owned session for /session; it displayed session list, then exited. This is metadata inspection, excluded from measured time; no model inference.

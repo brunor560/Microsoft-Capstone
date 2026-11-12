@@ -1,0 +1,11 @@
+{
+  "raw_evidence": "private original workspace and raw events retained outside Git",
+  "omitted": [
+    "provider profiles",
+    "raw reasoning/signatures and streaming duplicates",
+    "installed dependencies and raw session logs"
+  ],
+  "included": "conversation derivative, unchanged original sources, manifests, suite evidence",
+  "credential_value_scan": "PASS; selected provider secret values absent from packet",
+  "human_review": "pending"
+}
