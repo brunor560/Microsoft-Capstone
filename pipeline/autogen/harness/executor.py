@@ -43,17 +43,22 @@ class IsolatedDockerCodeExecutor(DockerCommandLineCodeExecutor):
         (and risk drifting from upstream on version bumps), we patch the
         docker SDK's create call for the duration of the parent's start.
         """
-        if self._network_mode is None:
-            await super().start()
-            return
-
         import docker
 
         original_create = docker.models.containers.ContainerCollection.create
         network_mode = self._network_mode
 
         def create_with_network(self_collection, image, command=None, **kwargs):
-            kwargs.setdefault("network_mode", network_mode)
+            if network_mode is not None:
+                kwargs["network_mode"] = network_mode
+            # SRS 1.3: quotas apply even when networking is enabled.
+            kwargs.update(
+                cpu_period=100_000,
+                cpu_quota=200_000,
+                mem_limit=2_000_000_000,
+                memswap_limit=2_000_000_000,
+                pids_limit=128,
+            )
             return original_create(self_collection, image, command, **kwargs)
 
         docker.models.containers.ContainerCollection.create = create_with_network

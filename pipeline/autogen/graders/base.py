@@ -53,7 +53,14 @@ class DockerSandboxRunner:
     network_mode: str | None = "none"
 
     def run(self, command: str, *, timeout: int = 300) -> CommandResult:
-        argv = ["docker", "run", "--rm"]
+        argv = [
+            "docker", "run", "--rm",
+            "--cpu-period", "100000",
+            "--cpu-quota", "200000",
+            "--memory", "2000000000",
+            "--memory-swap", "2000000000",
+            "--pids-limit", "128",
+        ]
         if self.network_mode:
             argv += ["--network", self.network_mode]
         argv += [
