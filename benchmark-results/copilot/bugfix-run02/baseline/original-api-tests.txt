@@ -1,0 +1,372 @@
+▶ API-01: completed must be a boolean
+  ✖ rejects completed: "false" (3.649625ms)
+  ✖ rejects completed: "true" (1.814542ms)
+  ✖ rejects completed: 0 (1.495042ms)
+  ✖ rejects completed: 1 (1.454208ms)
+  ✖ rejects completed: null (1.156708ms)
+  ✖ rejects completed: {} (0.879167ms)
+  ✖ rejects completed: [] (0.904417ms)
+✖ API-01: completed must be a boolean (34.103291ms)
+✖ API-01: string "false" does not mark a todo complete (1.443875ms)
+▶ API-02: malformed ids are rejected
+  ✖ rejects id 5abc (0.907417ms)
+  ✖ rejects id -5 (0.957292ms)
+  ✖ rejects id 0 (1.255583ms)
+  ✖ rejects id 0x1 (0.688208ms)
+  ✖ rejects id 1.0 (0.790042ms)
+  ✖ rejects id abc (0.95475ms)
+  ✖ rejects id 9007199254740992 (0.829291ms)
+✖ API-02: malformed ids are rejected (7.366875ms)
+✔ API-02: leading zeros refer to the same todo (1.095792ms)
+✔ API-02: a valid id with no todo returns 404 (1.061042ms)
+✖ API-03: a non-object body is rejected (0.986334ms)
+✖ API-04: an invalid completed value blocks a valid title (1.009291ms)
+✔ API-05: boolean updates still work in both directions (2.009875ms)
+✔ API-05: valid title updates still work (0.669ms)
+✔ API-05: GET, POST and DELETE keep their behaviour (1.531625ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 5
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.509458
+
+✖ failing tests:
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: "false" (3.649625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: "true" (1.814542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: 0 (1.495042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: 1 (1.454208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: null (1.156708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: {} (0.879167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:80:13
+✖ rejects completed: [] (0.904417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:80:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:85:1
+✖ API-01: string "false" does not mark a todo complete (1.443875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:91:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 5abc (0.907417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id -5 (0.957292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 0 (1.255583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 0x1 (0.688208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 1.0 (0.790042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id abc (0.95475ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:102:13
+✖ rejects id 9007199254740992 (0.829291ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:102:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:121:1
+✖ API-03: a non-object body is rejected (0.986334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:123:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at update-bugfix-api.test.cjs:126:1
+✖ API-04: an invalid completed value blocks a valid title (1.009291ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at expectRejected (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:67:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders/task/benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs:129:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

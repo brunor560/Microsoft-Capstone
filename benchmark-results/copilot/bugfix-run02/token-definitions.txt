@@ -1,0 +1,327 @@
+copilot-sdk/generated/session-events.d.ts
+ tokenCount: number;
+}
+/**
+ * Token usage metrics for this model
+ */
+export interface UsageMetricsModelMetricUsage {
+    /**
+     * Total tokens read from prompt cache
+     */
+    cacheReadTokens: number;
+    /**
+     * Total tokens written to prompt cache
+     */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced
+     */
+    outputTokens: number;
+    /**
+     * Total output tokens used for reasoning
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregated code change metrics
+ */
+export interface UsageMetricsCodeChanges {
+    /**
+     * Distinct file paths modified during the session
+     */
+    filesModified: string[];
+    /**
+     * Number of distinct files modified
+     */
+    filesModifiedCount: number;
+    /**
+     * Total lines of cod
+
+copilot-sdk/generated/session-events.d.ts
+xport interface ShutdownModelMetricUsage {
+    /**
+     * Total tokens read from prompt cache across all requests
+     */
+    cacheReadTokens: number;
+    /**
+     * Total tokens written to prompt cache across all requests
+     */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed across all requests to this model
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced across all requests to this model
+     */
+    outputTokens: number;
+    /**
+     * Total reasoning tokens produced across all requests to this model
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregate code change metrics for the session
+ */
+export interface ShutdownCodeChanges {
+    /**
+     * List of file paths that were modified during the session
+     */
+    filesModified: string[];
+    /**
+     * Total number of lines adde
+
+copilot-sdk/generated/session-events.d.ts
+n the compaction LLM call
+     */
+    cacheReadTokens?: number;
+    /**
+     * Tokens written to prompt cache in the compaction LLM call
+     */
+    cacheWriteTokens?: number;
+    /**
+     * Duration of the compaction LLM call in milliseconds
+     */
+    duration?: number;
+    /**
+     * Input tokens consumed by the compaction LLM call
+     */
+    inputTokens?: number;
+    /**
+     * Model identifier used for the compaction LLM call
+     */
+    model?: string;
+    /**
+     * Model display name captured for the compaction call.
+     */
+    modelDisplayName?: string;
+    /**
+     * Output tokens produced by the compaction LLM call
+     */
+    outputTokens?: number;
+    /**
+     * Provider captured for the compaction call; absent when attribution is unknown.
+     */
+    provider?: ModelProviderRef;
+    /**
+     * Number of model requests rep
+
+copilot-sdk/generated/session-events.d.ts
+cumulated token count for one token type.
+ */
+export interface UsageMetricsModelMetricTokenDetail {
+    /**
+     * Accumulated token count for this token type
+     */
+    tokenCount: number;
+}
+/**
+ * Token usage metrics for this model
+ */
+export interface UsageMetricsModelMetricUsage {
+    /**
+     * Total tokens read from prompt cache
+     */
+    cacheReadTokens: number;
+    /**
+     * Total tokens written to prompt cache
+     */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced
+     */
+    outputTokens: number;
+    /**
+     * Total output tokens used for reasoning
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregated code change metrics
+ */
+export interface UsageMetricsCodeChanges {
+    /**
+     * Distinct file paths modified during t
+
+copilot-sdk/generated/session-events.d.ts
+tric, storing the accumulated token count.
+ */
+export interface ShutdownModelMetricTokenDetail {
+    /**
+     * Accumulated token count for this token type
+     */
+    tokenCount: number;
+}
+/**
+ * Token usage breakdown
+ */
+export interface ShutdownModelMetricUsage {
+    /**
+     * Total tokens read from prompt cache across all requests
+     */
+    cacheReadTokens: number;
+    /**
+     * Total tokens written to prompt cache across all requests
+     */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed across all requests to this model
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced across all requests to this model
+     */
+    outputTokens: number;
+    /**
+     * Total reasoning tokens produced across all requests to this model
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregate code 
+
+copilot-sdk/generated/session-events.d.ts
+mpaction LLM call (aligned with assistant.usage format)
+ */
+export interface CompactionCompleteCompactionTokensUsed {
+    /**
+     * Whether the compaction's credit amount was reported for all, some, or none of its calls.
+     */
+    aiCreditsStatus?: AiCreditsStatus;
+    /**
+     * Cached input tokens reused in the compaction LLM call
+     */
+    cacheReadTokens?: number;
+    /**
+     * Tokens written to prompt cache in the compaction LLM call
+     */
+    cacheWriteTokens?: number;
+    /**
+     * Duration of the compaction LLM call in milliseconds
+     */
+    duration?: number;
+    /**
+     * Input tokens consumed by the compaction LLM call
+     */
+    inputTokens?: number;
+    /**
+     * Model identifier used for the compaction LLM call
+     */
+    model?: string;
+    /**
+     * Model display name captured for the compaction call.
+     
+
+copilot-sdk/generated/session-events.d.ts
+he
+     */
+    cacheReadTokens: number;
+    /**
+     * Total tokens written to prompt cache
+     */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced
+     */
+    outputTokens: number;
+    /**
+     * Total output tokens used for reasoning
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregated code change metrics
+ */
+export interface UsageMetricsCodeChanges {
+    /**
+     * Distinct file paths modified during the session
+     */
+    filesModified: string[];
+    /**
+     * Number of distinct files modified
+     */
+    filesModifiedCount: number;
+    /**
+     * Total lines of code added
+     */
+    linesAdded: number;
+    /**
+     * Total lines of code removed
+     */
+    linesRemoved: number;
+}
+/**
+ * Usage for one recorded provider and mod
+
+copilot-sdk/generated/session-events.d.ts
+  */
+    cacheWriteTokens: number;
+    /**
+     * Total input tokens consumed across all requests to this model
+     */
+    inputTokens: number;
+    /**
+     * Total output tokens produced across all requests to this model
+     */
+    outputTokens: number;
+    /**
+     * Total reasoning tokens produced across all requests to this model
+     */
+    reasoningTokens?: number;
+}
+/**
+ * Aggregate code change metrics for the session
+ */
+export interface ShutdownCodeChanges {
+    /**
+     * List of file paths that were modified during the session
+     */
+    filesModified: string[];
+    /**
+     * Total number of lines added during the session
+     */
+    linesAdded: number;
+    /**
+     * Total number of lines removed during the session
+     */
+    linesRemoved: number;
+}
+/**
+ * A session-wide shutdown token-type entry storing the accumulated t
+
+copilot-sdk/generated/session-events.d.ts
+sed for model calls, if applicable (e.g. "none", "low", "medium", "high", "xhigh", "max")
+     */
+    reasoningEffort?: string;
+    /**
+     * Reasoning summary mode used for this model call, if applicable
+     */
+    reasoningSummary?: ReasoningSummary;
+    /**
+     * Number of output tokens used for reasoning (e.g., chain-of-thought)
+     */
+    reasoningTokens?: number;
+    /**
+     * Number of rejected speculative prediction tokens
+     */
+    rejectedPredictionTokens?: number;
+    /**
+     * Serialized (uncompressed) byte length of the request body, before any Content-Encoding. A content-free size signal.
+     */
+    requestBodyBytes?: number;
+    /**
+     * Uncompressed fallback that produced this outcome; absent when the body was sent with the requested encoding
+     */
+    requestBodyCompressionFallback?: ModelCallRequestBodyCompr

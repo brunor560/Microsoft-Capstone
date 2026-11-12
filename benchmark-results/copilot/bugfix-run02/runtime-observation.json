@@ -1,0 +1,106 @@
+{
+  "source": "owned assistant.message events",
+  "models": [
+    "claude-sonnet-4-6"
+  ],
+  "session_id": "f209a5d6-f4d6-4c57-858b-96f4b9813b54",
+  "model_events": [
+    {
+      "type": "session.start",
+      "id": "db67d20c-8da7-4455-a357-80955c808df9",
+      "timestamp": "2026-11-12T20:53:04.817Z",
+      "parentId": null,
+      "data": {
+        "sessionId": "f209a5d6-f4d6-4c57-858b-96f4b9813b54",
+        "version": 1,
+        "producer": "copilot-agent",
+        "copilotVersion": "1.0.107",
+        "startTime": "2026-11-12T20:53:04.681Z",
+        "selectedModel": "anthropic-direct/claude-sonnet-4-6",
+        "reasoningEffort": "medium",
+        "contextTier": null
+      }
+    }
+  ],
+  "runtime_inventory": [
+    {
+      "type": "session.skills_loaded",
+      "data": {
+        "skills": [
+          {
+            "name": "customize-cloud-agent",
+            "commandName": "customize-cloud-agent",
+            "description": "Skill for customizing the Copilot cloud agent (formerly known as Copilot coding agent) environment, including copilot-setup-steps.yml configuration, preinstalling tools and dependencies, runners, and settings. Use when the user mentions copilot-setup-steps, copilot setup steps, or wants to configure the cloud agent environment.",
+            "source": "builtin",
+            "userInvocable": false,
+            "enabled": true,
+            "path": "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/measured/home/Library/Caches/copilot/pkg/darwin-arm64/1.0.107/builtin/customize-cloud-agent/SKILL.md"
+          },
+          {
+            "name": "github-pr-media",
+            "commandName": "github-pr-media",
+            "description": "Upload an image or video to GitHub's user attachments API and embed it in a pull request description or comment. Use when asked to add screenshots, diagrams, recordings, or other media to a PR or GitHub comment.",
+            "source": "builtin",
+            "userInvocable": false,
+            "enabled": true,
+            "path": "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/measured/home/Library/Caches/copilot/pkg/darwin-arm64/1.0.107/builtin/github-pr-media/SKILL.md"
+          },
+          {
+            "name": "pr-stack",
+            "commandName": "pr-stack",
+            "description": "Manage GitHub pull request stacks. Use before merging or landing a PR and its dependencies (including partial merges), or creating, splitting, extending, restacking, or rebasing dependent PRs. Uses Git branches/worktrees and native GitHub Stack linking; not for independent PRs.",
+            "source": "builtin",
+            "userInvocable": false,
+            "enabled": true,
+            "path": "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/measured/home/Library/Caches/copilot/pkg/darwin-arm64/1.0.107/builtin/pr-stack/SKILL.md"
+          }
+        ]
+      },
+      "ephemeral": true,
+      "id": "c9a438a8-7071-4652-9e7b-7c2453515e2a",
+      "timestamp": "2026-11-12T20:53:04.974Z",
+      "parentId": "db67d20c-8da7-4455-a357-80955c808df9"
+    },
+    {
+      "type": "session.custom_agents_updated",
+      "data": {
+        "agents": [],
+        "warnings": [],
+        "errors": []
+      },
+      "ephemeral": true,
+      "id": "72142e87-2e40-4f22-9c68-6481cc87960c",
+      "timestamp": "2026-11-12T20:53:04.976Z",
+      "parentId": "db67d20c-8da7-4455-a357-80955c808df9"
+    },
+    {
+      "type": "session.mcp_servers_loaded",
+      "ephemeral": true,
+      "data": {
+        "servers": [
+          {
+            "name": "WorkIQ",
+            "status": "disabled"
+          },
+          {
+            "name": "browser-use",
+            "status": "disabled"
+          },
+          {
+            "name": "github-copilot-browser",
+            "status": "disabled"
+          },
+          {
+            "name": "github-mcp-server",
+            "status": "disabled"
+          }
+        ]
+      },
+      "id": "2c344df0-bd11-4aed-9be8-e94a36c4da38",
+      "timestamp": "2026-11-12T20:53:04.987Z",
+      "parentId": "db67d20c-8da7-4455-a357-80955c808df9"
+    }
+  ],
+  "thinking_observed": true,
+  "thinking_note": "Default reasoning events observed; content/signatures omitted; wire mode/budget/provider effort unobserved."
+}

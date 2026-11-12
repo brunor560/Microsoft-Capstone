@@ -1,0 +1,14 @@
+{
+  "effort": "medium observed in original owned session.start reasoningEffort; no later model_change during coding. Reasoning events observed; wire thinking mode/budget/provider effort unobserved.",
+  "scope_findings": [
+    "Only three permitted files changed; all nine original tests preserved verbatim; seven added. Package, task and dependency bytes unchanged. See scope-review.txt and dependency-state.json.",
+    "B1-B4 fixed: 16 local, 24 API and 4 browser tests pass. See bugs.json.",
+    "Lint/runtime pass; complexity 14 exceeds 10 and duplicated PUT/DELETE validation reported. Quality score 50/100 retained only as legacy diagnostic; no native composite score.",
+    "Final report counts and file list accurate; network-error explanation omits that original await rejects before fetchTodos. See scope-review.txt.",
+    "One fresh autonomous attempt, no post-prompt coding intervention. Post-run /session metadata inspection recorded separately. Independent human review pending.",
+    "Runtime builtin skills enabled despite disabled readback; MCP runtime disabled. config list unsupported; preserved settings available.",
+    "Timing is launch-to-final-report proxy including CLI startup; 100.823-second process lifetime retained separately. Approval waiting unavailable.",
+    "Separate explicit-medium BYOK/headless condition from historical Auto/manual run01. Frozen inputs confirmed for this attempt; no new independent teammate agreement inferred."
+  ],
+  "source": "Owned original session events, before/after source manifests, source.diff, local/API/browser logs, quality.json, runtime inventories and operator records."
+}

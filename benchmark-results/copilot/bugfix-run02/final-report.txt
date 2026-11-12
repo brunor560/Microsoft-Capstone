@@ -1,0 +1,38 @@
+All 16 tests pass. Here's the summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`** – Rewrote `PUT /api/todos/:id` to:
+- Validate the `:id` parameter the same way DELETE does (digits only, 0 < id ≤ MAX_SAFE_INTEGER) → 400
+- Reject non-object bodies (arrays, etc.) → 400
+- Reject `completed` values that are not strictly `boolean` → 400
+- Apply changes only after all validation passes (no partial mutations)
+
+**`app/public/index.html`** – Fixed `toggleStatus`:
+- Added `try/catch` and `res.ok` check; on failure, calls `showItemError()` instead of re-rendering
+- Added `showItemError(id, message)` that finds the todo's `<li data-id="…">` and inserts/updates a `<span role="alert">` with the error message
+- Added `data-id` attribute to each `<li>` for targeting
+- On success, `fetchTodos()` is still called (preserving existing behavior)
+
+**`app/test.js`** – Added 7 new tests covering API-01 through API-04 for `PUT /api/todos/:id`
+
+### Bug causes
+
+1. **"Un-checks end up checked"**: `Boolean(req.body.completed)` was used. `Boolean("false")` is `true` because any non-empty string is truthy. Fixed by requiring `completed` to be a JSON boolean and assigning it directly.
+
+2. **"Nothing happens when server is down"**: `toggleStatus` had no error handling—it called `fetchTodos()` unconditionally after the await (which would re-render the original state), and never showed any error. Fixed with try/catch + `res.ok` check and a visible `role="alert"` error message.
+
+### Test results
+
+**Command:** `cd app && npm test`  
+**Result:** 16 passed, 0 failed, 0 skipped
+
+### Browser/manual checks
+None performed (purely automated).
+
+### Model info
+Powered by `anthropic-direct/claude-sonnet-4-6`. Session timing and token counts: not available.

@@ -1,0 +1,1 @@
+File manifest includes hidden files; node_modules excluded and preserved in original workspace/dependency manifest. Export rejected symlinks/special files. Trusted dependencies installed before timing.

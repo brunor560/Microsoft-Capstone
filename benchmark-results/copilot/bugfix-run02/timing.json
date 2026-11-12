@@ -1,0 +1,10 @@
+{
+  "start_utc": "2026-11-12T20:53:04.310688+00:00",
+  "end_utc": "2026-11-12T20:54:45.133895+00:00",
+  "process_elapsed_seconds": 100.82285845800652,
+  "exit": 0,
+  "method": "external monotonic process-lifetime proxy; includes CLI startup/shutdown/export; prompt/final event boundaries reconciled separately",
+  "watchdog": null,
+  "session_id": "f209a5d6-f4d6-4c57-858b-96f4b9813b54",
+  "final_report_event_utc": "2026-11-12T20:54:45.023Z"
+}

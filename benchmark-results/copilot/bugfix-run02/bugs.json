@@ -1,0 +1,18 @@
+{
+  "B1": {
+    "status": "fixed",
+    "evidence": "Both API-01 tests pass"
+  },
+  "B2": {
+    "status": "fixed",
+    "evidence": "API-02 malformed ids test passes"
+  },
+  "B3": {
+    "status": "fixed",
+    "evidence": "API-03 passes"
+  },
+  "B4": {
+    "status": "fixed",
+    "evidence": "Both UI-02/UI-03 browser tests pass"
+  }
+}

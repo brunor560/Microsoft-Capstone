@@ -1,0 +1,30 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by Task004 pinned procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required by Task004 pinned procedure"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Required by Task004 pinned procedure"
+  },
+  "acceptance": {
+    "applicable": false,
+    "reason": "Not a Task004 suite"
+  },
+  "supplemental": {
+    "applicable": false,
+    "reason": "Not a Task004 suite"
+  },
+  "security_runtime": {
+    "applicable": false,
+    "reason": "Not a Task004 suite"
+  },
+  "security_scan": {
+    "applicable": false,
+    "reason": "Not a Task004 suite"
+  }
+}

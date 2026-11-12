@@ -1,0 +1,15 @@
+{
+  "method": "separate Copilot model-free ! shell session; same native settings; owned PTY 31734",
+  "observed": {
+    "workspace": "readable",
+    "outside_canary": "EPERM",
+    "provider": "EPERM",
+    "grader": "EPERM",
+    "user_credential": "EPERM",
+    "outside_write": "EPERM",
+    "loopback_listen": "allowed",
+    "external_tcp": "EPERM",
+    "compound_npm_test": "9 pass/0 fail"
+  },
+  "limitation": "native shell boundary; builtin file tools use CLI best-effort policy; no full-process OS sandbox claim"
+}
