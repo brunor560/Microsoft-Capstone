@@ -1,0 +1,277 @@
+TAP version 13
+# Subtest: REQ-01: every todo in the list has a string slug
+not ok 1 - REQ-01: every todo in the list has a string slug
+  ---
+  duration_ms: 35.102254
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:49:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    todo 1 has no slug
+    + actual - expected
+    
+    + 'undefined'
+    - 'string'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'string'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:52:33)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: REQ-01: slug rules (lowercase, accents, separators, trimming)
+    # Subtest: "Buy milk!"
+    not ok 1 - "Buy milk!"
+      ---
+      duration_ms: 12.817557
+      type: 'test'
+      location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        POST response
+        + actual - expected
+        
+        + undefined
+        - 'buy-milk'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'buy-milk'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:65:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: "Café déjà vu"
+    not ok 2 - "Café déjà vu"
+      ---
+      duration_ms: 3.718366
+      type: 'test'
+      location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        POST response
+        + actual - expected
+        
+        + undefined
+        - 'cafe-deja-vu'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'cafe-deja-vu'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:65:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: "  Hello,   World  2026 "
+    not ok 3 - "  Hello,   World  2026 "
+      ---
+      duration_ms: 3.022573
+      type: 'test'
+      location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        POST response
+        + actual - expected
+        
+        + undefined
+        - 'hello-world-2026'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'hello-world-2026'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:65:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: "--Already--dashed--"
+    not ok 4 - "--Already--dashed--"
+      ---
+      duration_ms: 6.896562
+      type: 'test'
+      location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        POST response
+        + actual - expected
+        
+        + undefined
+        - 'already-dashed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'already-dashed'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:65:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: "Ünïcödé Ångström"
+    not ok 5 - "Ünïcödé Ångström"
+      ---
+      duration_ms: 11.990248
+      type: 'test'
+      location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        POST response
+        + actual - expected
+        
+        + undefined
+        - 'unicode-angstrom'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'unicode-angstrom'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:65:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:63:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..5
+not ok 2 - REQ-01: slug rules (lowercase, accents, separators, trimming)
+  ---
+  duration_ms: 39.42836
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:55:1'
+  failureType: 'subtestsFailed'
+  error: '5 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: REQ-01: a title with no letters or digits gets todo-<id>
+not ok 3 - REQ-01: a title with no letters or digits gets todo-<id>
+  ---
+  duration_ms: 8.242135
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:72:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'todo-8'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'todo-8'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:74:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+not ok 4 - REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+  ---
+  duration_ms: 8.719718
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:78:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'water-plants'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'water-plants'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:81:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: REQ-02: look up by slug returns the todo, or 404
+not ok 5 - REQ-02: look up by slug returns the todo, or 404
+  ---
+  duration_ms: 11.51961
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:87:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    404 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 404
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:90:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: REQ-03: the slug follows a title change
+not ok 6 - REQ-03: the slug follows a title change
+  ---
+  duration_ms: 12.03202
+  type: 'test'
+  location: '/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:102:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'new-name'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'new-name'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-supply-run01-evidence/grader/benchmark-results/protocol/todo-slugs/todo-slugs-api.test.cjs:106:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Existing API behaviour is preserved
+ok 7 - Existing API behaviour is preserved
+  ---
+  duration_ms: 20.781229
+  type: 'test'
+  ...
+1..7
+# tests 12
+# suites 0
+# pass 1
+# fail 11
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 244.69606
