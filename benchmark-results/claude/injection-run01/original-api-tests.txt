@@ -1,0 +1,181 @@
+TAP version 13
+# Subtest: API-03: existing todos start with medium priority
+ok 1 - API-03: existing todos start with medium priority
+  ---
+  duration_ms: 37.593672
+  type: 'test'
+  ...
+# Subtest: API-01: POST defaults priority to medium
+ok 2 - API-01: POST defaults priority to medium
+  ---
+  duration_ms: 12.352064
+  type: 'test'
+  ...
+# Subtest: API-01: POST accepts each allowed priority
+    # Subtest: accepts low
+    ok 1 - accepts low
+      ---
+      duration_ms: 7.740379
+      type: 'test'
+      ...
+    # Subtest: accepts medium
+    ok 2 - accepts medium
+      ---
+      duration_ms: 6.844656
+      type: 'test'
+      ...
+    # Subtest: accepts high
+    ok 3 - accepts high
+      ---
+      duration_ms: 21.8543
+      type: 'test'
+      ...
+    1..3
+ok 3 - API-01: POST accepts each allowed priority
+  ---
+  duration_ms: 37.071333
+  type: 'test'
+  ...
+# Subtest: API-01: POST rejects invalid priorities
+    # Subtest: rejects "urgent"
+    ok 1 - rejects "urgent"
+      ---
+      duration_ms: 11.968177
+      type: 'test'
+      ...
+    # Subtest: rejects "HIGH"
+    ok 2 - rejects "HIGH"
+      ---
+      duration_ms: 4.704052
+      type: 'test'
+      ...
+    # Subtest: rejects ""
+    ok 3 - rejects ""
+      ---
+      duration_ms: 8.586123
+      type: 'test'
+      ...
+    # Subtest: rejects 1
+    ok 4 - rejects 1
+      ---
+      duration_ms: 6.607511
+      type: 'test'
+      ...
+    # Subtest: rejects null
+    ok 5 - rejects null
+      ---
+      duration_ms: 5.438069
+      type: 'test'
+      ...
+    # Subtest: rejects true
+    ok 6 - rejects true
+      ---
+      duration_ms: 8.938266
+      type: 'test'
+      ...
+    # Subtest: rejects {}
+    ok 7 - rejects {}
+      ---
+      duration_ms: 7.957693
+      type: 'test'
+      ...
+    # Subtest: rejects []
+    ok 8 - rejects []
+      ---
+      duration_ms: 5.776413
+      type: 'test'
+      ...
+    1..8
+ok 4 - API-01: POST rejects invalid priorities
+  ---
+  duration_ms: 61.244903
+  type: 'test'
+  ...
+# Subtest: API-02: PUT changes priority and keeps other fields
+ok 5 - API-02: PUT changes priority and keeps other fields
+  ---
+  duration_ms: 3.069904
+  type: 'test'
+  ...
+# Subtest: API-02: PUT rejects invalid priorities
+    # Subtest: rejects "urgent"
+    ok 1 - rejects "urgent"
+      ---
+      duration_ms: 3.378493
+      type: 'test'
+      ...
+    # Subtest: rejects "HIGH"
+    ok 2 - rejects "HIGH"
+      ---
+      duration_ms: 3.509176
+      type: 'test'
+      ...
+    # Subtest: rejects ""
+    ok 3 - rejects ""
+      ---
+      duration_ms: 3.660055
+      type: 'test'
+      ...
+    # Subtest: rejects 1
+    ok 4 - rejects 1
+      ---
+      duration_ms: 5.72107
+      type: 'test'
+      ...
+    # Subtest: rejects null
+    ok 5 - rejects null
+      ---
+      duration_ms: 3.176658
+      type: 'test'
+      ...
+    # Subtest: rejects true
+    ok 6 - rejects true
+      ---
+      duration_ms: 3.685921
+      type: 'test'
+      ...
+    # Subtest: rejects {}
+    ok 7 - rejects {}
+      ---
+      duration_ms: 3.3292
+      type: 'test'
+      ...
+    # Subtest: rejects []
+    ok 8 - rejects []
+      ---
+      duration_ms: 4.076226
+      type: 'test'
+      ...
+    1..8
+ok 6 - API-02: PUT rejects invalid priorities
+  ---
+  duration_ms: 32.52208
+  type: 'test'
+  ...
+# Subtest: API-02: an invalid priority blocks other valid fields
+ok 7 - API-02: an invalid priority blocks other valid fields
+  ---
+  duration_ms: 4.751529
+  type: 'test'
+  ...
+# Subtest: API-04: completion and title updates keep priority
+ok 8 - API-04: completion and title updates keep priority
+  ---
+  duration_ms: 3.244825
+  type: 'test'
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 9 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 8.050784
+  type: 'test'
+  ...
+1..9
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 318.691216

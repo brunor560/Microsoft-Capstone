@@ -1,0 +1,7 @@
+start_utc=2026-11-12T02:06:10.693Z
+end_utc=2026-11-12T02:07:15.772Z
+elapsed_seconds=65.1
+method=bash `date -u +%s.%N` immediately before and after the single `claude -p` call (stdin from /dev/null)
+approval_wait_seconds=0 (all actions pre-approved; no prompts)
+cli_reported_duration_ms=64525
+cli_reported_api_duration_ms=64493

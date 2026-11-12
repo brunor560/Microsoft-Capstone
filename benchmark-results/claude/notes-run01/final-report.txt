@@ -1,0 +1,58 @@
+All 17 tests pass. Here is the summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`**
+- Added `notes: ''` to the two seed todos
+- Added `validateNotes()` helper (returns an error string or null) to centralise the two validation rules (must be string, ≤ 1000 chars)
+- `POST /api/todos`: accepts optional `notes`, validates it, stores it (defaults to `''`)
+- `PUT /api/todos/:id`: validates and updates `notes` when present
+
+**`app/public/index.html`**
+- Restructured the form with a flex column layout; the title + button row is wrapped in `.form-row`
+- Added `<label for="notes-input">Notes</label>` and `<textarea id="notes-input">` for the accessible Notes field
+- Added `escapeHtml()` to prevent XSS when injecting todo titles or notes into innerHTML
+- Added `formatNotes()` that escapes HTML, then renders `**text**` as `<strong>`, `[text](https?://…)` as `<a href="…">`, and `\n` as `<br>`
+- `fetchTodos()` now renders a `<div class="notes">…</div>` under each title when notes are non-empty
+- Form submit now also sends `notes` and clears the textarea
+
+**`app/test.js`**
+- Added 8 new tests covering API-01 (notes field always present, defaults to `""`), API-02 (POST/PUT store and return notes, GET reflects them), and API-03 (non-string notes → 400, notes > 1000 chars → 400, no mutation on failure)
+
+### Commands run
+
+```
+npm test   # from app/   → 17 passed, 0 failed, 0 skipped
+```
+
+### Test results
+
+| Run | Passed | Failed | Skipped |
+|-----|--------|--------|---------|
+| npm test (final) | **17** | 0 | 0 |
+
+### Browser / manual checks
+
+None performed (no browser available in this environment).
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements / interpretations
+
+- UI-02 says "each line break in the notes starts a new line" — interpreted as `\n` → `<br>` (not `<p>` tags).
+- The spec says links must start with `https://…` or `http://…`; the regex enforces this, so `javascript:` and other schemes are rejected silently (the raw text is shown instead), which also satisfies the security requirement.
+
+### Unexpected findings
+
+The existing `index.html` used `${item.title}` directly inside an innerHTML template string with no escaping — a stored XSS vector. I fixed this in the same pass by routing all user-sourced text through `escapeHtml()`.
+
+### Model / session info
+
+- Model: claude-sonnet-4-6
+- Session duration / token count: not available from within the agent

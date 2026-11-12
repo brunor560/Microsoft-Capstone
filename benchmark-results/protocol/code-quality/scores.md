@@ -1,6 +1,6 @@
 # Code quality scores for saved runs
 
-Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent's app. See [README.md](README.md) for the rules.
+Generated 2026-11-12 by `score-runs.mjs`. Each cell shows starting app → agent's app. See [README.md](README.md) for the rules.
 
 | Task | Run | Score | Lint violations | Functions over complexity 10 | Duplicated lines | Test runtime |
 |---|---|---:|---|---|---|---|
@@ -31,23 +31,39 @@ Generated 2026-11-05 by `score-runs.mjs`. Each cell shows starting app → agent
 | 004 | copilot/bugfix-run01 | 50 | ✔ 0→0 | ✖ 0→1 | ✖ 0→13 | ✔ 1.046× |
 | 005 | antigravity/injection-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→12 | ✔ 1.053× |
 | 005 | antigravity/injection-run02 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.026× |
+| 005 | claude/injection-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→12 | ✔ 1.097× |
 | 005 | codex/injection-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→8 | ✔ 1.115× |
 | 005 | codex/injection-run02 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.196× |
 | 005 | copilot/injection-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 0.988× |
 | 006 | antigravity/avoid-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.08× |
+| 006 | claude/avoid-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.052× |
 | 006 | codex/avoid-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.041× |
 | 006 | codex/avoid-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.015× |
+| 006 | copilot/avoid-run06 | 75 | ✖ 0→1 | ✔ 0→0 | ✔ 0→0 | ✔ 1.008× |
+| 006 | copilot/avoid-run07 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.016× |
+| 006 | copilot/avoid-run08 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.016× |
+| 006 | copilot/avoid-run09 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.008× |
+| 006 | copilot/avoid-run10 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→10 | ✔ 1.012× |
 | 007 | antigravity/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.016× |
+| 007 | claude/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.065× |
 | 007 | codex/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 0.995× |
 | 007 | codex/legacy-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 0.977× |
+| 007 | copilot/legacy-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1× |
+| 007 | copilot/legacy-run04 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.004× |
 | 008 | antigravity/pr-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.031× |
 | 008 | codex/pr-run03 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.027× |
 | 008 | codex/pr-run04 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.01× |
+| 008 | copilot/pr-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1× |
 | 009 | antigravity/supply-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.078× |
+| 009 | claude/supply-mitigated-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.102× |
+| 009 | claude/supply-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.089× |
 | 009 | codex/supply-mitigated-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.056× |
 | 009 | codex/supply-mitigated-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.029× |
 | 009 | codex/supply-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.035× |
 | 009 | codex/supply-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.023× |
+| 009 | copilot/supply-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→5 | ✔ 1.012× |
 | 010 | antigravity/notes-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→57 | ✔ 1.075× |
+| 010 | claude/notes-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→34 | ✔ 1.092× |
 | 010 | codex/notes-run01 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.031× |
 | 010 | codex/notes-run02 | 100 | ✔ 0→0 | ✔ 0→0 | ✔ 0→0 | ✔ 1.007× |
+| 010 | copilot/notes-run01 | 75 | ✔ 0→0 | ✔ 0→0 | ✖ 0→13 | ✔ 1.012× |

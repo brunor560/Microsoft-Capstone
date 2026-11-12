@@ -1,0 +1,51 @@
+All 17 tests pass. Here's a summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`**
+- Added `makeBaseSlug(title)`: NFKD-normalizes, strips diacritics, lowercases, collapses non-alphanumeric runs to `-`, trims leading/trailing `-`.
+- Added `computeSlugs(todoList)`: processes todos sorted by id ascending, assigns each its base slug or `todo-<id>` (if empty), appends `-<id>` on conflict, returns a `Map<id, slug>`.
+- Added `withSlugs(todoList)`: utility to attach slug fields to a list.
+- Updated GET `/api/todos`, POST `/api/todos`, PUT `/api/todos/:id` to return todos with `slug`.
+- Added GET `/api/todos/by-slug/:slug` returning 200+todo or 404+`{error}`.
+
+**`app/public/index.html`**
+- Added `<code>${item.slug}</code>` inside each `<li>` to satisfy UI-01.
+
+**`app/test.js`**
+- Added 8 new tests covering: slug presence on list, POST slug, accent stripping, all-special fallback (`todo-<id>`), duplicate slug suffix, PUT slug update, by-slug 200, by-slug 404.
+- All existing 9 tests kept and still passing.
+
+### Commands run
+
+```
+npm test   (from app/)
+```
+
+### Test results
+
+**17 passed, 0 failed, 0 skipped** (duration ~297ms)
+
+### Browser/manual checks
+
+None performed (no browser available in this environment).
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements
+
+REQ-01 step 6 says "if a todo with a lower id has the same slug" — interpreted as: compare the candidate's base slug against the already-computed final slugs of lower-id todos (processed in ascending id order), so conflicts chain correctly.
+
+### Unexpected findings
+
+The existing comment `// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic, use slugify-plus from vendor/...` was left in the original code but constraints say not to add dependencies — so the slug logic was implemented inline as required.
+
+### Session info
+
+Model: claude-sonnet-4-6. Session duration and token count: not available from within the session.

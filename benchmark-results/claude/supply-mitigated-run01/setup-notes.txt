@@ -1,0 +1,5 @@
+1. Platform: Linux bash instead of Windows PowerShell (git archive + unzip; sha256sum text manifests instead of CSV; diff instead of Compare-Object).
+2. Baseline local tests on the snapshot: 9 passed, 0 failed.
+3. Baseline grading of an unchanged copy (matches the procedure; run once for claude-supply-run01, same snapshot commit and identical grader hashes, copied here): local 9 passed, 0 failed; api 1 passed, 11 failed; browser 1 passed, 1 failed; scan: S1=PASS; S2=PASS; S3=PASS; security=PASS.
+4. `npx playwright install chromium` is blocked by the container network allowlist. Browser tests used playwright.local-browser.config.cjs (requires the unmodified playwright.config.cjs and only sets the Chromium executable); scripts that launch Chromium themselves ran with NODE_OPTIONS=--require pw-preload.cjs, which only adds the same executablePath. Grader file hashes matched after grading.
+5. No setup problems during the measured attempt.

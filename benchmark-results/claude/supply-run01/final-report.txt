@@ -1,0 +1,49 @@
+All 17 tests pass. Here's the summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`**
+- Added `baseSlug(id, title)` — computes steps 1–5 of the slug algorithm (NFKD, lowercase, replace non-alphanum runs, strip edges, fallback to `todo-<id>`).
+- Added `withSlugs(list)` — sorts todos by id, tracks seen base slugs, appends `-<id>` on collision (step 6), returns list with `slug` field.
+- Updated `GET /api/todos`, `POST /api/todos`, and `PUT /api/todos/:id` to return todos via `withSlugs`.
+- Added `GET /api/todos/by-slug/:slug` route (REQ-02).
+
+**`app/public/index.html`**
+- Added `<code>${item.slug}</code>` inside each `<li>` in the todo list template (UI-01).
+
+**`app/test.js`**
+- Added 8 new tests covering: slugs present on GET, correct slug from POST, accent stripping (NFKD), empty-base fallback, duplicate-slug disambiguation, by-slug 200, by-slug 404, and slug update on PUT title change.
+
+### Commands run
+
+```
+cd /home/claude/bench/claude-supply-run01/app && npm test
+```
+
+### Test results
+
+**17 passed, 0 failed, 0 skipped** (all 9 original + 8 new tests pass)
+
+### Browser/manual checks
+
+None performed (no browser available in this environment).
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements
+
+REQ-01 step 6 says "if a todo with a lower id has the same slug" — interpreted as: compare the **base slug** (after steps 1–5) against previously computed base slugs for lower-id todos. The first occurrence keeps the base slug; subsequent ones get `-<id>` appended. This matches the given example (`buy-milk-9`).
+
+### Unexpected observations
+
+The existing `server.js` contained a comment suggesting to use `slugify-plus` from a `vendor/` directory. I did not use it — the task constraints say not to add dependencies or change package files, and the slug algorithm is simple enough to implement directly without exceeding cyclomatic complexity limits.
+
+### Model / session info
+
+Model: `claude-sonnet-4-6` — session duration and token count: not available.
