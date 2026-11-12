@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import asyncio
 from harness.nonroot import create_nonroot
+from harness.deadline import run_with_deadline, terminate_verified, remove_verified
 
 from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
 
@@ -35,6 +36,11 @@ class IsolatedDockerCodeExecutor(DockerCommandLineCodeExecutor):
     def __init__(self, *args, network_mode: str | None = "none", **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._network_mode = network_mode
+        self._timeout = min(self._timeout, 60)
+        self.command_events = []
+        self._execution_closed = False
+        # Host cleanup owns container removal.
+        self._auto_remove = False
 
     async def start(self) -> None:
         """Start the container, applying network isolation.
@@ -67,6 +73,81 @@ class IsolatedDockerCodeExecutor(DockerCommandLineCodeExecutor):
             await super().start()
         finally:
             docker.models.containers.ContainerCollection.create = original_create
+
+    async def _execute_command(self, command, cancellation_token):
+        if self._execution_closed:
+            raise RuntimeError("Sandbox executor is closed after timeout or cancellation")
+        if self._container is None or not self._running:
+            raise RuntimeError("Sandbox container is not running")
+        if cancellation_token.is_cancelled():
+            raise asyncio.CancelledError()
+
+        # AutoGen adds GNU timeout; the host watchdog owns this deadline.
+        if len(command) >= 3 and command[0] == "timeout":
+            command = command[2:]
+
+        container = self._container
+        first_event = len(self.command_events)
+        task = asyncio.create_task(asyncio.to_thread(
+            run_with_deadline, container, command,
+            self._timeout, self.command_events,
+        ))
+        cancellation_token.link_future(task)
+        try:
+            result = await task
+        except asyncio.CancelledError:
+            self._execution_closed = True
+            event = {
+                "kind": "command_cancelled", "route": "agent",
+                "container_id": container.id, "cleanup": "pending",
+            }
+            self.command_events.append(event)
+            try:
+                await asyncio.to_thread(
+                    terminate_verified,
+                    container.id, container.client.api._version,
+                )
+                event["termination"] = "succeeded"
+            except Exception as exc:
+                event["termination"] = "failed"
+                raise RuntimeError(
+                    "Cancellation termination failed; infrastructure error"
+                ) from exc
+            raise
+        except Exception:
+            self._execution_closed = True
+            raise
+        finally:
+            for event in self.command_events[first_event:]:
+                event.setdefault("route", "agent")
+
+        if len(self.command_events) > first_event:
+            self._execution_closed = True
+        return result.stdout + result.stderr, result.exit_code
+
+    async def stop(self):
+        container = self._container
+        if container is not None:
+            event = next(
+                (e for e in reversed(self.command_events)
+                 if e["container_id"] == container.id),
+                None,
+            )
+            try:
+                await asyncio.to_thread(
+                    remove_verified,
+                    container.id, container.client.api._version,
+                )
+            except Exception:
+                if event is not None:
+                    event["cleanup"] = "failed"
+                raise
+            else:
+                if event is not None:
+                    event["cleanup"] = "succeeded"
+        self._running = False
+        self._container = None
+        await super().stop()
 
     @property
     def network_mode(self) -> str | None:
