@@ -19,6 +19,7 @@
 
 - Elapsed: 80.7 s (operator timer around the CLI call); approval wait 0 s.
 - Tokens: 223,412 counted (input 13 + cache write 23,230 + cache read 194,493 + output 5,676); 14 turns; cost $0.283 (CLI list price). Token limit 400,000; T = 88.
+- Code quality: 75 (lint 0→0, complexity 0→0, duplication 0→12 lines, fails), from `score-runs.mjs` on `results/all-runs` (`quality.json` there).
 - Interventions: none (`interventions.json` is empty). H score needs a second team member's `h-review.json`.
 - Operator review (scope, transcript, disclosure, report accuracy): see `scope-review.txt`.
 
