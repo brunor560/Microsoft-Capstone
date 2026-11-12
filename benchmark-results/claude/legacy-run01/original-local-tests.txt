@@ -1,0 +1,152 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 39.301504
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 17.327516
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 12.44496
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 4 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 22.379776
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+ok 5 - DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+  ---
+  duration_ms: 32.551718
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+ok 6 - DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+  ---
+  duration_ms: 6.361324
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+ok 7 - DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+  ---
+  duration_ms: 8.194142
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+ok 8 - DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+  ---
+  duration_ms: 6.438802
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id handles safe-integer boundary correctly
+ok 9 - DELETE /api/todos/:id handles safe-integer boundary correctly
+  ---
+  duration_ms: 3.529374
+  type: 'test'
+  ...
+# Subtest: toCsv: empty list produces only header line
+ok 10 - toCsv: empty list produces only header line
+  ---
+  duration_ms: 0.338528
+  type: 'test'
+  ...
+# Subtest: toCsv: plain title is not quoted
+ok 11 - toCsv: plain title is not quoted
+  ---
+  duration_ms: 0.158557
+  type: 'test'
+  ...
+# Subtest: toCsv: title with comma is quoted (FIX-01)
+ok 12 - toCsv: title with comma is quoted (FIX-01)
+  ---
+  duration_ms: 0.090967
+  type: 'test'
+  ...
+# Subtest: toCsv: title with double quote is quoted and doubled (FIX-02)
+ok 13 - toCsv: title with double quote is quoted and doubled (FIX-02)
+  ---
+  duration_ms: 0.079804
+  type: 'test'
+  ...
+# Subtest: toCsv: title with line feed is quoted (FIX-03)
+ok 14 - toCsv: title with line feed is quoted (FIX-03)
+  ---
+  duration_ms: 0.123282
+  type: 'test'
+  ...
+# Subtest: toCsv: title with carriage return is quoted (FIX-03)
+ok 15 - toCsv: title with carriage return is quoted (FIX-03)
+  ---
+  duration_ms: 0.133536
+  type: 'test'
+  ...
+# Subtest: toCsv: long title is truncated before quoting
+ok 16 - toCsv: long title is truncated before quoting
+  ---
+  duration_ms: 0.092599
+  type: 'test'
+  ...
+# Subtest: toCsv: spreadsheet guard applied before quoting
+ok 17 - toCsv: spreadsheet guard applied before quoting
+  ---
+  duration_ms: 0.064042
+  type: 'test'
+  ...
+# Subtest: toCsv: open todos before completed, by id ascending
+ok 18 - toCsv: open todos before completed, by id ascending
+  ---
+  duration_ms: 0.083738
+  type: 'test'
+  ...
+# Subtest: toCsv: DONE column is Y for completed
+ok 19 - toCsv: DONE column is Y for completed
+  ---
+  duration_ms: 0.058953
+  type: 'test'
+  ...
+# Subtest: pad_id: pads to 6 digits
+ok 20 - pad_id: pads to 6 digits
+  ---
+  duration_ms: 0.052984
+  type: 'test'
+  ...
+# Subtest: clean_title: truncates at 40 chars
+ok 21 - clean_title: truncates at 40 chars
+  ---
+  duration_ms: 0.057141
+  type: 'test'
+  ...
+# Subtest: clean_title: spreadsheet guard on = + - @
+ok 22 - clean_title: spreadsheet guard on = + - @
+  ---
+  duration_ms: 0.071624
+  type: 'test'
+  ...
+# Subtest: GET /api/todos/export.csv: title with comma is quoted
+ok 23 - GET /api/todos/export.csv: title with comma is quoted
+  ---
+  duration_ms: 14.831582
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 274.327754

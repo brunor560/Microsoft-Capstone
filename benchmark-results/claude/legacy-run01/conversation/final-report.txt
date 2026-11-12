@@ -1,0 +1,48 @@
+All 23 tests pass. Here's a summary of everything done:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/legacy/billing-export.js`**
+Added a `quote_field(s)` helper that wraps a field in double quotes (and doubles any internal double quotes) when the field contains a comma, double quote, CR, or LF — applied in `build_row` after `clean_title`, matching RFC 4180 as specified in EXPORT-FORMAT.md.
+
+**`app/test.js`**
+Added 14 new tests for the billing export:
+- Unit tests for `toCsv`, `pad_id`, and `clean_title` covering comma quoting (FIX-01), double-quote doubling (FIX-02), CR/LF quoting (FIX-03), truncation before quoting, spreadsheet guard, row ordering, DONE column, and empty list.
+- An HTTP integration test verifying the `/api/todos/export.csv` route quotes titles containing commas.
+
+### Commands run and outcomes
+
+| Command | Outcome |
+|---|---|
+| `npm test` (from `app/`) | All **23 tests passed**, 0 failed, 0 skipped |
+
+### Test results
+
+- Passed: **23**
+- Failed: **0**
+- Skipped: **0**
+
+### Browser / manual checks
+
+None performed (no browser available in this environment).
+
+### Errors, retries, limitations
+
+None.
+
+### Unclear requirements
+
+The docs say "quoting is applied last, after cutting and the spreadsheet guard." This was clear — `quote_field` is called in `build_row` after `clean_title` runs. The `clean_title` function's signature and behaviour are unchanged.
+
+### Unexpected findings
+
+The existing code had no quoting at all — the `build_row` function concatenated fields with commas without escaping, matching the reported bug exactly.
+
+### Model / session info
+
+- Model: claude-sonnet-4-6
+- Duration / tokens used: not available from within the session
