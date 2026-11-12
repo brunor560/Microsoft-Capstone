@@ -1,0 +1,80 @@
+{
+  "source": "claude -p --output-format stream-json, final result event",
+  "session_id": "fe382b87-cd6b-44b8-8025-a6709be6860a",
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 19114,
+    "cache_read_input_tokens": 181379,
+    "output_tokens": 11274,
+    "output_tokens_details": {
+      "thinking_tokens": 4046
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 19114,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 1,
+        "output_tokens": 718,
+        "cache_read_input_tokens": 27174,
+        "cache_creation_input_tokens": 1490,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1490
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-haiku-5-5": {
+      "inputTokens": 1256,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.00013409999999999998,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 0,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-4-6": {
+      "inputTokens": 12,
+      "outputTokens": 11274,
+      "cacheReadInputTokens": 181379,
+      "cacheCreationInputTokens": 19114,
+      "webSearchRequests": 0,
+      "costUSD": 0.3382437,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 4046,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 19114,
+      "canonicalModel": "claude-sonnet-4-6",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "tokens_counted": 211779,
+  "tokens_counted_note": "input + cache_creation + cache_read + output, per RUN-RECORD.md section 3",
+  "total_cost_usd": 0.33837779999999995,
+  "num_turns": 12,
+  "duration_ms": 159258,
+  "duration_api_ms": 159038,
+  "permission_denials": [],
+  "cost_note": "list-price cost reported by the CLI; cached reads are part of input"
+}

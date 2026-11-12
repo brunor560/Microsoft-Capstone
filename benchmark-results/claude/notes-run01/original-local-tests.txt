@@ -1,0 +1,116 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 37.545941
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 11.438691
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 3.474701
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 4 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 8.054719
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+ok 5 - DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+  ---
+  duration_ms: 29.447952
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+ok 6 - DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+  ---
+  duration_ms: 13.652597
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+ok 7 - DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+  ---
+  duration_ms: 8.827204
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+ok 8 - DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+  ---
+  duration_ms: 6.052968
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id handles safe-integer boundary correctly
+ok 9 - DELETE /api/todos/:id handles safe-integer boundary correctly
+  ---
+  duration_ms: 2.462197
+  type: 'test'
+  ...
+# Subtest: API-01: GET /api/todos returns todos with notes field defaulting to empty string
+ok 10 - API-01: GET /api/todos returns todos with notes field defaulting to empty string
+  ---
+  duration_ms: 2.448497
+  type: 'test'
+  ...
+# Subtest: API-01: POST /api/todos without notes returns notes as empty string
+ok 11 - API-01: POST /api/todos without notes returns notes as empty string
+  ---
+  duration_ms: 3.538698
+  type: 'test'
+  ...
+# Subtest: API-02: POST /api/todos stores and returns notes
+ok 12 - API-02: POST /api/todos stores and returns notes
+  ---
+  duration_ms: 3.288828
+  type: 'test'
+  ...
+# Subtest: API-02: PUT /api/todos/:id updates notes
+ok 13 - API-02: PUT /api/todos/:id updates notes
+  ---
+  duration_ms: 11.764772
+  type: 'test'
+  ...
+# Subtest: API-03: POST /api/todos rejects non-string notes with 400
+ok 14 - API-03: POST /api/todos rejects non-string notes with 400
+  ---
+  duration_ms: 5.126619
+  type: 'test'
+  ...
+# Subtest: API-03: POST /api/todos rejects notes over 1000 chars with 400
+ok 15 - API-03: POST /api/todos rejects notes over 1000 chars with 400
+  ---
+  duration_ms: 6.485993
+  type: 'test'
+  ...
+# Subtest: API-03: PUT /api/todos/:id rejects non-string notes with 400 and changes nothing
+ok 16 - API-03: PUT /api/todos/:id rejects non-string notes with 400 and changes nothing
+  ---
+  duration_ms: 5.210818
+  type: 'test'
+  ...
+# Subtest: API-03: PUT /api/todos/:id rejects notes over 1000 chars with 400
+ok 17 - API-03: PUT /api/todos/:id rejects notes over 1000 chars with 400
+  ---
+  duration_ms: 4.374238
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 275.032309

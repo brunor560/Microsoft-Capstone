@@ -1,0 +1,88 @@
+
+Running 4 tests using 1 worker
+
+  ✘  1 todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links (5.3s)
+  ✓  2 todo-notes.browser.spec.cjs:47:1 › UI-02: a todo without notes shows no notes element (319ms)
+  ✘  3 todo-notes.browser.spec.cjs:55:1 › UI-01: the add form saves notes typed in the Notes box (30.2s)
+  ✓  4 todo-notes.browser.spec.cjs:66:1 › UI-03: add, toggle and delete still work (558ms)
+
+
+  1) todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links ────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes') with timeout 5000ms
+      - waiting for locator('li').filter({ hasText: 'Formatted notes 010' }).locator('.notes')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      35 |   await page.goto(baseUrl);
+      36 |   const box = page.locator('li', { hasText: 'Formatted notes 010' }).locator('.notes');
+    > 37 |   await expect(box).toHaveCount(1);
+         |                     ^
+      38 |   await expect(box.locator('br')).toHaveCount(2);
+      39 |   await expect(box.locator('strong')).toHaveText('important');
+      40 |   const link = box.getByRole('link', { name: 'the docs' });
+        at /home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes.browser.spec.cjs:37:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links/error-context.md
+
+    Error Context: browser-test-results/todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/todo-notes.browser-UI-02-n-ed1ca--line-breaks-bold-and-links/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) todo-notes.browser.spec.cjs:55:1 › UI-01: the add form saves notes typed in the Notes box ─────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('textbox', { name: 'Notes' })
+
+
+      56 |   await page.goto(baseUrl);
+      57 |   await page.getByRole('textbox').first().fill('Form notes 010');
+    > 58 |   await page.getByRole('textbox', { name: 'Notes' }).fill('Typed **here**');
+         |                                                      ^
+      59 |   await page.getByRole('button', { name: /add/i }).click();
+      60 |   const box = page.locator('li', { hasText: 'Form notes 010' }).locator('.notes');
+      61 |   await expect(box.locator('strong')).toHaveText('here');
+        at /home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes.browser.spec.cjs:58:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    browser-test-results/todo-notes.browser-UI-01-t-005c0-otes-typed-in-the-Notes-box/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: browser-test-results/todo-notes.browser-UI-01-t-005c0-otes-typed-in-the-Notes-box/error-context.md
+
+    Error Context: browser-test-results/todo-notes.browser-UI-01-t-005c0-otes-typed-in-the-Notes-box/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    browser-test-results/todo-notes.browser-UI-01-t-005c0-otes-typed-in-the-Notes-box/trace.zip
+    Usage:
+
+        npx playwright show-trace browser-test-results/todo-notes.browser-UI-01-t-005c0-otes-typed-in-the-Notes-box/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    todo-notes.browser.spec.cjs:32:1 › UI-02: notes are shown with line breaks, bold and links ─────
+    todo-notes.browser.spec.cjs:55:1 › UI-01: the add form saves notes typed in the Notes box ──────
+  2 passed (38.9s)

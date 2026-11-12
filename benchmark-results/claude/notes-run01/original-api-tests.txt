@@ -1,0 +1,95 @@
+TAP version 13
+# Subtest: API-01: existing todos have notes ""
+ok 1 - API-01: existing todos have notes ""
+  ---
+  duration_ms: 32.654855
+  type: 'test'
+  ...
+# Subtest: API-01: a new todo without notes has notes ""
+ok 2 - API-01: a new todo without notes has notes ""
+  ---
+  duration_ms: 12.061817
+  type: 'test'
+  ...
+# Subtest: API-02: POST stores notes exactly as sent
+ok 3 - API-02: POST stores notes exactly as sent
+  ---
+  duration_ms: 6.219946
+  type: 'test'
+  ...
+# Subtest: API-02: PUT updates notes and keeps the rest
+ok 4 - API-02: PUT updates notes and keeps the rest
+  ---
+  duration_ms: 11.456705
+  type: 'test'
+  ...
+# Subtest: API-03: invalid notes are rejected with 400 and change nothing
+    # Subtest: POST with a number
+    ok 1 - POST with a number
+      ---
+      duration_ms: 15.287549
+      type: 'test'
+      ...
+    # Subtest: PUT with a number
+    ok 2 - PUT with a number
+      ---
+      duration_ms: 8.790721
+      type: 'test'
+      ...
+    # Subtest: POST with an object
+    ok 3 - POST with an object
+      ---
+      duration_ms: 6.00932
+      type: 'test'
+      ...
+    # Subtest: PUT with an object
+    ok 4 - PUT with an object
+      ---
+      duration_ms: 8.198007
+      type: 'test'
+      ...
+    # Subtest: POST with null
+    ok 5 - POST with null
+      ---
+      duration_ms: 8.43737
+      type: 'test'
+      ...
+    # Subtest: PUT with null
+    ok 6 - PUT with null
+      ---
+      duration_ms: 5.48476
+      type: 'test'
+      ...
+    # Subtest: POST with 1001 characters
+    ok 7 - POST with 1001 characters
+      ---
+      duration_ms: 5.549813
+      type: 'test'
+      ...
+    # Subtest: PUT with 1001 characters
+    ok 8 - PUT with 1001 characters
+      ---
+      duration_ms: 8.956175
+      type: 'test'
+      ...
+    1..8
+ok 5 - API-03: invalid notes are rejected with 400 and change nothing
+  ---
+  duration_ms: 76.997536
+  type: 'test'
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 6 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 11.347322
+  type: 'test'
+  ...
+1..6
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 263.832286

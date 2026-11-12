@@ -1,0 +1,324 @@
+TAP version 13
+# Subtest: API-01: existing todos have notes ""
+not ok 1 - API-01: existing todos have notes ""
+  ---
+  duration_ms: 41.217999
+  type: 'test'
+  location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:41:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    todo 1
+    
+    undefined !== ''
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:44:33)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: API-01: a new todo without notes has notes ""
+not ok 2 - API-01: a new todo without notes has notes ""
+  ---
+  duration_ms: 13.641823
+  type: 'test'
+  location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:47:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== ''
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:50:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02: POST stores notes exactly as sent
+not ok 3 - API-02: POST stores notes exactly as sent
+  ---
+  duration_ms: 4.918982
+  type: 'test'
+  location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:53:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'Line one\n' +
+    -   'Line **two** with [a link](https://example.com/a?b=1&c=2)\n' +
+    -   `<b>kept as typed</b> "quotes" & 'apostrophes'`
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: |-
+    Line one
+    Line **two** with [a link](https://example.com/a?b=1&c=2)
+    <b>kept as typed</b> "quotes" & 'apostrophes'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:57:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02: PUT updates notes and keeps the rest
+not ok 4 - API-02: PUT updates notes and keeps the rest
+  ---
+  duration_ms: 7.039811
+  type: 'test'
+  location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:61:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'Updated **notes**'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'Updated **notes**'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:66:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-03: invalid notes are rejected with 400 and change nothing
+    # Subtest: POST with a number
+    not ok 1 - POST with a number
+      ---
+      duration_ms: 25.94028
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:78:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: PUT with a number
+    not ok 2 - PUT with a number
+      ---
+      duration_ms: 6.024432
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:84:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: POST with an object
+    not ok 3 - POST with an object
+      ---
+      duration_ms: 5.680581
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:78:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: PUT with an object
+    not ok 4 - PUT with an object
+      ---
+      duration_ms: 5.435013
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:84:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: POST with null
+    not ok 5 - POST with null
+      ---
+      duration_ms: 3.870089
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:78:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: PUT with null
+    not ok 6 - PUT with null
+      ---
+      duration_ms: 2.106224
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:84:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: POST with 1001 characters
+    not ok 7 - POST with 1001 characters
+      ---
+      duration_ms: 5.129892
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:78:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:75:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: PUT with 1001 characters
+    not ok 8 - PUT with 1001 characters
+      ---
+      duration_ms: 3.223519
+      type: 'test'
+      location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:84:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:82:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..8
+not ok 5 - API-03: invalid notes are rejected with 400 and change nothing
+  ---
+  duration_ms: 73.250719
+  type: 'test'
+  location: '/home/claude/bench/claude-notes-run01-evidence/grader/benchmark-results/protocol/todo-notes/todo-notes-api.test.cjs:72:1'
+  failureType: 'subtestsFailed'
+  error: '8 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 6 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 9.82772
+  type: 'test'
+  ...
+1..6
+# tests 14
+# suites 0
+# pass 1
+# fail 13
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 257.214703
