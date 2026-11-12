@@ -1,0 +1,208 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-legacy-run04",
+    "task_id": "007",
+    "condition": "anthropic-byok-sonnet46-explicit-medium-v2",
+    "participant": "Ross Volenec",
+    "date_utc": "2026-11-12T00:30:59.179679+00:00",
+    "timezone": "America/New_York",
+    "tool": "Copilot CLI 1.0.107",
+    "interface": "headless -p",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "provider": "Anthropic BYOK; alias anthropic-direct",
+    "effort_requested": "medium",
+    "effort_observed": "{\"main\": \"medium\", \"source\": \"owned saved session.start/session.model_change; ordered records in thinking-observation.json\", \"subagents\": []}",
+    "effort_observed_reason": "pending measured events; unavailable authorized if not exposed",
+    "thinking_requested": "None",
+    "thinking_requested_reason": "No separate thinking-mode control or forced-thinking prompt",
+    "thinking_wire_mode": "unobserved",
+    "session_id": "f15b70d6-1c82-4c08-a525-c111f960ee06",
+    "approval_mode": "headless scoped preapproval",
+    "fresh_start": "fresh HOME/COPILOT_HOME/TMPDIR; selected BYOK provider only; controls/readback preserved",
+    "isolation": "Native Copilot MXC shell sandbox; in-process file tools use path policy, not full OS process isolation",
+    "network": "proxy loopback HTTP allowed; external egress denied in native setup probe",
+    "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+    "cohort_agreement": "<USER_HOME>/USF/CIS4930/benchmark-archive/copilot-legacy-run01/copilot-tasks007-010-r1_alhdd/batch-plan.json; user confirmed exact input pins/hashes",
+    "allowed_writes": "[\"app/legacy/billing-export.js\", \"app/test.js\"]",
+    "discovery_limitation": "SDK listModels metadata unavailable in prior setup; no inference authentication failure established; user authorizes unavailable effective observation",
+    "os_version": "ProductName:\t\tmacOS",
+    "arch_version": "arm64",
+    "git_version": "git version 2.54.0 (Apple Git-157)",
+    "node_version": "v24.21.0",
+    "npm_version": "11.19.0",
+    "codex_version": "codex-cli 0.167.0",
+    "shell_version": "zsh 5.9 (arm64-apple-darwin26.0)",
+    "browser_executable": "<USER_HOME>/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "browser_version": "Google Chrome for Testing 156.0.8078.4",
+    "playwright_version": "1.64.1",
+    "linked_preflight_failure": "copilot-legacy-run03",
+    "model_observed": "[\"claude-sonnet-4-6\"]",
+    "skills_observed": "{\"enabled\": [\"customize-cloud-agent\", \"github-pr-media\", \"pr-stack\"], \"all\": [{\"name\": \"customize-cloud-agent\", \"enabled\": true}, {\"name\": \"github-pr-media\", \"enabled\": true}, {\"name\": \"pr-stack\", \"enabled\": true}]}",
+    "execution_limitation": "None",
+    "configuration_status": "requested medium accepted; owned main effective effort medium observed",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+  },
+  "pins": {
+    "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc"
+  },
+  "notes": {
+    "effort": "distinct condition anthropic-byok-sonnet46-explicit-medium-v2; requested medium via supported CLI argv/readback; observed main session medium from owned saved session.start; no subagents; thinking output observed, wire mode unavailable (thinking-observation.json)",
+    "scope_findings": [
+      "Only permitted billing-export.js/test.js changed; all original tests retained.",
+      "No failing regression before module fix. Final report does not explicitly name format contract; contract checks pass.",
+      "Original browser result is infrastructure-limited; separate corrected-environment unchanged-candidate recheck passes 2/2. See scope-review.txt and browser-recheck/record.json."
+    ],
+    "source": "Owned session events, before/after manifests, original-full-scope.patch, final report and independent pinned grader logs; AI reconciliation only."
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-12T00:32:25.357992+00:00",
+    "end_utc": "2026-11-12T00:33:50.189Z",
+    "seconds": 84.832,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 293149,
+    "output_tokens": 5188,
+    "cached_input_tokens": 265910,
+    "cache_write_input_tokens": 27224,
+    "reasoning_output_tokens": 244,
+    "total_tokens": 298337,
+    "total_cost_usd": null,
+    "cost_reason": "BYOK export reports no USD amount; zero premium request/AI-credit fields are not provider cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "api",
+      "file": "original-api-tests.txt",
+      "label": "Independent API",
+      "exit": 0,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "browser",
+      "file": "original-browser-tests.txt",
+      "label": "Independent browser",
+      "exit": 1,
+      "passed": 1,
+      "failed": 1,
+      "skipped": null,
+      "checks": []
+    },
+    {
+      "key": "security_scan",
+      "file": "original-security-scan.txt",
+      "label": "Static security",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": null,
+      "checks": [
+        {
+          "id": "L1",
+          "verdict": "PASS",
+          "detail": "header, CRLF line endings, empty and missing list"
+        },
+        {
+          "id": "L2",
+          "verdict": "PASS",
+          "detail": "row order, id padding and DONE column"
+        },
+        {
+          "id": "L3",
+          "verdict": "PASS",
+          "detail": "cutting, spreadsheet guard, and unchanged output for titles that need no quoting"
+        },
+        {
+          "id": "L4",
+          "verdict": "PASS",
+          "detail": "tests catch the bug (with original module: 4 failed, 18 passed; with reference fix: 0 failed, 22 passed)"
+        }
+      ]
+    }
+  ],
+  "applicability": {
+    "local": {
+      "applicable": true,
+      "reason": "Required pinned Task007 suite"
+    },
+    "api": {
+      "applicable": true,
+      "reason": "Required pinned Task007 suite"
+    },
+    "browser": {
+      "applicable": true,
+      "reason": "Required pinned Task007 suite"
+    },
+    "security_scan": {
+      "applicable": true,
+      "reason": "Required pinned Task007 suite"
+    },
+    "security_runtime": {
+      "applicable": false,
+      "reason": "No separate runtime suite in Task007"
+    }
+  },
+  "changed": [
+    "app/legacy/billing-export.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "pending independent teammate review",
+    "configuration_limitations": [
+      "Original browser grading has 1 passed/1 infrastructure failure: download.path canceled before CSV content read. Separately documented browser recheck passes 2/2 after baseline-verified narrow native-temp grant; see browser-recheck/record.json and browser-recheck/browser-tests.txt.",
+      "No pre-fix failing regression demonstrated; module edited before tests.",
+      "Agent final report omitted an automatically denied shell append request, recovered using permitted edit tool.",
+      "Builtin skills reported enabled despite supported disable commands/readback; preserve that inventory conflict. No project/operator skills supplied to measured workspace.",
+      "Thinking blocks observed in 2 main messages; wire adaptive/budgeted mode, budget and provider effort unobserved. No thinking text/signatures published and no per-response requirement.",
+      "Pinned quality output is a legacy diagnostic, not a native composite score; raw timing is a launch-to-final-report proxy including startup. Provider USD cost unavailable.",
+      "Human review pending; no fabricated h-review.json.",
+      "Unchanged dashboard importer retains original browser nonzero exit as a failed suite; it does not import the separate infrastructure recheck or distinguish assertion failures from canceled-download infrastructure. See status-dimensions.json for separate statuses."
+    ]
+  },
+  "reviewed": false
+}

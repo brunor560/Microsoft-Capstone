@@ -1,0 +1,22 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required pinned Task007 suite"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required pinned Task007 suite"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Required pinned Task007 suite"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Required pinned Task007 suite"
+  },
+  "security_runtime": {
+    "applicable": false,
+    "reason": "No separate runtime suite in Task007"
+  }
+}

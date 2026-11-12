@@ -1,0 +1,53 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex API assistant; exact runtime model/effort/version not independently exposed",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read skill, handoff, prior preparation, cohort agreement, pinned task/procedure/RUN-RECORD/OPERATOR-GUIDE and graders, prior helper/evidence; excluded from measured workspace and prompt.",
+  "setup_attempts": 3,
+  "setup_problems": [
+    "Initial model-free terminal probe failed to initialize; sized-terminal model-free rerun passed. Prior blocked preparation retained separately.",
+    "run03 CLI parser rejected session-id/trust-folder combination before model call; run03 retained preflight_blocked; run04 removes session-id and binds owned result session."
+  ],
+  "setup_minutes": null,
+  "grading_minutes": 0.09954166250002648,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-12T00:31:01.030870+00:00",
+      "from": "user",
+      "what": "Authorized proceeding with unavailable effective-effort observation; separate thinking/configuration statuses required."
+    },
+    {
+      "time_utc": "2026-11-12T00:34:26.304163+00:00",
+      "from": "operator",
+      "what": "Preserved completed measured session and observed model usage; no messages, runtime environment fixes, restarts or nudges. Enabled skills: ['customize-cloud-agent', 'github-pr-media', 'pr-stack']"
+    },
+    {
+      "time_utc": "2026-11-12T00:36:27.581684+00:00",
+      "from": "operator",
+      "what": "Grading wrapper equivalence check used obsolete baseline path and stopped before suites. Corrected only helper path, preserved original scratch, then graded on new disposable copy; no candidate edits or installs."
+    },
+    {
+      "time_utc": "2026-11-12T00:42:16.047091+00:00",
+      "from": "operator",
+      "what": "Compared source, chronology, task report, logs and runtime inventory. One automatic shell append denial and enabled builtin skills despite disabled readback are disclosed; no post-prompt messages."
+    },
+    {
+      "time_utc": "2026-11-12T00:42:16.047161+00:00",
+      "from": "operator",
+      "what": "Browser grading infrastructure reproduced on baseline, repaired only narrow native temp grant, and rechecked unchanged candidate separately; original failure retained."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "notes": "No post-prompt operator messages, restart, nudge or runtime fixes. Scoped preapprovals recorded. One automatic tool denial; builtin skill inventory conflicts with disabled readback. Independent review pending.",
+  "grading_minutes_reason": "Recorded primary successful wrapper interval only; failed wrapper and later infrastructure checks are journaled separately, not included in this value."
+}

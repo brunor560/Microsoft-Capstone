@@ -1,0 +1,47 @@
+run_id=copilot-legacy-run04
+task_id=007
+condition=anthropic-byok-sonnet46-explicit-medium-v2
+participant=Ross Volenec
+date_utc=2026-11-12T00:30:59.179679+00:00
+timezone=America/New_York
+tool=Copilot CLI 1.0.107
+interface=headless -p
+model_requested=anthropic-direct/claude-sonnet-4-6
+provider=Anthropic BYOK; alias anthropic-direct
+effort_requested=medium
+effort_observed={"main": "medium", "source": "owned saved session.start/session.model_change; ordered records in thinking-observation.json", "subagents": []}
+effort_observed_reason=pending measured events; unavailable authorized if not exposed
+thinking_requested=None
+thinking_requested_reason=No separate thinking-mode control or forced-thinking prompt
+thinking_wire_mode=unobserved
+session_id=f15b70d6-1c82-4c08-a525-c111f960ee06
+approval_mode=headless scoped preapproval
+fresh_start=fresh HOME/COPILOT_HOME/TMPDIR; selected BYOK provider only; controls/readback preserved
+isolation=Native Copilot MXC shell sandbox; in-process file tools use path policy, not full OS process isolation
+network=proxy loopback HTTP allowed; external egress denied in native setup probe
+snapshot_commit=f03269bc81a1501b363f60624975bd9036c10804
+evaluator_commit=f03269bc81a1501b363f60624975bd9036c10804
+quality_commit=987547d9619e0628631e8e18031fe50c63b318dc
+cohort_agreement=<USER_HOME>/USF/CIS4930/benchmark-archive/copilot-legacy-run01/copilot-tasks007-010-r1_alhdd/batch-plan.json; user confirmed exact input pins/hashes
+allowed_writes=["app/legacy/billing-export.js", "app/test.js"]
+discovery_limitation=SDK listModels metadata unavailable in prior setup; no inference authentication failure established; user authorizes unavailable effective observation
+os_version=ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B123
+arch_version=arm64
+git_version=git version 2.54.0 (Apple Git-157)
+node_version=v24.21.0
+npm_version=11.19.0
+codex_version=codex-cli 0.167.0
+WARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)
+shell_version=zsh 5.9 (arm64-apple-darwin26.0)
+browser_executable=<USER_HOME>/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing
+browser_version=Google Chrome for Testing 156.0.8078.4
+playwright_version=1.64.1
+linked_preflight_failure=copilot-legacy-run03
+model_observed=["claude-sonnet-4-6"]
+skills_observed={"enabled": ["customize-cloud-agent", "github-pr-media", "pr-stack"], "all": [{"name": "customize-cloud-agent", "enabled": true}, {"name": "github-pr-media", "enabled": true}, {"name": "pr-stack", "enabled": true}]}
+execution_limitation=None
+configuration_status=requested medium accepted; owned main effective effort medium observed
+model=claude-sonnet-4-6
+model_verification_source=runtime-observation.json; corroborated by copilot-usage.json

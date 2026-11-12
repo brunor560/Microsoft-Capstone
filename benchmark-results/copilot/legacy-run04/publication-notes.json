@@ -1,0 +1,9 @@
+{
+  "effort": "distinct condition anthropic-byok-sonnet46-explicit-medium-v2; requested medium via supported CLI argv/readback; observed main session medium from owned saved session.start; no subagents; thinking output observed, wire mode unavailable (thinking-observation.json)",
+  "scope_findings": [
+    "Only permitted billing-export.js/test.js changed; all original tests retained.",
+    "No failing regression before module fix. Final report does not explicitly name format contract; contract checks pass.",
+    "Original browser result is infrastructure-limited; separate corrected-environment unchanged-candidate recheck passes 2/2. See scope-review.txt and browser-recheck/record.json."
+  ],
+  "source": "Owned session events, before/after manifests, original-full-scope.patch, final report and independent pinned grader logs; AI reconciliation only."
+}

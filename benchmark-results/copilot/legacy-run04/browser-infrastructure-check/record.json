@@ -1,0 +1,63 @@
+{
+  "declared_before_checks_utc": "2026-11-12T00:39:37.082056+00:00",
+  "reason": "Original candidate browser check failed before CSV read with download.path canceled; reproduce baseline and test whether native macOS temporary-directory access repairs grading infrastructure. No candidate/grader modification or model rerun.",
+  "native_temp_grant": "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T",
+  "checks": [
+    {
+      "name": "baseline-original-profile",
+      "argv": [
+        "/usr/bin/sandbox-exec",
+        "-f",
+        "<BATCH_ROOT>/copilot-legacy-run04/private/grading-v2/grading.sb",
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=playwright.config.cjs",
+        "--output=<BATCH_ROOT>/copilot-legacy-run04/evidence/browser-infrastructure-check/baseline-original-profile-results"
+      ],
+      "cwd": "<BATCH_ROOT>/graders/benchmark-results/protocol/legacy-export",
+      "environment_keys": [
+        "BENCHMARK_APP_DIR",
+        "CI",
+        "EVIDENCE_DIR",
+        "HOME",
+        "PATH",
+        "PLAYWRIGHT_BROWSERS_PATH",
+        "PLAYWRIGHT_HTML_OPEN",
+        "TMPDIR"
+      ],
+      "start_utc": "2026-11-12T00:39:37.082439+00:00",
+      "end_utc": "2026-11-12T00:39:38.498891+00:00",
+      "exit": 1,
+      "log": "browser-infrastructure-check/baseline-original-profile.txt"
+    },
+    {
+      "name": "baseline-native-temp-profile",
+      "argv": [
+        "/usr/bin/sandbox-exec",
+        "-f",
+        "<BATCH_ROOT>/copilot-legacy-run04/private/grading-v2/grading-browser-temp.sb",
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=playwright.config.cjs",
+        "--output=<BATCH_ROOT>/copilot-legacy-run04/evidence/browser-infrastructure-check/baseline-native-temp-profile-results"
+      ],
+      "cwd": "<BATCH_ROOT>/graders/benchmark-results/protocol/legacy-export",
+      "environment_keys": [
+        "BENCHMARK_APP_DIR",
+        "CI",
+        "EVIDENCE_DIR",
+        "HOME",
+        "PATH",
+        "PLAYWRIGHT_BROWSERS_PATH",
+        "PLAYWRIGHT_HTML_OPEN",
+        "TMPDIR"
+      ],
+      "start_utc": "2026-11-12T00:39:38.499275+00:00",
+      "end_utc": "2026-11-12T00:39:39.883542+00:00",
+      "exit": 1,
+      "log": "browser-infrastructure-check/baseline-native-temp-profile.txt"
+    }
+  ]
+}

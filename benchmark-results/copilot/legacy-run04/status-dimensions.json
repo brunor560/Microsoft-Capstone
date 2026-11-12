@@ -1,0 +1,16 @@
+{
+  "execution": "completed",
+  "candidate_grader_results": {
+    "local": "22 passed,0 failed",
+    "api": "7 passed,0 failed",
+    "browser_original": "1 passed,1 infrastructure failure; CSV contents unverified in original check",
+    "browser_recheck": "2 passed,0 failed; unchanged candidate with baseline-verified temp grant",
+    "contract": "L1-L4 PASS",
+    "quality": "all4 pinned diagnostic checks pass"
+  },
+  "configuration_verification": "requested medium; main effective medium observed",
+  "thinking_observability": "structured Anthropic thinking output observed; wire mode/budget/provider effort unavailable",
+  "human_review": "pending independent reviewer",
+  "scope": "allowed files only",
+  "publication": "local only"
+}

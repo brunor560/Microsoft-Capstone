@@ -1,0 +1,1 @@
+Headless scoped preapproval: snapshot reads; writes only billing-export.js/test.js; node commands and npm test. No unrestricted host/path/network access; no task hints. Routine preapprovals disclosed here; automatic denials remain in transcript.
