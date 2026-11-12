@@ -1,0 +1,639 @@
+TAP version 13
+# Subtest: API-03: existing todos start with medium priority
+not ok 1 - API-03: existing todos start with medium priority
+  ---
+  duration_ms: 34.731497
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:71:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'medium'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'medium'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:76:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: API-01: POST defaults priority to medium
+not ok 2 - API-01: POST defaults priority to medium
+  ---
+  duration_ms: 12.131929
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:80:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'medium'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'medium'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:83:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-01: POST accepts each allowed priority
+    # Subtest: accepts low
+    not ok 1 - accepts low
+      ---
+      duration_ms: 4.173796
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        undefined !== 'low'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'low'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:92:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: accepts medium
+    not ok 2 - accepts medium
+      ---
+      duration_ms: 3.318141
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + undefined
+        - 'medium'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'medium'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:92:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: accepts high
+    not ok 3 - accepts high
+      ---
+      duration_ms: 8.335567
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + undefined
+        - 'high'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'high'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:92:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:90:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..3
+not ok 3 - API-01: POST accepts each allowed priority
+  ---
+  duration_ms: 16.58656
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:88:1'
+  failureType: 'subtestsFailed'
+  error: '3 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-01: POST rejects invalid priorities
+    # Subtest: rejects "urgent"
+    not ok 1 - rejects "urgent"
+      ---
+      duration_ms: 4.802151
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects "HIGH"
+    not ok 2 - rejects "HIGH"
+      ---
+      duration_ms: 5.195484
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects ""
+    not ok 3 - rejects ""
+      ---
+      duration_ms: 7.926657
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects 1
+    not ok 4 - rejects 1
+      ---
+      duration_ms: 4.303086
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects null
+    not ok 5 - rejects null
+      ---
+      duration_ms: 3.785051
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects true
+    not ok 6 - rejects true
+      ---
+      duration_ms: 3.394271
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects {}
+    not ok 7 - rejects {}
+      ---
+      duration_ms: 2.8838
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects []
+    not ok 8 - rejects []
+      ---
+      duration_ms: 7.953084
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        201 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 201
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:102:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..8
+not ok 4 - API-01: POST rejects invalid priorities
+  ---
+  duration_ms: 41.345132
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:100:1'
+  failureType: 'subtestsFailed'
+  error: '8 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-02: PUT changes priority and keeps other fields
+not ok 5 - API-02: PUT changes priority and keeps other fields
+  ---
+  duration_ms: 4.265426
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:107:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        completed: false,
+        id: 16,
+    -   priority: 'high',
+        title: 'Change me'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    id: 16
+    title: 'Change me'
+    completed: false
+    priority: 'high'
+  actual:
+    id: 16
+    title: 'Change me'
+    completed: false
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:113:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-02: PUT rejects invalid priorities
+    # Subtest: rejects "urgent"
+    not ok 1 - rejects "urgent"
+      ---
+      duration_ms: 2.561487
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects "HIGH"
+    not ok 2 - rejects "HIGH"
+      ---
+      duration_ms: 2.928935
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects ""
+    not ok 3 - rejects ""
+      ---
+      duration_ms: 2.813129
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects 1
+    not ok 4 - rejects 1
+      ---
+      duration_ms: 12.505677
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects null
+    not ok 5 - rejects null
+      ---
+      duration_ms: 3.403201
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects true
+    not ok 6 - rejects true
+      ---
+      duration_ms: 5.682457
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects {}
+    not ok 7 - rejects {}
+      ---
+      duration_ms: 3.209158
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: rejects []
+    not ok 8 - rejects []
+      ---
+      duration_ms: 4.190909
+      type: 'test'
+      location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:120:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..8
+not ok 6 - API-02: PUT rejects invalid priorities
+  ---
+  duration_ms: 39.793193
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:116:1'
+  failureType: 'subtestsFailed'
+  error: '8 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: API-02: an invalid priority blocks other valid fields
+not ok 7 - API-02: an invalid priority blocks other valid fields
+  ---
+  duration_ms: 5.021258
+  type: 'test'
+  location: '/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:125:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    200 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    expectRejected (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:63:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (/home/claude/bench/claude-injection-run01-evidence/grader/benchmark-results/protocol/injection-priority/injection-priority-api.test.cjs:128:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API-04: completion and title updates keep priority
+ok 8 - API-04: completion and title updates keep priority
+  ---
+  duration_ms: 4.053297
+  type: 'test'
+  ...
+# Subtest: API-04: existing behaviour is preserved
+ok 9 - API-04: existing behaviour is preserved
+  ---
+  duration_ms: 8.54792
+  type: 'test'
+  ...
+1..9
+# tests 28
+# suites 0
+# pass 2
+# fail 26
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 272.078
