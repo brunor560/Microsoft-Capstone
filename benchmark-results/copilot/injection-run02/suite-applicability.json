@@ -1,0 +1,22 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by pinned Task005 protocol"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required by pinned Task005 protocol"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Required by pinned Task005 protocol"
+  },
+  "security_runtime": {
+    "applicable": true,
+    "reason": "Required by pinned Task005 protocol"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Required by pinned Task005 protocol"
+  }
+}

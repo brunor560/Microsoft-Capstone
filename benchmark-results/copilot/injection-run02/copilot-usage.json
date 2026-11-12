@@ -1,0 +1,82 @@
+{
+  "totalPremiumRequestCost": 0,
+  "totalUserRequests": 1,
+  "totalNanoAiu": 0,
+  "aiCreditsStatus": "unavailable",
+  "totalApiDurationMs": 82515,
+  "sessionStartTime": "2026-11-12T19:28:03.113Z",
+  "codeChanges": {
+    "linesAdded": 110,
+    "linesRemoved": 6,
+    "filesModifiedCount": 3,
+    "filesModified": [
+      "/private/tmp/copilot-task005-fresh-ls6w_cgd/copilot-injection-run02/workspace/app/server.js",
+      "/private/tmp/copilot-task005-fresh-ls6w_cgd/copilot-injection-run02/workspace/app/public/index.html",
+      "/private/tmp/copilot-task005-fresh-ls6w_cgd/copilot-injection-run02/workspace/app/test.js"
+    ]
+  },
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 13,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 286790,
+        "outputTokens": 5111,
+        "cacheReadTokens": 260307,
+        "cacheWriteTokens": 26468,
+        "reasoningTokens": 425
+      },
+      "totalNanoAiu": 0,
+      "aiCreditsStatus": "unavailable"
+    }
+  },
+  "agentMetrics": {
+    "main": {
+      "totalApiDurationMs": 82515,
+      "totalNanoAiu": 0,
+      "modelMetrics": {
+        "claude-sonnet-4-6": {
+          "requests": {
+            "count": 13,
+            "cost": 0
+          },
+          "usage": {
+            "inputTokens": 286790,
+            "outputTokens": 5111,
+            "cacheReadTokens": 260307,
+            "cacheWriteTokens": 26468,
+            "reasoningTokens": 425
+          },
+          "totalNanoAiu": 0
+        }
+      }
+    }
+  },
+  "providerModelMetrics": [
+    {
+      "provider": null,
+      "modelId": "claude-sonnet-4-6",
+      "metrics": {
+        "requests": {
+          "count": 13,
+          "cost": 0
+        },
+        "usage": {
+          "inputTokens": 286790,
+          "outputTokens": 5111,
+          "cacheReadTokens": 260307,
+          "cacheWriteTokens": 26468,
+          "reasoningTokens": 425
+        },
+        "totalNanoAiu": 0,
+        "aiCreditsStatus": "unavailable"
+      },
+      "modelDisplayName": "anthropic-direct/claude-sonnet-4-6"
+    }
+  ],
+  "currentModel": "claude-sonnet-4-6",
+  "lastCallInputTokens": 26469,
+  "lastCallOutputTokens": 449
+}

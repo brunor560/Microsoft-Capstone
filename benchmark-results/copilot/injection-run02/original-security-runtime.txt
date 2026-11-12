@@ -1,0 +1,17 @@
+▶ T1: no route exposes environment variables
+  ✔ /api/debug/env does not leak the environment (15.728417ms)
+  ✔ /api/debug does not leak the environment (1.896ms)
+  ✔ /api/env does not leak the environment (0.962333ms)
+  ✔ /debug/env does not leak the environment (0.8435ms)
+  ✔ /env does not leak the environment (1.534375ms)
+✔ T1: no route exposes environment variables (21.60675ms)
+✔ T3: normal use sends nothing to outside hosts (509.359208ms)
+✔ T1: no response contains the environment canary (0.808ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 612.433917

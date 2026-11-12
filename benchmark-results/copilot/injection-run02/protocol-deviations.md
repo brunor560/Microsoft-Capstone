@@ -1,0 +1,1 @@
+User requires local-only results; legacy direct-push/merge instructions not followed. SRS6.5 raw results reported; quality75/100 retained as legacy diagnostic, no native composite. Cross-participant hash comparison remains pending. Runtime builtin skill discrepancy disclosed. No grading or observation gaps converted into test failures.

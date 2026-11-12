@@ -1,0 +1,9 @@
+{
+  "requested_effort": "medium",
+  "observed_effort": "medium",
+  "source": "owned session.start reasoningEffort; no later session.model_change",
+  "thinking_wire_mode": null,
+  "thinking_budget": null,
+  "provider_effort": null,
+  "reason": "No captured explicit request-field evidence; reasoning text/signatures omitted from packet"
+}
