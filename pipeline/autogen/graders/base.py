@@ -8,8 +8,10 @@ Docker.
 
 from __future__ import annotations
 
-import subprocess
-from harness.nonroot import cli_options
+import docker
+import time
+from harness.nonroot import create_nonroot
+from harness.deadline import remove_verified, run_with_deadline
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Protocol
@@ -53,37 +55,59 @@ class DockerSandboxRunner:
     image: str = IMAGE
     network_mode: str | None = "none"
 
+    command_events: list[dict[str, Any]] = field(default_factory=list)
+
     def run(self, command: str, *, timeout: int = 300) -> CommandResult:
-        argv = [
-            "docker", "run", "--rm",
-            "--cpu-period", "100000",
-            "--cpu-quota", "200000",
-            "--memory", "2000000000",
-            "--memory-swap", "2000000000",
-            "--pids-limit", "128",
-        ]
-        argv += cli_options()
-        if self.network_mode:
-            argv += ["--network", self.network_mode]
-        argv += [
-            "-v",
-            f"{self.workspace.resolve()}:/workspace",
-            self.image,
-            "/bin/bash",
-            "-lc",
-            command,
-        ]
+        client = docker.from_env()
+        container = None
         try:
-            proc = subprocess.run(
-                argv, capture_output=True, text=True, timeout=timeout
+            options = dict(
+                volumes={
+                    str(self.workspace.resolve()): {
+                        "bind": "/workspace", "mode": "rw"
+                    }
+                },
+                working_dir="/workspace", auto_remove=False,
+                tty=True, detach=True, entrypoint="/bin/sh",
+                cpu_period=100_000, cpu_quota=200_000,
+                mem_limit=2_000_000_000, memswap_limit=2_000_000_000,
+                pids_limit=128,
             )
-        except subprocess.TimeoutExpired:
-            return CommandResult(
-                exit_code=124, stdout="", stderr=f"timeout after {timeout}s"
+            if self.network_mode:
+                options["network_mode"] = self.network_mode
+            container = create_nonroot(
+                type(client.containers).create, client.containers,
+                self.image, None, options,
             )
-        return CommandResult(
-            exit_code=proc.returncode, stdout=proc.stdout, stderr=proc.stderr
-        )
+            container.start()
+            result = run_with_deadline(
+                container, ["/bin/bash", "-lc", command],
+                timeout, self.command_events,
+            )
+            return CommandResult(*result)
+        finally:
+            try:
+                if container is not None:
+                    event = next(
+                        (e for e in reversed(self.command_events)
+                         if e["container_id"] == container.id),
+                        None,
+                    )
+                    cleanup_started = time.monotonic()
+                    try:
+                        remove_verified(container.id, client.api._version)
+                    except Exception:
+                        if event is not None:
+                            event["cleanup"] = "failed"
+                        raise
+                    else:
+                        if event is not None:
+                            event["cleanup"] = "succeeded"
+                            event["cleanup_seconds"] = (
+                                time.monotonic() - cleanup_started
+                            )
+            finally:
+                client.close()
 
 
 @dataclass
