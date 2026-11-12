@@ -1,8 +1,8 @@
 {
   "version": 2,
   "result": "PASS",
-  "checked_commit": "b22ed1d3951e12a9580af5343b49c602fb3a1ddf",
-  "importer_commit": "d85c23bc1474262c3a02e03c96f9209296a69a77",
+  "checked_commit": "c3c752d7cb6bfe84b4810418d6cc59bf8a33c93b",
+  "importer_commit": "33c49fb381ee5e2e6062e6abb8755f1d4719f008",
   "importer_sha256": "fc372c28a65ce6ba0991e0e3a2977cae160c0e8cfcb94c68ac1ccb6183548ebd",
   "run": "copilot-injection-run02",
   "benchmark_outcome": "pass",
