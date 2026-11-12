@@ -1,0 +1,39 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted (394ms)
+  ✓  2 legacy-export.browser.spec.cjs:52:1 › UI-02: add, toggle and delete still work (340ms)
+
+
+  1) legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted 
+
+    Error: download.path: canceled
+
+      44 |     page.getByRole('link', { name: /export csv/i }).click(),
+      45 |   ]);
+    > 46 |   const text = fs.readFileSync(await download.path(), 'utf8');
+         |                                               ^
+      47 |   expect(text.startsWith('ID,TITLE,DONE')).toBe(true);
+      48 |   expect(text).toMatch(/\n\d{6},"Call Sam, then Alex",N\r?\n/);
+      49 |   if (EVIDENCE_DIR) fs.writeFileSync(path.join(EVIDENCE_DIR, 'UI-01-export.csv'), text);
+        at <BATCH_ROOT>/graders/benchmark-results/protocol/legacy-export/legacy-export.browser.spec.cjs:46:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../copilot-legacy-run04/evidence/browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../copilot-legacy-run04/evidence/browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/error-context.md
+
+    Error Context: ../../../../copilot-legacy-run04/evidence/browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../copilot-legacy-run04/evidence/browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../copilot-legacy-run04/evidence/browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    legacy-export.browser.spec.cjs:35:1 › UI-01: the Export CSV link downloads a file with the comma title quoted 
+  1 passed (1.5s)

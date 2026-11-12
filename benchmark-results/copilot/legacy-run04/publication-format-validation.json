@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "status": "PASS (internal); unchanged importer gate still required",
+  "model": "claude-sonnet-4-6",
+  "seconds": 84.832,
+  "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+  "suites": [
+    "local_exit=0",
+    "api_exit=0",
+    "browser_exit=1",
+    "security_scan_exit=0"
+  ],
+  "human_review": "UNREVIEWED"
+}

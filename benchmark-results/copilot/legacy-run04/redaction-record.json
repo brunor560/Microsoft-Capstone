@@ -1,0 +1,14 @@
+{
+  "source": "Per-attempt evidence and private preserved originals, source fingerprints retained",
+  "changes": [
+    "Local batch/home path prefixes redacted in text, except original code byte-identical",
+    "Conversation derivative omits private reasoning/signatures and streaming duplicates",
+    "Raw trace ZIPs remain private; omitted paths listed here"
+  ],
+  "omitted_private_traces": [
+    "browser-infrastructure-check/baseline-original-profile-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/trace.zip",
+    "browser-infrastructure-check/baseline-native-temp-profile-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/trace.zip",
+    "browser-test-results/legacy-export.browser-UI-0-b98ed-with-the-comma-title-quoted/trace.zip"
+  ],
+  "human_review": "pending"
+}

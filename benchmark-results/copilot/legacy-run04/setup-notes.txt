@@ -1,0 +1,1 @@
+Frozen deps installed with npm ci --offline --ignore-scripts --no-audit --no-fund before timing; native model-free boundary and baseline pass. No GitHub login, unsupported provider override or forced-thinking prompt. Fresh provider credentials stay private, denied to shell. Native file tools have in-process path-policy limitations. Setup journal gaps disclosed separately.

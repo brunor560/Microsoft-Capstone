@@ -1,0 +1,26 @@
+{
+  "requested_effort": "medium",
+  "observed_effective_main_effort": "medium",
+  "main_effort_evidence": [
+    {
+      "type": "session.start",
+      "timestamp": "2026-11-12T00:32:25.833Z",
+      "reasoningEffort": "medium",
+      "model": "anthropic-direct/claude-sonnet-4-6"
+    }
+  ],
+  "requested_thinking_mode": null,
+  "requested_thinking_mode_reason": "No separate mode switch or forced-thinking prompt used",
+  "thinking_output_observed": true,
+  "thinking_message_count": 2,
+  "thinking_output_evidence": "Owned assistant.message reasoningBlocks provider=anthropic-messages; block type=thinking; text/signatures omitted from derivative",
+  "wire_thinking_mode": null,
+  "wire_thinking_mode_reason": "No redacted provider-request-field capture; adaptive/budgeted mode unavailable",
+  "wire_budget_tokens": null,
+  "wire_provider_effort": null,
+  "subagent_efforts": [],
+  "subagent_usage_keys": [
+    "main"
+  ],
+  "no_per_response_thinking_requirement": true
+}

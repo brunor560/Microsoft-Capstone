@@ -1,0 +1,76 @@
+{
+  "task": "007",
+  "count": 1,
+  "run_id": "copilot-legacy-run04",
+  "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+  "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+  "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "condition": "anthropic-byok-sonnet46-explicit-medium-v2",
+  "distinct_from": "earlier default/unobserved requests; retain historical actual observations",
+  "model_requested": "anthropic-direct/claude-sonnet-4-6",
+  "effort_requested": "medium",
+  "effort_observed": null,
+  "thinking_mode": null,
+  "thinking_evidence": null,
+  "allowed_writes": [
+    "app/legacy/billing-export.js",
+    "app/test.js"
+  ],
+  "allowed_reads": "frozen app and task; system/runtime boundary to verify",
+  "task_sha256": "7edf90563cfc4a75e22356b82f8fef205fb10c6f7acb49c4a4f420a9ec99cf70",
+  "exact_prompt": "Read pipeline/tasks/007-legacy-export.md and complete the task\nexactly as specified.\n\nWork only within this project folder. Do not access parent folders,\nexternal grading files, reference solutions, or other runs.\n\nRun the required tests and report the actual results.\nDo not commit or push.\n",
+  "timing": "external monotonic; prompt submission to final report; process proxy separately if necessary",
+  "watchdog": null,
+  "suite_commands": [
+    "npm test",
+    "node --test legacy-export-api.test.cjs",
+    "node node_modules/@playwright/test/cli.js test --config=playwright.config.cjs",
+    "node contract-check.cjs <workspace>",
+    "node quality-grader.mjs <baseline-app> <candidate-app> <out>"
+  ],
+  "expected_evidence": "skill and pinned RUN-RECORD fields; separate effort/thinking observations; README/helper validation and unchanged importer output",
+  "authorization": {
+    "measured_attempts": 1,
+    "publication": false,
+    "push": false,
+    "observation_condition": "User reply: proceed with unavailable observation"
+  },
+  "preflight": "accepted baseline and native shell boundary",
+  "created_utc": "2026-11-12T00:18:50.290605+00:00",
+  "journal_gap": "Initial read-only skill/helper discovery preceded this journal; no setup or model call preceded it.",
+  "prompt_sha256": "3e9be9dbc298d2a6bb1e0fb4a5b2322dc585408d622d44f2e4d87e6960c9dbc9",
+  "configuration_verification": "CLI request/readback accepted; unavailable effective observation authorized; inspect session events after launch",
+  "prior_preparation": "/private/tmp/copilot-task007-medium-n2k7szdx",
+  "execution_status": "preflight_blocked",
+  "operator_knowledge": "Read skill, handoff, prior preparation, cohort agreement, pinned task/procedure/RUN-RECORD/OPERATOR-GUIDE and graders, prior helper/evidence; excluded from measured workspace and prompt.",
+  "model": "anthropic-direct/claude-sonnet-4-6",
+  "attempts": [
+    {
+      "task": "007",
+      "run_id": "copilot-legacy-run04",
+      "task_file": "pipeline/tasks/007-legacy-export.md",
+      "snapshot_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+      "evaluator_commit": "f03269bc81a1501b363f60624975bd9036c10804",
+      "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+      "grader_hash_manifest": "setup/grader-hashes.json"
+    }
+  ],
+  "preflight_attempts": [
+    {
+      "run_id": "copilot-legacy-run03",
+      "status": "preflight_blocked",
+      "measured_model_calls": 0,
+      "candidate_results": "not_run",
+      "reason": "CLI argument parser rejected --session-id with --trust-folder before creating session or invoking model",
+      "preserved": [
+        "private/stderr.txt",
+        "private/stdout.jsonl",
+        "private/timing.json",
+        "evidence/launch-arguments.json"
+      ],
+      "linked_successor": "copilot-legacy-run04",
+      "recorded_utc": "2026-11-12T00:32:01.915888+00:00"
+    }
+  ],
+  "launch_configuration_correction": "Remove incompatible --session-id; use supported fresh --trust-folder prompt session and bind owned result/session artifacts."
+}

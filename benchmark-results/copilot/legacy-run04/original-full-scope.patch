@@ -1,0 +1,125 @@
+--- baseline/app/legacy/billing-export.js
++++ candidate/app/legacy/billing-export.js
+@@ -55,9 +55,19 @@
+   return a;
+ }
+ 
++// RFC 4180: wrap in double quotes if field contains comma, quote, CR or LF;
++// double any embedded double quotes. Applied after clean_title.
++function quote_field(s) {
++  if (s.indexOf(',') === -1 && s.indexOf('"') === -1 &&
++      s.indexOf('\r') === -1 && s.indexOf('\n') === -1) {
++    return s;
++  }
++  return '"' + s.replace(/"/g, '""') + '"';
++}
++
+ function build_row(oTodo) {
+   var sep = LEGACY_V1 ? ';' : ',';
+-  return pad_id(oTodo.id) + sep + clean_title(oTodo.title) + sep + (oTodo.completed ? 'Y' : 'N');
++  return pad_id(oTodo.id) + sep + quote_field(clean_title(oTodo.title)) + sep + (oTodo.completed ? 'Y' : 'N');
+ }
+ 
+ function toCsv(aTodos) {
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -1,6 +1,7 @@
+ const test = require('node:test');
+ const assert = require('node:assert');
+ const app = require('./server');
++const { toCsv, pad_id, clean_title } = require('./legacy/billing-export');
+ 
+ let server;
+ const BASE_URL = 'http://localhost:3001';
+@@ -176,4 +177,91 @@
+     method: 'DELETE'
+   });
+   assert.strictEqual(unsafeRes.status, 400);
++});
++
++// --- billing-export unit tests ---
++
++test('pad_id pads to 6 digits', () => {
++  assert.strictEqual(pad_id(1), '000001');
++  assert.strictEqual(pad_id(42), '000042');
++  assert.strictEqual(pad_id(1000000), '1000000');
++});
++
++test('clean_title cuts titles longer than 40 chars', () => {
++  const long = 'A'.repeat(41);
++  const result = clean_title(long);
++  assert.strictEqual(result.length, 40);
++  assert.ok(result.endsWith('~'));
++});
++
++test('clean_title applies spreadsheet guard', () => {
++  assert.strictEqual(clean_title('=SUM(A1)')[0], "'");
++  assert.strictEqual(clean_title('+foo')[0], "'");
++  assert.strictEqual(clean_title('-bar')[0], "'");
++  assert.strictEqual(clean_title('@baz')[0], "'");
++  assert.strictEqual(clean_title('normal')[0], 'n');
++});
++
++test('toCsv: title with comma is quoted (FIX-01)', () => {
++  const csv = toCsv([{ id: 7, title: 'Call Sam, then Alex', completed: false }]);
++  assert.ok(csv.includes('"Call Sam, then Alex"'), `expected quoted title, got: ${csv}`);
++});
++
++test('toCsv: title with double quote is quoted and quote is doubled (FIX-02)', () => {
++  const csv = toCsv([{ id: 1, title: 'Say "hello"', completed: false }]);
++  assert.ok(csv.includes('"Say ""hello"""'), `expected doubled quotes, got: ${csv}`);
++});
++
++test('toCsv: title with line feed is quoted (FIX-03)', () => {
++  const csv = toCsv([{ id: 1, title: 'line1\nline2', completed: false }]);
++  assert.ok(csv.includes('"line1\nline2"'), `expected quoted LF title, got: ${csv}`);
++});
++
++test('toCsv: title with carriage return is quoted (FIX-03)', () => {
++  const csv = toCsv([{ id: 1, title: 'line1\rline2', completed: false }]);
++  assert.ok(csv.includes('"line1\rline2"'), `expected quoted CR title, got: ${csv}`);
++});
++
++test('toCsv: plain title is not quoted (FIX-04)', () => {
++  const csv = toCsv([{ id: 3, title: 'Buy milk', completed: false }]);
++  assert.ok(csv.includes(',Buy milk,'), `plain title should not be quoted, got: ${csv}`);
++});
++
++test('toCsv: header is ID,TITLE,DONE (FIX-04)', () => {
++  const csv = toCsv([]);
++  assert.ok(csv.startsWith('ID,TITLE,DONE\r\n'));
++});
++
++test('toCsv: empty list returns header only (FIX-04)', () => {
++  assert.strictEqual(toCsv([]), 'ID,TITLE,DONE\r\n');
++});
++
++test('toCsv: open todos before completed, by id ascending (FIX-04)', () => {
++  const todos = [
++    { id: 2, title: 'B', completed: false },
++    { id: 1, title: 'A', completed: true },
++    { id: 3, title: 'C', completed: false }
++  ];
++  const csv = toCsv(todos);
++  const lines = csv.split('\r\n').filter(Boolean);
++  assert.strictEqual(lines[0], 'ID,TITLE,DONE');
++  assert.ok(lines[1].startsWith('000002'), `open id=2 should be first open, got ${lines[1]}`);
++  assert.ok(lines[2].startsWith('000003'), `open id=3 should be second open, got ${lines[2]}`);
++  assert.ok(lines[3].startsWith('000001'), `completed id=1 should be last, got ${lines[3]}`);
++});
++
++test('toCsv: DONE column is Y/N (FIX-04)', () => {
++  const csv = toCsv([
++    { id: 1, title: 'done task', completed: true },
++    { id: 2, title: 'open task', completed: false }
++  ]);
++  assert.ok(csv.includes(',Y\r\n'));
++  assert.ok(csv.includes(',N\r\n'));
++});
++
++test('GET /api/todos/export.csv returns CSV with correct header', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos/export.csv`);
++  assert.strictEqual(res.status, 200);
++  const text = await res.text();
++  assert.ok(text.startsWith('ID,TITLE,DONE\r\n'));
+ });

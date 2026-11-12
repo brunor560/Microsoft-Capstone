@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-11-12T00:29:39.634266+00:00",
+  "cli": "1.0.107",
+  "requested_selector": "anthropic-direct/claude-sonnet-4-6",
+  "effort_requested": "medium",
+  "cli_support": "--reasoning-effort flag advertised; config effortLevel medium accepted; fresh profiles read back medium",
+  "readback_logs": [
+    "setup/inspection-controls-11.txt",
+    "setup/copilot-legacy-run03-controls-11.txt"
+  ],
+  "model_specific_metadata": {
+    "operation": "native installed modelSupportedReasoningEfforts (model-free supplemental inspection)",
+    "selected_alias": "unavailable: null",
+    "base_model": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "limitation": "Base-model catalog support is not selected-provider resolved metadata. No provider override added. SDK discovery failure retained in prior preparation; no unrelated GitHub login attempted."
+  },
+  "effort_observed": null,
+  "effort_observed_reason": "No measured session launched. Requested readback is not effective model-call evidence.",
+  "thinking_mode": null,
+  "thinking_mode_reason": "No provider request-field evidence; not inferred from catalog/model/tokens.",
+  "thinking_output": null,
+  "thinking_output_reason": "No model response requested; thinking blocks are not mandatory.",
+  "inference_authentication": "not_tested; discovery errors do not prove failure",
+  "configuration_verification_status": "requested setting accepted; provider-specific support unavailable",
+  "execution_boundary": "Model-free native Copilot direct shell verified workspace read, outside EPERM, external HTTPS denied, proxy loopback HTTP succeeded, all9 baseline tests pass. Initial terminal initialization failure preserved; sized-terminal rerun passed.",
+  "latest_user_condition": "Stop before measurement if verification unavailable. Earlier authorization for disclosed unavailable observations conflicts; clarification requested and not yet answered."
+}

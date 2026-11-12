@@ -1,0 +1,12 @@
+{
+  "source": "Installed1.0.107 copilot-sdk generated/session-events.d.ts UsageMetricsModelMetricUsage: total input/output; reasoning total output subset; native inclusive Copilot aggregate schema recorded in existing cohort tooling guidance",
+  "model_aggregate_count": 1,
+  "agent_keys": [
+    "main"
+  ],
+  "model_aggregate_equals_main_agent_usage": true,
+  "cache_fields": "subsets within total input, not added",
+  "reasoning_field": "subset within total output, not added",
+  "no_duplicate_provider_or_agent_totals": true,
+  "installed_schema_sha256": "027ed7b7c5eb96f19ef454f98feda915d268e5715d26893880f77b27b12b6232"
+}
