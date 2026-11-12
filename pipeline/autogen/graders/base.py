@@ -9,6 +9,7 @@ Docker.
 from __future__ import annotations
 
 import subprocess
+from harness.nonroot import cli_options
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Protocol
@@ -61,6 +62,7 @@ class DockerSandboxRunner:
             "--memory-swap", "2000000000",
             "--pids-limit", "128",
         ]
+        argv += cli_options()
         if self.network_mode:
             argv += ["--network", self.network_mode]
         argv += [

@@ -20,6 +20,7 @@ image that already contains them. Choose per run via
 from __future__ import annotations
 
 import asyncio
+from harness.nonroot import create_nonroot
 
 from autogen_ext.code_executors.docker import DockerCommandLineCodeExecutor
 
@@ -59,7 +60,7 @@ class IsolatedDockerCodeExecutor(DockerCommandLineCodeExecutor):
                 memswap_limit=2_000_000_000,
                 pids_limit=128,
             )
-            return original_create(self_collection, image, command, **kwargs)
+            return create_nonroot(original_create, self_collection, image, command, kwargs)
 
         docker.models.containers.ContainerCollection.create = create_with_network
         try:
