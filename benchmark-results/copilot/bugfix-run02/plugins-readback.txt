@@ -1,0 +1,6 @@
+No plugins installed.
+
+Use 'copilot plugin install <source>' to install a plugin.
+Built-in plugins:
+  • computer-use (v0.1.97) [disabled]
+  • browser-use (v0.1.0) [disabled]

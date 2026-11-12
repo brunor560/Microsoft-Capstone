@@ -1,0 +1,52 @@
+[
+  {
+    "path": "pipeline",
+    "type": "dir",
+    "target": null
+  },
+  {
+    "path": "app",
+    "type": "dir",
+    "target": null
+  },
+  {
+    "path": "pipeline/tasks",
+    "type": "dir",
+    "target": null
+  },
+  {
+    "path": "app/test.js",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/server.js",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/public",
+    "type": "dir",
+    "target": null
+  },
+  {
+    "path": "app/package-lock.json",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/package.json",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "app/public/index.html",
+    "type": "file",
+    "target": null
+  },
+  {
+    "path": "pipeline/tasks/004-fix-update-validation.md",
+    "type": "file",
+    "target": null
+  }
+]

@@ -1,0 +1,225 @@
+--- baseline/app/public/index.html
++++ candidate/app/public/index.html
+@@ -30,7 +30,7 @@
+       const res = await fetch('/api/todos');
+       const data = await res.json();
+       list.innerHTML = data.map(item => `
+-        <li>
++        <li data-id="${item.id}">
+           <span class="item-text ${item.completed ? 'done' : ''}" onclick="toggleStatus(${item.id}, ${!item.completed})">
+             ${item.title}
+           </span>
+@@ -50,12 +50,35 @@
+       fetchTodos();
+     };
+     async function toggleStatus(id, completed) {
+-      await fetch(`/api/todos/${id}`, {
+-        method: 'PUT',
+-        headers: { 'Content-Type': 'application/json' },
+-        body: JSON.stringify({ completed })
+-      });
++      try {
++        const res = await fetch(`/api/todos/${id}`, {
++          method: 'PUT',
++          headers: { 'Content-Type': 'application/json' },
++          body: JSON.stringify({ completed })
++        });
++        if (!res.ok) {
++          const data = await res.json().catch(() => ({}));
++          showItemError(id, data.error || 'Update failed');
++          return;
++        }
++      } catch (e) {
++        showItemError(id, 'Could not reach the server');
++        return;
++      }
+       fetchTodos();
++    }
++
++    function showItemError(id, message) {
++      const li = document.querySelector(`li[data-id="${id}"]`);
++      if (!li) return;
++      let alert = li.querySelector('[role="alert"]');
++      if (!alert) {
++        alert = document.createElement('span');
++        alert.setAttribute('role', 'alert');
++        alert.style.cssText = 'color:red;font-size:0.85rem;margin-left:8px;';
++        li.appendChild(alert);
++      }
++      alert.textContent = message;
+     }
+     async function deleteItem(id) {
+       await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+
+--- baseline/app/server.js
++++ candidate/app/server.js
+@@ -31,11 +31,29 @@
+ });
+ 
+ app.put('/api/todos/:id', (req, res) => {
+-  const id = parseInt(req.params.id, 10);
++  const { id: idParam } = req.params;
++
++  if (!/^\d+$/.test(idParam)) {
++    return res.status(400).json({ error: 'Invalid ID' });
++  }
++  const idBig = BigInt(idParam);
++  if (idBig <= 0n || idBig > BigInt(Number.MAX_SAFE_INTEGER)) {
++    return res.status(400).json({ error: 'Invalid ID' });
++  }
++
++  if (typeof req.body !== 'object' || req.body === null || Array.isArray(req.body)) {
++    return res.status(400).json({ error: 'Request body must be a JSON object' });
++  }
++
++  if (req.body.completed !== undefined && typeof req.body.completed !== 'boolean') {
++    return res.status(400).json({ error: 'completed must be a boolean' });
++  }
++
++  const id = Number(idBig);
+   const todo = todos.find(t => t.id === id);
+   if (!todo) return res.status(404).json({ error: 'Todo not found' });
+ 
+-  if (req.body.completed !== undefined) todo.completed = Boolean(req.body.completed);
++  if (req.body.completed !== undefined) todo.completed = req.body.completed;
+   if (req.body.title && typeof req.body.title === 'string' && req.body.title.trim() !== '') {
+     todo.title = req.body.title.trim();
+   }
+
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -164,6 +164,134 @@
+   assert.strictEqual(todos.some(t => t.id === created.id), false);
+ });
+ 
++// API-01: completed must be a JSON boolean
++test('PUT /api/todos/:id rejects non-boolean completed values with 400', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'API-01 test todo' })
++  });
++  const created = await createRes.json();
++
++  const invalidValues = ['true', 'false', 1, 0, null];
++  for (const value of invalidValues) {
++    const res = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++      method: 'PUT',
++      headers: { 'Content-Type': 'application/json' },
++      body: JSON.stringify({ completed: value })
++    });
++    assert.strictEqual(res.status, 400, `Expected 400 for completed=${JSON.stringify(value)}`);
++  }
++});
++
++test('PUT /api/todos/:id accepts boolean true and false for completed', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'API-01 boolean test' })
++  });
++  const created = await createRes.json();
++
++  const trueRes = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++  assert.strictEqual(trueRes.status, 200);
++  const trueData = await trueRes.json();
++  assert.strictEqual(trueData.completed, true);
++
++  const falseRes = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: false })
++  });
++  assert.strictEqual(falseRes.status, 200);
++  const falseData = await falseRes.json();
++  assert.strictEqual(falseData.completed, false);
++});
++
++// API-02: ID validation for PUT
++test('PUT /api/todos/:id rejects invalid IDs with 400', async () => {
++  const invalidIds = ['abc', '1abc', '1.5', '0', '00', '-1', '9007199254740992'];
++  for (const id of invalidIds) {
++    const res = await fetch(`${BASE_URL}/api/todos/${id}`, {
++      method: 'PUT',
++      headers: { 'Content-Type': 'application/json' },
++      body: JSON.stringify({ completed: true })
++    });
++    assert.strictEqual(res.status, 400, `Expected 400 for PUT with ID: ${id}`);
++  }
++});
++
++test('PUT /api/todos/:id returns 404 for valid ID with no matching todo', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos/999999`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++  assert.strictEqual(res.status, 404);
++});
++
++test('PUT /api/todos/:id accepts leading-zero ID', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Leading zero PUT test' })
++  });
++  const created = await createRes.json();
++  const paddedId = `0${created.id}`;
++  const res = await fetch(`${BASE_URL}/api/todos/${paddedId}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.strictEqual(data.completed, true);
++});
++
++// API-03: body must be a JSON object
++test('PUT /api/todos/:id rejects array body with 400', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'API-03 test todo' })
++  });
++  const created = await createRes.json();
++  const res = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify([{ completed: true }])
++  });
++  assert.strictEqual(res.status, 400);
++});
++
++// API-04: rejected requests must not change any todo
++test('PUT /api/todos/:id rejected request does not change the todo', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'API-04 unchanged test' })
++  });
++  const created = await createRes.json();
++
++  // Send invalid completed with valid title - should be rejected and title unchanged
++  const res = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: 'true', title: 'Changed title' })
++  });
++  assert.strictEqual(res.status, 400);
++
++  const listRes = await fetch(`${BASE_URL}/api/todos`);
++  const todos = await listRes.json();
++  const todo = todos.find(t => t.id === created.id);
++  assert.ok(todo, 'Todo should still exist');
++  assert.strictEqual(todo.title, 'API-04 unchanged test', 'Title should be unchanged');
++  assert.strictEqual(todo.completed, false, 'completed should be unchanged');
++});
++
+ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {
+   // MAX_SAFE_INTEGER is 9007199254740991 (valid ID format, but does not exist -> 404)
+   const maxSafeRes = await fetch(`${BASE_URL}/api/todos/9007199254740991`, {

@@ -1,0 +1,62 @@
+{
+  "memory": false,
+  "continueOnAutoMode": false,
+  "autoUpdate": false,
+  "disableAllHooks": true,
+  "ide": {
+    "autoConnect": false
+  },
+  "extensions": {
+    "mode": "disabled"
+  },
+  "disabledSkills": [
+    "discover-resources",
+    "github-pr-media",
+    "pr-stack",
+    "customize-cloud-agent"
+  ],
+  "dynamicRetrieval": {
+    "skills": false,
+    "mcp": false
+  },
+  "sandbox": {
+    "enabled": true,
+    "addCurrentWorkingDirectory": true,
+    "allowDevToolAccess": false,
+    "allowBypass": false,
+    "auth": {
+      "git": false,
+      "gh": false
+    },
+    "userPolicy": {
+      "filesystem": {
+        "deniedPaths": [
+          "/Users",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/graders",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/setup",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/private",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/state",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/copilot-bugfix-run02/evidence",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/copilot-bugfix-run02/private",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/measured/state",
+          "/private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task004-6y3d6hep/runtime/state"
+        ]
+      },
+      "network": {
+        "allowOutbound": true,
+        "allowLocalNetwork": true,
+        "allowedHosts": [
+          "localhost",
+          "127.0.0.1",
+          "::1"
+        ]
+      },
+      "seatbelt": {
+        "keychainAccess": false
+      }
+    }
+  },
+  "experimental": false,
+  "mouse": false,
+  "bashEnv": false
+}

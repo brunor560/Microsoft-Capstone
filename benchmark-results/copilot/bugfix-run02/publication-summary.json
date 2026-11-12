@@ -1,0 +1,179 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-bugfix-run02",
+    "participant": "Ross Volenec",
+    "date": "2026-11-12T20:52:45.414277+00:00",
+    "timezone": "America/New_York",
+    "tool": "GitHub Copilot CLI 1.0.107",
+    "interface": "headless -p",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "reasoning_effort_requested": "medium",
+    "provider": "Anthropic BYOK",
+    "model_observed": "claude-sonnet-4-6",
+    "effort_observed": "medium; owned session.start reasoningEffort; no later model_change before final report",
+    "thinking_wire_mode": "unobserved",
+    "approval_mode": "headless scoped preapproval",
+    "memory": "disabled by -p and settings",
+    "hooks": "disableAllHooks true",
+    "ide": "autoConnect false",
+    "extensions": "mode disabled",
+    "skills": "disabled settings; runtime inventory must be inspected; prior versions disagreed",
+    "mcp": "builtin disabled; no custom servers",
+    "fresh_start": "fresh measured HOME/COPILOT_HOME/TMPDIR and session; selected provider only; no probe session reuse",
+    "isolation": "Copilot native MXC command sandbox; loopback-only proxy policy; keychain/git/gh auth off; bypass off; builtin file tools governed by CLI path checks, not OS sandbox",
+    "residual_exposure": "selected provider credential readable by CLI parent; native shell denial verified in separate session. Builtin file tools are best-effort path-policy boundary; no full-process OS isolation claim.",
+    "watchdog": "none",
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+    "task_id": "004",
+    "session_id": "f209a5d6-f4d6-4c57-858b-96f4b9813b54",
+    "configuration_gaps": "config list unsupported; settings.json preserved; skill list disabled but runtime skills enabled; MCP runtime all disabled",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+  },
+  "pins": {
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+    "tooling_commit": "67c245bb6b5ddc11af73fc07a29dcc537364e344",
+    "results_ref": "8b182923e92085196edc4a6a61938559b1d6a87f",
+    "source_head": "6d678d67b4fdc827b754c00c9390b7843d015be9"
+  },
+  "notes": {
+    "effort": "medium observed in original owned session.start reasoningEffort; no later model_change during coding. Reasoning events observed; wire thinking mode/budget/provider effort unobserved.",
+    "scope_findings": [
+      "Only three permitted files changed; all nine original tests preserved verbatim; seven added. Package, task and dependency bytes unchanged. See scope-review.txt and dependency-state.json.",
+      "B1-B4 fixed: 16 local, 24 API and 4 browser tests pass. See bugs.json.",
+      "Lint/runtime pass; complexity 14 exceeds 10 and duplicated PUT/DELETE validation reported. Quality score 50/100 retained only as legacy diagnostic; no native composite score.",
+      "Final report counts and file list accurate; network-error explanation omits that original await rejects before fetchTodos. See scope-review.txt.",
+      "One fresh autonomous attempt, no post-prompt coding intervention. Post-run /session metadata inspection recorded separately. Independent human review pending.",
+      "Runtime builtin skills enabled despite disabled readback; MCP runtime disabled. config list unsupported; preserved settings available.",
+      "Timing is launch-to-final-report proxy including CLI startup; 100.823-second process lifetime retained separately. Approval waiting unavailable.",
+      "Separate explicit-medium BYOK/headless condition from historical Auto/manual run01. Frozen inputs confirmed for this attempt; no new independent teammate agreement inferred."
+    ],
+    "source": "Owned original session events, before/after source manifests, source.diff, local/API/browser logs, quality.json, runtime inventories and operator records."
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": false
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": false
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-12T20:53:04.310688+00:00",
+    "end_utc": "2026-11-12T20:54:45.023Z",
+    "seconds": 100.713,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 200121,
+    "output_tokens": 6607,
+    "cached_input_tokens": 172493,
+    "cache_write_input_tokens": 27617,
+    "reasoning_output_tokens": 1783,
+    "total_tokens": 206728,
+    "total_cost_usd": null,
+    "cost_reason": "Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "api",
+      "file": "original-api-tests.txt",
+      "label": "Independent API",
+      "exit": 0,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "browser",
+      "file": "original-browser-tests.txt",
+      "label": "Independent browser",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": null,
+      "checks": []
+    }
+  ],
+  "applicability": {
+    "local": {
+      "applicable": true,
+      "reason": "Required by Task004 pinned procedure"
+    },
+    "api": {
+      "applicable": true,
+      "reason": "Required by Task004 pinned procedure"
+    },
+    "browser": {
+      "applicable": true,
+      "reason": "Required by Task004 pinned procedure"
+    },
+    "acceptance": {
+      "applicable": false,
+      "reason": "Not a Task004 suite"
+    },
+    "supplemental": {
+      "applicable": false,
+      "reason": "Not a Task004 suite"
+    },
+    "security_runtime": {
+      "applicable": false,
+      "reason": "Not a Task004 suite"
+    },
+    "security_scan": {
+      "applicable": false,
+      "reason": "Not a Task004 suite"
+    }
+  },
+  "changed": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "pending different actual team member; no H score claimed",
+    "configuration_limitations": [
+      "Built-in skills runtime reports enabled despite disabled readback; unsupported config list command retained. MCP runtime reports disabled.",
+      "Built-in file tools use best-effort CLI path policy; only native shell execution has the verified OS sandbox boundary.",
+      "Launch-to-final-report proxy includes CLI startup; approval wait and provider USD cost unavailable.",
+      "Independent second-team-member review pending; no H score or human approval claimed.",
+      "Quality complexity and duplication checks fail; native measurements remain raw.",
+      "No comparison with historical Auto/manual run01 is implied."
+    ]
+  },
+  "reviewed": false
+}

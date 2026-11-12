@@ -1,0 +1,5 @@
+{
+  "local-tests": 0,
+  "api-tests": 1,
+  "browser-tests": 1
+}

@@ -1,0 +1,50 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex; model and effort not exposed to operator runtime",
+  "supervised_by": "Ross Volenec",
+  "knowledge": "Read skill and task guides, prior Task004 README, committed task/evaluators and baseline failures, SRS6 and ADR13. Reference code exported externally but not read or supplied to Copilot.",
+  "setup_attempts": 2,
+  "setup_problems": [
+    "Outer sandbox blocked baseline listeners and native sandbox proxy; retained failures, reran preflight in approved local execution context."
+  ],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-12T20:52:45.414498+00:00",
+      "phase": "setup",
+      "from_actor": "user",
+      "what": "Confirmed proposed Sonnet condition and inputs; requested escalated read-only remote verification, fetch, baseline and model-free native sandbox probe."
+    },
+    {
+      "time_utc": "2026-11-12T20:52:45.414501+00:00",
+      "phase": "setup",
+      "from_actor": "documentation",
+      "what": "Read skill, pinned task guides, CLI help and existing small probe helpers."
+    },
+    {
+      "time_utc": "2026-11-12T21:00:01.725099+00:00",
+      "phase": "post-run metadata",
+      "from_actor": "operator",
+      "what": "Opened completed owned session with -i /session after preservation. This CLI opens Sessions tab, no detailed metrics pane; canceled tab and exited without model prompt. Exit display corroborates token totals. Display duration includes post-run inspection and is not coding time. Prior original session bytes retained privately."
+    },
+    {
+      "time_utc": "2026-11-12T21:00:01.725170+00:00",
+      "phase": "reconciliation",
+      "from_actor": "runtime evidence",
+      "what": "Builtin skills list disabled but runtime enabled; unsupported config list readback retained. Native shell probes pass; no coding environment repairs."
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "notes": "Prelaunch; unknown measurements null. Initial source-discovery tool calls predate execution journal; journal begins before snapshot/setup and records subsequent scripted invocations; PTY preflight actions preserved in owned session events/tool transcript. No timestamps reconstructed. Measured checklist covers initial task submission through final report only. Post-run /session inspection did not resume coding or add a model call; recorded separately."
+}

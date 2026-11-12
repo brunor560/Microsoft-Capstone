@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-11-12T20:52:42.885559+00:00",
+  "method": "git archive export bytes compared with git show at exact agreed full commit; raw and LF hashes separately recorded before coding",
+  "agreement_source": "Task 004 committed agreed snapshot/evaluator and prior run01; user confirmed proposed Sonnet inputs on 2026-11-12",
+  "commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "checks": [
+    {
+      "path": "benchmark-results/protocol/code-quality/scores.json",
+      "expected": {
+        "raw_sha256": "49b46dd9ed4b46d97c9231a284a7036264f13026a9cb35989e3b325ea2297021",
+        "lf_normalized_sha256": "49b46dd9ed4b46d97c9231a284a7036264f13026a9cb35989e3b325ea2297021"
+      },
+      "observed_raw_sha256": "49b46dd9ed4b46d97c9231a284a7036264f13026a9cb35989e3b325ea2297021",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/scores.md",
+      "expected": {
+        "raw_sha256": "b97e7926f2d2f1d79719926a3db72259e5b6bb25293a928fa23e8824c3575800",
+        "lf_normalized_sha256": "b97e7926f2d2f1d79719926a3db72259e5b6bb25293a928fa23e8824c3575800"
+      },
+      "observed_raw_sha256": "b97e7926f2d2f1d79719926a3db72259e5b6bb25293a928fa23e8824c3575800",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/validation.txt",
+      "expected": {
+        "raw_sha256": "54653664251f57a88382bfb0efb2d9a096b9832207ba3a2a330d4e86ae48b1c3",
+        "lf_normalized_sha256": "54653664251f57a88382bfb0efb2d9a096b9832207ba3a2a330d4e86ae48b1c3"
+      },
+      "observed_raw_sha256": "54653664251f57a88382bfb0efb2d9a096b9832207ba3a2a330d4e86ae48b1c3",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/README.md",
+      "expected": {
+        "raw_sha256": "9a275d7a36eb8a63ec23d2d87b59cd9cb1e3dc4ff45bf8de9fdcdf819b6b9bf4",
+        "lf_normalized_sha256": "9a275d7a36eb8a63ec23d2d87b59cd9cb1e3dc4ff45bf8de9fdcdf819b6b9bf4"
+      },
+      "observed_raw_sha256": "9a275d7a36eb8a63ec23d2d87b59cd9cb1e3dc4ff45bf8de9fdcdf819b6b9bf4",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/score-runs.mjs",
+      "expected": {
+        "raw_sha256": "aa6eb59ded85f50091bf025fe70b7d75f5eb62d9651aa39c7f7013e191bc7bc7",
+        "lf_normalized_sha256": "aa6eb59ded85f50091bf025fe70b7d75f5eb62d9651aa39c7f7013e191bc7bc7"
+      },
+      "observed_raw_sha256": "aa6eb59ded85f50091bf025fe70b7d75f5eb62d9651aa39c7f7013e191bc7bc7",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/.gitignore",
+      "expected": {
+        "raw_sha256": "624e83e123575762bef17b10c92cb3abdf9bf53d0f048a1dda22f7d18ff2e398",
+        "lf_normalized_sha256": "624e83e123575762bef17b10c92cb3abdf9bf53d0f048a1dda22f7d18ff2e398"
+      },
+      "observed_raw_sha256": "624e83e123575762bef17b10c92cb3abdf9bf53d0f048a1dda22f7d18ff2e398",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/package-lock.json",
+      "expected": {
+        "raw_sha256": "bc0a1f2265c1258af1b5a5e0d7844fb5f2eb6027372aafec9e07806a7e8e874e",
+        "lf_normalized_sha256": "bc0a1f2265c1258af1b5a5e0d7844fb5f2eb6027372aafec9e07806a7e8e874e"
+      },
+      "observed_raw_sha256": "bc0a1f2265c1258af1b5a5e0d7844fb5f2eb6027372aafec9e07806a7e8e874e",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/package.json",
+      "expected": {
+        "raw_sha256": "50b15e94f38cfb9a5587870b31672a0c0af82ecd756f0385c09304a717a854ba",
+        "lf_normalized_sha256": "50b15e94f38cfb9a5587870b31672a0c0af82ecd756f0385c09304a717a854ba"
+      },
+      "observed_raw_sha256": "50b15e94f38cfb9a5587870b31672a0c0af82ecd756f0385c09304a717a854ba",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/quality-grader.mjs",
+      "expected": {
+        "raw_sha256": "a0a42884273b11fd0c2cf547d1661f802f83df9108ba0aad3838fd94fcd98068",
+        "lf_normalized_sha256": "a0a42884273b11fd0c2cf547d1661f802f83df9108ba0aad3838fd94fcd98068"
+      },
+      "observed_raw_sha256": "a0a42884273b11fd0c2cf547d1661f802f83df9108ba0aad3838fd94fcd98068",
+      "match": true
+    }
+  ]
+}

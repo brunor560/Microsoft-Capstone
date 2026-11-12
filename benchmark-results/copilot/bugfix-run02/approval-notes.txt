@@ -1,0 +1,1 @@
+Headless preapproval: workspace reads, writes to three task-authorized files, node commands, npm test and cd compound commands. Native sandbox remains enforced, no bypass/unrestricted paths. Setup probes verified native command boundary and cd app && npm test. Preapprovals are not post-prompt messages.

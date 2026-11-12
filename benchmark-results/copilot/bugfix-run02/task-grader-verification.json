@@ -1,0 +1,242 @@
+{
+  "timestamp_utc": "2026-11-12T20:52:42.806581+00:00",
+  "method": "git archive export bytes compared with git show at exact agreed full commit; raw and LF hashes separately recorded before coding",
+  "agreement_source": "Task 004 committed agreed snapshot/evaluator and prior run01; user confirmed proposed Sonnet inputs on 2026-11-12",
+  "commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+  "checks": [
+    {
+      "path": "benchmark-results/protocol/update-bugfix/update-bugfix.browser.spec.cjs",
+      "expected": {
+        "raw_sha256": "232b871f6a2fcf06dad2795aeceeb93dde5b5f5742d24def7587af9bea29e056",
+        "lf_normalized_sha256": "232b871f6a2fcf06dad2795aeceeb93dde5b5f5742d24def7587af9bea29e056"
+      },
+      "observed_raw_sha256": "232b871f6a2fcf06dad2795aeceeb93dde5b5f5742d24def7587af9bea29e056",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/VALIDATION.md",
+      "expected": {
+        "raw_sha256": "b5240407109996ffcd40bb2744e24d5c13143fe2a41cfd7d025564cf63e049bf",
+        "lf_normalized_sha256": "b5240407109996ffcd40bb2744e24d5c13143fe2a41cfd7d025564cf63e049bf"
+      },
+      "observed_raw_sha256": "b5240407109996ffcd40bb2744e24d5c13143fe2a41cfd7d025564cf63e049bf",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/README.md",
+      "expected": {
+        "raw_sha256": "e4731c32e38dd53c2332242876072b16e578d267dca25cca76a1d1cb955d3a06",
+        "lf_normalized_sha256": "e4731c32e38dd53c2332242876072b16e578d267dca25cca76a1d1cb955d3a06"
+      },
+      "observed_raw_sha256": "e4731c32e38dd53c2332242876072b16e578d267dca25cca76a1d1cb955d3a06",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs",
+      "expected": {
+        "raw_sha256": "fcc6f8b4b9becb29bbac847fd6b031abb8b204eb5d679f6525d0704e522f47ef",
+        "lf_normalized_sha256": "fcc6f8b4b9becb29bbac847fd6b031abb8b204eb5d679f6525d0704e522f47ef"
+      },
+      "observed_raw_sha256": "fcc6f8b4b9becb29bbac847fd6b031abb8b204eb5d679f6525d0704e522f47ef",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/.gitignore",
+      "expected": {
+        "raw_sha256": "9766d93e239abc259879fb7e2b2c0952e421e47ca31006c027af75c33afb6ef8",
+        "lf_normalized_sha256": "9766d93e239abc259879fb7e2b2c0952e421e47ca31006c027af75c33afb6ef8"
+      },
+      "observed_raw_sha256": "9766d93e239abc259879fb7e2b2c0952e421e47ca31006c027af75c33afb6ef8",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/package-lock.json",
+      "expected": {
+        "raw_sha256": "69256395e4e6e392b99e31f0d5a23157e715428bd7fa8909f59d48714ac040f1",
+        "lf_normalized_sha256": "69256395e4e6e392b99e31f0d5a23157e715428bd7fa8909f59d48714ac040f1"
+      },
+      "observed_raw_sha256": "69256395e4e6e392b99e31f0d5a23157e715428bd7fa8909f59d48714ac040f1",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/package.json",
+      "expected": {
+        "raw_sha256": "c42f7d631e9b2bda44560e4b17dd00cb2fda5ef81f5efa9c4591544b999eeb91",
+        "lf_normalized_sha256": "c42f7d631e9b2bda44560e4b17dd00cb2fda5ef81f5efa9c4591544b999eeb91"
+      },
+      "observed_raw_sha256": "c42f7d631e9b2bda44560e4b17dd00cb2fda5ef81f5efa9c4591544b999eeb91",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/RUN-RECORD.md",
+      "expected": {
+        "raw_sha256": "7a1f820ba0622d6d37614d6fcf29e38662f10a828972e1cdeacb3c26f385a9a0",
+        "lf_normalized_sha256": "7a1f820ba0622d6d37614d6fcf29e38662f10a828972e1cdeacb3c26f385a9a0"
+      },
+      "observed_raw_sha256": "7a1f820ba0622d6d37614d6fcf29e38662f10a828972e1cdeacb3c26f385a9a0",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/playwright.config.cjs",
+      "expected": {
+        "raw_sha256": "96c58b05bed8222f0e84597a3b23818f5cd76100bbf228456dc5c5edb8d6e9e7",
+        "lf_normalized_sha256": "96c58b05bed8222f0e84597a3b23818f5cd76100bbf228456dc5c5edb8d6e9e7"
+      },
+      "observed_raw_sha256": "96c58b05bed8222f0e84597a3b23818f5cd76100bbf228456dc5c5edb8d6e9e7",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/ACCEPTANCE.md",
+      "expected": {
+        "raw_sha256": "a8f41cfe4043379dadfc44ad180124a22ce100aa00415e0e871ffaa64e36bae3",
+        "lf_normalized_sha256": "a8f41cfe4043379dadfc44ad180124a22ce100aa00415e0e871ffaa64e36bae3"
+      },
+      "observed_raw_sha256": "a8f41cfe4043379dadfc44ad180124a22ce100aa00415e0e871ffaa64e36bae3",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/validation-checks.txt",
+      "expected": {
+        "raw_sha256": "ee61127ffc49eaf11592b25fe3bdf544dfa8262408eb4c9f55108a194c61947e",
+        "lf_normalized_sha256": "ee61127ffc49eaf11592b25fe3bdf544dfa8262408eb4c9f55108a194c61947e"
+      },
+      "observed_raw_sha256": "ee61127ffc49eaf11592b25fe3bdf544dfa8262408eb4c9f55108a194c61947e",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/reference/test.js",
+      "expected": {
+        "raw_sha256": "c95b6e22f2ae994969117bc26995139d9ee030cb4202c7843306af7bb758208b",
+        "lf_normalized_sha256": "c95b6e22f2ae994969117bc26995139d9ee030cb4202c7843306af7bb758208b"
+      },
+      "observed_raw_sha256": "c95b6e22f2ae994969117bc26995139d9ee030cb4202c7843306af7bb758208b",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/reference/server.js",
+      "expected": {
+        "raw_sha256": "8fa792d2f4ca472164e0f21af138b9de5b7d055cd485c1ad9c7fa88a6448fbd6",
+        "lf_normalized_sha256": "8fa792d2f4ca472164e0f21af138b9de5b7d055cd485c1ad9c7fa88a6448fbd6"
+      },
+      "observed_raw_sha256": "8fa792d2f4ca472164e0f21af138b9de5b7d055cd485c1ad9c7fa88a6448fbd6",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/reference/public/index.html",
+      "expected": {
+        "raw_sha256": "94470116fc72c368d95ffabe0ea659fa81899c721e4ef8ef7b406b6dc0049de7",
+        "lf_normalized_sha256": "94470116fc72c368d95ffabe0ea659fa81899c721e4ef8ef7b406b6dc0049de7"
+      },
+      "observed_raw_sha256": "94470116fc72c368d95ffabe0ea659fa81899c721e4ef8ef7b406b6dc0049de7",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/exits.txt",
+      "expected": {
+        "raw_sha256": "e31b123a42fb0f779c903a144a34843c4c4a6612448dd12643b6427cca001d5d",
+        "lf_normalized_sha256": "e31b123a42fb0f779c903a144a34843c4c4a6612448dd12643b6427cca001d5d"
+      },
+      "observed_raw_sha256": "e31b123a42fb0f779c903a144a34843c4c4a6612448dd12643b6427cca001d5d",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/UI-02-network-error.png",
+      "expected": {
+        "raw_sha256": "e5841d6c55cddc13a1d79327b5a3e718c091f8a721cd817e658fa02059e5100c",
+        "lf_normalized_sha256": "3d00d54b48b17d530e19b06c7a10fd06f820ec3e53f9eaea66068e4a8bce68ae"
+      },
+      "observed_raw_sha256": "e5841d6c55cddc13a1d79327b5a3e718c091f8a721cd817e658fa02059e5100c",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/browser-tests.txt",
+      "expected": {
+        "raw_sha256": "4b02408af783114c1890c9001efe439c814ca2c605eea16f09c1a58507bf74b8",
+        "lf_normalized_sha256": "4b02408af783114c1890c9001efe439c814ca2c605eea16f09c1a58507bf74b8"
+      },
+      "observed_raw_sha256": "4b02408af783114c1890c9001efe439c814ca2c605eea16f09c1a58507bf74b8",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/local-tests.txt",
+      "expected": {
+        "raw_sha256": "4573aac81bce52defe8c76aadf88b84c324a914dddd5feee3882c97081ebd690",
+        "lf_normalized_sha256": "4573aac81bce52defe8c76aadf88b84c324a914dddd5feee3882c97081ebd690"
+      },
+      "observed_raw_sha256": "4573aac81bce52defe8c76aadf88b84c324a914dddd5feee3882c97081ebd690",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/api-tests.txt",
+      "expected": {
+        "raw_sha256": "307592a07d9dbe24f2c214feacc780eeac1ee48039efa9f39609988d0b30bcdd",
+        "lf_normalized_sha256": "307592a07d9dbe24f2c214feacc780eeac1ee48039efa9f39609988d0b30bcdd"
+      },
+      "observed_raw_sha256": "307592a07d9dbe24f2c214feacc780eeac1ee48039efa9f39609988d0b30bcdd",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/before/UI-02-server-error.png",
+      "expected": {
+        "raw_sha256": "2e9d0eaacadfe3da5de394321b06e3ea78318b60f68d52c34792f333f9873ecb",
+        "lf_normalized_sha256": "e868b2f4b987aebeea586a3f3efd4e1cf2eaf86d92474a4493485eaa0f49c555"
+      },
+      "observed_raw_sha256": "2e9d0eaacadfe3da5de394321b06e3ea78318b60f68d52c34792f333f9873ecb",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/exits.txt",
+      "expected": {
+        "raw_sha256": "89dcbacd920a7ffb4045b1590704d740a48f6a44d06c73a3c97c779d89b59c4a",
+        "lf_normalized_sha256": "89dcbacd920a7ffb4045b1590704d740a48f6a44d06c73a3c97c779d89b59c4a"
+      },
+      "observed_raw_sha256": "89dcbacd920a7ffb4045b1590704d740a48f6a44d06c73a3c97c779d89b59c4a",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/UI-02-network-error.png",
+      "expected": {
+        "raw_sha256": "d98069c3ac22f0b2ff20042ed21b5255b3b1b81fa1ebeddd7de039487538536e",
+        "lf_normalized_sha256": "373b1170c36ba03b08ecd3fbbe5a21684c8f5975323c43a2027d443d2a123930"
+      },
+      "observed_raw_sha256": "d98069c3ac22f0b2ff20042ed21b5255b3b1b81fa1ebeddd7de039487538536e",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/browser-tests.txt",
+      "expected": {
+        "raw_sha256": "7170d55f14d6fd43a88ab88e5b0b6be707035457c0892967e8341199030f7048",
+        "lf_normalized_sha256": "7170d55f14d6fd43a88ab88e5b0b6be707035457c0892967e8341199030f7048"
+      },
+      "observed_raw_sha256": "7170d55f14d6fd43a88ab88e5b0b6be707035457c0892967e8341199030f7048",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/local-tests.txt",
+      "expected": {
+        "raw_sha256": "ced2109c5c24bc67f2a6d93b2b3a3adc023a556501d0fc6c8d690d6bb880786d",
+        "lf_normalized_sha256": "ced2109c5c24bc67f2a6d93b2b3a3adc023a556501d0fc6c8d690d6bb880786d"
+      },
+      "observed_raw_sha256": "ced2109c5c24bc67f2a6d93b2b3a3adc023a556501d0fc6c8d690d6bb880786d",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/api-tests.txt",
+      "expected": {
+        "raw_sha256": "651f6f1451850967e6708aa3f777f6fd0dc38a1cfbb6beb37b49fe41933b7190",
+        "lf_normalized_sha256": "651f6f1451850967e6708aa3f777f6fd0dc38a1cfbb6beb37b49fe41933b7190"
+      },
+      "observed_raw_sha256": "651f6f1451850967e6708aa3f777f6fd0dc38a1cfbb6beb37b49fe41933b7190",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/evidence/after/UI-02-server-error.png",
+      "expected": {
+        "raw_sha256": "93ec46ee16692c3c8b9731261adb1c2e19d0419e5b6d6456d1686998b87bc994",
+        "lf_normalized_sha256": "c8cdbab22da2b76dbbb984515e8184fbf7a2bef8599c109ead52d584ac96499a"
+      },
+      "observed_raw_sha256": "93ec46ee16692c3c8b9731261adb1c2e19d0419e5b6d6456d1686998b87bc994",
+      "match": true
+    }
+  ]
+}
