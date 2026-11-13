@@ -1,0 +1,5 @@
+GitHub MCP Server
+Version: 2.1.0
+Commit: 4bcdcdf8d7beee98c9448e73e257308280924cc4
+Build Date: 2026-11-03T11:04:46Z
+sha256 github-mcp-server_Linux_x86_64.tar.gz a442f9db287cea01008bcb55fe6bc0292270301046c3edbd1a8b22d6e4157b2b (matches release checksums file v2.1.0)

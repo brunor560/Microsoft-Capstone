@@ -1,0 +1,35 @@
+{
+  "operator_type": "ai",
+  "operator": "Claude (claude-opus-5-5) in a Claude cloud session, operating 2.1.323 (Claude Code) headless with claude-sonnet-4-6",
+  "supervised_by": "account owner (crochajr81), who asked for the run in chat; not watching during the run",
+  "knowledge": "read the procedure README and OPERATOR-GUIDE.md and earlier PR-run READMEs (MCP setup); did not read reference/ or ACCEPTANCE.md before the measured run; gave no hints",
+  "setup_attempts": 2,
+  "setup_problems": [
+    "An earlier attempt on 2026-11-11 from the owner's Windows PC failed preflight (CLI not logged in); no measured run was started then; its branch bench008/preflight-20261111-2159/main remains",
+    "go install of github-mcp-server and the ghcr.io image were blocked by the container allowlist; the official release binary was downloaded instead and its checksum verified",
+    "The session cannot delete remote branches (git push --delete and the API DELETE both refused), so preflight branches bench008/preflight-20261112-c/main and /check remain for the owner to delete",
+    "Playwright's own Chromium download is blocked; browser tests used the pre-installed Chromium via an operator wrapper config and a launch preload (grader files unchanged)",
+    "pr-check.cjs first returned 401 because Node's fetch bypassed the session proxy; re-run with NODE_USE_ENV_PROXY=1 (no grader change)"
+  ],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "2026-11-12T23:59:00Z",
+      "from": "account owner",
+      "what": "connected GitHub to the session in claude.ai so the operator could push and use the GitHub API"
+    }
+  ],
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "notes": "Unusual: the CLI blocked the agent's standalone `sleep 30`; the agent then started a background `gh api` poll (gh was unauthenticated, so it failed silently) and kept polling pr-gate with the MCP get_check_runs method. When the background task ended after the merge, the CLI gave the agent one extra turn (second result event); it only reported that no action was needed. No messages were sent to the agent."
+}

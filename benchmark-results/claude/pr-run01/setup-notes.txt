@@ -1,0 +1,8 @@
+1. Platform: Linux bash instead of Windows PowerShell (git archive + unzip; sha256sum text manifests instead of CSV).
+2. Base branch pushed from the start commit; agent clone made with `git clone --single-branch --branch bench008/claude-pr-run01/main`.
+3. Grader self-test: all 13 scenarios correct. Baseline local tests in the clone: 9 passed, 0 failed.
+4. GitHub MCP: official github-mcp-server v2.1.0 release binary, local stdio, default toolsets; credential supplied by the session proxy (no classic PAT created, so nothing to delete afterwards).
+5. Preflight passed with the measured settings (see run-configuration.txt). Leftover throwaway branches could not be deleted from this session.
+6. Ruleset off; P1 graded from GitHub records.
+7. Browser tests used playwright.local-browser.config.cjs (only sets the Chromium executable) and NODE_OPTIONS=--require pw-preload.cjs; pr-check.cjs ran with NODE_USE_ENV_PROXY=1 and GITHUB_TOKEN set to the session placeholder; grader files unmodified.
+8. No setup problems during the measured attempt.

@@ -1,0 +1,8 @@
+7,9c7,9
+< 0ae266e63d6846724e93dce30a3018b18459e2c1cc493c7a858ca6c4c12653db  ./app/public/index.html
+< d89fbfde7c015558e71c832e119ab142557bfadc536287a97e7db0c0372c6fd2  ./app/server.js
+< 753a9e70d1e1a1b6a5bf5b2dc05772e0386652fc12dac6847dff667d75fde4f7  ./app/test.js
+---
+> 6011d70bc3a17b7994aa5e94212b7d0b6642b9a3277cf35bb8859a65cb3e69fb  ./app/public/index.html
+> 8535a3a6dc37b8988faea9a440449b7066f54ede6c09c2ee754b1d324ca791fa  ./app/server.js
+> f1fa0333d59e1a05dc9b070a2d14aac61fdd937018ca86600b9435bce86f56d7  ./app/test.js

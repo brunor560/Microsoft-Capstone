@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "stdio",
+      "command": "/home/claude/bench/ghmcp/x/github-mcp-server",
+      "args": [
+        "stdio"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<redacted: session token; GitHub credentials injected by the session's egress proxy as brunor560>"
+      }
+    }
+  }
+}
