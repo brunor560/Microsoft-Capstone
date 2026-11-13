@@ -1,0 +1,4 @@
+1. Platform: Linux bash instead of Windows PowerShell (git archive + unzip; sha256sum text manifests instead of CSV; diff instead of Compare-Object).
+2. Baseline local tests: 4 passed, 0 failed (expected 4/4).
+3. Baseline evaluators: acceptance 2 passed, 7 failed (expected 2/7); supplemental 0 passed, 1 failed (expected 0/1).
+4. No setup problems.

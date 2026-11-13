@@ -1,0 +1,92 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+TAP version 13
+# Subtest: GET /api/todos returns array of tasks
+ok 1 - GET /api/todos returns array of tasks
+  ---
+  duration_ms: 43.476763
+  type: 'test'
+  ...
+# Subtest: POST /api/todos creates a new valid task
+ok 2 - POST /api/todos creates a new valid task
+  ---
+  duration_ms: 13.595144
+  type: 'test'
+  ...
+# Subtest: POST /api/todos rejects empty title with 400
+ok 3 - POST /api/todos rejects empty title with 400
+  ---
+  duration_ms: 3.490529
+  type: 'test'
+  ...
+# Subtest: PUT /api/todos/:id updates a todo and preserves its title
+ok 4 - PUT /api/todos/:id updates a todo and preserves its title
+  ---
+  duration_ms: 12.591788
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 204 and removes the todo
+ok 5 - DELETE /api/todos/:id returns 204 and removes the todo
+  ---
+  duration_ms: 24.332776
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for already-deleted todo
+ok 6 - DELETE /api/todos/:id returns 404 for already-deleted todo
+  ---
+  duration_ms: 6.495167
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 404 for valid but non-existent ID
+ok 7 - DELETE /api/todos/:id returns 404 for valid but non-existent ID
+  ---
+  duration_ms: 3.19411
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for non-numeric ID
+ok 8 - DELETE /api/todos/:id returns 400 for non-numeric ID
+  ---
+  duration_ms: 2.258554
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for ID with letters suffix
+ok 9 - DELETE /api/todos/:id returns 400 for ID with letters suffix
+  ---
+  duration_ms: 1.723366
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for decimal ID
+ok 10 - DELETE /api/todos/:id returns 400 for decimal ID
+  ---
+  duration_ms: 2.798493
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for ID 0
+ok 11 - DELETE /api/todos/:id returns 400 for ID 0
+  ---
+  duration_ms: 3.225832
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id returns 400 for ID beyond safe integer range
+ok 12 - DELETE /api/todos/:id returns 400 for ID beyond safe integer range
+  ---
+  duration_ms: 2.05745
+  type: 'test'
+  ...
+# Subtest: DELETE /api/todos/:id does not affect other todos
+ok 13 - DELETE /api/todos/:id does not affect other todos
+  ---
+  duration_ms: 13.009513
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 255.939826
