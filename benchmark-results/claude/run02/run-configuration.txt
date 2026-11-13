@@ -1,0 +1,19 @@
+run_id=claude-delete-run02
+participant=operator: Claude (claude-opus-5-5) in a Claude cloud session, running the CLI for the account owner (crochajr81); 2026-11-12, America/New_York
+tool=2.1.323 (Claude Code)
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6 (plus any small helper calls the CLI makes itself; see modelUsage in token-usage.json)
+reasoning_effort=default (no --effort flag)
+baseline_commit=be98d692807da26dac3c3a720d4d5cf157e9717d (benchmark-start-v1)
+protocol_commit=8c484d51132fced1dc17afbefe5bcb35e471aa8b (same agreed protocol commit as claude/run01; grader SHA-256 values in grader-hashes.txt match run01's)
+token_limit=300000 (T = 100 up to 150,000)
+os=Ubuntu 24.04.5 LTS (Linux x86_64), Anthropic-hosted cloud container; bash equivalents of the PowerShell steps
+node=v22.22.0
+npm=10.9.4
+approval=--permission-mode acceptEdits, --allowedTools Bash (edits and shell pre-approved; no prompts)
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools)
+memory=off: --settings '{"autoMemoryEnabled":false}'; no MCP servers (--strict-mcp-config, empty config); no ~/.claude/CLAUDE.md; --setting-sources project; run folder has no CLAUDE.md or .claude/
+fresh_start=new session (session_id d3a891d7-8b32-4eae-9ec9-6ccffaf5df94), not resumed; skills/slash commands off; Chrome off; host-session env vars removed via freshenv.sh
+residual_environment=CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed
+purpose=repeat of task 001 with Sonnet 4.6, because run01 used the default Sonnet 5.5 and the dashboard archives Sonnet 5.5 runs
+operator_knowledge=operator had read the task 001 procedure (including the leading-zero supplemental check) and run01's README before the run; gave the agent only the Step 8 prompt

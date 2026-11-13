@@ -1,0 +1,9 @@
+All 13 tests pass.
+
+**Summary of changes:**
+
+- **`app/server.js`**: Added a `DELETE /api/todos/:id` handler that validates the ID (digits-only, positive, within safe-integer range → 400 otherwise), returns 404 if the todo isn't found, or removes it and returns 204 with an empty body.
+
+- **`app/test.js`**: Added 9 new tests covering: 204 on successful delete + item removed from list, 404 on second delete, 404 for non-existent valid ID, 400 for `abc`, `1abc`, `1.5`, `0`, `9007199254740992`, and no side-effects on other todos.
+
+**Test results:** 13/13 passed, 0 failed.
