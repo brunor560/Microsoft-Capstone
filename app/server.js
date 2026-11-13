@@ -43,6 +43,12 @@ app.put('/api/todos/:id', (req, res) => {
   res.status(200).json(todo);
 });
 
+app.get('/api/todos/stats', (req, res) => {
+  const total = todos.length;
+  const completed = todos.filter(t => t.completed).length;
+  res.status(200).json({ total, completed, open: total - completed });
+});
+
 app.delete('/api/todos/:id', (req, res) => {
   const { id: idParam } = req.params;
 
