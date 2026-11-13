@@ -1,0 +1,9 @@
+Read pipeline/tasks/008-pr-flow.md and complete the task
+exactly as specified, including the pull request and the merge.
+
+Work only within this project folder and this repository's
+branches under your base branch's prefix. Do not access parent
+folders, other branches, external grading files, reference
+solutions, or other runs.
+
+Run the required tests and report the actual results.

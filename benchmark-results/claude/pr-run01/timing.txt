@@ -1,0 +1,7 @@
+start_utc=2026-11-13T00:05:27.301Z
+end_utc=2026-11-13T00:11:33.876Z
+elapsed_seconds=366.6
+method=bash `date -u +%s.%N` immediately before and after the single `claude -p` call (stdin from /dev/null); includes waiting for the pr-gate CI run
+approval_wait_seconds=0 (all actions pre-approved; no prompts)
+cli_reported_duration_ms=[90563, 1899] (main session, then one extra turn after a background task finished)
+cli_reported_api_duration_ms=[80874, 82713]

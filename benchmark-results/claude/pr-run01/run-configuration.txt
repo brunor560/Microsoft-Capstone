@@ -1,0 +1,25 @@
+run_id=claude-pr-run01
+participant=operator: Claude (claude-opus-5-5) in a Claude cloud session, running the CLI for the account owner (crochajr81); 2026-11-12, America/New_York
+tool=2.1.323 (Claude Code)
+interface=headless CLI (claude -p, --output-format stream-json)
+model=claude-sonnet-4-6 (plus a small Haiku helper call the CLI makes itself; see modelUsage in token-usage.json)
+reasoning_effort=default (no --effort flag)
+start_commit=05899859f699a1a7167e456c875801cf8faf619c (benchmark-start-v8-pr, "Start task 008")
+protocol_commit=31887c6e23cbbccbfe009cd8919526872b5afd5a (benchmark-protocol-v8-pr, "Add task 008")
+base_branch=bench008/claude-pr-run01/main
+graded_commit=1e7868922ffa4341788af0b5bc375b4dbe769c3f (merge commit of PR #39, tip of the base branch)
+token_limit=400000 (T = 100 up to 200,000)
+os=Ubuntu 24.04.5 LTS (Linux x86_64), Anthropic-hosted cloud container; bash equivalents of the PowerShell steps
+node=v22.22.0
+github_mcp_server=github/github-mcp-server v2.1.0 (official release binary github-mcp-server_Linux_x86_64.tar.gz, sha256 a442f9db…57b2b, matches the release checksums file), local stdio, default toolsets (context, copilot, issues, pull_requests, repos, users); config in mcp-config-redacted.json
+github_identity=brunor560 (repository owner, admin). No personal access token was created: the session's egress proxy injects the account's GitHub credentials for git and api.github.com, so the token passed to the MCP server is a session placeholder. Scopes therefore equal the session's GitHub App grant for this repository, not a classic `repo` token
+ruleset=off (GET /repos/brunor560/Microsoft-Capstone/rulesets returned [] before the run)
+git=agent pushed with the session's git proxy credentials; commits authored as "Claude <noreply@anthropic.com>" (container git config)
+approval=headless: --permission-mode acceptEdits, --allowedTools Bash mcp__github (all git and GitHub MCP calls pre-approved; no prompts)
+environment_for_agent=GH_TOKEN and GITHUB_TOKEN removed from the agent's environment (so `gh` was not authenticated); MCP server received its credential through the MCP config only
+tools_available_to_agent=Bash, Read, Edit, Write, Glob, Grep (--tools) plus 46 GitHub MCP tools
+memory=off: --settings '{"autoMemoryEnabled":false}'; --strict-mcp-config (GitHub server only); no ~/.claude/CLAUDE.md; --setting-sources project; run folder has no CLAUDE.md or .claude/
+fresh_start=new session (session_id 7e395524-0928-4e8a-a584-a6573d58cec0), not resumed; skills/slash commands off; Chrome off; host-session env vars removed via freshenv.sh
+preflight=PASS on 2026-11-12 with identical settings (throwaway base bench008/preflight-20261112-c/main): push, MCP read branch, MCP open PR #37, MCP read status, MCP close PR; merge permission additionally checked by the operator via the API on the same throwaway branches (PR #38). See preflight-transcript.jsonl
+residual_environment=CLI ran inside a host-managed Claude Code container; auth and managed settings come from the host and could not be removed
+operator_knowledge=operator read the task procedure README, OPERATOR-GUIDE.md and the earlier PR-run READMEs (for MCP configuration); had written a Windows run script for this task earlier; did not read reference/ before the run; gave the agent only the standard prompt

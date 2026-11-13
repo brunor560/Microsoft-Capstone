@@ -1,0 +1,78 @@
+PR merged successfully. Here is the full report:
+
+---
+
+## Final Report
+
+**Pull Request:** https://github.com/brunor560/Microsoft-Capstone/pull/39
+**Final state:** Merged
+**Merge commit:** `1e7868922ffa4341788af0b5bc375b4dbe769c3f`
+
+---
+
+### pr-gate runs
+
+| Run | Result | Action |
+|-----|--------|--------|
+| First and only run on commit `44e7620` | **success** | Merged immediately after |
+
+No failures occurred.
+
+---
+
+### GitHub MCP tools used
+
+- `create_pull_request` — opened PR #39
+- `pull_request_read` (method: `get_check_runs`) — polled pr-gate status (checked 3 times)
+- `merge_pull_request` — merged the PR
+
+All GitHub actions were performed via the MCP server. `git` was used only for creating the branch, committing, and pushing.
+
+---
+
+### Files changed
+
+| File | Change |
+|------|--------|
+| `app/server.js` | Added `GET /api/todos/stats` endpoint returning `{ total, completed, open }` |
+| `app/public/index.html` | Added `<p role="status" id="stats">` element; `fetchTodos()` now also fetches stats and sets its text to `<completed> of <total> done` |
+| `app/test.js` | Added 2 new tests for the stats endpoint |
+
+---
+
+### Commands run
+
+1. `npm test` from `app/` — **11 passed, 0 failed, 0 skipped**
+
+---
+
+### Test results
+
+```
+# tests 11
+# pass  11
+# fail  0
+# skipped 0
+```
+
+---
+
+### Errors / retries / limitations
+
+None. Everything completed on the first attempt.
+
+---
+
+### Unclear requirements
+
+REQ-02 says "updates after adding, toggling or deleting a todo, without a page reload." All three actions already called `fetchTodos()`, which now also fetches stats — so the update is implicit without any extra wiring.
+
+---
+
+### Session metadata
+
+- Model: `claude-sonnet-4-6`
+- Session duration / token count: not available from within the session
+
+--- follow-up turn after background task ---
+The background polling script was stopped, but that's fine — the pr-gate had already completed successfully before it was needed, and the PR has been merged. No action required.

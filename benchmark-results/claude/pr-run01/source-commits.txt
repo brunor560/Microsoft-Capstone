@@ -1,0 +1,4 @@
+start_commit=05899859f699a1a7167e456c875801cf8faf619c
+protocol_commit=31887c6e23cbbccbfe009cd8919526872b5afd5a
+base_branch=bench008/claude-pr-run01/main
+graded_commit=1e7868922ffa4341788af0b5bc375b4dbe769c3f

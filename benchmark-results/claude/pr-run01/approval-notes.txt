@@ -1,0 +1,3 @@
+approvals=none requested (pre-approved via acceptEdits + allowedTools Bash mcp__github)
+permission_denials=none
+interventions=none (interventions.json is empty)
