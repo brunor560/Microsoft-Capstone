@@ -1,6 +1,13 @@
 {
   "source": "claude -p --output-format stream-json; two result events (main session, then one extra turn after a background Bash task finished); usage summed over both",
   "session_id": "7e395524-0928-4e8a-a584-a6573d58cec0",
+  "usage": {
+    "input_tokens": 27,
+    "cache_creation_input_tokens": 16876,
+    "cache_read_input_tokens": 796950,
+    "output_tokens": 4894
+  },
+  "usage_note": "usage = usage_main + usage_followup (summed over both result events); the dashboard reads this field",
   "usage_main": {
     "input_tokens": 24,
     "cache_creation_input_tokens": 16003,
