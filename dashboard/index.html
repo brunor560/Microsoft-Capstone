@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Benchmark Run Dashboard</title>
+<link rel="icon" type="image/svg+xml" sizes="any" href="benchmark-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -56,9 +57,7 @@ a { color: var(--violet); }
 
 /* header */
 header.top { display: flex; align-items: center; gap: var(--g2); flex-wrap: wrap; margin-bottom: var(--g3); }
-.logo { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--violet), var(--accent)); display: grid; place-items: center; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-.logo::before { content: ""; position: absolute; top: 4px; left: 4px; width: 10px; height: 10px; border-radius: 3px; background: #ffffff55; }
-.logo svg { width: 22px; height: 22px; }
+.logo { display: block; width: 40px; height: 40px; flex: 0 0 40px; }
 h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -.01em; }
 .sub { color: var(--label-2); font-size: 13px; }
 .spacer { flex: 1; }
@@ -367,7 +366,7 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div>
+    <img class="logo" src="benchmark-mark.svg" width="40" height="40" alt="" aria-hidden="true">
     <div>
       <h1>AI Coding Agents, Side by Side</h1>
       <div class="sub" id="subtitle"></div>
