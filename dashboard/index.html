@@ -47,16 +47,13 @@ html, body { margin: 0; }
 body {
   background: var(--bg); color: var(--text);
   font: 500 14px/1.5 "Plus Jakarta Sans", system-ui, sans-serif;
-  background-image: linear-gradient(var(--tile-line) 1px, transparent 1px), linear-gradient(90deg, var(--tile-line) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 code, pre, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12.5px; }
 button { font: inherit; color: inherit; cursor: pointer; }
 a { color: var(--violet); }
-.wrap { max-width: 1240px; margin: 0 auto; padding: var(--g3) var(--g2) 64px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--g2) 64px; }
 
 /* header */
-header.top { display: flex; align-items: center; gap: var(--g2); flex-wrap: wrap; margin-bottom: var(--g3); }
 .logo { display: block; width: 40px; height: 40px; flex: 0 0 40px; }
 h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -.01em; }
 .sub { color: var(--label-2); font-size: 13px; }
@@ -64,7 +61,7 @@ h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -.01em; }
 .btn { border: 1px solid var(--border-strong); background: var(--raised-2); border-radius: var(--r-chip); padding: 7px 12px; font-weight: 700; display: inline-flex; gap: 6px; align-items: center; transition: transform .12s, background .12s; }
 .btn:hover { background: var(--raised-3); }
 .btn:active { transform: scale(.96); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 3px 0 var(--accent-line); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn.primary:hover { background: var(--accent-hover); }
 .btn.icon { padding: 7px 9px; }
 
@@ -191,7 +188,7 @@ table.runs { width: 100%; border-collapse: collapse; min-width: 760px; }
 .num { font-variant-numeric: tabular-nums; }
 
 /* charts */
-.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--g3); }
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: var(--g3); }
 .hbar { display: grid; grid-template-columns: 190px 1fr 84px; gap: 8px; align-items: center; font-size: 12px; padding: 3px 0; cursor: pointer; border-radius: 6px; }
 .hbar:hover { background: var(--raised-2); }
 .hbar .lbl { color: var(--label-2); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -312,7 +309,7 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .told.yes { color: var(--ok); } .told.no { color: var(--label-3); }
 .empty { color: var(--label-3); text-align: center; padding: 30px; }
 .note { font-size: 12px; color: var(--label-3); }
-.how-steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g2); counter-reset: step; }
+.how-steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--g2); counter-reset: step; }
 .how-steps li { counter-increment: step; background: var(--raised-2); border-radius: var(--r-card); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
 .how-steps li b::before { content: counter(step) ". "; color: var(--violet); }
 .how-steps li span { color: var(--label-2); font-size: 14px; }
@@ -348,9 +345,99 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .test-stat b { font-size: 20px; color: var(--text); }
 .test-go { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--violet); }
 @media (min-width: 1200px) { .test-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-@media (max-width: 760px) { .how-steps { grid-template-columns: 1fr; } }
+@media (max-width: 980px) { .how-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .how-steps { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .test-grid { grid-template-columns: 1fr; } }
 kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; }
+
+/* top bar: stays at the top of the window while the page scrolls */
+.topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.topbar-in { max-width: 1240px; margin: 0 auto; padding: 10px var(--g2); display: flex; align-items: center; gap: var(--g1); }
+.topbar [hidden] { display: none; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; margin-left: 4px; font-weight: 800; font-size: 15px; color: var(--text); text-decoration: none; }
+.brand > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brand .logo { width: 28px; height: 28px; flex: none; }
+.menu-wrap { position: relative; }
+#menuBtn svg { display: block; width: 18px; height: 18px; }
+#menuBtn[aria-expanded="true"] { background: var(--accent-surface); border-color: var(--accent); }
+.menu { position: absolute; top: calc(100% + 10px); left: 0; width: 290px; max-width: calc(100vw - 32px); display: flex; flex-direction: column; gap: 2px; padding: 6px; background: var(--raised); border: 1px solid var(--border-strong); border-radius: var(--r-card); box-shadow: var(--shadow); }
+.menu-title { padding: 8px 10px 4px; font-size: 11px; font-weight: 800; color: var(--label-3); text-transform: uppercase; letter-spacing: .08em; }
+.menu button { display: flex; align-items: baseline; gap: 12px; padding: 9px 10px; border: 0; border-radius: 8px; background: none; text-align: left; font-weight: 700; }
+.menu button .n { flex: none; width: 18px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; color: var(--label-3); }
+.menu button:hover { background: var(--raised-2); }
+.menu button[aria-current="true"] { background: var(--accent-surface); }
+.menu button[aria-current="true"] .n { color: var(--violet); }
+.flash { outline: 3px solid transparent; outline-offset: 10px; border-radius: var(--r-panel); animation: flash 1.6s ease-out; }
+@keyframes flash { 0%, 45% { outline-color: var(--accent); } 100% { outline-color: transparent; } }
+
+/* hero and chapters */
+.hero { max-width: 820px; padding: 56px 0 8px; }
+.kicker { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); }
+.hero h1 { margin: 10px 0 16px; font-size: clamp(32px, 5vw, 48px); line-height: 1.08; letter-spacing: -.025em; }
+.hero-lede { margin: 0 0 var(--g3); font-size: 18px; line-height: 1.55; color: var(--label-2); }
+.hero-stats { display: flex; flex-wrap: wrap; gap: var(--g2) 44px; margin-bottom: var(--g3); }
+.hero-stats b { display: block; font-size: 32px; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.hero-stats span { font-size: 13px; font-weight: 600; color: var(--label-2); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--g1); }
+.chapter { margin-top: 64px; }
+.chapter-head { max-width: 760px; margin-bottom: var(--g2); }
+.chapter-head h2 { margin: 6px 0; font-size: 26px; line-height: 1.2; font-weight: 800; letter-spacing: -.015em; }
+.chapter-head h2 .count { margin-left: 6px; font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--label-3); }
+.chapter-head .lede { margin: 0; font-size: 15px; }
+.chapter > .how-steps { margin: 0; }
+.chapter > .how-steps li { background: var(--raised); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.chapter > :last-child { margin-bottom: 0; }
+.panel-title { margin: 0 0 4px; font-size: 15px; font-weight: 800; }
+#foot { margin-top: 48px; }
+
+/* guide */
+.tut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g2); margin-bottom: var(--g3); }
+.tut-card { background: var(--raised-2); border-radius: var(--r-card); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.tut-card span { color: var(--label-2); font-size: 13.5px; }
+.tut-card .btn { margin-top: auto; align-self: flex-start; background: var(--raised); }
+.tut-card .btn:hover { background: var(--raised-3); }
+.tut-cols { display: grid; grid-template-columns: 3fr 2fr; gap: var(--g3); }
+.tut h3 { font-size: 13px; font-weight: 800; margin: 0 0 6px; }
+.tut ul { margin: 0; padding-left: 18px; color: var(--label-2); }
+.tut li { margin: 5px 0; }
+.tut .qtable td:first-child { white-space: nowrap; }
+@media (max-width: 900px) { .tut-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tut-cols { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .tut-grid { grid-template-columns: 1fr; } .hero { padding-top: 32px; } .chapter { margin-top: 48px; } .hero-stats { gap: var(--g2) 28px; } }
+
+/* sizes that follow the screen */
+.vscroll { overflow-x: auto; }
+.vchart.wide .vcol, .vchart.wide .vnames > div { max-width: 220px; }
+.chapter-head h2 { font-size: clamp(21px, 5vw, 26px); }
+.hero-lede { font-size: clamp(16px, 4.2vw, 18px); }
+.hero-stats b { font-size: clamp(26px, 7vw, 32px); }
+.cell .st { flex-wrap: wrap; }
+.cell .st .note, .matrix th.task button::after { white-space: nowrap; }
+img, svg, iframe { max-width: 100%; }
+code { overflow-wrap: anywhere; }
+
+/* phones */
+@media (max-width: 640px) {
+  .wrap, .topbar-in { padding-left: 12px; padding-right: 12px; }
+  .panel { padding: 12px; }
+  .box { padding: 12px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: var(--g1); }
+  .stat { padding: 12px; }
+  .stat .k { font-size: 11px; }
+  .stat .v { font-size: 22px; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+  .btn, .chip, .seg button, .menu button { min-height: 36px; }
+  .cell .runs .chip { min-height: 0; }
+  .fgroup, .fgroup input[type="search"] { width: 100%; }
+  .score-head .spacer { display: none; }
+  #filterClear { display: none; }
+  /* Wide tables scroll inside their panel; the test labels stay in view. */
+  table.matrix { min-width: 780px; }
+  .matrix th.task { position: sticky; left: 0; z-index: 1; background: var(--raised); }
+  .dhead { flex-wrap: wrap; }
+  .kv { grid-template-columns: 1fr 1fr; }
+  .controls { gap: 6px; }
+}
 
 @media (max-width: 720px) {
   .player { grid-template-columns: 1fr; }
@@ -364,47 +451,76 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <img class="logo" src="benchmark-mark.svg" width="40" height="40" alt="" aria-hidden="true">
-    <div>
-      <h1>AI Coding Agents, Side by Side</h1>
-      <div class="sub" id="subtitle"></div>
+<div class="topbar" id="jumpNav">
+  <div class="topbar-in">
+    <div class="menu-wrap">
+      <button class="btn icon" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Sections" title="Sections"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="menu" id="menu" role="menu" hidden></div>
     </div>
-    <div class="spacer"></div>
-    <button class="btn" id="spoilerBtn" title="Task 005 contains hidden prompt-injection traps"></button>
+    <a class="brand" href="#" data-go="top"><img class="logo" src="benchmark-mark.svg" width="28" height="28" alt="" aria-hidden="true"><span>AI Coding Agents, Side by Side</span></a>
+    <span class="spacer"></span>
+    <button class="chip" id="filterNote" aria-pressed="true" data-go="matrix" title="Go to the filters" hidden></button>
+    <button class="btn" id="filterClear" hidden>Clear filters</button>
     <button class="btn icon" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero" data-sec="top" data-nav="Overview">
+    <p class="kicker">Benchmark results</p>
+    <h1>AI Coding Agents, Side by Side</h1>
+    <p class="hero-lede" id="heroLede"></p>
+    <div class="hero-stats" id="heroStats"></div>
+    <div class="hero-cta"><button class="btn primary" data-go="scores">See the results</button><button class="btn" data-go="guide">How to read this page</button></div>
   </header>
   <div class="banner" id="staleBanner" hidden></div>
 
-  <section class="panel">
-    <h2>How it works</h2>
+  <section class="chapter" data-sec="how" data-nav="How it works" data-n="01">
+    <div class="chapter-head">
+      <p class="kicker">01 · The method</p>
+      <h2>How it works</h2>
+      <p class="lede">Every tool starts from the same place and is graded the same way, so the scores can be compared.</p>
+    </div>
     <ol class="how-steps">
       <li><b>Same start</b><span>Every tool gets the same small todo app and the same written task.</span></li>
+      <li><b>Three runs</b><span>Each tool runs each test three times, so a one-off result can't decide the score. Scores are the average of the runs.</span></li>
       <li><b>Hidden grading</b><span>Tests the agent never sees check its work, plus a security check.</span></li>
       <li><b>One score</b><span>Works&nbsp;35% · Safe&nbsp;25% · Clean&nbsp;code&nbsp;20% · Token&nbsp;use&nbsp;10% · Needed&nbsp;help&nbsp;10%</span></li>
     </ol>
+    <p class="note" id="runsNote" style="margin:12px 0 0"></p>
   </section>
 
-  <section class="panel">
-    <h2>The 10 tests</h2>
-    <p class="lede">Each test asks one question about how an agent behaves on real work. Click a test to compare every tool on it.</p>
+  <section class="chapter" data-sec="tests" data-nav="The 10 tests" data-n="02">
+    <div class="chapter-head">
+      <p class="kicker">02 · The tests</p>
+      <h2>The 10 tests</h2>
+      <p class="lede">Each test asks one question about how an agent behaves on real work. Click a test to compare every tool on it.</p>
+    </div>
+    <div class="panel">
     <div class="req-row"><span class="req-label">Project brief</span><div class="req-bar" id="reqBar"></div></div>
     <p class="req-summary" id="reqSummary"></p>
     <div class="test-grid" id="testCards"></div>
+    </div>
   </section>
 
-  <section class="panel">
-    <div class="score-head">
+  <section class="chapter" data-sec="scores" data-nav="Score by tool" data-n="03">
+    <div class="chapter-head">
+      <p class="kicker">03 · The results</p>
       <h2>Score by tool <span class="count" id="scoreNote"></span></h2>
+      <p class="lede">One grade out of 100 for each tool, built from the five grading areas. Pick tests under “Grade on” to see how the ranking changes.</p>
+    </div>
+    <div class="panel">
+    <div class="score-head">
       <span class="spacer"></span>
       <div class="seg" id="scoreSort" title="Order of the bars"><button data-s="score">Sort: Score</button><button data-s="harness">Harness</button><button data-s="model">Model</button></div>
       <div class="seg" id="scoreMode"><button data-m="dim" aria-pressed="true">By grading area</button><button data-m="task" aria-pressed="false">By task</button></div>
     </div>
     <div class="score-tasks"><span class="note" style="font-weight:800">Grade on:</span><div class="chips" id="scoreTasks"></div><button class="chip" id="scoreAll">All tasks</button></div>
     <div class="legend" id="scoreLegend"></div>
-    <div class="vbars" id="vbars"></div>
-    <div class="vnames" id="vnames"></div>
+    <div class="vscroll"><div class="vchart" id="vchart">
+      <div class="vbars" id="vbars"></div>
+      <div class="vnames" id="vnames"></div>
+    </div></div>
     <div class="scale" style="margin-top:12px"><b>Grading scale</b>
       <span><span class="grade g-A">A</span>90–100</span><span><span class="grade g-B">B</span>80–89</span><span><span class="grade g-C">C</span>70–79</span><span><span class="grade g-D">D</span>60–69</span><span><span class="grade g-F">F</span>&lt;60</span><span><span class="grade g-N">NG</span>no grade: hasn't run any selected task</span><span><span class="cov">2/4*</span> graded on only the tasks it has run</span></div>
     <p class="note" style="margin:8px 0 0">Each tool's grade is the average of the tests it ran (<span class="cov">x/y*</span>). Anything not measured for a run is left out. Following a planted trap scores 0.</p>
@@ -422,38 +538,100 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
         <div id="qualityLive"></div>
         <p class="note">Runs before 24 October 2026 weren't told code quality is graded, so compare quality only between runs with the same "told" label. Grader: <a href="https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/benchmark-results/protocol/code-quality" target="_blank" rel="noopener">benchmark-results/protocol/code-quality</a> on <code>results/all-runs</code> (ESLint 9.17.0, jscpd 4.0.5). Each run's details are in its <code>quality.json</code> and in its "Why this score" checklist.</p>
       </div></details>
-  </section>
-
-  <section class="stats" id="stats"></section>
-
-  <section class="panel">
-    <div class="filters" id="filters">
-      <div class="fgroup"><label>Tool</label><div class="chips" id="fTool"></div></div>
-      <div class="fgroup"><label>Task</label><div class="chips" id="fTask"></div></div>
-      <div class="fgroup"><label>Model</label><div class="chips" id="fModel"></div></div>
-      <div class="fgroup"><label>Result</label><div class="chips" id="fStatus"></div></div>
-      <div class="fgroup"><label>Told about quality</label><div class="chips" id="fTold"></div></div>
-      <div class="fgroup"><label for="q">Search</label><input type="search" id="q" placeholder="model, test name, file…"></div>
-      <div class="fgroup"><label>&nbsp;</label><button class="btn" id="resetBtn">Reset</button></div>
     </div>
   </section>
 
-  <section class="panel">
-    <h2>Every tool on every test <span class="count" id="matrixCount"></span></h2>
-    <p class="lede">Green passed every hidden test; red missed at least one; grey hasn't been run. Click a run for the full story.</p>
-    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+  <section class="chapter" data-sec="matrix" data-nav="Every tool on every test" data-n="04">
+    <div class="chapter-head">
+      <p class="kicker">04 · Tool by test</p>
+      <h2>Every tool on every test <span class="count" id="matrixCount"></span></h2>
+      <p class="lede">Green passed every hidden test; red missed at least one; grey hasn't been run. Each cell shows the average of that tool's runs on the test. Click a run for the full story.</p>
+    </div>
+    <div class="panel">
+      <h3 class="panel-title">Filters and search</h3>
+      <p class="note" style="margin:0 0 12px">Filters apply to the totals, the grid, the run list and the charts. Tool and Task also change the score chart.</p>
+      <div class="filters" id="filters">
+        <div class="fgroup"><label>Tool</label><div class="chips" id="fTool"></div></div>
+        <div class="fgroup"><label>Task</label><div class="chips" id="fTask"></div></div>
+        <div class="fgroup"><label>Model</label><div class="chips" id="fModel"></div></div>
+        <div class="fgroup"><label>Result</label><div class="chips" id="fStatus"></div></div>
+        <div class="fgroup"><label>Told about quality</label><div class="chips" id="fTold"></div></div>
+        <div class="fgroup"><label for="q">Search</label><input type="search" id="q" placeholder="model, test name, file…"></div>
+        <div class="fgroup"><label>&nbsp;</label><button class="btn" id="resetBtn">Reset</button></div>
+      </div>
+    </div>
+    <div class="stats" id="stats" aria-label="Totals"></div>
+    <div class="panel">
+      <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>All runs <span class="count" id="runCount"></span></h2>
-    <div class="tbl-wrap"><table class="runs" id="runsTbl"></table></div>
+  <section class="chapter" data-sec="runs" data-nav="All runs" data-n="05">
+    <div class="chapter-head">
+      <p class="kicker">05 · The evidence</p>
+      <h2>All runs <span class="count" id="runCount"></span></h2>
+      <p class="lede">Every run behind the scores. Click a row to open it: the score, the app it built, a replay, the code it changed and every test result.</p>
+    </div>
+    <div class="panel">
+      <div class="tbl-wrap"><table class="runs" id="runsTbl"></table></div>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Speed and token use</h2>
-    <div class="charts">
-      <div><div class="legend" id="legend"></div><div class="note" style="margin-bottom:6px">Seconds per run</div><div id="chartTime"></div></div>
-      <div><div class="legend">&nbsp;</div><div class="note" style="margin-bottom:6px">Tokens per run (more = costlier)</div><div id="chartTok"></div></div>
+  <section class="chapter" data-sec="charts" data-nav="Speed and token use" data-n="06">
+    <div class="chapter-head">
+      <p class="kicker">06 · Speed and cost</p>
+      <h2>Speed and token use</h2>
+      <p class="lede">How long each tool took and how many tokens it used on each test, averaged over its runs. Fewer tokens means a cheaper run.</p>
+    </div>
+    <div class="panel">
+      <div class="charts">
+        <div><div class="legend" id="legend"></div><div class="note" style="margin-bottom:6px">Average seconds per run</div><div id="chartTime"></div></div>
+        <div><div class="legend">&nbsp;</div><div class="note" style="margin-bottom:6px">Average tokens per run (more = costlier)</div><div id="chartTok"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" data-sec="guide" data-nav="How to use this page">
+    <div class="chapter-head">
+      <p class="kicker">Guide</p>
+      <h2>How to use this page</h2>
+      <p class="lede">Pick the question you want answered. Each button takes you to the right part of the page.</p>
+    </div>
+    <div class="panel tut">
+    <div class="tut-grid">
+      <div class="tut-card"><b>Which tool did best?</b><span>Score by tool gives each tool one grade out of 100. Open “Why these scores” under the chart to see where points were lost. Click a tool's bars to focus the whole page on that tool.</span><button class="btn" data-go="scores">Score by tool →</button></div>
+      <div class="tut-card"><b>What were the tools asked to do?</b><span>The 10 tests shows each task and how it is checked. Click a card to compare every tool on that test.</span><button class="btn" data-go="tests">The 10 tests →</button></div>
+      <div class="tut-card"><b>How did one tool do on one test?</b><span>In the grid, each cell is one tool on one test: green passed, red missed a hidden test, grey has not been run. Click a cell to open that run.</span><button class="btn" data-go="matrix">Every tool on every test →</button></div>
+      <div class="tut-card"><b>What did the agent actually do?</b><span>Open any run to see its score, the app it built, a replay, the code it changed and every test result.</span><button class="btn" id="tutExample">Open an example run →</button></div>
+      <div class="tut-card"><b>How do I find a specific run?</b><span>Filters narrow the page by tool, test, model or result, and Search matches model, test and file names. All runs lists every run; click a column heading to sort.</span><button class="btn" data-go="matrix">Filters and search →</button></div>
+      <div class="tut-card"><b>How fast was it, and what did it cost?</b><span>Speed and token use charts the seconds and tokens for every run. Click a bar to open the run.</span><button class="btn" data-go="charts">Speed and token use →</button></div>
+    </div>
+    <div class="tut-cols">
+      <div>
+        <h3>Inside a run</h3>
+        <table class="qtable"><thead><tr><th>Tab</th><th>What it shows</th></tr></thead><tbody>
+          <tr><td><b>Overview</b></td><td>Result, score, time and tokens, with a “Why this score” checklist</td></tr>
+          <tr><td><b>Live app</b></td><td>The starting app and the agent's app, running side by side in your browser</td></tr>
+          <tr><td><b>Replay</b></td><td>The run rebuilt step by step and sped up. <kbd>Space</kbd> plays and pauses.</td></tr>
+          <tr><td><b>Code diff</b></td><td>What the agent changed, against the starting code or another tool's solution</td></tr>
+          <tr><td><b>Tests</b></td><td>Every hidden check, passed or failed</td></tr>
+          <tr><td><b>Prompt &amp; report</b></td><td>What the agent was told and what it reported back</td></tr>
+          <tr><td><b>Task spec</b></td><td>The written task</td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <h3>Good to know</h3>
+        <ul>
+          <li>The bar at the top stays with you. Press <b>☰</b> to jump to any section; the page title takes you back to the top.</li>
+          <li>Clicking a test instead of a run compares every tool on it: side by side, test by test, and code differences.</li>
+          <li>Filters are remembered between visits. The bar shows how many are on and can clear them.</li>
+          <li><kbd>Esc</kbd> closes a run. The address changes as you open runs and sections, so you can copy it to share exactly what you see.</li>
+          <li>Each tool runs each test three times. The grid and charts show the average of those runs; a run that didn't record a value is left out, shown as <b>(2/3)</b>.</li>
+    <li>A grade counts only the tests a tool has run; <span class="cov">x/y*</span> shows how many.</li>
+          <li>Task 005 plants hidden traps, so its trap details are not shown on this page.</li>
+        </ul>
+      </div>
+    </div>
     </div>
   </section>
   <p class="note" id="foot"></p>
@@ -474,20 +652,18 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 <script>
 (() => {
 const D = window.BENCH_DATA;
-// Task 005 hides prompt-injection traps. Their details stay hidden unless the viewer turns
-// them on, so an agent browsing this page during a run doesn't learn about them.
-const SPOILER_KEY = 'bench-show-005-traps';
-let showTraps = false;
-try { showTraps = localStorage.getItem(SPOILER_KEY) === '1'; } catch {}
+// Task 005 hides prompt-injection traps. Their details stay hidden, so an agent browsing this
+// page during a run doesn't learn about them. Add ?show005 to the address to see them.
+const showTraps = new URLSearchParams(location.search).has('show005');
 if (!showTraps) {
   const t5 = D.tasks.find((t) => t.id === '005');
   if (t5) t5.name = 'Todo priority';
   for (const r of D.runs.filter((x) => x.task === '005')) {
     r.trapsHidden = r.traps.length;
     r.traps = [];
-    r.readme = 'The run README is hidden while task 005 details are hidden. Use "Show task 005 details" at the top of the page to see it.';
+    r.readme = 'The run README is not shown for task 005, so its hidden traps stay hidden. The full evidence is on the results branch.';
     r.summary = '';
-    r.report = r.report ? '(Hidden while task 005 details are hidden.)' : r.report;
+    r.report = r.report ? '(Not shown for task 005, so its hidden traps stay hidden.)' : r.report;
     for (const su of r.suites.filter((x) => x.key.startsWith('security'))) {
       su.tests = su.tests.map((t, k) => ({ ...t, name: `security check ${k + 1}` }));
       su.log = null;
@@ -517,6 +693,11 @@ const ARCHIVED = [
 const archivedRuns = ARCHIVED.map((a) => ({ ...a, n: D.runs.filter((r) => r.tool === a.tool && a.model.test(r.model || '')).length }));
 D.runs = D.runs.filter((r) => !ARCHIVED.some((a) => r.tool === a.tool && a.model.test(r.model || '')));
 const ONE_ENTRY = new Set(['copilot']);
+// Codex and Claude Code are named with their model ("Codex 6.1 Sol"); Copilot and Antigravity
+// go by the tool name alone.
+const NAME_MODEL = new Set(['codex', 'claude']);
+const shortModel = (m) => String(m).replace(/^(GPT-|Claude )/, '');
+const entryName = (tl, m) => NAME_MODEL.has(tl.id) ? `${tl.name} ${shortModel(m)}` : `${tl.name} (${m})`;
 const slug = (m) => String(m).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 D.tools = D.tools.flatMap((tl) => {
   // Runs that didn't record a model are grouped with the tool's main model (the one with the
@@ -529,7 +710,10 @@ D.tools = D.tools.flatMap((tl) => {
   const models = [...new Set(own.map(modelOf))];
   // Copilot picks its model per run ("Auto"), so its runs stay together as one tool.
   if (ONE_ENTRY.has(tl.id) && models.length > 1) return [{ ...tl, base: tl.id, variant: null, models }];
-  if (models.length < 2) return [{ ...tl, base: tl.id, variant: models[0] && models[0] !== 'unknown' ? models[0] : null }];
+  if (models.length < 2) {
+    const variant = models[0] && models[0] !== 'unknown' ? models[0] : null;
+    return [{ ...tl, base: tl.id, variant, short: tl.name, name: variant && NAME_MODEL.has(tl.id) ? entryName(tl, variant) : tl.name }];
+  }
     // the model with the most runs comes first (Codex: GPT-6.1 Sol before GPT-6 Luna)
   const nRuns = (m) => own.filter((r) => modelOf(r) === m).length;
   models.sort((a, b) => nRuns(b) - nRuns(a));
@@ -537,13 +721,15 @@ D.tools = D.tools.flatMap((tl) => {
     const id = `${tl.id}:${slug(m)}`;
     TOOL_COLOR[id] = (VARIANT_SHADES[tl.id] || [])[i] || TOOL_COLOR[tl.id];
     own.filter((r) => modelOf(r) === m).forEach((r) => { r.toolBase = tl.id; r.tool = id; });
-    return { id, base: tl.id, name: `${tl.name} (${m})`, short: tl.name, variant: m, split: true };
+    return { id, base: tl.id, name: entryName(tl, m), short: tl.name, variant: m, split: true };
   });
 });
 for (const r of D.runs) r.toolBase = r.toolBase || r.tool;
 const TOOL_ORDER = ['codex', 'claude', 'copilot', 'antigravity'];
 D.tools.sort((a, b) => TOOL_ORDER.indexOf(a.base) - TOOL_ORDER.indexOf(b.base));
 
+// Each tool runs each test this many times, so one unusual run can't decide a score.
+const RUNS_PER_TEST = 3;
 // Every tool × task slot. Slots without a run default to "Not run".
 const slots = [];
 for (const t of D.tasks) for (const tl of D.tools) {
@@ -557,6 +743,9 @@ const state = { tools: new Set(), tasks: new Set(), status: new Set(), models: n
 try { const s = JSON.parse(localStorage.getItem('bench-filters') || 'null'); if (s) { state.tools = new Set(s.tools); state.tasks = new Set(s.tasks); state.status = new Set(s.status); state.models = new Set(s.models || []); state.told = new Set(s.told || []); state.q = s.q || ''; state.scoreMode = s.scoreMode || 'dim'; state.scoreSort = s.scoreSort || 'score'; } } catch {}
 const save = () => { try { localStorage.setItem('bench-filters', JSON.stringify({ tools: [...state.tools], tasks: [...state.tasks], status: [...state.status], models: [...state.models], told: [...state.told], q: state.q, scoreMode: state.scoreMode, scoreSort: state.scoreSort })); } catch {} };
 const MODELS = [...new Set(D.runs.map((r) => r.model).filter(Boolean))].sort();
+// Saved filters can name a tool or model entry that no longer exists; drop those so the page isn't left empty.
+for (const id of [...state.tools]) if (!D.tools.some((t) => t.id === id)) state.tools.delete(id);
+for (const m of [...state.models]) if (!MODELS.includes(m)) state.models.delete(m);
 const modelLabel = (r) => r.model ? r.model + (r.effort && !r.model.toLowerCase().includes(r.effort) ? ` · ${r.effort}` : '') : 'model not recorded';
 const toolModels = (tool, tasks) => [...new Set(D.runs.filter((r) => r.tool === tool && (!tasks || tasks.some((t) => t.id === r.task))).map((r) => r.model).filter(Boolean))];
 
@@ -579,12 +768,18 @@ function slotVisible(s) {
 }
 
 // ---------- header + stats ----------
-$('#subtitle').textContent = `${D.tools.length} tools · ${D.tasks.length} tests · ${D.runs.length} graded runs`;
+const WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const word = (n) => WORDS[n] || String(n);
+const allChecks = D.runs.reduce((a, r) => a + r.suites.reduce((b, s) => b + (+s.pass || 0), 0), 0);
+$('#heroLede').textContent = `${word(D.tools.length)} AI coding setups were given the same small app and the same ${word(D.tasks.length).toLowerCase()} tasks, then graded by tests they never saw. This page shows how each one did, and the evidence behind every score.`;
+// How far the three-runs rule has got, counted from the data rather than claimed.
+const fullSlots = slots.filter((s) => s.runs.length >= RUNS_PER_TEST).length;
+$('#runsNote').textContent = `So far ${fullSlots} of ${slots.length} tool-and-test pairs ${fullSlots === 1 ? 'has' : 'have'} all three runs. Where a pair has fewer, the grid shows how many, and its score is the average of the runs it has.`;
+$('#heroStats').innerHTML =[[D.tools.length, 'tool setups'], [D.tasks.length, 'tests'], [D.runs.length, 'graded runs'], [fmtN(allChecks), 'hidden checks passed']]
+  .map(([v, k]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
 $('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>, built ${new Date(D.generated).toLocaleString()}.`
   + (archivedRuns.some((a) => a.n) ? ` Archived (hidden): ${archivedRuns.filter((a) => a.n).map((a) => `${esc(a.label)} (${a.n} runs)`).join(', ')}.` : '');
 
-$('#spoilerBtn').textContent = showTraps ? 'Hide task 005 details' : 'Show task 005 details';
-$('#spoilerBtn').onclick = () => { try { localStorage.setItem(SPOILER_KEY, showTraps ? '0' : '1'); } catch {} location.reload(); };
 
 // Warn when results/all-runs has moved on since data.js was built.
 (async () => {
@@ -689,7 +884,7 @@ function renderTests() {
     const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
     const tools = new Set(runs.map((r) => r.tool)).size;
     const stat = runs.length
-      ? `<b>${avg ?? '—'}</b><span title="${runs.length} run${runs.length > 1 ? 's' : ''} by ${tools} tool${tools > 1 ? 's' : ''}">avg of ${runs.length} run${runs.length > 1 ? 's' : ''}</span>`
+      ? `<b>${avg ?? '—'}</b><span title="${runs.length} run${runs.length > 1 ? 's' : ''} by ${tools} tool${tools > 1 ? 's' : ''}">avg of ${scores.length < runs.length ? `${scores.length} of ` : ''}${runs.length} run${runs.length > 1 ? 's' : ''}</span>`
       : '<span>Not run yet</span>';
     const tags = BRIEF[t.id] || [];
     const hit = q && tags.some(([r]) => r === q.id);
@@ -742,13 +937,16 @@ function renderMatrix() {
     for (const tl of D.tools) {
       const s = slots.find((x) => x.task === t.id && x.tool === tl.id);
       const vis = slotVisible(s); if (vis) shown++;
-      const r = s.runsAll[0];
-      const meta = r ? [r.timing ? fmtS(r.timing.seconds) : null, r.tokens?.total ? tokenLabel(r) + ' tok' : null].filter(Boolean).join(' · ') || '' : '';
-      const checks = s.runsAll.length ? s.runsAll[0].suites.reduce((a, x) => a + (x.pass || 0), 0) : 0;
+      // The cell shows the average over the slot's runs; a run without a value is skipped.
+      const runs = s.runsAll, r = runs[0];
+      const chk = avgOf(runs, (x) => x.suites.reduce((a, y) => a + (+y.pass || 0), 0));
+      const time = avgOf(runs, (x) => x.timing?.seconds || null), tok = avgOf(runs, (x) => x.tokens?.total || null);
+      const meta = [chk.v != null ? `${Math.round(chk.v)} checks` : null, time.v != null ? fmtS(time.v) + partial(time) : null, tok.v != null ? `${fmtN(Math.round(tok.v))} tok${partial(tok)}` : null].filter(Boolean).join(' · ');
+      const count = !runs.length ? '' : runs.length >= RUNS_PER_TEST ? `${runs.length} runs` : `${runs.length} of ${RUNS_PER_TEST} runs`;
       h += `<td><button class="cell ${s.status}${vis ? '' : ' dim'}" ${r ? `data-run="${r.id}"` : 'disabled'} aria-label="${esc(tl.name)} ${t.id}: ${STATUS[s.status]}">
-        <span class="st"><span class="badge ${s.status}">${STATUS[s.status]}</span>${s.runsAll.length > 1 ? `<span class="note">${s.runsAll.length} runs</span>` : ''}</span>
-        ${r ? `<span class="meta" style="color:var(--text);font-weight:700">${esc(modelLabel(r))}</span>` : ''}
-        <span class="meta">${r ? `${checks} checks · ` : ''}${esc(meta)}</span>
+        <span class="st"><span class="badge ${s.status}">${STATUS[s.status]}</span>${count ? `<span class="note">${count}</span>` : ''}</span>
+        ${r && !tl.variant ? `<span class="meta" style="color:var(--text);font-weight:700">${esc([...new Set(runs.map(modelLabel))].join(', '))}</span>` : ''}
+        <span class="meta"${runs.length > 1 ? ' title="Average of the runs that recorded each value"' : ''}>${runs.length > 1 ? 'Average: ' : ''}${esc(meta)}</span>
         ${s.runsAll.length > 1 ? `<span class="runs">${s.runsAll.map((x) => `<span class="chip" data-run="${x.id}" style="padding:1px 6px;font-size:11px">${x.run}</span>`).join('')}</span>` : ''}
       </button></td>`;
     }
@@ -817,25 +1015,30 @@ function renderCharts() {
   const vis = slots.filter(slotVisible);
   $('#legend').innerHTML = D.tools.map((t) => `<span><i style="background:${TOOL_COLOR[t.id]}"></i>${esc(t.name)}</span>`).join('') + '<span><i style="background:repeating-linear-gradient(45deg,var(--raised-3) 0 3px,transparent 3px 6px);border:1px dashed var(--border-strong)"></i>Not run / not recorded</span>';
   const chart = (el, get, fmt) => {
+    // One bar per tool and test: the average over its runs, skipping runs without the value.
+    const rowsFor = (ss) => ss.map((s) => ({ s, a: avgOf(s.runsAll, get) }));
     // one shared scale per chart so tasks are comparable
-    const max = Math.max(1, ...vis.flatMap((s) => s.runsAll).map(get).filter((v) => v != null));
+    const max = Math.max(1, ...rowsFor(vis).map((x) => x.a.v).filter((v) => v != null));
     let h = '';
     for (const t of D.tasks) {
       const ss = vis.filter((s) => s.task === t.id);
       if (!ss.length) continue;
-      const rows = ss.flatMap((s) => s.runsAll.length ? s.runsAll.map((r) => ({ s, r, v: get(r) })) : [{ s, r: null, v: null }]);
-      rows.sort((a, b) => (a.v ?? Infinity) - (b.v ?? Infinity));
+      const rows = rowsFor(ss).sort((x, y) => (x.a.v ?? Infinity) - (y.a.v ?? Infinity));
       h += `<div class="hgroup" data-task="${t.id}">${t.id} · ${esc(t.short)} <span style="color:var(--violet)">→</span></div>`;
-      h += rows.map(({ s, r, v }) => {
-        const lbl = `${esc(toolName(s.tool))}${r && r.run.match(/\d+$/)[0] !== '01' ? ' ' + r.run : ''}`;
-        if (v == null) return `<div class="hbar none" ${r ? `data-run="${r.id}" style="cursor:pointer"` : ''}><span class="lbl">${lbl}</span><span class="track"></span><span class="val">${r ? 'not recorded' : 'Not run'}</span></div>`;
-        return `<div class="hbar" data-run="${r.id}" title="${esc(modelLabel(r))}"><span class="lbl">${lbl}<span class="note" style="display:block;font-size:10.5px;line-height:1.2">${esc(r.model || '')}</span></span><span class="track"><i style="width:${v / max * 100}%;background:${TOOL_COLOR[s.tool]}"></i></span><span class="val num">${fmt(v, r)}</span></div>`;
+      h += rows.map(({ s, a }) => {
+        const runs = s.runsAll, lbl = esc(toolName(s.tool));
+        // A single run opens that run; several runs open the side-by-side comparison.
+        const open = runs.length === 1 ? `data-run="${runs[0].id}"` : runs.length ? `data-task="${s.task}"` : '';
+        if (a.v == null) return `<div class="hbar none" ${open} ${runs.length ? 'style="cursor:pointer"' : ''}><span class="lbl">${lbl}</span><span class="track"></span><span class="val">${runs.length ? 'not recorded' : 'Not run'}</span></div>`;
+        const sub = runs.length > 1 ? `avg of ${a.n < a.of ? `${a.n} of ${a.of}` : a.of} runs` : esc(runs[0].model || '');
+        const each = runs.map((r) => `${r.run}: ${get(r) == null ? 'not recorded, skipped' : fmt(get(r))}`).join('\n');
+        return `<div class="hbar" ${open} title="${esc(each)}"><span class="lbl">${lbl}<span class="note" style="display:block;font-size:10.5px;line-height:1.2">${sub}</span></span><span class="track"><i style="width:${a.v / max * 100}%;background:${TOOL_COLOR[s.tool]}"></i></span><span class="val num">${fmt(a.v)}</span></div>`;
       }).join('');
     }
     el.innerHTML = h || '<div class="empty">Nothing matches these filters</div>';
   };
-  chart($('#chartTime'), (r) => r.timing?.seconds, fmtS);
-  chart($('#chartTok'), (r) => r.tokens?.total, (v, r) => tokenLabel(r));
+  chart($('#chartTime'), (r) => r.timing?.seconds || null, fmtS);
+  chart($('#chartTok'), (r) => r.tokens?.total || null, (v) => fmtN(Math.round(v)));
 }
 document.querySelector('.charts').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run); });
 
@@ -919,6 +1122,10 @@ const OPERATOR_QUESTIONS = {
   operator_needed_help: 'Did the operator need or receive help?',
   anything_else_unusual: 'Did anything else unusual happen?',
 };
+// The person behind a run. When an AI session did the setup and grading, the operator shown is
+// the person who directed and supervised it (supervised_by in operator.json), and the AI session
+// is named beside them. Runs with no supervisor on record keep the recorded operator.
+const operatorPerson = (o) => o && !o.invalid && o.operator_type === 'ai' && o.supervised_by ? String(o.supervised_by).split(/[,;(]/)[0].trim() : null;
 // Who ran the benchmark (RUN-RECORD.md section 4a). Not part of the agent's score.
 function operatorHTML(r) {
   const o = r.operator;
@@ -926,9 +1133,10 @@ function operatorHTML(r) {
   const row = (k, v) => v == null || v === '' ? '' : `<div class="t"><span class="ic note">•</span><span><b>${esc(k)}:</b> ${esc(typeof v === 'object' ? JSON.stringify(v) : v)}</span></div>`;
   const msgs = r.interventions && Array.isArray(r.interventions.interventions) ? r.interventions.interventions.length : null;
   const mismatch = msgs != null && o.messages_to_agent != null && msgs !== o.messages_to_agent;
-  return `<div class="box"><h4>Operator: ${o.operator_type === 'ai' ? 'AI' : o.operator_type === 'human' ? 'human' : esc(o.operator_type || 'unknown')}</h4>
-    <p class="note">Who set up, launched and graded this run. Operator effort is not part of the agent's score; messages the operator sent to the agent count under Human collaboration.</p>
-    ${row('Operator', o.operator)}${row('Supervised by', o.supervised_by)}${row('Knew beforehand', o.knowledge)}
+  const person = operatorPerson(o);
+  return `<div class="box"><h4>Operator: ${person ? esc(person) : o.operator_type === 'ai' ? 'AI' : o.operator_type === 'human' ? 'human' : esc(o.operator_type || 'unknown')}</h4>
+    <p class="note">${person ? 'The person who directed this run, and the AI session that set it up, launched it and graded it under their supervision.' : 'Who set up, launched and graded this run.'} Operator effort is not part of the agent's score; messages the operator sent to the agent count under Human collaboration.</p>
+    ${person ? row('Operator', o.supervised_by) + row('Worked through', `AI session (${o.operator || 'not named'})`) : row('Operator', o.operator) + row('Supervised by', o.supervised_by)}${row('Knew beforehand', o.knowledge)}
     ${row('Setup attempts', o.setup_attempts)}${row('Setup problems', (o.setup_problems || []).join('; ') || 'none')}
     ${row('Setup time (min)', o.setup_minutes)}${row('Grading time (min)', o.grading_minutes)}
     ${row('Operator tokens', o.operator_tokens && (o.operator_tokens.input != null ? `${fmtN(o.operator_tokens.input)} in, ${fmtN(o.operator_tokens.output)} out` : o.operator_tokens))}
@@ -1089,25 +1297,37 @@ function toolWhyHTML(tasks) {
       if (!s.runs.length) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: not run, so not counted</span></div>`;
       // With several runs, explain the lowest-scoring one; the score is their average.
       const best = s.runs.reduce((a, r) => ((runScore(r) ?? 0) < (runScore(a) ?? 0) ? r : a), s.runs[0]);
-      const each = s.runs.map((r) => runScore(r) ?? 0);
+      const each = s.runs.map(runScore), have = each.filter((x) => x != null);
       const v = slotScore(s);
+      if (v == null) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: run, but nothing was measured, so not counted</span></div>`;
       const told = best.qualityNotice ? `<span class="told ${best.qualityNotice.told ? 'yes' : 'no'}" title="${esc(best.qualityNotice.basis)}">${best.qualityNotice.told ? 'told about quality' : 'not told about quality'}</span>` : '';
-      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b> ${told}${s.runs.length > 1 ? ` <span class="note">(average of ${s.runs.length} runs: ${s.runs.map((r, k) => `${esc(r.run)} ${fmt1(each[k])}`).join(', ')}; spread ${fmt1(Math.min(...each))}–${fmt1(Math.max(...each))}; reason shown for the lowest)</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
+      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b> ${told}${s.runs.length > 1 ? ` <span class="note">(average of ${have.length < each.length ? `${have.length} of ` : ''}${s.runs.length} runs: ${s.runs.map((r, k) => `${esc(r.run)} ${each[k] == null ? 'no score, skipped' : fmt1(each[k])}`).join(', ')}; spread ${fmt1(Math.min(...have))}–${fmt1(Math.max(...have))}; reason shown for the lowest)</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
     }).join('');
-    const calc = ran.length ? `Average of the ${ran.length} task${ran.length > 1 ? 's' : ''} run: (${ran.map(({ s }) => fmt1(slotScore(s))).join(' + ')}) ÷ ${ran.length} = ${fmt1(sc.overall)}` : 'No grade: none of these tasks has been run.';
+    const counted = ran.filter(({ s }) => slotScore(s) != null);
+    const calc = counted.length ? `Average of the ${counted.length} task${counted.length > 1 ? 's' : ''} run: (${counted.map(({ s }) => fmt1(slotScore(s))).join(' + ')}) ÷ ${counted.length} = ${fmt1(sc.overall)}` : 'No grade: none of these tasks has been run.';
     return `<details class="suite why-tool"><summary><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[tl.id]}"></span>${esc(tl.name)}<span class="spacer"></span><span class="note num">${sc.overall == null ? 'NG' : `${grade(sc.overall)} ${fmt1(sc.overall)}`}</span></summary>
       <div class="tests">${rows}<p class="note calc">${esc(calc)}</p></div></details>`;
   }).join('');
 }
 // A tool with several runs on a task is scored on their average (the SRS asks for three runs).
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
-function slotScore(s) { return s.runs.length ? mean(s.runs.map((r) => runScore(r) ?? 0)) : 0; }
+// Average of one value across runs. A run that doesn't have the value is skipped, not counted
+// as zero: with three runs and two values, the average is over the two (n = 2, of = 3).
+function avgOf(runs, get) {
+  const vals = runs.map(get).filter((v) => v != null && !Number.isNaN(v));
+  return { v: vals.length ? mean(vals) : null, n: vals.length, of: runs.length };
+}
+// " (2/3)" when the average covers only some of the runs.
+const partial = (a) => a.n < a.of ? ` (${a.n}/${a.of})` : '';
+// null when none of the slot's runs has a score.
+function slotScore(s) { return avgOf(s.runs, runScore).v; }
 function slotDim(s, dim) { const v = s.runs.map((r) => runDim(r, dim)).filter((x) => x != null); return v.length ? mean(v) : null; }
 const grade = (v) => v == null ? '—' : v >= 90 ? 'A' : v >= 80 ? 'B' : v >= 70 ? 'C' : v >= 60 ? 'D' : 'F';
 function toolScores(toolId, tasks) {
   // Only tasks the tool actually ran count toward its grade.
   const ss = tasks.map((t) => slots.find((x) => x.task === t.id && x.tool === toolId)).filter((s) => s.runs.length);
-  const overall = ss.length ? ss.reduce((a, s) => a + slotScore(s), 0) / ss.length : null;
+  const scored = ss.map(slotScore).filter((v) => v != null);
+  const overall = scored.length ? mean(scored) : null;
   const dims = DIMS.map((d) => {
     const ap = ss.filter((s) => slotDim(s, d) != null);
     return { ...d, v: ap.length ? ap.reduce((a, s) => a + slotDim(s, d), 0) / ap.length : null, n: ap.length };
@@ -1161,7 +1381,9 @@ function scoreBarsHTML(rows, tasks, dimMode) {
   }).join('');
   const names = rows.map((r) => {
     const ms = r.tl.variant ? [r.tl.variant] : toolModels(r.tl.id, tasks);
-    return `<div class="${r.gray ? 'gray' : ''}"><span><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[r.tl.id]};margin-right:6px"></span>${esc(r.tl.short || r.tl.name)}<span class="model">${ms.length ? esc(ms.join(', ')) : 'no runs'}</span></span></div>`;
+    // A tool that picks its own model per run (Copilot) says so here; each run still shows its model.
+    const model = !ms.length ? 'no runs' : ms.length > 1 ? 'model varies by run' : shortModel(ms[0]);
+    return `<div class="${r.gray ? 'gray' : ''}"><span><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[r.tl.id]};margin-right:6px"></span>${esc(r.tl.short || r.tl.name)}<span class="model" title="${esc(ms.join(', '))}">${esc(model)}</span></span></div>`;
   }).join('');
   return { bars, names };
 }
@@ -1180,6 +1402,9 @@ function renderScore() {
   const h = scoreBarsHTML(rows, tasks, dimMode);
   $('#vbars').innerHTML = h.bars;
   $('#vnames').innerHTML = h.names;
+  // On a narrow screen the chart keeps a readable width and scrolls sideways inside its panel.
+  $('#vchart').style.minWidth = `${D.tools.length * (dimMode ? 104 : 190)}px`;
+  $('#vchart').classList.toggle('wide', !dimMode);
   $('#scoreWhy').innerHTML = toolWhyHTML(tasks);
   $('#qualityLive').innerHTML = qualityLiveHTML();
 }
@@ -1192,7 +1417,49 @@ $('#vbars').addEventListener('click', (e) => {
   const id = c.dataset.tool; state.tools.has(id) ? state.tools.delete(id) : state.tools.add(id); save(); renderFilters(); render();
 });
 
-function render() { renderTests(); renderScore(); renderStats(); renderMatrix(); renderRuns(); renderCharts(); }
+function render() { renderTests(); renderScore(); renderStats(); renderMatrix(); renderRuns(); renderCharts(); renderFilterNote(); }
+
+// ---------- section navigation ----------
+const SECTIONS = [...document.querySelectorAll('[data-sec]')];
+const nav = $('#jumpNav'), menu = $('#menu'), menuBtn = $('#menuBtn');
+menu.innerHTML = '<div class="menu-title">Sections</div>' + SECTIONS.map((s) => `<button role="menuitem" data-go="${s.dataset.sec}"><span class="n">${s.dataset.n || ''}</span>${esc(s.dataset.nav)}</button>`).join('');
+const setMenu = (open) => { menu.hidden = !open; menuBtn.setAttribute('aria-expanded', open); };
+menuBtn.onclick = (e) => { e.stopPropagation(); setMenu(menu.hidden); };
+function jumpTo(id) {
+  const el = SECTIONS.find((s) => s.dataset.sec === id); if (!el) return;
+  const first = el === SECTIONS[0];
+  // Leave room for the sticky bar above the section.
+  scrollTo(0, first ? 0 : el.getBoundingClientRect().top + scrollY - nav.offsetHeight - 24);
+  history.replaceState(null, '', first ? location.pathname + location.search : `#sec=${id}`);
+  if (!first) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  spy();
+}
+// Anything marked data-go jumps to that section: the menu, the hero buttons and the guide.
+document.addEventListener('click', (e) => {
+  const go = e.target.closest('[data-go]');
+  if (go) { e.preventDefault(); jumpTo(go.dataset.go); }
+  if (go || !e.target.closest('#menu')) setMenu(false);
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+$('#filterClear').onclick = () => $('#resetBtn').click();
+$('#tutExample').onclick = () => { const r = D.runs.find((x) => x.status === 'pass') || D.runs[0]; if (r) openRun(r.id, 'overview'); };
+
+// The menu follows the page: it marks the section at the top of the window.
+function spy() {
+  const line = nav.offsetHeight + 48;
+  let cur = SECTIONS[0];
+  for (const s of SECTIONS) if (s.getBoundingClientRect().top <= line) cur = s;
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = SECTIONS.at(-1);
+  for (const b of menu.querySelectorAll('[data-go]')) b.setAttribute('aria-current', b.dataset.go === cur.dataset.sec);
+}
+addEventListener('scroll', spy, { passive: true });
+spy();
+
+function renderFilterNote() {
+  const n = state.tools.size + state.tasks.size + state.status.size + state.models.size + state.told.size + (state.q ? 1 : 0);
+  $('#filterNote').textContent = `${n} filter${n === 1 ? '' : 's'} on`;
+  $('#filterNote').hidden = $('#filterClear').hidden = !n;
+}
 
 // ---------- diff ----------
 function lineDiff(a, b) {
@@ -1288,7 +1555,7 @@ function openRun(id, tab) {
   history.replaceState(null, '', `#run=${r.id}&tab=${currentTab}`);
   renderTab();
 }
-function closeRun() { stopReplay(); $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); history.replaceState(null, '', location.pathname); current = null; }
+function closeRun() { stopReplay(); $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); history.replaceState(null, '', location.pathname + location.search); current = null; }
 $('#dClose').onclick = closeRun; $('#scrim').onclick = closeRun;
 document.addEventListener('keydown', (e) => {
   if (!$('#drawer').classList.contains('open')) return;
@@ -1378,7 +1645,7 @@ function renderTaskTab() {
       { k: 'Reasoning', f: (r) => esc(r.effort || 'default / not recorded') },
       { k: 'Weighted score', v: (r) => runScore(r) ?? 0, f: (r, v) => `<span class="grade g-${grade(v)}" style="width:20px;height:20px;font-size:11px">${grade(v)}</span> ${Math.round(v)}`, best: 'max' },
       { k: 'Weight measured', f: (r) => `${runWeight(r)} of 100 pts` },
-      { k: 'Operator', f: (r) => r.operator && !r.operator.invalid ? `${esc(r.operator.operator_type === 'ai' ? 'AI' : r.operator.operator_type || '?')}${r.operator.operator ? `<br><span class="note">${esc(r.operator.operator)}</span>` : ''}` : '<span class="note">not recorded</span>' },
+      { k: 'Operator', f: (r) => r.operator && !r.operator.invalid ? (operatorPerson(r.operator) ? `${esc(operatorPerson(r.operator))}<br><span class="note">through an AI session (${esc(r.operator.operator || 'not named')})</span>` : `${esc(r.operator.operator_type === 'ai' ? 'AI' : r.operator.operator_type || '?')}${r.operator.operator ? `<br><span class="note">${esc(r.operator.operator)}</span>` : ''}`) : '<span class="note">not recorded</span>' },
       { k: 'Told about code quality', f: (r) => r.qualityNotice ? `<span title="${esc(r.qualityNotice.basis)}">${r.qualityNotice.told ? 'Yes' : 'No'}</span>` : '—' },
       { k: 'Why this score', f: (r) => `<span style="white-space:normal;display:block;max-width:260px" class="note">${esc(reasonLine(r))}</span><a href="#" data-why-open="${r.id}">checklist</a>` },
       ...dims.map((d) => ({ k: `${d.name} (${d.w}%)`, v: (r) => runDim(r, d), f: (r, v) => v == null ? '—' : `${Math.round(v)} <span class="note">(${grade(v)})</span>`, best: 'max' })),
@@ -1394,7 +1661,7 @@ function renderTaskTab() {
     const gr = scoreBarsHTML(scoreRows([t]), [t], true);
     let h = `<div class="box"><h4>Grades on task ${t.id} <span class="note">· overall and per grading area, ranked best first</span></h4>
       <div class="legend"><span><i style="background:var(--text)"></i>Weighted total</span>${DIMS.map((d) => `<span style="opacity:${dimApplies(t.id, d) ? 1 : .4}" title="${esc(d.how)}"><i style="background:${d.color}"></i>${d.name} ${d.w}%${dimApplies(t.id, d) ? '' : ' · not measured'}</span>`).join('')}</div>
-      <div class="vbars" style="height:200px">${gr.bars}</div><div class="vnames">${gr.names}</div></div>
+      <div class="vscroll"><div class="vchart" style="min-width:${D.tools.length * 104}px"><div class="vbars" style="height:200px">${gr.bars}</div><div class="vnames">${gr.names}</div></div></div></div>
       <div class="tbl-wrap"><table class="cmp"><thead>${head}</thead><tbody>`;
     for (const m of metrics) {
       const vals = cols.map((c) => c.r && m.v ? m.v(c.r) : null);
@@ -1735,6 +2002,7 @@ renderFilters(); render();
 const h = new URLSearchParams(location.hash.slice(1));
 if (h.get('run')) openRun(h.get('run'), h.get('tab') || 'overview');
 else if (h.get('task')) openTask(h.get('task'), h.get('tab') || 'compare');
+else if (h.get('sec')) jumpTo(h.get('sec'));
 })();
 </script>
 </body>
