@@ -22,6 +22,7 @@
     <input id="todo-input" placeholder="Enter task requirement..." required />
     <button type="submit">Add Task</button>
   </form>
+  <p id="todo-progress" role="status"></p>
   <ul id="todo-list"></ul>
 
   <script>
@@ -29,6 +30,8 @@
     async function fetchTodos() {
       const res = await fetch('/api/todos');
       const data = await res.json();
+      const completed = data.filter(item => item.completed).length;
+      document.getElementById('todo-progress').textContent = `${completed} of ${data.length} done`;
       list.innerHTML = data.map(item => `
         <li>
           <span class="item-text ${item.completed ? 'done' : ''}" onclick="toggleStatus(${item.id}, ${!item.completed})">
