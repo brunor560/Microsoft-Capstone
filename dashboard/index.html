@@ -748,6 +748,18 @@ D.runs = D.runs.filter((r) => !hiddenTools.includes(r.tool));
 
 // Each tool runs each test this many times, so one unusual run can't decide a score.
 const RUNS_PER_TEST = 3;
+// A tool and test with more than three runs is scored on its three newest, so every average
+// is over the same number of runs. Older runs are set aside (their evidence stays on the
+// results branch). A mitigated run is a different condition, so it is set aside first.
+const runAge = (r) => [/mitigated/.test(r.run) ? 0 : 1, r.date || '', +(r.run.match(/(\d+)$/) || [0, 0])[1]];
+const olderFirst = (a, b) => { const x = runAge(a), y = runAge(b); return x[0] - y[0] || x[1].localeCompare(y[1]) || x[2] - y[2]; };
+const setAside = [];
+{
+  const groups = new Map();
+  for (const r of D.runs) { const k = `${r.tool}|${r.task}`; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); }
+  for (const rs of groups.values()) if (rs.length > RUNS_PER_TEST) setAside.push(...rs.slice().sort(olderFirst).slice(0, rs.length - RUNS_PER_TEST));
+  D.runs = D.runs.filter((r) => !setAside.includes(r));
+}
 // Every tool × task slot. Slots without a run default to "Not run".
 const slots = [];
 for (const t of D.tasks) for (const tl of D.tools) {
@@ -810,6 +822,7 @@ $('#toolPick').replaceChildren(...ALL_TOOLS.map((t) => {
 $('#heroStats').innerHTML =[[D.tools.length, 'tool setups'], [D.tasks.length, 'tests'], [D.runs.length, 'graded runs'], [fmtN(allChecks), 'hidden checks passed']]
   .map(([v, k]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
 $('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>, built ${new Date(D.generated).toLocaleString()}.`
+  + (setAside.length ? ` Scored on the three newest runs per tool and test; ${setAside.length} older run${setAside.length === 1 ? '' : 's'} set aside (${setAside.map((r) => esc(`${toolName(r.tool)} ${r.task} ${r.run}`)).join(', ')}).` : '')
   + (archivedRuns.some((a) => a.n) ? ` Archived (hidden): ${archivedRuns.filter((a) => a.n).map((a) => `${esc(a.label)} (${a.n} runs)`).join(', ')}.` : '');
 
 
