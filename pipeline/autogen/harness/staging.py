@@ -14,9 +14,13 @@ Two invariants this module exists to enforce:
 
 from __future__ import annotations
 
+import os
 import shutil
+import stat
 import subprocess
+import sys
 import tempfile
+import time
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
@@ -54,6 +58,53 @@ class Workspace:
     def mount_spec(self) -> str:
         """Docker bind-mount argument targeting the sandbox's /workspace."""
         return f"{self.path}:/workspace"
+
+
+@dataclass
+class Lifecycle:
+    """Sandbox lifecycle evidence for one run (SRS Spec 1.4).
+
+    `cleanup` is "not_started" until teardown runs, then "succeeded" or
+    "failed" (clause 1.4.4). The timings are what clauses 1.4.1 and 1.4.2
+    are judged on: ready in under 3 seconds, removed in under 5.
+    """
+
+    ready_seconds: float | None = None
+    removal_seconds: float | None = None
+    cleanup: str = "not_started"
+
+    def to_dict(self) -> dict[str, float | str | None]:
+        return {
+            "ready_seconds": _round(self.ready_seconds),
+            "removal_seconds": _round(self.removal_seconds),
+            "cleanup": self.cleanup,
+        }
+
+
+def _round(value: float | None) -> float | None:
+    return None if value is None else round(value, 4)
+
+
+def _remove_tree(path: Path) -> None:
+    """Delete `path`, including read-only files, without ever raising.
+
+    Git marks its object files read-only, and on Windows a read-only file
+    cannot be unlinked, so a plain rmtree leaves the whole scratch tree
+    behind. Clearing the flag and retrying makes teardown work on every
+    host. Failures are swallowed here; the caller checks what is left.
+    """
+
+    def retry_writable(func, failed_path, _exc) -> None:
+        try:
+            os.chmod(failed_path, stat.S_IWRITE | stat.S_IREAD)
+            func(failed_path)
+        except OSError:
+            pass
+
+    if sys.version_info >= (3, 12):
+        shutil.rmtree(path, onexc=retry_writable)
+    else:
+        shutil.rmtree(path, onerror=retry_writable)
 
 
 def _git(args: list[str], cwd: Path) -> str:
@@ -137,6 +188,7 @@ def stage_workspace(
     repo: str | None = None,
     *,
     keep: bool = False,
+    lifecycle: Lifecycle | None = None,
 ) -> Iterator[Workspace]:
     """Stage an ephemeral workspace, yielding it, then wipe it.
 
@@ -146,6 +198,9 @@ def stage_workspace(
     Set `keep=True` to preserve the scratch dir for debugging; the path is
     printed so it can be removed manually. This is deliberately opt-in --
     the default must always clean up.
+
+    Pass a `Lifecycle` to have the teardown outcome and its duration
+    recorded on it (SRS clauses 1.4.2 to 1.4.4).
     """
     scratch_root = Path(tempfile.mkdtemp(prefix="eval-run-"))
     workspace_path = scratch_root / "workspace"
@@ -169,6 +224,11 @@ def stage_workspace(
         if keep:
             print(f"[staging] scratch preserved at {scratch_root}")
         else:
-            # ignore_errors: teardown must never mask the real exception
-            # that caused us to unwind.
-            shutil.rmtree(scratch_root, ignore_errors=True)
+            # Teardown must never mask the real exception that caused us to
+            # unwind, so removal does not raise. Its outcome is recorded.
+            started = time.monotonic()
+            _remove_tree(scratch_root)
+            if lifecycle is not None:
+                elapsed = time.monotonic() - started
+                lifecycle.removal_seconds = (lifecycle.removal_seconds or 0.0) + elapsed
+                lifecycle.cleanup = "failed" if scratch_root.exists() else "succeeded"

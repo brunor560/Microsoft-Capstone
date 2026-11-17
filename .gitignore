@@ -5,3 +5,5 @@ package-lock.json
 assessment/.cache/
 **/__pycache__/
 **/.env
+app-ui-tests/test-results/
+app-ui-tests/playwright-report/

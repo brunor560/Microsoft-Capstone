@@ -13,8 +13,10 @@ from pathlib import Path
 
 import pytest
 
+from harness import staging
 from harness.staging import (
     DEFAULT_LOCAL_TARGET,
+    Lifecycle,
     StagingError,
     stage_workspace,
 )
@@ -283,3 +285,83 @@ def test_bad_clone_url_raises_and_cleans_up():
     with pytest.raises(StagingError, match="git clone failed"):
         with stage_workspace("file:///nonexistent/repo.git"):
             pass
+
+
+# --- lifecycle evidence (SRS Spec 1.4) ---------------------------------------
+
+
+def test_cleanup_is_not_started_until_teardown():
+    """Clause 1.4.4: the record starts as not_started."""
+    lifecycle = Lifecycle()
+    with stage_workspace(lifecycle=lifecycle):
+        assert lifecycle.cleanup == "not_started"
+
+
+def test_cleanup_is_recorded_as_succeeded_within_five_seconds():
+    """Clauses 1.4.2 to 1.4.4: removed in under 5 s, nothing left, recorded."""
+    lifecycle = Lifecycle()
+    with stage_workspace(lifecycle=lifecycle) as workspace:
+        scratch = workspace.path.parent
+
+    assert lifecycle.cleanup == "succeeded"
+    assert not scratch.exists()
+    assert lifecycle.removal_seconds is not None
+    assert lifecycle.removal_seconds < 5
+
+
+def test_cleanup_is_recorded_after_an_unhandled_error():
+    """Clause 1.4.2: removal also happens, and is recorded, after a crash."""
+    lifecycle = Lifecycle()
+
+    with pytest.raises(ValueError, match="simulated agent crash"):
+        with stage_workspace(lifecycle=lifecycle) as workspace:
+            scratch = workspace.path.parent
+            raise ValueError("simulated agent crash")
+
+    assert lifecycle.cleanup == "succeeded"
+    assert not scratch.exists()
+
+
+def test_read_only_files_do_not_survive_teardown():
+    """Git objects are read-only; on Windows that used to defeat the wipe."""
+    with stage_workspace() as workspace:
+        locked = workspace.path / "locked.txt"
+        locked.write_text("read-only")
+        locked.chmod(0o444)
+        scratch = workspace.path.parent
+
+    assert not scratch.exists()
+
+
+def test_failed_cleanup_is_recorded_as_failed(monkeypatch):
+    """TC-1.4-3: a forced cleanup failure is recorded, never hidden."""
+    lifecycle = Lifecycle()
+    monkeypatch.setattr(staging, "_remove_tree", lambda path: None)
+
+    with stage_workspace(lifecycle=lifecycle) as workspace:
+        scratch = workspace.path.parent
+
+    try:
+        assert lifecycle.cleanup == "failed"
+    finally:
+        monkeypatch.undo()
+        staging._remove_tree(scratch)
+
+
+def test_keep_flag_leaves_cleanup_not_started():
+    lifecycle = Lifecycle()
+    with stage_workspace(keep=True, lifecycle=lifecycle) as workspace:
+        scratch = workspace.path.parent
+    try:
+        assert lifecycle.cleanup == "not_started"
+    finally:
+        staging._remove_tree(scratch)
+
+
+def test_lifecycle_serializes_for_the_run_artifact():
+    record = Lifecycle(ready_seconds=1.23456, removal_seconds=0.5, cleanup="succeeded")
+    assert record.to_dict() == {
+        "ready_seconds": 1.2346,
+        "removal_seconds": 0.5,
+        "cleanup": "succeeded",
+    }

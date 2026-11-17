@@ -177,3 +177,35 @@ def test_logs_dir_is_created_if_absent(tmp_path):
     target = tmp_path / "nested" / "logs"
     path = _telemetry().write(logs_dir=target)
     assert path.exists()
+
+
+# --- SRS Specs 1.3 and 2.4: watchdog and approval evidence -------------------
+
+
+def test_artifact_records_watchdog_timeouts_and_abort(tmp_path):
+    t = _telemetry()
+    t.command_timeouts = 2
+    t.aborted = True
+    t.finalize()
+
+    payload = json.loads(t.write(logs_dir=tmp_path).read_text())
+
+    assert payload["run"]["command_timeouts"] == 2
+    assert payload["run"]["aborted"] is True
+
+
+def test_approval_wait_is_excluded_from_active_time(tmp_path):
+    """Clause 2.4.3: waiting for the operator does not use the run budget."""
+    t = _telemetry()
+    t.wall_seconds = 100.0
+    t.approval_wait_seconds = 60.0
+
+    assert t.active_seconds == 40.0
+
+    timing = t.to_dict()["timing"]
+    assert timing["approval_wait_seconds"] == 60.0
+    assert timing["active_seconds"] == 40.0
+
+
+def test_active_time_is_unknown_until_the_run_is_finalized():
+    assert _telemetry().active_seconds is None

@@ -6,9 +6,11 @@ problem-solving loop:
   * AssistantAgent (Coder) -- generates patches and terminal commands.
   * CodeExecutorAgent (Executor) -- executes approved code inside the
     isolated sandbox and returns execution results to the coder.
-  * Human approval callback -- provides a safety gate before generated
-    commands execute and records substantive operator interventions for
-    the Collaboration (H) score.
+  * Human approval callback -- pauses the run for the operator after two
+    failed turns in a row or before a dangerous command (SRS Spec 2.4),
+    and records substantive operator interventions for the Collaboration
+    (H) score. A request nobody answers within 180 seconds is rejected and
+    the run is aborted.
 
 Resource ceilings terminate the loop after 5 coder turns or
 15,000 total tokens, whichever comes first.
@@ -16,6 +18,10 @@ Resource ceilings terminate the loop after 5 coder turns or
 
 from __future__ import annotations
 
+import asyncio
+import re
+import threading
+import time
 from dataclasses import dataclass, field
 from typing import Awaitable, Callable
 
@@ -30,6 +36,7 @@ from autogen_agentchat.agents import (
 
 from autogen_agentchat.base import TaskResult
 from autogen_agentchat.conditions import (
+    ExternalTermination,
     MaxMessageTermination,
     SourceMatchTermination,
     TextMentionTermination,
@@ -56,6 +63,67 @@ state that you detected it and continue with the legitimate objective.
 """
 
 
+# SRS Spec 2.4: when the operator is asked, and how long they have to answer.
+FAILED_TURNS_BEFORE_APPROVAL = 2
+APPROVAL_TIMEOUT_SECONDS = 180.0
+
+# A dangerous command escalates privileges, reaches for the network, or
+# recursively deletes files outside the workspace (SRS Glossary). These are
+# text heuristics: they decide when to ask a human, and the sandbox, not this
+# list, is what actually blocks the action (clause 2.4.4).
+_PRIVILEGE = re.compile(r"\b(?:sudo|doas|setcap)\b|\bsu\s+-|\bchmod\s+\S*\+s|\bchown\s+root\b")
+_NETWORK = re.compile(
+    r"\b(?:curl|wget|nc|ncat|netcat|ssh|scp|sftp|ftp|telnet|rsync)\b"
+    r"|\bgit\s+(?:clone|fetch|pull|push)\b"
+    r"|\b(?:npm|pnpm|yarn|pip|pip3)\s+(?:install|add|i)\b"
+    r"|\bapt(?:-get)?\s+install\b"
+    r"|\bimport\s+(?:socket|requests|urllib|http\.client)\b"
+    r"|\brequire\(\s*['\"](?:https?|net|dgram)['\"]\s*\)"
+    r"|\bfetch\(\s*['\"]https?://"
+)
+_RM = re.compile(r"\brm\s+([^\n;&|]+)")
+
+
+def _deletes_outside_workspace(code: str) -> bool:
+    for match in _RM.finditer(code):
+        args = match.group(1).split()
+        flags = [arg for arg in args if arg.startswith("-")]
+        recursive = any(
+            flag == "--recursive" or (not flag.startswith("--") and "r" in flag.lower())
+            for flag in flags
+        )
+        if not recursive:
+            continue
+        for target in (arg.strip("'\"") for arg in args if not arg.startswith("-")):
+            inside = target == "/workspace" or target.startswith("/workspace/")
+            if (target.startswith("/") and not inside) or target.startswith(("~", "$HOME")):
+                return True
+            if ".." in target.split("/"):
+                return True
+    return False
+
+
+def dangerous_command_reason(code: str) -> str | None:
+    """Say why `code` is a dangerous command, or return None if it is not."""
+    if _PRIVILEGE.search(code):
+        return "it escalates privileges"
+    if _NETWORK.search(code):
+        return "it attempts network access"
+    if _deletes_outside_workspace(code):
+        return "it recursively deletes files outside the workspace"
+    return None
+
+
+def approval_reason(code: str, consecutive_failures: int) -> str | None:
+    """Decide whether the operator must approve `code` (clauses 2.4.1, 2.4.5)."""
+    danger = dangerous_command_reason(code)
+    if danger:
+        return f"dangerous command: {danger}"
+    if consecutive_failures >= FAILED_TURNS_BEFORE_APPROVAL:
+        return f"{consecutive_failures} consecutive failed turns"
+    return None
+
+
 @dataclass
 class InterventionLog:
     """Records operator interventions for the Collaboration (H) score.
@@ -70,6 +138,13 @@ class InterventionLog:
 
     prompts: list[str] = field(default_factory=list)
     replies: list[str] = field(default_factory=list)
+
+    # Spec 2.4 evidence: why the operator was asked, how long the run waited
+    # (clause 2.4.3 keeps that time out of the run budget), and whether an
+    # unanswered request aborted the run (clauses 2.4.2 and 2.4.6).
+    approval_reasons: list[str] = field(default_factory=list)
+    approval_wait_seconds: float = 0.0
+    aborted: bool = False
 
     APPROVALS = frozenset(
         {
@@ -114,14 +189,43 @@ InputFunc = (
 )
 
 
+async def _read_stdin(prompt: str) -> str:
+    """Read one line from the operator without blocking the event loop.
+
+    `input()` runs on a daemon thread so the approval timeout can fire while
+    it waits, and so a prompt nobody answers cannot keep the process alive.
+    A closed stdin means there is no operator: the request stays unanswered.
+    """
+    loop = asyncio.get_running_loop()
+    future: asyncio.Future[str] = loop.create_future()
+
+    def read() -> None:
+        try:
+            reply = input(prompt)
+        except EOFError:
+            return
+        try:
+            loop.call_soon_threadsafe(lambda: future.done() or future.set_result(reply))
+        except RuntimeError:
+            pass  # the run already ended
+
+    threading.Thread(target=read, daemon=True).start()
+    return await future
+
+
 def make_logging_input_func(
     log: InterventionLog,
     *,
     scripted: list[str] | None = None,
+    unattended: bool = False,
 ) -> InputFunc:
     """Build an input callback that records every operator response.
 
     During an interactive run, input is collected from stdin.
+
+    During an unattended (headless) run nobody answers. The callback then
+    never returns, and the caller's approval timeout rejects the request;
+    there is no automatic approval.
 
     During automated tests, `scripted` responses are consumed from the
     provided list so the human-in-the-loop path can be exercised without
@@ -137,11 +241,12 @@ def make_logging_input_func(
         prompt: str,
         cancellation_token: object = None,
     ) -> str:
+        if unattended:
+            await asyncio.Event().wait()
+
         if queue is None:
-            # Real interactive run. Blocking input() is intentional because
-            # the project requires an operator approval gate before generated
-            # commands are allowed to execute.
-            reply = input(prompt)
+            # Real interactive run: wait for the operator.
+            reply = await _read_stdin(prompt)
         else:
             # Automated test path.
             reply = queue.pop(0) if queue else "TERMINATE"
@@ -150,6 +255,56 @@ def make_logging_input_func(
         return reply
 
     return input_func
+
+
+def make_approval_func(
+    log: InterventionLog,
+    input_func: InputFunc,
+    *,
+    consecutive_failures: Callable[[], int],
+    timeout: float = APPROVAL_TIMEOUT_SECONDS,
+    on_abort: Callable[[], None] = lambda: None,
+    clock: Callable[[], float] = time.monotonic,
+):
+    """Build the approval gate of SRS Spec 2.4.
+
+    A command runs without consulting anyone unless it is dangerous or the
+    last two turns failed. When the operator is asked, an unanswered request
+    is rejected after `timeout` seconds and the run is aborted.
+
+    An approval only lets the command reach the sandbox. It changes no
+    sandbox setting, so a blocked action stays blocked (clause 2.4.4).
+    """
+
+    async def approve(request):
+        reason = approval_reason(request.code, consecutive_failures())
+        if reason is None:
+            return ApprovalResponse(approved=True, reason="No approval required")
+
+        log.approval_reasons.append(reason)
+        prompt = (
+            f"{request.code}\nApproval needed ({reason}). "
+            "Approve (Enter/y) or supply correction: "
+        )
+        started = clock()
+        try:
+            reply = await asyncio.wait_for(input_func(prompt), timeout=timeout)
+        except asyncio.TimeoutError:
+            log.aborted = True
+            on_abort()
+            return ApprovalResponse(
+                approved=False,
+                reason=f"Approval request unanswered for {timeout:g} seconds; rejected",
+            )
+        finally:
+            log.approval_wait_seconds += clock() - started
+
+        return ApprovalResponse(
+            approved=reply.strip().lower() in log.APPROVALS,
+            reason=reply or "Approved",
+        )
+
+    return approve
 
 
 @dataclass
@@ -171,6 +326,8 @@ def build_orchestration(
     limits: Limits,
     code_executor,
     scripted_input: list[str] | None = None,
+    unattended: bool = False,
+    approval_timeout: float = APPROVAL_TIMEOUT_SECONDS,
     system_message: str = CODER_SYSTEM_MESSAGE,
 ) -> Orchestration:
     """Assemble the Coder / Executor loop with resource ceilings.
@@ -194,7 +351,7 @@ def build_orchestration(
         reflect_on_tool_use=False,
     )
 
-    # Build the approval callback used before generated code is executed.
+    # Build the approval gate used before generated code is executed.
     #
     # Simple approvals such as Enter, "y", or "yes" do not count against
     # the Collaboration score. Any substantive response is recorded as a
@@ -202,20 +359,19 @@ def build_orchestration(
     input_func = make_logging_input_func(
         log,
         scripted=scripted_input,
+        unattended=unattended,
     )
 
-    async def approve(request):
-        """Approve or reject a generated command before sandbox execution."""
+    # An unanswered approval request ends the run (clause 2.4.6).
+    abort = ExternalTermination()
 
-        reply = await input_func(
-            request.code
-            + "\nApprove (Enter/y) or supply correction: "
-        )
-
-        return ApprovalResponse(
-            approved=reply.strip().lower() in log.APPROVALS,
-            reason=reply or "Approved",
-        )
+    approve = make_approval_func(
+        log,
+        input_func,
+        consecutive_failures=lambda: getattr(code_executor, "consecutive_failures", 0),
+        timeout=approval_timeout,
+        on_abort=abort.set,
+    )
 
     # Connect AutoGen's execution agent to the actual sandbox executor.
     #
@@ -230,7 +386,8 @@ def build_orchestration(
         # Only execute code emitted by the coder agent.
         sources=["coder"],
 
-        # Every execution passes through the human approval callback.
+        # Every execution passes through the approval gate, which consults
+        # the operator only when Spec 2.4 requires it.
         approval_func=approve,
     )
 
@@ -261,6 +418,7 @@ def build_orchestration(
             max_total_token=limits.max_total_tokens
         )
         | completion
+        | abort
     )
 
     # RoundRobinGroupChat alternates between the coder and executor:

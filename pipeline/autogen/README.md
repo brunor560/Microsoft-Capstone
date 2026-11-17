@@ -18,6 +18,19 @@ Useful flags: `--model-profile`, `--repo`, `--interactive` (real
 human-in-the-loop prompts), `--network` (allow `npm`/`pip install`),
 `--export-pr` (dry run unless `--push` is also given).
 
+The operator is asked to approve a command only after two failed turns in a
+row or before a dangerous command (network access, privilege escalation, or
+a recursive delete outside the workspace). A request nobody answers within
+180 seconds is rejected and the run is recorded as aborted. Without
+`--interactive` there is no operator, so such a request always times out;
+nothing is approved automatically.
+
+Every sandbox and grading container is limited to 2 CPUs, 2 GB of memory and
+128 processes, runs as a non-root user, and stops any command at 60 seconds
+(`--timeout`). After grading, the files the agent added or changed are
+scanned for copyleft license markers; `--export-pr` refuses to publish a run
+whose scan is not clean.
+
 ## Setup
 
 ```bash

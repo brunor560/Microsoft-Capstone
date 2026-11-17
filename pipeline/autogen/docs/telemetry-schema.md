@@ -59,6 +59,8 @@ Artifacts are written to `pipeline/autogen/logs/<task_id>_<run_id>.json`.
 | **`model.benchmark_valid`** | bool | **Filter on this.** `false` means a cheap plumbing run, not a scored result. |
 | `timing.started_at` / `finished_at` | ISO-8601 UTC | |
 | `timing.wall_seconds` | float | End-to-end run duration. |
+| `timing.approval_wait_seconds` | float | Time spent waiting for the operator to answer an approval request (SRS Spec 2.4). |
+| `timing.active_seconds` | float? | `wall_seconds` minus `approval_wait_seconds`; approval waits do not count toward the run budget. |
 | `usage.call_count` | int | Number of model API calls. |
 | `usage.prompt_tokens` | int | Summed across calls. |
 | `usage.completion_tokens` | int | Summed across calls. |
@@ -67,6 +69,13 @@ Artifacts are written to `pipeline/autogen/logs/<task_id>_<run_id>.json`.
 | `usage.token_efficiency` | float? | **T** = `100 × max(0, 1 − total/max)`. Omitted with `max_tokens`. |
 | `run.stop_reason` | string? | Which termination condition fired. |
 | `run.network_isolated` | bool? | `true` when the sandbox had no outbound network. |
+| `run.command_timeouts` | int | Commands the 60-second watchdog stopped (SRS clause 1.3.6). |
+| `run.aborted` | bool | `true` when an approval request went unanswered for 180 seconds and was rejected (SRS clause 2.4.6). |
+| `lifecycle.ready_seconds` | float? | Time for the sandbox to become ready (SRS clause 1.4.1). Written by `run_benchmark.py`. |
+| `lifecycle.removal_seconds` | float? | Time to stop the sandbox and wipe the scratch workspace (clause 1.4.2). |
+| `lifecycle.cleanup` | string | `not_started`, `succeeded` or `failed` (clause 1.4.4). |
+| `provenance.license_scan` | string | `clean`, `flagged` or `scanner_unavailable` (SRS Spec 4.3). Only `clean` may be published. |
+| `provenance.license_matches` | array | One `{path, license}` entry per copyleft marker found in agent-generated code. |
 | `calls[].source` | string? | Origin of the call. |
 | `calls[].latency_seconds` | float | Measured at the client boundary. |
 

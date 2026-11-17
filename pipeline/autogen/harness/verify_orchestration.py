@@ -128,11 +128,13 @@ async def run(profile_name: str | None) -> int:
             print(f"  interventions      : {log.interventions}")
             print(f"  H score            : {log.collaboration_score}")
 
+            # SRS Spec 2.4: the operator is asked only after two failed turns
+            # in a row or before a dangerous command, so a clean run consults
+            # nobody. The gate itself is covered offline in test_orchestrator.py.
             if log.total_inputs == 0:
-                print("  WARN operator was never consulted; HITL gate may be inactive")
-                failures.append("human-in-the-loop gate did not trigger")
+                print("  OK   no approval was needed (no failed streak, no dangerous command)")
             else:
-                print("  OK   human-in-the-loop gate engaged")
+                print(f"  OK   approval requested for: {', '.join(log.approval_reasons)}")
 
             if log.collaboration_score != 100:
                 failures.append(

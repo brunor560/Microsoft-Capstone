@@ -41,6 +41,21 @@ class IsolatedDockerCodeExecutor(DockerCommandLineCodeExecutor):
         self._execution_closed = False
         # Host cleanup owns container removal.
         self._auto_remove = False
+        # Failed turns in a row; the approval gate of SRS Spec 2.4 reads this.
+        self.consecutive_failures = 0
+
+    @property
+    def command_timeouts(self) -> int:
+        """Commands the host watchdog stopped (SRS clause 1.3.6)."""
+        return sum(1 for e in self.command_events if e.get("kind") == "command_timeout")
+
+    async def execute_code_blocks(self, code_blocks, cancellation_token):
+        result = await super().execute_code_blocks(code_blocks, cancellation_token)
+        if result.exit_code == 0:
+            self.consecutive_failures = 0
+        else:
+            self.consecutive_failures += 1
+        return result
 
     async def start(self) -> None:
         """Start the container, applying network isolation.

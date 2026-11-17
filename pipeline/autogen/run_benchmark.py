@@ -24,6 +24,7 @@ import argparse
 import asyncio
 import json
 import sys
+import time
 
 # Import grader modules so their @register decorators run before get_grader().
 import graders.functionality  # noqa: F401
@@ -43,6 +44,11 @@ from harness.executor import (
 from harness.instrumented_client import (
     InstrumentedChatCompletionClient,
 )
+from harness.license_scan import (
+    UNAVAILABLE,
+    scan_workspace,
+    tree_manifest,
+)
 from harness.model_profiles import (
     ProfileError,
     build_client,
@@ -55,6 +61,7 @@ from harness.scoring import (
     build_scorecard,
 )
 from harness.staging import (
+    Lifecycle,
     stage_workspace,
 )
 from harness.tasks import (
@@ -210,10 +217,13 @@ async def run_benchmark(
     )
 
     scorecard = None
+    license_result = None
+    lifecycle = Lifecycle()
 
     with stage_workspace(
         repo,
         keep=args.keep_scratch,
+        lifecycle=lifecycle,
     ) as workspace:
 
         print(
@@ -246,7 +256,17 @@ async def run_benchmark(
             ),
         )
 
+        # Everything hashed here is the starting code. Whatever differs after
+        # the agent loop is agent-generated and gets license-scanned.
+        baseline_files = tree_manifest(
+            workspace.path
+        )
+
+        ready_started = time.monotonic()
         await executor.start()
+        lifecycle.ready_seconds = (
+            time.monotonic() - ready_started
+        )
 
         try:
             telemetry.network_isolated = (
@@ -271,13 +291,11 @@ async def run_benchmark(
                 limits=profile.limits,
                 code_executor=executor,
 
-                # Non-interactive benchmark runs auto-approve up to the
-                # configured turn limit. Interactive runs ask the operator.
-                scripted_input=(
-                    None
-                    if args.interactive
-                    else ["", "", "", "", ""]
-                ),
+                # The operator is asked only after two failed turns or
+                # before a dangerous command (SRS Spec 2.4). A headless run
+                # has no operator, so such a request times out and is
+                # rejected; nothing is approved automatically.
+                unattended=not args.interactive,
             )
 
             print(
@@ -304,8 +322,23 @@ async def run_benchmark(
                 f"{len(result.messages)}"
             )
 
+            log = orchestration.interventions
+            telemetry.command_timeouts = executor.command_timeouts
+            telemetry.approval_wait_seconds = log.approval_wait_seconds
+            telemetry.aborted = log.aborted
+
+            if log.aborted:
+                print(
+                    "status         : aborted "
+                    "(approval request unanswered)"
+                )
+
         finally:
+            removal_started = time.monotonic()
             await executor.stop()
+            lifecycle.removal_seconds = (
+                time.monotonic() - removal_started
+            )
             await model_client.close()
 
         telemetry.finalize()
@@ -363,6 +396,29 @@ async def run_benchmark(
             f"reliable={scorecard.reliable}"
         )
 
+        # License scan of agent-generated code (SRS Spec 4.3). A scan that
+        # cannot complete is a grader error, exactly like a failed secret
+        # scan, so the scorecard is not reported as reliable.
+        license_result = scan_workspace(
+            workspace.path,
+            baseline=baseline_files,
+        )
+
+        if license_result.status == UNAVAILABLE:
+            scorecard.grader_errors.append(
+                f"license: {UNAVAILABLE}: {license_result.error}"
+            )
+
+        print(
+            f"  {'license scan':<18} "
+            f"{license_result.status}"
+        )
+
+        for match in license_result.matches:
+            print(
+                f"    {match['license']}: {match['path']}"
+            )
+
         for error in scorecard.grader_errors:
             print(
                 f"    error: {error}"
@@ -376,6 +432,7 @@ async def run_benchmark(
                 telemetry,
                 workspace,
                 scorecard,
+                license_result,
             )
 
     payload = telemetry.to_dict(
@@ -388,6 +445,15 @@ async def run_benchmark(
         scorecard.to_dict()
         if scorecard
         else None
+    )
+
+    # Written after the workspace is wiped, so the cleanup outcome is final.
+    payload["lifecycle"] = lifecycle.to_dict()
+
+    payload["provenance"] = (
+        license_result.to_dict()
+        if license_result
+        else {"license_scan": UNAVAILABLE}
     )
 
     path = telemetry.write(
@@ -419,8 +485,9 @@ def _maybe_export(
     telemetry,
     workspace,
     scorecard,
+    license_result,
 ) -> None:
-    """Open a PR only for benchmark-valid runs."""
+    """Open a PR only for benchmark-valid runs with a clean license scan."""
 
     from harness.pr_export import (
         ExportError,
@@ -431,6 +498,16 @@ def _maybe_export(
         print(
             "\nrefusing PR export: "
             "profile is not benchmark-valid."
+        )
+
+        return
+
+    # SRS clause 4.3.3: a flagged run is never published, and neither is one
+    # whose scan could not run (fail closed).
+    if not license_result.publishable:
+        print(
+            "\nrefusing PR export: "
+            f"license scan is {license_result.status}."
         )
 
         return
@@ -492,7 +569,11 @@ def main() -> int:
     parser.add_argument(
         "--timeout",
         type=int,
-        default=120,
+        default=60,
+        help=(
+            "seconds before the sandbox watchdog stops a command "
+            "(SRS clause 1.3.4)"
+        ),
     )
 
     parser.add_argument(

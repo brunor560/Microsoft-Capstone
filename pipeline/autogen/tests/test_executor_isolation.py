@@ -99,3 +99,60 @@ async def test_isolation_does_not_break_code_execution(tmp_path):
 
     assert result.exit_code == 0, result.output
     assert "GRADERS_OK" in result.output
+
+
+async def test_an_approval_does_not_reopen_the_network(tmp_path):
+    """SRS clause 2.4.4 (TC-2.4-5): an approval overrides no sandbox restriction."""
+    from harness.orchestrator import (
+        InterventionLog,
+        make_approval_func,
+        make_logging_input_func,
+    )
+
+    log = InterventionLog()
+    gate = make_approval_func(
+        log,
+        make_logging_input_func(log, scripted=["y"]),
+        consecutive_failures=lambda: 0,
+    )
+
+    class Request:
+        code = "curl -sSf https://example.com"
+
+    response = await gate(Request())
+    assert response.approved is True
+
+    executor = IsolatedDockerCodeExecutor(image=IMAGE, work_dir=tmp_path)
+    await executor.start()
+    try:
+        assert await probe_network(executor) is False
+    finally:
+        await executor.stop()
+
+
+async def test_sandbox_is_ready_and_removed_within_the_lifecycle_targets(tmp_path):
+    """SRS clauses 1.4.1 to 1.4.3 (TC-1.4-1, TC-1.4-2)."""
+    import time
+
+    executor = IsolatedDockerCodeExecutor(image=IMAGE, work_dir=tmp_path)
+
+    started = time.monotonic()
+    await executor.start()
+    ready_seconds = time.monotonic() - started
+
+    name = executor.container_name
+    started = time.monotonic()
+    await executor.stop()
+    removal_seconds = time.monotonic() - started
+
+    leftovers = subprocess.run(
+        ["docker", "ps", "--all", "--filter", f"name={name}", "--format", "{{.Names}}"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    ).stdout.split()
+
+    print(f"ready={ready_seconds:.2f}s removal={removal_seconds:.2f}s")
+    assert ready_seconds < 3
+    assert removal_seconds < 5
+    assert name not in leftovers

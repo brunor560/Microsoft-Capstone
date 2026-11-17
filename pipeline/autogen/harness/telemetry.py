@@ -86,6 +86,12 @@ class RunTelemetry:
     stop_reason: str | None = None
     network_isolated: bool | None = None
     wall_seconds: float | None = None
+    # SRS clause 1.3.6: commands the watchdog stopped.
+    command_timeouts: int = 0
+    # SRS Spec 2.4: time spent waiting on the operator, which is not part of
+    # the run budget, and whether an unanswered request aborted the run.
+    approval_wait_seconds: float = 0.0
+    aborted: bool = False
     _monotonic_start: float = field(default_factory=time.monotonic, repr=False)
 
     # --- accumulation --------------------------------------------------
@@ -127,6 +133,13 @@ class RunTelemetry:
         self.wall_seconds = time.monotonic() - self._monotonic_start
 
     # --- derived metrics -----------------------------------------------
+
+    @property
+    def active_seconds(self) -> float | None:
+        """Wall time minus approval waits (SRS clause 2.4.3)."""
+        if self.wall_seconds is None:
+            return None
+        return max(0.0, self.wall_seconds - self.approval_wait_seconds)
 
     @property
     def total_prompt_tokens(self) -> int:
@@ -176,6 +189,12 @@ class RunTelemetry:
                     if self.wall_seconds is not None
                     else None
                 ),
+                "approval_wait_seconds": round(self.approval_wait_seconds, 4),
+                "active_seconds": (
+                    round(self.active_seconds, 4)
+                    if self.active_seconds is not None
+                    else None
+                ),
             },
             "usage": {
                 "call_count": self.call_count,
@@ -186,6 +205,8 @@ class RunTelemetry:
             "run": {
                 "stop_reason": self.stop_reason,
                 "network_isolated": self.network_isolated,
+                "command_timeouts": self.command_timeouts,
+                "aborted": self.aborted,
             },
             "calls": [c.to_dict() for c in self.calls],
         }
