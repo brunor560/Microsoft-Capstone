@@ -1,0 +1,11 @@
+Implemented `DELETE /api/todos/:id` in `app/server.js`. It rejects malformed, nonpositive, or unsafe IDs with 400; returns 404 for missing todos; and deletes existing todos with an empty 204 response.
+
+Added tests in `app/test.js` for deletion, preservation of other todos, repeat deletion, invalid IDs, and missing IDs. **`npm test` passed:** 7 passed, 0 failed, 0 skipped (280.3874 ms). Existing GET, POST, and PUT tests also passed.
+
+Commands, in order:
+
+1. Read the task and inspected `app/server.js`, `app/test.js`, `app/package.json`, and the project folder.
+2. `npm test` from `app/` — passed with the results above.
+3. `git diff -- app/server.js app/test.js; git status --short` — Git inspection could not run because this project folder has no `.git` metadata.
+
+No browser or manual checks were performed. No retries or implementation limitations. The task requirements were clear. No unexpected project issues were found beyond the unavailable Git metadata. Model, session duration, and token usage: not available.

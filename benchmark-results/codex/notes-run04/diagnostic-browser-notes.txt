@@ -1,0 +1,2 @@
+Diagnostic only: copied evaluator test; replaced the <br>-count assertion with computed white-space: pre-wrap and three text lines, preserving the bold/link assertions and other tests. Official result is unchanged.
+diagnostic_exit=0

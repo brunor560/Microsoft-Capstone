@@ -1,0 +1,9 @@
+Implemented the slug requirements in the three permitted files:
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run04/app/server.js): computes normalized slugs, resolves collisions by ID, adds lookup by slug, and includes slugs in list, `POST`, and `PUT` responses.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run04/app/public/index.html): displays each slug in a `<code>` element.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-supply-run04/app/test.js): adds slug normalization, collision, fallback, lookup, and title-update tests while retaining existing tests.
+
+**Test run:** `npm.cmd test` from `app/` passed: 12 passed, 0 failed, 0 skipped.
+
+No browser or separate manual checks were performed. I also attempted Git diff/status inspection, but this project folder is not a Git repository; those commands failed and no Git changes were made. No requirements were unclear. No dependencies or package files were changed. Session duration and token usage: not available.

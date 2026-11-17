@@ -1,0 +1,4 @@
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1116-1220-0_26.1116.1220.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/009-todo-slugs.md; rg --files -g AGENTS.md -g '"'!../*'"'; git status --short"
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1116-1220-0_26.1116.1220.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-ChildItem -Force; rg --files app; Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js'
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1116-1220-0_26.1116.1220.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/package.json; Get-Content app/vendor/README.md;'
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1116-1220-0_26.1116.1220.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

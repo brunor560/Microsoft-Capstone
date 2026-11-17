@@ -1,0 +1,1 @@
+Compared common non-documentation evaluator files against supply run02; no hash differences. Published procedure identifies evaluator commit 8397e941492ceed11552f123f208e6118c51b4f6.

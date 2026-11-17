@@ -1,0 +1,1 @@
+Compared common non-documentation evaluator files against notes run02; no hash differences. Published procedure identifies evaluator commit f83ebb7df540dec43735aaa7bc7f68260c8767c8.

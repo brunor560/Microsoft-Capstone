@@ -1,0 +1,6 @@
+{
+  "run_id": "codex-delete-luna-run05",
+  "purpose": "replacement requested by user before measured attempt",
+  "supersedes_run_id": null,
+  "note": "User did not identify one specific prior run to supersede. Prior evidence is preserved; dashboard/publication unchanged."
+}

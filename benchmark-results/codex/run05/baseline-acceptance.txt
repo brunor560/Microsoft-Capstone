@@ -1,0 +1,145 @@
+✔ GET, POST, and PUT retain their existing behavior (46.2874ms)
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (5.8602ms)
+✔ Valid missing IDs return 404 without changing todos (2.3768ms)
+✖ Invalid ID abc returns 400 without changing todos (1.1993ms)
+✖ Invalid ID 1abc returns 400 without changing todos (1.5025ms)
+✖ Invalid ID 1.5 returns 400 without changing todos (1.3255ms)
+✖ Invalid ID 0 returns 400 without changing todos (1.3646ms)
+✖ Invalid ID -1 returns 400 without changing todos (1.8148ms)
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (1.2988ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 2
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 268.1259
+
+✖ failing tests:
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:78:1
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (5.8602ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 204
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:85:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 204,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID abc returns 400 without changing todos (1.1993ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1abc returns 400 without changing todos (1.5025ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1.5 returns 400 without changing todos (1.3255ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID 0 returns 400 without changing todos (1.3646ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID -1 returns 400 without changing todos (1.8148ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:108:3
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (1.2988ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-delete-luna-run05-evidence\grader\benchmark-results\protocol\delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

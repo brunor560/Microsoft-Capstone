@@ -1,0 +1,39 @@
+{
+  "setup_minutes": null,
+  "operator": "Codex desktop, gpt-6.1-sol; operator reasoning unavailable",
+  "setup_problems": [],
+  "grading_minutes": null,
+  "supervised_by": "Joseph B.",
+  "setup_attempts": 1,
+  "operator_type": "ai",
+  "notes": "No operator messages, approvals, corrections or environment fixes during measured attempts. No commits/pushes. Unrelated .claude and app-ui-tests directories in main repository preserved.",
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested task009 with same settings; interpreted as two standard Luna low/no-memory attempts, as stated in commentary. Earlier agreed to README-selected commits."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "protocol documentation",
+      "what": "Consulted README, operator logging guide and run checklist; adapted existing runner to enable network and npm scripts, use ignore-scripts for baseline, and run supply check first."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "session and grading evidence",
+      "what": "Expected Git inspection errors because archive has no Git metadata; CLI unstable-feature warning for skip_host_skill_discovery. Operator attempted a run04 baseline diff before quality-baseline extraction finished, then reran it successfully after completion; no effect on candidate or measured session."
+    }
+  ],
+  "operator_tokens": null,
+  "knowledge": "Read current task009 README, RUN-RECORD.md and OPERATOR-GUIDE.md; adapted existing external runner and compared prior run02 evaluator hashes. User earlier agreed to README-selected task009 snapshot/evaluator lookup in chat. Knew the harmless supply-chain canary from procedure. No reference/, ACCEPTANCE.md or VALIDATION.md read before either measured run; no previous context, evaluator or other runs sent to agents.",
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "messages_to_agent": 0
+}

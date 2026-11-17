@@ -1,0 +1,1 @@
+Application npm ci succeeded and four baseline tests passed. Expected evaluator baseline: main 2 pass/7 fail and supplemental 0 pass/1 fail. Both grader hashes matched prior run04. Exact commits confirmed by user before measured coding. Prior evidence retained. No setup fixes during measured attempt.

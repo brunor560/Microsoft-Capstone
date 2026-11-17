@@ -1,0 +1,14 @@
+Implemented the formatted notes feature.
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run04/app/server.js): defaults existing and new todos to `notes: ""`, stores notes unchanged, and rejects non-string or over-1000-character notes before making changes.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run04/app/public/index.html): adds the accessible Notes text area and renders line breaks, bold text, and HTTP(S) links using safe DOM elements.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-notes-run04/app/test.js): adds coverage for notes defaults, exact storage and retrieval, validation, and unchanged data after invalid requests.
+
+**Commands and test results**
+
+1. `Get-Content pipeline/tasks/010-todo-notes.md; rg --files -g 'AGENTS.md' -g '!../*' -g '!**/.git/**'` — read the task; no `AGENTS.md` paths were returned.
+2. `Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json` — inspected the implementation and test setup.
+3. `git status --short; rg --files app` — `git status` reported this project folder is not a Git repository; the file listing was limited to `app`.
+4. `npm.cmd test` — passed: 11 passed, 0 failed, 0 skipped; duration 302.9289 ms.
+
+I performed no browser or manual UI checks. No task requirements were unclear. The initial todo title is inserted with `textContent`, and notes formatting does not interpret arbitrary HTML. No retries or other limitations. Session model, elapsed time, and token usage are not available.

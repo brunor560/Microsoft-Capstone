@@ -1,0 +1,13 @@
+{
+  "name": "agentic-todo-baseline",
+  "version": "1.0.0",
+  "description": "Standardized baseline full-stack application for agentic benchmarks",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}
