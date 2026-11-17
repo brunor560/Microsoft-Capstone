@@ -583,7 +583,7 @@ code { overflow-wrap: anywhere; }
     <div class="chapter-head">
       <p class="kicker">06 · Speed and cost</p>
       <h2>Speed and token use</h2>
-      <p class="lede">How long each tool took and how many tokens it used on each test, averaged over its runs. Fewer tokens means a cheaper run.</p>
+      <p class="lede">How long each tool took and how many tokens it used on each test, averaged over its runs. Fewer tokens means a cheaper run. Bars are scaled within each test: the largest in a test fills its row, so compare bar lengths inside a test, not between tests.</p>
     </div>
     <div class="panel">
       <div class="charts">
@@ -1036,13 +1036,13 @@ function renderCharts() {
   const chart = (el, get, fmt) => {
     // One bar per tool and test: the average over its runs, skipping runs without the value.
     const rowsFor = (ss) => ss.map((s) => ({ s, a: avgOf(s.runsAll, get) }));
-    // one shared scale per chart so tasks are comparable
-    const max = Math.max(1, ...rowsFor(vis).map((x) => x.a.v).filter((v) => v != null));
     let h = '';
     for (const t of D.tasks) {
       const ss = vis.filter((s) => s.task === t.id);
       if (!ss.length) continue;
       const rows = rowsFor(ss).sort((x, y) => (x.a.v ?? Infinity) - (y.a.v ?? Infinity));
+      // Each test has its own scale: the largest value in the test fills its track.
+      const max = Math.max(...rows.map((x) => x.a.v).filter((v) => v != null), 0) || 1;
       h += `<div class="hgroup" data-task="${t.id}">${t.id} · ${esc(t.short)} <span style="color:var(--violet)">→</span></div>`;
       h += rows.map(({ s, a }) => {
         const runs = s.runsAll, lbl = esc(toolName(s.tool));
