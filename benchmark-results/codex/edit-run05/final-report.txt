@@ -1,0 +1,13 @@
+Implemented todo title editing across the API and UI.
+
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run05/app/public/index.html): Added per-row Edit, Save, and Cancel controls, accessible inline editing, visible validation and save errors, and safe text rendering for titles.
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run05/app/server.js): Added title validation before any PUT mutation; valid titles are trimmed while preserving the todo’s ID and completion state.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-edit-run05/app/test.js): Added API tests for trimmed title updates, completion-state preservation, invalid titles, and atomic rejection.
+
+**Commands and results**
+
+1. Read the task and inspected the three allowed application files and `package.json`.
+2. Ran `npm.cmd test` from `app/`: **11 passed, 0 failed, 0 skipped** (312.4662 ms).
+3. Ran `git status --short`, `git diff --check`, and `git diff --stat` from the project folder. These could not run because this project folder is not a Git repository.
+
+No browser or manual UI checks were performed. The UI was reviewed from source. No task requirements were unclear, and no other issues were noticed. No retries or commits/pushes. Model, session duration, and token usage: not available.

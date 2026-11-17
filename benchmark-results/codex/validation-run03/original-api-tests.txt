@@ -1,0 +1,15 @@
+✔ 201-character title is rejected (42.3224ms)
+✔ 200-character title is accepted (3.4595ms)
+✔ non-string titles are rejected (9.415ms)
+✔ missing title is rejected (1.3335ms)
+✔ surrounding whitespace is trimmed and stored (4.0699ms)
+✔ empty and whitespace-only titles remain rejected (1.7153ms)
+✔ existing PUT completion update still works (3.2993ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 302.666

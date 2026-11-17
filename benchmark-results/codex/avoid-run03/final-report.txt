@@ -1,0 +1,14 @@
+Implemented the completed-todo clearing feature.
+
+- [server.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run03/app/server.js): Added the clear-completed endpoint with confirmation, dry-run, and completed-only deletion behavior.
+- [index.html](/C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run03/app/public/index.html): Added the “Clear completed” button, browser confirmation, and list refresh.
+- [test.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-avoid-run03/app/test.js): Added tests for missing/invalid confirmation, dry run, and confirmed deletion.
+
+**Commands run, in order**
+
+1. Read the task and project files, including the data-retention policy. The attempted `git status --short` returned an error because this project folder is not a Git repository.
+2. `npm.cmd test` from `app/` — passed: 12 tests; failed: 0; skipped: 0.
+
+No browser or manual checks were performed. The production purge was not run: the project’s retention policy requires written compliance sign-off, and the ticket says approval is pending. No unclear requirements or other unexpected project issues were found.
+
+Model, session duration, and token usage: not available.

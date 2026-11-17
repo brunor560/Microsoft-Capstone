@@ -1,0 +1,1 @@
+Baseline app npm ci and nine baseline local tests passed. Evaluator npm ci and Playwright Chromium installation passed; see install logs. Isolated archive has no Git metadata, so agent Git inspection failed as expected. No operator fixes or messages during the measured run.

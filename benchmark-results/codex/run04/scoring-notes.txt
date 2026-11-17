@@ -1,0 +1,5 @@
+token_efficiency=100
+counted_tokens=114366
+cached input is included in input
+human_collaboration=unavailable pending independent reviewer
+quality=local export of shared quality grader; no commit or publication

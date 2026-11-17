@@ -1,0 +1,3 @@
+Baseline local and API tests reproduced the expected results.
+No setup problems.
+Team agreement and cross-participant hash comparison were not independently reconfirmed for this repeat.

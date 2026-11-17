@@ -1,0 +1,3 @@
+Baseline local 9/9 passed.
+No setup problems.
+Prior user agreed the evaluator commit; common non-documentation grader files match run05. The newer baseline was not independently reconfirmed with the team.

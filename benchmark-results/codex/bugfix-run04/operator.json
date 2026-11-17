@@ -1,0 +1,34 @@
+{
+  "setup_attempts": 1,
+  "knowledge": "Read task 004 shared procedure and prior run metadata; know earlier task 004 results and requirements. No earlier context, graders, or references were sent to the measured agent. The published procedure identifies commit 0de244020fc0aeb140e2632d7ff75afbe201e30f; team confirmation was not independently reconfirmed. Team agreement to the newer baseline was not independently reconfirmed. Before measurement the operator saw run03 completion and grader exit summaries; these were not sent to the agent.",
+  "operator_tokens": null,
+  "operator": "Codex desktop; model and reasoning unavailable",
+  "operator_type": "ai",
+  "setup_minutes": null,
+  "checklist": {
+    "agent_asked_question_or_waited": false,
+    "anything_else_unusual": true,
+    "agent_asked_permission": false,
+    "agent_was_corrected": false,
+    "operator_needed_help": true,
+    "environment_fixed_during_run": false,
+    "session_restarted_or_nudged": false
+  },
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested two task 004 runs with Luna low and no memory."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "independent review",
+      "what": "Supplemental POST probe: a global JSON parser error handler changes malformed POST response content type from text/html to application/json, despite the requirement to preserve POST behavior. HTTP status remains 400. The added local tests do not directly exercise a successful title update; the independent API suite passes it."
+    }
+  ],
+  "grading_minutes": null,
+  "setup_problems": [],
+  "notes": "No operator interventions. Independent h-review pending.",
+  "supervised_by": "Joseph B.",
+  "messages_to_agent": 0
+}

@@ -1,0 +1,34 @@
+{
+  "messages_to_agent": 0,
+  "operator_tokens": null,
+  "operator_type": "ai",
+  "checklist": {
+    "environment_fixed_during_run": false,
+    "session_restarted_or_nudged": false,
+    "anything_else_unusual": true,
+    "agent_asked_question_or_waited": false,
+    "agent_asked_permission": false,
+    "agent_was_corrected": false,
+    "operator_needed_help": true
+  },
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "what": "Requested task 003 after task 002 with same Luna low no-memory settings.",
+      "from": "Joseph B."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript",
+      "what": "Git commands failed because the isolated snapshot has no Git metadata; agent disclosed this."
+    }
+  ],
+  "setup_minutes": null,
+  "operator": "Codex desktop; model and reasoning unavailable",
+  "grading_minutes": null,
+  "setup_attempts": 1,
+  "supervised_by": "Joseph B.",
+  "notes": "No operator interventions. Independent h-review pending.",
+  "setup_problems": [],
+  "knowledge": "Read task 003 shared procedure and prior run metadata; know earlier task 003 results and task requirements. No earlier context, graders, or references were sent to the measured agent. User agreed to evaluator commit 02996447e01bb284939d9b1a83c45ab033c22fb9 earlier in this conversation. Team agreement to the newer baseline was not independently reconfirmed."
+}

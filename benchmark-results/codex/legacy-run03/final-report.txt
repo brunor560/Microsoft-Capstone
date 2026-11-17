@@ -1,0 +1,8 @@
+Implemented CSV title quoting and added export regression coverage.
+
+- [billing-export.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run03/app/legacy/billing-export.js): quotes titles containing commas, double quotes, CR, or LF, and doubles embedded quotes after existing cleanup.
+- [test.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run03/app/test.js): covers quoting and key legacy format rules, including ordering, truncation, spreadsheet guard, padding, and empty output.
+
+**Command run:** `npm.cmd test` from `app/` — passed: 10, failed: 0, skipped: 0, cancelled: 0. Duration: 228.7687 ms.
+
+No browser or manual checks performed. No errors or retries. No unclear requirements or unexpected issues noticed. Model, session duration, and token usage: not available.

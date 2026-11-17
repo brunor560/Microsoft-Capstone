@@ -1,0 +1,177 @@
+All of the lua code I want you to generate will have the following:
+- Services required at the top
+- Every reasonable object reference at the top, using WaitForChild if it's not a descendant of ReplicatedStorage
+- Dot notation to access anything in ReplicatedStorage
+- Line breaks in between categories
+- UPPER_SNAKE_CASE for constants
+- Defined types used in the code
+- Re-stating exported types (e.g. type RewardName = Rewards.RewardName)
+- Service/Controller/Module Definition (local ExampleService = {})
+- Any service member variables below
+- A module Log and Warn function (see existing modules as a reference)
+- A module Start function
+- Module return
+- All code will be in PascalCase besides the constants, and uses static typing when available
+- No comments unless absolutely necessary
+- Don't use WaitForChild in Studio MCP code, as it may cause it to time out and break
+- Don't run code or try to compile modules outside of play-mode with WaitForChild, as they might cause Studio MCP to yield forever and break
+- Do not run "undo" or "redo" in Studio MCP code, this will lead to lost changes that I have made
+- Avoid using "ensure" functions or unnecessary type checking. Just include the static typing and trust that the systems will be applied properly
+- For dedicated ModuleScripts that are made to return a function, you don't need to have a Start function and dedicated logs and warns. Just create a regular local function and return that local function
+- When asked for stylistic requests or heavy-UI-related requests, make sure to do web-searches and ask confirmation questions about how the style should be, if it's not obvious
+- In Luau syntax, to insert a value into a string, such as `{Wins} Wins`, this works. You do NOT need to do `${Wins} Wins`. Keep this in mind when creating strings so there's no confusing when actually putting a dollar sign behind something like cash
+
+# Subagent Routing
+
+Before every subagent spawn or handoff, use the global `$choose-subagent-model` skill to select the least costly capable model and reasoning effort for that delegated task. Apply the selection when the interface supports it; otherwise include the skill's routing record in the delegated prompt and do not claim the runtime changed.
+
+# General Behavioral Guidelines
+
+Behavioral guidelines to reduce common coding-agent mistakes. Merge these with project-specific instructions, which take precedence when they conflict.
+
+**Tradeoff:** These guidelines favor precision and caution over speed. Use judgment for trivial, low-risk tasks.
+
+## 1. Think Before Editing
+
+**Do not silently assume. Surface uncertainty and tradeoffs.**
+
+Before making changes:
+
+- Inspect the relevant files and existing conventions.
+- State assumptions that materially affect the implementation.
+- If multiple reasonable interpretations exist, explain them or ask for clarification.
+- Prefer the simplest approach that satisfies the request.
+- Push back when the requested approach introduces unnecessary risk or complexity.
+- If a critical requirement is unclear and cannot be discovered from the repository, stop and ask.
+
+Do not ask questions that can be answered safely by inspecting the workspace.
+
+## 2. Keep the Solution Simple
+
+**Write the minimum code necessary to solve the stated problem.**
+
+- Do not add features that were not requested.
+- Do not introduce abstractions for one-time behavior.
+- Do not add configurability without a current requirement.
+- Do not handle impossible scenarios merely for completeness.
+- Reuse existing project patterns and utilities when appropriate.
+- If the implementation is substantially larger than the problem warrants, simplify it.
+
+Ask: “Would an experienced maintainer consider this solution unnecessarily complicated?” If so, reduce it.
+
+## 3. Make Surgical Changes
+
+**Touch only what the task requires. Clean up only consequences of your own work.**
+
+When modifying existing code:
+
+- Do not reformat or rewrite unrelated code.
+- Do not refactor neighboring systems unless required for the requested change.
+- Match the repository’s existing style and architecture.
+- Preserve user changes already present in the working tree.
+- Mention unrelated problems you discover, but do not fix them without authorization.
+
+When your work makes code unused:
+
+- Remove imports, variables, functions, and files made obsolete by your changes.
+- Do not remove pre-existing dead code unless explicitly requested.
+
+Every changed line should have a clear connection to the user’s request.
+
+## 4. Work Toward Verifiable Outcomes
+
+**Translate the request into observable success criteria and continue until they are satisfied.**
+
+Examples:
+
+- “Add validation” → Add coverage for invalid inputs and make it pass.
+- “Fix the bug” → Reproduce the failure, implement the fix, and verify the reproduction no longer fails.
+- “Refactor this module” → Confirm behavior before and after the change.
+- “Add an endpoint” → Verify the expected response, validation, and relevant failure cases.
+
+For multi-step work, use a brief plan:
+
+```text
+1. [Action] → verify: [specific check]
+2. [Action] → verify: [specific check]
+3. [Action] → verify: [specific check]
+```
+
+Update the plan when evidence changes the approach. Do not treat writing code as completion when relevant verification remains possible.
+
+## 5. Inspect Before Modifying
+
+**Understand the local context before choosing an implementation.**
+
+- Read repository instructions such as `AGENTS.md` files before editing.
+- Inspect the target code, its callers, and relevant tests.
+- Search for existing implementations before creating new patterns.
+- Check the working tree and avoid overwriting unrelated changes.
+- Use documentation or external research when the answer depends on current or unfamiliar information.
+
+Prefer evidence from the codebase over assumptions based on filenames or conventions from other projects.
+
+## 6. Use Tools Deliberately
+
+**Choose the smallest safe action that provides useful evidence.**
+
+- Prefer targeted searches and file reads over broad workspace inspection.
+- Use patch-based edits for small, reviewable changes.
+- Avoid destructive Git or filesystem operations unless explicitly requested.
+- Do not undo, reset, or overwrite user-authored changes.
+- Do not modify external systems, publish artifacts, or create commits unless authorized.
+- Keep temporary files out of the deliverable unless they are required.
+
+Tool availability is not permission to expand the task.
+
+## 7. Verify Proportionally
+
+**Run the strongest relevant checks that are practical for the change.**
+
+Verification may include:
+
+- Focused tests for the changed behavior.
+- Broader test suites when the affected surface warrants them.
+- Type checking, linting, formatting, or builds used by the repository.
+- Reviewing the final diff for accidental changes.
+- Manual inspection when automated verification is unavailable.
+
+If verification cannot be completed:
+
+- State exactly what was not run.
+- Explain why it could not be run.
+- Distinguish verified behavior from assumptions.
+- Provide the most useful next command or check.
+
+Never claim that something passes unless it was actually checked.
+
+## 8. Communicate Clearly
+
+**Keep the user informed without narrating every mechanical action.**
+
+During substantial work:
+
+- State the intended outcome and brief plan.
+- Report meaningful discoveries that change the approach.
+- Surface blockers promptly.
+- Ask only questions that materially affect the result.
+
+At completion:
+
+- Lead with what changed.
+- Mention the relevant files or components.
+- Report verification performed and its result.
+- Note remaining risks, limitations, or follow-up work only when relevant.
+
+Avoid presenting speculation as fact.
+
+---
+
+**These guidelines are working if:**
+
+- Diffs contain fewer unrelated changes.
+- Implementations remain proportional to the request.
+- Existing user work is preserved.
+- Verification catches mistakes before handoff.
+- Clarifying questions occur before costly implementation errors.
+- Completion reports clearly separate verified results from assumptions.

@@ -1,0 +1,12 @@
+{
+  "source": "codex --json transcript, last turn.completed",
+  "cost_note": "unavailable: ChatGPT sign-in",
+  "total_cost_usd": null,
+  "usage": {
+    "input_tokens": 137827,
+    "cached_input_tokens": 120448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2005,
+    "reasoning_output_tokens": 0
+  }
+}

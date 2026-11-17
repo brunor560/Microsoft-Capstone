@@ -1,0 +1,34 @@
+{
+  "grading_minutes": null,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested two fresh Luna low task 001 runs without memory."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript",
+      "what": "Agent disclosed git status failures caused by the snapshot having no Git metadata; the initial AGENTS search returned exit 1 with no matches."
+    }
+  ],
+  "operator": "Codex desktop; model and reasoning unavailable",
+  "knowledge": "Read task 001 shared procedure and run record, baseline task metadata and prior benchmark conversation. Did not supply graders, references or prior results to measured agent. Team confirmation of current commit/hashes was not independently reconfirmed for these runs.",
+  "messages_to_agent": 0,
+  "setup_problems": [],
+  "operator_tokens": null,
+  "checklist": {
+    "anything_else_unusual": true,
+    "agent_asked_question_or_waited": false,
+    "operator_needed_help": true,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "agent_was_corrected": false,
+    "agent_asked_permission": false
+  },
+  "notes": "No operator interventions. Independent h-review pending.",
+  "supervised_by": "Joseph B.",
+  "operator_type": "ai",
+  "setup_minutes": null,
+  "setup_attempts": 1
+}

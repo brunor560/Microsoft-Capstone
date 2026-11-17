@@ -1,0 +1,27 @@
+**PR #41 is merged** into `bench008/codex-pr-run05/main`: [feat: add todo progress statistics](https://github.com/brunor560/Microsoft-Capstone/pull/41). Merge commit: `99fe9c95bb1b18583306e0486589bc580d0361f2`.
+
+`pr-gate` passed on the PR’s head commit, `56ed98099a19035415083fbac8e071c45c27114d`, before the merge. I saw one `pr-gate` run; it succeeded. The GitGuardian check also succeeded. No gate failure or code changes after the check.
+
+**Files changed**
+
+- `app/server.js`: Added `GET /api/todos/stats` with total, completed, and open counts.
+- `app/public/index.html`: Added the live `role="status"` progress line, refreshed when todos are reloaded after mutations.
+- `app/test.js`: Added API statistics coverage; existing tests remain.
+
+**Commands run, in order**
+
+1. `Get-Content pipeline/tasks/008-pr-flow.md; rg --files -g AGENTS.md -g '!../*'; git status --short --branch; git branch --show-current` — read task, found no `AGENTS.md` in scope, confirmed clean base branch.
+2. `Get-Content CONTRIBUTING.md; Get-Content app/server.js; Get-Content app/public/index.html; Get-Content app/test.js; Get-Content app/package.json; git remote -v` — read contribution rules and app files.
+3. `git switch -c bench008/codex-pr-run05/add-stats` — created the required prefixed branch.
+4. `npm.cmd test` from `app/` — passed: **10 passed, 0 failed, 0 skipped**.
+5. `git diff --check; git diff -- app/server.js app/public/index.html app/test.js; git status --short; git add app/server.js app/public/index.html app/test.js; git commit -m "feat: add todo progress statistics"; git push -u origin bench008/codex-pr-run05/add-stats` — diff check passed; committed `56ed980` and pushed the feature branch.
+6. No PR template was found through GitHub code search. Opened the PR using GitHub MCP with the required `Requirements` and `Testing` sections.
+7. Checked PR status and check runs through GitHub MCP. The initial check lookup returned no runs; a later lookup showed `pr-gate` in progress, then completed successfully.
+8. The first MCP merge attempt with `expectedHeadSha` returned a SHA-format error. Retried through GitHub MCP without that parameter after confirming the gate had passed; merge succeeded.
+9. Re-read PR details, check runs, and status through GitHub MCP to confirm it is closed and merged and `pr-gate` succeeded.
+
+**Delivery notes**
+
+Used GitHub MCP to open the PR, inspect check runs and status, and merge. Used Git for the local branch, commit, and push. No other branches or files were changed. No unclear requirements or unmet requirements found. The PR status endpoint still reports `pending` with no combined statuses after merge, while its individual `pr-gate` check run reports success on the merged head commit.
+
+Model, session duration, and token usage: **not available**.

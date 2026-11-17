@@ -1,0 +1,4 @@
+Baseline local 9/9 passed.
+No setup problems.
+The published baseline/evaluator commit was used; non-documentation grader hashes match run02. Team agreement was not independently reconfirmed.
+Supplemental probes were run after original evidence was preserved; see probe scripts and JSON results.

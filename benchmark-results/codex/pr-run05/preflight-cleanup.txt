@@ -1,0 +1,3 @@
+To https://github.com/brunor560/Microsoft-Capstone.git
+ - [deleted]         bench008/preflight-20261117/check
+ - [deleted]         bench008/preflight-20261117/main

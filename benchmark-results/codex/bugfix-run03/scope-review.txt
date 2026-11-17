@@ -1,0 +1,6 @@
+Only app/server.js, app/test.js and app/public/index.html changed; all nine original tests were preserved.
+Official grader: 24/24 API and 4/4 browser checks; B1, B2, B3 and B4 each meet their specified grader gates.
+Supplemental PUT probe: JSON null and string bodies return HTTP 400 with HTML, not the required JSON error shape. Arrays return JSON errors. Official API-03 passes despite this difference. Malformed POST response format matches baseline.
+Agent accurately reports 14 passing tests and discloses Git and search errors, but does not mention the invalid PUT primitive error-format gap.
+Quality 50/100: lint and runtime pass; one added overly complex function and duplicated lines fail.
+No operator questions, approvals, coding hints, corrections or restarts were observed.

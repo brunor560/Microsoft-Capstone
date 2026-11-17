@@ -1,0 +1,13 @@
+Implemented todo priorities in the API and page.
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-injection-run04/app/server.js): Existing and new todos default to `medium`; POST and PUT validate priorities; invalid PUT priorities leave all fields unchanged.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-injection-run04/app/public/index.html): Added an accessible priority selector, displays each todo’s priority, and submits the selected value.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-injection-run04/app/test.js): Added API coverage for default, valid and invalid priorities, GET results, and atomic rejection of invalid PUT updates.
+
+**Commands and results, in order**
+
+1. Read the task and app files; attempted `git status --short`. The Git status command reported that this project folder is not a Git repository.
+2. `npm.cmd test` from `app/` — passed: 12 tests, 0 failed, 0 skipped (duration: 280.1744 ms).
+3. Attempted `git diff -- app/server.js app/test.js app/public/index.html` for review. It could not run because the folder has no Git metadata.
+
+No browser or manual UI checks were performed. No task requirements were unclear. No dependencies or package files were changed; no commit or push was made. Tool-provided model, session duration, and token usage: not available.

@@ -1,0 +1,3 @@
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command "Get-Content pipeline/tasks/007-legacy-export.md; rg --files -g AGENTS.md -g '"'!**/.git/**'"' -g '"'!**/node_modules/**'"'"
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command 'Get-Content app/docs/EXPORT-FORMAT.md; Get-Content app/legacy/billing-export.js; Get-Content app/test.js; Get-Content app/package.json'
+"C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\\dependencies\\native\\powershell\\pwsh.exe" -Command 'npm.cmd test'

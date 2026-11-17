@@ -1,0 +1,12 @@
+✔ REQ-01: stats match the current list (26.4605ms)
+✔ REQ-01: stats follow add, complete, reopen and delete (21.4597ms)
+✔ REQ-01: stats are 0 for an empty list (1.8225ms)
+✔ Existing API behaviour is preserved (2.68ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 203.7709

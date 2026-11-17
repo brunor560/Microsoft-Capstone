@@ -1,0 +1,19 @@
+**Implemented the todo update fix** in the three files allowed by the task.
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run03/app/server.js): PUT now validates the ID, JSON object body, and boolean `completed` value before mutating a todo. Invalid IDs return 400, valid missing IDs return 404, and valid boolean and title updates retain their behavior.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run03/app/public/index.html): status clicks update optimistically; HTTP and network failures restore the previous completion state and show a nonempty `role="alert"` message in that todo’s list item.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run03/app/test.js): added API coverage for boolean values, invalid values, object bodies, atomic rejection, title updates, and ID validation.
+
+The reported causes were boolean coercion on the server, which treated strings such as `"false"` as true, and the UI’s failure to check HTTP responses or catch network errors.
+
+**Commands run, in order:**
+
+1. `Get-Content -Raw pipeline/tasks/004-fix-update-validation.md; git status --short; rg --files -g 'AGENTS.md' -g '!node_modules' -g '!vendor'` — read the task; Git status and file search did not complete because the workspace directory is not a Git repository.
+2. `Get-Content -Raw app/server.js; Get-Content -Raw app/public/index.html; Get-Content -Raw app/test.js; Get-Content -Raw app/package.json` — inspected the application and tests.
+3. `Get-Content -Raw app/server.js | Out-Null; Get-ChildItem -Name app; rg "PUT|todo|role=\"alert\"" app` — listed app contents; the search pattern had a quoting error.
+4. `npm.cmd test` (from `app/`) — **14 passed, 0 failed, 0 skipped**; duration 315.4325 ms.
+5. `git diff -- app/server.js app/public/index.html app/test.js; git status --short` — could not review Git diff/status because this directory is not a Git repository.
+
+No browser or manual UI check was performed. The required test command passed. No retries were needed. The Git limitation prevented checking status or reviewing the diff; no commit or push was made. The task requirements were clear. I noticed no additional project issue.
+
+Session duration and token usage: **not available**. Model: **not available**.

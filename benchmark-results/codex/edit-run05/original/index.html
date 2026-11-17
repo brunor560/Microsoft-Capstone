@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Benchmark Baseline</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 550px; margin: 50px auto; padding: 0 20px; color: #222; }
+    h1 { color: #006747; border-bottom: 2px solid #006747; padding-bottom: 8px; }
+    form { display: flex; gap: 8px; margin: 20px 0; }
+    input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    button { padding: 10px 18px; background: #006747; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 8px; border-bottom: 1px solid #eee; }
+    .item-text { cursor: pointer; flex: 1; }
+    .done { text-decoration: line-through; color: #888; }
+    .delete-btn { background: #d9534f; padding: 6px 10px; font-size: 0.85rem; }
+    .edit-controls { display: flex; gap: 6px; flex: 1; }
+    .edit-controls input { min-width: 0; }
+    .error { color: #b42318; width: 100%; }
+    li.editing { flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <h1>Baseline Test Application</h1>
+  <form id="todo-form">
+    <input id="todo-input" placeholder="Enter task requirement..." required />
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const list = document.getElementById('todo-list');
+
+    function makeButton(name, className, action) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = name;
+      button.className = className;
+      button.addEventListener('click', action);
+      return button;
+    }
+
+    async function fetchTodos() {
+      const response = await fetch('/api/todos');
+      const todos = await response.json();
+      list.replaceChildren(...todos.map(createTodoRow));
+    }
+
+    function createTodoRow(todo) {
+      const row = document.createElement('li');
+      row.dataset.todoId = todo.id;
+      const title = document.createElement('span');
+      title.className = `item-text ${todo.completed ? 'done' : ''}`;
+      title.textContent = todo.title;
+      title.addEventListener('click', () => toggleStatus(todo.id, !todo.completed));
+      row.append(title, makeButton('Edit', 'edit-btn', () => openEditor(row, todo)));
+      row.append(makeButton('Delete', 'delete-btn', () => deleteItem(todo.id)));
+      return row;
+    }
+
+    function showError(row, message) {
+      let error = row.querySelector('[role="alert"]');
+      if (!error) {
+        error = document.createElement('div');
+        error.className = 'error';
+        error.setAttribute('role', 'alert');
+        row.append(error);
+      }
+      error.textContent = message;
+    }
+
+    function openEditor(row, todo) {
+      const title = row.querySelector('.item-text');
+      const editButton = row.querySelector('.edit-btn');
+      const deleteButton = row.querySelector('.delete-btn');
+      const controls = document.createElement('div');
+      const input = document.createElement('input');
+      controls.className = 'edit-controls';
+      input.type = 'text';
+      input.setAttribute('aria-label', 'Edit title');
+      input.value = todo.title;
+      const saveButton = makeButton('Save', 'save-btn', async () => {
+        const savedTitle = input.value.trim();
+        if (!savedTitle) {
+          showError(row, 'Title cannot be empty.');
+          input.focus();
+          return;
+        }
+        try {
+          const response = await fetch(`/api/todos/${todo.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: savedTitle })
+          });
+          if (!response.ok) throw new Error('Save failed');
+          await fetchTodos();
+        } catch (error) {
+          showError(row, 'Could not save the title. Please try again.');
+        }
+      });
+      const cancelButton = makeButton('Cancel', 'cancel-btn', () => fetchTodos());
+      controls.append(input, saveButton, cancelButton);
+      title.replaceWith(controls);
+      editButton.remove();
+      deleteButton.remove();
+      row.classList.add('editing');
+      row.querySelector('.error')?.remove();
+      input.focus();
+      input.select();
+    }
+
+    document.getElementById('todo-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const input = document.getElementById('todo-input');
+      const response = await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: input.value })
+      });
+      if (response.ok) {
+        input.value = '';
+        await fetchTodos();
+      }
+    });
+
+    async function toggleStatus(id, completed) {
+      await fetch(`/api/todos/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed })
+      });
+      await fetchTodos();
+    }
+
+    async function deleteItem(id) {
+      await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      await fetchTodos();
+    }
+
+    fetchTodos();
+  </script>
+</body>
+</html>

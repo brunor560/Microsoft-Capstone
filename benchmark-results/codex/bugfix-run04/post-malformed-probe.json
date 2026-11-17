@@ -1,0 +1,10 @@
+{
+  "baseline": {
+    "status": 400,
+    "content_type": "text/html; charset=utf-8"
+  },
+  "candidate": {
+    "status": 400,
+    "content_type": "application/json; charset=utf-8"
+  }
+}

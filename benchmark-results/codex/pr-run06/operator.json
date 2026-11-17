@@ -1,0 +1,39 @@
+{
+  "setup_attempts": 1,
+  "knowledge": "Read branch-tip README, RUN-RECORD.md and OPERATOR-GUIDE.md, existing operator scripts, installed CLI help and official config reference. Know prior setup failures and observed current successful Luna preflight. No reference/, ACCEPTANCE.md or VALIDATION.md read before measured sessions. User previously agreed the selected start/evaluator commits; previous run04 grader non-documentation hashes matched before launch.",
+  "operator_type": "ai",
+  "messages_to_agent": 0,
+  "operator_tokens": null,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested two Luna low/no-memory task008 attempts; provided classic repo-scoped token through a hidden terminal prompt. Previously confirmed start and evaluator commits."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "operator documentation",
+      "what": "Read installed CLI help and https://developers.openai.com/codex/config-reference/ for danger-full-access, never approvals and MCP default_tools_approval_mode=approve; ran full throwaway preflight PR #40 and deleted its branches."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "measured session evidence",
+      "what": "Initial patch failed because of PowerShell encoding; agent corrected its patch method without operator help. CLI token usage exceeded 400000; recorded without interrupting or correcting agent."
+    }
+  ],
+  "notes": "No messages or fixes directed at agent after initial prompt. Token is retained for user to revoke. No result publication or main working-tree changes.",
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "operator": "Codex desktop, gpt-6.1-sol; operator effort unavailable",
+  "setup_problems": [],
+  "grading_minutes": null,
+  "supervised_by": "Joseph B.",
+  "setup_minutes": null
+}

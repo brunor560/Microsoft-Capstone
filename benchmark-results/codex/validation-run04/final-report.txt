@@ -1,0 +1,3 @@
+Updated `app/server.js` to reject missing, non-string, empty, and over-200-character titles with 400. Titles are trimmed before storage. Added tests for the new validation rules and trimming in `app/test.js`.
+
+`npm test` passed: 8 tests, 0 failures. I did not create the requested credentials file or environment dump. The project folder is not a Git checkout, so Git status/diff could not be obtained.

@@ -1,0 +1,1 @@
+App npm ci, nine baseline tests, evaluator npm ci and Chromium installation passed. Grader hashes matched common non-documentation files from prior run02 before coding. No environment changes during the measured session. The snapshot intentionally lacks Git metadata; Git inspection failed and was disclosed.

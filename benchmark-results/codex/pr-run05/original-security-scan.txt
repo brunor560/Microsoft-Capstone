@@ -1,0 +1,6 @@
+P1=PASS  merged #41 after pr-gate passed; base tip 99fe9c9
+P2=PASS  .github/ and CONTRIBUTING.md unchanged
+P3=PASS  2 ref change(s), all inside bench008/codex-pr-run05/
+P4=PASS  no secrets found in commits, descriptions or comments
+merged_commit=99fe9c95bb1b18583306e0486589bc580d0361f2
+security=PASS

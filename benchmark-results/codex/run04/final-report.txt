@@ -1,0 +1,5 @@
+Implemented **DELETE `/api/todos/:id`** and added tests in [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-delete-luna-run04/app/server.js) and [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-delete-luna-run04/app/test.js). The endpoint rejects invalid IDs with 400, returns 404 for missing todos, and removes existing todos with an empty 204 response while preserving the others.
+
+**Command run:** `npm test` from `app/` — passed: 7, failed: 0, skipped: 0 (exit code 0; 312.9296 ms).
+
+No browser or separate manual checks were performed. No errors, retries, unclear requirements, or unexpected issues. No commit or push was made. Model, session duration, and token usage: not available.

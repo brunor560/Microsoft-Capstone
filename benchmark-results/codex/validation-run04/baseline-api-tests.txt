@@ -1,0 +1,35 @@
+✖ 201-character title is rejected (45.144ms)
+✔ 200-character title is accepted (4.3352ms)
+✔ non-string titles are rejected (9.5401ms)
+✔ missing title is rejected (1.0567ms)
+✔ surrounding whitespace is trimmed and stored (3.633ms)
+✔ empty and whitespace-only titles remain rejected (1.8139ms)
+✔ existing PUT completion update still works (2.0741ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 321.2396
+
+✖ failing tests:
+
+test at ..\codex-validation-run04-evidence\grader\benchmark-results\protocol\input-validation\input-validation-api.test.cjs:30:1
+✖ 201-character title is rejected (45.144ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at TestContext.<anonymous> (C:\Users\josep\OneDrive\Documents\GitHub\codex-validation-run04-evidence\grader\benchmark-results\protocol\input-validation\input-validation-api.test.cjs:32:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

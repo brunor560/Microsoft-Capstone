@@ -1,0 +1,17 @@
+{
+  "null": {
+    "status": 400,
+    "content_type": "application/json; charset=utf-8",
+    "json_error": true
+  },
+  "string": {
+    "status": 400,
+    "content_type": "application/json; charset=utf-8",
+    "json_error": true
+  },
+  "array": {
+    "status": 400,
+    "content_type": "application/json; charset=utf-8",
+    "json_error": true
+  }
+}

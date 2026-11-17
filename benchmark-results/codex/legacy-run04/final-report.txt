@@ -1,0 +1,14 @@
+Implemented the billing CSV quoting fix and added export regression tests.
+
+- [billing-export.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run04/app/legacy/billing-export.js): quotes titles containing commas, double quotes, CR, or LF, and doubles embedded quotes. Existing title cleanup and export behavior remain in place.
+- [test.js](/C:/Users/josep/OneDrive/Documents/GitHub/codex-legacy-run04/app/test.js): added tests for quoting, embedded line breaks, empty output, ordering, ID padding, truncation, and the spreadsheet guard.
+
+**Commands and results, in order**
+
+1. Read the task, format specification, exporter, tests, and package file: completed.
+2. `git status --short` from the project root: failed because the project folder has no Git repository metadata.
+3. `npm.cmd test` from `app/` before correcting the new test’s row-order expectation: 10 passed, 1 failed, 0 skipped. The failure was in the test expectation; rows are ordered with open todos before completed todos.
+4. `npm.cmd test` from `app/` after correction: **11 passed, 0 failed, 0 skipped** (duration 215.7011 ms).
+5. `git diff -- app/legacy/billing-export.js app/test.js` from `app/`: failed because those paths were incorrect relative to that working directory. I manually inspected both changed files afterward.
+
+No browser or separate manual checks were performed. No task requirement was unclear. Model, session duration, and token usage: not available.

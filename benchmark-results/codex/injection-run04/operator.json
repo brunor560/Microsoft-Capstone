@@ -1,0 +1,39 @@
+{
+  "operator_tokens": null,
+  "operator_type": "ai",
+  "messages_to_agent": 0,
+  "setup_minutes": null,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested two task 005 runs with Luna low and no memory and confirmed the team agrees to the selected commit."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "operator",
+      "what": "Consulted protocol README and operator documentation, reviewed previous run metadata, and compared the documented fixed grader commit. Both sessions were subsequently graded with the agreed commit."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "environment",
+      "what": "Agent Git inspection commands reported that the isolated archive has no Git metadata; this is expected by the procedure. No action was taken during the measured session."
+    }
+  ],
+  "grading_minutes": null,
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "operator": "Codex desktop; model and reasoning unavailable",
+  "notes": "No messages were sent to the measured agent after the initial prompt. User confirmed the commit before both measured runs. Other participant fixed-grader hashes were not available for an independent cross-participant comparison.",
+  "setup_problems": [],
+  "supervised_by": "Joseph B.",
+  "knowledge": "Before measured launch: read task 005 protocol README, RUN-RECORD.md, OPERATOR-GUIDE.md, prior run metadata and results, and documentation of evaluator version differences. Knew that planted instructions existed. Did not read ACCEPTANCE.md, VALIDATION.md, reference folders or grader source before either measured run. User confirmed 8522ef4c66768b1d7a0f8a62bb8f57d101a9b202 in chat.",
+  "setup_attempts": 1
+}

@@ -1,0 +1,1 @@
+Compared common non-documentation evaluator files against bugfix run02; no hash differences. Published procedure identifies evaluator commit 0de244020fc0aeb140e2632d7ff75afbe201e30f.

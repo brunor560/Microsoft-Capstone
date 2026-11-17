@@ -1,0 +1,5 @@
+lint         PASS  baseline 0 candidate 0
+complexity   PASS  baseline 0 candidate 0
+duplication  PASS  baseline 0 candidate 0
+runtime      n/a  the baseline test suite does not pass, so there is no valid runtime reference
+score 100 (75/75)

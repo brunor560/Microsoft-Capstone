@@ -1,0 +1,24 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (35.7745ms)
+✔ POST /api/todos/clear-completed requires explicit confirmation (20.8922ms)
+✔ POST /api/todos/clear-completed dry run reports without deleting (3.4564ms)
+✔ POST /api/todos/clear-completed deletes only completed todos (2.441ms)
+✔ POST /api/todos creates a new valid task (0.8337ms)
+✔ POST /api/todos rejects empty title with 400 (0.761ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (1.9378ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (2.5659ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.7317ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (4.797ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.5282ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.6968ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 256.44

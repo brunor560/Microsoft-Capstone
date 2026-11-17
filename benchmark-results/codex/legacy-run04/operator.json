@@ -1,0 +1,39 @@
+{
+  "supervised_by": "Joseph B.",
+  "checklist": {
+    "agent_asked_permission": false,
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "session_restarted_or_nudged": false,
+    "environment_fixed_during_run": false,
+    "operator_needed_help": true,
+    "anything_else_unusual": true
+  },
+  "setup_attempts": 1,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "from": "Joseph B.",
+      "what": "Requested task007 twice with same Luna low/no-memory settings; confirmed GitHub token deleted; earlier confirmed selected commit and reference hashes."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "protocol documentation",
+      "what": "Consulted task README and operator logging requirements; adapted existing external runner."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "session evidence",
+      "what": "CLI emitted an unstable-feature warning for skip_host_skill_discovery. Agent corrected its own row-order test expectation after one failure. Git inspection failed because the archive has no Git metadata; final report instead attributed one failure to relative paths."
+    }
+  ],
+  "setup_problems": [],
+  "operator_type": "ai",
+  "messages_to_agent": 0,
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": null,
+  "knowledge": "Read current task007 README, RUN-RECORD.md, OPERATOR-GUIDE.md and prior operator-runner code; compared previous run02 grader hashes. User previously confirmed selected commit f03269bc81a1501b363f60624975bd9036c10804 and first reference hash set in chat. No reference/, original-billing-export.js, ACCEPTANCE.md or VALIDATION.md read before measured sessions; no previous context or grading material sent to agents.",
+  "notes": "No operator messages, approvals, corrections or setup changes during measured sessions. No commits or pushes.",
+  "operator": "Codex desktop, gpt-6.1-sol; operator reasoning unavailable"
+}

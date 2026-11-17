@@ -1,0 +1,22 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ billing export quotes CSV titles and preserves the legacy format (0.4614ms)
+✔ GET /api/todos returns array of tasks (32.1142ms)
+✔ POST /api/todos creates a new valid task (11.3408ms)
+✔ POST /api/todos rejects empty title with 400 (3.3215ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (3.3347ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (4.5822ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (2.1239ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (4.1016ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (2.3536ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.9071ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.9521

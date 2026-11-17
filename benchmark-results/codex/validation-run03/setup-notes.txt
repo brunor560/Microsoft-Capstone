@@ -1,0 +1,3 @@
+Baseline local and API tests reproduced the expected results.
+Quality baseline install initially failed due to an operator relative-path mistake after the run; corrected and rerun. Initial incomplete result was preserved.
+Team agreement and cross-participant hash comparison were not independently reconfirmed for this repeat.

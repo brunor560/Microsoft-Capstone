@@ -1,0 +1,34 @@
+{
+  "operator_tokens": null,
+  "notes": "No operator interventions. Independent h-review pending.",
+  "checklist": {
+    "agent_asked_question_or_waited": false,
+    "agent_was_corrected": false,
+    "anything_else_unusual": true,
+    "environment_fixed_during_run": false,
+    "session_restarted_or_nudged": false,
+    "operator_needed_help": true,
+    "agent_asked_permission": false
+  },
+  "supervised_by": "Joseph B.",
+  "operator": "Codex desktop; model and reasoning unavailable",
+  "knowledge": "Read task 001 shared procedure and run record, baseline task metadata and prior benchmark conversation. Did not supply graders, references or prior results to measured agent. Team confirmation of current commit/hashes was not independently reconfirmed for these runs.",
+  "setup_problems": [],
+  "operator_type": "ai",
+  "grading_minutes": null,
+  "setup_minutes": null,
+  "messages_to_agent": 0,
+  "operator_help": [
+    {
+      "time_utc": "unknown",
+      "what": "Requested two fresh Luna low task 001 runs without memory.",
+      "from": "Joseph B."
+    },
+    {
+      "time_utc": "unknown",
+      "from": "transcript",
+      "what": "Initial AGENTS search returned exit 1 with no matches; final report did not mention that benign search exit."
+    }
+  ],
+  "setup_attempts": 1
+}

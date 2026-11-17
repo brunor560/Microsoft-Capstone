@@ -1,0 +1,11 @@
+Implemented the requested fixes in the three allowed files:
+
+- [server.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run04/app/server.js) — PUT now validates JSON object bodies, boolean `completed` values, and IDs using the DELETE endpoint’s rules before mutating a todo. Parser failures return the existing JSON error shape.
+- [index.html](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run04/app/public/index.html) — failed status updates show a nonempty `role="alert"` message inside the todo’s list item. The UI only refreshes after a successful update, preserving the prior completion state on failure.
+- [test.js](C:/Users/josep/OneDrive/Documents/GitHub/codex-bugfix-run04/app/test.js) — added API coverage for valid and invalid completion values, ID rules, non-object bodies, and rejected updates that include a title.
+
+The reported causes were truthiness conversion (`Boolean("false")` is `true`) and permissive ID parsing (`parseInt` accepts malformed IDs). In the UI, failed fetches were neither checked for HTTP errors nor caught, so no error was shown.
+
+**Commands run, in order:** `npm.cmd test` from `app/` — 13 passed, 0 failed, 0 skipped; then `npm.cmd test` again after the parser-error change — 13 passed, 0 failed, 0 skipped. No build command or browser/manual checks were run.
+
+No requirements were unclear, and no unexpected project issues were noticed. No retries or known limitations remain. Session duration and token usage: not available.
