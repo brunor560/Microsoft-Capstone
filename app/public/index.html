@@ -22,10 +22,12 @@
     <input id="todo-input" placeholder="Enter task requirement..." required />
     <button type="submit">Add Task</button>
   </form>
+  <p id="todo-stats" role="status"></p>
   <ul id="todo-list"></ul>
 
   <script>
     const list = document.getElementById('todo-list');
+    const stats = document.getElementById('todo-stats');
     async function fetchTodos() {
       const res = await fetch('/api/todos');
       const data = await res.json();
@@ -37,6 +39,9 @@
           <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
         </li>
       `).join('');
+      const statsRes = await fetch('/api/todos/stats');
+      const statsData = await statsRes.json();
+      stats.textContent = `${statsData.completed} of ${statsData.total} done`;
     }
     document.getElementById('todo-form').onsubmit = async (e) => {
       e.preventDefault();

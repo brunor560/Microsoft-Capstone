@@ -20,6 +20,18 @@ test('GET /api/todos returns array of tasks', async () => {
   assert.ok(Array.isArray(data));
 });
 
+test('GET /api/todos/stats returns current todo counts', async () => {
+  const todosRes = await fetch(`${BASE_URL}/api/todos`);
+  const todos = await todosRes.json();
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  assert.deepStrictEqual(await res.json(), {
+    total: todos.length,
+    completed: todos.filter(todo => todo.completed).length,
+    open: todos.filter(todo => !todo.completed).length
+  });
+});
+
 test('POST /api/todos creates a new valid task', async () => {
   const payload = { title: 'Automated test task' };
   const res = await fetch(`${BASE_URL}/api/todos`, {
