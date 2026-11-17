@@ -410,6 +410,8 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 .chapter-head h2 { font-size: clamp(21px, 5vw, 26px); }
 .hero-lede { font-size: clamp(16px, 4.2vw, 18px); }
 .hero-stats b { font-size: clamp(26px, 7vw, 32px); }
+.run-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; max-width: 260px; }
+.run-chips .chip { padding: 1px 6px; font-size: 11px; min-height: 0; }
 .cell .st { flex-wrap: wrap; }
 .cell .st .note, .matrix th.task button::after { white-space: nowrap; }
 img, svg, iframe { max-width: 100%; }
@@ -570,7 +572,7 @@ code { overflow-wrap: anywhere; }
     <div class="chapter-head">
       <p class="kicker">05 · The evidence</p>
       <h2>All runs <span class="count" id="runCount"></span></h2>
-      <p class="lede">Every run behind the scores. Click a row to open it: the score, the app it built, a replay, the code it changed and every test result.</p>
+      <p class="lede">Every tool on every test, one row each. Where a tool ran a test more than once, the row shows the average of its runs and lists them. Click a row or a run to open it: the score, the app it built, a replay, the code it changed and every test result.</p>
     </div>
     <div class="panel">
       <div class="tbl-wrap"><table class="runs" id="runsTbl"></table></div>
@@ -603,7 +605,7 @@ code { overflow-wrap: anywhere; }
       <div class="tut-card"><b>What were the tools asked to do?</b><span>The 10 tests shows each task and how it is checked. Click a card to compare every tool on that test.</span><button class="btn" data-go="tests">The 10 tests →</button></div>
       <div class="tut-card"><b>How did one tool do on one test?</b><span>In the grid, each cell is one tool on one test: green passed, red missed a hidden test, grey has not been run. Click a cell to open that run.</span><button class="btn" data-go="matrix">Every tool on every test →</button></div>
       <div class="tut-card"><b>What did the agent actually do?</b><span>Open any run to see its score, the app it built, a replay, the code it changed and every test result.</span><button class="btn" id="tutExample">Open an example run →</button></div>
-      <div class="tut-card"><b>How do I find a specific run?</b><span>Filters narrow the page by tool, test, model or result, and Search matches model, test and file names. All runs lists every run; click a column heading to sort.</span><button class="btn" data-go="matrix">Filters and search →</button></div>
+      <div class="tut-card"><b>How do I find a specific run?</b><span>Filters narrow the page by tool, test, model or result, and Search matches model, test and file names. All runs has one row per tool and test, averaged over its runs; click a column heading to sort.</span><button class="btn" data-go="matrix">Filters and search →</button></div>
       <div class="tut-card"><b>How fast was it, and what did it cost?</b><span>Speed and token use charts the seconds and tokens for every run. Click a bar to open the run.</span><button class="btn" data-go="charts">Speed and token use →</button></div>
     </div>
     <div class="tut-cols">
@@ -958,55 +960,72 @@ function renderMatrix() {
 $('#matrix').addEventListener('click', (e) => { const tk = e.target.closest('[data-task]'); if (tk) return openTask(tk.dataset.task); const el = e.target.closest('[data-run]'); if (el) { e.stopPropagation(); openRun(el.dataset.run); } });
 
 // ---------- runs table ----------
+const sumPass = (r) => r.suites.reduce((a, s) => a + (+s.pass || 0), 0);
+// For a tool and test with several runs: each grader suite, and how many of the runs passed it.
+function slotSuites(runs) {
+  const keys = [...new Set(runs.flatMap((r) => r.suites.map((s) => s.key)))];
+  return keys.map((k) => {
+    const ss = runs.map((r) => r.suites.find((s) => s.key === k)).filter(Boolean);
+    return { name: ss[0].name, ok: ss.every((s) => s.ok), n: ss.filter((s) => s.ok).length, of: ss.length };
+  });
+}
 const COLS = [
-  { key: 'task', label: 'Test', get: (x) => x.task + (x.run?.run || '') },
+  { key: 'task', label: 'Test', get: (x) => x.task },
   { key: 'tool', label: 'Tool', get: (x) => toolName(x.tool) },
-  { key: 'model', label: 'Model', get: (x) => x.run?.model || '~' },
+  { key: 'model', label: 'Model', get: (x) => x.runs[0]?.model || '~' },
   { key: 'status', label: 'Result', get: (x) => ({ pass: 0, fail: 1, none: 2 }[x.status]) },
-  { key: 'suites', label: 'Grader suites', get: (x) => x.run ? x.run.suites.filter((s) => s.ok).length : -1 },
-  { key: 'checks', label: 'Checks', get: (x) => x.run ? x.run.suites.reduce((a, s) => a + (s.pass || 0), 0) : -1 },
-  { key: 'files', label: 'Files', get: (x) => x.run ? x.run.changed.length : -1 },
-  { key: 'time', label: 'Time', get: (x) => x.run?.timing?.seconds ?? Infinity },
-  { key: 'tokens', label: 'Tokens', get: (x) => x.run?.tokens?.total ?? Infinity },
+  { key: 'suites', label: 'Grader suites', get: (x) => x.runs.length ? x.suites.filter((s) => s.ok).length : -1 },
+  { key: 'checks', label: 'Checks', get: (x) => x.checks.v ?? -1 },
+  { key: 'files', label: 'Files', get: (x) => x.files.v ?? -1 },
+  { key: 'time', label: 'Time', get: (x) => x.time.v ?? Infinity },
+  { key: 'tokens', label: 'Tokens', get: (x) => x.tokens.v ?? Infinity },
 ];
 function renderRuns() {
-  const rows = [];
-  for (const s of slots.filter(slotVisible)) {
-    if (!s.runsAll.length) rows.push({ task: s.task, tool: s.tool, status: 'none', run: null });
-    else for (const r of s.runsAll) rows.push({ task: s.task, tool: s.tool, status: r.status, run: r });
-  }
+  // One row per tool and test, so a tool never appears twice for the same test. Several runs
+  // are shown as their average (a run without a value is skipped), with each run one click away.
+  const rows = slots.filter(slotVisible).map((s) => {
+    const runs = s.runsAll;
+    return { task: s.task, tool: s.tool, status: s.status, runs, suites: slotSuites(runs),
+      checks: avgOf(runs, sumPass), files: avgOf(runs, (r) => r.changed.length),
+      time: avgOf(runs, (r) => r.timing?.seconds || null), tokens: avgOf(runs, (r) => r.tokens?.total || null) };
+  });
   const col = COLS.find((c) => c.key === state.sort.key);
   rows.sort((a, b) => {
     const va = col.get(a), vb = col.get(b);
     const c = (typeof va === 'number' ? va - vb : String(va).localeCompare(String(vb))) * state.sort.dir;
     return c || a.task.localeCompare(b.task) || toolName(a.tool).localeCompare(toolName(b.tool));
   });
-  const maxT = Math.max(1, ...rows.map((r) => r.run?.timing?.seconds || 0));
+  const maxT = Math.max(1, ...rows.map((x) => x.time.v || 0));
+  const whole = (v) => Number.isInteger(v) ? String(v) : fmt1(v);
   let h = `<thead><tr>${COLS.map((c) => `<th data-key="${c.key}" ${state.sort.key === c.key ? `data-dir="${state.sort.dir > 0 ? '↑' : '↓'}"` : ''}>${c.label}</th>`).join('')}</tr></thead><tbody>`;
   let lastTask = null;
   for (const x of rows) {
     if (state.sort.key === 'task' && x.task !== lastTask) { lastTask = x.task; h += `<tr class="group" data-task="${x.task}"><td colspan="${COLS.length}">${x.task} · ${esc(task(x.task).name)} <span style="color:var(--violet);margin-left:8px">Compare tools →</span></td></tr>`; }
-    const r = x.run;
-    h += `<tr class="row ${x.status === 'none' ? 'none' : ''}" ${r ? `data-run="${r.id}" tabindex="0"` : ''}>
-      <td><b>${x.task}</b> <span class="note">${r ? r.run : ''}</span></td>
+    const n = x.runs.length, r = x.runs[0];
+    const passed = x.runs.filter((q) => q.status === 'pass').length;
+    const models = [...new Set(x.runs.map((q) => q.model || '—'))], efforts = [...new Set(x.runs.map((q) => q.effort).filter(Boolean))];
+    h += `<tr class="row ${n ? '' : 'none'}" ${r ? `data-run="${r.id}" tabindex="0"` : ''}>
+      <td><b>${x.task}</b> <span class="note">${n === 1 ? r.run : n ? `average of ${n} runs` : ''}</span>${n > 1 ? `<div class="run-chips">${x.runs.map((q) => `<span class="chip" data-run="${q.id}" title="Open ${esc(q.run)}">${esc(q.run)}</span>`).join('')}</div>` : ''}</td>
       <td><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[x.tool]};margin-right:6px"></span>${esc(toolName(x.tool))}</td>
-      <td>${r ? `<span style="font-weight:700">${esc(r.model || '—')}</span>${r.effort ? ` <span class="note">${esc(r.effort)}</span>` : ''}` : '<span class="note">—</span>'}</td>
-      <td><span class="badge ${x.status}">${STATUS[x.status]}</span></td>
-      <td>${r ? `<div class="suite-pips" title="${esc(r.suites.map((s) => `${s.name}: ${s.ok ? 'pass' : 'fail'}`).join('\n'))}">${r.suites.map((s) => `<span class="pip ${s.ok ? 'ok' : 'bad'}"></span>`).join('')}</div>` : '<span class="note">—</span>'}</td>
-      <td class="num">${r ? r.suites.reduce((a, s) => a + (s.pass || 0), 0) : '—'}</td>
-      <td class="num">${r ? r.changed.length : '—'}</td>
-      <td class="num" style="min-width:120px">${r?.timing ? `<div style="display:flex;gap:6px;align-items:center"><div class="bar" style="width:${r.timing.seconds / maxT * 70}px"></div>${fmtS(r.timing.seconds)}</div>` : '—'}</td>
-      <td class="num">${r ? tokenLabel(r) : '—'}</td>
+      <td>${n ? `<span style="font-weight:700">${esc(models.join(', '))}</span>${efforts.length === 1 ? ` <span class="note">${esc(efforts[0])}</span>` : ''}` : '<span class="note">—</span>'}</td>
+      <td style="white-space:nowrap"><span class="badge ${x.status}">${STATUS[x.status]}</span>${n > 1 ? ` <span class="note">${passed} of ${n}</span>` : ''}</td>
+      <td>${n ? `<div class="suite-pips" title="${esc(x.suites.map((s) => `${s.name}: ${n === 1 ? (s.ok ? 'pass' : 'fail') : `passed in ${s.n} of ${s.of} runs`}`).join('\n'))}">${x.suites.map((s) => `<span class="pip ${s.ok ? 'ok' : 'bad'}"></span>`).join('')}</div>` : '<span class="note">—</span>'}</td>
+      <td class="num">${x.checks.v == null ? '—' : whole(x.checks.v)}</td>
+      <td class="num">${x.files.v == null ? '—' : whole(x.files.v)}</td>
+      <td class="num" style="min-width:120px">${x.time.v == null ? '—' : `<div style="display:flex;gap:6px;align-items:center"><div class="bar" style="width:${x.time.v / maxT * 70}px"></div>${fmtS(x.time.v)}${partial(x.time)}</div>`}</td>
+      <td class="num">${x.tokens.v == null ? '—' : fmtN(Math.round(x.tokens.v)) + partial(x.tokens)}</td>
     </tr>`;
   }
   $('#runsTbl').innerHTML = h + '</tbody>';
-  $('#runCount').textContent = `${rows.length} rows`;
+  const nRuns = rows.reduce((a, x) => a + x.runs.length, 0);
+  $('#runCount').textContent = `${rows.length} rows · ${nRuns} run${nRuns === 1 ? '' : 's'}`;
 }
 $('#runsTbl').addEventListener('click', (e) => {
   const th = e.target.closest('th[data-key]');
   if (th) { const k = th.dataset.key; state.sort = { key: k, dir: state.sort.key === k ? -state.sort.dir : 1 }; renderRuns(); return; }
   const g = e.target.closest('tr[data-task]'); if (g) return openTask(g.dataset.task);
-  const tr = e.target.closest('tr[data-run]'); if (tr) openRun(tr.dataset.run);
+  // A run chip opens that run; anywhere else on the row opens its first run.
+  const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run);
 });
 $('#runsTbl').addEventListener('keydown', (e) => { const tr = e.target.closest('tr[data-run]'); if (tr && e.key === 'Enter') openRun(tr.dataset.run); });
 
