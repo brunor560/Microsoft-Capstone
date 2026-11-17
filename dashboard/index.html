@@ -379,6 +379,9 @@ kbd { font-family: inherit; font-size: 11px; border: 1px solid var(--border-stro
 .hero-stats b { display: block; font-size: 32px; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; }
 .hero-stats span { font-size: 13px; font-weight: 600; color: var(--label-2); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: var(--g1); }
+.compare { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: var(--g3); }
+.compare-label { font-size: 11px; font-weight: 800; color: var(--label-3); text-transform: uppercase; letter-spacing: .06em; }
+.compare .chip:not([aria-pressed="true"]) { opacity: .55; text-decoration: line-through; }
 .chapter { margin-top: 64px; }
 .chapter-head { max-width: 760px; margin-bottom: var(--g2); }
 .chapter-head h2 { margin: 6px 0; font-size: 26px; line-height: 1.2; font-weight: 800; letter-spacing: -.015em; }
@@ -473,6 +476,7 @@ code { overflow-wrap: anywhere; }
     <h1>AI Coding Agents, Side by Side</h1>
     <p class="hero-lede" id="heroLede"></p>
     <div class="hero-stats" id="heroStats"></div>
+    <div class="compare"><span class="compare-label">Comparing</span><div class="chips" id="toolPick"></div></div>
     <div class="hero-cta"><button class="btn primary" data-go="scores">See the results</button><button class="btn" data-go="guide">How to read this page</button></div>
   </header>
   <div class="banner" id="staleBanner" hidden></div>
@@ -730,6 +734,18 @@ for (const r of D.runs) r.toolBase = r.toolBase || r.tool;
 const TOOL_ORDER = ['codex', 'claude', 'copilot', 'antigravity'];
 D.tools.sort((a, b) => TOOL_ORDER.indexOf(a.base) - TOOL_ORDER.indexOf(b.base));
 
+// Which tool setups are compared. Codex 6.1 Sol is left out by default, so the page compares
+// four; the "Comparing" chips under the headline bring any setup back. The choice is remembered.
+const ALL_TOOLS = D.tools.slice();
+const HIDE_KEY = 'bench-hidden-tools';
+let hiddenTools = null;
+try { hiddenTools = JSON.parse(localStorage.getItem(HIDE_KEY)); } catch {}
+if (!Array.isArray(hiddenTools)) hiddenTools = ALL_TOOLS.filter((t) => t.base === 'codex' && /Sol/i.test(t.variant || '')).map((t) => t.id);
+hiddenTools = hiddenTools.filter((id) => ALL_TOOLS.some((t) => t.id === id));
+if (hiddenTools.length >= ALL_TOOLS.length) hiddenTools = [];
+D.tools = ALL_TOOLS.filter((t) => !hiddenTools.includes(t.id));
+D.runs = D.runs.filter((r) => !hiddenTools.includes(r.tool));
+
 // Each tool runs each test this many times, so one unusual run can't decide a score.
 const RUNS_PER_TEST = 3;
 // Every tool × task slot. Slots without a run default to "Not run".
@@ -777,6 +793,20 @@ $('#heroLede').textContent = `${word(D.tools.length)} AI coding setups were give
 // How far the three-runs rule has got, counted from the data rather than claimed.
 const fullSlots = slots.filter((s) => s.runs.length >= RUNS_PER_TEST).length;
 $('#runsNote').textContent = `So far ${fullSlots} of ${slots.length} tool-and-test pairs ${fullSlots === 1 ? 'has' : 'have'} all three runs. Where a pair has fewer, the grid shows how many, and its score is the average of the runs it has.`;
+$('#toolPick').replaceChildren(...ALL_TOOLS.map((t) => {
+  const b = document.createElement('button');
+  const on = !hiddenTools.includes(t.id);
+  b.className = 'chip'; b.setAttribute('aria-pressed', on);
+  b.title = on ? `Hide ${t.name}` : `Show ${t.name}`;
+  b.innerHTML = `<span class="dot" style="background:${TOOL_COLOR[t.id]}"></span>${esc(t.name)}`;
+  b.onclick = () => {
+    const next = on ? [...hiddenTools, t.id] : hiddenTools.filter((id) => id !== t.id);
+    if (next.length >= ALL_TOOLS.length) return;          // keep at least one setup
+    try { localStorage.setItem(HIDE_KEY, JSON.stringify(next)); } catch {}
+    location.reload();
+  };
+  return b;
+}));
 $('#heroStats').innerHTML =[[D.tools.length, 'tool setups'], [D.tasks.length, 'tests'], [D.runs.length, 'graded runs'], [fmtN(allChecks), 'hidden checks passed']]
   .map(([v, k]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
 $('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</code> @ <code>${esc(D.branchCommit)}</code>, built ${new Date(D.generated).toLocaleString()}.`

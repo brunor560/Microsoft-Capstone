@@ -29,6 +29,7 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 
 - **Sections menu (☰)**: the bar stays at the top of the window. The three-line button on its left opens a list of sections, marks the one you are in, and jumps to the one you pick. The bar also shows how many filters are on and can clear them. A section link (`#sec=matrix`) can be shared.
 - **The page reads top to bottom**: overview, how it works, the 10 tests, score by tool, every tool on every test, all runs, speed and token use, then a guide ("How to use this page") that says where to find each answer and what each run tab shows.
+- **Comparing**: the chips under the headline choose which tool setups the whole page compares. Codex 6.1 Sol is hidden by default, so the page compares four; click its chip to bring it back. The choice is remembered.
 - **Five tool entries**: Codex 6.1 Sol, Codex 6 Luna, Claude Code Sonnet 4.6, Copilot and Antigravity. Codex is split by model; Copilot picks its model per run, so its runs stay together.
 - **Score by tool**: weighted grade per tool. Use the task chips to grade on specific tasks, and the Sort control to order by score, harness or model.
 - **Filters**: tool, task, model, result and text search. They apply to everything below.
