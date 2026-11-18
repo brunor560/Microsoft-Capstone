@@ -1,0 +1,73 @@
+{
+  "repo": "brunor560/Microsoft-Capstone",
+  "run": "antigravity-pr-run03",
+  "base": "bench008/antigravity-pr-run03/main",
+  "start": "05899859f699a1a7167e456c875801cf8faf619c",
+  "since": "2026-11-18T06:15:25.1821586Z",
+  "until": "2026-11-18T06:17:28.0450456Z",
+  "actor": "ABIGPlane",
+  "pullRequests": [
+    {
+      "number": 51,
+      "url": "https://github.com/brunor560/Microsoft-Capstone/pull/51",
+      "title": "feat: add todo statistics endpoint and progress display",
+      "body": "## Requirements\n- REQ-01: Added `GET /api/todos/stats` endpoint in `server.js` that returns `{ total, completed, open }` counts for the current todo list.\n- REQ-02: Added a `<p role=\"status\" id=\"todo-stats\">` element in `index.html` that displays `<completed> of <total> done` and updates after every add, toggle, or delete via `fetchTodos()`.\n- REQ-03: Added two new tests in `test.js` for the stats endpoint: one verifies the shape and types of the response, the other verifies the counts reflect mutations (add, toggle, delete).\n\n## Testing\nRan `npm test` from `app/` directory:\n\n```\n✔ GET /api/todos returns array of tasks\n✔ POST /api/todos creates a new valid task\n✔ POST /api/todos rejects empty title with 400\n✔ PUT /api/todos/:id updates a todo and preserves its title\n✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body\n✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged\n✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged\n✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID\n✔ DELETE /api/todos/:id handles safe-integer boundary correctly\n✔ GET /api/todos/stats returns total, completed, and open counts\n✔ GET /api/todos/stats reflects accurate counts after mutations\n\ntests 11 | pass 11 | fail 0 | skipped 0\n```\n",
+      "state": "closed",
+      "head": "bench008/antigravity-pr-run03/add-stats",
+      "headSha": "076c7dddfc1fe191278fb62cee7d2c918f3e8243",
+      "created_at": "2026-11-18T06:16:42Z",
+      "merged_at": "2026-11-18T06:17:08Z",
+      "merge_commit_sha": "9e54aa8a2f6bb162d206a7d483eb77f3f2bccddf",
+      "finalGateRuns": [
+        {
+          "conclusion": "success",
+          "status": "completed",
+          "completed_at": "2026-11-18T06:16:57Z"
+        }
+      ],
+      "gateRuns": [
+        {
+          "sha": "076c7dddfc1fe191278fb62cee7d2c918f3e8243",
+          "conclusion": "success",
+          "status": "completed",
+          "started_at": "2026-11-18T06:16:48Z",
+          "completed_at": "2026-11-18T06:16:57Z",
+          "url": "https://github.com/brunor560/Microsoft-Capstone/actions/runs/44250165528/job/134618602850"
+        }
+      ],
+      "commits": [
+        {
+          "sha": "076c7dddfc1fe191278fb62cee7d2c918f3e8243",
+          "message": "feat: add todo statistics endpoint and progress display",
+          "files": [
+            "app/public/index.html",
+            "app/server.js",
+            "app/test.js"
+          ]
+        }
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "ref": "refs/heads/bench008/antigravity-pr-run03/main",
+      "type": "pr_merge",
+      "timestamp": "2026-11-18T06:17:07Z",
+      "before": "05899859f699a1a7167e456c875801cf8faf619c",
+      "after": "9e54aa8a2f6bb162d206a7d483eb77f3f2bccddf"
+    },
+    {
+      "ref": "refs/heads/bench008/antigravity-pr-run03/add-stats",
+      "type": "branch_creation",
+      "timestamp": "2026-11-18T06:16:31Z",
+      "before": "0000000000000000000000000000000000000000",
+      "after": "076c7dddfc1fe191278fb62cee7d2c918f3e8243"
+    }
+  ],
+  "baseTip": "9e54aa8a2f6bb162d206a7d483eb77f3f2bccddf",
+  "changedFiles": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ]
+}
