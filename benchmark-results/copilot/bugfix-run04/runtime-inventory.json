@@ -1,0 +1,25 @@
+{
+  "mcp_servers": [
+    {
+      "name": "WorkIQ",
+      "status": "disabled"
+    },
+    {
+      "name": "browser-use",
+      "status": "disabled"
+    },
+    {
+      "name": "github-copilot-browser",
+      "status": "disabled"
+    },
+    {
+      "name": "github-mcp-server",
+      "status": "disabled"
+    }
+  ],
+  "enabled_builtin_skills": [
+    "customize-cloud-agent",
+    "github-pr-media",
+    "pr-stack"
+  ]
+}

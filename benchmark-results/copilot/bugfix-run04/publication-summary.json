@@ -16,7 +16,10 @@
     "participant": "Ross Volenec",
     "timezone": "America/New_York",
     "model": "claude-sonnet-4-6",
-    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json",
+    "approval_mode": "headless scoped preapproval",
+    "fresh_start": "fresh HOME, COPILOT_HOME, TMPDIR and owned session",
+    "isolation": "Copilot native MXC command sandbox with loopback access and no bypass"
   },
   "pins": {
     "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
@@ -131,7 +134,13 @@
   "interventions": 0,
   "review": {
     "status": "UNREVIEWED",
-    "independent_human_review": "Pending"
+    "independent_human_review": "Pending",
+    "configuration_limitations": [
+      "The native Copilot sandbox was verified for shell execution. Built-in file tools use Copilot path checks.",
+      "Dedicated interactive /session output was unavailable for this headless completion. The owned events and usage export corroborated the session.",
+      "Provider thinking request fields and USD cost were unavailable.",
+      "Runtime reported enabled built-in skills despite disable settings. Observed names: customize-cloud-agent, github-pr-media, pr-stack."
+    ]
   },
   "reviewed": false
 }

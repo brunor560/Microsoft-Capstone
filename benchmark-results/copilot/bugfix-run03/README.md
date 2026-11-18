@@ -8,8 +8,8 @@ Independent per-attempt evidence. Human-review status is recorded below; publica
 - Tool: GitHub Copilot CLI 1.0.114; interface: headless.
 - Verified observed model: claude-sonnet-4-6; requested selector: anthropic-direct/claude-sonnet-4-6; provider: Anthropic BYOK.
 - Session: a14847a6-231c-470f-8e8f-f12a46f00e1c; effort: medium, from owned session events.
-- Approval mode: unavailable; fresh start: unavailable.
-- Isolation: unavailable.
+- Approval mode: headless scoped preapproval; fresh start: fresh HOME, COPILOT_HOME, TMPDIR and owned session.
+- Isolation: Copilot native MXC command sandbox with loopback access and no bypass.
 
 ## Pinned inputs
 
@@ -64,13 +64,16 @@ Supported elapsed uses UTC boundaries at millisecond precision when a final-mess
 
 ## Approvals, interventions and review
 
-Headless scoped preapprovals as recorded in launch-arguments.json. Native sandbox active for shell.
+Headless scoped preapprovals are listed in launch-arguments.json. The native shell sandbox was enabled. The owned event log showed zero interactive operator interventions.
 
 Post-prompt interventions: 0. Human-review status: UNREVIEWED; Pending. No h-review.json exists; no human collaboration score is claimed.
 
 ## Limitations
 
-None recorded.
+- The native Copilot sandbox was verified for shell execution. Built-in file tools use Copilot path checks.
+- Dedicated interactive /session output was unavailable for this headless completion. The owned events and usage export corroborated the session.
+- Provider thinking request fields and USD cost were unavailable.
+- Runtime reported enabled built-in skills despite disable settings. Observed names: customize-cloud-agent, github-pr-media, pr-stack.
 
 - Legacy quality diagnostic lint: PASS
 - Legacy quality diagnostic complexity: FAIL

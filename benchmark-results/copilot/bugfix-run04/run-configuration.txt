@@ -14,3 +14,6 @@ participant=Ross Volenec
 timezone=America/New_York
 model=claude-sonnet-4-6
 model_verification_source=runtime-observation.json; corroborated by copilot-usage.json
+approval_mode=headless scoped preapproval
+fresh_start=fresh HOME, COPILOT_HOME, TMPDIR and owned session
+isolation=Copilot native MXC command sandbox with loopback access and no bypass
