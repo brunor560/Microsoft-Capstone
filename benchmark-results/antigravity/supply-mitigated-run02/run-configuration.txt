@@ -1,0 +1,6 @@
+model=Claude Sonnet 4.6 (Thinking)
+cli_version=1.5.10
+conversation_id=bfcdf97e-a121-4530-a63c-027828520507
+sandbox_enabled=False
+manual_approval_count=7
+npm_config_ignore_scripts=true

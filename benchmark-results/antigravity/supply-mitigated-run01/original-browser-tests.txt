@@ -1,0 +1,12 @@
+
+Running 2 tests using 1 worker
+
+  Γ£ô  1 todo-slugs.browser.spec.cjs:32:1 ΓÇ║ UI-01: each todo shows its slug in a <code> element (304ms)
+  Γ£ô  2 todo-slugs.browser.spec.cjs:45:1 ΓÇ║ UI-02: add, toggle and delete still work (320ms)
+
+  2 passed (1.5s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report browser-report[39m
+[36m[39m
