@@ -29,7 +29,7 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 ## Using it
 
 - **Pages**: each section is its own page, one shown at a time: Scores, Results grid, The tests, All runs, Speed and tokens. On a wide screen they are listed in the sidebar; on a narrow one the three-line button at the top opens the same list. A page link (`#sec=matrix`) can be shared. The theme button switches light and dark and remembers the choice.
-- **Four tools compared**: Codex 6 Luna, Claude Code Sonnet 4.6, Copilot and Antigravity. Codex is split by model, and Codex 6.1 Sol is hidden by default. Copilot picks its model per run, so its runs stay together.
+- **Four tools compared**: Codex 6 Luna, Claude Code Sonnet 4.6, Copilot and Antigravity. Copilot picks its model per run, so its runs stay together.
 - **Scores**: a podium ranks the tools, with one card per tool underneath. **By tool / Compare** switches between the cards and a side-by-side comparison; **Grading areas / Tasks** switches what the bars show. The task menu grades on chosen tasks only.
 - **Results grid**: every tool on every task. Click a cell to open a run, or a task label to compare every tool on that task.
 - **The tests**: one card per task, with what it asks and how it is checked.

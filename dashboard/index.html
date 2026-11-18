@@ -869,7 +869,7 @@ const task = (id) => D.tasks.find((t) => t.id === id);
 const STATUS = { pass: 'Passed', fail: 'Failed', none: 'Not run' };
 
 // Tools that ran with more than one model are split into one entry per model,
-// e.g. Codex → Codex (GPT-6.1 Sol) and Codex (GPT-6 Luna).
+// e.g. Claude Code → Claude Code (Sonnet 4.6) and Claude Code (Sonnet 5.5).
 const VARIANT_SHADES = { antigravity: ['#5aa9ff', '#2f6fd6'], codex: ['#57d08c', '#1f9d63'] };
 // Archived tool + model pairs: hidden from every view, but their evidence stays on
 // results/all-runs. Remove an entry to show those runs again.
@@ -880,7 +880,7 @@ const ARCHIVED = [
 const archivedRuns = ARCHIVED.map((a) => ({ ...a, n: D.runs.filter((r) => r.tool === a.tool && a.model.test(r.model || '')).length }));
 D.runs = D.runs.filter((r) => !ARCHIVED.some((a) => r.tool === a.tool && a.model.test(r.model || '')));
 const ONE_ENTRY = new Set(['copilot']);
-// Codex and Claude Code are named with their model ("Codex 6.1 Sol"); Copilot and Antigravity
+// Codex and Claude Code are named with their model ("Codex 6 Luna"); Copilot and Antigravity
 // go by the tool name alone.
 const NAME_MODEL = new Set(['codex', 'claude']);
 const shortModel = (m) => String(m).replace(/^(GPT-|Claude )/, '');
@@ -901,7 +901,7 @@ D.tools = D.tools.flatMap((tl) => {
     const variant = models[0] && models[0] !== 'unknown' ? models[0] : null;
     return [{ ...tl, base: tl.id, variant, short: tl.name, name: variant && NAME_MODEL.has(tl.id) ? entryName(tl, variant) : tl.name }];
   }
-    // the model with the most runs comes first (Codex: GPT-6.1 Sol before GPT-6 Luna)
+    // the model with the most runs comes first
   const nRuns = (m) => own.filter((r) => modelOf(r) === m).length;
   models.sort((a, b) => nRuns(b) - nRuns(a));
   return models.map((m, i) => {
@@ -925,17 +925,7 @@ const LOGO = {
 };
 const tlogo = (id, color) => `<span class="tlogo" style="--logo:url(${LOGO[toolBase(id)] || ''});background:${color || TOOL_COLOR[id]}"></span>`;
 
-// Which tool setups are compared. Codex 6.1 Sol is left out by default, so the page compares
-// four; the "Comparing" chips under the headline bring any setup back. The choice is remembered.
 const ALL_TOOLS = D.tools.slice();
-const HIDE_KEY = 'bench-hidden-tools';
-let hiddenTools = null;
-try { hiddenTools = JSON.parse(localStorage.getItem(HIDE_KEY)); } catch {}
-if (!Array.isArray(hiddenTools)) hiddenTools = ALL_TOOLS.filter((t) => t.base === 'codex' && /Sol/i.test(t.variant || '')).map((t) => t.id);
-hiddenTools = hiddenTools.filter((id) => ALL_TOOLS.some((t) => t.id === id));
-if (hiddenTools.length >= ALL_TOOLS.length) hiddenTools = [];
-D.tools = ALL_TOOLS.filter((t) => !hiddenTools.includes(t.id));
-D.runs = D.runs.filter((r) => !hiddenTools.includes(r.tool));
 
 // Each tool runs each test this many times, so one unusual run can't decide a score.
 const RUNS_PER_TEST = 3;

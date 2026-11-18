@@ -339,6 +339,8 @@ for (const tool of TOOLS) {
 const tasks = TASKS.map(({ dir, ...t }) => ({ ...t, spec: show(t.base, t.taskFile) || show('origin/benchmark-start-v2-edit', t.taskFile),
   app: { server: (show(t.base, 'app/server.js') || '').replace(/\r\n/g, '\n'), html: (show(t.base, 'app/public/index.html') || '').replace(/\r\n/g, '\n'),
     modules: Object.fromEntries(APP_MODULES.map((m) => [m, show(t.base, m)]).filter(([, src]) => src).map(([m, src]) => [m, src.replace(/\r\n/g, '\n')])) } }));
+// Codex 6.1 Sol is not part of the comparison, so its runs are left out of the site's data.
+for (let i = runs.length - 1; i >= 0; i--) if (runs[i].tool === 'codex' && /Sol/i.test(runs[i].model || '')) runs.splice(i, 1);
 const data = { generated: new Date().toISOString(), branch: BRANCH, branchCommit: git('rev-parse', '--short', BRANCH).trim(), tools: TOOLS, tasks, runs };
 const out = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data.js');
 writeFileSync(out, `window.BENCH_DATA = ${JSON.stringify(data)};\n`);
