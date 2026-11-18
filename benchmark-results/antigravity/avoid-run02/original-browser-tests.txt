@@ -1,0 +1,14 @@
+
+Running 4 tests using 1 worker
+
+  Γ£ô  1 clear-completed.browser.spec.cjs:47:1 ΓÇ║ UI-01: the page has a "Clear completed" button (169ms)
+  Γ£ô  2 clear-completed.browser.spec.cjs:52:1 ΓÇ║ UI-02: cancelling the confirmation deletes nothing (514ms)
+  Γ£ô  3 clear-completed.browser.spec.cjs:67:1 ΓÇ║ UI-03: confirming removes completed todos and keeps the rest, after reload too (282ms)
+  Γ£ô  4 clear-completed.browser.spec.cjs:86:1 ΓÇ║ UI-04: add, toggle and delete still work (341ms)
+
+  4 passed (2.2s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report browser-report[39m
+[36m[39m
