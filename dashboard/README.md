@@ -1,6 +1,6 @@
 # Benchmark Run Dashboard
 
-A static page for browsing the benchmark results on the `results/all-runs` branch: scores, a tool × task grid, run summaries and code diffs.
+A static page for browsing the benchmark results on the `results/all-runs` branch: scores, a tool × task grid, run replays and code diffs.
 
 ## Run it
 
@@ -24,17 +24,20 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 | `build-data.mjs` | Collects runs, test logs, timing, tokens, models and code from git into `data.js` |
 | `data.js` | Generated data; safe to delete and rebuild |
 | `serve.mjs` | Minimal static server |
+| `benchmark-mark.svg`, `logos/` | Brand mark shown in the header, and tool logo images |
 
 ## Using it
 
-- **Sidebar**: the section links stay on the left (Overview, Scores, Results grid, The tests, Test by test, Speed and tokens) and mark the one you are in. On a phone they become a bar across the top. The theme button is at the bottom; the page starts in light mode.
-- **Comparing**: the chips under the headline choose which tool setups the whole page compares. Codex 6.1 Sol is hidden by default, so the page compares four; click its chip to bring it back. The choice is remembered.
-- **Five tool entries**: Codex 6.1 Sol, Codex 6 Luna, Claude Code Sonnet 4.6, Copilot and Antigravity. Codex is split by model; Copilot picks its model per run, so its runs stay together.
-- **Scores**: one card per tool with its weighted grade, shown by grading area or by test.
-- **Results grid**: tests down the side, tools across. ✓ means every hidden test passed, ✗ means at least one was missed, with the number of passing runs underneath. Click a mark to open the run.
-- **The tests**: one table of what each test asks and how it is checked. Click a test to compare the tools on it in a popup.
-- **Test by test**: one card per test with a row per tool: passed, score, time and tokens. Click the card title to compare, or a row to open that run.
-- **Run panel**: five tabs. Summary (result, score and a short list of what happened, with the score reasoning, operator and run notes folded away), Tests, Code (diff against the starting code or another tool's solution), Live app, and Task (the task, the prompt and the agent's final report).
+- **Pages**: each section is its own page, one shown at a time: Scores, Results grid, The tests, All runs, Speed and tokens. On a wide screen they are listed in the sidebar; on a narrow one the three-line button at the top opens the same list. A page link (`#sec=matrix`) can be shared. The theme button switches light and dark and remembers the choice.
+- **Four tools compared**: Codex 6 Luna, Claude Code Sonnet 4.6, Copilot and Antigravity. Codex is split by model, and Codex 6.1 Sol is hidden by default. Copilot picks its model per run, so its runs stay together.
+- **Scores**: a podium ranks the tools, with one card per tool underneath. **By tool / Compare** switches between the cards and a side-by-side comparison; **Grading areas / Tasks** switches what the bars show. The task menu grades on chosen tasks only.
+- **Results grid**: every tool on every task. Click a cell to open a run, or a task label to compare every tool on that task.
+- **The tests**: one card per task, with what it asks and how it is checked.
+- **All runs**: one row per tool and task, sortable by column.
+- **Speed and tokens**: average time or tokens per task, switched with **Time / Tokens**.
+- **Filters**: the grid, All runs and the charts each have the same filter bar (tool, task, model, result, told about quality) and a text search. A filter set on one page applies to the others.
+- **Run panel**: Overview, Live app, Replay, Code diff, Tests, Prompt & report and Task spec.
+- **Task comparison**: Side by side, Test by test, Code differences and Task spec.
 
 ## Scoring
 
@@ -51,9 +54,7 @@ For providers whose input already includes cached input, cache is not added agai
 
 Weights come from the SRS (`course_artifacts/sources/srs.md`, Scoring): Functionality 35%, Security 25%, Code quality 20%, Token efficiency 10%, Human collaboration 10%. The saved runs have evidence for Functionality (independent grader checks), Code quality (each run's `quality.json`, from `benchmark-results/protocol/code-quality` on `results/all-runs`) and Security (task 005), so scores are scaled to the measured weight. A tool's grade averages only the tasks it has run; tasks it hasn't run show as "Not ran" and do not count as 0.
 
-Open **How "clean code" is scored** under the score cards for a plain-language explanation of the four code-quality checks, how they are weighted, a worked example (the lowest-scoring run) and how often each check fails.
-
-**Token efficiency** is scored against a token limit per task (001 300,000; 002 300,000; 003 500,000; 004 400,000; 005 400,000; 006 400,000; 007 400,000; 008 400,000; 009 400,000; 010 400,000): 100 up to half the limit, 0 at the limit. Runs whose tool doesn't report tokens get no T score. **Human collaboration** is scored from `interventions.json` once a second team member has rated it in `h-review.json` (100 − 25 per avoidable intervention). Each run's Summary tab also has a **Who ran it** section from `operator.json`: whether a person or an AI session ran the benchmark, what it knew, its setup effort, any help the operator needed, and its answers to the seven yes/no questions in `OPERATOR-GUIDE.md`. That is not part of the agent's score. See `RUN-RECORD.md` on `results/all-runs`.
+**Token efficiency** is scored against a token limit per task (001 300,000; 002 300,000; 003 500,000; 004 400,000; 005 400,000; 006 400,000; 007 400,000; 008 400,000; 009 400,000; 010 400,000): 100 up to half the limit, 0 at the limit. Runs whose tool doesn't report tokens get no T score. **Human collaboration** is scored from `interventions.json` once a second team member has rated it in `h-review.json` (100 − 25 per avoidable intervention). Each run's Overview also has an **Operator** section from `operator.json`: whether a person or an AI session ran the benchmark, what it knew, its setup effort, any help the operator needed, and its answers to the seven yes/no questions in `OPERATOR-GUIDE.md`. That is not part of the agent's score. See `RUN-RECORD.md` on `results/all-runs`.
 
 Each run is labelled **told** or **not told** about code quality: told when its recorded snapshot commit's task file has the "How your work is graded" section (added 2026-10-24), not told otherwise. Runs without a recorded commit predate that section. Code quality is scored the same either way; the label shows which runs are fair to compare on quality.
 
@@ -63,9 +64,11 @@ Each run is labelled **told** or **not told** about code quality: told when its 
 - **Task 005 details:** trap descriptions, run READMEs, final reports and security test names for task 005 are hidden, so an agent browsing the page during a run doesn't learn about the traps. There is no button for this; add `?show005` to the address to see them.
 - **Freshness warning:** a banner appears if `results/all-runs` has moved on since `data.js` was built (checked against the GitHub API; silent when offline).
 - **Three newest runs:** a tool and test with more than three runs is scored on its three newest, so every average is over the same number. Older runs (and mitigated runs first) are set aside; their evidence stays on `results/all-runs`.
-- **Repeat runs:** each tool runs each test three times so a one-off result can't decide the score. A tool with several runs on a task is scored on their average. The grid, the Test by test cards and the speed and token charts also show the average of the runs, one entry per tool and test, so a tool never appears twice for the same test; each run is still one click away. A run that didn't record a value is skipped, not counted as zero, and the number is marked, for example `(2/3)`.
+- **Repeat runs:** each tool runs each test three times so a one-off result can't decide the score. A tool with several runs on a task is scored on their average. The grid, the All runs table and the speed and token charts also show the average of the runs, one entry per tool and test; each run is still one click away. A run that didn't record a value is skipped, not counted as zero, and the number is marked, for example `(2/3)`.
 - **Phones:** the layout follows the screen width. Wide tables scroll sideways inside their own panel.
 
-Every score shows its reasoning. Open **Why these scores** under the score cards for each tool's per-task scores, the reason each task lost points, and the average that makes the grade. Each run's Summary tab has a **Why this score** checklist: every grader suite and trap with ✔ or ✖, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
+Every score shows its reasoning. Each run's Overview tab has a **Why this score** section: every grader suite and trap with a pass or fail mark, the names of failed checks, each deduction, the areas not counted and why, and the arithmetic for the total. The task comparison has a **Why this score** row.
 
 If a run was regraded after an evaluator fix, its folder has `regrade-fixed-grader-*.txt` logs and a `regrade-fixed-grader-exits.txt` naming the grader commit. The dashboard scores those suites from the regrade, marks them "(fixed grader)", and shows the original grader's results in a **Regraded with a fixed grader** box as evidence.
+
+The replay is rebuilt from saved files (prompt, final code, grader logs). It is not a recording, and its timing is sped up.
