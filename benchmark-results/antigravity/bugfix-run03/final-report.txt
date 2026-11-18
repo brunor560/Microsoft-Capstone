@@ -1,0 +1,57 @@
+All 23 tests pass. Here's the full report:                                                                                             
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ## Bug Report & Fix Summary                                                                                                            
+                                                                                                                                         
+  ### Bug 1 â€” CSV script un-checks end up checked                                                                                        
+                                                                                                                                         
+  Cause: server.js used Boolean(req.body.completed) to coerce the value. The string "false" (which a CSV reader would send) is truthy in 
+  JavaScript, so Boolean("false") === true. Todos sent as completed: "false" were saved as completed: true.                              
+                                                                                                                                         
+  Fix (API-01): Changed the PUT handler to strictly require typeof req.body.completed === 'boolean'. Any non-boolean type (string,       
+  number, null) now returns HTTP 400 and leaves the todo unchanged.                                                                      
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Bug 2 â€” Click with server down gives no feedback                                                                                   
+                                                                                                                                         
+  Cause: toggleStatus() in index.html did await fetch(...) but ignored the response â€” no error check, no try/catch. If the server was    
+  unreachable or returned an error, the UI silently refreshed with the old state.                                                        
+                                                                                                                                         
+  Fix (UI-02/03): Wrapped the fetch in try/catch; on network error or non-ok response, the toggle is cancelled (no fetchTodos() call) and
+  a <span role="alert"> with the error message is inserted into the todo's <li>.                                                         
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Additional fixes                                                                                                                   
+                                                                                                                                         
+   Req                                       â”‚ Change
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   API-02                                    â”‚ PUT :id now uses the same digit-only / BigInt / MAX_SAFE_INTEGER validation as DELETE
+   API-03                                    â”‚ Rejects Array.isArray(req.body) bodies with 400
+   API-04                                    â”‚ All validation runs before any mutation â€” the todo is only modified after all checks pass
+   UI-01                                     â”‚ Toggle still works; fetchTodos() is called after a successful PUT
+   UI-04                                     â”‚ Add/delete paths are unchanged
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Local Test Results                                                                                                                 
+                                                                                                                                         
+    âœ” GET /api/todos returns array of tasks                                                                                              
+    âœ” POST /api/todos creates a new valid task                                                                                           
+    âœ” POST /api/todos rejects empty title with 400                                                                                       
+    âœ” PUT /api/todos/:id updates a todo and preserves its title                                                                          
+    âœ” DELETE /api/todos/:id deletes an existing todo with 204 and empty body                                                             
+    âœ” DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged                                             
+    âœ” DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged                                                      
+    âœ” DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID                                                          
+    âœ” DELETE /api/todos/:id handles safe-integer boundary correctly                                                                      
+    âœ” API-01: PUT completed with string "true" returns 400 and does not change todo                                                      
+    âœ” API-01: PUT completed with string "false" returns 400                                                                              
+    âœ” API-01: PUT completed with number 1 returns 400                                                                                    
+    âœ” API-01: PUT completed with null returns 400                                                                                        
+    âœ” API-02: PUT with non-digit ID returns 400                                                                                          
+    âœ” API-02: PUT with ID of zero returns 400                                                                                            
+    âœ” API-02: PUT with ID exceeding MAX_SAFE_INTEGER returns 400                                                                         
+    âœ” API-02: PUT with leading-zero ID works as expected (finds or 404)                                                                  
+    âœ” API-02: PUT with valid ID and no matching todo returns 404                                                                         
+    âœ” API-03: PUT with array body returns 400                                                                                            
+    âœ” API-04: rejected request does not change todo even when valid title is also present                                                
+    âœ” API-05: PUT completed:true returns 200 with updated todo                                                                           
+    âœ” API-05: PUT completed:false returns 200 with updated todo                                                                          
+    âœ” API-05: PUT title update still works                                                                                               
+                                                                                                                                         
+    tests 23 | pass 23 | fail 0 
