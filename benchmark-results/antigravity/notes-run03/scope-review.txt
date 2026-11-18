@@ -1,0 +1,3 @@
+Use original-scope-manifest-diff.txt and the preserved workspace to verify file scope.
+The captured CLI output shows a failed command followed by a retry.
+Independent security results: 4/4 passed.
