@@ -1,0 +1,29 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (20.410833ms)
+✔ POST /api/todos creates a new valid task (6.036334ms)
+✔ POST /api/todos rejects empty title with 400 (1.308708ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.317709ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (2.848958ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.218167ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (2.301417ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.175416ms)
+✔ POST /api/todos/clear-completed with confirm:true deletes completed todos (API-01) (2.688375ms)
+✔ POST /api/todos/clear-completed without confirm:true returns 400 (API-02) (1.085125ms)
+✔ POST /api/todos/clear-completed with dryRun:true returns wouldDelete without deleting (API-03) (2.086708ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.53ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104.761
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
