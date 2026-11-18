@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "copilot",
+    "--sandbox",
+    "--trust-folder",
+    "--no-ask-user",
+    "--no-custom-instructions",
+    "--disable-builtin-mcps",
+    "--sync-session=off",
+    "--no-auto-update",
+    "--no-bash-env",
+    "--disallow-temp-dir",
+    "--allow-tool=shell(npm test)",
+    "--allow-tool=shell(cd)",
+    "--allow-tool=write(/private/tmp/copilot-task001-batch-ZFU2aD6N/copilot-run04/workspace/app/server.js)",
+    "--allow-tool=write(/private/tmp/copilot-task001-batch-ZFU2aD6N/copilot-run04/workspace/app/test.js)",
+    "--model=anthropic-direct/claude-sonnet-4-6",
+    "--reasoning-effort=medium",
+    "--output-format=json",
+    "--share=/private/tmp/copilot-task001-batch-ZFU2aD6N/copilot-run04/evidence/copilot-session.md",
+    "--usage-output-file=/private/tmp/copilot-task001-batch-ZFU2aD6N/copilot-run04/evidence/copilot-usage.json",
+    "-p",
+    "Read pipeline/tasks/001-add-delete-endpoint.md and complete the task\nexactly as specified.\n\nWork only within this project folder. Do not access parent folders,\nexternal grading files, reference solutions, or other runs.\n\nRun the required tests and report the actual results.\nDo not commit or push."
+  ],
+  "cwd": "/private/tmp/copilot-task001-batch-ZFU2aD6N/copilot-run04/workspace",
+  "session_id": null,
+  "model": "anthropic-direct/claude-sonnet-4-6",
+  "effort": "medium"
+}

@@ -1,0 +1,14 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 001 procedure"
+  },
+  "acceptance": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 001 procedure"
+  },
+  "supplemental": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 001 procedure"
+  }
+}

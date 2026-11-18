@@ -1,0 +1,1 @@
+Dependency lockfile installed offline in a fresh workspace before timing. Baseline verification passed under the corrected runtime policy. Failed operator preparation and the rejected launch remain in the batch journal.

@@ -1,0 +1,24 @@
+All 9 tests pass.
+
+---
+
+**Summary**
+
+**Files changed:**
+- `app/server.js`: Added `parseId()` helper (validates ID: digits-only, positive, safe integer) and `DELETE /api/todos/:id` endpoint (400 for invalid IDs, 404 for missing, 204 on success).
+- `app/test.js`: Added 5 tests covering: successful delete + GET no longer includes it, 404 for non-existent ID, 404 on double-delete, 400 for all invalid ID forms, and no side-effects on other todos.
+
+**Commands run:**
+1. `npm test` from `app/` — ✅ passed
+
+**Test results:** 9 passed, 0 failed, 0 skipped
+
+**Manual checks:** None performed.
+
+**Errors/retries:** None.
+
+**Unclear requirements:** None — all requirements were unambiguous.
+
+**Unexpected findings:** The existing PUT endpoint uses `parseInt` without strict validation (accepts `1abc` as `1`), but the task only asked to modify for DELETE; I did not change PUT behavior.
+
+**Model:** anthropic-direct/claude-sonnet-4-6 | Session time/tokens: not available.

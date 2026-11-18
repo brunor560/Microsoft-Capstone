@@ -1,0 +1,49 @@
+{
+  "start": "2026-11-18T16:07:24.661853+00:00",
+  "process_exit_utc": "2026-11-18T16:08:04.612470+00:00",
+  "process_elapsed_seconds": 39.95056650000333,
+  "message_observations": [
+    {
+      "utc": "2026-11-18T16:07:31.206602+00:00",
+      "elapsed": 6.544725457999448,
+      "event_id": "2c2974b5-ec11-4c78-9fe4-408fe7d809a6"
+    },
+    {
+      "utc": "2026-11-18T16:07:32.630358+00:00",
+      "elapsed": 7.9684749160005595,
+      "event_id": "0c39986a-f306-4ed2-ad80-a3bf1281d913"
+    },
+    {
+      "utc": "2026-11-18T16:07:34.506548+00:00",
+      "elapsed": 9.84465183300199,
+      "event_id": "abb1eca5-33ef-432e-be99-c711c2ab2ca2"
+    },
+    {
+      "utc": "2026-11-18T16:07:42.505914+00:00",
+      "elapsed": 17.843961749997106,
+      "event_id": "96fdaf2b-d562-4cff-a81d-1946c0e7c3fc"
+    },
+    {
+      "utc": "2026-11-18T16:07:53.980218+00:00",
+      "elapsed": 29.318201166002837,
+      "event_id": "61934979-d59e-4330-b5bd-5f5e6935e352"
+    },
+    {
+      "utc": "2026-11-18T16:07:55.926133+00:00",
+      "elapsed": 31.264118958002655,
+      "event_id": "a9a82ea5-a262-4150-a085-316f7769f275"
+    },
+    {
+      "utc": "2026-11-18T16:08:04.537236+00:00",
+      "elapsed": 39.87516833299742,
+      "event_id": "59482209-d1c1-41eb-a5b8-3fedcb74e195"
+    }
+  ],
+  "method": "headless launch-to-final-message receipt, includes startup",
+  "approval_wait_seconds": null,
+  "exit": 0,
+  "start_utc": "2026-11-18T16:07:24.661853+00:00",
+  "end_utc": "2026-11-18T16:08:04.612470+00:00",
+  "final_report_event_utc": "2026-11-18T16:08:04.535Z",
+  "session_id": "aefe9fb2-bed5-4584-a6a9-9a02ceba989e"
+}
