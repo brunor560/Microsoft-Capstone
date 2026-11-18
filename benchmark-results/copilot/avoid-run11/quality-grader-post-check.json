@@ -1,0 +1,24 @@
+{
+  "commit": "987547d9619e0628631e8e18031fe50c63b318dc",
+  "timestamp_utc": "2026-11-18T20:33:10.119309+00:00",
+  "checks": [
+    {
+      "path": "benchmark-results/protocol/code-quality/quality-grader.mjs",
+      "raw_sha256": "a0a42884273b11fd0c2cf547d1661f802f83df9108ba0aad3838fd94fcd98068",
+      "lf_sha256": "a0a42884273b11fd0c2cf547d1661f802f83df9108ba0aad3838fd94fcd98068",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/package.json",
+      "raw_sha256": "50b15e94f38cfb9a5587870b31672a0c0af82ecd756f0385c09304a717a854ba",
+      "lf_sha256": "50b15e94f38cfb9a5587870b31672a0c0af82ecd756f0385c09304a717a854ba",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/code-quality/package-lock.json",
+      "raw_sha256": "bc0a1f2265c1258af1b5a5e0d7844fb5f2eb6027372aafec9e07806a7e8e874e",
+      "lf_sha256": "bc0a1f2265c1258af1b5a5e0d7844fb5f2eb6027372aafec9e07806a7e8e874e",
+      "match": true
+    }
+  ]
+}
