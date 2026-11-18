@@ -1,0 +1,1 @@
+Headless scoped preapprovals as recorded in launch-arguments.json. Native sandbox active for shell.

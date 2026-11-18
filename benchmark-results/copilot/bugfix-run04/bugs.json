@@ -1,0 +1,6 @@
+{
+  "B1": "fixed per both API-01 assertions",
+  "B2": "fixed per API-02 malformed ID assertions",
+  "B3": "fixed per API-03",
+  "B4": "fixed per both UI-02/UI-03 cases"
+}

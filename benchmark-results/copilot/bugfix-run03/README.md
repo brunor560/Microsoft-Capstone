@@ -34,6 +34,12 @@ Skipped counts are unavailable where the log does not report them; static checks
 - Changed: app/test.js
 
 - File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation.
+- 9/9 baseline test names retained.
+- Existing test source is additive-only: True.
+- DELETE handler source retained: True.
+- Existing title update validation lines retained: True.
+- Added named tests: 6.
+- Suite outcomes and tool actions are preserved.
 
 Scope and report-accuracy findings: [scope-review.txt](scope-review.txt). Full changes: [original-scope-diff.txt](original-scope-diff.txt); preserved code: [original/](original/).
 

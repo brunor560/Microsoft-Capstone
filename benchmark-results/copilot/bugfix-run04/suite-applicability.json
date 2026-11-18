@@ -1,0 +1,14 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Task 004 procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Task 004 procedure"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Task 004 procedure"
+  }
+}

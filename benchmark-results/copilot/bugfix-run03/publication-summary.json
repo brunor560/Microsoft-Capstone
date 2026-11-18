@@ -26,7 +26,13 @@
   "notes": {
     "effort": "medium, from owned session events",
     "scope_findings": [
-      "File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation."
+      "File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation.",
+      "9/9 baseline test names retained.",
+      "Existing test source is additive-only: True.",
+      "DELETE handler source retained: True.",
+      "Existing title update validation lines retained: True.",
+      "Added named tests: 6.",
+      "Suite outcomes and tool actions are preserved."
     ],
     "source": "Independent manifests, dependency comparison and grader logs"
   },
