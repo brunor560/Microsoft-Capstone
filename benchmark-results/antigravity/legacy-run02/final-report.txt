@@ -1,0 +1,54 @@
+All 24 tests pass. Here's the summary:                                                                                                 
+  â”€â”€â”€â”€â”€â”€
+  ## Task 007-legacy-export â€” Completion Report
+
+  ### Files Changed
+
+   File                         â”‚ Change
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   app/legacy/billing-export.js â”‚ Added quote_field(s) function implementing RFC 4180 quoting (wraps in "â€¦" if field contains ,, ", \r,
+                                â”‚ or \n; doubles internal "). Updated build_row to call quote_field(clean_title(...)) instead of bare
+                                â”‚ clean_title(...).
+   app/test.js                  â”‚ Added import of { toCsv, pad_id, clean_title } from ./legacy/billing-export. Added 15 new tests
+                                â”‚ covering pad_id, clean_title, toCsv quoting (comma, double-quote, LF, CR, plain), sort order, DONE
+                                â”‚ column, empty list, and two HTTP route tests for the export endpoint.
+
+  ### Commands Run
+
+    cd C:\Users\kapil\capstone-007-repeats-20261117\legacy-run02\app; npm.cmd test
+
+  Outcome: Exit code 0 â€” all tests passed.
+
+  ### Test Results
+
+   Count                                                             â”‚ Result
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   24                                                                â”‚ âœ” passed
+   0                                                                 â”‚ âœ— failed
+   0                                                                 â”‚ âŠ˜ skipped
+                                                                                                                                         
+  (9 pre-existing + 15 new)                                                                                                              
+                                                                                                                                         
+  ### Browser / Manual Checks                                                                                                            
+                                                                                                                                         
+  None performed.                                                                                                                        
+                                                                                                                                         
+  ### Errors / Retries                                                                                                                   
+
+  None. First run was clean.                                                                                                             
+                                                                                                                                         
+  ### Unclear Requirements / Interpretation                                                                                              
+                                                                                                                                         
+  â€¢ Quoting applied after clean_title: The spec says "quoting is applied last, after cutting and the spreadsheet guard." Implemented     
+  exactly that â€” quote_field wraps the result of clean_title.                                                                            
+  â€¢ The quote_field helper is a module-private function (not exported), keeping the public API (toCsv, pad_id, clean_title) unchanged as 
+  required by FIX-05.                                                                                                                    
+                                                                                                                                         
+  ### Unexpected Observations                                                                                                            
+                                                                                                                                         
+  â€¢ None â€” the codebase was straightforward.                                                                                             
+                                                                                                                                         
+  ### Model / Session Info                                                                                                               
+
+  â€¢ Model: Claude Sonnet 4.6 (Thinking)                                                                                                  
+  â€¢ Session duration / tokens: not available                                                                                             

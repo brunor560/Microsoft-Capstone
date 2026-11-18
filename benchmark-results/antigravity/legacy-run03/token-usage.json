@@ -1,0 +1,14 @@
+{
+    "source":  "interactive-state.jsonl",
+    "conversation_id":  "bb38c273-6f11-45cf-9e00-686088ba2b3b",
+    "model_usage_updates":  11,
+    "final_cumulative_output_tokens":  3839,
+    "total_tokens":  null,
+    "scoring_policy":  "cache_reads_separate_provisional",
+    "input_tokens_field_sum":  27374,
+    "output_tokens_field_sum":  3839,
+    "cache_read_tokens_field_sum":  174627,
+    "cache_creation_tokens_field_sum":  0,
+    "output_sum_matches_final_counter":  true,
+    "provisional_scoring_total":  205840
+}
