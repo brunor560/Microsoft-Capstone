@@ -32,7 +32,8 @@
       "DELETE handler source retained: True.",
       "Existing title update validation lines retained: True.",
       "Added named tests: 6.",
-      "Suite outcomes and tool actions are preserved."
+      "Suite outcomes and tool actions are preserved.",
+      "Final report listed 5 new tests. The source adds 6 named tests."
     ],
     "source": "Independent manifests, dependency comparison and grader logs"
   },

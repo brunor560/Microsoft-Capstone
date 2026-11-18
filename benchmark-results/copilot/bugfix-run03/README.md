@@ -40,6 +40,7 @@ Skipped counts are unavailable where the log does not report them; static checks
 - Existing title update validation lines retained: True.
 - Added named tests: 6.
 - Suite outcomes and tool actions are preserved.
+- Final report listed 5 new tests. The source adds 6 named tests.
 
 Scope and report-accuracy findings: [scope-review.txt](scope-review.txt). Full changes: [original-scope-diff.txt](original-scope-diff.txt); preserved code: [original/](original/).
 
