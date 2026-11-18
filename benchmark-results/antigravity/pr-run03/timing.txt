@@ -1,0 +1,5 @@
+started_utc=2026-11-18T06:15:25.1821586Z
+ended_utc=2026-11-18T06:17:28.0450456Z
+elapsed_seconds=122.861
+method=manual stopwatch; includes CI waiting, switching, and approvals
+approval_wait_seconds=unavailable

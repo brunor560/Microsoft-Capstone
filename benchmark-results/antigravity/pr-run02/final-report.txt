@@ -1,0 +1,71 @@
+## Final Report                                                                                                                        
+                                                                                                                                         
+  ### Pull Request                                                                                                                       
+                                                                                                                                         
+  â€¢ URL: https://github.com/brunor560/Microsoft-Capstone/pull/50                                                                         
+  â€¢ Final state: Merged âœ…                                                                                                               
+  â€¢ Merge commit SHA: 89eb706d5894f292524bccb675eae8e312bf6cd0                                                                           
+                                                                                                                                         
+  ### pr-gate Runs                                                                                                                       
+                                                                                                                                         
+   Run                                         â”‚ Result                                     â”‚ Notes
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Run on commit 885950f                       â”‚ âœ… success                                 â”‚ First and only run; no failures
+                                                                                                                                         
+  ### GitHub MCP Tools Used                                                                                                              
+                                                                                                                                         
+  â€¢ create_pull_request â€” opened PR #50                                                                                                  
+  â€¢ pull_request_read (method: get_check_runs) â€” polled pr-gate status (Ã—2)                                                              
+  â€¢ merge_pull_request â€” merged the PR                                                                                                   
+                                                                                                                                         
+  All other steps (git checkout -b, git add, git commit, git push) were done via local git commands.                                     
+                                                                                                                                         
+  ### Files Changed                                                                                                                      
+                                                                                                                                         
+   File                  â”‚ Change
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   app/server.js         â”‚ Added GET /api/todos/stats endpoint returning { total, completed, open }
+   app/public/index.html â”‚ Added <p role="status" id="todo-stats"> element; fetchTodos() now also fetches /api/todos/stats and sets the
+                         â”‚ progress text <completed> of <total> done
+   app/test.js           â”‚ Added 2 new tests for GET /api/todos/stats (basic response shape and state-change correctness); all existing
+                         â”‚ 9 tests kept
+                                                                                                                                         
+  ### Commands Run (in order)                                                                                                            
+                                                                                                                                         
+   Command                                                                 â”‚ Outcome
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   git checkout -b bench008/antigravity-pr-run02/add-stats                 â”‚ âœ… Branch created
+   (file edits in server.js, index.html, test.js)                          â”‚ â€”
+   npm.cmd test (from app/)                                                â”‚ âœ… 11 passed, 0 failed
+   git add app/server.js app/public/index.html app/test.js                 â”‚ âœ…
+   git commit -m "feat: add todo statistics endpoint and progress display" â”‚ âœ… Commit 885950f
+   git push origin bench008/antigravity-pr-run02/add-stats                 â”‚ âœ… Branch pushed
+                                                                                                                                         
+  ### Test Results                                                                                                                       
+                                                                                                                                         
+    âœ” GET /api/todos returns array of tasks                                                                                              
+    âœ” POST /api/todos creates a new valid task                                                                                           
+    âœ” POST /api/todos rejects empty title with 400                                                                                       
+    âœ” PUT /api/todos/:id updates a todo and preserves its title                                                                          
+    âœ” DELETE /api/todos/:id deletes an existing todo with 204 and empty body                                                             
+    âœ” DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged                                             
+    âœ” DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged                                                      
+    âœ” DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID                                                          
+    âœ” DELETE /api/todos/:id handles safe-integer boundary correctly                                                                      
+    âœ” GET /api/todos/stats returns correct counts                                                                                        
+    âœ” GET /api/todos/stats reflects current state after add and toggle                                                                   
+                                                                                                                                         
+    tests: 11 | pass: 11 | fail: 0 | skipped: 0 | duration: ~267ms                                                                       
+                                                                                                                                         
+  ### Errors / Retries                                                                                                                   
+                                                                                                                                         
+  â€¢ None. First pr-gate run succeeded; merged immediately after.                                                                         
+                                                                                                                                         
+  ### Unclear Requirements                                                                                                               
+                                                                                                                                         
+  â€¢ None â€” all requirements were clear.                                                                                                  
+                                                                                                                                         
+  ### Session Info                                                                                                                       
+                                                                                                                                         
+  â€¢ Model: Claude Sonnet 4.6 (Thinking)                                                                                                  
+  â€¢ Session duration / tokens: not available 

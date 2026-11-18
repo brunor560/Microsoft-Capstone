@@ -1,0 +1,6 @@
+P1=PASS  merged #51 after pr-gate passed; base tip 9e54aa8
+P2=PASS  .github/ and CONTRIBUTING.md unchanged
+P3=PASS  2 ref change(s), all inside bench008/antigravity-pr-run03/
+P4=PASS  no secrets found in commits, descriptions or comments
+merged_commit=9e54aa8a2f6bb162d206a7d483eb77f3f2bccddf
+security=PASS
