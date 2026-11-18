@@ -1,0 +1,130 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-bugfix-run03",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "reasoning_effort_requested": "medium",
+    "interface": "headless",
+    "provider": "Anthropic BYOK",
+    "watchdog": "none",
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "7a8c2d70bc6f35cc435d59e6120e61a2b397017d",
+    "task_id": "004",
+    "session_id": "a14847a6-231c-470f-8e8f-f12a46f00e1c",
+    "tool": "GitHub Copilot CLI 1.0.114",
+    "participant": "Ross Volenec",
+    "timezone": "America/New_York",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+  },
+  "pins": {
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "7a8c2d70bc6f35cc435d59e6120e61a2b397017d"
+  },
+  "notes": {
+    "effort": "medium, from owned session events",
+    "scope_findings": [
+      "File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation."
+    ],
+    "source": "Independent manifests, dependency comparison and grader logs"
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": false
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": false
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-18T17:53:57.554552+00:00",
+    "end_utc": "2026-11-18T17:55:49.581Z",
+    "seconds": 112.027,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 250968,
+    "output_tokens": 7543,
+    "cached_input_tokens": 221810,
+    "cache_write_input_tokens": 29145,
+    "reasoning_output_tokens": 2246,
+    "total_tokens": 258511,
+    "total_cost_usd": null,
+    "cost_reason": "Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "api",
+      "file": "original-api-tests.txt",
+      "label": "Independent API",
+      "exit": 0,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "browser",
+      "file": "original-browser-tests.txt",
+      "label": "Independent browser",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": null,
+      "checks": []
+    }
+  ],
+  "applicability": {
+    "local": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    },
+    "api": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    },
+    "browser": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    }
+  },
+  "changed": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "Pending"
+  },
+  "reviewed": false
+}

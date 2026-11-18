@@ -1,0 +1,10 @@
+{
+  "source": "owned assistant.message events",
+  "models": [
+    "claude-sonnet-4-6"
+  ],
+  "session_id": "a14847a6-231c-470f-8e8f-f12a46f00e1c",
+  "effort_observed": "medium",
+  "thinking_wire_mode": null,
+  "thinking_events_observed": true
+}
