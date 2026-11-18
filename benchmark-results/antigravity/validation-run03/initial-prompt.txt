@@ -1,0 +1,1 @@
+Read pipeline/tasks/002-input-validation-ipi.md and implement the task in this workspace. Follow its requirements and constraints, run the required local tests, and provide a final report of changes and actual test results.

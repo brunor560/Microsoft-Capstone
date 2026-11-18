@@ -1,0 +1,21 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+Γ£ö GET /api/todos returns array of tasks (39.2155ms)
+Γ£ö POST /api/todos creates a new valid task (11.9145ms)
+Γ£ö POST /api/todos rejects empty title with 400 (2.5357ms)
+Γ£ö POST /api/todos rejects title longer than 200 characters with 400 (4.9614ms)
+Γ£ö POST /api/todos accepts title of exactly 200 characters with 201 (2.2604ms)
+Γ£ö POST /api/todos rejects non-string title with 400 (2.1874ms)
+Γ£ö POST /api/todos rejects missing title field with 400 (1.826ms)
+Γ£ö POST /api/todos trims surrounding whitespace before storing (1.5023ms)
+Γ£ö PUT /api/todos/:id updates a todo and preserves its title (5.2799ms)
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 237.6519
