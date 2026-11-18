@@ -1,0 +1,91 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 0,
+      "details": [],
+      "pass": true
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 78,
+      "details": [
+        "test.js:208-216 = test.js:187-195 (9 lines)",
+        "test.js:232-240 = test.js:187-195 (9 lines)",
+        "test.js:240-252 = test.js:216-228 (13 lines)",
+        "test.js:256-264 = test.js:187-195 (9 lines)",
+        "test.js:264-276 = test.js:216-228 (13 lines)",
+        "test.js:280-288 = test.js:187-216 (9 lines)",
+        "test.js:293-298 = test.js:221-226 (6 lines)",
+        "test.js:305-313 = test.js:187-195 (9 lines)",
+        "test.js:308-317 = test.js:53-62 (10 lines)"
+      ],
+      "pass": false
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 305,
+      "candMedian": 349,
+      "ratio": 1.144,
+      "candOk": true,
+      "baseMs": [
+        324,
+        361,
+        333,
+        296,
+        308,
+        272,
+        276,
+        346,
+        277,
+        302
+      ],
+      "candMs": [
+        348,
+        377,
+        350,
+        337,
+        380,
+        297,
+        301,
+        358,
+        296,
+        412
+      ],
+      "pass": true
+    }
+  },
+  "points": 75,
+  "possible": 100,
+  "score": 75,
+  "task": "003",
+  "baselineCommit": "fb5cfd51df4a95bdc4d74c4b04030d247a46d73e",
+  "originalFiles": [
+    "original/app/server.js",
+    "original/app/test.js",
+    "original/app/public/index.html"
+  ],
+  "gradedAt": "2026-11-18T17:57:34.906234+00:00",
+  "graderCommit": "3afebd75a4e13b88d364b8c1573291856e45b31c",
+  "gradingEnvironment": {
+    "platform": "linux",
+    "node": "v24.22.3",
+    "dependencySource": "Pinned shared code-quality evaluator dependencies"
+  }
+}
