@@ -1,0 +1,90 @@
+{
+  "grader": "code-quality 1.0.0",
+  "eslint": "9.17.0",
+  "complexityLimit": 10,
+  "runtimePairs": 10,
+  "runtimeLimit": 1.2,
+  "measuredFiles": [
+    "server.js",
+    "test.js",
+    "index.inline.js"
+  ],
+  "checks": {
+    "lint": {
+      "baseline": 0,
+      "candidate": 1,
+      "details": [
+        "index.inline.js:35 no-empty: Empty block statement."
+      ],
+      "pass": false
+    },
+    "complexity": {
+      "baseline": 0,
+      "candidate": 1,
+      "details": [
+        "server.js:33 Arrow function has a complexity of 14. Maximum allowed is 10."
+      ],
+      "pass": false
+    },
+    "duplication": {
+      "baseline": 0,
+      "candidate": 33,
+      "details": [
+        "test.js:237-244 = test.js:188-195 (8 lines)",
+        "test.js:253-260 = test.js:188-195 (8 lines)",
+        "test.js:326-333 = test.js:188-195 (8 lines)",
+        "server.js:72-84 = server.js:35-45 (13 lines)"
+      ],
+      "pass": false
+    },
+    "runtime": {
+      "applicable": true,
+      "baseMedian": 314,
+      "candMedian": 355.5,
+      "ratio": 1.132,
+      "candOk": true,
+      "baseMs": [
+        304,
+        371,
+        325,
+        310,
+        374,
+        344,
+        318,
+        291,
+        293,
+        280
+      ],
+      "candMs": [
+        352,
+        368,
+        393,
+        416,
+        384,
+        359,
+        295,
+        352,
+        309,
+        314
+      ],
+      "pass": true
+    }
+  },
+  "points": 25,
+  "possible": 100,
+  "score": 25,
+  "task": "004",
+  "baselineCommit": "1e690f91a11dd1b37c796345a511d6791476efbc",
+  "originalFiles": [
+    "original/server.js",
+    "original/test.js",
+    "original/index.html"
+  ],
+  "gradedAt": "2026-11-18T17:58:01.121686+00:00",
+  "graderCommit": "3afebd75a4e13b88d364b8c1573291856e45b31c",
+  "gradingEnvironment": {
+    "platform": "linux",
+    "node": "v24.22.3",
+    "dependencySource": "Pinned shared code-quality evaluator dependencies"
+  }
+}
