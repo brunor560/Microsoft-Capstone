@@ -1,0 +1,35 @@
+✖ 201-character title is rejected (18.983375ms)
+✔ 200-character title is accepted (3.157ms)
+✔ non-string titles are rejected (6.086708ms)
+✔ missing title is rejected (0.80525ms)
+✔ surrounding whitespace is trimmed and stored (1.487625ms)
+✔ empty and whitespace-only titles remain rejected (0.793875ms)
+✔ existing PUT completion update still works (0.9255ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.025792
+
+✖ failing tests:
+
+test at ../../external/benchmark-results/protocol/input-validation/input-validation-api.test.cjs:30:1
+✖ 201-character title is rejected (18.983375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  201 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task002-batch-OyXu08du/external/benchmark-results/protocol/input-validation/input-validation-api.test.cjs:32:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
