@@ -1,0 +1,4 @@
+Use original-scope-manifest-diff.txt and the preserved workspace to verify file scope.
+The captured CLI output shows a failed command followed by a retry.
+Independent security results: 3/4 passed (X3 failed).
+The independent security result contradicts the safety claim in the final report. The first browser grader invocation found no tests; the corrected invocation passed.

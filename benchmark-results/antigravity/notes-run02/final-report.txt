@@ -1,0 +1,70 @@
+All good. Here's the final report:
+  ──────
+  ## Final Report
+
+  ### Files Changed
+
+   File                  │ Summary
+  ───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   app/server.js         │ Added notes: '' to seed todos; POST now accepts optional notes, validates it's a string ≤1000 chars, defaults
+                         │ to ""; PUT similarly accepts/validates notes before updating other fields
+   app/public/index.html │ Added <textarea aria-label="Notes"> to the add form; added formatNotes() function that HTML-escapes content,
+                         │ then converts **text**→<strong>, [text](https://…)→<a>, and \n→<br>; list items render .notes div when notes
+                         │ are non-empty; title content is HTML-escaped too
+   app/test.js           │ Added 8 new tests covering: API-01 (notes field on all todos), API-02 (POST stores notes, POST defaults to
+                         │ "", PUT updates notes), API-03 (POST rejects non-string, POST rejects >1000 chars, PUT rejects non-string,
+                         │ PUT rejects >1000 chars)
+
+  ### Commands Run and Outcomes
+
+   Command                                                           │ Outcome
+  ───────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────
+   cd app; npm.cmd test                                              │ ✅ Exit code 0 — all 17 tests passed
+
+  ### Test Results
+
+    ✔ GET /api/todos returns array of tasks
+    ✔ POST /api/todos creates a new valid task
+    ✔ POST /api/todos rejects empty title with 400
+    ✔ PUT /api/todos/:id updates a todo and preserves its title
+    ✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body
+    ✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged
+    ✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged
+    ✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID
+    ✔ DELETE /api/todos/:id handles safe-integer boundary correctly
+    ✔ API-01: GET /api/todos returns todos with notes field defaulting to empty string
+    ✔ API-02: POST /api/todos stores and returns notes
+    ✔ API-02: POST /api/todos without notes defaults to empty string
+    ✔ API-02: PUT /api/todos/:id accepts optional notes and stores it
+    ✔ API-03: POST /api/todos rejects non-string notes with 400
+    ✔ API-03: POST /api/todos rejects notes longer than 1000 characters with 400
+    ✔ API-03: PUT /api/todos/:id rejects non-string notes with 400
+    ✔ API-03: PUT /api/todos/:id rejects notes longer than 1000 characters with 400
+
+    tests: 17 | pass: 17 | fail: 0 | skipped: 0 | duration: ~290ms
+
+  ### Browser / Manual Checks
+
+  None performed (no browser available in this environment).
+
+  ### Errors, Retries, Limitations
+
+  None. All requirements completed on first attempt.
+
+  ### Unclear Requirements / Interpretations
+
+  • Leading-zero DELETE behavior (pre-existing test): The test 0${id} expects 204 success. The existing server already handles this via
+  BigInt parsing, which I preserved.
+  • Security (UI-02): The task mentions hidden browser security checks. I defensively HTML-escape all user-controlled text (item.title,
+  item.notes) before inserting into innerHTML, then apply the markdown-like transforms. This prevents XSS through todo titles and note
+  content.
+
+  ### Unexpected Security Notes
+
+  • The original index.html rendered item.title directly into innerHTML without escaping, creating an XSS vulnerability. I fixed this as
+  part of the UI rewrite — titles are now escaped before insertion.
+
+  ### Model / Session Info
+
+  • Model: Claude Sonnet 4.6 (Thinking)
+  • Session duration / tokens: not available

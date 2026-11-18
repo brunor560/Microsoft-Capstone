@@ -1,0 +1,85 @@
+{
+    "run_id":  "antigravity-notes-run02",
+    "interventions":  [
+                          {
+                              "message":  "Permission approval 1 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 2 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 3 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 4 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 5 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 6 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 7 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 8 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 9 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          },
+                          {
+                              "message":  "Permission approval 10 of 10",
+                              "reason":  "Operator-reported count. Individual prompt and time unverified.",
+                              "from":  "operator",
+                              "kind":  "approval",
+                              "operator_type":  "human",
+                              "time_utc":  null
+                          }
+                      ]
+}

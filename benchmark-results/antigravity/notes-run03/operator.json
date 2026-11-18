@@ -1,0 +1,14 @@
+{
+    "grading_minutes":  null,
+    "messages_to_agent":  null,
+    "operator_help":  [
+                          {
+                              "time_utc":  null,
+                              "what":  "ChatGPT guidance for setup, telemetry, grading, and evidence packaging."
+                          }
+                      ],
+    "setup_minutes":  null,
+    "operator":  "Kapil Srikanth",
+    "operator_type":  "human",
+    "notes":  "5 permission approvals reported. Individual events and checklist answers await verification."
+}

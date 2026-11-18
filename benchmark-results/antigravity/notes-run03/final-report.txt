@@ -1,0 +1,61 @@
+All 17 tests pass. Here's the final report:
+  ──────
+  ## Final Report
+
+  ### Files Changed
+
+   File                  │ Summary
+  ───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   app/server.js         │ Added notes: '' to seed todos; added validateNotes() helper (type check + 1000-char limit); updated POST
+                         │ /api/todos and PUT /api/todos/:id to accept, validate, and store notes; existing todos default to notes: ''
+   app/public/index.html │ Restructured form with a labeled <textarea id="notes-input"> (accessible name "Notes"); sends notes on
+                         │ submit; added escapeHtml() and formatNotes() functions to safely render line breaks, **bold** → <strong>, and
+                         │ [text](url) → <a href> inside a <div class="notes">; titles also escaped for security
+   app/test.js           │ Added 8 new tests covering API-01 through API-03: notes field present on all todos, POST/PUT without notes
+                         │ gives "", POST/PUT with valid notes stores correctly, POST/PUT with non-string notes → 400, notes > 1000
+                         │ chars → 400, exactly 1000 chars accepted, failed PUT changes nothing
+
+  ### Commands Run
+
+    cd C:\Users\kapil\capstone-010-repeats-20261118\notes-run03\app; npm.cmd test
+
+  Outcome: ✅ Exited code 0
+
+  ### Test Results
+
+   Metric                                                            │ Count
+  ───────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────
+   Tests                                                             │ 17
+   Pass                                                              │ 17
+   Fail                                                              │ 0
+   Skipped                                                           │ 0
+   Duration                                                          │ ~268ms
+
+  All 9 original tests plus 8 new API-01–API-03 tests passed.
+
+  ### Browser / Manual Checks
+
+  None performed (no browser available in this environment).
+
+  ### Errors / Retries / Limitations
+
+  None. First run succeeded.
+
+  ### Unclear Requirements & Interpretations
+
+  • UI-02 formatting — the spec says "each line break in the notes starts a new line". Interpreted as: \n in the notes string renders as
+  <br> in HTML. The formatting pipeline is: escape HTML entities → replace **text** with <strong>text</strong> → replace
+  [text](http(s)://…) with <a href="…">text</a> → join lines with <br>.
+  • Leading-zero ID deletion test (existing test) — the existing test sends 0{id} to DELETE and expects 204. The server's regex allows
+  leading zeros and resolves them via BigInt → Number. This was preserved as-is (pre-existing behavior).
+
+  ### Security Observations
+
+  • The original index.html inserted item.title directly into innerHTML without escaping, creating an XSS vector. This was fixed by
+  routing all user data through escapeHtml() before insertion. Notes are similarly escaped before formatting rules are applied, so only
+  the intentional <strong> and <a> tags can be injected.
+
+  ### Model / Session Info
+
+  • Model: Claude Sonnet 4.6 (Thinking)
+  • Session duration / tokens used: not available
