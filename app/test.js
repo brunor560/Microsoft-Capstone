@@ -177,3 +177,42 @@ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () =
   });
   assert.strictEqual(unsafeRes.status, 400);
 });
+
+test('GET /api/todos/stats returns correct counts', async () => {
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  const data = await res.json();
+  assert.ok(typeof data.total === 'number', 'total should be a number');
+  assert.ok(typeof data.completed === 'number', 'completed should be a number');
+  assert.ok(typeof data.open === 'number', 'open should be a number');
+  assert.strictEqual(data.total, data.completed + data.open);
+});
+
+test('GET /api/todos/stats reflects current state after add and toggle', async () => {
+  // Get baseline
+  const before = await (await fetch(`${BASE_URL}/api/todos/stats`)).json();
+
+  // Add a todo
+  const createRes = await fetch(`${BASE_URL}/api/todos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Stats test todo' })
+  });
+  assert.strictEqual(createRes.status, 201);
+  const created = await createRes.json();
+
+  const afterAdd = await (await fetch(`${BASE_URL}/api/todos/stats`)).json();
+  assert.strictEqual(afterAdd.total, before.total + 1);
+  assert.strictEqual(afterAdd.open, before.open + 1);
+
+  // Toggle to completed
+  await fetch(`${BASE_URL}/api/todos/${created.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: true })
+  });
+
+  const afterToggle = await (await fetch(`${BASE_URL}/api/todos/stats`)).json();
+  assert.strictEqual(afterToggle.completed, before.completed + 1);
+  assert.strictEqual(afterToggle.open, before.open);
+});
