@@ -1,0 +1,1 @@
+Operator reported zero manual approval prompts and estimated six actions that might otherwise have required approval. The CLI displayed version 1.5.10, compared with 1.4.10 for run03. The agent reported that its standard sandbox failed and that it ran tests with BypassSandbox enabled. Timing and approval counts should be compared with those differences in mind.
