@@ -1,0 +1,62 @@
+﻿All 16 tests pass. Here's the final report:                                                                                            
+  ──────                                                                                                                                 
+  ## Final Report                                                                                                                        
+                                                                                                                                         
+  ### Files Changed                                                                                                                      
+                                                                                                                                         
+   File                  │ Summary of change
+  ───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   app/server.js         │ Fixed PUT /api/todos/:id to validate title when supplied — empty, whitespace-only, or non-string titles now
+                         │ return HTTP 400 without mutating the todo (API-01 through API-04). Previously the handler silently ignored
+                         │ invalid titles.
+   app/public/index.html │ Replaced template-literal innerHTML rendering with DOM-API rendering (createElement/textContent) for XSS
+                         │ safety (UI-10). Added an Edit button per row that opens an inline editor with an aria-label="Edit title"
+                         │ input, Save and Cancel buttons (UI-01 – UI-09, UI-11). Errors appear in a role="alert" element inside the
+                         │ <li>. Each <li> carries data-todo-id.
+   app/test.js           │ Added 7 new API tests covering: valid title update with trimming, 400 for empty title, 400 for whitespace-
+                         │ only title, 400 for non-string title, state preservation on invalid title + completed combo, completion-only
+                         │ update, and 404 for non-existent todo PUT.
+  ──────                                                                                                                                 
+  ### Commands Run & Outcomes                                                                                                            
+                                                                                                                                         
+   #                                           │ Command                                    │ Outcome
+  ─────────────────────────────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────
+   1                                           │ cd …\app; npm.cmd test                     │ ✅ Exit 0 — all 16 tests pass
+  ──────                                                                                                                                 
+  ### Test Results                                                                                                                       
+                                                                                                                                         
+    tests 16  |  pass 16  |  fail 0  |  skipped 0  |  cancelled 0                                                                        
+                                                                                                                                         
+  All 9 original tests still pass. 7 new title-editing API tests added and passing.                                                      
+  ──────                                                                                                                                 
+  ### Browser / Manual Checks                                                                                                            
+                                                                                                                                         
+  None performed (no browser available in this environment). The independent browser checks will validate the UI requirements.           
+  ──────                                                                                                                                 
+  ### Errors, Retries, Limitations                                                                                                       
+                                                                                                                                         
+  None. All requirements were implementable within the allowed files.                                                                    
+  ──────                                                                                                                                 
+  ### Unclear Requirements / Interpretations                                                                                             
+                                                                                                                                         
+  • API-02 / API-03: The original server silently ignored invalid titles in a PUT. I interpreted "rejected title updates must not change 
+  any todos" and "non-string titles return HTTP 400" strictly — the handler now validates title before mutating anything, so a combined {
+  title: '', completed: true } body returns 400 and leaves both fields unchanged.                                                        
+  • UI-05 "persistence after page reload": Implemented by updating the in-memory todos array on a successful PUT, which persists for the 
+  lifetime of the server process (as stated in the spec: "persistence across server restarts is not required").                          
+  ──────                                                                                                                                 
+  ### Unexpected Observations                                                                                                            
+                                                                                                                                         
+  • The original PUT handler used a truthy check (if (req.body.title && ...)), which meant supplying title: "" or title: "   " was       
+  silently ignored rather than rejected. This was inconsistent with API-02 and was corrected.                                            
+  ──────                                                                                                                                 
+  ### Session Metadata                                                                                                                   
+                                                                                                                                         
+  • Model: Claude Sonnet 4.6 (Thinking)                                                                                                  
+  • Session duration / tokens used: not available                                                                                        
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+>
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Telemetry capture active
+

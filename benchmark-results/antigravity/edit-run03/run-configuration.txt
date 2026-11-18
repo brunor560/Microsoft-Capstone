@@ -1,0 +1,7 @@
+model=Claude Sonnet 4.6 (Thinking)
+cli_version=1.5.10
+conversation_id=93db9237-a61e-4a0e-964f-53b563ad2dc7
+interface=interactive
+agent_mode=default
+tool_permission=request-review
+manual_approval_count=6
