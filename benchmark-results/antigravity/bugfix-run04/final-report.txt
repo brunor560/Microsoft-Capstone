@@ -1,0 +1,38 @@
+All 20 tests pass. Here's a full report:                                                                                               
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ## Bug Report & Fix Summary                                                                                                            
+                                                                                                                                         
+  ### Bug 1 â€” CSV script un-checks end up checked                                                                                        
+                                                                                                                                         
+  Cause: server.js used Boolean(req.body.completed) to coerce the value. When a CSV script sends the string "false", Boolean("false")    
+  evaluates to true (because any non-empty string is truthy). This incorrectly marked the todo as completed instead of clearing it.      
+                                                                                                                                         
+  Fix: Replaced the loose coercion with a strict type check. If completed is supplied but is not a JSON boolean (typeof x !== 'boolean'),
+  the server now returns HTTP 400. Only actual true/false values are accepted.                                                           
+                                                                                                                                         
+  ### Bug 2 â€” No feedback when server is down                                                                                            
+                                                                                                                                         
+  Cause: index.html's toggleStatus function used await fetch(...) with no error handling. If the fetch threw (network down) or returned a
+  non-OK status, the function silently called fetchTodos() anyway â€” giving no visible feedback and potentially restoring the stale       
+  (unchanged) state.                                                                                                                     
+                                                                                                                                         
+  Fix: Wrapped the fetch in try/catch. On failure (network error or non-2xx response), the UI:                                           
+                                                                                                                                         
+  â€¢ Reverts to the prior completed state (by not calling fetchTodos() on the error path)                                                 
+  â€¢ Inserts a <span role="alert"> inside the todo's <li> with the error message                                                          
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Changes Made                                                                                                                       
+                                                                                                                                         
+   File                  â”‚ What changed
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   app/server.js         â”‚ Rewrote PUT handler: strict boolean check (API-01), digit/range id validation (API-02), array body rejection
+                         â”‚ (API-03), validation-first ordering (API-04)
+   app/public/index.html â”‚ toggleStatus now handles errors; showError inserts role="alert" element in the right <li>; data-id added to
+                         â”‚ spans
+   app/test.js           â”‚ Added 11 new tests covering API-01 through API-04
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Local Test Results                                                                                                                 
+                                                                                                                                         
+    tests 20  |  pass 20  |  fail 0  |  cancelled 0  |  skipped 0                                                                        
+                                                                                                                                         
+  All 9 original tests preserved âœ” Â· All 11 new tests added and passing âœ”  
