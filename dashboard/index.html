@@ -509,6 +509,13 @@ table.grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
 /* ---- the tests as a sheet ---- */
 table.sheet { width: 100%; border-collapse: collapse; min-width: 720px; }
+.tcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: var(--g2); }
+.tcard { overflow-x: auto; }
+.tcard table.sheet { min-width: 0; }
+.tcard > .note { margin: 4px 0 10px; }
+.tcard-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; font-size: 16px; text-align: left; cursor: pointer; }
+.tcard-go { color: var(--violet); font-size: 13px; white-space: nowrap; }
+.tcard tr.row[data-run] { cursor: pointer; }
 .sheet th { text-align: left; font-size: 11px; font-weight: 800; color: var(--label-3); text-transform: uppercase; letter-spacing: .06em; padding: 8px 10px; border-bottom: 1px solid var(--border-strong); white-space: nowrap; }
 .sheet td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13.5px; }
 .sheet tbody tr { cursor: pointer; }
@@ -576,7 +583,6 @@ table.sheet { width: 100%; border-collapse: collapse; min-width: 720px; }
           <tr><td><b>Speed</b></td><td>tests that run at most 1.2&times; as long as before, and pass</td></tr>
         </tbody></table>
         <div id="qualityLive"></div>
-        <p class="note">Runs before 24 October 2026 weren't told code quality is graded, so compare quality only between runs with the same "told" label. Grader: <a href="https://github.com/brunor560/Microsoft-Capstone/tree/results/all-runs/benchmark-results/protocol/code-quality" target="_blank" rel="noopener">benchmark-results/protocol/code-quality</a> on <code>results/all-runs</code> (ESLint 9.17.0, jscpd 4.0.5). Each run's details are in its <code>quality.json</code> and in its "Why this score" checklist.</p>
       </div></details>
     </div>
   </section>
@@ -597,21 +603,12 @@ table.sheet { width: 100%; border-collapse: collapse; min-width: 720px; }
     <div class="panel"><div class="tbl-wrap"><table class="sheet" id="testCards"></table></div></div>
   </section>
 
-  <section class="chapter" data-sec="runs" data-nav="All runs">
+  <section class="chapter" data-sec="runs" data-nav="Test by test">
     <div class="chapter-head">
-      <h2>All runs <span class="count" id="runCount"></span></h2>
-      <p class="lede">One row per tool and test. Click a row to open the run.</p>
+      <h2>Test by test</h2>
+      <p class="lede">Each test, and how every tool did on it. Averages of 3 runs.</p>
     </div>
-    <div class="panel">
-      <div class="filters" id="filters">
-        <div class="fgroup"><label>Tool</label><div class="chips" id="fTool"></div></div>
-        <div class="fgroup"><label>Test</label><div class="chips" id="fTask"></div></div>
-        <div class="fgroup"><label>Result</label><div class="chips" id="fStatus"></div></div>
-        <div class="fgroup"><label for="q">Search</label><input type="search" id="q" placeholder="model, test name, file…"></div>
-        <div class="fgroup"><label>&nbsp;</label><div class="chips"><button class="chip" id="filterNote" aria-pressed="true" hidden></button><button class="btn" id="resetBtn">Reset</button><button class="btn" id="filterClear" hidden>Clear</button></div></div>
-      </div>
-      <div class="tbl-wrap" style="margin-top:16px"><table class="runs" id="runsTbl"></table></div>
-    </div>
+    <div class="tcards" id="runsTbl"></div>
   </section>
 
   <section class="chapter" data-sec="charts" data-nav="Speed and tokens">
@@ -630,6 +627,13 @@ table.sheet { width: 100%; border-collapse: collapse; min-width: 720px; }
   <!-- Targets that older code still writes to. They are not shown. -->
   <div hidden>
     <div id="heroStats"></div><p id="runsNote"></p><p id="foot"></p><div id="stats"></div>
+      <div class="filters" id="filters">
+        <div class="fgroup"><label>Tool</label><div class="chips" id="fTool"></div></div>
+        <div class="fgroup"><label>Test</label><div class="chips" id="fTask"></div></div>
+        <div class="fgroup"><label>Result</label><div class="chips" id="fStatus"></div></div>
+        <div class="fgroup"><label for="q">Search</label><input type="search" id="q" placeholder="model, test name, file…"></div>
+        <div class="fgroup"><label>&nbsp;</label><div class="chips"><button class="chip" id="filterNote" aria-pressed="true" hidden></button><button class="btn" id="resetBtn">Reset</button><button class="btn" id="filterClear" hidden>Clear</button></div></div>
+      </div>
     <div id="reqBar"></div><p id="reqSummary"></p><div id="fModel"></div><div id="fTold"></div>
   </div>
 </main>
@@ -763,6 +767,7 @@ for (const t of D.tasks) for (const tl of D.tools) {
 // ---------- state ----------
 const state = { tools: new Set(), tasks: new Set(), status: new Set(), models: new Set(), told: new Set(), q: '', scoreMode: 'dim', scoreSort: 'score', sort: { key: 'task', dir: 1 } };
 try { const s = JSON.parse(localStorage.getItem('bench-filters') || 'null'); if (s) { state.tools = new Set(s.tools); state.tasks = new Set(s.tasks); state.status = new Set(s.status); state.models = new Set(s.models || []); state.told = new Set(s.told || []); state.q = s.q || ''; state.scoreMode = s.scoreMode || 'dim'; state.scoreSort = s.scoreSort || 'score'; } } catch {}
+for (const k of ['tools', 'tasks', 'status', 'models', 'told']) state[k].clear(); state.q = '';
 const save = () => { try { localStorage.setItem('bench-filters', JSON.stringify({ tools: [...state.tools], tasks: [...state.tasks], status: [...state.status], models: [...state.models], told: [...state.told], q: state.q, scoreMode: state.scoreMode, scoreSort: state.scoreSort })); } catch {} };
 const MODELS = [...new Set(D.runs.map((r) => r.model).filter(Boolean))].sort();
 // Saved filters can name a tool or model entry that no longer exists; drop those so the page isn't left empty.
@@ -980,62 +985,29 @@ function slotSuites(runs) {
     return { name: ss[0].name, ok: ss.every((s) => s.ok), n: ss.filter((s) => s.ok).length, of: ss.length };
   });
 }
-const COLS = [
-  { key: 'task', label: 'Test', get: (x) => x.task },
-  { key: 'tool', label: 'Tool', get: (x) => toolName(x.tool) },
-  { key: 'model', label: 'Model', get: (x) => x.runs[0]?.model || '~' },
-  { key: 'status', label: 'Result', get: (x) => ({ pass: 0, fail: 1, none: 2 }[x.status]) },
-  { key: 'suites', label: 'Grader suites', get: (x) => x.runs.length ? x.suites.filter((s) => s.ok).length : -1 },
-  { key: 'checks', label: 'Checks', get: (x) => x.checks.v ?? -1 },
-  { key: 'files', label: 'Files', get: (x) => x.files.v ?? -1 },
-  { key: 'time', label: 'Time', get: (x) => x.time.v ?? Infinity },
-  { key: 'tokens', label: 'Tokens', get: (x) => x.tokens.v ?? Infinity },
-];
 function renderRuns() {
-  // One row per tool and test, so a tool never appears twice for the same test. Several runs
-  // are shown as their average (a run without a value is skipped), with each run one click away.
-  const rows = slots.filter(slotVisible).map((s) => {
-    const runs = s.runsAll;
-    return { task: s.task, tool: s.tool, status: s.status, runs, suites: slotSuites(runs),
-      checks: avgOf(runs, sumPass), files: avgOf(runs, (r) => r.changed.length),
-      time: avgOf(runs, (r) => r.timing?.seconds || null), tokens: avgOf(runs, (r) => r.tokens?.total || null) };
-  });
-  const col = COLS.find((c) => c.key === state.sort.key);
-  rows.sort((a, b) => {
-    const va = col.get(a), vb = col.get(b);
-    const c = (typeof va === 'number' ? va - vb : String(va).localeCompare(String(vb))) * state.sort.dir;
-    return c || a.task.localeCompare(b.task) || toolName(a.tool).localeCompare(toolName(b.tool));
-  });
-  const maxT = Math.max(1, ...rows.map((x) => x.time.v || 0));
-  const whole = (v) => Number.isInteger(v) ? String(v) : fmt1(v);
-  let h = `<thead><tr>${COLS.map((c) => `<th data-key="${c.key}" ${state.sort.key === c.key ? `data-dir="${state.sort.dir > 0 ? '↑' : '↓'}"` : ''}>${c.label}</th>`).join('')}</tr></thead><tbody>`;
-  let lastTask = null;
-  for (const x of rows) {
-    if (state.sort.key === 'task' && x.task !== lastTask) { lastTask = x.task; h += `<tr class="group" data-task="${x.task}"><td colspan="${COLS.length}">${x.task} · ${esc(task(x.task).name)} <span style="color:var(--violet);margin-left:8px">Compare tools →</span></td></tr>`; }
-    const n = x.runs.length, r = x.runs[0];
-    const passed = x.runs.filter((q) => q.status === 'pass').length;
-    const models = [...new Set(x.runs.map((q) => q.model || '—'))], efforts = [...new Set(x.runs.map((q) => q.effort).filter(Boolean))];
-    h += `<tr class="row ${n ? '' : 'none'}" ${r ? `data-run="${r.id}" tabindex="0"` : ''}>
-      <td><b>${x.task}</b> <span class="note">${n === 1 ? r.run : n ? `average of ${n} runs` : ''}</span>${n > 1 ? `<div class="run-chips">${x.runs.map((q) => `<span class="chip" data-run="${q.id}" title="Open ${esc(q.run)}">${esc(q.run)}</span>`).join('')}</div>` : ''}</td>
-      <td><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[x.tool]};margin-right:6px"></span>${esc(toolName(x.tool))}</td>
-      <td>${n ? `<span style="font-weight:700">${esc(models.join(', '))}</span>${efforts.length === 1 ? ` <span class="note">${esc(efforts[0])}</span>` : ''}` : '<span class="note">—</span>'}</td>
-      <td style="white-space:nowrap"><span class="badge ${x.status}">${STATUS[x.status]}</span>${n > 1 ? ` <span class="note">${passed} of ${n}</span>` : ''}</td>
-      <td>${n ? `<div class="suite-pips" title="${esc(x.suites.map((s) => `${s.name}: ${n === 1 ? (s.ok ? 'pass' : 'fail') : `passed in ${s.n} of ${s.of} runs`}`).join('\n'))}">${x.suites.map((s) => `<span class="pip ${s.ok ? 'ok' : 'bad'}"></span>`).join('')}</div>` : '<span class="note">—</span>'}</td>
-      <td class="num">${x.checks.v == null ? '—' : whole(x.checks.v)}</td>
-      <td class="num">${x.files.v == null ? '—' : whole(x.files.v)}</td>
-      <td class="num" style="min-width:120px">${x.time.v == null ? '—' : `<div style="display:flex;gap:6px;align-items:center"><div class="bar" style="width:${x.time.v / maxT * 70}px"></div>${fmtS(x.time.v)}${partial(x.time)}</div>`}</td>
-      <td class="num">${x.tokens.v == null ? '—' : fmtN(Math.round(x.tokens.v)) + partial(x.tokens)}</td>
-    </tr>`;
-  }
-  $('#runsTbl').innerHTML = h + '</tbody>';
-  const nRuns = rows.reduce((a, x) => a + x.runs.length, 0);
-  $('#runCount').textContent = `${rows.length} rows · ${nRuns} run${nRuns === 1 ? '' : 's'}`;
+  // One card per test: what it asks, then one line per tool (averages over its runs).
+  $('#runsTbl').innerHTML = D.tasks.map((t) => {
+    const info = TEST_INFO[t.id] || [t.short, t.name, ''];
+    const rows = D.tools.map((tl) => {
+      const x = slots.find((q) => q.task === t.id && q.tool === tl.id);
+      const runs = x.runsAll, n = runs.length, sc = slotScore(x);
+      const passed = runs.filter((r) => r.status === 'pass').length;
+      const time = avgOf(runs, (r) => r.timing?.seconds || null), tok = avgOf(runs, (r) => r.tokens?.total || null);
+      return `<tr class="row ${n ? '' : 'none'}" ${n ? `data-run="${runs[0].id}" tabindex="0"` : ''}>
+        <td><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${TOOL_COLOR[tl.id]};margin-right:6px"></span>${esc(tl.name)}</td>
+        <td><span class="mk ${x.status}">${{ pass: '✓', fail: '✗', none: '–' }[x.status]}</span>${n ? ` <span class="note">${passed}/${n}</span>` : ''}</td>
+        <td class="num">${sc == null ? '–' : `<b>${fmt1(sc)}</b>`}</td>
+        <td class="num">${time.v == null ? '–' : fmtS(time.v)}</td>
+        <td class="num">${tok.v == null ? '–' : fmtN(Math.round(tok.v))}</td></tr>`;
+    }).join('');
+    return `<div class="panel tcard"><button class="tcard-head" data-task="${t.id}"><span><b>${t.id}</b> ${esc(info[0])}</span><span class="tcard-go">Compare →</span></button>
+      <p class="note">${esc(info[1])}</p>
+      <table class="sheet"><thead><tr><th>Tool</th><th>Passed</th><th class="num">Score</th><th class="num">Time</th><th class="num">Tokens</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join('');
 }
 $('#runsTbl').addEventListener('click', (e) => {
-  const th = e.target.closest('th[data-key]');
-  if (th) { const k = th.dataset.key; state.sort = { key: k, dir: state.sort.key === k ? -state.sort.dir : 1 }; renderRuns(); return; }
-  const g = e.target.closest('tr[data-task]'); if (g) return openTask(g.dataset.task);
-  // A run chip opens that run; anywhere else on the row opens its first run.
+  const g = e.target.closest('[data-task]'); if (g) return openTask(g.dataset.task);
   const el = e.target.closest('[data-run]'); if (el) openRun(el.dataset.run);
 });
 $('#runsTbl').addEventListener('keydown', (e) => { const tr = e.target.closest('tr[data-run]'); if (tr && e.key === 'Enter') openRun(tr.dataset.run); });
@@ -1330,8 +1302,7 @@ function toolWhyHTML(tasks) {
       const each = s.runs.map(runScore), have = each.filter((x) => x != null);
       const v = slotScore(s);
       if (v == null) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: run, but nothing was measured, so not counted</span></div>`;
-      const told = best.qualityNotice ? `<span class="told ${best.qualityNotice.told ? 'yes' : 'no'}" title="${esc(best.qualityNotice.basis)}">${best.qualityNotice.told ? 'told about quality' : 'not told about quality'}</span>` : '';
-      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b> ${told}${s.runs.length > 1 ? ` <span class="note">(average of ${have.length < each.length ? `${have.length} of ` : ''}${s.runs.length} runs: ${s.runs.map((r, k) => `${esc(r.run)} ${each[k] == null ? 'no score, skipped' : fmt1(each[k])}`).join(', ')}; spread ${fmt1(Math.min(...have))}–${fmt1(Math.max(...have))}; reason shown for the lowest)</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
+      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b>${s.runs.length > 1 ? ` <span class="note">average of ${have.length} runs</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
     }).join('');
     const counted = ran.filter(({ s }) => slotScore(s) != null);
     const calc = counted.length ? `Average of the ${counted.length} task${counted.length > 1 ? 's' : ''} run: (${counted.map(({ s }) => fmt1(slotScore(s))).join(' + ')}) ÷ ${counted.length} = ${fmt1(sc.overall)}` : 'No grade: none of these tasks has been run.';
