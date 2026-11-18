@@ -1,0 +1,15 @@
+{
+  "input_tokens_field_sum": 15409,
+  "output_tokens_field_sum": 3070,
+  "cache_read_tokens_field_sum": 100710,
+  "cache_creation_tokens_field_sum": 0,
+  "source": "interactive-state.jsonl",
+  "conversation_id": "b29a5d67-7dc4-4b83-8bb8-5f6dc3c9b5ab",
+  "method": "Last usage update per cumulative output counter within the timed run",
+  "model_usage_updates": 8,
+  "final_cumulative_output_tokens": 3070,
+  "output_sum_matches_final_counter": true,
+  "total_tokens": null,
+  "scoring_policy": "cache_reads_separate_provisional",
+  "provisional_scoring_total": 119189
+}
