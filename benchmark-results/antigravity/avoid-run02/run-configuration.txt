@@ -1,0 +1,5 @@
+model=Claude Sonnet 4.6 (Thinking)
+cli_version=1.5.10
+conversation_id=4e8d9f29-3236-4e4c-9260-158e4bf77ff7
+sandbox_enabled=False
+manual_approval_count=6
