@@ -254,17 +254,8 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .dtable tr.fold td { background: var(--accent-surface); color: var(--violet); cursor: pointer; text-align: center; font-weight: 700; font-family: inherit; }
 .diff-scroll { overflow-x: auto; }
 
-/* replay */
-.player { display: grid; grid-template-columns: 240px 1fr; gap: var(--g2); min-height: 460px; }
-.steps { display: flex; flex-direction: column; gap: 4px; }
-.step { border: 1px solid var(--border); background: var(--raised); border-radius: 10px; padding: 8px 10px; text-align: left; display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 13px; color: var(--label-3); transition: all .15s; }
-.step .n { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; background: var(--raised-3); font-size: 11px; flex: none; }
-.step.done { color: var(--label-2); } .step.done .n { background: var(--ok-surface); color: var(--ok); }
-.step.active { color: var(--text); border-color: var(--accent); background: var(--accent-surface); } .step.active .n { background: var(--accent); color: #fff; }
-.step.fail .n { background: var(--danger-surface); color: var(--danger); }
-.stage { background: var(--raised); border: 1px solid var(--border); border-radius: var(--r-card); overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
-.stage .sh { padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--raised-2); font-weight: 800; font-size: 13px; display: flex; gap: 8px; align-items: center; }
-.stage .sb { padding: 12px; overflow: auto; flex: 1; max-height: 520px; }
+.steps-list { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.steps-list .note { margin-top: 2px; line-height: 1.6; }
 .banner { margin: 0 0 var(--g2); padding: 10px 14px; border-radius: var(--r-card); border: 1px solid var(--danger); background: var(--raised); font-size: 13px; }
 .live-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g2); margin: var(--g2) 0; }
 @media (max-width: 900px) { .live-grid { grid-template-columns: 1fr; } }
@@ -273,20 +264,6 @@ pre.text { white-space: pre-wrap; word-break: break-word; margin: 0; max-height:
 .live-col iframe { width: 100%; height: 480px; border: 1px solid var(--border-strong); border-radius: 10px; background: #fff; }
 .live-log { font-family: "JetBrains Mono", monospace; font-size: 11.5px; max-height: 96px; overflow: auto; color: var(--label-2); }
 .live-log .ok { color: var(--ok); } .live-log .bad { color: var(--danger); }
-.term { font-family: "JetBrains Mono", monospace; font-size: 12.5px; white-space: pre-wrap; word-break: break-word; color: var(--label-2); }
-.term .line { animation: pop .18s ease-out; }
-.term .ok { color: var(--ok); } .term .bad { color: var(--danger); } .term .hl { color: var(--violet); font-weight: 600; } .term .dim { color: var(--label-3); }
-.caret { display: inline-block; width: 7px; height: 14px; background: var(--violet); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes pop { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
-.controls { display: flex; gap: var(--g1); align-items: center; flex-wrap: wrap; margin-bottom: var(--g2); }
-.scrub { flex: 1; min-width: 140px; accent-color: var(--accent); }
-.working { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 300px; color: var(--label-2); }
-.spinner { width: 44px; height: 44px; border-radius: 50%; border: 4px solid var(--raised-3); border-top-color: var(--violet); animation: spin .8s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.clock { font-size: 34px; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
-.verdict { text-align: center; padding: 40px 10px; }
-.verdict .big { font-size: 40px; font-weight: 800; }
 .verdict .big.ok { color: var(--ok); } .verdict .big.bad { color: var(--danger); }
 .trap { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
 .trap:last-child { border: 0; }
@@ -553,7 +530,7 @@ table.sheet { width: 100%; border-collapse: collapse; min-width: 720px; }
 <aside class="side" id="jumpNav">
   <a class="brand" href="#" data-go="top"><img class="logo" src="benchmark-mark.svg" width="28" height="28" alt="" aria-hidden="true"><span>AI Coding Agents</span></a>
   <nav class="side-nav" id="menu" aria-label="Sections"></nav>
-  <button class="btn side-theme" id="themeBtn" title="Switch between light and dark">◐ <span>Theme</span></button>
+  <button class="btn side-theme" id="themeBtn" title="Switch between light and dark"><span>Theme</span></button>
 </aside>
 
 <main class="wrap">
@@ -833,7 +810,7 @@ $('#foot').innerHTML = `Data: <code>${esc(D.branch.replace('origin/', ''))}</cod
     const sha = (await res.text()).trim();
     if (!/^[0-9a-f]{40}$/.test(sha) || sha.startsWith(D.branchCommit)) return;
     const b = $('#staleBanner');
-    b.innerHTML = `⚠ Newer results exist. This page updates itself within about 15 minutes.`;
+    b.innerHTML = `Newer results exist. This page updates itself within about 15 minutes.`;
     b.hidden = false;
   } catch { /* offline or rate-limited: say nothing */ }
 })();
@@ -923,10 +900,10 @@ function renderTests() {
     const per = D.tools.map((tl) => slotScore(slots.find((x) => x.task === t.id && x.tool === tl.id))).filter((v) => v != null);
     const avg = per.length ? Math.round(mean(per)) : null;
     return `<tr data-task="${t.id}" tabindex="0" title="Compare the tools on test ${t.id}">
-      <td class="id">${t.id}</td><td class="area">${esc(area)}</td><td>${esc(asks)}</td><td class="how">${esc(check)}</td>
+      <td class="area">${esc(area)}</td><td>${esc(asks)}</td><td class="how">${esc(check)}</td>
       <td class="num">${avg ?? '—'}</td><td class="go">Compare →</td></tr>`;
   }).join('');
-  $('#testCards').innerHTML = `<thead><tr><th>Test</th><th>Area</th><th>What it asks</th><th>How it is checked</th><th>Average score</th><th></th></tr></thead><tbody>${rows}</tbody>`;
+  $('#testCards').innerHTML = `<thead><tr><th>Test</th><th>What it asks</th><th>How it is checked</th><th>Average score</th><th></th></tr></thead><tbody>${rows}</tbody>`;
   renderReqs();
 }
 $('#testCards').addEventListener('keydown', (e) => { const tr = e.target.closest('tr[data-task]'); if (tr && e.key === 'Enter') openTask(tr.dataset.task); });
@@ -961,7 +938,7 @@ $('#resetBtn').onclick = () => { state.tools.clear(); state.tasks.clear(); state
 function renderMatrix() {
   let h = `<thead><tr><th>Test</th>${D.tools.map((t) => `<th>${esc(t.name)}</th>`).join('')}</tr></thead><tbody>`;
   for (const t of D.tasks) {
-    h += `<tr><th class="task"><button data-task="${t.id}" title="Compare the tools on test ${t.id}"><b>${t.id}</b><span>${esc((TEST_INFO[t.id] || [t.short])[0])}</span></button></th>`;
+    h += `<tr><th class="task"><button data-task="${t.id}" title="Compare the tools on test ${t.id}"><b>${esc((TEST_INFO[t.id] || [t.short])[0])}</b></button></th>`;
     for (const tl of D.tools) {
       const s = slots.find((x) => x.task === t.id && x.tool === tl.id);
       const runs = s.runsAll, n = runs.length, passed = runs.filter((r) => r.status === 'pass').length;
@@ -1001,7 +978,7 @@ function renderRuns() {
         <td class="num">${time.v == null ? '–' : fmtS(time.v)}</td>
         <td class="num">${tok.v == null ? '–' : fmtN(Math.round(tok.v))}</td></tr>`;
     }).join('');
-    return `<div class="panel tcard"><button class="tcard-head" data-task="${t.id}"><span><b>${t.id}</b> ${esc(info[0])}</span><span class="tcard-go">Compare →</span></button>
+    return `<div class="panel tcard"><button class="tcard-head" data-task="${t.id}"><b>${esc(info[0])}</b><span class="tcard-go">Compare →</span></button>
       <p class="note">${esc(info[1])}</p>
       <table class="sheet"><thead><tr><th>Tool</th><th>Passed</th><th class="num">Score</th><th class="num">Time</th><th class="num">Tokens</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }).join('');
@@ -1026,7 +1003,7 @@ function renderCharts() {
       const rows = rowsFor(ss).sort((x, y) => (x.a.v ?? Infinity) - (y.a.v ?? Infinity));
       // Each test has its own scale: the largest value in the test fills its track.
       const max = Math.max(...rows.map((x) => x.a.v).filter((v) => v != null), 0) || 1;
-      h += `<div class="hgroup" data-task="${t.id}">${t.id} · ${esc(t.short)} <span style="color:var(--violet)">→</span></div>`;
+      h += `<div class="hgroup" data-task="${t.id}">${esc(t.short)} <span style="color:var(--violet)">→</span></div>`;
       h += rows.map(({ s, a }) => {
         const runs = s.runsAll, lbl = esc(toolName(s.tool));
         // A single run opens that run; several runs open the side-by-side comparison.
@@ -1143,16 +1120,16 @@ function operatorHTML(r) {
     ${row('Setup time (min)', o.setup_minutes)}${row('Grading time (min)', o.grading_minutes)}
     ${row('Operator tokens', o.operator_tokens && (o.operator_tokens.input != null ? `${fmtN(o.operator_tokens.input)} in, ${fmtN(o.operator_tokens.output)} out` : o.operator_tokens))}
     ${row('Messages to the agent', o.messages_to_agent)}
-    ${mismatch ? `<div class="t bad"><span class="ic">✖</span><span>operator.json says ${o.messages_to_agent} messages but interventions.json lists ${msgs}</span></div>` : ''}
-    ${Array.isArray(o.operator_help) ? `<div class="why-dim"><b>Help the operator needed or received</b>${o.operator_help.length ? o.operator_help.map((h) => `<div class="t"><span class="ic note">•</span><span>${esc(h.time_utc || '')} ${esc(h.from || '')}: ${esc(h.what || JSON.stringify(h))}</span></div>`).join('') : '<div class="t ok"><span class="ic">✔</span><span>None</span></div>'}</div>` : ''}
-    ${o.checklist ? `<div class="why-dim"><b>Operator checklist</b>${Object.entries(OPERATOR_QUESTIONS).map(([k, q]) => { const v = o.checklist[k]; return `<div class="t ${v === true ? 'bad' : v === false ? 'ok' : ''}"><span class="ic${v == null ? ' note' : ''}">${v === true ? '!' : v === false ? '✔' : '○'}</span><span>${esc(q)} <b>${v === true ? 'Yes' : v === false ? 'No' : 'not answered'}</b></span></div>`; }).join('')}</div>` : ''}
+    ${mismatch ? `<div class="t bad"><span class="ic">✗</span><span>operator.json says ${o.messages_to_agent} messages but interventions.json lists ${msgs}</span></div>` : ''}
+    ${Array.isArray(o.operator_help) ? `<div class="why-dim"><b>Help the operator needed or received</b>${o.operator_help.length ? o.operator_help.map((h) => `<div class="t"><span class="ic note">•</span><span>${esc(h.time_utc || '')} ${esc(h.from || '')}: ${esc(h.what || JSON.stringify(h))}</span></div>`).join('') : '<div class="t ok"><span class="ic">✓</span><span>None</span></div>'}</div>` : ''}
+    ${o.checklist ? `<div class="why-dim"><b>Operator checklist</b>${Object.entries(OPERATOR_QUESTIONS).map(([k, q]) => { const v = o.checklist[k]; return `<div class="t ${v === true ? 'bad' : v === false ? 'ok' : ''}"><span class="ic${v == null ? ' note' : ''}">${v === true ? '!' : v === false ? '✓' : '○'}</span><span>${esc(q)} <b>${v === true ? 'Yes' : v === false ? 'No' : 'not answered'}</b></span></div>`; }).join('')}</div>` : ''}
     ${o.notes && o.notes !== 'none' ? `<p class="note">Notes: ${esc(o.notes)}</p>` : ''}</div>`;
 }
 // Shown when a run was regraded after an evaluator fix: the regrade counts, the original stays as evidence.
 function regradeHTML(r) {
   if (!r.regrade) return '';
   const g = r.regrade, short = esc(g.commit.slice(0, 7));
-  const row = (o) => `<div class="t ${o.ok ? 'ok' : 'bad'}"><span class="ic">${o.ok ? '✔' : '✖'}</span><span>${esc(o.name)}: ${o.pass != null ? `${o.pass} / ${o.pass + (o.fail || 0)} checks passed` : esc(o.verdict || (o.ok ? 'passed' : 'failed'))} · exit ${esc(o.exit ?? '—')}${o.changed ? ' <b>(changed by the fix)</b>' : ''}</span></div>`;
+  const row = (o) => `<div class="t ${o.ok ? 'ok' : 'bad'}"><span class="ic">${o.ok ? '✓' : '✗'}</span><span>${esc(o.name)}: ${o.pass != null ? `${o.pass} / ${o.pass + (o.fail || 0)} checks passed` : esc(o.verdict || (o.ok ? 'passed' : 'failed'))} · exit ${esc(o.exit ?? '—')}${o.changed ? ' <b>(changed by the fix)</b>' : ''}</span></div>`;
   return `<div class="box"><h4>Regraded with a fixed grader</h4>
     <p class="note">This run's preserved original output was graded again with the fixed evaluator <code>${short}</code>${g.date ? ` on ${esc(g.date)}` : ''}, with no agent correction or code change. The score uses the regrade. The original grader's results are kept below as evidence; see the run README for the defect.</p>
     <div class="why-dim"><b>Original grader results</b>${g.original.map(row).join('')}</div></div>`;
@@ -1258,12 +1235,12 @@ function reasonLine(r) {
 function explainHTML(r) {
   const ex = explainRun(r);
   if (ex.total == null) return '<div class="box"><h4>Why this score</h4><p class="note">No independent grader results are saved for this run, so it has no score.</p></div>';
-  const check = (c) => `<div class="t ${c.na ? '' : c.ok ? 'ok' : 'bad'}"><span class="ic${c.na ? ' note' : ''}">${c.na ? '○' : c.ok ? '✔' : '✖'}</span><span>${esc(c.text)}${c.fails.length ? `<br><span class="note">Failed: ${c.fails.map(esc).join('; ')}</span>` : ''}</span></div>`;
+  const check = (c) => `<div class="t ${c.na ? '' : c.ok ? 'ok' : 'bad'}"><span class="ic${c.na ? ' note' : ''}">${c.na ? '○' : c.ok ? '✓' : '✗'}</span><span>${esc(c.text)}${c.fails.length ? `<br><span class="note">Failed: ${c.fails.map(esc).join('; ')}</span>` : ''}</span></div>`;
   return `<div class="box why"><h4>Why this score: <span class="grade g-${grade(ex.total)}" style="width:20px;height:20px;font-size:11px">${grade(ex.total)}</span> ${fmt1(ex.total)}</h4>
     ${ex.parts.map((x) => `<div class="why-dim"><b>${esc(x.dim.name)} (${x.dim.w}%): ${fmt1(x.v)}</b>
       <p class="note">${esc(x.rule)}</p>
       ${x.checks.map(check).join('')}
-      ${x.deductions.length ? x.deductions.map((d) => `<div class="t bad"><span class="ic">−</span><span>${esc(d)}</span></div>`).join('') : '<div class="t ok"><span class="ic">✔</span><span>No deductions</span></div>'}
+      ${x.deductions.length ? x.deductions.map((d) => `<div class="t bad"><span class="ic">−</span><span>${esc(d)}</span></div>`).join('') : '<div class="t ok"><span class="ic">✓</span><span>No deductions</span></div>'}
       <p class="note calc">${esc(x.calc)}</p></div>`).join('')}
     ${ex.unmeasured.length ? `<div class="why-dim"><b>Not counted (${ex.unmeasured.reduce((a, d) => a + d.w, 0)}% of the weight)</b>${ex.unmeasured.map((d) => `<div class="t"><span class="ic note">○</span><span><b>${esc(d.name)} ${d.w}%</b>: ${esc(notCountedReason(r, d))}</span></div>`).join('')}</div>` : ''}
     <div class="why-dim"><b>Total</b><p class="note calc">${esc(ex.totalCalc)}</p></div></div>`;
@@ -1277,7 +1254,7 @@ function qualityLiveHTML() {
     .sort((a, b) => b.n - a.n);
   const ex = graded.slice().sort((a, b) => a.quality.score - b.quality.score)[0];
   const c = ex.quality.checks;
-  const line = (k, txt) => `<div class="t ${c[k].pass === false ? 'bad' : 'ok'}"><span class="ic">${c[k].pass === false ? '✖' : '✔'}</span><span>${txt}</span></div>`;
+  const line = (k, txt) => `<div class="t ${c[k].pass === false ? 'bad' : 'ok'}"><span class="ic">${c[k].pass === false ? '✗' : '✓'}</span><span>${txt}</span></div>`;
   const first = (k) => (c[k].details && c[k].details[0]) ? ` <span class="note">(${esc(c[k].details[0])})</span>` : '';
   return `<p><b>How often each check fails</b> across the ${graded.length} graded runs: ${fails.map((f) => `${names[f.k]} ${f.n}`).join(' · ')}. Average quality score: ${fmt1(graded.reduce((a, r) => a + r.quality.score, 0) / graded.length)}.</p>
     <p><b>Worked example</b>, the lowest quality score: <a href="#" data-why-run="${ex.id}">${esc(toolName(ex.tool))} · task ${ex.task} · ${esc(ex.run)}</a>, quality <b>${fmt1(ex.quality.score)}</b>.</p>
@@ -1296,13 +1273,13 @@ function toolWhyHTML(tasks) {
     const ss = tasks.map((t) => ({ t, s: slots.find((x) => x.task === t.id && x.tool === tl.id) }));
     const ran = ss.filter((x) => x.s.runs.length);
     const rows = ss.map(({ t, s }) => {
-      if (!s.runs.length) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: not run, so not counted</span></div>`;
+      if (!s.runs.length) return `<div class="t"><span class="ic note">○</span><span><b>${esc(t.short)}</b>: not run, so not counted</span></div>`;
       // With several runs, explain the lowest-scoring one; the score is their average.
       const best = s.runs.reduce((a, r) => ((runScore(r) ?? 0) < (runScore(a) ?? 0) ? r : a), s.runs[0]);
       const each = s.runs.map(runScore), have = each.filter((x) => x != null);
       const v = slotScore(s);
-      if (v == null) return `<div class="t"><span class="ic note">○</span><span><b>${t.id} ${esc(t.short)}</b>: run, but nothing was measured, so not counted</span></div>`;
-      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✔' : '✖'}</span><span><b>${t.id} ${esc(t.short)}: ${fmt1(v)}</b>${s.runs.length > 1 ? ` <span class="note">average of ${have.length} runs</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
+      if (v == null) return `<div class="t"><span class="ic note">○</span><span><b>${esc(t.short)}</b>: run, but nothing was measured, so not counted</span></div>`;
+      return `<div class="t ${v >= 100 ? 'ok' : 'bad'}"><span class="ic">${v >= 100 ? '✓' : '✗'}</span><span><b>${esc(t.short)}: ${fmt1(v)}</b>${s.runs.length > 1 ? ` <span class="note">average of ${have.length} runs</span>` : ''}<br><span class="note">${esc(reasonLine(best))}</span> <a href="#" data-why-run="${best.id}">details</a></span></div>`;
     }).join('');
     const counted = ran.filter(({ s }) => slotScore(s) != null);
     const calc = counted.length ? `Average of the ${counted.length} task${counted.length > 1 ? 's' : ''} run: (${counted.map(({ s }) => fmt1(slotScore(s))).join(' + ')}) ÷ ${counted.length} = ${fmt1(sc.overall)}` : 'No grade: none of these tasks has been run.';
@@ -1354,14 +1331,16 @@ function sortRows(rows) {
   });
 }
 // One card per tool: the score, then one labelled bar per grading area (or per test).
+// Model shown after the tool name on the score cards, for tools whose name doesn't carry one.
+const SCORE_MODEL = { copilot: 'Sonnet 4.6', antigravity: 'Sonnet 4.6' };
 function scoreCardsHTML(rows, tasks, dimMode) {
   return rows.map((r) => {
     const g = r.ran ? grade(r.score) : 'N';
     const lines = dimMode
       ? r.dims.filter((d) => tasks.some((t) => dimApplies(t.id, d))).map((d) => ({ name: d.name, v: d.v, color: d.color, tip: `${d.name}: ${d.w}% of the score` }))
-      : r.parts.filter((p) => tasks.includes(p.t)).map((p) => ({ name: `${p.t.id} ${(TEST_INFO[p.t.id] || [p.t.short])[0]}`, v: p.on ? p.v : null, color: TOOL_COLOR[r.tl.id], tip: p.t.name }));
+      : r.parts.filter((p) => tasks.includes(p.t)).map((p) => ({ name: (TEST_INFO[p.t.id] || [p.t.short])[0], v: p.on ? p.v : null, color: TOOL_COLOR[r.tl.id], tip: p.t.name }));
     return `<div class="scard${r.gray ? ' gray' : ''}">
-      <div class="scard-head"><span class="dot" style="background:${TOOL_COLOR[r.tl.id]}"></span>${esc(r.tl.name)}${r.rank === 1 ? '<span class="best">★ Top score</span>' : ''}</div>
+      <div class="scard-head"><span class="dot" style="background:${TOOL_COLOR[r.tl.id]}"></span>${esc(r.tl.name)}${SCORE_MODEL[r.tl.id] ? ` (${SCORE_MODEL[r.tl.id]})` : ''}${r.rank === 1 ? '<span class="best">★ Top score</span>' : ''}</div>
       <div class="scard-score"><span class="grade g-${g}">${g === 'N' ? '–' : g}</span><span class="big">${r.ran ? r.score.toFixed(1) : '—'}</span><span class="note">out of 100</span></div>
       ${lines.map((l) => `<div class="srow" title="${esc(l.tip)}"><span class="lbl">${esc(l.name)}</span><span class="track"><i style="width:${l.v ?? 0}%;background:${l.color}"></i></span><span class="val${l.v == null ? ' na' : ''}">${l.v == null ? 'not graded' : Math.round(l.v)}</span></div>`).join('')}
     </div>`;
@@ -1498,71 +1477,80 @@ function md(src) {
 
 // ---------- drawer ----------
 let current = null, currentTab = 'overview';
-const TABS = [['overview', 'Overview'], ['live', 'Live app'], ['replay', 'Replay'], ['diff', 'Code diff'], ['tests', 'Tests'], ['transcript', 'Prompt & report'], ['task', 'Task spec']];
+const TABS = [['overview', 'Summary'], ['tests', 'Tests'], ['diff', 'Code'], ['live', 'Live app'], ['task', 'Task']];
+// Switch between the side panel (a run) and the centred popup (compare) without the panel
+// sliding across the screen from one shape to the other.
+function drawerShape(modal) {
+  const d = $('#drawer'); if (d.classList.contains('modal') === modal) return;
+  d.style.transition = 'none'; d.classList.toggle('modal', modal); void d.offsetWidth; d.style.transition = '';
+}
 function openRun(id, tab) {
   const r = D.runs.find((x) => x.id === id); if (!r) return;
-  stopReplay();
-  $('#drawer').classList.remove('modal');
-  drawerMode = 'run'; current = r; currentTab = tab || (TABS.some(([k]) => k === currentTab) ? currentTab : 'overview');
-  $('#dTitle').textContent = `${toolName(r.tool)} · ${r.task} ${task(r.task).name}`;
-  $('#dSub').innerHTML = `<span class="badge ${r.status}">${STATUS[r.status]}</span> &nbsp;<code>${esc(r.run)}</code> · last commit <code>${esc(r.commit)}</code> ${esc(r.date)}· model <b>${esc(modelLabel(r))}</b>`;
+  drawerShape(false);
+  const ok = (k) => TABS.some(([x]) => x === k);
+  drawerMode = 'run'; current = r; currentTab = ok(tab) ? tab : ok(currentTab) ? currentTab : 'overview';
+  $('#dTitle').textContent = `${toolName(r.tool)} · ${task(r.task).name}`;
+  $('#dSub').innerHTML = `<span class="badge ${r.status}">${STATUS[r.status]}</span> &nbsp;<code>${esc(r.run)}</code> · ${esc(modelLabel(r))} · ${esc(r.date)}`;
   $('#dGit').href = r.url;
   $('#dTabs').innerHTML = TABS.map(([k, l]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === currentTab}">${l}</button>`).join('');
   $('#drawer').classList.add('open'); $('#scrim').classList.add('open'); $('#drawer').setAttribute('aria-hidden', 'false');
   history.replaceState(null, '', `#run=${r.id}&tab=${currentTab}`);
   renderTab();
 }
-function closeRun() { stopReplay(); $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); history.replaceState(null, '', location.pathname + location.search); current = null; }
+function closeRun() { $('#drawer').classList.remove('open'); $('#scrim').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); history.replaceState(null, '', location.pathname + location.search); current = null; }
 $('#dClose').onclick = closeRun; $('#scrim').onclick = closeRun;
 document.addEventListener('keydown', (e) => {
   if (!$('#drawer').classList.contains('open')) return;
   if (!current) { if (e.key === 'Escape') closeRun(); return; }
   if (e.key === 'Escape') closeRun();
-  if (currentTab === 'replay' && e.key === ' ' && e.target.tagName !== 'INPUT') { e.preventDefault(); togglePlay(); }
 });
-$('#dTabs').addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (!b) return; stopReplay();
+$('#dTabs').addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (!b) return;
   if (drawerMode === 'task') { taskTab = b.dataset.tab; [...$('#dTabs').children].forEach((x) => x.setAttribute('aria-selected', x === b)); history.replaceState(null, '', `#task=${currentTask}&tab=${taskTab}`); return renderTaskTab(); } currentTab = b.dataset.tab; [...$('#dTabs').children].forEach((x) => x.setAttribute('aria-selected', x === b)); history.replaceState(null, '', `#run=${current.id}&tab=${currentTab}`); renderTab(); });
 
 function renderTab() {
   const r = current, body = $('#dBody'); body.scrollTop = 0;
   if (currentTab === 'overview') {
     const checks = r.suites.reduce((a, s) => a + (s.pass || 0), 0), fails = r.suites.reduce((a, s) => a + (s.fail || 0), 0);
+    const sc = runScore(r), ok = r.status === 'pass';
+    const step = (n, title, text) => `<li><b>${title}</b>${text ? `<div class="note">${text}</div>` : ''}</li>`;
     body.innerHTML = `
       <div class="kv">
-        <div><b>Result</b><span style="color:var(--${r.status === 'pass' ? 'ok' : 'danger'})">${STATUS[r.status]}</span></div>
-        <div><b>Grader suites</b><span>${r.suites.filter((s) => s.ok).length} / ${r.suites.length}</span></div>
-        <div><b>Checks passed</b><span>${checks}${fails ? ` <small style="color:var(--danger)">${fails} failed</small>` : ''}</span></div>
+        <div><b>Result</b><span style="color:var(--${ok ? 'ok' : 'danger'})">${STATUS[r.status]}</span></div>
+        <div><b>Score</b><span>${sc == null ? '–' : `${fmt1(sc)} (${grade(sc)})`}</span></div>
+        <div><b>Checks passed</b><span>${checks} of ${checks + fails}</span></div>
         <div><b>Files changed</b><span>${r.changed.length}</span></div>
-        ${r.qualityNotice ? `<div title="${esc(r.qualityNotice.basis)}"><b>Told about code quality</b><span>${r.qualityNotice.told ? 'Yes' : 'No'}</span></div>` : ''}
-        <div><b>Wall time</b><span>${fmtS(r.timing?.seconds)}</span></div>
-        <div><b>Tokens including cache</b><span>${tokenLabel(r)}${r.tokens?.provisional ? " (provisional)" : ""}</span></div>
-        ${r.tokens?.cost != null ? `<div><b>Cost</b><span>$${r.tokens.cost.toFixed(3)}</span></div>` : ''}
-        ${r.tokens?.turns ? `<div><b>Turns</b><span>${r.tokens.turns}</span></div>` : ''}
+        <div><b>Time</b><span>${fmtS(r.timing?.seconds)}</span></div>
+        <div><b>Tokens</b><span>${tokenLabel(r)}</span></div>
       </div>
-      ${r.tokens ? `<p class="note">Token breakdown: input ${fmtN(r.tokens.input)}, cache reads ${fmtN(r.tokens.cached)}, cache creation ${fmtN(r.tokens.cacheCreate)}, output ${fmtN(r.tokens.output)}. ${esc(r.tokens.accounting || '')}${r.tokens.provisional ? ' Provisional total: ' + Number(r.tokens.total).toLocaleString('en-US') + '. Not a verified billing total.' : ''}${r.tokens.provisionalScoring ? ' Token score uses the recorded provisional assumption.' : r.tokens.provisional ? ' Excluded from token-efficiency scoring.' : ''}</p>` : ''}
-      ${r.timing?.method ? `<p class="note">Timing method: ${esc(r.timing.method)}</p>` : ''}
-      ${explainHTML(r)}
-      ${regradeHTML(r)}
-      ${operatorHTML(r)}
-      <div class="box"><h4>Suites</h4>${r.suites.map((s) => `<div class="t ${s.ok ? 'ok' : 'bad'}"><span class="ic">${s.ok ? '✔' : '✖'}</span><span style="flex:1">${esc(s.name)}${s.regraded ? ' <span class="note">(fixed grader)</span>' : ''}</span><span class="num note">${s.pass != null ? `${s.pass} pass · ${s.fail} fail` : s.verdict || ''} · exit ${s.exit ?? '—'}</span></div>`).join('')}</div>
+      <div class="box"><h4>What happened</h4><ol class="steps-list">
+        ${step(1, 'The agent got the task', esc(task(r.task).name))}
+        ${step(2, 'It worked on its own', `${fmtS(r.timing?.seconds)}${r.tokens?.total ? `, ${tokenLabel(r)} tokens` : ''}`)}
+        ${step(3, `It changed ${r.changed.length} file${r.changed.length === 1 ? '' : 's'}`, `${r.changed.map((c) => `<code>${esc(c.path.replace('app/', ''))}</code>`).join(', ')}${r.changed.length ? ' · <a href="#" data-go="diff">see the code</a>' : ''}`)}
+        ${step(4, 'Hidden tests graded the result', `${r.suites.map((s) => `<span class="${s.ok ? 'ok-ink' : 'bad-ink'}">${s.ok ? '✓' : '✗'}</span> ${esc(s.name)}${s.pass != null ? ` ${s.pass}/${s.pass + (s.fail || 0)}` : ''}`).join('<br>')}${r.suites.length ? '<br><a href="#" data-go="tests">see every test</a>' : ''}`)}
+        ${step(5, `<span style="color:var(--${ok ? 'ok' : 'danger'})">${STATUS[r.status]}</span>`, sc == null ? '' : `Score ${fmt1(sc)} out of 100`)}
+      </ol></div>
       ${r.traps.length ? `<div class="box"><h4>Prompt-injection traps</h4>${r.traps.map((t) => `<div class="trap"><b>${esc(t.trap)}</b><span class="badge ${/not followed/i.test(t.result) ? 'pass' : 'fail'}">${esc(t.result)}</span><span class="note" style="grid-column:1/-1">${esc(t.disclosure)}</span></div>`).join('')}</div>` : ''}
-      <div class="box"><h4>Run README</h4><div class="md">${md(r.readme)}</div></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-go="replay">▶ Watch replay</button><button class="btn" data-go="diff">View code diff</button></div>`;
-    body.querySelectorAll('[data-go]').forEach((b) => b.onclick = () => { currentTab = b.dataset.go; openRun(r.id, currentTab); });
+      ${regradeHTML(r)}
+      <details class="suite"><summary>Why this score</summary><div class="tests">${explainHTML(r)}</div></details>
+      <details class="suite"><summary>Who ran it</summary><div class="tests">${operatorHTML(r)}</div></details>
+      <details class="suite"><summary>Run notes</summary><div class="tests"><div class="md">${md(r.readme)}</div></div></details>
+      ${r.tokens || r.timing?.method ? `<details class="suite"><summary>Token and timing details</summary><div class="tests">
+        ${r.tokens ? `<p class="note">Input ${fmtN(r.tokens.input)}, cache reads ${fmtN(r.tokens.cached)}, cache creation ${fmtN(r.tokens.cacheCreate)}, output ${fmtN(r.tokens.output)}. ${esc(r.tokens.accounting || '')}${r.tokens.provisional ? ' Provisional total: ' + Number(r.tokens.total).toLocaleString('en-US') + '. Not a verified billing total.' : ''}${r.tokens.provisionalScoring ? ' Token score uses the recorded provisional assumption.' : r.tokens.provisional ? ' Excluded from token-efficiency scoring.' : ''}</p>` : ''}
+        ${r.timing?.method ? `<p class="note">Timing method: ${esc(r.timing.method)}</p>` : ''}</div></details>` : ''}`;
+    body.querySelectorAll('[data-go]').forEach((b) => b.onclick = (e) => { e.preventDefault(); openRun(r.id, b.dataset.go); });
   }
   if (currentTab === 'tests') {
     body.innerHTML = r.suites.map((s, i) => `<details class="suite" ${i < 3 ? 'open' : ''}><summary><span class="badge ${s.ok ? 'pass' : 'fail'}">${s.ok ? 'PASS' : 'FAIL'}</span>${esc(s.name)}${s.regraded ? ' <span class="note">(fixed grader)</span>' : ''}<span class="spacer"></span><span class="note num">${s.pass != null ? `${s.pass}/${s.pass + (s.fail || 0)}` : s.verdict || ''}</span></summary>
-      <div class="tests">${s.tests.length ? s.tests.map((t) => `<div class="t ${t.ok ? 'ok' : 'bad'}" style="padding-left:${t.depth * 6}px"><span class="ic">${t.ok ? '✔' : '✖'}</span>${esc(t.name)}</div>`).join('') : ''}
+      <div class="tests">${s.tests.length ? s.tests.map((t) => `<div class="t ${t.ok ? 'ok' : 'bad'}" style="padding-left:${t.depth * 6}px"><span class="ic">${t.ok ? '✓' : '✗'}</span>${esc(t.name)}</div>`).join('') : ''}
       ${s.log ? `<details style="margin-top:8px"><summary class="note" style="cursor:pointer">Raw log</summary><pre class="text">${esc(s.log)}</pre></details>` : ''}</div></details>`).join('') || '<div class="empty">No grader logs saved for this run</div>';
   }
-  if (currentTab === 'transcript') {
-    body.innerHTML = `<div class="box"><h4>Initial prompt</h4>${r.prompt ? `<pre class="text">${esc(r.prompt)}</pre>` : '<div class="note">Not saved in all-runs for this run.</div>'}</div>
-      <div class="box"><h4>Agent's final report</h4>${r.report ? `<pre class="text">${esc(r.report)}</pre>` : '<div class="note">Not saved in all-runs for this run.</div>'}</div>`;
+  if (currentTab === 'task') {
+    body.innerHTML = `<div class="box"><div class="md">${md(task(r.task).spec) || '<div class="note">Task file not found.</div>'}</div></div>
+      <details class="suite"><summary>Prompt the agent was given</summary><div class="tests">${r.prompt ? `<pre class="text">${esc(r.prompt)}</pre>` : '<div class="note">Not saved for this run.</div>'}</div></details>
+      <details class="suite"><summary>Agent's final report</summary><div class="tests">${r.report ? `<pre class="text">${esc(r.report)}</pre>` : '<div class="note">Not saved for this run.</div>'}</div></details>`;
   }
-  if (currentTab === 'task') body.innerHTML = `<div class="box"><div class="md">${md(task(r.task).spec) || '<div class="note">Task file not found.</div>'}</div></div>`;
   if (currentTab === 'diff') renderDiffTab();
   if (currentTab === 'live') renderLive();
-  if (currentTab === 'replay') renderReplay();
 }
 
 // ---------- task comparison ----------
@@ -1570,8 +1558,8 @@ let drawerMode = 'run', currentTask = null, taskTab = 'compare', cmpLeft = 'base
 const TASK_TABS = [['compare', 'Compare'], ['tests', 'Test by test'], ['code', 'Code'], ['spec', 'Task']];
 function openTask(id, tab) {
   const t = task(id); if (!t) return;
-  stopReplay(); drawerMode = 'task'; current = null; currentTask = id; taskTab = tab || 'compare';
-  $('#drawer').classList.add('modal');
+  drawerMode = 'task'; current = null; currentTask = id; taskTab = tab || 'compare';
+  drawerShape(true);
   const runs = D.runs.filter((r) => r.task === id);
   // default: first tool's solution vs the next tool's, or starting code when only one run exists
   if (!runs.find((r) => r.id === cmpLeft)) cmpLeft = runs.length > 1 ? runs[0].id : 'baseline';
@@ -1627,7 +1615,7 @@ function renderTaskTab() {
       h += `<div class="box"><h4>${esc(name)} ${shared ? '' : '<span class="note">(each agent wrote its own, so names differ)</span>'}</h4><div class="tbl-wrap"><table class="cmp tg"><thead>${head}</thead><tbody>`;
       h += `<tr><td><b>Suite</b></td>${cols.map((c) => { const s = c.r?.suites.find((x) => x.key === key); return !c.r ? '<td class="c none">Not run</td>' : !s ? '<td class="c none">—</td>' : `<td class="c ${s.ok ? 'ok' : 'bad'}">${s.pass != null ? `${s.pass}/${s.pass + (s.fail || 0)}` : s.verdict || (s.ok ? 'PASS' : 'FAIL')}</td>`; }).join('')}</tr>`;
       if (shared) for (const n of names) {
-        h += `<tr><td style="white-space:normal;font-weight:600">${esc(n)}</td>${cols.map((c) => { const s = c.r?.suites.find((x) => x.key === key); const tt = s?.tests.find((x) => x.name === n && x.depth === 0); return !c.r ? '<td class="c none">·</td>' : !tt ? '<td class="c none">—</td>' : `<td class="c ${tt.ok ? 'ok' : 'bad'}">${tt.ok ? '✔' : '✖'}</td>`; }).join('')}</tr>`;
+        h += `<tr><td style="white-space:normal;font-weight:600">${esc(n)}</td>${cols.map((c) => { const s = c.r?.suites.find((x) => x.key === key); const tt = s?.tests.find((x) => x.name === n && x.depth === 0); return !c.r ? '<td class="c none">·</td>' : !tt ? '<td class="c none">—</td>' : `<td class="c ${tt.ok ? 'ok' : 'bad'}">${tt.ok ? '✓' : '✗'}</td>`; }).join('')}</tr>`;
       }
       h += '</tbody></table></div></div>';
     }
@@ -1678,129 +1666,6 @@ function renderDiffTab() {
   body.innerHTML = html;
   body.querySelectorAll('[data-mode]').forEach((b) => b.onclick = () => { diffMode = b.dataset.mode; renderDiffTab(); });
   $('#against').onchange = (e) => { diffAgainst = e.target.value; renderDiffTab(); };
-}
-
-// ---------- replay ----------
-let rp = null;
-function buildTimeline(r) {
-  const steps = [];
-  steps.push({ kind: 'prompt', label: 'Prompt sent', dur: 2200 });
-  steps.push({ kind: 'work', label: 'Agent working', dur: 2600 });
-  r.changed.forEach((c) => steps.push({ kind: 'edit', label: `Edit ${c.path.replace('app/', '')}`, file: c, dur: 2600 }));
-  steps.push({ kind: 'report', label: 'Final report', dur: 2200 });
-  r.suites.forEach((s) => steps.push({ kind: 'suite', label: s.name, suite: s, dur: Math.min(5200, 900 + Math.max(s.tests.length, 3) * 140) }));
-  if (r.traps.length) steps.push({ kind: 'traps', label: 'Injection traps', dur: 2400 });
-  steps.push({ kind: 'verdict', label: 'Verdict', dur: 1500 });
-  let t = 0; steps.forEach((s) => { s.start = t; t += s.dur; });
-  return { steps, total: t };
-}
-function renderReplay() {
-  const r = current, body = $('#dBody');
-  const tl = buildTimeline(r);
-  rp = { r, tl, t: 0, playing: false, speed: 1, last: 0, raf: 0, cache: {} };
-  body.innerHTML = `
-    <div class="controls">
-      <button class="btn primary" id="rpPlay">▶ Play</button>
-      <button class="btn icon" id="rpBack" title="Previous step">⏮</button>
-      <button class="btn icon" id="rpNext" title="Next step">⏭</button>
-      <input class="scrub" type="range" id="rpScrub" min="0" max="${tl.total}" value="0" aria-label="Replay position">
-      <div class="seg" id="rpSpeed">${[0.5, 1, 2, 4].map((s) => `<button data-s="${s}" aria-pressed="${s === 1}">${s}×</button>`).join('')}</div>
-    </div>
-    <div class="player"><div class="steps" id="rpSteps">${tl.steps.map((s, i) => `<button class="step" data-i="${i}"><span class="n">${i + 1}</span><span>${esc(s.label)}</span></button>`).join('')}</div>
-    <div class="stage"><div class="sh" id="rpHead"></div><div class="sb" id="rpBody"></div></div></div>
-    <p class="note" style="margin-top:12px">Reconstructed from the saved prompt, the agent's preserved code and the independent grader logs. Real elapsed time is shown on the clock; playback is compressed. <kbd>Space</kbd> plays/pauses.</p>`;
-  $('#rpPlay').onclick = togglePlay;
-  $('#rpScrub').oninput = (e) => { rp.t = +e.target.value; drawReplay(true); };
-  $('#rpSteps').onclick = (e) => { const b = e.target.closest('[data-i]'); if (b) { rp.t = tl.steps[+b.dataset.i].start; drawReplay(true); } };
-  $('#rpBack').onclick = () => { const i = stepAt(rp.t); rp.t = tl.steps[Math.max(0, rp.t - tl.steps[i].start > 300 ? i : i - 1)].start; drawReplay(true); };
-  $('#rpNext').onclick = () => { const i = stepAt(rp.t); rp.t = i + 1 < tl.steps.length ? tl.steps[i + 1].start : tl.total; drawReplay(true); };
-  $('#rpSpeed').onclick = (e) => { const b = e.target.closest('[data-s]'); if (!b) return; rp.speed = +b.dataset.s; [...$('#rpSpeed').children].forEach((x) => x.setAttribute('aria-pressed', x === b)); };
-  drawReplay(true);
-}
-function stepAt(t) { const s = rp.tl.steps; for (let i = s.length - 1; i >= 0; i--) if (t >= s[i].start) return i; return 0; }
-function togglePlay() {
-  if (!rp) return;
-  rp.playing = !rp.playing;
-  if (rp.playing && rp.t >= rp.tl.total) rp.t = 0;
-  $('#rpPlay').textContent = rp.playing ? '❚❚ Pause' : '▶ Play';
-  rp.last = performance.now();
-  if (rp.playing) loop();
-}
-function loop() {
-  if (!rp?.playing) return;
-  const now = performance.now(); rp.t = Math.min(rp.tl.total, rp.t + (now - rp.last) * rp.speed); rp.last = now;
-  drawReplay(false);
-  if (rp.t >= rp.tl.total) { rp.playing = false; $('#rpPlay').textContent = '↺ Replay'; return; }
-  rp.raf = requestAnimationFrame(loop);
-}
-function stopReplay() { if (rp) { rp.playing = false; cancelAnimationFrame(rp.raf); } rp = null; }
-function drawReplay(force) {
-  const { tl, r } = rp, i = stepAt(rp.t), s = tl.steps[i], p = Math.min(1, (rp.t - s.start) / s.dur);
-  $('#rpScrub').value = rp.t;
-  [...$('#rpSteps').children].forEach((b, k) => {
-    const st = tl.steps[k], failed = st.kind === 'suite' && !st.suite.ok;
-    b.className = 'step' + (k < i || rp.t >= tl.total ? ' done' : '') + (k === i && rp.t < tl.total ? ' active' : '') + (failed && k <= i ? ' fail' : '');
-  });
-  const key = `${i}:${s.kind === 'suite' ? Math.ceil((s.suite.tests.length || 1) * Math.min(1, p * 1.2)) + ':' + (p > .85) : s.kind === 'prompt' || s.kind === 'edit' || s.kind === 'work' || s.kind === 'report' ? Math.floor(p * 60) : 0}`;
-  if (!force && rp.lastKey === key) return; rp.lastKey = key;
-  const head = $('#rpHead'), body = $('#rpBody');
-  const realElapsed = r.timing?.seconds;
-  if (s.kind === 'prompt') {
-    head.innerHTML = '💬 User → ' + esc(toolName(r.tool));
-    const txt = r.prompt || `(Prompt not saved in all-runs.) Task ${r.task}: ${task(r.task).name}`;
-    const n = Math.floor(txt.length * Math.min(1, p * 1.25));
-    body.innerHTML = `<div class="term">${esc(txt.slice(0, n))}<span class="caret"></span></div>`;
-    body.scrollTop = body.scrollHeight;
-  } else if (s.kind === 'work') {
-    head.innerHTML = '⚙ ' + esc(toolName(r.tool)) + ' is working';
-    const secs = realElapsed ? realElapsed * p : null;
-    body.innerHTML = `<div class="working"><div class="spinner"></div><div class="clock">${secs != null ? fmtS(secs) : '—'}</div><div class="note">${realElapsed ? `real run took ${fmtS(realElapsed)}` : 'elapsed time not recorded'}${r.tokens?.total ? ` · ${fmtN(Math.round(r.tokens.total * p))} tokens${r.tokens.provisional ? ' (provisional)' : ''}` : ''}</div></div>`;
-  } else if (s.kind === 'edit') {
-    const c = s.file;
-    head.innerHTML = `✎ <span class="mono">${esc(c.path)}</span>`;
-    const ck = 'edit' + c.path;
-    if (!rp.cache[ck]) { const ops = lineDiff(c.before, c.after).filter((o) => o.t !== '='); rp.cache[ck] = ops; }
-    const ops = rp.cache[ck], n = Math.ceil(ops.length * Math.min(1, p * 1.15));
-    body.innerHTML = `<table class="dtable"><colgroup><col style="width:46px"><col style="width:16px"><col></colgroup>${ops.slice(0, n).map((o) => `<tr class="${o.t === '+' ? 'a' : 'd'}"><td class="ln">${o.t === '+' ? o.b : o.a}</td><td class="sg">${o.t}</td><td>${esc(o.s) || ' '}</td></tr>`).join('')}</table>${n < ops.length ? '<span class="caret"></span>' : ''}<p class="note">${ops.filter((o) => o.t === '+').length} added · ${ops.filter((o) => o.t === '-').length} removed · <a href="#" data-jump="diff">open full diff</a></p>`;
-    body.scrollTop = body.scrollHeight;
-  } else if (s.kind === 'report') {
-    head.innerHTML = '📝 Agent final report';
-    const txt = r.report || '(Final report not saved in all-runs for this run.)';
-    body.innerHTML = `<div class="term">${esc(txt.slice(0, Math.floor(txt.length * Math.min(1, p * 1.3))))}</div>`;
-    body.scrollTop = body.scrollHeight;
-  } else if (s.kind === 'suite') {
-    const su = s.suite;
-    head.innerHTML = `🧪 ${esc(su.name)}`;
-    const tests = su.tests.length ? su.tests : [{ ok: su.ok, depth: 0, name: su.verdict ? `scan ${su.verdict}` : `exit ${su.exit}` }];
-    const n = Math.ceil(tests.length * Math.min(1, p * 1.2));
-    const done = n >= tests.length && p > .85;
-    // Only add the lines that are new since the last frame. Redrawing every line on each frame
-    // replayed their fade-in animation and made the whole list flash.
-    let term = body.querySelector(`.term[data-step="${i}"]`);
-    if (!term) {
-      body.innerHTML = `<div class="term" data-step="${i}"><div class="dim">$ run grader: ${esc(su.key)}</div><div class="lines"></div><div class="tail"></div></div>`;
-      term = body.querySelector('.term'); term._n = 0; term._done = null;
-    }
-    const lines = term.querySelector('.lines');
-    if (n < term._n) { lines.innerHTML = ''; term._n = 0; }
-    if (n > term._n) {
-      lines.insertAdjacentHTML('beforeend', tests.slice(term._n, n).map((t) => `<div class="line" style="padding-left:${t.depth * 6}px"><span class="${t.ok ? 'ok' : 'bad'}">${t.ok ? '✔' : '✖'}</span> ${esc(t.name)}</div>`).join(''));
-      term._n = n;
-    }
-    if (term._done !== done) {
-      term.querySelector('.tail').innerHTML = done ? `<div class="line hl" style="margin-top:6px">${su.pass != null ? `${su.pass} passed, ${su.fail} failed` : su.verdict || ''} · exit ${su.exit ?? '—'}</div>` : '<span class="caret"></span>';
-      term._done = done;
-    }
-    body.scrollTop = body.scrollHeight;
-  } else if (s.kind === 'traps') {
-    head.innerHTML = '🛡 Prompt-injection traps';
-    body.innerHTML = r.traps.map((t) => `<div class="trap line"><b>${esc(t.trap)}</b><span class="badge ${/not followed/i.test(t.result) ? 'pass' : 'fail'}">${esc(t.result)}</span><span class="note" style="grid-column:1/-1">${esc(t.disclosure)}</span></div>`).join('');
-  } else {
-    head.innerHTML = '🏁 Verdict';
-    const ok = r.status === 'pass';
-    body.innerHTML = `<div class="verdict"><div class="big ${ok ? 'ok' : 'bad'}">${ok ? 'PASSED' : 'FAILED'}</div><p>${r.suites.filter((x) => x.ok).length} of ${r.suites.length} grader suites passed · ${r.changed.length} files changed · ${fmtS(realElapsed)} · ${tokenLabel(r)} tokens</p>${!ok ? '<p class="note">Original attempt failed at least one independent check; see the README for any correction round.</p>' : ''}</div>`;
-  }
-  body.querySelectorAll('[data-jump]').forEach((a) => a.onclick = (e) => { e.preventDefault(); openRun(r.id, a.dataset.jump); });
 }
 
 // ---------- live app: starting app vs agent's app ----------
