@@ -1,0 +1,42 @@
+{
+  "memory": false,
+  "disableAllHooks": true,
+  "ide": {
+    "autoConnect": false
+  },
+  "extensions": {
+    "mode": "disabled"
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowBypass": false,
+    "userPolicy": {
+      "filesystem": {
+        "deniedPaths": [
+          "/Users/rossvol",
+          "/private/tmp/copilot-task002-batch-OyXu08du/copilot-validation-run03/runtime/config",
+          "/private/tmp/copilot-task002-batch-OyXu08du/external",
+          "/private/tmp/copilot-task002-batch-OyXu08du/copilot-validation-run03/evidence",
+          "/private/tmp/copilot-task002-batch-OyXu08du/copilot-validation-run03/private"
+        ]
+      },
+      "network": {
+        "allowOutbound": false,
+        "allowLocalNetwork": true,
+        "allowedHosts": [
+          "localhost",
+          "127.0.0.1",
+          "::1"
+        ]
+      },
+      "seatbelt": {
+        "keychainAccess": false
+      }
+    },
+    "auth": {
+      "git": false,
+      "gh": false
+    }
+  },
+  "bashEnv": false
+}

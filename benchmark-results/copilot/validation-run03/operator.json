@@ -1,0 +1,12 @@
+{
+  "operator_type": "ai",
+  "operator_tool": "Codex",
+  "operator_supervisor": "Ross",
+  "operator_help": [
+    {
+      "phase": "setup",
+      "detail": "User approved separate serial dependency installs and corrected sandbox settings during the previous batch; user confirmed the Task 002 evaluator pin before measurement"
+    }
+  ],
+  "messages_to_agent": 0
+}

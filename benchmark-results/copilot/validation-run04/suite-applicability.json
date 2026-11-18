@@ -1,0 +1,14 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 002 procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 002 procedure"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 002 procedure"
+  }
+}
