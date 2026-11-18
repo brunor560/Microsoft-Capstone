@@ -1,0 +1,7 @@
+{
+  "source": "owned assistant.message events",
+  "models": [
+    "claude-sonnet-4-6"
+  ],
+  "session_id": "cb05ad65-7d9d-48bd-8ae8-c9174b39babe"
+}

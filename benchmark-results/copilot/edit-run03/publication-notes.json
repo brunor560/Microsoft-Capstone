@@ -1,0 +1,7 @@
+{
+  "effort": "medium from owned session events",
+  "scope_findings": [
+    "Changed source files: app/public/index.html, app/server.js, app/test.js. Permitted write scope: app/server.js, app/test.js and app/public/index.html."
+  ],
+  "source": "Owned events and before/after SHA-256 manifests"
+}

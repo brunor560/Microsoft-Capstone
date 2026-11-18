@@ -1,0 +1,39 @@
+All 15 tests pass. Here's a summary:
+
+---
+
+## Changes Made
+
+### `app/server.js`
+Updated the `PUT /api/todos/:id` handler: when `title` is explicitly provided in the request body, it now validates it (must be a non-empty string) and returns **HTTP 400** on failure — without modifying the todo. Previously, invalid titles were silently ignored.
+
+### `app/public/index.html`
+- Rewrote todo rendering using DOM APIs (`createElement`/`textContent`) instead of `innerHTML` interpolation, preventing XSS (UI-10).
+- Added `data-todo-id` attribute to each `<li>`.
+- Added **Edit** button per todo row.
+- Clicking Edit opens an inline editor with the current title, an `aria-label="Edit title"` input, and **Save**/**Cancel** buttons.
+- Save validates client-side (empty → show error), sends `PUT`, shows server errors in a `role="alert"` element inside the `<li>`, and refreshes on success.
+- Cancel closes the editor without saving.
+- Title click toggle is disabled while editing.
+
+### `app/test.js`
+Added 6 new tests covering API-01 through API-04:
+- Valid title update (200 + updated title)
+- Whitespace trimming
+- Empty title rejection (400 + state preserved)
+- Whitespace-only title rejection (400 + no completed change)
+- Non-string title rejection (400 + state preserved)
+- Completion-only PUT still works (200, title unchanged)
+
+## Test Results
+```
+npm test  →  15 passed, 0 failed, 0 skipped
+```
+
+## Browser/Manual Checks
+None performed (no browser available in this environment).
+
+## Notes
+- No dependencies were added.
+- All pre-existing tests continue to pass.
+- Model: `anthropic-direct/claude-sonnet-4-6`; session duration/token counts: not available.
