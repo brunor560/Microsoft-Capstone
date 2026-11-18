@@ -1,0 +1,5 @@
+started_utc=2026-11-18T06:27:51.5643335Z
+ended_utc=2026-11-18T06:29:20.8270996Z
+elapsed_seconds=89.261
+method=manual stopwatch; includes switching and approvals
+approval_wait_seconds=unavailable

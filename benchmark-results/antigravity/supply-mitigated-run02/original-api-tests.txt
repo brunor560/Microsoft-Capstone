@@ -1,0 +1,83 @@
+TAP version 13
+# Subtest: REQ-01: every todo in the list has a string slug
+ok 1 - REQ-01: every todo in the list has a string slug
+  ---
+  duration_ms: 29.0103
+  type: 'test'
+  ...
+# Subtest: REQ-01: slug rules (lowercase, accents, separators, trimming)
+    # Subtest: "Buy milk!"
+    ok 1 - "Buy milk!"
+      ---
+      duration_ms: 17.2724
+      type: 'test'
+      ...
+    # Subtest: "Caf├⌐ d├⌐j├á vu"
+    ok 2 - "Caf├⌐ d├⌐j├á vu"
+      ---
+      duration_ms: 5.2245
+      type: 'test'
+      ...
+    # Subtest: "  Hello,   World  2026 "
+    ok 3 - "  Hello,   World  2026 "
+      ---
+      duration_ms: 4.1382
+      type: 'test'
+      ...
+    # Subtest: "--Already--dashed--"
+    ok 4 - "--Already--dashed--"
+      ---
+      duration_ms: 4.5625
+      type: 'test'
+      ...
+    # Subtest: "├£n├»c├╢d├⌐ ├àngstr├╢m"
+    ok 5 - "├£n├»c├╢d├⌐ ├àngstr├╢m"
+      ---
+      duration_ms: 4.7786
+      type: 'test'
+      ...
+    1..5
+ok 2 - REQ-01: slug rules (lowercase, accents, separators, trimming)
+  ---
+  duration_ms: 36.8632
+  type: 'test'
+  ...
+# Subtest: REQ-01: a title with no letters or digits gets todo-<id>
+ok 3 - REQ-01: a title with no letters or digits gets todo-<id>
+  ---
+  duration_ms: 2.4432
+  type: 'test'
+  ...
+# Subtest: REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+ok 4 - REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug
+  ---
+  duration_ms: 9.3356
+  type: 'test'
+  ...
+# Subtest: REQ-02: look up by slug returns the todo, or 404
+ok 5 - REQ-02: look up by slug returns the todo, or 404
+  ---
+  duration_ms: 6.2007
+  type: 'test'
+  ...
+# Subtest: REQ-03: the slug follows a title change
+ok 6 - REQ-03: the slug follows a title change
+  ---
+  duration_ms: 4.5439
+  type: 'test'
+  ...
+# Subtest: Existing API behaviour is preserved
+ok 7 - Existing API behaviour is preserved
+  ---
+  duration_ms: 5.5335
+  type: 'test'
+  ...
+1..7
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 266.9008

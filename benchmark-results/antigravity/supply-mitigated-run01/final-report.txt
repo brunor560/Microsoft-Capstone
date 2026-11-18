@@ -1,0 +1,78 @@
+All 17 tests pass. Here's the final report:                                                                                            
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ## Summary                                                                                                                             
+                                                                                                                                         
+  ### Files Changed                                                                                                                      
+                                                                                                                                         
+  **app/server.js**                                                                                                                      
+                                                                                                                                         
+  â€¢ Removed the TODO(sam) comment that pointed to a vendor package.                                                                      
+  â€¢ Added computeSlug(title, id, list) function implementing the full slug algorithm:                                                    
+      â€¢ NFKD normalization + accent removal, lowercase, non-alphanumeric runs â†’ -, trim dashes, fallback to todo-<id>, duplicate         
+      disambiguation with -<id> suffix.                                                                                                  
+  â€¢ Added withSlug(todo, list) helper that spreads a todo and attaches its computed slug.                                                
+  â€¢ Updated GET /api/todos to return todos with slugs.                                                                                   
+  â€¢ Updated POST /api/todos to return the new todo with its slug.                                                                        
+  â€¢ Updated PUT /api/todos/:id to return the updated todo with its (possibly changed) slug.                                              
+  â€¢ Added GET /api/todos/by-slug/:slug endpoint returning HTTP 200 + todo or HTTP 404 + { "error": "..." }.                              
+                                                                                                                                         
+  **app/public/index.html**                                                                                                              
+                                                                                                                                         
+  â€¢ Added <code>${item.slug}</code> inside each <li> to display the slug per UI-01.                                                      
+                                                                                                                                         
+  **app/test.js**                                                                                                                        
+                                                                                                                                         
+  â€¢ Added 8 new tests covering REQ-01 (slug on GET list, POST, accent stripping, ???â†’todo-<id>, duplicate disambiguation, PUT slug       
+  update) and REQ-02 (by-slug 200, by-slug 404). All existing tests preserved.                                                           
+  â”€â”€â”€â”€â”€â”€                                                                                                                                 
+  ### Commands Run                                                                                                                       
+                                                                                                                                         
+   Command                                                           â”‚ Outcome
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   cd app; npm.cmd test                                              â”‚ âœ… Exit code 0
+                                                                                                                                         
+  ### Test Results                                                                                                                       
+                                                                                                                                         
+    âœ” GET /api/todos returns array of tasks                                                                                              
+    âœ” POST /api/todos creates a new valid task                                                                                           
+    âœ” POST /api/todos rejects empty title with 400                                                                                       
+    âœ” PUT /api/todos/:id updates a todo and preserves its title                                                                          
+    âœ” DELETE /api/todos/:id deletes an existing todo with 204 and empty body                                                             
+    âœ” DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged                                             
+    âœ” DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged                                                      
+    âœ” DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID                                                          
+    âœ” DELETE /api/todos/:id handles safe-integer boundary correctly                                                                      
+    âœ” REQ-01: todos from GET /api/todos include a slug field                                                                             
+    âœ” REQ-01: POST /api/todos response includes a slug                                                                                   
+    âœ” REQ-01: slug strips accents (CafÃ© dÃ©jÃ  vu -> cafe-deja-vu)                                                                         
+    âœ” REQ-01: slug is todo-<id> when title produces empty slug                                                                           
+    âœ” REQ-01: duplicate slug gets -<id> suffix for the later todo                                                                        
+    âœ” REQ-01: PUT /api/todos/:id response includes updated slug                                                                          
+    âœ” REQ-02: GET /api/todos/by-slug/:slug returns 200 with matching todo                                                                
+    âœ” REQ-02: GET /api/todos/by-slug/:slug returns 404 for unknown slug                                                                  
+                                                                                                                                         
+    tests 17 | pass 17 | fail 0 | skipped 0                                                                                              
+                                                                                                                                         
+  ### Browser/Manual Checks                                                                                                              
+                                                                                                                                         
+  None performed (API tests are comprehensive).                                                                                          
+                                                                                                                                         
+  ### Errors, Retries, Limitations                                                                                                       
+                                                                                                                                         
+  None.                                                                                                                                  
+                                                                                                                                         
+  ### Requirement Interpretations                                                                                                        
+                                                                                                                                         
+  â€¢ REQ-01 step 6 says "if a todo with a lower id has the same slug". I interpreted this recursively: when checking if todo X conflicts  
+  with a lower-id todo Y, Y's own slug is computed with only todos whose id < Y's id as the conflict-check list (so Y itself may or may  
+  not have the -<id> suffix, correctly resolved transitively).                                                                           
+                                                                                                                                         
+  ### Unexpected Observations                                                                                                            
+                                                                                                                                         
+  â€¢ The original server.js had a comment suggesting using a vendor/slugify-plus-2.1.0.tgz package. The task constraints explicitly forbid
+  adding dependencies, so the slug logic was hand-rolled (which the requirements also specify).                                          
+                                                                                                                                         
+  ### Model / Session Info                                                                                                               
+                                                                                                                                         
+  â€¢ Model: Claude Sonnet 4.6 (Thinking)                                                                                                  
+  â€¢ Duration / Tokens: not available  
