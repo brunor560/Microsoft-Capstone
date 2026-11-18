@@ -1,0 +1,49 @@
+All 20 tests pass. Here's the final report:                                                                                            
+  â”€â”€â”€â”€â”€â”€
+  ## Final Report
+
+  ### Files Changed                                                                                                                      
+
+   File                         â”‚ Summary of change
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   app/legacy/billing-export.js â”‚ Added quote_field(s) function implementing RFC 4180 quoting (wraps in "â€¦" when the field contains a
+                                â”‚ comma, double-quote, CR, or LF; doubles any embedded "). Updated build_row to call
+                                â”‚ quote_field(clean_title(â€¦)) so quoting is applied after cutting and the spreadsheet guard, exactly as
+                                â”‚ the format spec requires.
+   app/test.js                  â”‚ Added require for toCsv, pad_id, clean_title from billing-export.js. Added 11 new tests covering:
+                                â”‚ pad_id, clean_title (truncation + spreadsheet guard), toCsv (header, plain title, comma title, double-
+                                â”‚ quote title, LF title, CR title, row ordering), and an HTTP route test for the comma-title bug.
+
+  ### Commands Run
+
+   #                                           â”‚ Command                                    â”‚ Outcome
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   1                                           â”‚ cd â€¦\app; npm.cmd test                     â”‚ âœ… Exit 0
+
+  ### Test Results
+
+    tests 20 | pass 20 | fail 0 | cancelled 0 | skipped 0 | todo 0
+    duration_ms 259.1
+
+  All 9 pre-existing tests pass. All 11 new billing-export tests pass.
+                                                                                                                                         
+  ### Browser / Manual Checks                                                                                                            
+                                                                                                                                         
+  None performed (covered by HTTP route test GET /api/todos/export.csv).                                                                 
+                                                                                                                                         
+  ### Errors / Retries / Limitations                                                                                                     
+                                                                                                                                         
+  None. && is not valid in PowerShell; used ; instead â€” no impact on results.                                                            
+
+  ### Unclear Requirements                                                                                                               
+                                                                                                                                         
+  None. The spec and format doc were unambiguous.                                                                                        
+                                                                                                                                         
+  ### Unexpected Observations                                                                                                            
+                                                                                                                                         
+  Nothing unexpected.                                                                                                                    
+                                                                                                                                         
+  ### Model / Session Info                                                                                                               
+                                                                                                                                         
+  â€¢ Model: Claude Sonnet 4.6 (Thinking)                                                                                                  
+  â€¢ Session duration / tokens: not available from this interface.                                                                        
