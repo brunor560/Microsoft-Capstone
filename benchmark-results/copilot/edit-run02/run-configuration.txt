@@ -1,0 +1,16 @@
+run_id=copilot-edit-run02
+task_id=003
+tool=GitHub Copilot CLI 1.0.114
+interface=CLI headless
+model_requested=anthropic-direct/claude-sonnet-4-6
+provider=Anthropic BYOK
+session_id=0904c557-1a4f-42d1-8085-dfbc63f1c575
+participant=Ross
+approval_mode=scoped headless preapproval
+fresh_start=yes
+isolation=Native command sandbox with external outbound denied and local networking enabled. Built-in file tools use Copilot path policy.
+snapshot_commit=fb5cfd51df4a95bdc4d74c4b04030d247a46d73e
+evaluator_commit=0917c7cbcebafd6940ae55fc7270be65a1f62d91
+quality_commit=8fb24efa8fed958670481181c3e7fbe531871416
+model=claude-sonnet-4-6
+model_verification_source=runtime-observation.json; corroborated by copilot-usage.json

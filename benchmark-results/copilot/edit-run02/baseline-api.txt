@@ -1,0 +1,148 @@
+✔ API-01: title updates trim whitespace and preserve other state (28.281ms)
+✖ API-02/API-03: empty string is rejected without changing state (2.449042ms)
+✖ API-02/API-03: whitespace is rejected without changing state (2.721708ms)
+✖ API-02/API-03: null is rejected without changing state (1.918583ms)
+✖ API-02/API-03: number is rejected without changing state (1.338542ms)
+✖ API-02/API-03: boolean is rejected without changing state (1.1035ms)
+✖ API-02/API-03: object is rejected without changing state (1.265ms)
+✖ API-02/API-03: array is rejected without changing state (1.514792ms)
+✔ API-04: completion-only updates preserve the title and other todos (2.78475ms)
+✔ API-04: updating a missing todo returns 404 without changing state (1.2485ms)
+✔ API-05: blank POST remains rejected without changing state (1.141792ms)
+✔ API-05: DELETE retains leading-zero support and repeat behavior (4.046875ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 5
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.846125
+
+✖ failing tests:
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: empty string is rejected without changing state (2.449042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: whitespace is rejected without changing state (2.721708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: null is rejected without changing state (1.918583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: number is rejected without changing state (1.338542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: boolean is rejected without changing state (1.1035ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: object is rejected without changing state (1.265ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:98:3
+✖ API-02/API-03: array is rejected without changing state (1.514792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task003-batch-DIZ58euY/external/benchmark-results/protocol/edit-title/edit-title-api.test.cjs:109:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

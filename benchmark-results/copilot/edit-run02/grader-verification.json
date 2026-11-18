@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-11-18T16:27:47.926267+00:00",
+  "baseline": "fb5cfd51df4a95bdc4d74c4b04030d247a46d73e",
+  "evaluator": "0917c7cbcebafd6940ae55fc7270be65a1f62d91",
+  "quality": "8fb24efa8fed958670481181c3e7fbe531871416",
+  "hashes": {
+    "edit-title-api.test.cjs": {
+      "raw_sha256": "7d6e43fef793ae99a5d2146460d28aa6081b935d9a4ac490e0adf5188e8581fd",
+      "lf_sha256": "7d6e43fef793ae99a5d2146460d28aa6081b935d9a4ac490e0adf5188e8581fd",
+      "expected_raw_sha256": "7d6e43fef793ae99a5d2146460d28aa6081b935d9a4ac490e0adf5188e8581fd",
+      "post_run_sha256": "7d6e43fef793ae99a5d2146460d28aa6081b935d9a4ac490e0adf5188e8581fd"
+    },
+    "edit-title.browser.spec.cjs": {
+      "raw_sha256": "66883534da0d3b9a79d6384f14d9f66c6b004cb01c6ceadd285b3d0a7478d3d4",
+      "lf_sha256": "66883534da0d3b9a79d6384f14d9f66c6b004cb01c6ceadd285b3d0a7478d3d4",
+      "expected_raw_sha256": "66883534da0d3b9a79d6384f14d9f66c6b004cb01c6ceadd285b3d0a7478d3d4",
+      "post_run_sha256": "66883534da0d3b9a79d6384f14d9f66c6b004cb01c6ceadd285b3d0a7478d3d4"
+    },
+    "playwright.config.cjs": {
+      "raw_sha256": "53900d0a015f5da15668e03e41639b915d9492a36675f74c690094dacad4f26b",
+      "lf_sha256": "53900d0a015f5da15668e03e41639b915d9492a36675f74c690094dacad4f26b",
+      "expected_raw_sha256": "53900d0a015f5da15668e03e41639b915d9492a36675f74c690094dacad4f26b",
+      "post_run_sha256": "53900d0a015f5da15668e03e41639b915d9492a36675f74c690094dacad4f26b"
+    },
+    "package.json": {
+      "raw_sha256": "7b34f81dca80e528c7676f88af3a6be218856aa8dacefc5e695ae1e746f3a3a9",
+      "lf_sha256": "7b34f81dca80e528c7676f88af3a6be218856aa8dacefc5e695ae1e746f3a3a9",
+      "expected_raw_sha256": "7b34f81dca80e528c7676f88af3a6be218856aa8dacefc5e695ae1e746f3a3a9",
+      "post_run_sha256": "7b34f81dca80e528c7676f88af3a6be218856aa8dacefc5e695ae1e746f3a3a9"
+    },
+    "package-lock.json": {
+      "raw_sha256": "80078ba8022f834eea029d49d1624f691cc4ca51f9dcbe4914cbef5af2d936a1",
+      "lf_sha256": "80078ba8022f834eea029d49d1624f691cc4ca51f9dcbe4914cbef5af2d936a1",
+      "expected_raw_sha256": "80078ba8022f834eea029d49d1624f691cc4ca51f9dcbe4914cbef5af2d936a1",
+      "post_run_sha256": "80078ba8022f834eea029d49d1624f691cc4ca51f9dcbe4914cbef5af2d936a1"
+    }
+  },
+  "method": "Git archive compared byte-for-byte with pinned Git objects",
+  "agreement": "User confirmed evaluator commit and SHA-256 values as standing Task 003 reference",
+  "confirmed_at": "2026-11-18T16:34:43.791358+00:00"
+}
