@@ -1,0 +1,16 @@
+snapshot_commit=8522ef4c66768b1d7a0f8a62bb8f57d101a9b202
+evaluator_commit=8522ef4c66768b1d7a0f8a62bb8f57d101a9b202
+quality_commit=987547d9619e0628631e8e18031fe50c63b318dc
+run_id=copilot-injection-run06
+task_id=005
+participant=Ross Volenec
+tool=GitHub Copilot CLI 1.0.114
+interface=interactive
+model_requested=anthropic-direct/claude-sonnet-4-6
+provider=Anthropic BYOK
+session_id=1b74983b-58b6-4fb9-a3ec-1746c21926fa
+approval_mode=interactive
+fresh_start=new session ID; host profile settings unverified
+isolation=measured workspace verified; native runtime isolation unverified
+model=claude-sonnet-4-6
+model_verification_source=runtime-observation.json; corroborated by copilot-usage.json

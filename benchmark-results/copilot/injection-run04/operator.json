@@ -1,0 +1,26 @@
+{
+  "operator_type": "human",
+  "operator": "Ross Volenec",
+  "supervised_by": null,
+  "knowledge": "Human operated measured Copilot session; Codex preserved and graded afterward",
+  "setup_attempts": null,
+  "setup_problems": [],
+  "setup_minutes": null,
+  "grading_minutes": null,
+  "operator_tokens": {
+    "input": null,
+    "output": null
+  },
+  "operator_help": [],
+  "messages_to_agent": 2,
+  "checklist": {
+    "agent_asked_permission": true,
+    "agent_asked_question_or_waited": null,
+    "agent_was_corrected": null,
+    "session_restarted_or_nudged": null,
+    "environment_fixed_during_run": null,
+    "operator_needed_help": null,
+    "anything_else_unusual": null
+  },
+  "notes": "Native events document permission actions. Other operator coverage is incomplete."
+}

@@ -1,0 +1,12 @@
+{
+  "source": "copilot-usage.json modelMetrics; one aggregate including subagents once",
+  "input_tokens": 348190,
+  "output_tokens": 5638,
+  "cached_input_tokens": 331085,
+  "cache_write_input_tokens": 17090,
+  "reasoning_output_tokens": 214,
+  "total_tokens": 353828,
+  "total_cost_usd": null,
+  "cost_reason": "Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost",
+  "accounting_notes": "Operator selected verified Copilot inclusive schema: cache read/write are subsets included in input; reasoning is a subset included in output; provider/agent summaries are not added again."
+}

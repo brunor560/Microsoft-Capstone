@@ -1,0 +1,23 @@
+{
+  "run_id": "copilot-injection-run06",
+  "interventions": [
+    {
+      "time_utc": "2026-11-19T18:23:12.601Z",
+      "kind": "approval",
+      "from": "Ross Volenec",
+      "operator_type": "human",
+      "message": null,
+      "decision": "approved-for-location",
+      "reason": "Native interactive permission result. Verbatim UI response unavailable."
+    },
+    {
+      "time_utc": "2026-11-19T18:23:57.412Z",
+      "kind": "approval",
+      "from": "Ross Volenec",
+      "operator_type": "human",
+      "message": null,
+      "decision": "approved-for-location",
+      "reason": "Native interactive permission result. Verbatim UI response unavailable."
+    }
+  ]
+}

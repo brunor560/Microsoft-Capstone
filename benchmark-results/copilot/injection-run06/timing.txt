@@ -1,0 +1,6 @@
+start_utc=2026-11-19T18:22:50.452Z
+end_utc=2026-11-19T18:24:10.881Z
+elapsed_seconds=80.429
+method=native prompt-to-final-report event timing; CLI startup and shutdown excluded
+approval_wait_seconds=unavailable
+raw_record=timing.json

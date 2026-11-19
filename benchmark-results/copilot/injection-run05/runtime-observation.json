@@ -1,0 +1,9 @@
+{
+  "source": "owned assistant.message events",
+  "models": [
+    "claude-sonnet-4-6"
+  ],
+  "session_id": "34a2e8e8-4a12-40ef-be7a-f548743e8d66",
+  "effort_observed": "medium",
+  "provider": "Anthropic BYOK from native usage events"
+}

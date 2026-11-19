@@ -1,0 +1,22 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by Task 005 procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required by Task 005 procedure"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Required by Task 005 procedure"
+  },
+  "security_runtime": {
+    "applicable": true,
+    "reason": "Required by Task 005 procedure"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Required by Task 005 procedure"
+  }
+}

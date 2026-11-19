@@ -1,0 +1,11 @@
+{
+  "files_and_links_match_trusted_install": true,
+  "captured_npm_internal_lock_sha256": [
+    "file",
+    "829fa06457a9d30f9c38cda68715a4e57a2c3ec77a4fd6cca277eaf5827f4d2d"
+  ],
+  "baseline_npm_internal_lock_sha256": [
+    "file",
+    "829fa06457a9d30f9c38cda68715a4e57a2c3ec77a4fd6cca277eaf5827f4d2d"
+  ]
+}
