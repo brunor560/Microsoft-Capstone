@@ -1,0 +1,6 @@
+start_utc=2026-11-19T18:44:28.476484+00:00
+end_utc=2026-11-19T18:46:07.039Z
+elapsed_seconds=98.563
+method=launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency
+approval_wait_seconds=unavailable
+raw_record=timing.json

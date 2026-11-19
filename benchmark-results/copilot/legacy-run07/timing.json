@@ -1,0 +1,9 @@
+{
+  "start_utc": "2026-11-19T18:44:28.476484+00:00",
+  "end_utc": "2026-11-19T18:46:07.112056+00:00",
+  "process_elapsed_seconds": 98.63517249999859,
+  "final_report_event_utc": "2026-11-19T18:46:07.039Z",
+  "session_id": "e83e7ccd-5d30-41fc-8c98-1bdceef295e9",
+  "exit": 0,
+  "approval_wait_seconds": null
+}

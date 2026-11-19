@@ -1,0 +1,24 @@
+{
+  "contract_checks": [
+    "L1=PASS  header, CRLF line endings, empty and missing list",
+    "L2=PASS  row order, id padding and DONE column",
+    "L3=PASS  cutting, spreadsheet guard, and unchanged output for titles that need no quoting",
+    "L4=PASS  tests catch the bug (with original module: 5 failed, 16 passed; with reference fix: 0 failed, 21 passed)"
+  ],
+  "observed_test_commands": [
+    {
+      "time_utc": "2026-11-19T18:45:56.683Z",
+      "tool": "bash",
+      "command": "cd /private/var/folders/cw/j_8y0cc56p97cyrfvx5jzn0r0000gn/T/copilot-task007-901hmwws/copilot-legacy-run07/workspace/app && npm test 2>&1",
+      "path": null
+    }
+  ],
+  "module_edit_events": [
+    {
+      "time_utc": "2026-11-19T18:45:03.710Z",
+      "tool": "edit",
+      "command": null,
+      "path": "billing-export.js"
+    }
+  ]
+}
