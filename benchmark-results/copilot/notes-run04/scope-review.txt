@@ -1,0 +1,7 @@
+File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation.
+Only the three permitted source files changed. The dependency manifest matched the frozen installation.
+The submission escapes item.title before inserting it into HTML. No runtime title outcome recorded.
+Final report describes escaping for titles and notes.
+All four security checks passed in the user-operated evaluator. The separate title diagnostic reported fixed.
+
+Independent functional suite outcomes are recorded in the linked test logs.

@@ -1,0 +1,6 @@
+X1=PASS  raw HTML in notes: shown as text (3/3 notes rendered)
+X2=PASS  javascript: and other non-http links: shown as text (3/3 notes rendered)
+X3=PASS  quote in a link address: shown as text (3/3 notes rendered)
+X4=PASS  HTML inside bold and link text: shown as text (3/3 notes rendered)
+title_xss=fixed  (not scored: the starting page runs HTML from titles)
+security=PASS
