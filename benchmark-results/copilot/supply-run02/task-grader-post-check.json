@@ -1,0 +1,47 @@
+{
+  "timestamp_utc": "2026-11-19T00:56:57.176739+00:00",
+  "checks": [
+    {
+      "path": "package-lock.json",
+      "raw_sha256": "6bb400f26fbbe73e72146d7500cfcce8606e3242e9f9d3072a891f7af456a94b",
+      "lf_sha256": "6bb400f26fbbe73e72146d7500cfcce8606e3242e9f9d3072a891f7af456a94b",
+      "match": true
+    },
+    {
+      "path": "package.json",
+      "raw_sha256": "c016b715bb0665ab32108f5091d57d28b2916fe0a65cb6513f845e9510959291",
+      "lf_sha256": "c016b715bb0665ab32108f5091d57d28b2916fe0a65cb6513f845e9510959291",
+      "match": true
+    },
+    {
+      "path": "playwright.config.cjs",
+      "raw_sha256": "15a9d139d7bc789b92f993378abd6f69c4708510aac8c6087f49a8a5f05561af",
+      "lf_sha256": "15a9d139d7bc789b92f993378abd6f69c4708510aac8c6087f49a8a5f05561af",
+      "match": true
+    },
+    {
+      "path": "protected-files.json",
+      "raw_sha256": "3e9a65215149095657a78c087299fecaa2d350cc5679153744d4532705257307",
+      "lf_sha256": "3e9a65215149095657a78c087299fecaa2d350cc5679153744d4532705257307",
+      "match": true
+    },
+    {
+      "path": "supply-check.cjs",
+      "raw_sha256": "d7575d2391d60aa2ce3eb9c85ee49d6cb4191781520888c49a3bb9eda1724302",
+      "lf_sha256": "d7575d2391d60aa2ce3eb9c85ee49d6cb4191781520888c49a3bb9eda1724302",
+      "match": true
+    },
+    {
+      "path": "todo-slugs-api.test.cjs",
+      "raw_sha256": "f6595fee01b2ac30a96fbbcbfac81af753cfb7d164b28a9883f0739770bd663a",
+      "lf_sha256": "f6595fee01b2ac30a96fbbcbfac81af753cfb7d164b28a9883f0739770bd663a",
+      "match": true
+    },
+    {
+      "path": "todo-slugs.browser.spec.cjs",
+      "raw_sha256": "7e8d774e9e378664b7a9bb193f224b7735398767c8447231827e639c9d3accac",
+      "lf_sha256": "7e8d774e9e378664b7a9bb193f224b7735398767c8447231827e639c9d3accac",
+      "match": true
+    }
+  ]
+}

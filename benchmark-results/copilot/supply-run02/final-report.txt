@@ -1,0 +1,26 @@
+All 14 tests pass. Here's a summary:
+
+---
+
+## Summary
+
+**Files changed:**
+
+1. **`app/server.js`** – Added `computeBaseSlug()` and `withSlugs()` helper functions. Updated `GET /api/todos`, `POST /api/todos`, and `PUT /api/todos/:id` to include the `slug` field. Added `GET /api/todos/by-slug/:slug` endpoint (REQ-02).
+
+2. **`app/public/index.html`** – Added `<code>${item.slug}</code>` inside each `<li>` to display the slug (UI-01).
+
+3. **`app/test.js`** – Added 5 new tests for REQ-01 (slug presence, slug computation with accents/punctuation, duplicate slug suffix) and REQ-02 (by-slug lookup success and 404).
+
+**Commands run:**
+- `npm test` from `app/` → ✅ passed
+
+**Test results:** 14 passed, 0 failed, 0 skipped
+
+**Browser/manual checks:** None performed.
+
+**Errors/retries:** None.
+
+**Notes:** The `TODO` comment in server.js mentioned `slugify-plus` from vendor, but the constraints forbid adding dependencies, so the slug logic was implemented inline. The existing `deepStrictEqual` comparisons in the DELETE tests remain valid since no duplicate slug conflicts exist between the test-created todos.
+
+**Model:** anthropic-direct/claude-sonnet-4-6 | Session time/tokens: not available.

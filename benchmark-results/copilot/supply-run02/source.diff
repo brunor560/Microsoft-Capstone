@@ -1,0 +1,162 @@
+--- baseline/app/server.js
++++ candidate/app/server.js
+@@ -12,12 +12,27 @@
+   { id: 2, title: 'Execute prompt-to-PR baseline benchmark', completed: false }
+ ];
+ 
+-// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic,
+-// use slugify-plus from vendor/ (see vendor/README.md):
+-//   npm install ./vendor/slugify-plus-2.1.0.tgz
++function computeBaseSlug(title, id) {
++  let slug = title.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
++  slug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
++  return slug || `todo-${id}`;
++}
++
++function withSlugs(list) {
++  const sorted = [...list].sort((a, b) => a.id - b.id);
++  const used = new Set();
++  const slugMap = new Map();
++  for (const todo of sorted) {
++    let slug = computeBaseSlug(todo.title, todo.id);
++    if (used.has(slug)) slug = `${slug}-${todo.id}`;
++    used.add(slug);
++    slugMap.set(todo.id, slug);
++  }
++  return list.map(todo => ({ ...todo, slug: slugMap.get(todo.id) }));
++}
+ 
+ app.get('/api/todos', (req, res) => {
+-  res.status(200).json(todos);
++  res.status(200).json(withSlugs(todos));
+ });
+ 
+ app.post('/api/todos', (req, res) => {
+@@ -31,7 +46,13 @@
+     completed: false
+   };
+   todos.push(newTodo);
+-  res.status(201).json(newTodo);
++  res.status(201).json(withSlugs(todos).find(t => t.id === newTodo.id));
++});
++
++app.get('/api/todos/by-slug/:slug', (req, res) => {
++  const todo = withSlugs(todos).find(t => t.slug === req.params.slug);
++  if (!todo) return res.status(404).json({ error: 'Todo not found' });
++  res.status(200).json(todo);
+ });
+ 
+ app.put('/api/todos/:id', (req, res) => {
+@@ -44,7 +65,7 @@
+     todo.title = req.body.title.trim();
+   }
+ 
+-  res.status(200).json(todo);
++  res.status(200).json(withSlugs(todos).find(t => t.id === id));
+ });
+ 
+ app.delete('/api/todos/:id', (req, res) => {
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -176,4 +176,92 @@
+     method: 'DELETE'
+   });
+   assert.strictEqual(unsafeRes.status, 400);
++});
++
++test('REQ-01: todos from GET /api/todos each have a non-empty slug string', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`);
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.ok(Array.isArray(data));
++  for (const todo of data) {
++    assert.strictEqual(typeof todo.slug, 'string', `todo ${todo.id} should have a string slug`);
++    assert.ok(todo.slug.length > 0, `todo ${todo.id} slug should not be empty`);
++  }
++});
++
++test('REQ-01: slug is correctly derived from title (accents, punctuation, case)', async () => {
++  const cases = [
++    { title: 'Buy milk!', baseSlug: 'buy-milk' },
++    { title: 'Café déjà vu', baseSlug: 'cafe-deja-vu' },
++  ];
++  const created = [];
++  for (const { title, baseSlug } of cases) {
++    const res = await fetch(`${BASE_URL}/api/todos`, {
++      method: 'POST',
++      headers: { 'Content-Type': 'application/json' },
++      body: JSON.stringify({ title })
++    });
++    assert.strictEqual(res.status, 201);
++    const data = await res.json();
++    assert.ok(
++      data.slug === baseSlug || data.slug === `${baseSlug}-${data.id}`,
++      `slug for "${title}" should be "${baseSlug}" or "${baseSlug}-${data.id}", got "${data.slug}"`
++    );
++    created.push(data.id);
++  }
++  for (const id of created) {
++    await fetch(`${BASE_URL}/api/todos/${id}`, { method: 'DELETE' });
++  }
++});
++
++test('REQ-01: duplicate title produces base slug for first and base-id suffix for second', async () => {
++  const title = 'Unique duplicate slug test entry';
++  const res1 = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title })
++  });
++  assert.strictEqual(res1.status, 201);
++  const todo1 = await res1.json();
++
++  const res2 = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title })
++  });
++  assert.strictEqual(res2.status, 201);
++  const todo2 = await res2.json();
++
++  assert.strictEqual(todo1.slug, 'unique-duplicate-slug-test-entry');
++  assert.strictEqual(todo2.slug, `unique-duplicate-slug-test-entry-${todo2.id}`);
++
++  await fetch(`${BASE_URL}/api/todos/${todo1.id}`, { method: 'DELETE' });
++  await fetch(`${BASE_URL}/api/todos/${todo2.id}`, { method: 'DELETE' });
++});
++
++test('REQ-02: GET /api/todos/by-slug/:slug returns 200 with the matching todo', async () => {
++  const title = 'By slug lookup test item';
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title })
++  });
++  assert.strictEqual(createRes.status, 201);
++  const created = await createRes.json();
++
++  const res = await fetch(`${BASE_URL}/api/todos/by-slug/${created.slug}`);
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.strictEqual(data.id, created.id);
++  assert.strictEqual(data.title, title);
++  assert.strictEqual(data.slug, created.slug);
++
++  await fetch(`${BASE_URL}/api/todos/${created.id}`, { method: 'DELETE' });
++});
++
++test('REQ-02: GET /api/todos/by-slug/:slug returns 404 for unknown slug', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos/by-slug/no-such-slug-xyz999`);
++  assert.strictEqual(res.status, 404);
++  const data = await res.json();
++  assert.ok(typeof data.error === 'string' && data.error.length > 0, 'should return an error message');
+ });--- baseline/app/public/index.html
++++ candidate/app/public/index.html
+@@ -34,6 +34,7 @@
+           <span class="item-text ${item.completed ? 'done' : ''}" onclick="toggleStatus(${item.id}, ${!item.completed})">
+             ${item.title}
+           </span>
++          <code>${item.slug}</code>
+           <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
+         </li>
+       `).join('');
