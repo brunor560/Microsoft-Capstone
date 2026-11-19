@@ -1,0 +1,21 @@
+✔ REQ-01: every todo in the list has a string slug (18.052292ms)
+▶ REQ-01: slug rules (lowercase, accents, separators, trimming)
+  ✔ "Buy milk!" (6.097583ms)
+  ✔ "Café déjà vu" (2.066583ms)
+  ✔ "  Hello,   World  2026 " (1.6875ms)
+  ✔ "--Already--dashed--" (1.31475ms)
+  ✔ "Ünïcödé Ångström" (1.311ms)
+✔ REQ-01: slug rules (lowercase, accents, separators, trimming) (12.851417ms)
+✔ REQ-01: a title with no letters or digits gets todo-<id> (1.027916ms)
+✔ REQ-01: a duplicate slug gets -<id>; the lower id keeps the plain slug (1.758ms)
+✔ REQ-02: look up by slug returns the todo, or 404 (1.945833ms)
+✔ REQ-03: the slug follows a title change (1.470709ms)
+✔ Existing API behaviour is preserved (1.794875ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.625083
