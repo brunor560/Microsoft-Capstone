@@ -1,0 +1,10 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "Pending",
+  "configuration_limitations": [
+    "The native Copilot sandbox was verified for shell execution. Built-in file tools use Copilot path checks.",
+    "Dedicated interactive /session output was unavailable for this headless completion. The owned events and usage export corroborated the session.",
+    "Provider thinking request fields and USD cost were unavailable.",
+    "Runtime reported enabled built-in skills despite disable settings. Observed names: customize-cloud-agent, github-pr-media, pr-stack."
+  ]
+}
