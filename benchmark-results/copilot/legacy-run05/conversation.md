@@ -1,0 +1,53 @@
+## Task prompt
+
+Read pipeline/tasks/007-legacy-export.md and complete the task
+exactly as specified.
+
+Work only within this project folder. Do not access parent folders,
+external grading files, reference solutions, or other runs.
+
+Run the required tests and report the actual results.
+Do not commit or push.
+
+
+## Assistant messages
+
+Now I understand the task. I need to:
+1. Fix `billing-export.js` to properly quote fields with commas, double quotes, or line breaks
+2. Add tests to `test.js` covering these cases
+
+Now add tests to `test.js`:
+
+Now I'll append the billing export tests at the end of the file:
+
+All 23 tests pass. Here's the summary:
+
+## Summary
+
+### Files Changed
+
+**`app/legacy/billing-export.js`**: Added a `quote_field(s)` function that wraps a field in double quotes (and doubles internal quotes) when the field contains a comma, double quote, CR, or LF. Applied it in `build_row` after `clean_title`.
+
+**`app/test.js`**: Added `require` for `billing-export.js` exports, plus 14 new tests covering: empty list, plain title (no quoting), comma in title (FIX-01), double-quote in title (FIX-02), LF/CR in title (FIX-03), spreadsheet guard interaction, truncation, row order, HTTP route export, and `pad_id`/`clean_title` unit tests.
+
+### Test Run
+
+```
+npm test  (from app/)
+```
+- **23 passed, 0 failed, 0 skipped**
+
+### Browser/Manual Checks
+None performed.
+
+### Errors / Limitations
+None.
+
+### Unclear Requirements
+None — the EXPORT-FORMAT.md quoting spec was clear (RFC 4180, applied last after truncation and spreadsheet guard).
+
+### Unexpected Observations
+None.
+
+### Model / Session Info
+Model: `anthropic-direct/claude-sonnet-4-6` — token/duration info not available from this interface.

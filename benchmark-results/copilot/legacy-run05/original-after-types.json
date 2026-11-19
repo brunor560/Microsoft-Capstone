@@ -1,0 +1,16 @@
+{
+  "app": "directory",
+  "app/docs": "directory",
+  "app/docs/EXPORT-FORMAT.md": "file",
+  "app/legacy": "directory",
+  "app/legacy/billing-export.js": "file",
+  "app/package-lock.json": "file",
+  "app/package.json": "file",
+  "app/public": "directory",
+  "app/public/index.html": "file",
+  "app/server.js": "file",
+  "app/test.js": "file",
+  "pipeline": "directory",
+  "pipeline/tasks": "directory",
+  "pipeline/tasks/007-legacy-export.md": "file"
+}
