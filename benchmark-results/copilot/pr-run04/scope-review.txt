@@ -1,0 +1,1 @@
+Direct Git push returned HTTP 403. Copilot used official GitHub MCP to publish the feature branch and merge after pr-gate passed. The direct Git push requirement remains unmet. Only the three permitted app files changed.

@@ -1,0 +1,18 @@
+{
+  "requested": "anthropic-direct/claude-sonnet-4-6",
+  "requested_effort": "medium",
+  "events": [
+    {
+      "type": "session.start",
+      "sessionId": "deb6f2e9-379c-4764-a7e6-72ddf7bb47bb",
+      "selectedModel": "anthropic-direct/claude-sonnet-4-6",
+      "reasoningEffort": "medium"
+    },
+    {
+      "type": "session.model_change",
+      "previousModel": "anthropic-direct/claude-sonnet-4-6",
+      "newModel": "anthropic-direct/claude-sonnet-4-6",
+      "reasoningEffort": "medium"
+    }
+  ]
+}

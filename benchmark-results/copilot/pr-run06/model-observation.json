@@ -1,0 +1,12 @@
+[
+  {
+    "type": "session.start",
+    "selectedModel": "anthropic-direct/claude-sonnet-4-6",
+    "reasoningEffort": "medium"
+  },
+  {
+    "type": "session.model_change",
+    "newModel": "anthropic-direct/claude-sonnet-4-6",
+    "reasoningEffort": "medium"
+  }
+]

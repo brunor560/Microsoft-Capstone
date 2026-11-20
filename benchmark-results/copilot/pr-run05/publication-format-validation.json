@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "status": "PASS (internal); unchanged importer gate still required",
+  "model": "claude-sonnet-4-6",
+  "seconds": 279.641543541,
+  "method": "Operator manual prompt and final-report markers, monotonic clock",
+  "suites": [
+    "local_exit=0",
+    "api_exit=0",
+    "browser_exit=0",
+    "security_scan_exit=0"
+  ],
+  "human_review": "UNREVIEWED"
+}

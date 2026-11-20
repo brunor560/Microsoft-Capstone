@@ -1,0 +1,12 @@
+{
+  "operator_type": "ai",
+  "operator": "Codex",
+  "supervised_by": "Ross Volenec",
+  "messages_to_agent": 13,
+  "operator_help": [
+    {
+      "from": "Ross Volenec",
+      "what": "Launched interactive Copilot, submitted the frozen prompt, handled approvals and marked timing."
+    }
+  ]
+}

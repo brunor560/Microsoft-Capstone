@@ -1,0 +1,19 @@
+{
+  "source": "Owned session.shutdown modelMetrics aggregate",
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 24,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 761022,
+        "outputTokens": 11080,
+        "cacheReadTokens": 731276,
+        "cacheWriteTokens": 29720,
+        "reasoningTokens": 283
+      },
+      "totalNanoAiu": 0
+    }
+  }
+}

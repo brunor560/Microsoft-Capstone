@@ -1,0 +1,124 @@
+{
+  "run_id": "copilot-pr-run04",
+  "interventions": [
+    {
+      "index": 1,
+      "time_utc": "2026-11-20T01:13:52.460Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 2,
+      "time_utc": "2026-11-20T01:14:07.647Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 3,
+      "time_utc": "2026-11-20T01:14:15.603Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 4,
+      "time_utc": "2026-11-20T01:14:16.493Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 5,
+      "time_utc": "2026-11-20T01:14:32.819Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 6,
+      "time_utc": "2026-11-20T01:14:43.947Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 7,
+      "time_utc": "2026-11-20T01:14:49.547Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 8,
+      "time_utc": "2026-11-20T01:14:58.722Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 9,
+      "time_utc": "2026-11-20T01:15:16.599Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 10,
+      "time_utc": "2026-11-20T01:15:29.605Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 11,
+      "time_utc": "2026-11-20T01:15:35.600Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 12,
+      "time_utc": "2026-11-20T01:15:46.151Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 13,
+      "time_utc": "2026-11-20T01:16:09.172Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 14,
+      "time_utc": "2026-11-20T01:16:16.932Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 15,
+      "time_utc": "2026-11-20T01:17:14.479Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 16,
+      "time_utc": "2026-11-20T01:17:35.740Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 17,
+      "time_utc": "2026-11-20T01:18:09.474Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    }
+  ]
+}
