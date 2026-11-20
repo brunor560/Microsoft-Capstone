@@ -1,0 +1,14 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 003 procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 003 procedure"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Required by the pinned Task 003 procedure"
+  }
+}

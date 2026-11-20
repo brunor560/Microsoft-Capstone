@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:54:3 › UI-01/UI-02/UI-03: Edit opens accessible inline controls (165ms)
+  ✓   2 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:78:3 › UI-04/UI-05/UI-08: Save trims the title and survives reload (180ms)
+  ✓   3 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:130:3 › UI-07/UI-08: Cancel discards the draft without changing todos (148ms)
+  ✓   4 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:165:5 › UI-06: empty title shows an error and preserves saved state (144ms)
+  ✓   5 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:165:5 › UI-06: whitespace-only title shows an error and preserves saved state (149ms)
+  ✓   6 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:199:5 › UI-09: HTTP 500 shows an error and retains the draft (192ms)
+  ✓   7 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:199:5 › UI-09: network failure shows an error and retains the draft (191ms)
+  ✓   8 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:283:3 › UI-03/UI-08: Edit, Save, and Cancel work through the keyboard (265ms)
+  ✓   9 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:342:3 › UI-10: HTML-like titles remain literal text before and after editing (185ms)
+  ✓  10 ../../../external/benchmark-results/protocol/edit-title/edit-title.browser.spec.cjs:420:1 › UI-11: Add, title-click completion toggling, and Delete still work (334ms)
+
+  10 passed (2.4s)

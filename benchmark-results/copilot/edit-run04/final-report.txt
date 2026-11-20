@@ -1,0 +1,38 @@
+All 14 tests pass. Here's a summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`** — Updated `PUT /api/todos/:id` to validate `title` when present: returns HTTP 400 if it's not a string or is whitespace-only, and applies no mutation before validation passes (preserving completion state too).
+
+**`app/public/index.html`** — Rewrote todo rendering to build DOM elements programmatically (safe from XSS via `textContent`). Added per-row: `data-todo-id` attribute, **Edit** button, inline edit controls (input with `aria-label="Edit title"`, **Save**, **Cancel**), and a `role="alert"` div for validation/network errors. Save trims input, shows error if empty or on API failure, and updates the displayed title on success without a full re-render.
+
+**`app/test.js`** — Added 5 new tests: valid title update (200), invalid titles (400), rejected title+completed doesn't mutate, completion-only retains title, nonexistent todo returns 404.
+
+### Commands run
+
+```
+npm test   (from app/)
+```
+
+### Test results
+
+**14 passed, 0 failed, 0 skipped**
+
+### Browser/manual checks
+None performed; all requirements verified via automated tests and code inspection.
+
+### Errors/limitations
+None.
+
+### Unclear requirements
+None; interpreted "trimmed" title validation consistently in both client and server.
+
+### Unexpected findings
+The original PUT handler silently ignored invalid titles rather than returning 400 — this was the primary server-side bug addressed.
+
+### Model/session info
+Model: `anthropic-direct/claude-sonnet-4-6`. Token count and duration: not available in this interface.

@@ -1,0 +1,29 @@
+All 15 tests pass. Here's a summary:
+
+---
+
+## Summary
+
+### Files changed
+
+**`app/server.js`** – Updated `PUT /api/todos/:id` to validate `title` when supplied: returns HTTP 400 for non-string, empty, or whitespace-only titles, and validates *before* mutating so a rejected update preserves the existing state (including `completed`).
+
+**`app/public/index.html`** – Added title editing UI:
+- Each `<li>` now has `data-todo-id`
+- Added **Edit** button per row; clicking it hides the title/actions and shows an inline editor with an input (`aria-label="Edit title"`), **Save**, and **Cancel** buttons
+- Added `escapeHtml()` to safely render user-provided titles (XSS prevention)
+- Validation error and network/server errors shown in a `role="alert"` element inside the `<li>`
+- Clicking a displayed title still toggles completion; save sends only `title` (doesn't touch `completed`)
+
+**`app/test.js`** – Added 6 new API tests covering: valid title update with trimming, empty title rejection, whitespace-only rejection, non-string rejection with state preservation, completion-only PUT, and 404 for nonexistent todo.
+
+### Test results
+
+**Command:** `npm test` (from `app/`)  
+**Outcome:** ✅ 15 passed, 0 failed, 0 skipped
+
+### Browser/manual checks
+None performed (local Node tests only, per task constraints).
+
+### Model / session info
+Model: `anthropic-direct/claude-sonnet-4-6` — token counts and duration not available from this interface.

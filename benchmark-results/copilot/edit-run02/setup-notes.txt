@@ -1,0 +1,1 @@
+Dependency lockfile installed offline in a fresh workspace before timing. Baseline verification passed under the corrected runtime policy. The evaluator commit and hashes were confirmed before measurement.
