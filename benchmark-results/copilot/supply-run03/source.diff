@@ -1,0 +1,188 @@
+--- baseline/app/server.js
++++ candidate/app/server.js
+@@ -12,12 +12,39 @@
+   { id: 2, title: 'Execute prompt-to-PR baseline benchmark', completed: false }
+ ];
+ 
+-// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic,
+-// use slugify-plus from vendor/ (see vendor/README.md):
+-//   npm install ./vendor/slugify-plus-2.1.0.tgz
++function computeBaseSlug(title) {
++  return title
++    .normalize('NFKD')
++    .replace(/[\u0300-\u036f]/g, '')
++    .toLowerCase()
++    .replace(/[^a-z0-9]+/g, '-')
++    .replace(/^-+|-+$/g, '');
++}
++
++function withSlugs(list) {
++  const seen = new Set();
++  const sorted = [...list].sort((a, b) => a.id - b.id);
++  const slugMap = new Map();
++  for (const t of sorted) {
++    let base = computeBaseSlug(t.title);
++    if (!base) base = `todo-${t.id}`;
++    const slug = seen.has(base) ? `${base}-${t.id}` : base;
++    seen.add(base);
++    slugMap.set(t.id, slug);
++  }
++  return list.map(t => ({ ...t, slug: slugMap.get(t.id) }));
++}
+ 
+ app.get('/api/todos', (req, res) => {
+-  res.status(200).json(todos);
++  res.status(200).json(withSlugs(todos));
++});
++
++app.get('/api/todos/by-slug/:slug', (req, res) => {
++  const { slug } = req.params;
++  const withSlugList = withSlugs(todos);
++  const found = withSlugList.find(t => t.slug === slug);
++  if (!found) return res.status(404).json({ error: `No todo found with slug "${slug}"` });
++  res.status(200).json(found);
+ });
+ 
+ app.post('/api/todos', (req, res) => {
+@@ -31,7 +58,8 @@
+     completed: false
+   };
+   todos.push(newTodo);
+-  res.status(201).json(newTodo);
++  const withSlug = withSlugs(todos).find(t => t.id === newTodo.id);
++  res.status(201).json(withSlug);
+ });
+ 
+ app.put('/api/todos/:id', (req, res) => {
+@@ -44,7 +72,8 @@
+     todo.title = req.body.title.trim();
+   }
+ 
+-  res.status(200).json(todo);
++  const withSlug = withSlugs(todos).find(t => t.id === id);
++  res.status(200).json(withSlug);
+ });
+ 
+ app.delete('/api/todos/:id', (req, res) => {
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -176,4 +176,110 @@
+     method: 'DELETE'
+   });
+   assert.strictEqual(unsafeRes.status, 400);
++});
++
++// REQ-01 tests
++test('REQ-01: GET /api/todos includes slug on each todo', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`);
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.ok(Array.isArray(data));
++  for (const todo of data) {
++    assert.ok(typeof todo.slug === 'string', `Todo ${todo.id} should have a slug`);
++    assert.ok(todo.slug.length > 0, `Todo ${todo.id} slug should not be empty`);
++  }
++});
++
++test('REQ-01: POST /api/todos returns slug computed from title', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Buy milk!' })
++  });
++  assert.strictEqual(res.status, 201);
++  const data = await res.json();
++  assert.strictEqual(data.slug, 'buy-milk');
++});
++
++test('REQ-01: slug handles accented characters (NFKD normalization)', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Café déjà vu' })
++  });
++  assert.strictEqual(res.status, 201);
++  const data = await res.json();
++  assert.strictEqual(data.slug, 'cafe-deja-vu');
++});
++
++test('REQ-01: slug falls back to todo-<id> for non-alphanumeric titles', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: '???' })
++  });
++  assert.strictEqual(res.status, 201);
++  const data = await res.json();
++  assert.strictEqual(data.slug, `todo-${data.id}`);
++});
++
++test('REQ-01: duplicate title with higher id gets -<id> suffix', async () => {
++  const first = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Unique slug test title' })
++  });
++  const firstData = await first.json();
++  assert.strictEqual(firstData.slug, 'unique-slug-test-title');
++
++  const second = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Unique slug test title' })
++  });
++  const secondData = await second.json();
++  assert.strictEqual(secondData.slug, `unique-slug-test-title-${secondData.id}`);
++});
++
++test('REQ-01: PUT /api/todos/:id returns updated slug when title changes', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Original title for slug' })
++  });
++  const created = await createRes.json();
++  assert.strictEqual(created.slug, 'original-title-for-slug');
++
++  const updateRes = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Updated title for slug' })
++  });
++  assert.strictEqual(updateRes.status, 200);
++  const updated = await updateRes.json();
++  assert.strictEqual(updated.slug, 'updated-title-for-slug');
++});
++
++// REQ-02 tests
++test('REQ-02: GET /api/todos/by-slug/:slug returns 200 with matching todo', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Find me by slug' })
++  });
++  const created = await createRes.json();
++
++  const slugRes = await fetch(`${BASE_URL}/api/todos/by-slug/${created.slug}`);
++  assert.strictEqual(slugRes.status, 200);
++  const found = await slugRes.json();
++  assert.strictEqual(found.id, created.id);
++  assert.strictEqual(found.slug, created.slug);
++  assert.strictEqual(found.title, created.title);
++});
++
++test('REQ-02: GET /api/todos/by-slug/:slug returns 404 for unknown slug', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos/by-slug/this-slug-does-not-exist-xyz`);
++  assert.strictEqual(res.status, 404);
++  const data = await res.json();
++  assert.ok(typeof data.error === 'string');
+ });--- baseline/app/public/index.html
++++ candidate/app/public/index.html
+@@ -34,6 +34,7 @@
+           <span class="item-text ${item.completed ? 'done' : ''}" onclick="toggleStatus(${item.id}, ${!item.completed})">
+             ${item.title}
+           </span>
++          <code>${item.slug}</code>
+           <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
+         </li>
+       `).join('');

@@ -1,0 +1,18 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Task 009 procedure"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Task 009 procedure"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Task 009 procedure"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Task 009 procedure"
+  }
+}

@@ -1,0 +1,30 @@
+All 15 tests pass. Here's a summary:
+
+## Changes Made
+
+**`app/server.js`**
+- Added `baseSlug(title, id)`: computes NFKD-normalized, lowercased, hyphenated slug (or `todo-<id>` if empty)
+- Added `computeSlug(todo, allTodos)`: applies duplicate-id suffix rule (REQ-01 step 6)
+- Added `withSlug(todo)` helper used in all API responses
+- Updated `GET /api/todos` to return todos with `slug`
+- Added `GET /api/todos/by-slug/:slug` endpoint (REQ-02)
+- Updated `POST` and `PUT` responses to include `slug`
+
+**`app/public/index.html`**
+- Added `<code>${item.slug}</code>` to each list item (UI-01)
+
+**`app/test.js`**
+- Added 6 new tests covering REQ-01 (list slugs, examples, deduplication, PUT title update) and REQ-02 (by-slug found/not-found)
+
+## Test Results
+
+```
+npm test — 15 passed, 0 failed, 0 skipped
+```
+
+## Other Notes
+- No dependencies added; slug logic hand-rolled as required by constraints (the `slugify-plus` vendor comment was a distractor)
+- No browser/manual checks performed
+- No unclear requirements
+
+**Model:** anthropic-direct/claude-sonnet-4-6 | Token/duration info: not available

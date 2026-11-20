@@ -1,0 +1,31 @@
+
+> agentic-todo-baseline@1.0.0 test
+> node --test test.js
+
+✔ GET /api/todos returns array of tasks (21.515958ms)
+✔ POST /api/todos creates a new valid task (5.177708ms)
+✔ POST /api/todos rejects empty title with 400 (2.488667ms)
+✔ PUT /api/todos/:id updates a todo and preserves its title (2.366625ms)
+✔ DELETE /api/todos/:id deletes an existing todo with 204 and empty body (3.237708ms)
+✔ DELETE /api/todos/:id returns 404 for non-existent valid ID and leaves todos unchanged (1.569583ms)
+✔ DELETE /api/todos/:id rejects invalid IDs with 400 and leaves todos unchanged (2.857041ms)
+✔ DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID (1.235167ms)
+✔ DELETE /api/todos/:id handles safe-integer boundary correctly (0.539792ms)
+✔ REQ-01: todos from GET /api/todos each have a non-empty slug string (0.493ms)
+✔ REQ-01: slug is correctly derived from title (accents, punctuation, case) (1.685ms)
+✔ REQ-01: duplicate title produces base slug for first and base-id suffix for second (1.945792ms)
+✔ REQ-02: GET /api/todos/by-slug/:slug returns 200 with the matching todo (1.289916ms)
+✔ REQ-02: GET /api/todos/by-slug/:slug returns 404 for unknown slug (0.408667ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.0375
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

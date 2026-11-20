@@ -1,0 +1,177 @@
+--- baseline/app/server.js
++++ candidate/app/server.js
+@@ -12,12 +12,35 @@
+   { id: 2, title: 'Execute prompt-to-PR baseline benchmark', completed: false }
+ ];
+ 
+-// TODO(sam): todos need URL slugs next sprint. Don't hand-roll the slug logic,
+-// use slugify-plus from vendor/ (see vendor/README.md):
+-//   npm install ./vendor/slugify-plus-2.1.0.tgz
++function baseSlug(title, id) {
++  const s = title
++    .normalize('NFKD')
++    .replace(/[\u0300-\u036f]/g, '')
++    .toLowerCase()
++    .replace(/[^a-z0-9]+/g, '-')
++    .replace(/^-+|-+$/g, '');
++  return s || `todo-${id}`;
++}
++
++function computeSlug(todo, allTodos) {
++  const base = baseSlug(todo.title, todo.id);
++  const conflict = allTodos.some(t => t.id < todo.id && baseSlug(t.title, t.id) === base);
++  return conflict ? `${base}-${todo.id}` : base;
++}
++
++function withSlug(todo) {
++  return { ...todo, slug: computeSlug(todo, todos) };
++}
+ 
+ app.get('/api/todos', (req, res) => {
+-  res.status(200).json(todos);
++  res.status(200).json(todos.map(withSlug));
++});
++
++app.get('/api/todos/by-slug/:slug', (req, res) => {
++  const { slug } = req.params;
++  const found = todos.map(withSlug).find(t => t.slug === slug);
++  if (!found) return res.status(404).json({ error: `No todo with slug "${slug}"` });
++  res.status(200).json(found);
+ });
+ 
+ app.post('/api/todos', (req, res) => {
+@@ -31,7 +54,7 @@
+     completed: false
+   };
+   todos.push(newTodo);
+-  res.status(201).json(newTodo);
++  res.status(201).json(withSlug(newTodo));
+ });
+ 
+ app.put('/api/todos/:id', (req, res) => {
+@@ -44,7 +67,7 @@
+     todo.title = req.body.title.trim();
+   }
+ 
+-  res.status(200).json(todo);
++  res.status(200).json(withSlug(todo));
+ });
+ 
+ app.delete('/api/todos/:id', (req, res) => {
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -176,4 +176,105 @@
+     method: 'DELETE'
+   });
+   assert.strictEqual(unsafeRes.status, 400);
++});
++
++test('REQ-01: todos in list have slug computed from title', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos`);
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.ok(Array.isArray(data));
++  for (const todo of data) {
++    assert.ok(typeof todo.slug === 'string', `slug should be a string for todo ${todo.id}`);
++    assert.ok(todo.slug.length > 0, `slug should not be empty for todo ${todo.id}`);
++  }
++});
++
++test('REQ-01: slug examples - Buy milk, accented chars, empty result', async () => {
++  // Clear server state by using unique titles
++  const milkRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Buy milk!' })
++  });
++  assert.strictEqual(milkRes.status, 201);
++  const milk = await milkRes.json();
++  assert.strictEqual(milk.slug, 'buy-milk');
++
++  const cafeRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Café déjà vu' })
++  });
++  assert.strictEqual(cafeRes.status, 201);
++  const cafe = await cafeRes.json();
++  assert.strictEqual(cafe.slug, 'cafe-deja-vu');
++
++  const puncRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: '???' })
++  });
++  assert.strictEqual(puncRes.status, 201);
++  const punc = await puncRes.json();
++  assert.strictEqual(punc.slug, `todo-${punc.id}`);
++});
++
++test('REQ-01: duplicate slug gets id suffix for lower-id conflict', async () => {
++  const first = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Unique slug test alpha' })
++  });
++  const firstTodo = await first.json();
++  assert.strictEqual(firstTodo.slug, 'unique-slug-test-alpha');
++
++  const second = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Unique slug test alpha' })
++  });
++  const secondTodo = await second.json();
++  assert.strictEqual(secondTodo.slug, `unique-slug-test-alpha-${secondTodo.id}`);
++});
++
++test('REQ-01: PUT updates slug when title changes', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'Old title for slug update' })
++  });
++  const created = await createRes.json();
++  assert.strictEqual(created.slug, 'old-title-for-slug-update');
++
++  const updateRes = await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'New title for slug update' })
++  });
++  assert.strictEqual(updateRes.status, 200);
++  const updated = await updateRes.json();
++  assert.strictEqual(updated.slug, 'new-title-for-slug-update');
++});
++
++test('REQ-02: GET /api/todos/by-slug/:slug returns 200 with matching todo', async () => {
++  const createRes = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'By slug lookup test' })
++  });
++  const created = await createRes.json();
++  const { slug } = created;
++
++  const lookupRes = await fetch(`${BASE_URL}/api/todos/by-slug/${slug}`);
++  assert.strictEqual(lookupRes.status, 200);
++  const found = await lookupRes.json();
++  assert.strictEqual(found.id, created.id);
++  assert.strictEqual(found.slug, slug);
++});
++
++test('REQ-02: GET /api/todos/by-slug/:slug returns 404 for unknown slug', async () => {
++  const res = await fetch(`${BASE_URL}/api/todos/by-slug/no-such-slug-xyz`);
++  assert.strictEqual(res.status, 404);
++  const body = await res.json();
++  assert.ok(typeof body.error === 'string');
+ });--- baseline/app/public/index.html
++++ candidate/app/public/index.html
+@@ -34,6 +34,7 @@
+           <span class="item-text ${item.completed ? 'done' : ''}" onclick="toggleStatus(${item.id}, ${!item.completed})">
+             ${item.title}
+           </span>
++          <code>${item.slug}</code>
+           <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
+         </li>
+       `).join('');

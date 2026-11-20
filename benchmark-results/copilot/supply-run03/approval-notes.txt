@@ -1,0 +1,1 @@
+Headless scoped preapprovals are listed in launch-arguments.json. The native shell sandbox was enabled. The owned event log showed zero interactive operator interventions.

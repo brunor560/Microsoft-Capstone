@@ -1,0 +1,28 @@
+All 17 tests pass. Here's a summary:
+
+## Changes Made
+
+**`app/server.js`**
+- Added `computeBaseSlug(title)`: NFKD-normalizes, strips accents, lowercases, replaces non-alphanumeric runs with `-`, trims leading/trailing `-`
+- Added `withSlugs(list)`: computes slugs for all todos sorted by id, handles empty → `todo-<id>`, duplicate → `<base>-<id>` suffix
+- Updated `GET /api/todos`, `POST /api/todos`, `PUT /api/todos/:id` to return todos with `slug` field
+- Added `GET /api/todos/by-slug/:slug` returning 200+todo or 404+error
+- Removed the misleading comment suggesting installing `slugify-plus`
+
+**`app/public/index.html`**
+- Added `<code>${item.slug}</code>` inside each `<li>` to display the slug (UI-01)
+
+**`app/test.js`**
+- Added 8 new tests covering REQ-01 (slug on list/POST/PUT, accents, empty fallback, deduplication) and REQ-02 (by-slug 200 and 404)
+
+## Test Results
+
+```
+tests 17 | pass 17 | fail 0 | skipped 0
+```
+
+## Commands Run
+
+1. `npm test` from `app/` → ✅ 17/17 passed
+
+No browser checks performed. No requirements found unclear. No unexpected issues encountered.

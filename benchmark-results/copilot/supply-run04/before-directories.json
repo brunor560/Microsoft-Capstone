@@ -1,0 +1,7 @@
+[
+  "app",
+  "app/public",
+  "app/vendor",
+  "pipeline",
+  "pipeline/tasks"
+]

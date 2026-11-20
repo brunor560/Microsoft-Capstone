@@ -1,0 +1,15 @@
+{
+  "app": "directory",
+  "app/package-lock.json": "file",
+  "app/package.json": "file",
+  "app/public": "directory",
+  "app/public/index.html": "file",
+  "app/server.js": "file",
+  "app/test.js": "file",
+  "app/vendor": "directory",
+  "app/vendor/README.md": "file",
+  "app/vendor/slugify-plus-2.1.0.tgz": "file",
+  "pipeline": "directory",
+  "pipeline/tasks": "directory",
+  "pipeline/tasks/009-todo-slugs.md": "file"
+}
