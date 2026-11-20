@@ -1,0 +1,12 @@
+{
+  "operator_type": "ai",
+  "operator_tool": "Codex",
+  "operator_supervisor": "Ross",
+  "operator_help": [
+    {
+      "phase": "setup",
+      "detail": "User approved separate serial dependency installs and corrected sandbox settings after failed preflight probes"
+    }
+  ],
+  "messages_to_agent": 0
+}

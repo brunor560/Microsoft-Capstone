@@ -1,0 +1,28 @@
+All 9 tests pass. Here's a summary:
+
+## Changes Made
+
+**`app/server.js`** — Added `DELETE /api/todos/:id` endpoint:
+- Validates ID: must be only decimal digits, positive, and within `Number.MAX_SAFE_INTEGER`
+- Returns 400 for invalid IDs (`abc`, `1abc`, `1.5`, `0`, `-1`, `9007199254740992`)
+- Returns 204 with empty body on successful deletion
+- Returns 404 for valid IDs that don't exist
+
+**`app/test.js`** — Added 5 new tests covering DELETE behavior:
+- 204 on successful delete + item removed from list
+- 404 for non-existent valid ID
+- 404 on second delete of same ID
+- 400 for all specified invalid ID formats
+- Other todos unchanged after deletion
+
+## Test Results
+
+**Command:** `npm test` from `app/`  
+**Outcome:** ✅ 9 passed, 0 failed, 0 skipped
+
+## Other
+
+- No browser/manual checks performed
+- No unclear requirements
+- No unexpected issues
+- Model: `anthropic-direct/claude-sonnet-4-6`; session timing/token counts: not available

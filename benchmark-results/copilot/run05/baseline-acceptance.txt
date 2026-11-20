@@ -1,0 +1,145 @@
+✔ GET, POST, and PUT retain their existing behavior (29.731292ms)
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (3.303208ms)
+✔ Valid missing IDs return 404 without changing todos (1.682375ms)
+✖ Invalid ID abc returns 400 without changing todos (0.718458ms)
+✖ Invalid ID 1abc returns 400 without changing todos (1.211167ms)
+✖ Invalid ID 1.5 returns 400 without changing todos (0.997125ms)
+✖ Invalid ID 0 returns 400 without changing todos (0.788958ms)
+✖ Invalid ID -1 returns 400 without changing todos (0.712542ms)
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (0.693625ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 2
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.342
+
+✖ failing tests:
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:78:1
+✖ Deletion returns empty 204, removes only the target, and cannot repeat (3.303208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 204
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:85:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 204,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID abc returns 400 without changing todos (0.718458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1abc returns 400 without changing todos (1.211167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 1.5 returns 400 without changing todos (0.997125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 0 returns 400 without changing todos (0.788958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID -1 returns 400 without changing todos (0.712542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../external/benchmark-results/protocol/delete-acceptance.test.cjs:108:3
+✖ Invalid ID 9007199254740992 returns 400 without changing todos (0.693625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 400
+  
+      at TestContext.<anonymous> (/private/tmp/copilot-task001-batch-ZFU2aD6N/external/benchmark-results/protocol/delete-acceptance.test.cjs:111:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

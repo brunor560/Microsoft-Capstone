@@ -1,0 +1,17 @@
+✔ GET, POST, and PUT retain their existing behavior (30.252125ms)
+✔ Deletion returns empty 204, removes only the target, and cannot repeat (4.611458ms)
+✔ Valid missing IDs return 404 without changing todos (1.419084ms)
+✔ Invalid ID abc returns 400 without changing todos (1.210709ms)
+✔ Invalid ID 1abc returns 400 without changing todos (1.118375ms)
+✔ Invalid ID 1.5 returns 400 without changing todos (1.215292ms)
+✔ Invalid ID 0 returns 400 without changing todos (1.289208ms)
+✔ Invalid ID -1 returns 400 without changing todos (1.135958ms)
+✔ Invalid ID 9007199254740992 returns 400 without changing todos (1.052125ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.698417

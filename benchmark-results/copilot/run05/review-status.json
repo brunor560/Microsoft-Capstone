@@ -1,0 +1,8 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "pending",
+  "configuration_limitations": [
+    "Owned session export and events corroborate the session ID. Headless process exited after report delivery.",
+    "Provider USD cost and approval waiting are unavailable."
+  ]
+}

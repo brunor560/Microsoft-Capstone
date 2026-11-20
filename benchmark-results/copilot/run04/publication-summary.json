@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-run04",
+    "task_id": "001",
+    "tool": "GitHub Copilot CLI 1.0.114",
+    "interface": "CLI headless",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "provider": "Anthropic BYOK",
+    "session_id": "aefe9fb2-bed5-4584-a6a9-9a02ceba989e",
+    "participant": "Ross",
+    "approval_mode": "scoped headless preapproval",
+    "fresh_start": "yes",
+    "isolation": "Native command sandbox with external outbound denied and local networking enabled. Built-in file tools use Copilot path policy.",
+    "snapshot_commit": "4fa0659150b42fc9b01b1e68e51f07a8535c57e0",
+    "evaluator_commit": "ff63785ce5768f7cfb89f4346644dfc75cc9a6e9",
+    "quality_commit": "ff63785ce5768f7cfb89f4346644dfc75cc9a6e9",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json"
+  },
+  "pins": {
+    "snapshot_commit": "4fa0659150b42fc9b01b1e68e51f07a8535c57e0",
+    "evaluator_commit": "ff63785ce5768f7cfb89f4346644dfc75cc9a6e9",
+    "quality_commit": "ff63785ce5768f7cfb89f4346644dfc75cc9a6e9"
+  },
+  "notes": {
+    "effort": "medium from owned session events",
+    "scope_findings": [
+      "Changed source files: app/server.js, app/test.js. Permitted write scope: app/server.js and app/test.js."
+    ],
+    "source": "Owned events and before/after SHA-256 manifests"
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-18T16:07:24.661853+00:00",
+    "end_utc": "2026-11-18T16:08:04.535Z",
+    "seconds": 39.874,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 134864,
+    "output_tokens": 2510,
+    "cached_input_tokens": 124588,
+    "cache_write_input_tokens": 10267,
+    "reasoning_output_tokens": 144,
+    "total_tokens": 137374,
+    "total_cost_usd": null,
+    "cost_reason": "Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "acceptance",
+      "file": "original-acceptance.txt",
+      "label": "Acceptance",
+      "exit": 0,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "supplemental",
+      "file": "original-supplemental.txt",
+      "label": "Supplemental",
+      "exit": 0,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    }
+  ],
+  "applicability": {
+    "local": {
+      "applicable": true,
+      "reason": "Required by the pinned Task 001 procedure"
+    },
+    "acceptance": {
+      "applicable": true,
+      "reason": "Required by the pinned Task 001 procedure"
+    },
+    "supplemental": {
+      "applicable": true,
+      "reason": "Required by the pinned Task 001 procedure"
+    }
+  },
+  "changed": [
+    "app/server.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "pending",
+    "configuration_limitations": [
+      "Owned session export and events corroborate the session ID. Headless process exited after report delivery.",
+      "Provider USD cost and approval waiting are unavailable."
+    ]
+  },
+  "reviewed": false
+}

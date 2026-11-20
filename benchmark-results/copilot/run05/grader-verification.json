@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-18T15:12:41.298057+00:00",
+  "method": "Raw SHA-256 of pinned git archive bytes; LF SHA-256 recorded separately",
+  "agreement": "Standing Task 001 agreement in skill references/tasks.md",
+  "graders": {
+    "delete-acceptance.test.cjs": {
+      "expected": "6e366e23e7aef27c687448c1e758dd9b990fb7bf989fd41a388029dd70dec6cb",
+      "observed": "6e366e23e7aef27c687448c1e758dd9b990fb7bf989fd41a388029dd70dec6cb",
+      "normalized_lf": "6e366e23e7aef27c687448c1e758dd9b990fb7bf989fd41a388029dd70dec6cb",
+      "post_run_sha256": "6e366e23e7aef27c687448c1e758dd9b990fb7bf989fd41a388029dd70dec6cb"
+    },
+    "delete-leading-zero.test.cjs": {
+      "expected": "3c36a27c48a6e7f485280570bc8fae9394cbc63d8283997447c56e2d0da5e7d0",
+      "observed": "3c36a27c48a6e7f485280570bc8fae9394cbc63d8283997447c56e2d0da5e7d0",
+      "normalized_lf": "3c36a27c48a6e7f485280570bc8fae9394cbc63d8283997447c56e2d0da5e7d0",
+      "post_run_sha256": "3c36a27c48a6e7f485280570bc8fae9394cbc63d8283997447c56e2d0da5e7d0"
+    }
+  }
+}

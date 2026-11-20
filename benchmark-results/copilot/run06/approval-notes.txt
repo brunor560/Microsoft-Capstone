@@ -1,0 +1,1 @@
+Scoped headless preapproval for npm test and the two permitted edits. No post-prompt operator interventions were recorded.
