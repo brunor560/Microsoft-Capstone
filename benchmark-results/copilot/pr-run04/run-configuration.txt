@@ -1,0 +1,16 @@
+run_id=copilot-pr-run04
+task_id=008
+participant=Ross Volenec
+tool=Copilot CLI 1.0.114
+interface=interactive CLI
+model_requested=anthropic-direct/claude-sonnet-4-6
+provider=Anthropic BYOK
+session_id=deb6f2e9-379c-4764-a7e6-72ddf7bb47bb
+approval_mode=Interactive manual approval
+fresh_start=Fresh Copilot profile and disposable clone; normal host home used by the launcher for configured credentials
+isolation=Native Copilot sandbox for shell commands
+snapshot_commit=05899859f699a1a7167e456c875801cf8faf619c
+evaluator_commit=31887c6e23cbbccbfe009cd8919526872b5afd5a
+quality_commit=987547d9619e0628631e8e18031fe50c63b318dc
+model=claude-sonnet-4-6
+model_verification_source=runtime-observation.json; corroborated by copilot-usage.json

@@ -1,0 +1,1 @@
+Fresh profile and checkout with explicit Anthropic BYOK Sonnet 4.6 and medium effort. Earlier MAI Code 2 Flash attempts excluded from this cohort. Existing authorized GitHub OAuth credential provided official MCP access. Raw terminal transcript and full session files remain private.

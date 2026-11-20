@@ -1,0 +1,14 @@
+{
+  "effort": "medium, session start and model-change records",
+  "scope_findings": [
+    "Only the three permitted app files changed.",
+    "Direct Git push returned HTTP 403; GitHub MCP published the feature branch. The required Git push path remains unmet.",
+    "Independent automated checks passed. Teammate review is pending."
+  ],
+  "source": "Owned interactive session, graded merge tree, GitHub workflow audit, and independent grader logs",
+  "limitations": [
+    "Direct Git push failed; MCP publishing fallback is a workflow deviation.",
+    "Existing local GitHub OAuth credential had broader scopes than the protocol token.",
+    "Timing uses operator markers; approval wait was not measured separately."
+  ]
+}

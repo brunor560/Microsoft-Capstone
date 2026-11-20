@@ -1,0 +1,89 @@
+{
+  "run_id": "copilot-pr-run06",
+  "interventions": [
+    {
+      "index": 1,
+      "time_utc": "2026-11-20T01:32:50.771Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 2,
+      "time_utc": "2026-11-20T01:32:56.794Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 3,
+      "time_utc": "2026-11-20T01:33:01.776Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 4,
+      "time_utc": "2026-11-20T01:33:09.366Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 5,
+      "time_utc": "2026-11-20T01:33:23.197Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 6,
+      "time_utc": "2026-11-20T01:33:32.787Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 7,
+      "time_utc": "2026-11-20T01:33:40.701Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 8,
+      "time_utc": "2026-11-20T01:33:45.706Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 9,
+      "time_utc": "2026-11-20T01:34:11.535Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 10,
+      "time_utc": "2026-11-20T01:35:09.328Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 11,
+      "time_utc": "2026-11-20T01:35:25.055Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    },
+    {
+      "index": 12,
+      "time_utc": "2026-11-20T01:35:54.747Z",
+      "type": "permission_decision",
+      "decision_source": "human_response",
+      "result_kind": "approved"
+    }
+  ]
+}

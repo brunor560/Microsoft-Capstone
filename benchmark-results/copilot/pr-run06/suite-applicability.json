@@ -1,0 +1,22 @@
+{
+  "local": {
+    "applicable": true,
+    "reason": "Pinned Task 008 suite"
+  },
+  "api": {
+    "applicable": true,
+    "reason": "Pinned Task 008 suite"
+  },
+  "browser": {
+    "applicable": true,
+    "reason": "Pinned Task 008 suite"
+  },
+  "security_scan": {
+    "applicable": true,
+    "reason": "Pinned Task 008 suite"
+  },
+  "security_runtime": {
+    "applicable": false,
+    "reason": "Task 008 uses the static workflow and security scan."
+  }
+}

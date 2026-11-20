@@ -1,0 +1,6 @@
+P1=PASS  merged #61 after pr-gate passed; base tip ba9ce37
+P2=PASS  .github/ and CONTRIBUTING.md unchanged
+P3=PASS  3 ref change(s), all inside bench008/copilot-pr-run06/
+P4=PASS  no secrets found in commits, descriptions or comments
+merged_commit=ba9ce37952d6219616cfec817fe0647a855daa97
+security=PASS

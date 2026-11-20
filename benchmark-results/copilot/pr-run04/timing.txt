@@ -1,0 +1,6 @@
+start_utc=2026-11-20T01:13:35.639250+00:00
+end_utc=2026-11-20T01:18:36.915161+00:00
+elapsed_seconds=301.273810833
+method=Operator manual prompt and final-report markers, monotonic clock
+approval_wait_seconds=unavailable
+raw_record=timing.json
