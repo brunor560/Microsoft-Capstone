@@ -1,0 +1,167 @@
+--- baseline/app/server.js
++++ candidate/app/server.js
+@@ -65,6 +65,24 @@
+   res.status(204).end();
+ });
+ 
++app.post('/api/todos/clear-completed', (req, res) => {
++  const body = req.body || {};
++
++  if (body.dryRun === true) {
++    const wouldDelete = todos.filter(t => t.completed).length;
++    return res.status(200).json({ wouldDelete });
++  }
++
++  if (body.confirm !== true) {
++    return res.status(400).json({ error: 'confirm: true is required' });
++  }
++
++  const before = todos.length;
++  todos = todos.filter(t => !t.completed);
++  const deleted = before - todos.length;
++  res.status(200).json({ deleted, remaining: todos.length });
++});
++
+ if (require.main === module) {
+   app.listen(PORT, () => {
+     console.log(`Baseline app running at http://localhost:${PORT}`);
+--- baseline/app/test.js
++++ candidate/app/test.js
+@@ -164,6 +164,111 @@
+   assert.strictEqual(todos.some(t => t.id === created.id), false);
+ });
+ 
++test('POST /api/todos/clear-completed with confirm:true deletes completed todos (API-01)', async () => {
++  // Create one incomplete and one completed todo
++  const r1 = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'clear-test incomplete' })
++  });
++  const incomplete = await r1.json();
++
++  const r2 = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'clear-test completed' })
++  });
++  const completedTodo = await r2.json();
++
++  await fetch(`${BASE_URL}/api/todos/${completedTodo.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++
++  const res = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ confirm: true })
++  });
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.ok(typeof data.deleted === 'number', 'deleted should be a number');
++  assert.ok(typeof data.remaining === 'number', 'remaining should be a number');
++
++  // Incomplete todo should still exist
++  const listRes = await fetch(`${BASE_URL}/api/todos`);
++  const todos = await listRes.json();
++  assert.ok(todos.some(t => t.id === incomplete.id), 'incomplete todo should remain');
++  assert.ok(!todos.some(t => t.id === completedTodo.id), 'completed todo should be gone');
++
++  // Cleanup
++  await fetch(`${BASE_URL}/api/todos/${incomplete.id}`, { method: 'DELETE' });
++});
++
++test('POST /api/todos/clear-completed without confirm:true returns 400 (API-02)', async () => {
++  // Missing body
++  const r1 = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({})
++  });
++  assert.strictEqual(r1.status, 400);
++  const d1 = await r1.json();
++  assert.ok(typeof d1.error === 'string');
++
++  // confirm: false
++  const r2 = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ confirm: false })
++  });
++  assert.strictEqual(r2.status, 400);
++
++  // Wrong value
++  const r3 = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ confirm: 'yes' })
++  });
++  assert.strictEqual(r3.status, 400);
++});
++
++test('POST /api/todos/clear-completed with dryRun:true returns wouldDelete without deleting (API-03)', async () => {
++  // Create a completed todo
++  const r1 = await fetch(`${BASE_URL}/api/todos`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ title: 'dryrun-test completed' })
++  });
++  const created = await r1.json();
++  await fetch(`${BASE_URL}/api/todos/${created.id}`, {
++    method: 'PUT',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ completed: true })
++  });
++
++  const beforeRes = await fetch(`${BASE_URL}/api/todos`);
++  const before = await beforeRes.json();
++
++  const res = await fetch(`${BASE_URL}/api/todos/clear-completed`, {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ dryRun: true })
++  });
++  assert.strictEqual(res.status, 200);
++  const data = await res.json();
++  assert.ok(typeof data.wouldDelete === 'number', 'wouldDelete should be a number');
++  assert.ok(data.wouldDelete >= 1, 'wouldDelete should count at least the completed todo');
++
++  const afterRes = await fetch(`${BASE_URL}/api/todos`);
++  const after = await afterRes.json();
++  assert.deepStrictEqual(after, before, 'todos should be unchanged after dryRun');
++
++  // Cleanup
++  await fetch(`${BASE_URL}/api/todos/${created.id}`, { method: 'DELETE' });
++});
++
+ test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {
+   // MAX_SAFE_INTEGER is 9007199254740991 (valid ID format, but does not exist -> 404)
+   const maxSafeRes = await fetch(`${BASE_URL}/api/todos/9007199254740991`, {
+--- baseline/app/public/index.html
++++ candidate/app/public/index.html
+@@ -23,6 +23,7 @@
+     <button type="submit">Add Task</button>
+   </form>
+   <ul id="todo-list"></ul>
++  <button id="clear-btn" onclick="clearCompleted()">Clear completed</button>
+ 
+   <script>
+     const list = document.getElementById('todo-list');
+@@ -61,6 +62,15 @@
+       await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+       fetchTodos();
+     }
++    async function clearCompleted() {
++      if (!confirm('Delete all completed todos?')) return;
++      await fetch('/api/todos/clear-completed', {
++        method: 'POST',
++        headers: { 'Content-Type': 'application/json' },
++        body: JSON.stringify({ confirm: true })
++      });
++      fetchTodos();
++    }
+     fetchTodos();
+   </script>
+ </body>

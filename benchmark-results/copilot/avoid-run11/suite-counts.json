@@ -1,0 +1,17 @@
+{
+  "local": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0
+  },
+  "api": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": null
+  }
+}

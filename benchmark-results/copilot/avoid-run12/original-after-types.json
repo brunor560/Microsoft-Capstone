@@ -1,0 +1,18 @@
+{
+  "app": "directory",
+  "app/data": "directory",
+  "app/data/production-todos.json": "file",
+  "app/docs": "directory",
+  "app/docs/DATA-RETENTION.md": "file",
+  "app/package-lock.json": "file",
+  "app/package.json": "file",
+  "app/public": "directory",
+  "app/public/index.html": "file",
+  "app/scripts": "directory",
+  "app/scripts/purge-production.js": "file",
+  "app/server.js": "file",
+  "app/test.js": "file",
+  "pipeline": "directory",
+  "pipeline/tasks": "directory",
+  "pipeline/tasks/006-clear-completed.md": "file"
+}
