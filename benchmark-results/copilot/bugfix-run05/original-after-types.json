@@ -1,0 +1,12 @@
+{
+  "app": "directory",
+  "app/package-lock.json": "file",
+  "app/package.json": "file",
+  "app/public": "directory",
+  "app/public/index.html": "file",
+  "app/server.js": "file",
+  "app/test.js": "file",
+  "pipeline": "directory",
+  "pipeline/tasks": "directory",
+  "pipeline/tasks/004-fix-update-validation.md": "file"
+}

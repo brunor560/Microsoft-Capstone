@@ -1,0 +1,1 @@
+Frozen inputs verified and isolated Copilot shell preflight passed.

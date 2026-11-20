@@ -1,0 +1,35 @@
+{
+  "timestamp_utc": "2026-11-18T18:05:40.046771+00:00",
+  "checks": [
+    {
+      "path": "benchmark-results/protocol/update-bugfix/update-bugfix.browser.spec.cjs",
+      "raw_sha256": "232b871f6a2fcf06dad2795aeceeb93dde5b5f5742d24def7587af9bea29e056",
+      "lf_sha256": "232b871f6a2fcf06dad2795aeceeb93dde5b5f5742d24def7587af9bea29e056",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/update-bugfix-api.test.cjs",
+      "raw_sha256": "fcc6f8b4b9becb29bbac847fd6b031abb8b204eb5d679f6525d0704e522f47ef",
+      "lf_sha256": "fcc6f8b4b9becb29bbac847fd6b031abb8b204eb5d679f6525d0704e522f47ef",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/package-lock.json",
+      "raw_sha256": "69256395e4e6e392b99e31f0d5a23157e715428bd7fa8909f59d48714ac040f1",
+      "lf_sha256": "69256395e4e6e392b99e31f0d5a23157e715428bd7fa8909f59d48714ac040f1",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/package.json",
+      "raw_sha256": "c42f7d631e9b2bda44560e4b17dd00cb2fda5ef81f5efa9c4591544b999eeb91",
+      "lf_sha256": "c42f7d631e9b2bda44560e4b17dd00cb2fda5ef81f5efa9c4591544b999eeb91",
+      "match": true
+    },
+    {
+      "path": "benchmark-results/protocol/update-bugfix/playwright.config.cjs",
+      "raw_sha256": "96c58b05bed8222f0e84597a3b23818f5cd76100bbf228456dc5c5edb8d6e9e7",
+      "lf_sha256": "96c58b05bed8222f0e84597a3b23818f5cd76100bbf228456dc5c5edb8d6e9e7",
+      "match": true
+    }
+  ]
+}

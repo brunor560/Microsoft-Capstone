@@ -1,0 +1,146 @@
+{
+  "version": 2,
+  "config": {
+    "run_id": "copilot-bugfix-run04",
+    "model_requested": "anthropic-direct/claude-sonnet-4-6",
+    "reasoning_effort_requested": "medium",
+    "interface": "headless",
+    "provider": "Anthropic BYOK",
+    "watchdog": "none",
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "7a8c2d70bc6f35cc435d59e6120e61a2b397017d",
+    "task_id": "004",
+    "session_id": "ef72f335-3070-4a17-ab01-9a24b9a30848",
+    "tool": "GitHub Copilot CLI 1.0.114",
+    "participant": "Ross Volenec",
+    "timezone": "America/New_York",
+    "model": "claude-sonnet-4-6",
+    "model_verification_source": "runtime-observation.json; corroborated by copilot-usage.json",
+    "approval_mode": "headless scoped preapproval",
+    "fresh_start": "fresh HOME, COPILOT_HOME, TMPDIR and owned session",
+    "isolation": "Copilot native MXC command sandbox with loopback access and no bypass"
+  },
+  "pins": {
+    "snapshot_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "evaluator_commit": "0de244020fc0aeb140e2632d7ff75afbe201e30f",
+    "quality_commit": "7a8c2d70bc6f35cc435d59e6120e61a2b397017d"
+  },
+  "notes": {
+    "effort": "medium, from owned session events",
+    "scope_findings": [
+      "File changes are limited to the three permitted paths. The submitted dependency tree matched the frozen installation.",
+      "9/9 baseline test names retained.",
+      "Existing test source is additive-only: True.",
+      "DELETE handler source retained: False.",
+      "Existing title update validation lines retained: True.",
+      "Added named tests: 7.",
+      "Suite outcomes and tool actions are preserved.",
+      "Task scope violation: the DELETE handler implementation changed despite the explicit prohibition. Local DELETE tests and independent functional suites are recorded separately."
+    ],
+    "source": "Independent manifests, dependency comparison and grader logs"
+  },
+  "quality_checks": [
+    {
+      "name": "lint",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "complexity",
+      "applicable": true,
+      "pass": false
+    },
+    {
+      "name": "duplication",
+      "applicable": true,
+      "pass": true
+    },
+    {
+      "name": "runtime",
+      "applicable": true,
+      "pass": true
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "timing": {
+    "start_utc": "2026-11-18T18:04:24.068617+00:00",
+    "end_utc": "2026-11-18T18:06:41.173Z",
+    "seconds": 137.105,
+    "method": "launch-to-final-report proxy; process launch UTC to last owned final assistant.message event UTC; includes CLI startup, excludes setup/grading; not exact prompt-acceptance latency",
+    "approval_wait_seconds": null
+  },
+  "tokens": {
+    "input_tokens": 371682,
+    "output_tokens": 10067,
+    "cached_input_tokens": 339566,
+    "cache_write_input_tokens": 32099,
+    "reasoning_output_tokens": 2274,
+    "total_tokens": 381749,
+    "total_cost_usd": null,
+    "cost_reason": "Raw Copilot metrics expose request/AI-credit counters, not verified provider USD cost"
+  },
+  "results": [
+    {
+      "key": "local",
+      "file": "original-local-tests.txt",
+      "label": "Local",
+      "exit": 0,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "api",
+      "file": "original-api-tests.txt",
+      "label": "Independent API",
+      "exit": 0,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "checks": []
+    },
+    {
+      "key": "browser",
+      "file": "original-browser-tests.txt",
+      "label": "Independent browser",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": null,
+      "checks": []
+    }
+  ],
+  "applicability": {
+    "local": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    },
+    "api": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    },
+    "browser": {
+      "applicable": true,
+      "reason": "Task 004 procedure"
+    }
+  },
+  "changed": [
+    "app/public/index.html",
+    "app/server.js",
+    "app/test.js"
+  ],
+  "interventions": 0,
+  "review": {
+    "status": "UNREVIEWED",
+    "independent_human_review": "Pending",
+    "configuration_limitations": [
+      "The native Copilot sandbox was verified for shell execution. Built-in file tools use Copilot path checks.",
+      "Dedicated interactive /session output was unavailable for this headless completion. The owned events and usage export corroborated the session.",
+      "Provider thinking request fields and USD cost were unavailable.",
+      "Runtime reported enabled built-in skills despite disable settings. Observed names: customize-cloud-agent, github-pr-media, pr-stack."
+    ]
+  },
+  "reviewed": false
+}
