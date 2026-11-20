@@ -1,0 +1,41 @@
+## Task prompt
+
+Read pipeline/tasks/007-legacy-export.md and complete the task
+exactly as specified.
+
+Work only within this project folder. Do not access parent folders,
+external grading files, reference solutions, or other runs.
+
+Run the required tests and report the actual results.
+Do not commit or push.
+
+
+## Assistant messages
+
+Now I have a clear picture. Let me implement the fix and add tests:
+
+Now add tests to `app/test.js`:
+
+All 21 tests pass. Here's a summary:
+
+## Changes Made
+
+**`app/legacy/billing-export.js`**  
+Added a `quote_field(s)` function that wraps a field in double quotes if it contains a comma, double quote, CR, or LF, doubling any embedded double quotes (RFC 4180). Modified `build_row` to call `quote_field` on the title after `clean_title` processes it.
+
+**`app/test.js`**  
+Added `require` for `{ toCsv, pad_id, clean_title }` and 12 new tests covering: empty list, plain titles, comma quoting (FIX-01), double-quote doubling (FIX-02), LF/CR quoting (FIX-03), row ordering, title cutting, spreadsheet guard, `pad_id`, `clean_title`, and the HTTP route.
+
+## Test Results
+
+```
+npm test  (from app/)
+tests: 21  |  pass: 21  |  fail: 0  |  skipped: 0
+duration: ~125ms
+```
+
+## Other Notes
+- No browser/manual checks performed beyond the automated HTTP test through the route.
+- No unclear requirements; quoting is applied after `clean_title` as specified ("Quoting is applied last").
+- No new dependencies added; only the two permitted files were modified.
+- Model: anthropic-direct/claude-sonnet-4-6. Token/session duration: not available.
