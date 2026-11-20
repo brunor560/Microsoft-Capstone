@@ -65,6 +65,12 @@ app.delete('/api/todos/:id', (req, res) => {
   res.status(204).end();
 });
 
+app.get('/api/todos/stats', (req, res) => {
+  const total = todos.length;
+  const completed = todos.filter(t => t.completed).length;
+  res.status(200).json({ total, completed, open: total - completed });
+});
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Baseline app running at http://localhost:${PORT}`);

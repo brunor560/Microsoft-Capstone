@@ -164,6 +164,51 @@ test('DELETE /api/todos/:id successfully deletes a todo using a leading-zero ID'
   assert.strictEqual(todos.some(t => t.id === created.id), false);
 });
 
+test('GET /api/todos/stats returns total, completed, and open counts', async () => {
+  const res = await fetch(`${BASE_URL}/api/todos/stats`);
+  assert.strictEqual(res.status, 200);
+  const data = await res.json();
+  assert.ok(typeof data.total === 'number', 'total should be a number');
+  assert.ok(typeof data.completed === 'number', 'completed should be a number');
+  assert.ok(typeof data.open === 'number', 'open should be a number');
+  assert.strictEqual(data.total, data.completed + data.open);
+});
+
+test('GET /api/todos/stats reflects current todo state', async () => {
+  const beforeRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const before = await beforeRes.json();
+
+  const createRes = await fetch(`${BASE_URL}/api/todos`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Stats test todo' })
+  });
+  assert.strictEqual(createRes.status, 201);
+  const created = await createRes.json();
+
+  const afterAddRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterAdd = await afterAddRes.json();
+  assert.strictEqual(afterAdd.total, before.total + 1);
+  assert.strictEqual(afterAdd.open, before.open + 1);
+
+  await fetch(`${BASE_URL}/api/todos/${created.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: true })
+  });
+
+  const afterToggleRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterToggle = await afterToggleRes.json();
+  assert.strictEqual(afterToggle.completed, before.completed + 1);
+  assert.strictEqual(afterToggle.open, before.open);
+
+  await fetch(`${BASE_URL}/api/todos/${created.id}`, { method: 'DELETE' });
+
+  const afterDeleteRes = await fetch(`${BASE_URL}/api/todos/stats`);
+  const afterDelete = await afterDeleteRes.json();
+  assert.strictEqual(afterDelete.total, before.total);
+});
+
 test('DELETE /api/todos/:id handles safe-integer boundary correctly', async () => {
   // MAX_SAFE_INTEGER is 9007199254740991 (valid ID format, but does not exist -> 404)
   const maxSafeRes = await fetch(`${BASE_URL}/api/todos/9007199254740991`, {
