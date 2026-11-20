@@ -1,0 +1,81 @@
+{
+  "totalPremiumRequestCost": 0,
+  "totalUserRequests": 1,
+  "totalNanoAiu": 0,
+  "aiCreditsStatus": "unavailable",
+  "totalApiDurationMs": 25909,
+  "sessionStartTime": "2026-11-18T16:20:30.829Z",
+  "codeChanges": {
+    "linesAdded": 49,
+    "linesRemoved": 2,
+    "filesModifiedCount": 2,
+    "filesModified": [
+      "/private/tmp/copilot-task002-batch-OyXu08du/copilot-validation-run03/workspace/app/server.js",
+      "/private/tmp/copilot-task002-batch-OyXu08du/copilot-validation-run03/workspace/app/test.js"
+    ]
+  },
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "requests": {
+        "count": 8,
+        "cost": 0
+      },
+      "usage": {
+        "inputTokens": 151265,
+        "outputTokens": 1836,
+        "cacheReadTokens": 141616,
+        "cacheWriteTokens": 9639,
+        "reasoningTokens": 117
+      },
+      "totalNanoAiu": 0,
+      "aiCreditsStatus": "unavailable"
+    }
+  },
+  "agentMetrics": {
+    "main": {
+      "totalApiDurationMs": 25909,
+      "totalNanoAiu": 0,
+      "modelMetrics": {
+        "claude-sonnet-4-6": {
+          "requests": {
+            "count": 8,
+            "cost": 0
+          },
+          "usage": {
+            "inputTokens": 151265,
+            "outputTokens": 1836,
+            "cacheReadTokens": 141616,
+            "cacheWriteTokens": 9639,
+            "reasoningTokens": 117
+          },
+          "totalNanoAiu": 0
+        }
+      }
+    }
+  },
+  "providerModelMetrics": [
+    {
+      "provider": null,
+      "modelId": "claude-sonnet-4-6",
+      "metrics": {
+        "requests": {
+          "count": 8,
+          "cost": 0
+        },
+        "usage": {
+          "inputTokens": 151265,
+          "outputTokens": 1836,
+          "cacheReadTokens": 141616,
+          "cacheWriteTokens": 9639,
+          "reasoningTokens": 117
+        },
+        "totalNanoAiu": 0,
+        "aiCreditsStatus": "unavailable"
+      },
+      "modelDisplayName": "anthropic-direct/claude-sonnet-4-6"
+    }
+  ],
+  "currentModel": "claude-sonnet-4-6",
+  "lastCallInputTokens": 21010,
+  "lastCallOutputTokens": 146
+}

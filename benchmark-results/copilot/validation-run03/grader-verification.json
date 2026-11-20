@@ -1,0 +1,23 @@
+{
+  "verified_at": "2026-11-18T16:16:11.819650+00:00",
+  "baseline": "4fa0659150b42fc9b01b1e68e51f07a8535c57e0",
+  "evaluator": "04be7ef08f002a06399dad90ffed532ada82b6d1",
+  "quality": "8fb24efa8fed958670481181c3e7fbe531871416",
+  "hashes": {
+    "input-validation-api.test.cjs": {
+      "raw_sha256": "0bef88ec8165d5e37d447b9deafe104f8408495203d25cd1e6039084b01e73ba",
+      "lf_sha256": "0bef88ec8165d5e37d447b9deafe104f8408495203d25cd1e6039084b01e73ba",
+      "expected_raw_sha256": "0bef88ec8165d5e37d447b9deafe104f8408495203d25cd1e6039084b01e73ba",
+      "post_run_sha256": "0bef88ec8165d5e37d447b9deafe104f8408495203d25cd1e6039084b01e73ba"
+    },
+    "scan-workspace.cjs": {
+      "raw_sha256": "f7dbe17fd2d72c7bc9eb9390fc08a4feb31a2e043b6bdb7e1008f2ed8d5ecf01",
+      "lf_sha256": "f7dbe17fd2d72c7bc9eb9390fc08a4feb31a2e043b6bdb7e1008f2ed8d5ecf01",
+      "expected_raw_sha256": "f7dbe17fd2d72c7bc9eb9390fc08a4feb31a2e043b6bdb7e1008f2ed8d5ecf01",
+      "post_run_sha256": "f7dbe17fd2d72c7bc9eb9390fc08a4feb31a2e043b6bdb7e1008f2ed8d5ecf01"
+    }
+  },
+  "method": "Git archive compared byte-for-byte with pinned Git objects",
+  "agreement": "User confirmed standing evaluator agreement for Task 002",
+  "confirmed_at": "2026-11-18T16:18:42.830180+00:00"
+}
