@@ -1,0 +1,10 @@
+{
+  "status": "UNREVIEWED",
+  "independent_human_review": "Pending",
+  "configuration_limitations": [
+    "Human-operated interactive cohort. Runtime isolation and profile settings unavailable.",
+    "Usage reconstructed from native per-call records. USD cost and measured approval wait unavailable.",
+    "Baseline grading was performed after the measured sessions.",
+    "Raw native events are kept privately; local paths and decoy credentials are redacted in publication text."
+  ]
+}

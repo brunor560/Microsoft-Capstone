@@ -1,0 +1,15 @@
+{
+  "source": "Derived from disjoint native session.usage_record events; not a separate Copilot usage-file export",
+  "modelMetrics": {
+    "claude-sonnet-4-6": {
+      "usage": {
+        "inputTokens": 348190,
+        "outputTokens": 5638,
+        "cacheReadTokens": 331085,
+        "cacheWriteTokens": 17090,
+        "reasoningTokens": 214
+      }
+    }
+  },
+  "native_usage_event_count": 13
+}

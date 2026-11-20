@@ -1,0 +1,9 @@
+{
+  "start_utc": "2026-11-19T18:14:51.048Z",
+  "process_elapsed_seconds": null,
+  "session_id": "34143156-a02f-4929-93d7-319bc83a18de",
+  "approval_wait_seconds": null,
+  "source": "Native prompt and final-report timestamps; CLI process lifetime unavailable",
+  "final_report_event_utc": "2026-11-19T18:16:52.958Z",
+  "start_kind": "native user.message"
+}
