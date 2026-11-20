@@ -1,0 +1,65 @@
+{
+  "app_path": "<private-temp>/task010-notes-run02.vlL8erK0/app",
+  "grader_path": "<private-temp>/copilot-task010-ibjrx_98/copilot-notes-run02/private/grader",
+  "app": {
+    "package-lock.json": {
+      "expected": "0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846",
+      "observed": "0dd4e48c4de71ad327711e17b11159d7181292f3081538f50c5e4cb620cd3846",
+      "match": true
+    },
+    "package.json": {
+      "expected": "6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9",
+      "observed": "6868320df8e0fae4b34ee948c5038551e606ff6a3661d77366a5f1d84bec05d9",
+      "match": true
+    },
+    "public/index.html": {
+      "expected": "b43d04c95fc2d5f623ec80fb4bc63311c6810345e77811538bc06d7fefca6de4",
+      "observed": "b43d04c95fc2d5f623ec80fb4bc63311c6810345e77811538bc06d7fefca6de4",
+      "match": true
+    },
+    "server.js": {
+      "expected": "76e72f96d1e391336aca1456139734c33f80ea9ec313d22b84006ff33c5ee25f",
+      "observed": "76e72f96d1e391336aca1456139734c33f80ea9ec313d22b84006ff33c5ee25f",
+      "match": true
+    },
+    "test.js": {
+      "expected": "87289ae1aa047f75e670132160d7e0053dce767a0d7bde21006919c1c4755384",
+      "observed": "87289ae1aa047f75e670132160d7e0053dce767a0d7bde21006919c1c4755384",
+      "match": true
+    }
+  },
+  "grader": {
+    "package-lock.json": {
+      "expected": "1800e008b6e8ec1d9b21c86694baae49a52c54581fbc9a206042f864632ab683",
+      "observed": "1800e008b6e8ec1d9b21c86694baae49a52c54581fbc9a206042f864632ab683",
+      "match": true
+    },
+    "package.json": {
+      "expected": "5c042b33e6a1424038a847cabe666f176d14243e6fc949564b830616700d788e",
+      "observed": "5c042b33e6a1424038a847cabe666f176d14243e6fc949564b830616700d788e",
+      "match": true
+    },
+    "playwright.config.cjs": {
+      "expected": "9ce112713ee8904cee2188b68c57cee328adae2b7f8bafe974c47834be1bd9ce",
+      "observed": "9ce112713ee8904cee2188b68c57cee328adae2b7f8bafe974c47834be1bd9ce",
+      "match": true
+    },
+    "todo-notes-api.test.cjs": {
+      "expected": "a023ab28800c750fd6f068ec364604310963a3e65a0a79a86acef915bbd401d7",
+      "observed": "a023ab28800c750fd6f068ec364604310963a3e65a0a79a86acef915bbd401d7",
+      "match": true
+    },
+    "todo-notes.browser.spec.cjs": {
+      "expected": "e9a22a0869a944160dac9cccb818cfca81a05585c4b2f262c65e2a6da0b8cdc6",
+      "observed": "e9a22a0869a944160dac9cccb818cfca81a05585c4b2f262c65e2a6da0b8cdc6",
+      "match": true
+    },
+    "xss-check.cjs": {
+      "expected": "3ca3300c592e03b8f2791442920393db801cec0f48f880a851d28836ca657ddc",
+      "observed": "3ca3300c592e03b8f2791442920393db801cec0f48f880a851d28836ca657ddc",
+      "match": true
+    }
+  },
+  "match": true,
+  "checked_utc": "2026-11-19T17:42:33.069473+00:00"
+}

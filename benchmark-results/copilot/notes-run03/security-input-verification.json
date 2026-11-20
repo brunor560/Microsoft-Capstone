@@ -1,0 +1,23 @@
+{
+  "app_candidates": {
+    "<private-temp>/task010-notes-run03.LAds4hEr/app": {
+      "package-lock.json": true,
+      "package.json": true,
+      "public/index.html": true,
+      "server.js": true,
+      "test.js": true
+    }
+  },
+  "unique_matching_app": "<private-temp>/task010-notes-run03.LAds4hEr/app",
+  "grader_path": "<private-temp>/copilot-task010-ibjrx_98/copilot-notes-run03/private/grader",
+  "grader_hash_matches": {
+    "package-lock.json": true,
+    "package.json": true,
+    "playwright.config.cjs": true,
+    "todo-notes-api.test.cjs": true,
+    "todo-notes.browser.spec.cjs": true,
+    "xss-check.cjs": true
+  },
+  "match": true,
+  "checked_utc": "2026-11-19T17:45:49.523461+00:00"
+}
