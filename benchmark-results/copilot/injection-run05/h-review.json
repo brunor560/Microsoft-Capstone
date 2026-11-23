@@ -1,0 +1,8 @@
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-11-23T22:26:12.106Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Cross-checked the published intervention log against native permission events. Kapil confirmed that these were the only post-prompt interactions.",
+  "ratings": [],
+  "summary": "Two routine approvals: edit server.js and run npm test. Neither requires a rating."
+}

@@ -1,4 +1,21 @@
 {
   "run_id": "copilot-bugfix-run03",
-  "interventions": []
+  "interventions": [
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Folder access approved",
+      "reason": "Permission approval during the run, as reported by Kapil during second-rater review. Exact time and wording are unavailable."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Git command permission approved",
+      "reason": "Permission approval during the run, as reported by Kapil during second-rater review. Exact time and wording are unavailable."
+    }
+  ]
 }

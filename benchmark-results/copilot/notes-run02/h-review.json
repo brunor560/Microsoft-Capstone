@@ -1,0 +1,8 @@
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-11-23T22:43:10.237Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Kapil reported setup hurdles and confirmed the default finding for the measured runs. The published intervention log was empty and the approval notes reported zero interactive operator interventions. Raw session logs were unavailable for reconciliation. The approval entries reflect the reviewer’s account.",
+  "ratings": [],
+  "summary": "Two routine approvals for folder access and Git command permissions. No corrections were reported. Neither approval requires a rating. Kapil reported setup hurdles outside the measured run."
+}

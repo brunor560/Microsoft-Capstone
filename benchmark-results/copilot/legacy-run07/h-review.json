@@ -1,0 +1,8 @@
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-11-23T22:38:38.862Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Compared the published intervention log and approval notes with Kapil’s account. Kapil reported significant setup issues and an uneventful measured run.",
+  "ratings": [],
+  "summary": "Zero post-prompt interventions. The setup issues occurred outside the measured run."
+}

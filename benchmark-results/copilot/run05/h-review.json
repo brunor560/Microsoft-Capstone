@@ -1,0 +1,8 @@
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-11-23T22:01:42.735Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Compared the published intervention log and transcript with Kapil’s account of the run. The published intervention list was empty. Kapil reported two permission approvals during the run.",
+  "ratings": [],
+  "summary": "Two routine approvals for folder access and Git command permissions. No corrections were reported. Neither approval requires a rating."
+}
