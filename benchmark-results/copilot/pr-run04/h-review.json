@@ -1,0 +1,8 @@
+{
+  "reviewer": "Kapil S.",
+  "reviewed_utc": "2026-11-23T22:40:17.022Z",
+  "rule": "avoidable if the information was already explicit in the task file or prompt",
+  "method": "Checked the published permission-completion records and approval notes. Kapil confirmed the batch was approval-only. Raw local session logs and individual request details were unavailable.",
+  "ratings": [],
+  "summary": "17 recorded human-approved permission decisions. No task guidance or corrections were reported."
+}
