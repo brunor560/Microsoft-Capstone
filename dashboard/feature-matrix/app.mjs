@@ -37,16 +37,16 @@ function render(ix, preview, demo) {
   const init = parseParams(location.search);
   const ctx = { preview, f: init.filters, sel: { profile: init.profile, feature: init.feature }, select: null };
   const readView = () => {
-    const params = new URLSearchParams(location.search);
-    const requested = params.get('view');
-    return ['overview', 'compare', 'shortlist'].includes(requested) ? requested
-      : params.get('profile') && params.get('feature') ? 'compare' : 'overview';
+    const requested = new URLSearchParams(location.search).get('view');
+    if (requested === 'overview' || requested === 'profiles') return 'profiles';
+    return requested === 'shortlist' ? 'shortlist' : 'compare';
   };
   let view = readView();
   const holder = h('div');
-  const overview = h('div', { id: 'overview-panel' },
-    h('div', { class: 'profiles' }, profileGroups(ix.profiles)));
-  const comparePanel = h('div', { id: 'compare-panel' }, legend(ix), holder);
+  const profilesPanel = h('div', { id: 'profiles-panel' },
+    h('div', { class: 'profiles' }, profileGroups(ix.profiles, ix.categories)));
+  const comparePanel = h('div', { id: 'compare-panel' }, holder);
+  const statusLegend = legend(ix);
   let shortlistState = readShortlist(location.search);
   const shortlistPanel = h('div', { id: 'shortlist-panel' });
   function drawShortlist() {
@@ -54,37 +54,47 @@ function render(ix, preview, demo) {
       view = 'compare'; ctx.select(profile, feature);
     }, shortlistState, () => update(false), cellUrl));
   }
-  const overviewButton = viewButton('Overview', 'overview', overview);
-  const compareButton = viewButton('Compare', 'compare', comparePanel);
-  const shortlistButton = viewButton('Shortlist', 'shortlist', shortlistPanel);
+  const panels = { profiles: profilesPanel, compare: comparePanel, shortlist: shortlistPanel };
+  const sectionHeader = h('h2', { class: 'matrix-section-title', tabindex: '-1' });
+  const menuButton = document.getElementById('menuBtn');
+  const sectionTemplate = document.getElementById('matrix-sections');
+  const sectionButtons = [];
+  for (const label of document.querySelectorAll('[data-sections]')) {
+    const items = sectionTemplate.content.cloneNode(true);
+    const inMenu = Boolean(label.closest('#menu'));
+    for (const button of items.querySelectorAll('[data-view]')) {
+      if (inMenu) button.setAttribute('role', 'menuitem');
+      button.addEventListener('click', () => {
+        if (view !== button.dataset.view) {
+          view = button.dataset.view;
+          update(true);
+          window.scrollTo(0, 0);
+        }
+        if (inMenu) sectionHeader.focus({ preventScroll: true });
+      });
+      sectionButtons.push(button);
+    }
+    label.after(items);
+    label.hidden = false;
+  }
+  menuButton.setAttribute('aria-label', 'Dashboards and sections');
+  menuButton.title = 'Dashboards and sections';
   const notice = demo
     ? banner('draft', h('strong', {}, 'Illustrative demo. '), 'The tools, tiers and evidence shown here are fictional.')
     : preview ? banner('draft', h('strong', {}, 'Draft — not accepted. '), 'Local preview of working research. Findings are unreviewed and must not be used as results.') : null;
   clear(app).append(
     ...(notice ? [notice] : []),
-    h('nav', { class: 'matrix-tabs', 'aria-label': 'Feature matrix views' },
-      h('div', { class: 'seg' }, overviewButton, compareButton, shortlistButton)),
-    overview, comparePanel, shortlistPanel,
+    sectionHeader, profilesPanel, comparePanel, shortlistPanel,
     h('details', { class: 'card', 'aria-label': 'Method and limitations' }, h('summary', {}, 'Method and limitations'),
       h('ul', {}, ix.payload.limitations.map((l) => h('li', {}, l))),
       h('p', { class: 'small mono' }, 'Release ' + rel.release_id + ' · source commit ' + String(rel.source_commit || 'unknown') + ' · manifest v' + rel.manifest_version)));
 
-  function viewButton(label, target, panel) {
-    return h('button', { type: 'button', 'aria-controls': panel.id, onclick: () => {
-      if (view === target) return;
-      view = target;
-      update(true);
-    } }, label);
-  }
-
   function showView() {
-    overview.hidden = view !== 'overview';
-    comparePanel.hidden = view !== 'compare';
-    compareButton.setAttribute('aria-pressed', String(!comparePanel.hidden));
-    shortlistPanel.hidden = view !== 'shortlist';
-    overviewButton.setAttribute('aria-pressed', String(!overview.hidden));
-    shortlistButton.setAttribute('aria-pressed', String(!shortlistPanel.hidden));
-    if (!shortlistPanel.hidden) shortlistPanel.querySelectorAll('a[data-profile]').forEach((a) => {
+    for (const [name, panel] of Object.entries(panels)) panel.hidden = name !== view;
+    const title = sectionButtons.find((button) => button.dataset.view === view).textContent.trim();
+    if (sectionHeader.textContent !== title) sectionHeader.textContent = title;
+    for (const button of sectionButtons) button.setAttribute('aria-current', String(button.dataset.view === view));
+    if (view === 'shortlist') shortlistPanel.querySelectorAll('a[data-profile]').forEach((a) => {
       a.href = cellUrl(a.dataset.profile, a.dataset.feature);
     });
   }
@@ -117,8 +127,9 @@ function render(ix, preview, demo) {
     const f = ix.features.find((x) => x.id === ctx.sel.feature);
     clear(holder).append(
       controls(ix, ctx.f, (part) => { ctx.f = { ...ctx.f, ...part }; update(false); }, () => { ctx.f = emptyFilters(); update(false); }),
-      h('p', { class: 'count', role: 'status' }, 'Showing ' + rows.length + ' of ' + total + ' features'),
-      ...(rows.length ? [grid(ctx, ix, rows, columns), cards(ctx, rows)]
+      h('div', { class: 'compare-meta' },
+        h('p', { class: 'count', role: 'status' }, 'Showing ' + rows.length + ' of ' + total + ' features'), statusLegend),
+      ...(rows.length ? [grid(ctx, ix, rows, columns), cards(ctx, rows, ix.categories)]
         : [h('p', { class: 'muted' }, 'No features match these filters.')]));
     if (p && f) holder.append(detail(ix, p, f, ix.cells.get(p.id + '/' + f.id) || null, preview));
     if (typing) { const q = document.getElementById('fQ'); q.focus(); q.setSelectionRange(caret, caret); }
@@ -136,7 +147,10 @@ function render(ix, preview, demo) {
   });
   drawShortlist();
   showView();
-  if (view === 'compare') draw();
+  if (view === 'compare') {
+    draw();
+    if (location.hash === '#detail') document.getElementById('detail')?.scrollIntoView();
+  }
 }
 
 (async function main() {

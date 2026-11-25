@@ -12,27 +12,39 @@ const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
 const visible = async (locator) => { await locator.waitFor({ state: 'visible', timeout: 5000 }); assert.ok(await locator.isVisible()); };
 const demo = base + '?preview=matrix.demo.json';
+async function section(name) {
+  const desktop = await page.locator('.side').isVisible();
+  if (!desktop) await page.locator('#menuBtn').click();
+  const button = page.locator(desktop ? '.side' : '#menu').locator('[data-view="' + name + '"]');
+  await button.click();
+  assert.equal(await button.getAttribute('aria-current'), 'true');
+}
+
 try {
+  const emptyRoute = '**/data/matrix.json';
+  await page.route(emptyRoute, (route) => route.fulfill({ json: { schema: 'approach-a/publication-empty/1' } }));
   await page.goto(base);
   await visible(page.getByText('No reviewed assessment published yet.', { exact: true }));
   assert.equal(await page.getByRole('button', { name: 'Shortlist', exact: true }).count(), 0);
+  await page.unroute(emptyRoute);
   await page.goto(base + '?preview=matrix.preview.json');
   await visible(page.getByText('Draft — not accepted.', { exact: true }));
-  await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
+  await section('shortlist');
   await page.getByText('Required features', { exact: true }).click();
   await page.locator('input[type=checkbox][value=F01]').check();
   await visible(page.getByRole('heading', { name: 'Needs verification', exact: true }));
-  await visible(page.locator('.shortlist-result summary').filter({ hasText: 'Tier not established' }).first());
+  await visible(page.locator('.shortlist-result summary').filter({ hasText: 'Account scope still needs verification' }).first());
 
   await page.goto(demo);
   await visible(page.getByText('Illustrative demo.', { exact: true }));
+  await section('profiles');
   assert.ok(await page.locator('.profiles').isVisible());
-  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await section('compare');
   assert.ok(await page.locator('table.matrix').isVisible());
   if (process.env.MATRIX_SCREENSHOTS) await page.screenshot({ path: process.env.MATRIX_SCREENSHOTS + '/overview.png', fullPage: true });
   // Compare filter must survive tab switches and cell navigation.
   await page.locator('#fArea').selectOption('Security and control');
-  await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
+  await section('shortlist');
   const tierPicker = page.locator('.shortlist-picker').nth(0);
   const featurePicker = page.locator('.shortlist-picker').nth(1);
   await tierPicker.locator('summary').focus();
@@ -68,9 +80,9 @@ try {
   assert.deepEqual(await page.locator('.shortlist-result summary strong').allTextContents(),
     ['Alder', 'Alder', 'Birch', 'Cedar', 'Dogwood', 'Elm']);
   await search.fill('isolation');
-  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await section('compare');
   assert.equal(await page.locator('#fArea').inputValue(), 'Security and control');
-  await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
+  await section('shortlist');
   assert.equal(await search.inputValue(), 'isolation');
   assert.ok(await featurePicker.locator('input[value=F08]').isChecked());
   assert.equal(await page.getByRole('combobox', { name: 'Sort candidates' }).inputValue(), 'name');
@@ -101,7 +113,7 @@ try {
   await page.locator('.shortlist-picker').nth(0).locator('summary').click();
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   if (process.env.MATRIX_SCREENSHOTS) await page.screenshot({ path: process.env.MATRIX_SCREENSHOTS + '/shortlist-narrow.png', fullPage: true });
-  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await section('compare');
   assert.ok(await page.locator('.cards').isVisible());
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.deepEqual(errors, []);

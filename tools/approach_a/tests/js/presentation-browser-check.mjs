@@ -13,15 +13,26 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
 const visible = async selector => page.locator(selector).waitFor({ state: 'visible' });
+async function section(name) {
+  const desktop = await page.locator('.side').isVisible();
+  if (!desktop) await page.locator('#menuBtn').click();
+  const button = page.locator(desktop ? '.side' : '#menu').locator('[data-view="' + name + '"]');
+  await button.click();
+  assert.equal(await button.getAttribute('aria-current'), 'true');
+}
+
 try {
   await page.goto(demo);
+  await visible('table.matrix');
+  assert.equal(await page.locator('.side [data-view="compare"]').getAttribute('aria-current'), 'true');
+  await section('profiles');
   await visible('.tool-family');
   assert.equal(await page.locator('.tool-family').count(), 1);
   assert.equal(await page.locator('.profile').count(), 2);
   assert.equal(await page.locator('.profile details[open]').count(), 0);
   assert.equal(await page.locator('details[aria-label="Method and limitations"][open]').count(), 0);
   await visible('.banner.draft');
-  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await section('compare');
   await visible('table.matrix');
   const options = await page.locator('#fStatus option').allTextContents();
   assert.deepEqual(options.slice(1), Object.keys(STATUS_LABELS));
@@ -43,14 +54,16 @@ try {
   await visible('#detail');
   assert.ok(new URL(page.url()).searchParams.get('profile'));
   assert.equal(await page.locator('#detail details[open]').count(), 0);
-  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await section('profiles');
   await page.goBack(); await visible('#compare-panel'); await visible('#detail');
-  await page.goForward(); await visible('#overview-panel');
+  await page.goForward(); await visible('#profiles-panel');
+  await page.goto(demo + '&view=overview');
+  await visible('#profiles-panel');
   // Legacy cell URL without a view routes directly to Compare.
   await page.goto(demo + '&profile=alder-individual&feature=F02');
   await visible('#compare-panel'); await visible('#detail');
   assert.ok((await page.locator('#detail').textContent()).includes('Configuration or extension required'));
-  await page.getByRole('button', { name: 'Shortlist', exact: true }).click();
+  await section('shortlist');
   await page.locator('.shortlist-picker').nth(1).locator('summary').click();
   await page.locator('.shortlist-picker input[value="F01"]').check();
   const link = page.locator('.shortlist-result a[data-profile]').first();
@@ -60,16 +73,17 @@ try {
   await page.goBack(); await visible('#shortlist-panel');
   assert.ok(await page.locator('.shortlist-picker input[value="F01"]').isChecked());
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.getByRole('button', { name: 'Compare', exact: true }).click();
+  await section('compare');
   await visible('.cards');
   assert.equal(await page.locator('table.matrix').isVisible(), false);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({ path: '/private/tmp/feature-matrix-review/compare-mobile.png', fullPage: true });
-  await page.getByRole('button', { name: 'Overview', exact: true }).click();
+  await section('profiles');
   await page.locator('.profile summary').first().click();
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.screenshot({ path: '/private/tmp/feature-matrix-review/overview-new.png', fullPage: true });
+  await page.route('**/data/matrix.json', (route) => route.fulfill({ json: { schema: 'approach-a/publication-empty/1' } }));
   await page.goto(base); await page.getByText('No reviewed assessment published yet.', { exact: true }).waitFor();
   assert.deepEqual(errors, []);
   console.log('PASS: five statuses, pending isolation, grouping, disclosures, legacy/Shortlist links, Back/Forward, mobile and public empty state');

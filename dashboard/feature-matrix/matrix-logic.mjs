@@ -34,7 +34,8 @@ export function buildIndex(payload) {
   const evidence = new Map(payload.evidence.map((e) => [e.id, e]));
   const areas = [...new Set(payload.catalog.features.map((f) => f.area))];
   const meaning = new Map(payload.catalog.statuses.map((s) => [s.name, s.meaning]));
-  return { payload, cells, evidence, areas, meaning, features: payload.catalog.features, profiles: payload.profiles };
+  const categories = new Map((payload.catalog.categories || []).map(({ id, name }) => [id, name]));
+  return { payload, cells, evidence, areas, meaning, categories, features: payload.catalog.features, profiles: payload.profiles };
 }
 
 export const emptyFilters = () => ({ profiles: [], area: '', status: '', activation: '', control: '', q: '' });

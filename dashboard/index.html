@@ -758,7 +758,9 @@ const fmtN = (n) => n == null ? '—' : n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : 
 const tokenLabel = (r) => r.tokens?.total == null ? '—' : `${fmtN(r.tokens.total)}`;
 const scoreTokens = (r) => r.tokens && Object.hasOwn(r.tokens, 'scoreTotal') ? r.tokens.scoreTotal : r.tokens?.total;
 const fmtS = (s) => s == null ? '—' : s >= 60 ? `${Math.floor(s / 60)}m ${Math.round(s % 60)}s` : `${s.toFixed(1)}s`;
-const TOOL_COLOR = { antigravity: '#5aa9ff', claude: '#e8875b', codex: '#57d08c', copilot: '#c58cff' };
+const toolTheme = getComputedStyle(document.documentElement);
+const TOOL_COLOR = Object.fromEntries(['antigravity', 'claude', 'codex', 'copilot']
+  .map((id) => [id, toolTheme.getPropertyValue('--tool-' + id).trim()]));
 const toolName = (id) => D.tools.find((t) => t.id === id)?.name || id;
 const task = (id) => D.tasks.find((t) => t.id === id);
 const STATUS = { pass: 'Passed', fail: 'Failed', none: 'Not run' };

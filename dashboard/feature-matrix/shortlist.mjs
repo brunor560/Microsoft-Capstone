@@ -1,7 +1,9 @@
 // Tier IDs are profile-scoped. Each outcome applies to a single profile, tier and feature.
 import { h, clear } from './dom.mjs';
+import { profileCategoryLabel, surfaceName } from './profile-scope.mjs';
+import { profileScope, toolName } from './tool-brand.mjs';
 
-import { groups, groupOrder, recordedTier, shortlistRows } from './shortlist-logic.mjs';
+import { groups, groupOrder, shortlistRows } from './shortlist-logic.mjs';
 export { shortlistRows } from './shortlist-logic.mjs';
 
 function checklist(title, sections, selected, onChange, { searchable = false, defaultLabel = '' } = {}) {
@@ -48,9 +50,9 @@ export function shortlist(ix, onEvidence, state, onChange, cellUrl) {
   const count = h('p', { class: 'count', role: 'status' });
   const sort = h('select', { 'aria-label': 'Sort candidates', onchange: changed },
     h('option', { value: 'group' }, 'Match group'), h('option', { value: 'name' }, 'Tool name'));
-  const tierSections = [...new Set(ix.profiles.map((p) => p.tool))].map((tool) => ({
+  const profileSections = [...new Set(ix.profiles.map((p) => p.tool))].map((tool) => ({
     label: tool, items: ix.profiles.filter((p) => p.tool === tool).map((profile) => ({
-      id: profile.id, name: (recordedTier(profile)?.label || 'Tier not established') + ' · ' + profile.surface_label + ' · ' + profile.id,
+      id: profile.id, name: surfaceName(profile) + ' · ' + profileCategoryLabel(profile, ix.categories) + ' · ' + profile.id,
     })),
   }));
   const featureSections = ix.areas.map((area) => ({
@@ -59,12 +61,14 @@ export function shortlist(ix, onEvidence, state, onChange, cellUrl) {
   }));
 
   function resultCard(row) {
-    const { profile, tier, requirements, state } = row;
+    const { profile, requirements, state } = row;
     const ordered = requirements.slice().sort((a, b) => groupOrder.indexOf(b.state) - groupOrder.indexOf(a.state));
     const first = ordered[0];
-    return h('details', { class: 'card shortlist-result' },
-      h('summary', {}, h('strong', {}, profile.tool), ' · ', profile.surface_label, ' · ', tier?.label || 'Tier not established',
-        ' · ', h('span', { class: 'shortlist-' + state }, groups[state]),
+    return h('details', { class: 'card shortlist-result', 'data-tool-brand': profile.tool_key },
+      h('summary', {},
+        h('span', { class: 'shortlist-result-head' }, h('strong', {}, toolName(profile)),
+          h('span', { class: 'badge shortlist-' + state }, groups[state])),
+        profileScope(profile, ix.categories),
         h('span', { class: 'small shortlist-reason' }, first.feature.name + ' · ' + first.reason)),
       h('ul', {}, ordered.map(({ feature, state: outcome, reason }) =>
         h('li', {}, h('strong', {}, feature.name), ' · ', groups[outcome], '. ', reason, ' ',
@@ -83,10 +87,10 @@ export function shortlist(ix, onEvidence, state, onChange, cellUrl) {
     const rows = shortlistRows(ix, tierKeys, featureIds).sort((a, b) =>
       a.profile.tool.localeCompare(b.profile.tool) || (a.tier?.label || '').localeCompare(b.tier?.label || ''));
     count.textContent = chosenFeatures.length
-      ? rows.filter((row) => row.state === 'match').length + ' of ' + rows.length + ' profile and tier options have documented coverage'
+      ? rows.filter((row) => row.state === 'match').length + ' of ' + rows.length + ' profiles have documented coverage'
       : '';
     clear(results);
-    if (chosenFeatures.length && !rows.length) results.append(h('p', {}, 'No profiles match the selected tier filter.'));
+    if (chosenFeatures.length && !rows.length) results.append(h('p', {}, 'No profiles match the selected profile filter.'));
     if (state.sort === 'name') results.append(...rows.map(resultCard));
     else for (const state of groupOrder) {
       const matches = rows.filter((row) => row.state === state);
@@ -97,9 +101,9 @@ export function shortlist(ix, onEvidence, state, onChange, cellUrl) {
   const panel = h('div', {},
     h('section', { class: 'card', 'aria-label': 'Client requirements' },
       h('h2', {}, 'Client requirements'),
-      h('p', { class: 'small' }, 'A match needs documented coverage of every selected feature on the same profile and recorded tier. Unknown tiers stay visible for verification. Draft findings remain unreviewed; documented availability does not establish effectiveness.'),
+      h('p', { class: 'small' }, 'A match needs documented coverage of every selected feature within the same profile and account scope. Profiles with unresolved account scope stay visible for verification. Draft findings remain unreviewed; documented availability does not establish effectiveness.'),
       h('div', { class: 'shortlist-filters' },
-        checklist('Tool tier', tierSections, tierKeys, changed, { defaultLabel: ' · Any tier' }),
+        checklist('Tool profiles', profileSections, tierKeys, changed, { defaultLabel: ' · All profiles' }),
         checklist('Required features', featureSections, featureIds, changed, { searchable: true }),
         h('label', {}, 'Sort ', sort)),
       selected),
