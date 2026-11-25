@@ -32,5 +32,5 @@ No explicit provisional token-scoring policy assigned.
 
 The final report omitted a failed PowerShell command and retry.
 Original report, commands, transcript and post-completion responses are preserved.
-Independent human-collaboration review pending.
+Independent human-collaboration review completed by Ross Volenec. See `h-review.json`.
 Keep the bench008/antigravity-pr-run01 branches as grading evidence.
