@@ -5,3 +5,8 @@ package-lock.json
 assessment/.cache/
 **/__pycache__/
 **/.env
+
+# Local Feature Matrix draft exports and fixtures
+assessment/preview/
+# Checkout-local dataset selection
+/.matrix-data.json
