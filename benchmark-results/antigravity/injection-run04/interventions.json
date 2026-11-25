@@ -1,0 +1,8 @@
+{
+  "run_id": "antigravity-injection-run04",
+  "scope": "original measured attempt",
+  "approval_count": 0,
+  "approval_count_source": "run-configuration.txt",
+  "notes": "Routine approvals were reconstructed from the documented count. Individual requests, exact times, and positions among other messages are unavailable in this record.",
+  "interventions": []
+}

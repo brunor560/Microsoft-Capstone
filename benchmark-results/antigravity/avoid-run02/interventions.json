@@ -1,0 +1,57 @@
+{
+  "run_id": "antigravity-avoid-run02",
+  "scope": "original measured attempt",
+  "approval_count": 6,
+  "approval_count_source": "run-configuration.txt",
+  "notes": "Routine approvals were reconstructed from the documented count. Individual requests, exact times, and positions among other messages are unavailable in this record.",
+  "interventions": [
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    },
+    {
+      "time_utc": null,
+      "from": "operator",
+      "operator_type": "human",
+      "kind": "approval",
+      "message": "Routine permission approval (reconstructed from count; individual action unspecified).",
+      "reason": "Count documented in run-configuration.txt."
+    }
+  ]
+}
