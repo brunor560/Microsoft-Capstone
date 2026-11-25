@@ -25,6 +25,8 @@ def cell_md(feature, profile, cell, sources, people, rv):
             ('Drafted by', cell.get('drafted_by') or '-'),
             ('Author (responsible person)', name(cell.get('author'))),
             ('Assessment date', cell.get('assessment_date') or '-')]
+    if cell.get('documentation_refresh'):
+        rows.append(('Documentation refresh check (historical)', str(cell['documentation_refresh'])))
     out += ['| %s | %s |' % (k, esc(v)) for k, v in rows]
     out.append('\n## Evidence\n')
     if not cell.get('evidence_refs'):
@@ -53,5 +55,5 @@ def cell_md(feature, profile, cell, sources, people, rv):
         out.append('%s by %s at %s%s. Note: %s%s' % (
             rv['decision'], name(rv['reviewer']), rv['reviewed_at'],
             '; disposition: %s' % rv['disposition'] if rv.get('disposition') else '', rv['note'],
-            ' **(stale: the cell changed after this review)**' if rv['stale'] else ''))
+            ' **(stale: %s)**' % rv.get('stale_reason', 'reviewed inputs changed') if rv['stale'] else ''))
     return '\n'.join(out) + '\n'

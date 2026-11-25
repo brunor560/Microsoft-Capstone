@@ -58,7 +58,7 @@ def do_render(store, args):
     return 0
 
 
-def resume(store, args):
+def resume(store, args, before_research=None):
     """Continue where the last session stopped: unresearched cells, then checks."""
     if not store.exists('manifest.json'):
         ui.fail('No dataset at %s; run `start`.' % store.root)
@@ -77,6 +77,10 @@ def resume(store, args):
     drafting_pending = azure.draft_mode(args, azure.load_config()) == 'azure' and k['pending']
     if never_ran or interrupted or k['drafted'] or drafting_pending:
         from . import cmd_research
+        # The launcher may request consent only after this shared decision.
+        # The module CLI leaves this hook unset and retains its existing behavior.
+        if before_research is not None and not before_research(args):
+            return 0
         return cmd_research.run(store, args)
     if k['pending']:
         ui.warn('%d cell(s) remain pending: no researched brief exists for them yet. They are not findings.'

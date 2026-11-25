@@ -16,6 +16,23 @@ Open http://localhost:4173. To use another port, pass it as an argument (`node d
 
 `build-data.mjs` reads the results branch straight from git and writes `dashboard/data.js`; you don't need to check the branch out. Rerun it whenever new runs are pushed. To read a different branch, pass its name: `node dashboard/build-data.mjs origin/results/codex-injection-run01`.
 
+## Preview Feature Matrix data locally
+
+When preview exports are available, place them in the ignored `assessment/preview/`
+directory as `matrix.preview.json` (unapproved draft) and `matrix.demo.json` (fictional
+fixture). Start the loopback server from the repository root:
+
+```bash
+node dashboard/serve.mjs --matrix-preview
+```
+
+- [Unapproved draft](http://127.0.0.1:4173/feature-matrix/?preview=matrix.preview.json)
+- [Fictional demo](http://127.0.0.1:4173/feature-matrix/?preview=matrix.demo.json)
+- [Public view](http://127.0.0.1:4173/feature-matrix/)
+
+The public view reads `dashboard/feature-matrix/data/matrix.json`. GitHub Pages uploads
+`dashboard/`, so keep draft and fixture exports in `assessment/preview/`.
+
 ## Files
 
 | File | Purpose |

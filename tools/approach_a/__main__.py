@@ -7,11 +7,16 @@ import argparse
 import sys
 
 from . import cmd_misc
+from . import cmd_blockers
 from . import cmd_new
 from . import cmd_people
 from . import cmd_research
 from . import cmd_start
+from . import preview_server
+from . import publish
+from . import packet
 from . import research
+from . import refresh
 from . import store as st
 
 
@@ -61,9 +66,16 @@ def parser():
     sh = sub.add_parser('show', help="inspect one feature's finding, scope, sources and review state")
     sh.add_argument('feature', help='F01-F18')
     sh.add_argument('--profile', action='append')
+    pk = sub.add_parser('review-packet', help='print read-only per-profile review packets; no network or decisions')
+    pk.add_argument('--profile', action='append', help='profile ID (repeatable; default all)')
 
     v = sub.add_parser('validate', help='check coverage, fields, evidence, approval and review')
     v.add_argument('--brief', action='store_true')
+    bl = sub.add_parser('blockers', help='choose a profile and blocker type, then resolve or skip each item')
+    bl.add_argument('--list', action='store_true', help='list current blocking keys without prompting or writing')
+    bl.add_argument('--profile', help='start with this profile (manifest-wide blockers are a separate menu entry)')
+    bl.add_argument('--code', help='start with this blocker key, for example AUTHOR_MISSING')
+    bl.add_argument('--operator', help='your roster ID; otherwise asked when recording the first decision')
     sub.add_parser('render', help='regenerate Markdown outputs from the JSON dataset')
 
     ap_ = sub.add_parser('approve', help='record manifest approval (approver role only)')
@@ -88,6 +100,20 @@ def parser():
     rs.add_argument('--brief', action='store_true')
     rs.add_argument('--rehearsal', action='store_true')
     drafting_options(rs)
+    rf = sub.add_parser('refresh', help='check cited official documentation without changing assessment records or making model calls')
+    rf.add_argument('--profile', action='append', help='limit check or apply selection to profile ID (repeatable)')
+    rf.add_argument('--apply', metavar='REPORT', help='show a checked report and explicitly select/confirm cells to reopen')
+    ex = sub.add_parser('export-publication', help='prepare the reviewed matrix projection (JSON) for the site release')
+    ex.add_argument('--mode', choices=list(publish.MODES), default='accepted',
+                    help='accepted: whole manifest must pass validation (default); preview: labeled local draft view')
+    ex.add_argument('--out', help='output file (default: dashboard/feature-matrix/data/matrix.json, '
+                                  'or assessment/preview/matrix.preview.json for preview)')
+    ex.add_argument('--allow-other-out', action='store_true',
+                    help='permit an accepted export outside dashboard/feature-matrix/data/ (scratch use)')
+    ex.add_argument('--source-commit', help='Git commit to verify against the selected dataset path (default: HEAD); '
+                    'a supplied SHA never bypasses public provenance checks')
+    sp = sub.add_parser('serve-preview', help='serve the feature matrix page locally with the draft preview data')
+    sp.add_argument('--port', type=int, default=4174)
     i = sub.add_parser('init', help='create an empty dataset (catalog, roster and candidates only)')
     i.add_argument('--force', action='store_true')
     n = sub.add_parser('new', help='add a candidate for a tool with no prepared research')
@@ -106,10 +132,12 @@ def main(argv=None):
     if args.cmd not in ('start', 'init', 'new') and not store.exists('manifest.json'):
         print('No dataset at %s. Run `start` (or `init`) first.' % store.root)
         return 2
-    handlers = {'start': cmd_start.run, 'research': cmd_research.run, 'status': cmd_misc.status,
+    handlers = {'start': cmd_start.run, 'blockers': cmd_blockers.run, 'research': cmd_research.run, 'status': cmd_misc.status,
                 'show': cmd_misc.show, 'validate': cmd_people.do_validate, 'render': cmd_people.do_render,
                 'approve': cmd_people.approve, 'author': cmd_people.author, 'review': cmd_people.do_review,
-                'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run}
+                'resume': cmd_people.resume, 'init': cmd_people.init, 'new': cmd_new.run,
+                'export-publication': publish.run, 'serve-preview': preview_server.run,
+                'review-packet': packet.run, 'refresh': refresh.run}
     try:
         return handlers[args.cmd](store, args)
     except (ValueError, FileExistsError, FileNotFoundError) as e:
@@ -119,7 +147,8 @@ def main(argv=None):
         print('\nStopped: %s. Completed cells were saved; continue with `resume`.' % e)
         return 3
     except KeyboardInterrupt:
-        store.log('interrupted', command=args.cmd)
+        if args.cmd != 'refresh':
+            store.log('interrupted', command=args.cmd)
         print('\nInterrupted. Progress is saved after each step; continue with `resume`.')
         return 130
 

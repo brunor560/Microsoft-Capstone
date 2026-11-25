@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""Repository-root convenience launcher; the module CLI remains script-compatible."""
+from tools.approach_a.launcher import main
+
+if __name__ == '__main__':
+    raise SystemExit(main())

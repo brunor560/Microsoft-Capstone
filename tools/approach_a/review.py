@@ -8,6 +8,15 @@ from . import model
 from . import store as st
 
 DISPOSITIONS = ('author_revised', 'reviewer_withdrew', 'escalated')
+BINDING_VERSION = 1
+
+
+def binding(cell, entries, profiles):
+    """Bind only the cited entries and this profile, never the whole manifest."""
+    profile = next((p for p in profiles if p['id'] == cell['profile_id']), None)
+    return {'binding_version': BINDING_VERSION,
+            'evidence_sha256': st.sha256({r: entries.get(r) for r in cell.get('evidence_refs', [])}),
+            'profile_sha256': st.sha256(profile)}
 
 
 def _person(store, pid, role):
@@ -76,6 +85,7 @@ def record(store, cid, reviewer_id, decision, note, disposition=None):
     rec = {'cell_id': cid, 'reviewer': reviewer_id, 'decision': decision, 'note': note.strip(),
            'disposition': disposition if decision == 'disagree' else None,
            'cell_sha256': st.cell_hash(cell), 'reviewed_at': st.now()}
+    rec.update(binding(cell, store.load('sources.json')['entries'], store.load('manifest.json')['profiles']))
     reviews['reviews'].append(rec)
     store.save('reviews.json', reviews)
     if decision == 'agree':
@@ -90,9 +100,22 @@ def record(store, cid, reviewer_id, decision, note, disposition=None):
 
 
 def current(store, cells):
-    """Latest review per cell; stale when the cell's substance changed afterwards."""
+    """Legacy records remain history, but cannot prove evidence/scope approval."""
     latest = {}
     for r in store.load('reviews.json')['reviews']:
         latest[r['cell_id']] = r
-    return {cid: dict(r, stale=(cid not in cells or st.cell_hash(cells[cid]) != r['cell_sha256']))
-            for cid, r in latest.items()}
+    entries = store.load('sources.json')['entries']
+    profiles = store.load('manifest.json')['profiles']
+    result = {}
+    for cid, r in latest.items():
+        reason = None
+        if r.get('binding_version') != BINDING_VERSION or not all(
+                r.get(k) for k in ('evidence_sha256', 'profile_sha256')):
+            reason = 'Legacy or unsupported review binding; original evidence and profile scope cannot be verified; re-review required'
+        elif cid not in cells or st.cell_hash(cells[cid]) != r.get('cell_sha256'):
+            reason = 'Cell changed after review'
+        elif binding(cells[cid], entries, profiles) != {k: r[k] for k in (
+                'binding_version', 'evidence_sha256', 'profile_sha256')}:
+            reason = 'Cited evidence or assessed profile scope changed after review'
+        result[cid] = dict(r, stale=reason is not None, stale_reason=reason)
+    return result

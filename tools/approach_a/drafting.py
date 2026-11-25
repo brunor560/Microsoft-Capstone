@@ -31,13 +31,54 @@ Rules:
   its "page" and "section" must be copied exactly from that excerpt's header.
 - Status must be one of: "Built in", "Configuration or extension required", "Custom implementation required",
   "Unavailable", "Not established from documentation".
-- "Unavailable" only when an excerpt explicitly says the capability is unsupported.
-- "Custom implementation required" only when an excerpt explicitly describes implementation work.
-- If the excerpts are silent, ambiguous or conflicting, use "Not established from documentation", set
-  evidence_basis to "documentation_gap" or "documentation_conflict", write a specific gap_reason naming what
-  the excerpts do and do not say, and cite the closest relevant passages as evidence.
-- Only describe the assessed product surface. Ignore passages about other surfaces.
+- Classify against the exact tool surface, account/tier, platform, modes, documented version and exclusions
+  supplied in the assessed profile. Inclusions/exclusions define the assessment boundary, not vendor support.
+  Do not transfer a claim from another IDE/CLI/cloud surface, tier, platform, mode or version without excerpts
+  establishing its applicability. If scope applicability is unclear, record that uncertainty, not an assumption.
+- "Built in": official excerpts establish native support within that scope. A native feature requiring an
+  optional setting remains Built in: name the setting in required_setup and record activation_state separately
+  as default, optional, policy-dependent or not established. A setting is not by itself an external dependency.
+- "Configuration or extension required": excerpts establish a required integration, extension or separately
+  assembled configuration outside the native capability assessed. Name the dependency in required_setup,
+  and state from the profile boundary whether it is included, excluded or not established. Native support for
+  an integration mechanism (such as MCP connectivity) is distinct from capabilities supplied by an external
+  add-on using it. Do not claim an excluded server's workflow is delivered in the baseline, and do not infer
+  that an external dependency is required merely because an example uses one.
+- "Custom implementation required": excerpts explicitly describe code the user must write or maintain to
+  supply the capability. Identify that work and its owner/maintenance responsibility in required_setup and
+  constraints. If ownership is not documented, say so; do not invent an owner or infer coding work from silence.
+- "Unavailable": excerpts explicitly establish that the capability is unsupported within the assessed profile.
+  Silence, excluded dependencies and documentation for another tier do not establish unavailability.
+- "Not established from documentation": explain the specific gap or conflict in gap_reason, with evidence_basis
+  documentation_gap or documentation_conflict. If a feature is documented but applicability to this tier or
+  platform is unclear, identify exactly that uncertainty in unestablished_scope and gap_reason. Cite the closest
+  relevant passages, including both sides of a conflict when supplied; never turn missing documentation into absence.
+- Supplied official excerpts must support both capability claims and material dependency/scope claims,
+  including requirements, defaults, platform/tier restrictions and assertions of required code or integrations.
+  Use evidence items for these claims, not just the headline capability. Profile membership comes from the
+  supplied boundary. When the supplied excerpts do not establish a material claim, mark it unestablished.
+- Preserve partial coverage: supported_scope names only established support; unsupported_scope lists only
+  explicitly documented unsupported subcapabilities; unestablished_scope lists gaps and uncertain applicability.
+  Keep one primary status without presenting partial support as whole-feature coverage. An excluded dependency
+  belongs in required_setup/constraints, not unsupported_scope unless an excerpt independently proves absence.
+- This is a proposal, not acceptance. Quotes are re-verified against cited sections; human verification by a
+  named author and independent review by a different team member remain required. Do not run or test tools.
 - Do not judge quality, rank or score.
+
+Fictional contrasts for classification only (never evidence; do not cite these examples or invent headers):
+- Alder CLI excerpts establish native sandboxing behind the optional sandbox=true setting for the assessed
+  tier/platform. Result: Built in; required_setup="Enable sandbox=true"; activation_state="optional".
+  Do not label a native optional setting Configuration or extension required.
+- Birch CLI excerpts establish native MCP connectivity. For that mechanism: Built in, even if connecting a
+  server needs setup. Separate excerpts say an issue-tracker workflow requires the external TicketBridge MCP
+  server, which the profile excludes. For that workflow: Configuration or extension required; name TicketBridge
+  and its exclusion in required_setup/constraints; do not claim baseline delivery or label it Unavailable.
+  A documented native mechanism does not establish every add-on workflow.
+- Cedar CLI excerpts document project audit export for Enterprise, but say nothing about the assessed Free
+  tier or Windows platform. Result: Not established from documentation; gap_reason and unestablished_scope
+  identify Free/Windows applicability as unknown, rather than Built in or Unavailable. An explicit excerpt
+  saying Free does not support audit export would instead justify Unavailable for that scoped capability.
+
 Return one JSON object with exactly these keys:
 {"feature_id": str, "status": str, "evidence_basis": "documented_support"|"documented_absence"|
 "documentation_gap"|"documentation_conflict", "gap_reason": str|null, "supported_scope": str,
@@ -135,10 +176,17 @@ def fit(feature, profile, excerpts, max_tokens):
 
 def messages(feature, profile, excerpts):
     blocks = ['[page: %s] [section: %s]\n%s' % (e['page'], e['section'], e['text']) for e in excerpts]
-    user = ('Assessed profile: %s (%s, surface %s). Exclusions: %s.\n'
+    user = ('Assessed profile: %s (%s, surface %s; surface key %s). Exclusions: %s.\n'
+            'Included components: %s.\n'
+            'Account/tier: %s. Platforms: %s. Modes: %s. Documentation version: %s.\n'
+            'Do not transfer claims across tiers, platforms or modes without supporting excerpts.\n'
             'Feature %s "%s": %s\nExamine: %s\n\nExcerpts:\n\n%s'
             % (profile['id'], profile['tool'], profile.get('surface_label', profile['surface']),
+               profile['surface'],
                '; '.join(profile.get('exclusions') or []) or 'none',
+               '; '.join(profile.get('included_components') or []) or 'not established',
+               profile.get('account_and_tier', 'Not established'), '; '.join(profile.get('platforms') or []),
+               '; '.join(profile.get('modes') or []), json.dumps(profile.get('version') or {}, ensure_ascii=False),
                feature['id'], feature['name'], feature['capability'], feature['examine'],
                '\n\n---\n\n'.join(blocks)))
     return [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': user}]
