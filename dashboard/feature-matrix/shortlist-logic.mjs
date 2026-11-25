@@ -1,4 +1,5 @@
 // Documentary eligibility, not a capability score. Uses only publication/1 fields.
+import { scopeWording } from './profile-scope.mjs';
 export const groups = { match: 'Documented match', unknown: 'Needs verification', gap: 'Documented gap' };
 export const groupOrder = Object.keys(groups);
 
@@ -16,8 +17,8 @@ export function requirementFinding(ix, profile, feature) {
   }
   const notes = [cell.supported_scope, ...(cell.unsupported_scope || []).map((s) => 'Unsupported: ' + s),
     ...(cell.unestablished_scope || []).map((s) => 'Not established: ' + s), cell.gap_reason,
-    cell.required_setup && 'Required setup: ' + cell.required_setup,
-    ...(cell.constraints || []).map((s) => 'Constraint: ' + s)].filter(Boolean).join(' ');
+    cell.required_setup && 'Required setup: ' + scopeWording(profile, cell.required_setup),
+    ...(cell.constraints || []).map((s) => 'Constraint: ' + scopeWording(profile, s))].filter(Boolean).join(' ');
   const result = (state, reason) => ({ feature, state, reason: reason + (notes ? ' ' + notes : '') });
   const refs = cell.evidence_refs || [];
   const documented = refs.length && refs.every((id) => ix.evidence.get(id)?.quotation_matched === true);
@@ -29,7 +30,7 @@ export function requirementFinding(ix, profile, feature) {
   if ((cell.unsupported_scope || []).length || (cell.status === 'Unavailable' && cell.evidence_basis === 'documented_absence')) {
     return result('gap', 'The cell explicitly documents an unsupported requirement or subcapability.');
   }
-  if (!recordedTier(profile)) return result('unknown', 'The assessment tier has not been established.');
+  if (!recordedTier(profile)) return result('unknown', 'Account scope still needs verification for this requirement.');
   const supportedStatus = ['Built in', 'Configuration or extension required', 'Custom implementation required'].includes(cell.status);
   const setupKnown = cell.required_setup?.trim() && !/^(?:none|not established|unknown|not stated)[.!]?$/i.test(cell.required_setup.trim());
   if (!supportedStatus || cell.evidence_basis !== 'documented_support'

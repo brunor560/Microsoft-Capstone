@@ -109,17 +109,22 @@ test('shortlist preserves grouped controls, documentary reasons, safe text and e
   assert.equal(links[0].attrs.href, '?profile=p&feature=F08');
 });
 
-test('Overview groups by tool_key while preserving surface and tier profiles in collapsed disclosures', async () => {
+test('Profiles groups by tool_key while preserving surface and category labels in collapsed disclosures', async () => {
   const { profileGroups } = await import('../../../../dashboard/feature-matrix/views.mjs');
   const profiles = [
-    { ...profile, tool_key: 'shared', account_and_tier: 'Individual' },
-    { ...profile, id: 'desktop', tool: 'Alternate display name', tool_key: 'shared', surface_label: 'Desktop', account_and_tier: 'Pending team choice' },
+    { ...profile, tool_key: 'shared', category_tags: ['T2'], account_and_tier: 'Individual' },
+    { ...profile, id: 'desktop', tool: 'Alternate display name', tool_key: 'shared', surface_label: 'Desktop', category_tags: ['T1', 'T5'], account_and_tier: 'Pending team choice' },
     { ...profile, id: 'other', tool_key: 'different' },
   ];
-  const groups = profileGroups(profiles);
+  const categories = new Map([['T1', 'Agents inside an editor or IDE'], ['T2', 'Terminal or command-line agents'],
+    ['T5', 'Specialized development agents']]);
+  const groups = profileGroups(profiles, categories);
   assert.equal(groups.length, 2);
-  assert.match(groups[0].textContent, /CLI · 1 · Individual/);
-  assert.match(groups[0].textContent, /Desktop · 1 · Tier not established/);
+  const headerParts = (className) => groups[0].all().filter((e) => e.className?.split(' ').includes(className)).map((e) => e.textContent);
+  assert.deepEqual(headerParts('surface-name'), ['CLI', 'Desktop']);
+  assert.deepEqual(headerParts('profile-category'), [
+    'T2 · Terminal or command-line agents', 'T1 · Agents inside an editor or IDE / T5 · Specialized development agents',
+  ]);
   assert.equal(groups[0].all().filter(e => e.attrs['data-profile']).length, 2);
   assert.ok(groups[0].all().filter(e => e.tag === 'details').every(e => !('open' in e.attrs)));
   assert.match(groups[0].textContent, /Operating systems/);

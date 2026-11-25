@@ -10,6 +10,8 @@
   --shadow: 0 1px 0 #ffffff08 inset, 0 8px 24px #00000066;
   --r-chip: 8px; --r-card: 12px; --r-panel: 16px;
   --g1: 8px; --g2: 16px; --g3: 24px;
+  --tool-antigravity: #5aa9ff; --tool-claude: #e8875b;
+  --tool-codex: #57d08c; --tool-copilot: #c58cff;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: light) {
