@@ -1,0 +1,8 @@
+{
+  "reviewer": "Ross Volenec",
+  "reviewed_utc": null,
+  "rule": "Avoidable if the information was already explicit in the task file or initial prompt.",
+  "method": "Independent review of run evidence by Ross Volenec, confirmed on a call as reported by operator Kapil Srikanth. Approval records were reconstructed separately from saved counts.",
+  "ratings": [],
+  "summary": "The run record reports 0 routine permission approvals. No clarification, correction, or other follow-up was reported during the measured attempt."
+}
